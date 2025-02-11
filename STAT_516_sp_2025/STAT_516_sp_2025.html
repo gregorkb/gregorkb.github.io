@@ -1,1 +1,314 @@
+<html>
+<style>
+table {
+    border-collapse: collapse;
+    width: 75%;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 2px;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
 
+<head>
+<title>Karl Gregory STAT 516: Statistical Methods II - Spring 2025</title>
+<left><b><font size=+1>STAT 516: Statistical Methods II - Spring 2025</b></font></center>
+</head>
+
+<body>
+
+<br>
+
+<p>
+<b>Meeting times:</b> 10:05 - 11:20 am, Tuesday and Thursday, LeConte College 107.<br>
+<b>Instructor:</b> Dr. Karl Gregory, LeConte College 216 C. <br>
+<b>Office hours:</b> After each class until noon or Tuesday 3:00 - 5:00 pm and Wednesday 1:00 - 2:00 pm.
+<!--<b></b> <a target = "_blank" href="../office_hours_sp_2024.png">sp 2024 office hours<a><br>-->
+<p>
+
+<!--
+<b>Teaching assistant/grader:</b> Yizeng Li, yizeng@email.sc.edu<br>
+<b>TA office:</b> LeConte 204<br>
+<b>TA office hours:</b> 10:00 am to 12:00 noon on Mondays<br>
+<br>
+-->
+
+<br>
+<a target="_blank" href="STAT_516_sp_2025_syllabus.pdf">Course syllabus</a>
+<br>
+<br>
+
+
+<a target="_blank" href="../STAT_515_fa_2023/00_STAT_515_fa_2023.html">STAT 515 material for review</a><br>
+<br>
+
+<table>
+	<tr>
+	<th>Lecture slides</th>
+	<th>Annotated</th>
+	<th>Code</th>
+	<th>Topic</th>
+	<th>Section of MWF 4th Ed</th>
+	</tr>
+
+	<tr>
+		<td><a target="_blank" href="STAT_516_Lec_01.pdf">Lec_01.pdf</a></td>
+		<td><a target="_blank" href="STAT_516_Lec_01_annotated.pdf">Lec_01_slides_annotated.pdf</a></td>
+		<td><a target="_blank" href="STAT_516_Lec_01_inclass.R">R code</a></td>
+		<td>Inference on the mean and variance of a single Normal population (review)</td>
+		<td>Chapter 4</td>
+	</tr>
+
+	<tr>
+		<td><a target="_blank" href="STAT_516_Lec_02.pdf">Lec_02.pdf</a></td>
+		<td><a target="_blank" href="STAT_516_Lec_02_annotated.pdf">Lec_02_slides_annotated.pdf</a></td>
+		<td><a target="_blank" href="STAT_516_Lec_02_inclass.R">R code</a></td>
+		<td>Simple linear regression (review)</td>
+		<td>Chapter 7</td>
+	</tr>
+
+	<tr>
+		<td><a target="_blank" href="STAT_516_Lec_03.pdf">Lec_03.pdf</a></td>
+		<td><a target="_blank" href="STAT_516_Lec_03_annotated.pdf">Lec_03_slides_partially_annotated.pdf</a></td>
+		<td></td>
+		<td>Multiple linear regression (part 1/2)</td>
+		<td>Chapter 8</td>
+	</tr>
+<!--
+	<tr>
+		<td><a target="_blank" href="STAT_516_Lec_04.pdf">Lec_04.pdf</a></td>
+		<td><a target="_blank" href="STAT_516_Lec_04_annotated.pdf">Lec_04_slides_annotated.pdf</a></td>
+		<td>Multiple linear regression (part 2/2)</td>
+		<td>Chapter 8</td>
+	</tr>
+
+	
+	<tr>
+		<td><i>End Exam I material</i></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+
+	
+	<tr>
+		<td><a target="_blank" href="STAT_516_Lec_05.pdf">Lec_05.pdf</a> <i><a target="_blank" href="TukeyHSD_table.pdf" style="color:darkred">tukey</a> <a target="_blank" href="Dunnetts_table.pdf" style="color:darkred">dunnett</a></i></td>
+		<td><a target="_blank" href="STAT_516_Lec_05_annotated.pdf">Lec_05_slides_annotated.pdf</a></td>
+		<td>One-way ANOVA</td>
+		<td>Chapter 6</td>
+	</tr>
+
+	<tr>
+		<td><a target="_blank" href="STAT_516_Lec_06.pdf">Lec_06.pdf</a></td>
+		<td><a target="_blank" href="STAT_516_Lec_06_annotated.pdf">Lec_06_slides_annotated.pdf</a></td>
+		<td>Two-way factorial design (balanced)</td>
+		<td>Chapter 9</td>
+	</tr>
+
+		<tr>
+		<td><a target="_blank" href="STAT_516_Lec_07.pdf">Lec_07.pdf</a></td>
+		<td><a target="_blank" href="STAT_516_Lec_07_annotated.pdf">Lec_07_slides_annotated.pdf</a></td>
+		<td>Unbalanced two-way factorial design</td>
+		<td>Chapter 9</td>
+	</tr>
+
+
+	
+	<tr>
+		<td><i>End Exam II material</i></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td><a target="_blank" href="STAT_516_Lec_08.pdf">Lec_08.pdf</a></td>
+		<td><a target="_blank" href="STAT_516_Lec_08_annotated.pdf">Lec_08_slides_annotated.pdf</a></td>
+		<td>One- and two-way random-effects model</td>
+		<td>Chapter 6, 10</td>
+	</tr>
+
+	<tr>
+		<td><a target="_blank" href="STAT_516_Lec_09.pdf">Lec_09.pdf</a></td>
+		<td><a target="_blank" href="STAT_516_Lec_09_annotated.pdf">Lec_09_slides_annotated.pdf</a></td>
+		<td>Randomized complete block designs</td>
+		<td>Chapter 10</td>
+	</tr>
+
+
+	<tr>
+		<td><a target="_blank" href="STAT_516_Lec_10.pdf">Lec_10.pdf</a></td>
+		<td><a target="_blank" href="STAT_516_Lec_10_annotated.pdf">Lec_10_slides_annotated.pdf</a></td>
+		<td>Randomized complete block split plot design</td>
+		<td>Chapter 10</td>
+	</tr>
+
+	<tr>
+		<td><a target="_blank" href="STAT_516_Lec_11.pdf">Lec_11.pdf</a></td>
+		<td><a target="_blank" href="STAT_516_Lec_11_annotated.pdf">Lec_11_slides_annotated.pdf</a></td>
+		<td>Analysis of covariance</td>
+		<td>Chapter 11</td>
+	</tr>
+
+	<tr>
+		<td><a target="_blank" href="STAT_516_Lec_12.pdf">Lec_12.pdf</a></td>
+		<td><a target="_blank" href="STAT_516_Lec_12_annotated.pdf">Lec_12_slides_annotated.pdf</a></td>
+		<td>Logistic regression</td>
+		<td>Chapter 13</td>
+	</tr>
+
+
+	<tr>
+		<td><i>End course material</i></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+
+	-->
+	</table>
+<br>
+<br>
+
+
+
+<a target="_blank" href="STAT_516_hw_template.qmd">Quarto hw template</a>
+<a target="_blank" href="https://quarto.org/docs/authoring/markdown-basics.html">markdown-basics.html</a> <a target="_blank" href="https://www.elsevier.com/books-and-journals/book-companion/9780128230435">book data sets</a>
+<table>
+  <tr>
+	  <th>Homework assignments</th>
+    <th>Topics</th>
+    <th>Due</th>
+    <th>Solutions</th>
+  </tr>
+
+ 
+  <tr>
+  <td>Hw 1: Chp 4 Ex 8, 19, 20; Chp 5 Ex 10; Chp 7 Ex 7</td>
+    <td>t test, paired t test, simple linear regression</td>
+    <td>Thurs, Feb 6th, 11:59 pm on Blackboard</td>
+    <td><!--<a target="_blank" href="STAT_516_hw_01_student_sol.pdf">hw_01_student_sol.pdf</a>
+	    <a target="_blank" href="STAT_516_hw_01_student_sol.qmd">hw_01_student_sol.qmd</a> --></td>
+  </tr>  
+
+    <tr>
+    <td>Hw 2: Chp 8 Ex 3, 5, 7</td>
+    <td>transformations, multiple linear regression</td>
+    <td>Tues, Feb 18th, 11:59 pm on Blackboard</td>
+    <td><!--<a target="_blank" href="STAT_516_hw_02_student_sol.pdf">hw_02_student_sol.pdf</a>--></td>
+  </tr>  
+<!-- 
+   <tr>
+    <td>Hw 3: Chp 8 Ex 2, 8, 14, 16, 19</td>
+    <td>multiple linear regression, variable selection</td>
+    <td>Thurs, Feb 22nd, 11:59 pm on Blackboard</td>
+    <td><a target="_blank" href="STAT_516_hw_03_sol.pdf">hw_03_sol.pdf</a></td>
+  </tr>  
+
+   
+   <tr>
+    <td>Hw 4: Chp 6 Ex 1, 7, 8, 14</td>
+    <td>one-way ANOVA, Tukey's HSD</td>
+    <td>Tues, Mar 12th, 11:59 pm on Blackboard</td>
+    <td><a target="_blank" href="STAT_516_hw_04_sol.pdf">hw_04_sol.pdf</a></td>
+  </tr>  
+
+     <tr>
+    <td>Hw 5: Chp 9 Ex 7, 10, 12. The book does not give many instructions; just perform a justifiable analysis of each data set!</td>
+    <td>two-way factorial data analysis (balanced)</td>
+    <td>Tues, Mar 26th, 11:59 pm on Blackboard</td>
+    <td><a target="_blank" href="STAT_516_hw_05_sol.pdf">hw_05_sol.pdf</a></td>
+  </tr>  
+
+     <tr>
+    <td>Hw 6: Chp 6 Ex 9, Chp 10 Ex 4, 6. Make sure R is treating your factors as factors!</td>
+    <td>random-effects model, RCBD, RCB split plot design</td>
+    <td>Thurs, Apr 11th, 11:59 pm on Blackboard</td>
+    <td><a target="_blank" href="STAT_516_hw_06_sol.pdf">hw_06_sol.pdf</a></td>
+  </tr>  
+
+   <tr>
+    <td>Hw 7: Chp 11 Ex 2, Chp 13 Ex 3(b).</td>
+    <td>ANCOVA, logistic regression</td>
+    <td>Monday, Apr 22nd, 11:59 pm on Blackboard</td>
+    <td><a target="_blank" href="STAT_516_hw_07_sol.pdf">hw_07_sol.pdf</a></td>
+  </tr>  
+
+ -->
+
+
+
+</table>
+
+
+
+<br>
+<br>
+
+<table>
+  <tr>
+    <th>Exams</th>
+    <th>Solutions</th>
+    
+        <tr><td>Exam I on February 20th in class</td>
+	<td></td></tr>
+
+	        <tr><td>Exam II on April 8th in class</td>
+	<td></td></tr>
+
+        <tr><td>Final exam at 9:00 am on May 6th</td>
+	<td></td></tr>
+
+
+
+
+    <!--
+    <tr><td><a target="_blank" href="STAT-516-sp-2024-exam-01.pdf">Exam_I.pdf</a></td>
+	<td><a target="_blank" href="STAT_516_sp_2024_exam_01_sol.pdf">Exam_I_sol.pdf</a>
+	    <a target="_blank" href="STAT-516-sp-2024-exam-01-sol-students.pdf">Exam_I_full_credit_student_answers.pdf</a></td></tr>
+       
+    <tr><td><a target="_blank" href="STAT_516_sp_2024_exam_02.pdf">Exam_II.pdf</a></td>
+	<td><a target="_blank" href="STAT_516_sp_2024_exam_02_sol.pdf">Exam_II_sol.pdf</a>
+	    <a target="_blank" href="STAT_516_sp_2024_exam_02_sol_students.pdf">Exam_II_full_credit_student_answers.pdf</a></td></tr>
+
+    <tr><td><a target="_blank" href="STAT_516_sp_2024_final_exam.pdf">Final_Exam.pdf</a></td>
+	<td><a target="_blank" href="STAT_516_sp_2024_final_exam_sol.pdf">Final_Exam_sol.pdf</a>
+		</tr>
+    -->
+</table>
+<br>
+<br>
+
+
+<table>
+  <tr>
+    <th>Exams from Spring 2024</th>
+    <th>Solutions</th>
+    <tr><td><a target="_blank" href="STAT-516-sp-2024-exam-01.pdf">Exam_I.pdf</a></td>
+	<td><a target="_blank" href="STAT_516_sp_2024_exam_01_sol.pdf">Exam_I_sol.pdf</a>
+	    <a target="_blank" href="STAT-516-sp-2024-exam-01-sol-students.pdf">Exam_I_full_credit_student_answers.pdf</a></td></tr>
+       
+    <tr><td><a target="_blank" href="STAT_516_sp_2024_exam_02.pdf">Exam_II.pdf</a></td>
+	<td><a target="_blank" href="STAT_516_sp_2024_exam_02_sol.pdf">Exam_II_sol.pdf</a>
+	    <a target="_blank" href="STAT_516_sp_2024_exam_02_sol_students.pdf">Exam_II_full_credit_student_answers.pdf</a></td></tr>
+
+    <tr><td><a target="_blank" href="STAT_516_sp_2024_final_exam.pdf">Final_Exam.pdf</a></td>
+	<td><a target="_blank" href="STAT_516_sp_2024_final_exam_sol.pdf">Final_Exam_sol.pdf</a>
+		</tr>
+
+</table>
+<br>
+<br>
+
+
+<a href="../index.html">Back to Karl Gregory's homepage</a>
+
+
+</body>
+</html>
