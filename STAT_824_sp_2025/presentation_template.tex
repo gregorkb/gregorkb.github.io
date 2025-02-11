@@ -1,0 +1,124 @@
+\documentclass[10pt]{beamer}
+\usetheme[secheader]{Boadilla}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amsmath,amsfonts,amstext,amssymb}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{numprint}
+\npthousandsep{,}
+\usepackage{bbm}
+\usepackage{fancyvrb}
+\usepackage{epsdice}
+\usepackage{multirow}
+% \usepackage{enumitem}
+
+\definecolor{mathcolor}{rgb}{0,0,.545}
+\definecolor{termcolor}{rgb}{0,.545,0}
+
+\usepackage{everysel}
+\everymath{\color{mathcolor}}
+\everydisplay{\color{mathcolor}}
+
+\newtheorem{remark}{Remark}
+\newtheorem{Result}{Result}
+
+\newcommand{\fmax}{f_{\operatorname{max}}}  
+\newcommand{\LR}{\operatorname{LR}}
+\newcommand{\argmax}{\operatorname{argmax}}
+\newcommand{\argmin}{\operatorname{argmin}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\operatorname{Var}}
+\newcommand{\Covariance}{\operatorname{Cov}}
+\newcommand{\corr}{\operatorname{corr}}
+\newcommand{\RR}{\mathcal{R}}
+\newcommand{\xnew}{x_{\operatorname{new}}}
+
+\newcommand{\bxnew}{\mathbf{x}_{\operatorname{new}}}
+\newcommand{\x}{\mathbf{x}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathbf{B}}
+\newcommand{\Y}{\mathbf{Y}}
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\balpha}{\boldsymbol{\alpha}}
+\newcommand{\bbeta}{\boldsymbol{\beta}}
+\newcommand{\berror}{\boldsymbol{\varepsilon}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\bSigma}{\boldsymbol{\Sigma}}
+
+\newcommand{\SSEred}{\operatorname{SSE}_{\operatorname{Red}}}
+\newcommand{\SSEfull}{\operatorname{SSE}_{\operatorname{Full}}}
+\newcommand{\SST}{\operatorname{SST}}
+\newcommand{\SSM}{\operatorname{SSM}}
+\newcommand{\SSE}{\operatorname{SSE}}
+\newcommand{\MSM}{\operatorname{MSM}}
+\newcommand{\MSE}{\operatorname{MSE}}
+\newcommand{\MISE}{\operatorname{MISE}}
+\newcommand{\Bayes}{\operatorname{Bayes}}
+
+
+
+\newcommand{\ind}{\overset{\text{ind}}{\sim}}
+\newcommand{\approxdist}{\overset{\text{approx}}{\sim}}
+\newcommand{\inprob}{\overset{\text{p}}{\longrightarrow}}
+\newcommand{\indist}{\overset{\text{D}}{\longrightarrow}}
+
+% \newcommand{\termcolor}{\textit\textcolor{termcolor}}
+
+\newcommand\term[1]{\textcolor{termcolor}{\textit{#1}}}
+
+\newcommand{\disclaimer}{These slides are an instructional aid; their sole purpose is to display, during the lecture, definitions, plots, results, etc.~which take too much time to write by hand on the blackboard.  They are not intended to explain or expound on any material.}
+
+\author{Karl B.~Gregory}
+\institute[U.~of South Carolina]{University of South Carolina}
+
+\newcommand{\semester}{sp 2021 }
+
+
+\title[STAT 824 \semester Lec 01 slides]{STAT 824 \semester Lec 01 slides\\
+\vspace{12pt} 
+Estimating a cdf} 
+\date{}
+
+\begin{document}
+
+\begin{frame}
+\maketitle
+
+\begin{center}\footnotesize
+\disclaimer
+\end{center}
+\end{frame}
+
+% \begin{frame}
+% \frametitle{Table of Contents}
+% \tableofcontents
+% \end{frame}
+
+
+\begin{frame}
+    
+\begin{block}{Empirical cdf}
+The empirical cdf of a set of values $X_1,\dots,X_n \in \mathbb{R}$ is given by
+\[
+\hat F_n(x) = \frac{1}{n}\sum_{i=1}^n\mathbf{1}(X_i \leq x) \quad \text{ for all } x \in \mathbb{R}.
+\]
+\end{block}
+
+\vspace{12pt}
+
+Cite a paper like \cite{tsybakov2008introduction}.
+    
+\end{frame}
+
+
+\begin{frame}
+\bibliographystyle{plain}
+\bibliography{presentation_template}
+    
+\end{frame}
+
+
+\end{document}
