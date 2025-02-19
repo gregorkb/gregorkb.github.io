@@ -13,7 +13,7 @@ plot(Y~X, data = data)
 
 ker <- function(x){3/4*(1 - x^2) *((x < 1) & (x > - 1)) }
 
-NW <- function(x,data,h){
+NW <- function(x,data,ker,h){
   
   X <- data$X
   Y <- data$Y
@@ -25,14 +25,14 @@ NW <- function(x,data,h){
 
 h <- .1
 x <- seq(0,1,length=200)
-mx <- sapply(X = x,FUN = NW,data = data, h = h)
+mx <- sapply(X = x,FUN = NW,data = data, ker = ker, h = h)
 
 plot(Y~X, data = data, col ="gray")
 lines(mx~x,col="red",lwd = 3)
 
 # LP 
 
-LP <- function(x,data,h,l){
+LP <- function(x,data,h,l,ker){
     
   Ux <- matrix(0,n,l+1)
   Ux[,1] <- 1
@@ -57,5 +57,5 @@ LP <- function(x,data,h,l){
 
 l <- 3
 
-mx <- sapply(X = x,FUN = LP,data = data, h = h , l = l)
+mx <- sapply(X = x,FUN = LP,data = data, h = h , l = l, ker = ker)
 lines(mx~x,col="blue",lwd = 3)
