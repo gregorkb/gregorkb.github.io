@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Some of Nonparametric Statistics - 9&nbsp; Consistency of bootstrap for the sample mean</title>
+<title>Some of Nonparametric Statistics - 8&nbsp; Implementing the bootstrap</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./bootmeanstudentized.html" rel="next">
-<link href="./bootMC.html" rel="prev">
+<link href="./bootmeanconsistency.html" rel="next">
+<link href="./bootmean.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -83,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootmeanconsistency.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootMC.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -178,13 +212,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bootMC.html" class="sidebar-item-text sidebar-link">
+  <a href="./bootMC.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bootmeanconsistency.html" class="sidebar-item-text sidebar-link active">
+  <a href="./bootmeanconsistency.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span></a>
   </div>
 </li>
@@ -233,7 +267,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-bootmeanconsistency" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span></h1>
+<h1 class="title"><span id="sec-bootMC" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span></h1>
 </div>
 
 
@@ -253,109 +287,86 @@ ul.task-list li input[type="checkbox"] {
 <p>}</p>
 <p>$$</p>
 </div>
-<p>As before, let <span class="math inline">\(X_1,\dots,X_n\)</span> be independent, identically distributed random variables with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2 &lt; \infty\)</span>, and consider the quantity <span class="math display">\[
-Y_n \equiv \sqrt{n}(\bar X_n - \mu) \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,\sigma^2)
-\]</span> as <span class="math inline">\(n \to \infty\)</span>. Denote by <span class="math inline">\(G_{Y_n}\)</span> the cdf of <span class="math inline">\(Y_n\)</span>, so that <span class="math display">\[
-G_{Y_n}(x) = \mathbb{P}(Y_n \leq x)
-\]</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>, and recall from <a href="bootmean.html#def-bootmean">Definition&nbsp;<span>7.1</span></a> that the bootstrap estimator of <span class="math inline">\(G_{Y_n}(x)\)</span> is given by <span class="math display">\[
-\hat G_{Y_n}(x) = \mathbb{P}(Y_n^* \leq x | X_1,\dots,X_n)
-\]</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>, where <span class="math display">\[
-Y_n^* = \sqrt{n}(\bar X_n^* - \bar X_n).
-\]</span> For studying the properties of the estimator <span class="math inline">\(\hat G_{Y_n}(x)\)</span>, it will be convenient to define some concise notation for probabilities concerning <span class="math inline">\(X_1^*,\dots,X_n^*\)</span> as well as expectations and variances thereof conditional on the observed data <span class="math inline">\(X_1,\dots,X_n\)</span>.</p>
-<div id="def-condPEV" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 9.1 (Bootstrap probability, expectation, and variance) </strong></span>Let <span class="math inline">\(\mathbb{P}_*\)</span>, <span class="math inline">\(\mathbb{E}_*\)</span>, and <span class="math inline">\(\mathbb{V}_*\)</span> be operators such that <span class="math display">\[\begin{align}
-\mathbb{P}_*(\cdot ) &amp;= \mathbb{P}(\cdot | X_1,\dots,X_n)\\
-\mathbb{E}_*(\cdot ) &amp;= \mathbb{E}(\cdot | X_1,\dots,X_n)\\
-\mathbb{V}_*(\cdot ) &amp;= \mathbb{V}(\cdot | X_1,\dots,X_n),
-\end{align}\]</span> so that they represent conditional probability, expectation, and variance given the observed data <span class="math inline">\(X_1,\dots,X_n\)</span>.</p>
+<p>Consider how to compute the bootstrap estimator <span class="math inline">\(\hat G_{Y_n}(x)\)</span> of <span class="math inline">\(G_{Y_n}(x)\)</span> for some <span class="math inline">\(x\)</span>. We have <span class="math display">\[\begin{align}
+\hat G_{Y_n}(x) &amp;= \mathbb{P}( Y_n^* \leq x|X_1,\dots,X_n)\\
+                &amp;=\mathbb{P}(\sqrt{n}(\bar X_n^* - \bar X_n) \leq x|X_1,\dots,X_n)\\
+                &amp;= \textstyle \mathbb{P}( \sum_{i=1}^n X_i^* \leq  \sum_{i=1}^n X_i + \sqrt{n} x|X_1,\dots,X_n),
+\end{align}\]</span> where, conditional on <span class="math inline">\(X_1,\dots,X_n\)</span>, the sum <span class="math inline">\(\sum_{i=1}^n X_i^*\)</span> has a discrete distribution with as many as <span class="math inline">\(2n-1 \choose n\)</span> atoms (think of putting <span class="math inline">\(n\)</span> balls in as many urns).</p>
+<p>It is possible to evaluate cumulative probabilities for <span class="math inline">\(\sum_{i=1}^nX_i^*|X_1,\dots,X_n\)</span> exactly, but this can take too much time. We therefore almost always use Monte Carlo simulation to approximate the bootstrap estimator <span class="math inline">\(\hat G_{Y_n}\)</span> of <span class="math inline">\(G_{Y_n}\)</span> and its quantile function.</p>
+<div id="def-MCbootmean" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8.1 (Monte Carlo approximation to bootstrap estimator <span class="math inline">\(\hat G_{Y_n}\)</span>) </strong></span>Choose a large <span class="math inline">\(B\)</span>. Then for <span class="math inline">\(b=1,\dots,B\)</span> do:</p>
+<ul>
+<li>Draw <span class="math inline">\(X_1^{*(b)},\dots,X_n^{*(b)}\)</span> with replacement from <span class="math inline">\(X_1,\dots,X_n\)</span>.</li>
+<li>Compute <span class="math inline">\(Y_n^{*(b)} =\sqrt{n}(\bar X_n^{*(b)} - \bar X_n)\)</span>, where <span class="math inline">\(\bar X^{*(b)} = n^{-1}\sum_{i=1}^n X_i^{*(b)}\)</span>.</li>
+</ul>
+<p>Then set <span class="math inline">\(\hat G_{Y_n}(x) = B^{-1}\sum_{b=1}^B \mathbf{1}(Y_n^{*(b)} \leq x)\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>.</p>
 </div>
-<p>With this notation we can write the bootstrap estimator <span class="math inline">\(\hat G_{Y_n}(x)\)</span> of <span class="math inline">\(G_{Y_n}(x)\)</span> as <span class="math display">\[
-\hat G_{Y_n}(x) = \mathbb{P}_*(Y_n^* \leq x).
-\]</span></p>
-<p>Now we make a couple of observations about the conditional distribution of <span class="math inline">\(X_1^*,\dots,X_n^*\)</span> given <span class="math inline">\(X_1,\dots,X_n\)</span>.</p>
-<div id="prp-bootmeanvar" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 9.1 (Mean and variance of bootstrap random variables) </strong></span>In the setup of <a href="bootmean.html#def-bootmean">Definition&nbsp;<span>7.1</span></a> we have <span class="math display">\[\begin{align}
-\mathbb{E}[X_1^* | X_1,\dots,X_n] &amp;= \bar X_n\\
-\mathbb{V}[X_1^*| X_1,\dots,X_n] &amp;= \hat \sigma^2_n,
-\end{align}\]</span> where <span class="math inline">\(\hat \sigma^2_n = S_n^2(n-1)/n\)</span>.</p>
-</div>
-<!-- :::{.proof} -->
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Proof of <a href="#prp-bootmeanvar">Proposition&nbsp;<span>9.1</span></a>
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The random variable <span class="math inline">\(X_1^*\)</span>, conditional on <span class="math inline">\(X_1,\dots,X_n\)</span>, has probability mass function <span class="math display">\[
-p_n(x) = \frac{1}{n}\mathbf{1}(x \in \{X_1,\dots,X_n\}),
-\]</span> according to which <span class="math display">\[
-\mathbb{E}[X_1^* | X_1,\dots,X_n] = \sum_{x \in \{X_1,\dots,X_n\}}x \cdot \frac{1}{n} = \frac{1}{n}\sum_{i=1}^n X_i = \bar X_n
-\]</span> and <span class="math display">\[
-\mathbb{E}[(X_1^*)^2 | X_1,\dots,X_n] = \sum_{x \in \{X_1,\dots,X_n\}}x^2 \cdot \frac{1}{n} = \frac{1}{n}\sum_{i=1}^n X_i^2.
-\]</span> Thus <span class="math display">\[
-\mathbb{V}[X_1^*| X_1,\dots,X_n] = \frac{1}{n}\sum_{i=1}^n X_i^2 - (\bar X_n)^2 = \frac{1}{n}\sum_{i=1}^n(X_i - \bar X_n)^2 = \hat \sigma_n^2.
-\]</span></p>
-</div>
-</div>
-</div>
-<p>We are now prepared to present a consistency result for the bootstrap estimator of the sampling distribution of <span class="math inline">\(Y_n\)</span>:</p>
-<div id="thm-bootconsmean" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 9.1 (Consistency of the bootstrap for the mean) </strong></span>Let <span class="math inline">\(X_1,\dots,X_n\)</span> be independent, identically distributed random variables with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2 &lt; \infty\)</span> with <span class="math inline">\(\mathbb{E}|X_1|^3 &lt; \infty\)</span>. Then for the bootstrap in <a href="bootmean.html#def-bootmean">Definition&nbsp;<span>7.1</span></a> we have <span class="math display">\[
-\sup_{x \in \mathbb{R}}|\mathbb{P}_*(Y_n^* \leq x) - \mathbb{P}(Y_n\leq x)| \overset{\text{a.s.}}{\longrightarrow}0
-\]</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
-</div>
-<p>The result states that the difference between the bootstrap estimator <span class="math inline">\(\hat G_{Y_n}(x)\)</span> and its target <span class="math inline">\(G_{Y_n}(x)\)</span> converges almost surely to zero as <span class="math inline">\(n \to \infty\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>. In other words, the bootstrap works.</p>
-<p>The key tool we will use in our proof of <a href="#thm-bootconsmean">Theorem&nbsp;<span>9.1</span></a> is the Berry-Esseen Theroem.</p>
-<div id="thm-berryesseen" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 9.2 (Berry-Esseen Theorem) </strong></span>For <span class="math inline">\(X_1,\dots,X_n\)</span> independent and identically distributed with <span class="math inline">\(\mathbb{E}X_1 = \mu\)</span>, <span class="math inline">\(\mathbb{V}X_1 = \sigma^2 \in (0,\infty)\)</span>, and with <span class="math inline">\(\mathbb{E}|X_1|^3 &lt;\infty\)</span>, we have <span class="math display">\[
-\sup_{x \in \mathbb{R}}|P(\sqrt{n}(\bar X_n - \mu)/\sigma \leq x) - \Phi(x)| \leq C \frac{\mathbb{E}|X_1 - \mu|^3}{\sigma^3\sqrt{n}}
-\]</span> for each <span class="math inline">\(n \geq 1\)</span>, where <span class="math inline">\(C \in [0,\sqrt{2/\pi}(5/2 + 12/\pi)]\)</span>.</p>
-</div>
-<p>Note that <span class="math inline">\(\Phi(\cdot)\)</span> denotes the cdf of the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Proof of <a href="#thm-bootconsmean">Theorem&nbsp;<span>9.1</span></a>
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>We first note that <span class="math display">\[
-\mathbb{P}(Y_n \leq x) = \mathbb{P}(Y_n/\sigma\leq x/\sigma) \to \Phi(x/\sigma)
-\]</span> as <span class="math inline">\(n \to \infty\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span> by the central limit theorem, so it is sufficient to show <span class="math display">\[
-\sup_{x \in \mathbb{R}}|\mathbb{P}_*(Y_n^* \leq x) - \Phi(x/\sigma)| \overset{\text{a.s.}}{\longrightarrow}0
-\]</span> as <span class="math inline">\(n \to \infty\)</span>, that is, that <span class="math inline">\(Y_n^*\)</span> and <span class="math inline">\(Y_n\)</span> have the same limiting Normal distribution. For each <span class="math inline">\(x\)</span> we may write <span class="math display">\[
-|\mathbb{P}_*(Y_n^* \leq x) - \Phi(x/\sigma)| \leq |\Delta_{n1}(x)| +|\Delta_{n2}(x)|,
-\]</span> where <span class="math display">\[
-\Delta_{n1}(x) = \mathbb{P}_*(Y_n^* \leq x) - \Phi(x/\hat \sigma_n)
-\]</span> and <span class="math display">\[
-\Delta_{n2}(x) = \Phi(x/\hat \sigma_n) - \Phi(x/\sigma).
-\]</span> By the Berry–Esseen theorem, we can bound the first term by <span class="math display">\[\begin{align}
-\sup_{x \in \mathbb{R}} |\Delta_{n1}(x)| &amp;= \sup_{x \in \mathbb{R}}|\mathbb{P}_*(\sqrt{n}(\bar X_n^* - \bar X_n)/\hat \sigma_n \leq x/\hat \sigma_n) - \Phi(x/\hat \sigma_n)| \\
-  &amp;\leq C \frac{\mathbb{E}_*|X_1^* - \bar X_n|^3}{\hat \sigma_n^3\sqrt{n}}.
-\end{align}\]</span> Furthermore, by <a href="appendix.html#prp-minkowski">Proposition&nbsp;<span>13.1</span></a> (Minkowski’s inequality) we have <span class="math display">\[\begin{align}
-(\mathbb{E}_*|X_1^* - \bar X_n|^3)^{1/3} &amp;\leq (\mathbb{E}_*|X_1^*|^3)^{1/3} + (|\bar X_n|^3)^{1/3} \\
-&amp; \leq 2 (\mathbb{E}_*|X_1^*|^3)^{1/3},
-\end{align}\]</span> where the second inequality comes from the application of <a href="appendix.html#prp-jensens">Proposition&nbsp;<span>13.2</span></a> (Jensen’s inequality) <span class="math display">\[
-|\bar X_n|^3 = |\mathbb{E}X_1^*|^3 \leq \mathbb{E}| X_1^*|^3,
-\]</span> which implies <span class="math inline">\(|\bar X_n| \leq (\mathbb{E}_*|X_1^*|^3)^{1/3}\)</span>. Noting that <span class="math inline">\(\mathbb{E}_*|X_1^*|^3\)</span> is equal to <span class="math inline">\(n^{-1}\sum_{i=1}^n |X_i|^3\)</span>, we can replace the Berry-Esseen bound by <span class="math display">\[
-\sup_{x \in \mathbb{R}} |\Delta_{n1}(x)|  \leq C \frac{1}{\hat \sigma_n^2 n^{3/2}}\sum_{i=1}^n |X_i|^3.
-\]</span> Now let <span class="math inline">\(Y_i = |X_i|^3\)</span> for <span class="math inline">\(i=1,\dots,n\)</span>. Then <span class="math inline">\(\mathbb{E}|Y_1|^{2/3} = \mathbb{E}(|X_1|^3)^{2/3} = \mathbb{E}|X_1|^2 &lt; \infty\)</span>, so that by <a href="appendix.html#thm-MZslln">Theorem&nbsp;<span>13.1</span></a> (The Marcinkiewz-Zygmund SLLN) we have <span class="math display">\[
-\frac{1}{n^{2/3}}\sum_{i=1}^n Y_i \overset{\text{a.s.}}{\longrightarrow}0
-\]</span> as <span class="math inline">\(n \to \infty\)</span>. To complete the proof it is sufficient to show <span class="math inline">\(\hat \sigma_n \overset{\text{a.s.}}{\longrightarrow}\sigma\)</span> (USE Kolmogorov SLLN and the continuous mapping theorem).</p>
+<p>We may call each sample <span class="math inline">\(X_1^{*(b)},\dots,X_n^{*(b)}\)</span> in <a href="bootmeanstudentized.html#def-MCbootmean">Definition&nbsp;<span>10.2</span></a> a bootstrap sample and each mean <span class="math inline">\(\bar X^{*(b)}\)</span> a bootstrap mean.</p>
+<p>Monte Carlo approximations to the quantiles <span class="math inline">\(\hat G^{-1}_{Y_n}(u)\)</span> for <span class="math inline">\(u \in (0,1)\)</span> may be obtained as follows: Sort the bootstrap realizations <span class="math inline">\(Y_n^{*(b)}\)</span> from the Monte Carlo simulation such that <span class="math inline">\(Y_n^{*(1)} \leq \dots \leq Y_n^{*(b)}\)</span> and then set <span class="math display">\[
+\hat G^{-1}_{Y_n}(u) = Y_n^{*(\lceil u B\rceil)}
+\]</span> for all <span class="math inline">\(u \in (0,1)\)</span>. Note that the bootstrap confidence interval in <a href="bootmean.html#eq-bootinterval">Equation&nbsp;<span>7.3</span></a> can be constructed from the bootstrap means generated in the Monte Carlo simulation in <a href="bootmeanstudentized.html#def-MCbootmean">Definition&nbsp;<span>10.2</span></a> as <span id="eq-bootintervalMCversion"><span class="math display">\[
+\big[2\bar X_n - \bar X_n^{*(\lceil(1-\alpha/2)B \rceil)} , 2\bar X_n - \bar X_n^{*(\lceil(\alpha/2)B \rceil)} \big]
+\tag{8.1}\]</span></span> after sorting them such that <span class="math inline">\(\bar X_n^{(1)} \leq \dots \leq \bar X_n^{(B)}\)</span>.</p>
+<p><a href="#fig-bootmeancvg">Figure&nbsp;<span>8.1</span></a> shows, over an increasing sample size <span class="math inline">\(n\)</span>, the realized coverage of the bootstrap interval in <a href="#eq-bootintervalMCversion">Equation&nbsp;<span>8.1</span></a> when the nominal coverage is set to <span class="math inline">\(1 - \alpha = 0.95\)</span>. Note that the coverage approaches the nominal level as the sample sizes increases.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>nn <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">20</span>,<span class="dv">200</span>,<span class="at">by=</span><span class="dv">20</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>shape <span class="ot">&lt;-</span> <span class="fl">1.5</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>scale <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> shape <span class="sc">*</span> scale</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>zval <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>cvg <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(nn))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(nn)){</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> nn[j]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  cov <span class="ot">&lt;-</span> <span class="fu">numeric</span>(S)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(s <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>S){</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    X <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(n,<span class="at">shape =</span> shape, <span class="at">scale =</span> scale)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    Xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(X)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    Xb <span class="ot">&lt;-</span> <span class="fu">matrix</span>(X[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>n,n<span class="sc">*</span>B,<span class="at">replace =</span> <span class="cn">TRUE</span>)],n,B)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    Xbbar <span class="ot">&lt;-</span> <span class="fu">apply</span>(Xb,<span class="dv">2</span>,mean)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    Xbbar_srt <span class="ot">&lt;-</span> <span class="fu">sort</span>(Xbbar)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    lo <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>Xbar <span class="sc">-</span> Xbbar_srt[<span class="fu">ceiling</span>((<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span>B)]</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    up <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>Xbar <span class="sc">-</span> Xbbar_srt[<span class="fu">ceiling</span>(alpha<span class="sc">/</span><span class="dv">2</span><span class="sc">*</span>B)]</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    cov[s] <span class="ot">&lt;-</span> (lo <span class="sc">&lt;</span> mu) <span class="sc">&amp;</span> (up <span class="sc">&gt;</span> mu)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  cvg[j] <span class="ot">&lt;-</span> <span class="fu">mean</span>(cov)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="cn">NA</span>,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">range</span>(<span class="fu">min</span>(cvg),<span class="fu">max</span>(cvg,.<span class="dv">96</span>)),</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">range</span>(nn),</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"n"</span>,</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Coverage"</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(cvg <span class="sc">~</span> nn, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>( <span class="at">h =</span> <span class="dv">1</span> <span class="sc">-</span> alpha, <span class="at">lty =</span> <span class="dv">3</span>)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="co"># mtext(side = 3, text = paste("Sampling from a Gamma(",shape,",",scale,")" ))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-bootmeancvg" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="bootMC_files/figure-html/fig-bootmeancvg-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;8.1: Coverage of confidence interval in <a href="#eq-bootintervalMCversion">Equation&nbsp;<span>8.1</span></a> with coverage probability set to <span class="math inline">\(1-\alpha = 0.95\)</span> when <span class="math inline">\(X_1,\dots,X_n\)</span> have the Gamma distribution with mean <span class="math inline">\(6\)</span> and variance <span class="math inline">\(24\)</span>.</figcaption>
+</figure>
 </div>
 </div>
 </div>
+<p>Why does the bootstrap work? Next we turn to theoretical guarantees.</p>
 
 
 
@@ -595,13 +606,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./bootMC.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span>
+      <a href="./bootmean.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./bootmeanstudentized.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Bootstrap for the studentized sample mean</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./bootmeanconsistency.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

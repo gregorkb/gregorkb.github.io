@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Some of Nonparametric Statistics - 9&nbsp; Consistency of bootstrap for the sample mean</title>
+<title>Some of Nonparametric Statistics - 12&nbsp; Edgeworth expansions for the bootstrap</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./bootmeanstudentized.html" rel="next">
-<link href="./bootMC.html" rel="prev">
+<link href="./appendix.html" rel="next">
+<link href="./edgeworth.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootmeanconsistency.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootedgeworth.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Edgeworth expansions for the bootstrap</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -184,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bootmeanconsistency.html" class="sidebar-item-text sidebar-link active">
+  <a href="./bootmeanconsistency.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span></a>
   </div>
 </li>
@@ -202,7 +202,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bootedgeworth.html" class="sidebar-item-text sidebar-link">
+  <a href="./bootedgeworth.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Edgeworth expansions for the bootstrap</span></span></a>
   </div>
 </li>
@@ -233,7 +233,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-bootmeanconsistency" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span></h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Edgeworth expansions for the bootstrap</span></h1>
 </div>
 
 
@@ -253,108 +253,24 @@ ul.task-list li input[type="checkbox"] {
 <p>}</p>
 <p>$$</p>
 </div>
-<p>As before, let <span class="math inline">\(X_1,\dots,X_n\)</span> be independent, identically distributed random variables with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2 &lt; \infty\)</span>, and consider the quantity <span class="math display">\[
-Y_n \equiv \sqrt{n}(\bar X_n - \mu) \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,\sigma^2)
-\]</span> as <span class="math inline">\(n \to \infty\)</span>. Denote by <span class="math inline">\(G_{Y_n}\)</span> the cdf of <span class="math inline">\(Y_n\)</span>, so that <span class="math display">\[
-G_{Y_n}(x) = \mathbb{P}(Y_n \leq x)
-\]</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>, and recall from <a href="bootmean.html#def-bootmean">Definition&nbsp;<span>7.1</span></a> that the bootstrap estimator of <span class="math inline">\(G_{Y_n}(x)\)</span> is given by <span class="math display">\[
-\hat G_{Y_n}(x) = \mathbb{P}(Y_n^* \leq x | X_1,\dots,X_n)
-\]</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>, where <span class="math display">\[
-Y_n^* = \sqrt{n}(\bar X_n^* - \bar X_n).
-\]</span> For studying the properties of the estimator <span class="math inline">\(\hat G_{Y_n}(x)\)</span>, it will be convenient to define some concise notation for probabilities concerning <span class="math inline">\(X_1^*,\dots,X_n^*\)</span> as well as expectations and variances thereof conditional on the observed data <span class="math inline">\(X_1,\dots,X_n\)</span>.</p>
-<div id="def-condPEV" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 9.1 (Bootstrap probability, expectation, and variance) </strong></span>Let <span class="math inline">\(\mathbb{P}_*\)</span>, <span class="math inline">\(\mathbb{E}_*\)</span>, and <span class="math inline">\(\mathbb{V}_*\)</span> be operators such that <span class="math display">\[\begin{align}
-\mathbb{P}_*(\cdot ) &amp;= \mathbb{P}(\cdot | X_1,\dots,X_n)\\
-\mathbb{E}_*(\cdot ) &amp;= \mathbb{E}(\cdot | X_1,\dots,X_n)\\
-\mathbb{V}_*(\cdot ) &amp;= \mathbb{V}(\cdot | X_1,\dots,X_n),
-\end{align}\]</span> so that they represent conditional probability, expectation, and variance given the observed data <span class="math inline">\(X_1,\dots,X_n\)</span>.</p>
+<p>Edgeworth expansions show that the bootstrap applied to the un-studentized pivot <span class="math inline">\(Y_n\)</span> estimates its sampling distribution with the same order of accuracy as the limiting Normal approximation as <span class="math inline">\(n \to \infty\)</span>.</p>
+<div id="thm-firstordercorrect" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 12.1 (First-order correctness of bootstrap for un-studentized pivot) </strong></span>Under the conditions of <a href="edgeworth.html#thm-edgeworth">Theorem&nbsp;<span>11.1</span></a> and with <span class="math inline">\(Y^*_n\)</span> constructed as in <a href="bootmean.html#def-bootmean">Definition&nbsp;<span>7.1</span></a> we have</p>
+<ol type="1">
+<li><span class="math inline">\(\sup_{x\in\mathbb{R}}|\mathbb{P}(Y_n \leq x) - \Phi(x/\sigma)| = O(n^{-1/2})\)</span></li>
+<li><span class="math inline">\(\sup_{x\in\mathbb{R}}|\mathbb{P}_*(Y_n^* \leq x) - \mathbb{P}(Y_n \leq x)| = O_p(n^{-1/2})\)</span></li>
+</ol>
+<p>as <span class="math inline">\(n \to \infty\)</span>.</p>
 </div>
-<p>With this notation we can write the bootstrap estimator <span class="math inline">\(\hat G_{Y_n}(x)\)</span> of <span class="math inline">\(G_{Y_n}(x)\)</span> as <span class="math display">\[
-\hat G_{Y_n}(x) = \mathbb{P}_*(Y_n^* \leq x).
-\]</span></p>
-<p>Now we make a couple of observations about the conditional distribution of <span class="math inline">\(X_1^*,\dots,X_n^*\)</span> given <span class="math inline">\(X_1,\dots,X_n\)</span>.</p>
-<div id="prp-bootmeanvar" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 9.1 (Mean and variance of bootstrap random variables) </strong></span>In the setup of <a href="bootmean.html#def-bootmean">Definition&nbsp;<span>7.1</span></a> we have <span class="math display">\[\begin{align}
-\mathbb{E}[X_1^* | X_1,\dots,X_n] &amp;= \bar X_n\\
-\mathbb{V}[X_1^*| X_1,\dots,X_n] &amp;= \hat \sigma^2_n,
-\end{align}\]</span> where <span class="math inline">\(\hat \sigma^2_n = S_n^2(n-1)/n\)</span>.</p>
-</div>
-<!-- :::{.proof} -->
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Proof of <a href="#prp-bootmeanvar">Proposition&nbsp;<span>9.1</span></a>
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The random variable <span class="math inline">\(X_1^*\)</span>, conditional on <span class="math inline">\(X_1,\dots,X_n\)</span>, has probability mass function <span class="math display">\[
-p_n(x) = \frac{1}{n}\mathbf{1}(x \in \{X_1,\dots,X_n\}),
-\]</span> according to which <span class="math display">\[
-\mathbb{E}[X_1^* | X_1,\dots,X_n] = \sum_{x \in \{X_1,\dots,X_n\}}x \cdot \frac{1}{n} = \frac{1}{n}\sum_{i=1}^n X_i = \bar X_n
-\]</span> and <span class="math display">\[
-\mathbb{E}[(X_1^*)^2 | X_1,\dots,X_n] = \sum_{x \in \{X_1,\dots,X_n\}}x^2 \cdot \frac{1}{n} = \frac{1}{n}\sum_{i=1}^n X_i^2.
-\]</span> Thus <span class="math display">\[
-\mathbb{V}[X_1^*| X_1,\dots,X_n] = \frac{1}{n}\sum_{i=1}^n X_i^2 - (\bar X_n)^2 = \frac{1}{n}\sum_{i=1}^n(X_i - \bar X_n)^2 = \hat \sigma_n^2.
-\]</span></p>
-</div>
-</div>
-</div>
-<p>We are now prepared to present a consistency result for the bootstrap estimator of the sampling distribution of <span class="math inline">\(Y_n\)</span>:</p>
-<div id="thm-bootconsmean" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 9.1 (Consistency of the bootstrap for the mean) </strong></span>Let <span class="math inline">\(X_1,\dots,X_n\)</span> be independent, identically distributed random variables with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2 &lt; \infty\)</span> with <span class="math inline">\(\mathbb{E}|X_1|^3 &lt; \infty\)</span>. Then for the bootstrap in <a href="bootmean.html#def-bootmean">Definition&nbsp;<span>7.1</span></a> we have <span class="math display">\[
-\sup_{x \in \mathbb{R}}|\mathbb{P}_*(Y_n^* \leq x) - \mathbb{P}(Y_n\leq x)| \overset{\text{a.s.}}{\longrightarrow}0
-\]</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
-</div>
-<p>The result states that the difference between the bootstrap estimator <span class="math inline">\(\hat G_{Y_n}(x)\)</span> and its target <span class="math inline">\(G_{Y_n}(x)\)</span> converges almost surely to zero as <span class="math inline">\(n \to \infty\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>. In other words, the bootstrap works.</p>
-<p>The key tool we will use in our proof of <a href="#thm-bootconsmean">Theorem&nbsp;<span>9.1</span></a> is the Berry-Esseen Theroem.</p>
-<div id="thm-berryesseen" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 9.2 (Berry-Esseen Theorem) </strong></span>For <span class="math inline">\(X_1,\dots,X_n\)</span> independent and identically distributed with <span class="math inline">\(\mathbb{E}X_1 = \mu\)</span>, <span class="math inline">\(\mathbb{V}X_1 = \sigma^2 \in (0,\infty)\)</span>, and with <span class="math inline">\(\mathbb{E}|X_1|^3 &lt;\infty\)</span>, we have <span class="math display">\[
-\sup_{x \in \mathbb{R}}|P(\sqrt{n}(\bar X_n - \mu)/\sigma \leq x) - \Phi(x)| \leq C \frac{\mathbb{E}|X_1 - \mu|^3}{\sigma^3\sqrt{n}}
-\]</span> for each <span class="math inline">\(n \geq 1\)</span>, where <span class="math inline">\(C \in [0,\sqrt{2/\pi}(5/2 + 12/\pi)]\)</span>.</p>
-</div>
-<p>Note that <span class="math inline">\(\Phi(\cdot)\)</span> denotes the cdf of the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Proof of <a href="#thm-bootconsmean">Theorem&nbsp;<span>9.1</span></a>
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>We first note that <span class="math display">\[
-\mathbb{P}(Y_n \leq x) = \mathbb{P}(Y_n/\sigma\leq x/\sigma) \to \Phi(x/\sigma)
-\]</span> as <span class="math inline">\(n \to \infty\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span> by the central limit theorem, so it is sufficient to show <span class="math display">\[
-\sup_{x \in \mathbb{R}}|\mathbb{P}_*(Y_n^* \leq x) - \Phi(x/\sigma)| \overset{\text{a.s.}}{\longrightarrow}0
-\]</span> as <span class="math inline">\(n \to \infty\)</span>, that is, that <span class="math inline">\(Y_n^*\)</span> and <span class="math inline">\(Y_n\)</span> have the same limiting Normal distribution. For each <span class="math inline">\(x\)</span> we may write <span class="math display">\[
-|\mathbb{P}_*(Y_n^* \leq x) - \Phi(x/\sigma)| \leq |\Delta_{n1}(x)| +|\Delta_{n2}(x)|,
-\]</span> where <span class="math display">\[
-\Delta_{n1}(x) = \mathbb{P}_*(Y_n^* \leq x) - \Phi(x/\hat \sigma_n)
-\]</span> and <span class="math display">\[
-\Delta_{n2}(x) = \Phi(x/\hat \sigma_n) - \Phi(x/\sigma).
-\]</span> By the Berry–Esseen theorem, we can bound the first term by <span class="math display">\[\begin{align}
-\sup_{x \in \mathbb{R}} |\Delta_{n1}(x)| &amp;= \sup_{x \in \mathbb{R}}|\mathbb{P}_*(\sqrt{n}(\bar X_n^* - \bar X_n)/\hat \sigma_n \leq x/\hat \sigma_n) - \Phi(x/\hat \sigma_n)| \\
-  &amp;\leq C \frac{\mathbb{E}_*|X_1^* - \bar X_n|^3}{\hat \sigma_n^3\sqrt{n}}.
-\end{align}\]</span> Furthermore, by <a href="appendix.html#prp-minkowski">Proposition&nbsp;<span>13.1</span></a> (Minkowski’s inequality) we have <span class="math display">\[\begin{align}
-(\mathbb{E}_*|X_1^* - \bar X_n|^3)^{1/3} &amp;\leq (\mathbb{E}_*|X_1^*|^3)^{1/3} + (|\bar X_n|^3)^{1/3} \\
-&amp; \leq 2 (\mathbb{E}_*|X_1^*|^3)^{1/3},
-\end{align}\]</span> where the second inequality comes from the application of <a href="appendix.html#prp-jensens">Proposition&nbsp;<span>13.2</span></a> (Jensen’s inequality) <span class="math display">\[
-|\bar X_n|^3 = |\mathbb{E}X_1^*|^3 \leq \mathbb{E}| X_1^*|^3,
-\]</span> which implies <span class="math inline">\(|\bar X_n| \leq (\mathbb{E}_*|X_1^*|^3)^{1/3}\)</span>. Noting that <span class="math inline">\(\mathbb{E}_*|X_1^*|^3\)</span> is equal to <span class="math inline">\(n^{-1}\sum_{i=1}^n |X_i|^3\)</span>, we can replace the Berry-Esseen bound by <span class="math display">\[
-\sup_{x \in \mathbb{R}} |\Delta_{n1}(x)|  \leq C \frac{1}{\hat \sigma_n^2 n^{3/2}}\sum_{i=1}^n |X_i|^3.
-\]</span> Now let <span class="math inline">\(Y_i = |X_i|^3\)</span> for <span class="math inline">\(i=1,\dots,n\)</span>. Then <span class="math inline">\(\mathbb{E}|Y_1|^{2/3} = \mathbb{E}(|X_1|^3)^{2/3} = \mathbb{E}|X_1|^2 &lt; \infty\)</span>, so that by <a href="appendix.html#thm-MZslln">Theorem&nbsp;<span>13.1</span></a> (The Marcinkiewz-Zygmund SLLN) we have <span class="math display">\[
-\frac{1}{n^{2/3}}\sum_{i=1}^n Y_i \overset{\text{a.s.}}{\longrightarrow}0
-\]</span> as <span class="math inline">\(n \to \infty\)</span>. To complete the proof it is sufficient to show <span class="math inline">\(\hat \sigma_n \overset{\text{a.s.}}{\longrightarrow}\sigma\)</span> (USE Kolmogorov SLLN and the continuous mapping theorem).</p>
-</div>
-</div>
+<p>Edgeworth expansions show that the bootstrap applied to the studentized pivot <span class="math inline">\(T_n\)</span> is able to estimate its sampling distribution with greater accuracy than the limiting Normal distribution as <span class="math inline">\(n \to \infty\)</span>. This is the property of second-order correctness:</p>
+<div id="thm-secondordercorrect" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 12.2 (Second-order correctness of bootstrap for studentized pivot) </strong></span>Under the conditions of <a href="edgeworth.html#thm-edgeworth">Theorem&nbsp;<span>11.1</span></a> and with <span class="math inline">\(T^*_n\)</span> constructed as in <a href="bootmeanstudentized.html#def-bootmeanstudentized">Definition&nbsp;<span>10.1</span></a> we have</p>
+<p><!-- 1. $\sup_{x\in\bbR}|\P_*(Y_n^* \leq x) - \P(Y_n \leq x)| = O_p(n^{-1/2})$ --></p>
+<ol type="1">
+<li><span class="math inline">\(\sup_{x\in\mathbb{R}}|\mathbb{P}(T_n \leq x) - \Phi(x)| = O(n^{-1/2})\)</span></li>
+<li><span class="math inline">\(\sup_{x\in\mathbb{R}}|\mathbb{P}_*(T_n^* \leq x) - \mathbb{P}(T_n \leq x)| = o_p(n^{-1/2})\)</span></li>
+</ol>
+<p>as <span class="math inline">\(n \to \infty\)</span>.</p>
 </div>
 
 
@@ -595,13 +511,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./bootMC.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span>
+      <a href="./edgeworth.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./bootmeanstudentized.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Bootstrap for the studentized sample mean</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./appendix.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Appendix</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
