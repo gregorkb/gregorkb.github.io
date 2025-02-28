@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -324,7 +343,7 @@ p_n(x) = \frac{1}{n}\mathbf{1}(x \in \{X_1,\dots,X_n\}),
 </div>
 <p>We are now prepared to present a consistency result for the bootstrap estimator of the sampling distribution of <span class="math inline">\(Y_n\)</span>:</p>
 <div id="thm-bootconsmean" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 10.1 (Consistency of the bootstrap for the mean) </strong></span>Let <span class="math inline">\(X_1,\dots,X_n\)</span> be independent, identically distributed random variables with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2 &lt; \infty\)</span> with <span class="math inline">\(\mathbb{E}|X_1|^3 &lt; \infty\)</span>. Then for the bootstrap in <a href="bootmean.html#def-bootmean">Definition&nbsp;<span>8.1</span></a> we have <span class="math display">\[
+<p><span class="theorem-title"><strong>Theorem 10.1 (Consistency of the bootstrap for the mean) </strong></span>Let <span class="math inline">\(X_1,\dots,X_n\)</span> be independent, identically distributed random variables with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2 \in (0,\infty)\)</span> with <span class="math inline">\(\mathbb{E}|X_1|^3 &lt; \infty\)</span>. Then for the bootstrap in <a href="bootmean.html#def-bootmean">Definition&nbsp;<span>8.1</span></a> we have <span class="math display">\[
 \sup_{x \in \mathbb{R}}|\mathbb{P}_*(Y_n^* \leq x) - \mathbb{P}(Y_n\leq x)| \overset{\text{a.s.}}{\longrightarrow}0
 \]</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
 </div>
@@ -370,12 +389,18 @@ Proof of <a href="#thm-bootconsmean">Theorem&nbsp;<span>10.1</span></a>
 \sup_{x \in \mathbb{R}} |\Delta_{n1}(x)|  \leq C \frac{1}{\hat \sigma_n^2 n^{3/2}}\sum_{i=1}^n |X_i|^3.
 \]</span> Now let <span class="math inline">\(Y_i = |X_i|^3\)</span> for <span class="math inline">\(i=1,\dots,n\)</span>. Then <span class="math inline">\(\mathbb{E}|Y_1|^{2/3} = \mathbb{E}(|X_1|^3)^{2/3} = \mathbb{E}|X_1|^2 &lt; \infty\)</span>, so that by <a href="appendix.html#thm-MZslln">Theorem&nbsp;<span>16.1</span></a> (The Marcinkiewz-Zygmund SLLN) we have <span class="math display">\[
 \frac{1}{n^{2/3}}\sum_{i=1}^n Y_i \overset{\text{a.s.}}{\longrightarrow}0
-\]</span> as <span class="math inline">\(n \to \infty\)</span>. To complete the proof it is sufficient to show <span class="math inline">\(\hat \sigma_n \overset{\text{a.s.}}{\longrightarrow}\sigma\)</span> (USE Kolmogorov SLLN and the continuous mapping theorem).</p>
+\]</span> as <span class="math inline">\(n \to \infty\)</span>. To complete the proof it is sufficient to show <span class="math inline">\(\hat \sigma_n \overset{\text{a.s.}}{\longrightarrow}\sigma\)</span> (Kolmogorov SLLN and the continuous mapping theorem).</p>
+<p>A similar proof is given on page 535 of <span class="citation" data-cites="athreya2006measure">Athreya and Lahiri (<a href="references.html#ref-athreya2006measure" role="doc-biblioref">2006</a>)</span>.</p>
 </div>
 </div>
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-athreya2006measure" class="csl-entry" role="listitem">
+Athreya, Krishna B, and Soumendra N Lahiri. 2006. <em>Measure Theory and Probability Theory</em>. Springer Science &amp; Business Media.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
