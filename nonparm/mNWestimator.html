@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Some of Nonparametric Statistics - 1&nbsp; Multivariate Nadaraya-Watson estimator</title>
+<title>Some of Nonparametric Statistics - 2&nbsp; Multivariate Nadaraya-Watson estimator</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./additivemodel.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./mnonparmreg.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mNWestimator.html">Nonparametric regression</a></li><li class="breadcrumb-item"><a href="./mNWestimator.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mnonparmreg.html">Nonparametric regression</a></li><li class="breadcrumb-item"><a href="./mNWestimator.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -159,32 +159,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./mnonparmreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Multivariate nonparametric regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./mNWestimator.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./additivemodel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./additivebackfit.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Backfitting in the additive model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Backfitting in the additive model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./additiveresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Additive model pros and cons</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Additive model pros and cons</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./additivesparse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sparse additive model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sparse additive model</span></span></a>
   </div>
 </li>
       </ul>
@@ -201,55 +207,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./boot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootmean.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootMC.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootmeanconsistency.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootmeanstudentized.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Bootstrap for the studentized sample mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bootstrap for the studentized sample mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworth.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworthplay.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworthmulti.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Multivariate Edgeworth expansions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multivariate Edgeworth expansions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworthboot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Edgeworth expansions for the bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Edgeworth expansions for the bootstrap</span></span></a>
   </div>
 </li>
       </ul>
@@ -257,7 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -279,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></h1>
 </div>
 
 
@@ -300,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>$$</p>
 </div>
 <div id="def-mvNW" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1.1 (Multivariate Nadaraya-Watson estimator) </strong></span>A multivariate version of the Nadaraya-Watson estimator is given by <span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 2.1 (Multivariate Nadaraya-Watson estimator) </strong></span>A multivariate version of the Nadaraya-Watson estimator is given by <span class="math display">\[
 \hat m_{n}^{\text{NW}}(\mathbf{x}) = \frac{\sum_{i=1}^n Y_i K(h^{-1}(\mathbf{x}_i - \mathbf{x}))}{\sum_{i'=1}^nK(h^{-1}(\mathbf{x}_{i'} - \mathbf{x}))}
 \]</span> for all <span class="math inline">\(\mathbf{x}\in [0,1]^p\)</span> for some kernel function <span class="math inline">\(K:\mathbb{R}^p \to \mathbb{R}\)</span> and bandwidth <span class="math inline">\(h &gt; 0\)</span>.</p>
 </div>
@@ -403,20 +409,20 @@ G(z) = \phi(z) \quad \text{ or } \quad G(z) = \frac{3}{4}(1 - z^2)\mathbf{1}(|z|
 <div id="fig-mNW" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="mNWestimator_files/figure-html/fig-mNW-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;1.1: Nadaraya-Watson estimator in <span class="math inline">\(p=2\)</span> setting at three bandwidth choices. Top left shows the true function <span class="math inline">\(m\)</span>.</figcaption>
+<figcaption class="figure-caption">Figure&nbsp;2.1: Nadaraya-Watson estimator in <span class="math inline">\(p=2\)</span> setting at three bandwidth choices. Top left shows the true function <span class="math inline">\(m\)</span>.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>The following is a result about the variance <span class="math inline">\(\mathbb{V}\hat m_n^{\text{NW}}(\mathbf{x})\)</span>.</p>
 <div id="prp-mvNWvarbounds" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 1.1 (Bounds on the variance of the multivariate Nadaraya-Watson estimator) </strong></span>Given a kernel function <span class="math inline">\(K\)</span> and a bandwidth <span class="math inline">\(h\)</span>, suppose <span class="math inline">\(\mathbf{x}_1,\dots,\mathbf{x}_n \in [0,1]^p\)</span> are deterministic such that for some <span class="math inline">\(n_0&gt;0\)</span> we have <span class="math display">\[
+<p><span class="theorem-title"><strong>Proposition 2.1 (Bounds on the variance of the multivariate Nadaraya-Watson estimator) </strong></span>Given a kernel function <span class="math inline">\(K\)</span> and a bandwidth <span class="math inline">\(h\)</span>, suppose <span class="math inline">\(\mathbf{x}_1,\dots,\mathbf{x}_n \in [0,1]^p\)</span> are deterministic such that for some <span class="math inline">\(n_0&gt;0\)</span> we have <span class="math display">\[
 0 &lt; c_1  \leq \frac{1}{nh^p}\sum_{i=1}^n K(h^{-1}(\mathbf{x}_i - \mathbf{x})) \leq  c_1^{-1}
 \]</span> and <span class="math display">\[
 0 &lt; c_2   \leq \frac{1}{nh^p}\sum_{i=1}^n K^2(h^{-1}(\mathbf{x}_i - \mathbf{x})) \leq  c_2^{-1}
 \]</span> for some <span class="math inline">\(c_1,c_2 &gt; 0\)</span> for all <span class="math inline">\(x \in [0,1]^p\)</span> for all <span class="math inline">\(n \geq n_0\)</span>. Then for all <span class="math inline">\(n \geq n_0\)</span>, we have <span id="eq-mNWvarbounds"><span class="math display">\[
 \frac{\sigma^2}{nh^p}  c_1^2 c_2 \leq \mathbb{V}\hat m_n^{\text{NW}}(\mathbf{x}) \leq  \frac{\sigma^2}{nh^p} \frac{1}{c_1^2 c_2}
-\tag{1.1}\]</span></span></p>
+\tag{2.1}\]</span></span></p>
 <p>for all <span class="math inline">\(\mathbf{x}\in [0,1]^p\)</span>.</p>
 </div>
 <p>Just as in the case of multivariate kernel density estimation, we encounter the curse of dimensionality. That is, the dimension <span class="math inline">\(p\)</span> appears in our bounds for the variance just as in the case of multivariate kernel density estimation.</p>
@@ -426,7 +432,7 @@ G(z) = \phi(z) \quad \text{ or } \quad G(z) = \frac{3}{4}(1 - z^2)\mathbf{1}(|z|
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Proof of <a href="#prp-mvNWvarbounds">Proposition&nbsp;<span>1.1</span></a>
+Proof of <a href="#prp-mvNWvarbounds">Proposition&nbsp;<span>2.1</span></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -438,7 +444,7 @@ W_{ni}(\mathbf{x}) = \frac{K(h^{-1}(\mathbf{x}_i - \mathbf{x}))}{\sum_{i'=1}^nK(
 \mathbb{V}\hat m_n^{\text{NW}}(\mathbf{x}) &amp;= \sum_{i=1}^n W^2_{ni}(\mathbf{x}) \sigma^2 \\
                            &amp;= \sigma^2 \sum_{i=1}^n \frac{K^2(h^{-1}(\mathbf{x}_i - \mathbf{x}))}{[\sum_{i'=1}^nK(h^{-1}(\mathbf{x}_{i'} - \mathbf{x}))]^2} \\
                            &amp;= \frac{\sigma^2}{nh^p}\frac{(nh^p)^{-1}\sum_{i=1}^n K^2(h^{-1}(\mathbf{x}_i - \mathbf{x}))}{[(nh^p)^{-1}\sum_{i'=1}^n K(h^{-1}(\mathbf{x}_{i'} - \mathbf{x}))]^2}
-\end{align}\]</span> The result follows from applying the bounds in (<a href="#eq-mNWvarbounds">Equation&nbsp;<span>1.1</span></a>).</p>
+\end{align}\]</span> The result follows from applying the bounds in (<a href="#eq-mNWvarbounds">Equation&nbsp;<span>2.1</span></a>).</p>
 </div>
 </div>
 </div>
@@ -684,13 +690,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./mnonparmreg.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Multivariate nonparametric regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./additivemodel.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Additive model</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Additive model</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
