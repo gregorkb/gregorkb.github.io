@@ -373,9 +373,9 @@ Proof of <a href="#thm-bootconsmean">Theorem&nbsp;<span>10.1</span></a>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>We first note that <span class="math display">\[
-\mathbb{P}(Y_n \leq x) = \mathbb{P}(Y_n/\sigma\leq x/\sigma) \to \Phi(x/\sigma)
-\]</span> as <span class="math inline">\(n \to \infty\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span> by the central limit theorem, so it is sufficient to show <span class="math display">\[
+<p>Noting that <span class="math inline">\(\mathbb{P}(Y_n \leq x) = \mathbb{P}(\sqrt{n}(\bar X_n - \mu)/\sigma\leq x/\sigma)\)</span>, the Berry-Esseen Theorem gives <span class="math display">\[
+\sup_{x\in \mathbb{R}}|P(Y_n \leq x) - \Phi(x/\sigma)|\leq C \frac{\mathbb{E}|X_1-\mu|^3}{\sigma^3\sqrt{n}},
+\]</span> where the right hand side goes to zero as <span class="math inline">\(n \to \infty\)</span>. So it is sufficient to show <span class="math display">\[
 \sup_{x \in \mathbb{R}}|\mathbb{P}_*(Y_n^* \leq x) - \Phi(x/\sigma)| \overset{\text{a.s.}}{\longrightarrow}0
 \]</span> as <span class="math inline">\(n \to \infty\)</span>, that is, that <span class="math inline">\(Y_n^*\)</span> and <span class="math inline">\(Y_n\)</span> have the same limiting Normal distribution. For each <span class="math inline">\(x\)</span> we may write <span class="math display">\[
 |\mathbb{P}_*(Y_n^* \leq x) - \Phi(x/\sigma)| \leq |\Delta_{n1}(x)| +|\Delta_{n2}(x)|,
@@ -383,7 +383,7 @@ Proof of <a href="#thm-bootconsmean">Theorem&nbsp;<span>10.1</span></a>
 \Delta_{n1}(x) = \mathbb{P}_*(Y_n^* \leq x) - \Phi(x/\hat \sigma_n)
 \]</span> and <span class="math display">\[
 \Delta_{n2}(x) = \Phi(x/\hat \sigma_n) - \Phi(x/\sigma).
-\]</span> By the Berry–Esseen theorem, we can bound the first term by <span class="math display">\[\begin{align}
+\]</span> By the Kolmogorov SLLN and the continuous mapping theorem we have <span class="math inline">\(\hat \sigma_n \overset{\text{a.s.}}{\longrightarrow}\sigma\)</span> almost surely, so that <span class="math inline">\(\sup_{x\in \mathbb{R}}|\Delta_{n2}(x) | \to 0\)</span> almost surely. By the Berry–Esseen theorem, we can bound the first term by <span class="math display">\[\begin{align}
 \sup_{x \in \mathbb{R}} |\Delta_{n1}(x)| &amp;= \sup_{x \in \mathbb{R}}|\mathbb{P}_*(\sqrt{n}(\bar X_n^* - \bar X_n)/\hat \sigma_n \leq x/\hat \sigma_n) - \Phi(x/\hat \sigma_n)| \\
   &amp;\leq C \frac{\mathbb{E}_*|X_1^* - \bar X_n|^3}{\hat \sigma_n^3\sqrt{n}}.
 \end{align}\]</span> Furthermore, by <a href="appendix.html#prp-minkowski">Proposition&nbsp;<span>17.1</span></a> (Minkowski’s inequality) we have <span class="math display">\[\begin{align}
@@ -392,10 +392,8 @@ Proof of <a href="#thm-bootconsmean">Theorem&nbsp;<span>10.1</span></a>
 \end{align}\]</span> where the second inequality comes from the application of <a href="appendix.html#prp-jensens">Proposition&nbsp;<span>17.2</span></a> (Jensen’s inequality) <span class="math display">\[
 |\bar X_n|^3 = |\mathbb{E}X_1^*|^3 \leq \mathbb{E}| X_1^*|^3,
 \]</span> which implies <span class="math inline">\(|\bar X_n| \leq (\mathbb{E}_*|X_1^*|^3)^{1/3}\)</span>. Noting that <span class="math inline">\(\mathbb{E}_*|X_1^*|^3\)</span> is equal to <span class="math inline">\(n^{-1}\sum_{i=1}^n |X_i|^3\)</span>, we can replace the Berry-Esseen bound by <span class="math display">\[
-\sup_{x \in \mathbb{R}} |\Delta_{n1}(x)|  \leq C \frac{1}{\hat \sigma_n^2 n^{3/2}}\sum_{i=1}^n |X_i|^3.
-\]</span> Now let <span class="math inline">\(Y_i = |X_i|^3\)</span> for <span class="math inline">\(i=1,\dots,n\)</span>. Then <span class="math inline">\(\mathbb{E}|Y_1|^{2/3} = \mathbb{E}(|X_1|^3)^{2/3} = \mathbb{E}|X_1|^2 &lt; \infty\)</span>, so that by <a href="appendix.html#thm-MZslln">Theorem&nbsp;<span>17.1</span></a> (The Marcinkiewz-Zygmund SLLN) we have <span class="math display">\[
-\frac{1}{n^{3/2}}\sum_{i=1}^n Y_i \overset{\text{a.s.}}{\longrightarrow}0
-\]</span> as <span class="math inline">\(n \to \infty\)</span>. To complete the proof it is sufficient to show <span class="math inline">\(\hat \sigma_n \overset{\text{a.s.}}{\longrightarrow}\sigma\)</span> (Kolmogorov SLLN and the continuous mapping theorem).</p>
+\sup_{x \in \mathbb{R}} |\Delta_{n1}(x)|  \leq C \frac{1}{\hat \sigma_n^2 \sqrt{n}} \frac{1}{n}\sum_{i=1}^n |X_i|^3.
+\]</span> Now, by the Kolmogorov SLLN we have <span class="math inline">\(n^{-1}\sum_{i=1}^n |X_i|^3 \to \mathbb{E}|X_1| &lt; \infty\)</span> almost surely as <span class="math inline">\(n \to \infty\)</span>. Since <span class="math inline">\(\hat \sigma_n \to \sigma\)</span> almost surely the result is proved.</p>
 <p>A similar proof is given on page 535 of <span class="citation" data-cites="athreya2006measure">Athreya and Lahiri (<a href="references.html#ref-athreya2006measure" role="doc-biblioref">2006</a>)</span>.</p>
 </div>
 </div>
