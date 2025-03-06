@@ -301,7 +301,7 @@ div.csl-indent {
 <p><span class="theorem-title"><strong>Theorem 15.1 (First-order correctness of bootstrap for un-studentized pivot) </strong></span>Under the conditions of <a href="edgeworth.html#thm-edgeworth">Theorem&nbsp;<span>12.1</span></a> and with <span class="math inline">\(Y^*_n\)</span> constructed as in <a href="bootmean.html#def-bootmean">Definition&nbsp;<span>8.1</span></a> we have</p>
 <ol type="1">
 <li><span class="math inline">\(\sup_{x\in\mathbb{R}}|\mathbb{P}(Y_n \leq x) - \Phi(x/\sigma)| = O(n^{-1/2})\)</span></li>
-<li><span class="math inline">\(\sup_{x\in\mathbb{R}}|\mathbb{P}_*(Y_n^* \leq x) - \mathbb{P}(Y_n \leq x)| = O_p(n^{-1/2})\)</span></li>
+<li><span class="math inline">\(\sup_{x\in\mathbb{R}}|\mathbb{P}_*(Y_n^* \leq x) - \mathbb{P}(Y_n \leq x)| = O(n^{-1/2})\)</span> almost surely</li>
 </ol>
 <p>as <span class="math inline">\(n \to \infty\)</span>.</p>
 </div>
@@ -330,21 +330,21 @@ P(Z_n^* \leq x /\hat \sigma_n) = \Phi(x/\hat \sigma_n) - \frac{1}{6\sqrt{n}}\fra
 \]</span> This expansion is not implied by <a href="edgeworth.html#thm-edgeworth">Theorem&nbsp;<span>12.1</span></a>, as, conditional on the data, the bootstrap random variable <span class="math inline">\(Z^*_n\)</span> does not satisfy Cramer’s condition (See <span class="citation" data-cites="hall2013bootstrap">Hall (<a href="references.html#ref-hall2013bootstrap" role="doc-biblioref">2013</a>)</span>). From here we may write <span class="math display">\[\begin{align}
 \sup_{x \in \mathbb{R}}&amp;|\mathbb{P}_*(Y^*_n \leq x) - \mathbb{P}(Y_n \leq x)| \leq  \sup_{x \in \mathbb{R}}|\Phi(x/\sigma) - \Phi(x/\hat \sigma_n)|  \\
 &amp;\quad ~+ \frac{1}{6\sqrt{n}}\sup_{x \in \mathbb{R}}\Big| \frac{\mu_3}{\sigma^3}\Big((x/\sigma)^2- 1\Big)\phi(x/\sigma) - \frac{\hat \mu_{n3}}{\hat \sigma_n^3}\Big((x/\hat \sigma_n)^2- 1\Big)\phi(x/\hat \sigma_n) \Big| + O(n^{-1}).
-\end{align}\]</span> Since <span class="math inline">\(\hat \mu_{3n} \to \mu_3\)</span> and <span class="math inline">\(\hat \sigma_n \to \sigma\)</span> almost surely as <span class="math inline">\(n \to \infty\)</span>, the second term on the right hand side is of order <span class="math inline">\(o(n^{-1/2})\)</span>. It can be seen from the delta method that the first term on the right hand side is of order <span class="math inline">\(O_p(n^{-1/2})\)</span>, giving the result.</p>
+\end{align}\]</span> Since <span class="math inline">\(\hat \mu_{3n} \to \mu_3\)</span> and <span class="math inline">\(\hat \sigma_n \to \sigma\)</span> almost surely as <span class="math inline">\(n \to \infty\)</span>, the second term on the right hand side is of order <span class="math inline">\(o(n^{-1/2})\)</span>. This first term on the right hand side is of order <span class="math inline">\(O(n^{-1/2})\)</span> almost surely, giving the result.</p>
 <p>See page 536 of <span class="citation" data-cites="athreya2006measure">Athreya and Lahiri (<a href="references.html#ref-athreya2006measure" role="doc-biblioref">2006</a>)</span> for a similar proof.</p>
 </div>
 </div>
 </div>
 <div id="thm-secondordercorrect" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 15.2 (Second-order correctness of bootstrap for studentized pivot) </strong></span>Under the conditions of <a href="edgeworth.html#thm-edgeworth">Theorem&nbsp;<span>12.1</span></a> and with <span class="math inline">\(T^*_n\)</span> constructed as in <a href="bootmeanstudentized.html#def-bootmeanstudentized">Definition&nbsp;<span>11.1</span></a> we have</p>
-<p><!-- 1. $\sup_{x\in\bbR}|\P_*(Y_n^* \leq x) - \P(Y_n \leq x)| = O_p(n^{-1/2})$ --></p>
 <ol type="1">
 <li><span class="math inline">\(\sup_{x\in\mathbb{R}}|\mathbb{P}(T_n \leq x) - \Phi(x)| = O(n^{-1/2})\)</span></li>
-<li><span class="math inline">\(\sup_{x\in\mathbb{R}}|\mathbb{P}_*(T_n^* \leq x) - \mathbb{P}(T_n \leq x)| = o_p(n^{-1/2})\)</span></li>
+<li><span class="math inline">\(\sup_{x\in\mathbb{R}}|\mathbb{P}_*(T_n^* \leq x) - \mathbb{P}(T_n \leq x)| = O(n^{-1})\)</span> almost surely</li>
 </ol>
 <p>as <span class="math inline">\(n \to \infty\)</span>.</p>
 </div>
-<p>Note the difference in the orders: The asymptotic distribution approximates the sampling distribution of <span class="math inline">\(T_n\)</span> with an error of magnitude <span class="math inline">\(O(n^{-1/2})\)</span>, whereas the bootstrap achieves an error of magnitude <span class="math inline">\(o_p(n^{-1/2})\)</span>. This shows clearly the superiority of the bootstrap over the asymptotic approximation in the case of the studentized pivot <span class="math inline">\(T_n\)</span>.</p>
+<p>Note the difference in the orders: The asymptotic distribution approximates the sampling distribution of <span class="math inline">\(T_n\)</span> with an error of magnitude <span class="math inline">\(O(n^{-1/2})\)</span>, whereas the bootstrap achieves an error of magnitude <span class="math inline">\(O(n^{-1})\)</span> almost surely. This shows clearly the superiority of the bootstrap over the asymptotic approximation in the case of the studentized pivot <span class="math inline">\(T_n\)</span>.</p>
+<p>Compare the result in <a href="#thm-secondordercorrect">Theorem&nbsp;<span>15.2</span></a> to the first equation on pg 240 of <span class="citation" data-cites="hall2013bootstrap">Hall (<a href="references.html#ref-hall2013bootstrap" role="doc-biblioref">2013</a>)</span> following Theorem 5.1.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -363,7 +363,7 @@ Sketch of proof of <a href="#thm-secondordercorrect">Theorem&nbsp;<span>15.2</sp
 \mathbb{P}_*( T_n^* \leq x) = \Phi(x) +\frac{1}{6\sqrt{n}}\frac{\hat \mu_{n3}}{\hat \sigma_n^3}(2x^2 + 1) + O(n^{-1})
 \]</span> almost surely as <span class="math inline">\(n \to \infty\)</span> for any <span class="math inline">\(x\in \mathbb{R}\)</span>. From here we have <span class="math display">\[
 \sup_{x\in\mathbb{R}}|\mathbb{P}_*(T_n^* \leq x) - \mathbb{P}(T_n \leq x)| \leq \frac{1}{6\sqrt{n}}\Big|\frac{\hat \mu_{n3}}{\hat \sigma_n^3} - \frac{\mu_3}{ \sigma_n^3}\Big| \sup_{x \in \mathbb{R}}\Big|(2x^2 + 1)\phi(x)\Big| + O(n^{-1}).
-\]</span> almost surely as <span class="math inline">\(n \to \infty\)</span>. Now, since Since <span class="math inline">\(\hat \mu_{3n} \to \mu_3\)</span> and <span class="math inline">\(\hat \sigma_n \to \sigma\)</span> almost surely, we see that the right hand side is of the order <span class="math inline">\(o_p(n^{-1/2})\)</span>.</p>
+\]</span> almost surely as <span class="math inline">\(n \to \infty\)</span>. Now, since Since <span class="math inline">\(\hat \mu_{n3} \to \mu_3\)</span> and <span class="math inline">\(\hat \sigma_n \to \sigma\)</span> at the rate <span class="math inline">\(n^{-1/2}\)</span> almost surely, we see that the right hand side is of the order <span class="math inline">\(O(n^{-1})\)</span> almost surely.</p>
 <p>See page 536 of <span class="citation" data-cites="athreya2006measure">Athreya and Lahiri (<a href="references.html#ref-athreya2006measure" role="doc-biblioref">2006</a>)</span> for a similar proof.</p>
 </div>
 </div>
