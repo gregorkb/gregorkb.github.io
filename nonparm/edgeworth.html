@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Some of Nonparametric Statistics - 12&nbsp; Edgeworth expansions</title>
+<title>12&nbsp; Edgeworth expansions – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,6 +24,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -66,7 +67,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -75,6 +82,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -87,9 +95,41 @@ div.csl-indent {
 }
 </script>
 <script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -99,13 +139,13 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./edgeworth.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./edgeworth.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -114,7 +154,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Some of Nonparametric Statistics</a> 
@@ -135,9 +175,9 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Nonparametric regression</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -182,9 +222,9 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Bootstrap</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -249,12 +289,24 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The percentile bootstrap</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./statfunctionals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Statistical functionals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootstatfunctionals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -266,15 +318,15 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./edgeworth.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-edgeworth" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></span></h1>
 </div>
@@ -289,11 +341,12 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <div class="hidden">
 <p>$$ </p>
-<p>}</p>
 <p>$$</p>
 </div>
 <p>Continue to assume <span class="math inline">\(X_1,\dots,X_n\)</span> are independent, identically distributed random variables with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2 &lt; \infty\)</span>. Then the central limit theorem gives <span class="math display">\[
@@ -303,7 +356,7 @@ Z_n \equiv \sqrt{n}(\bar X_n - \mu) / \sigma \overset{\text{d}}{\longrightarrow}
 <li>How fast is the convergence?</li>
 <li>What features of the distribution of <span class="math inline">\(X_1,\dots,X_n\)</span> affect the rate of convergence and how?</li>
 </ol>
-<p>Our purpose in studying Edgeworth expansions is to understand why bootstrapping the pivotal quantity <span class="math inline">\(T_n = \sqrt{n}(\bar X_n - \mu) / S_n\)</span> leads to better performance than bootstrapping its un-studentized counterpart <span class="math inline">\(Y_n = \sqrt{n}(\bar X_n - \mu)\)</span>, as we may suspect it does from the simulation results plotted in <a href="bootmeanstudentized.html#fig-bootmeanstudcvg">Figure&nbsp;<span>11.1</span></a>. Moreover, Edgeworth expansions will enable us to show that the bootstrap applied to the pivotal quantity <span class="math inline">\(T_n\)</span> can provide a better approximation to its sampling distribution than its limiting <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution. Thus we will be able to establish the vaunted second-order correctness property of the bootstrap!</p>
+<p>Our purpose in studying Edgeworth expansions is to understand why bootstrapping the pivotal quantity <span class="math inline">\(T_n = \sqrt{n}(\bar X_n - \mu) / S_n\)</span> leads to better performance than bootstrapping its un-studentized counterpart <span class="math inline">\(Y_n = \sqrt{n}(\bar X_n - \mu)\)</span>, as we may suspect it does from the simulation results plotted in <a href="bootmeanstudentized.html#fig-bootmeanstudcvg" class="quarto-xref">Figure&nbsp;<span>11.1</span></a>. Moreover, Edgeworth expansions will enable us to show that the bootstrap applied to the pivotal quantity <span class="math inline">\(T_n\)</span> can provide a better approximation to its sampling distribution than its limiting <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution. Thus we will be able to establish the vaunted second-order correctness property of the bootstrap!</p>
 <p>We begin by presenting the Edgeworth expansion, out to order 2, taken from <span class="citation" data-cites="hall2013bootstrap">Hall (<a href="references.html#ref-hall2013bootstrap" role="doc-biblioref">2013</a>)</span>:</p>
 <!-- :::{#thm-edgeworth} -->
 <!-- ## First- and second-order Edgeworth expansions -->
@@ -324,25 +377,29 @@ Z_n \equiv \sqrt{n}(\bar X_n - \mu) / \sigma \overset{\text{d}}{\longrightarrow}
 <!-- In the above, $\mu_3 = \E (X_1 - \mu)^3$ and $\mu_4 = \E (X_1 - \mu)^4$, and $\Phi$ and $\phi$ denote the cdf and pdf, respectively, of the $\calN(0,1)$ distribution. -->
 <!-- ::: -->
 <div id="thm-edgeworth" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 12.1 (Second-order Edgeworth expansion) </strong></span>Let <span class="math inline">\(X_1,\dots,X_n\)</span> be independent, identically distributed random variables such that <span class="math inline">\(\mathbb{E}X_1 = \mu\)</span>, <span class="math inline">\(\mathbb{V}X_1 = \sigma^2 \in (0,\infty)\)</span>, and <span class="math inline">\(\mathbb{E}|X_1|^{j+2} &lt; \infty\)</span> for <span class="math inline">\(j=1,2\)</span>, and set <span class="math inline">\(Z_n = \sqrt{n}(\bar X_n - \mu) / \sigma\)</span>. Then, provided <span class="math inline">\(\limsup_{|t| \to \infty }|\mathbb{E}\exp(\iota t X_1)| &lt; 1\)</span> (Cramer’s condition), we have <span class="math display">\[
+<p><span class="theorem-title"><strong>Theorem 12.1 (Second-order Edgeworth expansion)</strong></span> Let <span class="math inline">\(X_1,\dots,X_n\)</span> be independent, identically distributed random variables such that <span class="math inline">\(\mathbb{E}X_1 = \mu\)</span>, <span class="math inline">\(\mathbb{V}X_1 = \sigma^2 \in (0,\infty)\)</span>, and <span class="math inline">\(\mathbb{E}|X_1|^{j+2} &lt; \infty\)</span> for <span class="math inline">\(j=1,2\)</span>, and set <span class="math inline">\(Z_n = \sqrt{n}(\bar X_n - \mu) / \sigma\)</span>. Then, provided <span class="math inline">\(\limsup_{|t| \to \infty }|\mathbb{E}\exp(\iota t X_1)| &lt; 1\)</span> (Cramer’s condition), we have <span class="math display">\[
 \mathbb{P}(  Z_n  \leq x) = \Phi(x) + n^{-1/2}p_1(x)\phi(x) + n^{-1}p_2(x)\phi(x) + o(n^{-1})
 \]</span> as <span class="math inline">\(n \to \infty\)</span>, where <span class="math inline">\(p_1(x)\)</span> and <span class="math inline">\(p_2(x)\)</span> are given by <span class="math display">\[\begin{align}
     p_1(x)&amp;= \frac{1}{6}\frac{\mu_3}{\sigma^3}(x^2 - 1)\\
     p_2(x) &amp;= \frac{1}{24}(\frac{\mu_4}{\sigma^4} - 3)(x^3 - 3x) + \frac{1}{72}\frac{\mu_3^2}{\sigma^6}(x^5 - 10 x ^3 + 15 x).
 \end{align}\]</span> In the above <span class="math inline">\(\mu_3 = \mathbb{E}(X_1 - \mu)^3\)</span> and <span class="math inline">\(\mu_4 = \mathbb{E}(X_1 - \mu)^4\)</span>, and <span class="math inline">\(\Phi\)</span> and <span class="math inline">\(\phi\)</span> denote the cdf and pdf, respectively, of the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution.</p>
 </div>
-<p>From <a href="#thm-edgeworth">Theorem&nbsp;<span>12.1</span></a> we see that the probability <span class="math inline">\(\mathbb{P}(Z_n \leq x)\)</span> indeed approaches <span class="math inline">\(\Phi(x)\)</span> as <span class="math inline">\(n \to \infty\)</span>, as known from the central limit theorem, but we can see much more than this. Studying the functions <span class="math inline">\(p_1(x)\)</span> and <span class="math inline">\(p_2(x)\)</span>, we discover that the rate of the convergence in distribution of <span class="math inline">\(Z_n\)</span> to the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution depends on some moment properties of the distribution of <span class="math inline">\(X_1,\dots,X_n\)</span>. In particular, we note that the first term beyond <span class="math inline">\(\Phi(x)\)</span> depends on the skewness <span class="math inline">\(\mu_3\)</span>. If the distribution of <span class="math inline">\(X_1,\dots,X_n\)</span> is symmetric, we will have <span class="math inline">\(\mu_3 = 0\)</span>, so this term vanishes and <span class="math inline">\(Z_n\)</span> will converge in distribution at a faster rate to the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution. Moreover, we see that the magnitude of the second term beyond <span class="math inline">\(\Phi(x)\)</span> depends on the kurtosis <span class="math inline">\(\mu_4/\sigma^4\)</span> (a measure of tail-heaviness) of the the distribution of <span class="math inline">\(X_1,\dots,X_n\)</span>. If this is equal to <span class="math inline">\(3\)</span>, which is the kurtosis of any Normal distribution, then this term vanishes, making the rate of convergence in distribution of <span class="math inline">\(Z_n\)</span> all the faster. We will therefore observe the fastest convergence in distribution of <span class="math inline">\(Z_n\)</span> to the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution when the distribution of <span class="math inline">\(X_1,\dots,X_n\)</span> is symmetric and has the same kurtosis as a Normal distribution.</p>
-<p>Before offering a proof of <a href="#thm-edgeworth">Theorem&nbsp;<span>12.1</span></a>, we must introduce the Hermite polynomials:</p>
+<p>From <a href="#thm-edgeworth" class="quarto-xref">Theorem&nbsp;<span>12.1</span></a> we see that the probability <span class="math inline">\(\mathbb{P}(Z_n  \leq x)\)</span> indeed approaches <span class="math inline">\(\Phi(x)\)</span> as <span class="math inline">\(n \to \infty\)</span>, as known from the central limit theorem, but we can see much more than this. Studying the functions <span class="math inline">\(p_1(x)\)</span> and <span class="math inline">\(p_2(x)\)</span>, we discover that the rate of the convergence in distribution of <span class="math inline">\(Z_n\)</span> to the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution depends on some moment properties of the distribution of <span class="math inline">\(X_1,\dots,X_n\)</span>. In particular, we note that the first term beyond <span class="math inline">\(\Phi(x)\)</span> depends on the skewness <span class="math inline">\(\mu_3\)</span>. If the distribution of <span class="math inline">\(X_1,\dots,X_n\)</span> is symmetric, we will have <span class="math inline">\(\mu_3 = 0\)</span>, so this term vanishes and <span class="math inline">\(Z_n\)</span> will converge in distribution at a faster rate to the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution. Moreover, we see that the magnitude of the second term beyond <span class="math inline">\(\Phi(x)\)</span> depends on the kurtosis <span class="math inline">\(\mu_4/\sigma^4\)</span> (a measure of tail-heaviness) of the the distribution of <span class="math inline">\(X_1,\dots,X_n\)</span>. If this is equal to <span class="math inline">\(3\)</span>, which is the kurtosis of any Normal distribution, then this term vanishes, making the rate of convergence in distribution of <span class="math inline">\(Z_n\)</span> all the faster. We will therefore observe the fastest convergence in distribution of <span class="math inline">\(Z_n\)</span> to the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution when the distribution of <span class="math inline">\(X_1,\dots,X_n\)</span> is symmetric and has the same kurtosis as a Normal distribution.</p>
+<p>Before offering a proof of <a href="#thm-edgeworth" class="quarto-xref">Theorem&nbsp;<span>12.1</span></a>, we must introduce the Hermite polynomials:</p>
 <div id="def-hermitepolynomials" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 12.1 (Hermite polynomials) </strong></span>The Hermite polynomials <span class="math inline">\(H_1,H_2,\dots\)</span> are defined by the relation <span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 12.1 (Hermite polynomials)</strong></span> The Hermite polynomials <span class="math inline">\(H_1,H_2,\dots\)</span> are defined by the relation <span class="math display">\[
 (-1)^k \frac{d^k}{dx^k} \phi(x) = H_k(x)\phi(x), \quad k=1,2,\dots
 \]</span></p>
 </div>
 <!-- By the relation in @def-hermitepolynomials one obtains: -->
-<p><a href="#tbl-hermite">Table&nbsp;<span>12.1</span></a> gives the first six Hermite polynomials.</p>
-<div id="tbl-hermite" class="anchored">
-<table class="table">
-<caption>Table&nbsp;12.1: The first six Hermite polynomials</caption>
+<p><a href="#tbl-hermite" class="quarto-xref">Table&nbsp;<span>12.1</span></a> gives the first six Hermite polynomials.</p>
+<div id="tbl-hermite" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-hermite-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;12.1: The first six Hermite polynomials
+</figcaption>
+<div aria-describedby="tbl-hermite-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th><span class="math inline">\(k\)</span></th>
@@ -377,15 +434,17 @@ Z_n \equiv \sqrt{n}(\bar X_n - \mu) / \sigma \overset{\text{d}}{\longrightarrow}
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 <p>Note that some of the Hermite polynomials appear in the second-order Edgeworth expansion.</p>
 <p>We will also need the following result and helpful identity:</p>
 <div id="lem-inversionformula" class="theorem lemma">
-<p><span class="theorem-title"><strong>Lemma 12.1 (Inversion formula) </strong></span>If <span class="math inline">\(X\)</span> is a random variable with characteristic function <span class="math inline">\(\psi_X\)</span> such that <span class="math inline">\(\int_{-\infty}^\infty |\psi_X(t)|dt &lt; \infty\)</span>, then <span class="math inline">\(X\)</span> has pdf given by <span class="math display">\[
+<p><span class="theorem-title"><strong>Lemma 12.1 (Inversion formula)</strong></span> If <span class="math inline">\(X\)</span> is a random variable with characteristic function <span class="math inline">\(\psi_X\)</span> such that <span class="math inline">\(\int_{-\infty}^\infty |\psi_X(t)|dt &lt; \infty\)</span>, then <span class="math inline">\(X\)</span> has pdf given by <span class="math display">\[
 f_X(x) = \frac{1}{2\pi} \int_{-\infty}^\infty \exp(-\iota t x) \psi_X(t)dt
 \]</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>.</p>
 </div>
 <div id="lem-helpfulidentity" class="theorem lemma">
-<p><span class="theorem-title"><strong>Lemma 12.2 (Helpful identity) </strong></span>We have <span class="math display">\[
+<p><span class="theorem-title"><strong>Lemma 12.2 (Helpful identity)</strong></span> We have <span class="math display">\[
 \frac{1}{2\pi} \int_{-\infty}^\infty  (\iota t)^k \exp(-\iota t x) e^{-t^2/2}dt = H_k(x)\phi(x).
 \]</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>.</p>
 </div>
@@ -395,7 +454,7 @@ f_X(x) = \frac{1}{2\pi} \int_{-\infty}^\infty \exp(-\iota t x) \psi_X(t)dt
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Derivation of <a href="#lem-helpfulidentity">Lemma&nbsp;<span>12.2</span></a>.
+Derivation of <a href="#lem-helpfulidentity" class="quarto-xref">Lemma&nbsp;<span>12.2</span></a>.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -406,19 +465,19 @@ Derivation of <a href="#lem-helpfulidentity">Lemma&nbsp;<span>12.2</span></a>.
 &amp;= (-1)^k \frac{d^k}{dx^k}\frac{1}{2\pi}\int_{-\infty}^\infty \exp(-\iota t x)  e^{-t^2/2} dt\\
 &amp;= (-1)^k \frac{d^k}{dx^k}\phi(x)\\
 &amp;=H_k(x)\phi(x),
-\end{align}\]</span> where the third equality comes from applying the inversion formula in <a href="#lem-inversionformula">Lemma&nbsp;<span>12.1</span></a>, since <span class="math inline">\(e^{-t^2/2\)</span> is the characteristic function of the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution, and the last equality comes from the relation defining the Hermite polynomials given in <a href="#def-hermitepolynomials">Definition&nbsp;<span>12.1</span></a>.</p>
+\end{align}\]</span> where the third equality comes from applying the inversion formula in <a href="#lem-inversionformula" class="quarto-xref">Lemma&nbsp;<span>12.1</span></a>, since <span class="math inline">\(e^{-t^2/2\)</span> is the characteristic function of the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution, and the last equality comes from the relation defining the Hermite polynomials given in <a href="#def-hermitepolynomials" class="quarto-xref">Definition&nbsp;<span>12.1</span></a>.</p>
 </div>
 </div>
 </div>
 <!-- It is worth noting that one can obtain the first-order Edgeworth expansion without the assumption $\E |X_1|^4 <\infty$ and, instead of Cramer's condition in @eq-cramercond the assumption that $X_1$ is non-lattice, that is $|\E \exp(\iota t X_1)| < 1$ for all $t \neq 0$.  See page 365 of @athreya2006measure. -->
-<p>Now we can prove <a href="#thm-edgeworth">Theorem&nbsp;<span>12.1</span></a>.</p>
+<p>Now we can prove <a href="#thm-edgeworth" class="quarto-xref">Theorem&nbsp;<span>12.1</span></a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Sketch of proof of <a href="#thm-edgeworth">Theorem&nbsp;<span>12.1</span></a>
+Sketch of proof of <a href="#thm-edgeworth" class="quarto-xref">Theorem&nbsp;<span>12.1</span></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -434,7 +493,7 @@ Sketch of proof of <a href="#thm-edgeworth">Theorem&nbsp;<span>12.1</span></a>
 \end{align}\]</span> Now we make a Taylor expansion of <span class="math inline">\(\mathbb{E}\exp(\iota t n^{-1/2} X_1)\)</span> around <span class="math inline">\(t = 0\)</span>. We have <span class="math display">\[\begin{align}
 \mathbb{E}\exp(\iota t n^{-1/2} X_1) &amp;= \mathbb{E}\Big[ \sum_{k=0}^4\frac{1}{k!}\Big(\frac{\iota X}{\sqrt{n}}\Big)^k t^k +o(n^{-2})\Big] \\
 &amp;= 1 - \frac{t^2}{2n} + \frac{\gamma(\iota t)^3}{6n^{3/2}} + \frac{\tau(\iota t)^4}{24n^2} + o(n^{-2}).
-\end{align}\]</span> Then <a href="appendix.html#thm-multinomial">Theorem&nbsp;<span>17.2</span></a> (the multinomial theorem) gives <span class="math display">\[\begin{align}
+\end{align}\]</span> Then <a href="appendix.html#thm-multinomial" class="quarto-xref">Theorem&nbsp;<span>19.2</span></a> (the multinomial theorem) gives <span class="math display">\[\begin{align}
 \psi_{Z_n}(t)  &amp;=[\mathbb{E}\exp(\iota t n^{-1/2} X_1)]^n \\
 &amp;=\Big[1 - \frac{t^2}{2n} + \frac{\gamma(\iota t)^3}{6n^{3/2}} + \frac{\tau(\iota t)^4}{24n^2} + o(n^{-2})\Big]^n \\
 &amp;=\Big(1 - \frac{t^2}{2n}\Big)^n + n \Big(1 - \frac{t^2}{2n}\Big)^{n-1}  \frac{\gamma(\iota t)^3}{6n^{3/2}} \\
@@ -454,7 +513,7 @@ Sketch of proof of <a href="#thm-edgeworth">Theorem&nbsp;<span>12.1</span></a>
 &amp; = e^{-t^2/2}\Big[ 1 +  \frac{\gamma(\iota t)^3}{6n^{1/2}} + \frac{(\tau - 3)(\iota t)^4}{24n} + \frac{\gamma^2(\iota t)^6}{72n}\Big] + o(n^{-1}).
 \end{align}\]</span> Now let <span class="math inline">\(\tilde \psi_{Z_n}(t)\)</span> be the approximation to <span class="math inline">\(\psi_{Z_n}(t)\)</span> given by <span class="math display">\[
 \tilde \psi_{Z_n}(t) = e^{-t^2/2}\Big[ 1 +  \frac{\gamma(\iota t)^3}{6n^{1/2}} + \frac{(\tau - 3)(\iota t)^4}{24n} + \frac{\gamma^2(\iota t)^6}{72n}\Big].
-\]</span> From here, we invert <span class="math inline">\(\tilde \psi_{Z_n}\)</span> by the inversion formula in <a href="#lem-inversionformula">Lemma&nbsp;<span>12.1</span></a> to obtain the corresponding approximation <span class="math inline">\(\tilde f\)</span> to the pdf <span class="math inline">\(f\)</span> of <span class="math inline">\(Z_n\)</span>. We have <span class="math display">\[\begin{align}
+\]</span> From here, we invert <span class="math inline">\(\tilde \psi_{Z_n}\)</span> by the inversion formula in <a href="#lem-inversionformula" class="quarto-xref">Lemma&nbsp;<span>12.1</span></a> to obtain the corresponding approximation <span class="math inline">\(\tilde f\)</span> to the pdf <span class="math inline">\(f\)</span> of <span class="math inline">\(Z_n\)</span>. We have <span class="math display">\[\begin{align}
 \tilde f_{Z_n}(x) &amp;= \frac{1}{2\pi}\int_{-\infty}^\infty \exp(-\iota t x) \tilde \psi_{Z_n}(t)dt \\
 &amp;= \frac{1}{2\pi}\int_{-\infty}^\infty \exp(-\iota t x) e^{-t^2/2}\Big[ 1 +  \frac{\gamma(\iota t)^3}{6n^{1/2}} + \frac{(\tau - 3)(\iota t)^4}{24n} + \frac{\gamma^2(\iota t)^6}{72n}\Big]dt \\
 &amp;= \frac{1}{2\pi}\int_{-\infty}^\infty \exp(-\iota t x) e^{-t^2/2}dt \\
@@ -462,17 +521,17 @@ Sketch of proof of <a href="#thm-edgeworth">Theorem&nbsp;<span>12.1</span></a>
 &amp; \quad + ~\frac{(\tau - 3)}{24n}\frac{1}{2\pi}\int_{-\infty}^\infty \exp(-\iota t x) e^{-t^2/2}(\iota t)^4dt\\
 &amp;\quad + ~ \frac{\gamma^2}{72n} \frac{1}{2\pi}\int_{-\infty}^\infty \exp(-\iota t x) e^{-t^2/2}(\iota t)^6dt\\
 &amp;=\phi(x) + \frac{\gamma}{6n^{1/2}}H_3(x)\phi(x) + \frac{\tau - 3}{24n}H_4(x)\phi(x) + \frac{\gamma^2}{72n}H_6(x)\phi(x),
-\end{align}\]</span> where the last equality comes from the helpful identity in <a href="#lem-helpfulidentity">Lemma&nbsp;<span>12.2</span></a>. To obtain the corresponding approximation <span class="math inline">\(\tilde F_{Z_n}\)</span> to the cumulative distribution function of <span class="math inline">\(Z_n\)</span> we take the anti-derivative of <span class="math inline">\(\tilde f_{Z_n}\)</span>, making use of the fact <span class="math display">\[
+\end{align}\]</span> where the last equality comes from the helpful identity in <a href="#lem-helpfulidentity" class="quarto-xref">Lemma&nbsp;<span>12.2</span></a>. To obtain the corresponding approximation <span class="math inline">\(\tilde F_{Z_n}\)</span> to the cumulative distribution function of <span class="math inline">\(Z_n\)</span> we take the anti-derivative of <span class="math inline">\(\tilde f_{Z_n}\)</span>, making use of the fact <span class="math display">\[
 \frac{d}{dx}H_k(x)\phi(x) = - H_{k+1}\phi(x)
 \]</span> for each <span class="math inline">\(k\)</span>. We obtain <span class="math display">\[\begin{align}
 \tilde F_{Z_n}(x) = \Phi(x) - \frac{\gamma}{6n^{1/2}}H_2(x)\phi(x) - \frac{\tau - 3}{24n}H_3(x)\phi(x) - \frac{\gamma^2}{72n}H_5(x)\phi(x).
-\end{align}\]</span> The result follows from substituting the expressions in <a href="#tbl-hermite">Table&nbsp;<span>12.1</span></a> for the Hermite polynomials and noting that <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(\tau\)</span> play the roles of <span class="math inline">\(\mu_3/\sigma^3\)</span> and <span class="math inline">\(\mu_4/\sigma^4\)</span>.</p>
+\end{align}\]</span> The result follows from substituting the expressions in <a href="#tbl-hermite" class="quarto-xref">Table&nbsp;<span>12.1</span></a> for the Hermite polynomials and noting that <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(\tau\)</span> play the roles of <span class="math inline">\(\mu_3/\sigma^3\)</span> and <span class="math inline">\(\mu_4/\sigma^4\)</span>.</p>
 </div>
 </div>
 </div>
 <p>The next result is also taken from <span class="citation" data-cites="hall2013bootstrap">Hall (<a href="references.html#ref-hall2013bootstrap" role="doc-biblioref">2013</a>)</span>:</p>
 <div id="thm-edgeworthstudentized" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 12.2 (Second-order Edgeworth expansion for studentized pivot) </strong></span>Under the same conditions as <a href="#thm-edgeworth">Theorem&nbsp;<span>12.1</span></a> and with <span class="math inline">\(T_n = \sqrt{n}(\bar X_n - \mu)/S_n\)</span>, we have <span class="math display">\[
+<p><span class="theorem-title"><strong>Theorem 12.2 (Second-order Edgeworth expansion for studentized pivot)</strong></span> Under the same conditions as <a href="#thm-edgeworth" class="quarto-xref">Theorem&nbsp;<span>12.1</span></a> and with <span class="math inline">\(T_n = \sqrt{n}(\bar X_n - \mu)/S_n\)</span>, we have <span class="math display">\[
 \mathbb{P}( T_n \leq x) = \Phi(x) +n^{-1/2}q_1(x)\phi(x) + n^{-1}q_2(x)\phi(x) + o(n^{-1})\\
 \]</span> as <span class="math inline">\(n \to \infty\)</span>, where <span class="math display">\[\begin{align}
     q_1(x) &amp;= \frac{1}{6}\frac{\mu_3}{\sigma^3}(2x^2 + 1)\\
@@ -480,11 +539,11 @@ Sketch of proof of <a href="#thm-edgeworth">Theorem&nbsp;<span>12.1</span></a>
 \end{align}\]</span></p>
 </div>
 <p>The functions <span class="math inline">\(q_1\)</span> and <span class="math inline">\(q_2\)</span> are given in equations (2.55) and (2.57) on pages 72 and 73 of <span class="citation" data-cites="hall2013bootstrap">Hall (<a href="references.html#ref-hall2013bootstrap" role="doc-biblioref">2013</a>)</span>.</p>
-<p>We omit the proof of <a href="#thm-edgeworthstudentized">Theorem&nbsp;<span>12.2</span></a>.</p>
+<p>We omit the proof of <a href="#thm-edgeworthstudentized" class="quarto-xref">Theorem&nbsp;<span>12.2</span></a>.</p>
 <p>Next we play with Edgeworth expansions by checking, for a couple of settings, how close the first- and second-order expansions are to the true, finite-<span class="math inline">\(n\)</span> sampling distributions of a pivotal quantity.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-hall2013bootstrap" class="csl-entry" role="listitem">
 Hall, Peter. 2013. <em>The Bootstrap and Edgeworth Expansion</em>. Springer Science &amp; Business Media.
 </div>
@@ -526,18 +585,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -569,11 +617,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -583,8 +670,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -596,7 +692,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -640,6 +859,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -665,6 +885,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -726,17 +972,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./bootmeanstudentized.html" class="pagination-link">
+      <a href="./bootmeanstudentized.html" class="pagination-link" aria-label="Bootstrap for the studentized sample mean">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bootstrap for the studentized sample mean</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./edgeworthplay.html" class="pagination-link">
+      <a href="./edgeworthplay.html" class="pagination-link" aria-label="Playing with Edgeworth expansions">
         <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 
