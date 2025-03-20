@@ -406,7 +406,7 @@ Table&nbsp;17.1: Examples of statistical functionals and corresponding plug-in e
 </tr>
 <tr class="even">
 <td>Quantile (<span class="math inline">\(\tau\)</span>)</td>
-<td><span class="math inline">\(\xi_\tau\)</span></td>
+<td><span class="math inline">\(q_\tau\)</span></td>
 <td><span class="math inline">\(\inf\{u : F(u) \geq \tau\}\)</span></td>
 <td><span class="math inline">\(X_{(\lceil u\tau \rceil)}\)</span></td>
 </tr>
@@ -550,9 +550,9 @@ Table&nbsp;17.2: Influence functions of some statistical functionals and their v
 </tr>
 <tr class="even">
 <td>Quantile (<span class="math inline">\(\tau\)</span>)</td>
-<td><span class="math inline">\(\xi_\tau\)</span></td>
-<td><span class="math inline">\(\dfrac{\tau - \mathbf{1}(x \leq \xi_\tau)}{f(\xi_\tau)}\)</span></td>
-<td><span class="math inline">\(\dfrac{\tau(1-\tau)}{[f(\xi_\tau)]^2}\)</span></td>
+<td><span class="math inline">\(q_\tau\)</span></td>
+<td><span class="math inline">\(\dfrac{\tau - \mathbf{1}(x \leq q_\tau)}{f(q_\tau)}\)</span></td>
+<td><span class="math inline">\(\dfrac{\tau(1-\tau)}{[f(q_\tau)]^2}\)</span></td>
 </tr>
 <tr class="odd">
 <td>Smooth function of mean</td>
@@ -583,7 +583,7 @@ Derivations of influence functions and variances in <a href="#tbl-IFs" class="qu
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>We will use <a href="#eq-influencefunctionfind" class="quarto-xref">Equation&nbsp;<span>17.3</span></a> to find the influence functions.</p>
+<p>We will use <a href="#eq-influencefunctionfind" class="quarto-xref">Equation&nbsp;<span>17.3</span></a> to find the influence functions. Some of these deriviations follow those in Section 6.5 of <span class="citation" data-cites="serfling2009approximation">Serfling (<a href="references.html#ref-serfling2009approximation" role="doc-biblioref">2009</a>)</span>.</p>
 <p><strong>The mean</strong></p>
 <p>For the functional <span class="math inline">\(T(F) = \int x dF(x)\)</span> we have <span class="math display">\[
 T(F + \epsilon(\delta_x - F)) = \int x d(F + \epsilon(\delta_x - F))(t) = (1-\epsilon) \mu + \epsilon x,
@@ -615,7 +615,22 @@ T(F + \epsilon(\delta_x - F)) &amp;= \int_Ad(F + \epsilon(\delta_x - F))(t)\\
 \sigma^2_T = \int (\mathbf{1}(x \in A) - p_A)^2 dF(x) = p_A(1-p_A).
 \]</span></p>
 <p><strong>Quantile</strong></p>
-<p>(Need to type details)</p>
+<p>Let <span class="math inline">\(F(\cdot)\)</span> represent the cdf of the distribution <span class="math inline">\(F\)</span> and assume it is continuous and monotone with inverse function <span class="math inline">\(F^{-1}\)</span> such that <span class="math inline">\(F(F^{-1}(\tau)) = \tau\)</span> for all <span class="math inline">\(\tau \in (0,1)\)</span>. Fix some <span class="math inline">\(x\)</span> and let <span class="math display">\[
+F_\epsilon(t) = F(t) + \epsilon(\delta_x(t) - F(t)),
+\]</span> where <span class="math inline">\(\delta_x(\cdot)\)</span> represents the cdf of the distribution <span class="math inline">\(\delta_x\)</span>. Then we find the quantile function <span class="math inline">\(F_\epsilon^{-1}(u) = \inf\{y : F_\epsilon(t) \geq u\}\)</span> is given by <span class="math display">\[
+F^{-1}_\epsilon(u) = \left\{\begin{array}{ll}
+F^{-1}(u/(1-\epsilon)),&amp; 0 &lt; u &lt; (1-\epsilon)F(x)\\
+x,&amp; (1-\epsilon)F(x) \leq u &lt; (1-\epsilon)F(x) + \epsilon\\
+F^{-1}((u-\epsilon)/(1-\epsilon)),&amp;(1-\epsilon)F(x) + \epsilon \leq u &lt; 1.
+\end{array}\right.
+\]</span> Now taking the derivative of <span class="math inline">\(F^{-1}_\epsilon(u)\)</span> on each piece and setting <span class="math inline">\(\epsilon = 0\)</span> gives <span class="math display">\[
+\frac{d}{d\epsilon}F^{-1}_\epsilon(u)\Big|_{\epsilon = 0} = \left\{\begin{array}{ll}
+\dfrac{u}{f(F^{-1}(u))},&amp; 0 &lt; u &lt; F(x)\\
+\dfrac{u-1}{f(F^{-1}(u))},&amp;F(x) &lt; u &lt; 1,
+\end{array}\right.
+\]</span> where the middle case disappears with <span class="math inline">\(\epsilon = 0\)</span>. Now, plugging in <span class="math inline">\(\tau\)</span> for <span class="math inline">\(u\)</span> and assuming <span class="math inline">\(x \neq q_\tau\)</span>, we obtain <span class="math display">\[
+\varphi_F(x) = \frac{d}{d\epsilon}F^{-1}_\epsilon(\tau)\Big|_{\epsilon = 0} = \frac{\tau - \mathbf{1}(x &lt; q_\tau)}{f(q_\tau)},
+\]</span> since <span class="math inline">\(F(x) &lt; \tau \iff x &lt; q_\tau\)</span>. We usually write the indicator function as <span class="math inline">\(\mathbf{1}(x \leq q_\tau)\)</span>.</p>
 <p><strong>Smooth function of mean</strong></p>
 <p>For the functional <span class="math inline">\(T(F) = g(\int xdF(x))\)</span> we have <span class="math display">\[\begin{align}
 \varphi_F(x) &amp;= \frac{d}{d\epsilon} g\Big(\int x d(F + \epsilon(\delta_x - F))(t)\Big)\Big|_{\epsilon = 0} \\
@@ -642,6 +657,9 @@ T(F + \epsilon(\delta_x - F)) &amp;= \int_Ad(F + \epsilon(\delta_x - F))(t)\\
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-fernholz2012mises" class="csl-entry" role="listitem">
 Fernholz, Luisa Turrin. 2012. <em>Von Mises Calculus for Statistical Functionals</em>. Vol. 19. Springer Science &amp; Business Media.
+</div>
+<div id="ref-serfling2009approximation" class="csl-entry" role="listitem">
+Serfling, Robert J. 2009. <em>Approximation Theorems of Mathematical Statistics</em>. John Wiley &amp; Sons.
 </div>
 </div>
 
