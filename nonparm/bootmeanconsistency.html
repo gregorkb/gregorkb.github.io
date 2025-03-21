@@ -301,12 +301,24 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootlinreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootlinregwild.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Wild bootstrap for regression</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -346,7 +358,7 @@ window.Quarto = {
 
 
 <div class="hidden">
-<p>$$ </p>
+<p>$$</p>
 <p>$$</p>
 </div>
 <p>As before, let <span class="math inline">\(X_1,\dots,X_n\)</span> be independent, identically distributed random variables with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2 &lt; \infty\)</span>, and consider the quantity <span class="math display">\[
@@ -439,10 +451,10 @@ Proof of <a href="#thm-bootconsmean" class="quarto-xref">Theorem&nbsp;<span>10.1
 \]</span> By the Kolmogorov SLLN and the continuous mapping theorem we have <span class="math inline">\(\hat \sigma_n \overset{\text{a.s.}}{\longrightarrow}\sigma\)</span> almost surely, so that <span class="math inline">\(\sup_{x\in \mathbb{R}}|\Delta_{n2}(x) | \to 0\)</span> almost surely. By the Berry–Esseen theorem, we can bound the first term by <span class="math display">\[\begin{align}
 \sup_{x \in \mathbb{R}} |\Delta_{n1}(x)| &amp;= \sup_{x \in \mathbb{R}}|\mathbb{P}_*(\sqrt{n}(\bar X_n^* - \bar X_n)/\hat \sigma_n \leq x/\hat \sigma_n) - \Phi(x/\hat \sigma_n)| \\
   &amp;\leq C \frac{\mathbb{E}_*|X_1^* - \bar X_n|^3}{\hat \sigma_n^3\sqrt{n}}.
-\end{align}\]</span> Furthermore, by <a href="appendix.html#prp-minkowski" class="quarto-xref">Proposition&nbsp;<span>19.1</span></a> (Minkowski’s inequality) we have <span class="math display">\[\begin{align}
+\end{align}\]</span> Furthermore, by <a href="appendix.html#prp-minkowski" class="quarto-xref">Proposition&nbsp;<span>21.1</span></a> (Minkowski’s inequality) we have <span class="math display">\[\begin{align}
 (\mathbb{E}_*|X_1^* - \bar X_n|^3)^{1/3} &amp;\leq (\mathbb{E}_*|X_1^*|^3)^{1/3} + (|\bar X_n|^3)^{1/3} \\
 &amp; \leq 2 (\mathbb{E}_*|X_1^*|^3)^{1/3},
-\end{align}\]</span> where the second inequality comes from the application of <a href="appendix.html#prp-jensens" class="quarto-xref">Proposition&nbsp;<span>19.2</span></a> (Jensen’s inequality) <span class="math display">\[
+\end{align}\]</span> where the second inequality comes from the application of <a href="appendix.html#prp-jensens" class="quarto-xref">Proposition&nbsp;<span>21.2</span></a> (Jensen’s inequality) <span class="math display">\[
 |\bar X_n|^3 = |\mathbb{E}X_1^*|^3 \leq \mathbb{E}| X_1^*|^3,
 \]</span> which implies <span class="math inline">\(|\bar X_n| \leq (\mathbb{E}_*|X_1^*|^3)^{1/3}\)</span>. Noting that <span class="math inline">\(\mathbb{E}_*|X_1^*|^3\)</span> is equal to <span class="math inline">\(n^{-1}\sum_{i=1}^n |X_i|^3\)</span>, we can replace the Berry-Esseen bound by <span class="math display">\[
 \sup_{x \in \mathbb{R}} |\Delta_{n1}(x)|  \leq C \frac{2^3}{\hat \sigma_n^2 \sqrt{n}} \frac{1}{n}\sum_{i=1}^n |X_i|^3.

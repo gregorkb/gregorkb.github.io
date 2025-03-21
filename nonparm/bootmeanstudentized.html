@@ -315,12 +315,24 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootlinreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootlinregwild.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Wild bootstrap for regression</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -360,7 +372,7 @@ window.Quarto = {
 
 
 <div class="hidden">
-<p>$$ </p>
+<p>$$</p>
 <p>$$</p>
 </div>
 <p>As before, assume throughout that <span class="math inline">\(X_1,\dots,X_n\)</span> are independent, identically distributed random variables with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2 &lt; \infty\)</span>. In this section, instead of considering the quantity <span class="math inline">\(Y_n = \sqrt{n}(\bar X_n - \mu)\)</span>, which is asymptotically distributed as <span class="math inline">\(\mathcal{N}(0,\sigma^2)\)</span> as <span class="math inline">\(n \to \infty\)</span>, we will consider a studentized version <span class="math inline">\(T_{n} = \sqrt{n}(\bar X_n - \mu)/S_n\)</span>, which is asymptotically distributed as <span class="math inline">\(\mathcal{N}(0,1)\)</span> as <span class="math inline">\(n \to \infty\)</span> (<span class="math inline">\(S_n\)</span> is the sample standard deviation). We will find that beginning with a studentized statistic can lead to better performance of bootstrap confidence intervals.</p>

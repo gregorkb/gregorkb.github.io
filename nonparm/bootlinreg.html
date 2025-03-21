@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; Bootstrap for the sample mean – Some of Nonparametric Statistics</title>
+<title>19&nbsp; Bootstrap for linear regression – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./bootMC.html" rel="next">
-<link href="./boot.html" rel="prev">
+<link href="./bootlinregwild.html" rel="next">
+<link href="./bootstatfunctionals.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -122,7 +122,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootmean.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootlinreg.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -217,7 +217,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bootmean.html" class="sidebar-item-text sidebar-link active">
+  <a href="./bootmean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span></a>
   </div>
 </li>
@@ -283,7 +283,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bootlinreg.html" class="sidebar-item-text sidebar-link">
+  <a href="./bootlinreg.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></span></a>
   </div>
 </li>
@@ -318,9 +318,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootmean.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootlinreg.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-bootmean" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span></h1>
+<h1 class="title"><span id="sec-bootlinreg" class="quarto-section-identifier"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></span></h1>
 </div>
 
 
@@ -341,58 +341,92 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>Throughout this section, let <span class="math inline">\(X_1,\dots,X_n\)</span> be independent, identically distributed random variables with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2 &lt; \infty\)</span>. We will consider using the bootstrap to construct a confidence interval for <span class="math inline">\(\mu\)</span>.</p>
-<p>Let <span class="math inline">\(\bar X_n = n^{-1}\sum_{i=1}^n X_i\)</span> and consider the quantity</p>
-<!-- I might be able to just take out the middle one. -->
-<p><span class="math display">\[
-Y_{n} \equiv \sqrt{n}(\bar X_n - \mu) \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,\sigma^2),
-\]</span> as <span class="math inline">\(n \to \infty\)</span>, where the convergence in distribution is given by the central limit theorem. Making use of the asymptotic distribution of <span class="math inline">\(Y_n\)</span>, we see that the interval with endpoints given by <span class="math display">\[
-\bar X_n \pm z_{\alpha/2}\sigma/\sqrt{n}
-\]</span> will have coverage probability approaching <span class="math inline">\(1-\alpha\)</span> as <span class="math inline">\(n \to \infty\)</span> for any <span class="math inline">\(\alpha \in (0,1)\)</span>. However, this interval is infeasible without knowledge of the variance <span class="math inline">\(\sigma^2\)</span>. If we substitute an estimator for <span class="math inline">\(\sigma\)</span>, say the sample standard deviation <span class="math inline">\(S_n\)</span>, where <span class="math inline">\(S_n^2 = (n-1)^{-1}\sum_{i=1}^n(X_i - \bar X_n)^2\)</span>, the central limit theorem together with Slutzky’s Theorem gives that the interval with endpoints <span id="eq-asympinterval"><span class="math display">\[
-\bar X_n \pm z_{\alpha/2} S_n/\sqrt{n}
-\tag{8.1}\]</span></span> will have coverage probability approaching <span class="math inline">\(1-\alpha\)</span> as <span class="math inline">\(n \to \infty\)</span> provided <span class="math inline">\(\mathbb{E}|X_1|^3 &lt; \infty\)</span> (this moment condition ensures that <span class="math inline">\(S_n\)</span> is a consistent estimator of <span class="math inline">\(\sigma\)</span>). However, the interval in <a href="#eq-asympinterval" class="quarto-xref">Equation&nbsp;<span>8.1</span></a> has notoriously bad coverage (has a coverage probability far from the nominal level) in some settings even when the sample size <span class="math inline">\(n\)</span> is moderately large. The idea of the bootstrap is to estimate the sampling distribution of the quantity <span class="math inline">\(Y_n\)</span> under the sample size <span class="math inline">\(n\)</span> at hand and to use this estimated sampling distribution to make inferences on <span class="math inline">\(\mu\)</span>.</p>
-<p>So, for each <span class="math inline">\(n\geq 1\)</span>, define the cumulative distribution function <span class="math inline">\(G_{Y_n}\)</span> as <span class="math display">\[
-G_{Y_n}(x) = \mathbb{P}(Y_n \leq x)
-\]</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>, and denote the corresponding quantile function by <span class="math inline">\(G^{-1}_{Y_n}\)</span>. Now, if one knew the function <span class="math inline">\(G^{-1}_{Y_n}\)</span>, one could construct a confidence interval for <span class="math inline">\(\mu\)</span> having coverage probability exactly equal to <span class="math inline">\(1-\alpha\)</span> as</p>
-<p><!-- 1. $\displaystyle \Big(\bar X_n - G_{Y_n}^{-1}(1-\alpha/2)\frac{1}{\sqrt{n}}, \bar X_n - G_{Y_n}^{-1}(\alpha/2)\frac{1}{\sqrt{n}}\Big)$ --> <!-- <!-- 2.  $\displaystyle \Big(\bar X_n - G_{Z_n}^{-1}(1-\alpha/2)\frac{\sigma}{\sqrt{n}}, \bar X_n - G_{Z_n}^{-1}(\alpha/2)\frac{\sigma}{\sqrt{n}}\Big)$ --> <!-- 2.  $\displaystyle \Big(\bar X_n - G_{T_n}^{-1}(1-\alpha/2)\frac{S_n}{\sqrt{n}}, \bar X_n - G_{T_n}^{-1}(\alpha/2)\frac{S_n}{\sqrt{n}}\Big)$ --></p>
-<p><span id="eq-exactinterval"><span class="math display">\[
-\big[\bar X_n - G_{Y_n}^{-1}(1-\alpha/2)/\sqrt{n}, \bar X_n - G_{Y_n}^{-1}(\alpha/2)/\sqrt{n}\big].
-\tag{8.2}\]</span></span></p>
+<p>In this section we consider applying the bootstrap to estimate the sampling distributions of least-squares estimators in the linear regression model. We first introduce the model and define some notation:</p>
+<div id="def-linregmodel" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 19.1 (Linear regression model)</strong></span> Let <span class="math inline">\((\mathbf{x}_1,Y_1),\dots,(\mathbf{x}_n,Y_n)\)</span> be data pairs such that <span class="math display">\[
+Y_i = \mathbf{x}_i^T\boldsymbol{\beta}+ \varepsilon_i,\quad i = 1,\dots,n,
+\]</span> where <span class="math inline">\(\mathbf{x}_1,\dots,\mathbf{x}_n \in \mathbb{R}^p\)</span> are fixed (deterministic) with <span class="math inline">\(\sum_{i=1}^n \mathbf{x}_i \mathbf{x}_i^T\)</span> positive definite and <span class="math inline">\(\varepsilon_1,\dots,\varepsilon_n\)</span> independent and identically distributed with <span class="math inline">\(\mathbb{E}\varepsilon_1 = 0\)</span>, <span class="math inline">\(\mathbb{E}\varepsilon_1^2 = \sigma^2 \in(0,\infty)\)</span>, and <span class="math inline">\(\mathbb{E}\varepsilon_1^4 &lt; \infty\)</span>.</p>
+</div>
+<p>Define the <span class="math inline">\(n \times p\)</span> design matrix <span class="math inline">\(\mathbf{X}= [\mathbf{x}_1 \cdots \mathbf{x}_n]^T\)</span> and as well as the <span class="math inline">\(n \times 1\)</span> response vector <span class="math inline">\(\mathbf{Y}= (Y_1,\dots,Y_n)^T\)</span>. Then the least-squares estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span> is given by <span class="math display">\[
+\hat{\boldsymbol{\beta}}_n = \underset{\mathbf{t}\in \mathbb{R}^p}{\operatorname{argmin}} \sum_{i=1}^n(Y_i - \mathbf{x}_i^T\mathbf{t})^2 = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}.
+\]</span> Letting <span class="math inline">\(\mathbf{c}\)</span> be any vector in <span class="math inline">\(\mathbb{R}^p\)</span>, we consider estimating the contrast <span class="math inline">\(\mathbf{c}^T\boldsymbol{\beta}\)</span> with the estimator <span class="math inline">\(\mathbf{c}^T\hat{\boldsymbol{\beta}}\)</span>. We note that <span class="math inline">\(\mathbb{E}\mathbf{c}^T\hat{\boldsymbol{\beta}} = \boldsymbol{\beta}\)</span> and <span class="math display">\[
+\mathbb{V}(\mathbf{c}^T\hat{\boldsymbol{\beta}}_n) = \mathbf{c}^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{c}\sigma^2.
+\]</span> With a view to constructing confidence intervals for the contrast <span class="math inline">\(\mathbf{c}^T\boldsymbol{\beta}\)</span>, we consider the asympotic distributions of the quantities <span class="math display">\[\begin{align}
+Q_n &amp;= \sqrt{n}\mathbf{c}^T(\hat{\boldsymbol{\beta}}_n - \boldsymbol{\beta})\quad \text{ and } \\
+T_n &amp;= \sqrt{n}\mathbf{c}^T(\hat{\boldsymbol{\beta}}_n - \boldsymbol{\beta})  / \hat \sigma_n,
+\end{align}\]</span> where <span class="math inline">\(\hat \sigma_n^2\)</span> given by <span class="math display">\[
+\hat \sigma_n^2 = \frac{1}{n-p}\sum_{i=1}^n(Y_i - \mathbf{x}_i^T\hat{\boldsymbol{\beta}}_n)^2.
+\]</span> So <span class="math inline">\(T_n\)</span> is a studentized version of <span class="math inline">\(Y_n\)</span>.</p>
+<p>The Lindeberg central limit theorem gives the following results concerning the asymptotic distributions <span class="math inline">\(Y_n\)</span> and <span class="math inline">\(T_n\)</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
+<div id="thm-asympbbeta" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 19.1 (Asymptotic distributions of linear contrast pivots)</strong></span> Under the linear regression setup of <a href="#def-linregmodel" class="quarto-xref">Definition&nbsp;<span>19.1</span></a>, let <span class="math inline">\(\Omega_{\mathbf{c},n} = \mathbf{c}^T(n^{-1}\mathbf{X}^T\mathbf{X})^{-1}\mathbf{c}\)</span>. Then we have</p>
+<ol type="1">
+<li><p><span class="math inline">\(\Omega_{\mathbf{c},n}^{-1/2}Q_n \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,\sigma^2)\)</span></p></li>
+<li><p><span class="math inline">\(\Omega_{\mathbf{c},n}^{-1/2}T_n \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,1)\)</span></p></li>
+</ol>
+<p>as <span class="math inline">\(n \to \infty\)</span>, provided <span id="eq-hiicond"><span class="math display">\[
+\max_{1 \leq i \leq n}h_{ii} \to 0
+\tag{19.1}\]</span></span> as <span class="math inline">\(n \to \infty\)</span>, where <span class="math inline">\(h_{11},\dots,h_{nn}\)</span> are the diagonal entries of the matrix <span class="math inline">\(\mathbf{H}= \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\)</span>.</p>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Derivation of the interval in <a href="#eq-exactinterval" class="quarto-xref">Equation&nbsp;<span>8.2</span></a>
+Proof of <a href="#thm-asympbbeta" class="quarto-xref">Theorem&nbsp;<span>19.1</span></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If <span class="math inline">\(Y_n \sim G_{Y_n}\)</span> we may write <span class="math display">\[
-\mathbb{P}(G_{Y_n}^{-1}(\alpha/2) \leq \sqrt{n}(\bar X_n - \mu) \leq G_{Y_n}^{-1}(1-\alpha/2)) = 1-\alpha.
-\]</span> Now, if we rearrange the expression inside the probability operator we find <span class="math display">\[
-\mathbb{P}(\bar X_n - G_{Y_n}^{-1}(1-\alpha/2)/\sqrt{n} \leq \mu \leq \bar X_n - G_{Y_n}^{-1}(\alpha/2)/\sqrt{n}) = 1-\alpha,
-\]</span> which gives the upper and lower endpoints of the interval in <a href="#eq-exactinterval" class="quarto-xref">Equation&nbsp;<span>8.2</span></a>.</p>
+<p>We first make use of <a href="appendix.html#cor-lindebergCLT" class="quarto-xref">Corollary&nbsp;<span>21.1</span></a> to show that <span class="math display">\[
+Z_n = (\mathbf{c}^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{c})^{-1/2}\mathbf{c}^T(\hat{\boldsymbol{\beta}}_n - \boldsymbol{\beta})/\sigma
+\]</span> converges in distribution to a standard Normal random variable. We may write <span class="math display">\[\begin{align}
+Z_n &amp;=(\mathbf{c}^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{c})^{-1/2}\mathbf{c}^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{\varepsilon}/\sigma \\ &amp;=\Big(\sum_{j=1}^n a_j^2\Big)^{-1/2} \sum_{i=1}^na_i (\varepsilon_i / \sigma),
+\end{align}\]</span> where <span class="math inline">\(a_i = \mathbf{c}^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_i\)</span> for <span class="math inline">\(i=1,\dots,n\)</span>. Now we have <span class="math display">\[\begin{align}
+\Big(\sum_{j=1}^n a_j ^2\Big)^{1/2} \max_{1 \leq i \leq n} |a_i| &amp;= (\mathbf{c}^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{c})^{-1/2}\max_{1 \leq i \leq n} |\mathbf{c}^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_i| \\
+&amp;\leq (\mathbf{c}^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{c})^{-1/2}\max_{1 \leq i \leq n} \|(\mathbf{X}^T\mathbf{X})^{-1/2}\mathbf{c}\|\|(\mathbf{X}^T\mathbf{X})^{-1/2}\mathbf{x}_i\|\\
+&amp;= \max_{1 \leq i \leq n} \sqrt{\mathbf{x}_i^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_i}\\
+&amp;= \max_{1 \leq i \leq n} \sqrt{h_{ii}}\\
+&amp; \to 0
+\end{align}\]</span> as <span class="math inline">\(n \to \infty\)</span> by the assumption in <a href="#eq-hiicond" class="quarto-xref">Equation&nbsp;<span>19.1</span></a>, where the inequality comes from Cauchy-Schwarz. So by <a href="appendix.html#cor-lindebergCLT" class="quarto-xref">Corollary&nbsp;<span>21.1</span></a> we have <span class="math display">\[
+Z_n \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,1)
+\]</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
+<p>From here, the first result holds by <span class="math inline">\(\Omega_{\mathbf{c},n}^{-1/2}Q_n = Z_n \sigma\)</span>.</p>
+<p>For the second result, we have <span class="math inline">\(\Omega_{\mathbf{c},n}^{-1/2}T_n = Z_n(\sigma/\hat \sigma_n)\)</span>, where <span class="math inline">\(\hat \sigma_n \overset{\text{p}}{\longrightarrow}\sigma\)</span> (I need to type up the proof of this. It is guaranteed by the finiteness of the fourth moment of the error term), so the second result follows from Slutzky’s Theorem.</p>
 </div>
 </div>
 </div>
-<p>The bootstrap provides a method for estimating the distribution <span class="math inline">\(G_{Y_n}\)</span>, which is as follows:</p>
-<div id="def-bootmean" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 8.1 (Bootstrap estimator of <span class="math inline">\(G_{Y_n}\)</span>)</strong></span> Conditional on <span class="math inline">\(X_1,\dots,X_n\)</span>, introduce random variables <span class="math inline">\(X_1^*,\dots,X_n^*\)</span> such that <span class="math inline">\(X_1^*,\dots,X_n^*|X_1,\dots,X_n \overset{\text{ind}}{\sim}\hat F_n\)</span>, where <span class="math inline">\(\hat F_n\)</span> is the empirical distribution of <span class="math inline">\(X_1,\dots,X_n\)</span>, and define the bootstrap version <span class="math inline">\(Y_n^*\)</span> of <span class="math inline">\(Y_n = \sqrt{n}(\bar X_n - \mu)\)</span> as</p>
-<p><span class="math display">\[
-Y_n^* \equiv \sqrt{n}(\bar X_n^* - \bar X_n),
+<p>The above result suggests that an asymptotic <span class="math inline">\((1-\alpha)100\%\)</span> confidence interval for <span class="math inline">\(\mathbf{c}^T\boldsymbol{\beta}\)</span> can be constructed as <span id="eq-asympCIiid"><span class="math display">\[
+\mathbf{c}^T\hat{\boldsymbol{\beta}}_n \pm z_{\alpha/2} n^{-1/2}\hat \sigma_n \Omega_{\mathbf{c},n}^{1/2}
+\tag{19.2}\]</span></span> based on the asymptotic distribution of <span class="math inline">\(\Omega_{\mathbf{c},n}^{-1/2} T_n\)</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
+<p>Next we describe how to construct bootstrap versions of the quantities <span class="math inline">\(Q_n\)</span> and <span class="math inline">\(T_n\)</span> using the residual bootstrap.</p>
+<div id="def-residbootlinreg" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 19.2 (Residual bootstrap for linear regression)</strong></span> Conditional on the residuals <span class="math inline">\(\hat \varepsilon_i = Y_i - \mathbf{x}_i^T\hat{\boldsymbol{\beta}}_n\)</span>, <span class="math inline">\(i=1,\dots,n\)</span>, introduce independent random variables <span class="math inline">\(\varepsilon_1^*,\dots,\varepsilon_n^*\)</span> identically distributed according to the empirical distribution of <span class="math inline">\(\hat \varepsilon_1,\dots,\hat \varepsilon_n\)</span>. Then set <span class="math inline">\(Y_i^* = \mathbf{x}_i^T\hat{\boldsymbol{\beta}}_n + \varepsilon^*_i\)</span> for <span class="math inline">\(i=1,\dots,n\)</span> and let <span class="math display">\[
+\hat{\boldsymbol{\beta}}^*_n = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}^*,
+\]</span> where <span class="math inline">\(\mathbf{Y}^*=(Y_1^*,\dots,Y_n^*)^T\)</span>. Now define bootstrap versions of <span class="math inline">\(Q_n\)</span> and <span class="math inline">\(T_n\)</span> as <span class="math display">\[\begin{align}
+Q_n^* &amp;= \sqrt{n}\mathbf{c}^T(\hat{\boldsymbol{\beta}}^*_n - \hat{\boldsymbol{\beta}}_n) \quad \text{ and } \\
+T_n^* &amp;= \sqrt{n}\mathbf{c}^T(\hat{\boldsymbol{\beta}}^*_n - \hat{\boldsymbol{\beta}}_n)  / \hat \sigma^*_n,
+\end{align}\]</span> respectively, where <span class="math display">\[
+(\hat \sigma_n^*)^2 = \frac{1}{n-p}\sum_{i=1}^n(Y_i^* - \mathbf{x}_i^T\hat{\boldsymbol{\beta}}_n^*)^2.
 \]</span></p>
-<p>where <span class="math inline">\(\bar X_n^* = n^{-1}\sum_{i=1}^n X_i\)</span>. Then the bootstrap estimator <span class="math inline">\(\hat G_{Y_n}(x)\)</span> of <span class="math inline">\(G_{Y_n}(x)\)</span> is defined as <span class="math display">\[
-\hat G_{Y_n}(x) = \mathbb{P}(Y_n^* \leq x | X_1,\dots,X_n)
-\]</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>.</p>
 </div>
-<p>Once one has obtained the bootstrap estimate <span class="math inline">\(\hat G_{Y_n}(x)\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>, one can use the corresponding quantile function to construct the bootstrap confidence interval</p>
-<p><span id="eq-bootinterval"><span class="math display">\[
-[\bar X_n - \hat G_{Y_n}^{-1}(1-\alpha/2)/\sqrt{n}, \bar X_n - \hat G_{Y_n}^{-1}(\alpha/2)/\sqrt{n}].
-\tag{8.3}\]</span></span></p>
-<p>How do we actually <em>obtain</em> the bootstrap estimators <span class="math inline">\(\hat G_{Y_n}^{-1}(1-\alpha/2)\)</span> and <span class="math inline">\(G_{Y_n}^{-1}(\alpha/2)\)</span> with which to construct the bootstrap interval in <a href="#eq-bootinterval" class="quarto-xref">Equation&nbsp;<span>8.3</span></a>? We describe this next.</p>
+<p>The next result claims that the residual bootstrap works for estimating the sampling distributions of <span class="math inline">\(Q_n\)</span> and <span class="math inline">\(T_n\)</span>.</p>
+<div id="thm-residbootworks" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 19.2 (Residual bootstrap works)</strong></span> In the linear model in <a href="#def-linregmodel" class="quarto-xref">Definition&nbsp;<span>19.1</span></a> under the conditions of <a href="#thm-asympbbeta" class="quarto-xref">Theorem&nbsp;<span>19.1</span></a> we have</p>
+<ol type="1">
+<li><p><span class="math inline">\(\sup_{x \in \mathbb{R}}\Big|\mathbb{P}_*(Q_n^* \leq x) - \mathbb{P}(Q_n \leq x)\Big| \overset{\text{p}}{\longrightarrow}0\)</span></p></li>
+<li><p><span class="math inline">\(\sup_{x \in \mathbb{R}}\Big|\mathbb{P}_*(T_n^* \leq x) - \mathbb{P}(T_n \leq x)\Big| \overset{\text{p}}{\longrightarrow}0\)</span></p></li>
+</ol>
+<p>as <span class="math inline">\(n \to \infty\)</span> with <span class="math inline">\(Q_n^*\)</span> and <span class="math inline">\(T_n^*\)</span> as defined in <a href="#def-residbootlinreg" class="quarto-xref">Definition&nbsp;<span>19.2</span></a>.</p>
+</div>
+<p><em>I still need to type up a proof of this!</em></p>
+<p>One can show that the residual bootstrap for estimating the distribution of <span class="math inline">\(T_n\)</span> is second-order correct, but I do not present this as a formal result.</p>
+<p>The above result suggests that asymptotic <span class="math inline">\((1-\alpha)100\%\)</span> confidence intervals for <span class="math inline">\(\mathbf{c}^T\boldsymbol{\beta}\)</span> can be constructed as follows based on the bootstrap estimates of the sampling distributions of <span class="math inline">\(Q_n\)</span> and <span class="math inline">\(T_n\)</span>: Given (sorted) Monte Carlo realizations <span class="math inline">\(Q^{*(1)}\leq \dots \leq Q^{*(B)}_n\)</span> of <span class="math inline">\(Q_n^*\)</span> and <span class="math inline">\(T^{*(1)}\leq \dots \leq T^{*(B)}_n\)</span> of <span class="math inline">\(T_n^*\)</span> for some large <span class="math inline">\(B\)</span>, <span class="math inline">\((1-\alpha)100\%\)</span> bootstrap confidence intervals for <span class="math inline">\(\mathbf{c}^T\boldsymbol{\beta}\)</span> based on <span class="math inline">\(Q_n\)</span> and <span class="math inline">\(T_n\)</span> can be constructed as <span class="math display">\[\begin{align}
+&amp;\big[\mathbf{c}^T\hat{\boldsymbol{\beta}}_n - Q_n^{*(\lceil (\alpha/2) B\rceil)} n^{-1/2},~ \mathbf{c}^T\hat{\boldsymbol{\beta}}_n - Q_n^{*(\lceil (1-\alpha/2) B\rceil)} n^{-1/2}\big] \quad \text{ and }\\
+&amp;\big[\mathbf{c}^T\hat{\boldsymbol{\beta}}_n - T_n^{*(\lceil (\alpha/2) B\rceil)}  n^{-1/2}\hat \sigma_n,~ \mathbf{c}^T\hat{\boldsymbol{\beta}}_n - T_n^{*(\lceil (1-\alpha/2) B\rceil)} n^{-1/2}\hat \sigma_n\big]
+\end{align}\]</span> respectively.</p>
 
 
 
@@ -819,13 +853,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./boot.html" class="pagination-link" aria-label="The bootstrap">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The bootstrap</span></span>
+      <a href="./bootstatfunctionals.html" class="pagination-link" aria-label="Bootstrap for statistical functionals">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./bootMC.html" class="pagination-link" aria-label="Implementing the bootstrap">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./bootlinregwild.html" class="pagination-link" aria-label="Wild bootstrap for regression">
+        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Wild bootstrap for regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
