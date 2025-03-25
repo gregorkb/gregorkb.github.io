@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>10&nbsp; Pinsker’s theorem for Sobolev ellipsoids – Some of Nonparametric Statistics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./boot.html" rel="next">
+<link href="./sobolev.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean",
+  "openSidebar": false
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mnonparmreg.html">Nonparametric regression</a></li><li class="breadcrumb-item"><a href="./pinsker.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pinsker’s theorem for Sobolev ellipsoids</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Some of Nonparametric Statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Nonparametric regression</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mnonparmreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Multivariate nonparametric regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mNWestimator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additivemodel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additivebackfit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Backfitting in the additive model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additiveresults.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Additive model pros and cons</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additivesparse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sparse additive model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./normalmeans.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Getting to the Normal means model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./minimaxnormalmeans.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Minimax risk in the Normal means model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sobolev.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sobolev functions and ellipsoids</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pinsker.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pinsker’s theorem for Sobolev ellipsoids</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bootstrap</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./boot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">The bootstrap</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootmean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootMC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootmeanconsistency.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootmeanstudentized.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Bootstrap for the studentized sample mean</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./edgeworth.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./edgeworthplay.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./edgeworthmulti.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Multivariate Edgeworth expansions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./edgeworthboot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Edgeworth expansions for the bootstrap</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootpercentile.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The percentile bootstrap</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./statfunctionals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Statistical functionals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootstatfunctionals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootlinreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootlinregwild.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Wild bootstrap for regression</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mnonparmreg.html">Nonparametric regression</a></li><li class="breadcrumb-item"><a href="./pinsker.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pinsker’s theorem for Sobolev ellipsoids</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-pinsker" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pinsker’s theorem for Sobolev ellipsoids</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
+</div>
+<p>Consider the Normal means model, this time with infinite dimension, in which we observe</p>
+<p><span class="math display">\[
+Z_j = \theta_j + \sigma \xi_j, \quad j = 1,2,\dots,
+\]</span> where <span class="math inline">\(\boldsymbol{\theta}= (\theta_1,\theta_2,\dots)\)</span> is unknown, <span class="math inline">\(\xi_1,\xi_2,\dots,\)</span> are independent <span class="math inline">\(\mathcal{N}(0,1)\)</span> random variables, and <span class="math inline">\(\sigma &gt; 0\)</span>. The goal of this section will be to state the minimax risk for estimating <span class="math inline">\(\boldsymbol{\theta}\)</span> in the infinite-dimensional Normal means model when <span class="math inline">\(\boldsymbol{\theta}\)</span> belongs to the Sobolev ellipsoid <span class="math inline">\(\Theta_{\text{Sob}}(\beta,L)\)</span>.</p>
+<p>Before coming to the Sobolev ellipsoid, we will find it more convenient to first consider the minimax risk over a general ellipsoid <span class="math display">\[
+\Theta(c,a_1,a_2,\dots) = \Big\{(\theta_1,\theta_2,\dots) \in \mathbb{R}: \quad \sum_{j=1}^\infty \theta^2_j &lt; \infty \text{ and } \sum_{j=1}^\infty a_j^2 \theta_j^2 \leq c^2\Big\}.
+\]</span> Moreover, rather than considering all possible estimators of <span class="math inline">\(\boldsymbol{\theta}\)</span>, we will consider only linear estimators, that is, estimators of the form <span class="math inline">\(\hat{\boldsymbol{\theta}}_{\boldsymbol{\lambda}} = (\lambda_1Z_1,\lambda_2Z_2,\dots)\)</span> for <span class="math inline">\(\lambda = (\lambda_1,\lambda_2,\dots)\)</span>. Let <span class="math display">\[
+M_{\text{lin}}(\Theta(c,a_1,a_2,\dots)) = \inf_{\boldsymbol{\lambda}} \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta})
+\]</span> denote the linear minimax risk over the general ellipse <span class="math inline">\(\Theta(c,a_1,a_2,\dots)\)</span>, where <span class="math display">\[
+R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) = \sum_{j=1}^\infty \mathbb{E}(\lambda_j Z_j - \theta_j)^2
+\]</span> under squared error loss.</p>
+<p>The following result is adapted from some results given in Section 3.2 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>.</p>
+<div id="thm-linearminimaxellipsoid" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 10.1 (Linear minimax risk on a general ellipsoid)</strong></span> Let <span class="math inline">\(a_1,a_2,\dots\)</span> be an increasing sequence such that <span class="math inline">\(|\{j:a_j = 0\}|&lt;\infty\)</span> and <span class="math inline">\(a_j \to +\infty\)</span> and set <span class="math inline">\(\boldsymbol{\ell}= (\ell_1,\ell_2,\dots)\)</span> with <span class="math inline">\(\ell_j = (1 - \eta a_j)_+\)</span> for <span class="math inline">\(j=1,2,\dots\)</span>, where <span class="math inline">\(\eta\)</span> is the solution to <span id="eq-etapinsker"><span class="math display">\[
+\eta^{-1}\sigma^2\sum_{i=1}^\infty a_j (1 - \eta a_j)_+ = c^2.
+\tag{10.1}\]</span></span> Then we have <span id="eq-linearminimaxellipsoid"><span class="math display">\[
+M_{\text{lin}}(\Theta(c,a_1,a_2,\dots))  = \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\ell},\boldsymbol{\theta}) = \sigma^2\sum_{j=1}^\infty \ell_j,
+\tag{10.2}\]</span></span> provided the sum is finite.</p>
+</div>
+<p>The values <span class="math inline">\(\ell_1,\ell_2,\dots\)</span> defined in <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>10.1</span></a> are called the Pinsker weights. When we define the Pinsker weights we use <span class="math inline">\((x)_+ = \mathbf{1}(x &gt; 0)(x)\)</span> for all <span class="math inline">\(x\in \mathbb{R}\)</span>.</p>
+<p><a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>10.1</span></a> does not appear particularly illuminating, but when we choose <span class="math inline">\(a_1,a_2,\dots\)</span> and <span class="math inline">\(c\)</span> such that <span class="math inline">\(\Theta(c,a_1,a_2,\dots)\)</span> becomes the Sobolev ellipsoid <span class="math inline">\(\Theta_{\text{Sob}}(\beta,L)\)</span>, the result will show us something interesting.</p>
+<p>Before stating the proof of <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>10.1</span></a>, we give some insight into how one arrives at the Pinsker weights—in particular how the equation <a href="#eq-etapinsker" class="quarto-xref">Equation&nbsp;<span>10.1</span></a> arises. Note that for any <span class="math inline">\(\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)\)</span> we have <span class="math display">\[
+R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) = \sum_{j=1}^\infty(\lambda_j^2\sigma^2 + (1-\lambda_j)^2\theta_j^2).
+\]</span> This is minimized when <span class="math inline">\(\lambda_j = \theta_j^2/(\sigma^2 + \theta_j^2)\)</span> for each <span class="math inline">\(j\)</span> (simple calculus will show this). Plugging these values in for <span class="math inline">\(\lambda_1,\lambda_2,\dots\)</span> gives <span class="math display">\[
+\inf_\boldsymbol{\lambda}R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) = \sum_{j=1}^\infty\frac{\sigma^2\theta_j^2}{\sigma^2 + \theta_j^2}.
+\]</span> From here, one may find <span class="math display">\[
+\sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} \inf_{\boldsymbol{\lambda}} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}),
+\]</span> which serves a lower bound for the minimax risk (ADD A RESULT WITH A PROOF IN THE APPENDIX), by solving the constrained optimization problem: <span class="math display">\[
+\text{ maximize }\sum_{j=1}^\infty\frac{\sigma^2\theta_j^2}{\sigma^2 + \theta_j^2} \quad \text{ subject to } \sum_{j=1}^\infty a_j^2\theta_j^2 \leq c^2.
+\]</span> Introducing the Lagrangian function <span class="math display">\[
+\mathcal{L}(\kappa,\theta_1,\theta_2,\dots) = \sum_{j=1}^\infty\frac{\sigma^2\theta_j^2}{\sigma^2 + \theta_j^2} - \kappa \Big(\sum_{j=1}^\infty a_j^2\theta_j^2 - c^2\Big),
+\]</span> we set <span class="math display">\[\begin{align}
+\frac{\partial}{\partial \theta_j}\mathcal{L}(\kappa,\theta_1,\theta_2,\dots) = 2\frac{\theta_j\sigma^4}{(\sigma^2 + \theta_j^2)^2} - 2\kappa a_j^2\theta_j &amp;= 0 \quad j=1,2,\dots\\
+\frac{\partial}{\partial \kappa}\mathcal{L}(\kappa,\theta_1,\theta_2,\dots) = \sum_{j=1}^\infty a_j^2\theta_j^2 - c^2 = 0,
+\end{align}\]</span> which gives <span id="eq-thetapinsker"><span class="math display">\[
+\theta_j = \frac{\sigma^2}{\sqrt{\kappa}a_j}(1 - \sqrt{\kappa}a_j)_+, \quad j=1,2,\dots,
+\tag{10.3}\]</span></span> as well as <span id="eq-kappa"><span class="math display">\[
+\frac{\sigma^2}{\sqrt{\kappa}}\sum_{j=1}^\infty a_j (1 - \sqrt{\kappa}a_j)_+ = c^2.
+\tag{10.4}\]</span></span> Lemma 3.3 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span> guarantees that a solution to <a href="#eq-kappa" class="quarto-xref">Equation&nbsp;<span>10.4</span></a> exists when the sequence <span class="math inline">\(a_j\)</span> is increasing with <span class="math inline">\(|\{j: a_j = 0\}| &lt;\infty\)</span> and <span class="math inline">\(a_j \to +\infty\)</span>. Note that <a href="#eq-etapinsker" class="quarto-xref">Equation&nbsp;<span>10.1</span></a> in <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>10.1</span></a> is the same as <a href="#eq-kappa" class="quarto-xref">Equation&nbsp;<span>10.4</span></a> but with <span class="math inline">\(\sqrt{\kappa}\)</span> replaced by <span class="math inline">\(\eta\)</span>.</p>
+<!-- , where $\kappa$ solves @eq-kappa and define $\theta_1,\theta_2,\dots$ as in @eq-thetapinsker. Then we have -->
+<!-- \begin{align} -->
+<!-- \sum_{j=1}^\infty\frac{\sigma^2\theta_j^2}{\sigma^2 + \theta_j^2} &= \sum_{j=1}^\infty \frac{\sigma^4(1/(\eta a_j) - 1)_+}{\sigma^2 + \sigma^2(1/(\eta a_j) - 1)_+} \\ -->
+<!--   &= \sigma^2 \sum_{j=1}^\infty \onevec(1/(\eta a_j) - 1 > 0)(1 - \eta a_j)  \\ -->
+<!--   &= \sigma^2 \sum_{j=1}^\infty (1 - \eta a_j)_+  \\ -->
+<!--   &= \sigma^2 \sum_{j=1}^\infty \ell_j. -->
+<!-- \end{align} -->
+<!-- This shows -->
+<!-- $$ -->
+<!-- \sup_{\btheta \in \Theta(c,a_1,a_2,\dots)} \inf_{\blambda} R(\hat{\btheta}_\blambda,\btheta) = \sigma^2 \sum_{j=1}^\infty \ell_j. -->
+<!-- $$ -->
+<!-- This shows $M_{\text{lin}}(\Theta(c,a_1,a_2,\dots)) = \sigma^2\sum_{j=1}^\infty \ell_j$. -->
+<!-- It remains to show that the estimator $\hat{\btheta}_\bell$ achieves the linear minimax risk.   -->
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof of <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>10.1</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Rather than using the two-step strategy from <a href="minimaxnormalmeans.html" class="quarto-xref"><span>Chapter 8</span></a>, we can find the linear minimax risk over a general ellipsoid directly. We follow the arguments given in Section 3.2 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>.</p>
+<p>We begin by noting <span class="math display">\[
+\sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} \inf_{\boldsymbol{\lambda}} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta})  \leq  \inf_{\boldsymbol{\lambda}} \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)}  R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) \leq \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\ell},\boldsymbol{\theta}),
+\]</span> where the first inequality always holds from changing the order of the supremum and the infimum. From here, we see that it is sufficient to show <span id="eq-linearminimaxupper"><span class="math display">\[
+\sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\ell},\boldsymbol{\theta}) \leq \sigma^2\sum_{j=1}^\infty \ell_j
+\tag{10.5}\]</span></span> as well as <span id="eq-linearminimaxlower"><span class="math display">\[
+\sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} \inf_{\boldsymbol{\lambda}} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) \geq \sigma^2 \sum_{j=1}^\infty \ell_j.
+\tag{10.6}\]</span></span> For any <span class="math inline">\(\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)\)</span> we have <span class="math display">\[\begin{align}
+R(\hat{\boldsymbol{\theta}}_\boldsymbol{\ell},\boldsymbol{\theta}) &amp;= \sum_{j=1}^\infty(\ell_j^2\sigma^2 + (1-\ell_j)^2\theta_j^2) \\
+&amp;=\sigma^2 \sum_{j=1}^\infty \ell_j^2 + \sum_{j :~ a_j &gt; 0}(1 - \ell_j)^2a_j^{-2}a_j^2\theta_j^2 \quad \text{($\ell_j = 1$ if $a_j = 0$)} \\
+&amp; \leq \sigma^2 \sum_{j=1}^\infty \ell_j^2 + \sup_{j : ~a_j &gt; 0}|(1 - \ell_j)^2a_j^{-2}|\sum_{j = 1}^\infty a_j^2\theta_j^2\\
+&amp; \leq \sigma^2 \sum_{j=1}^\infty \ell_j^2 + \eta^2 c^2 \quad \text{($1-\eta a_j \leq \ell_j \implies (1-\ell_j)a_j^{-2} \leq \eta^2$)}\\
+&amp; \leq \sigma^2 \sum_{j=1}^\infty \ell_j^2 + \eta \sigma^2 \sum_{j=1}^\infty a_j \ell_j \\
+&amp; \leq \sigma^2 \sum_{j=1}^\infty \ell_j(\ell_j + \eta a_j) \\
+&amp; \leq \sigma^2 \sum_{j :~\ell_j &gt; 0} \ell_j( 1 - \eta a_j + \eta a_j) \\
+&amp; \leq \sigma^2 \sum_{j=1}^\infty \ell_j,
+\end{align}\]</span> which establishes <a href="#eq-linearminimaxupper" class="quarto-xref">Equation&nbsp;<span>10.5</span></a>.</p>
+<p>Now to establish <a href="#eq-linearminimaxlower" class="quarto-xref">Equation&nbsp;<span>10.6</span></a>, let <span class="math display">\[
+V = \Big\{(v_1,v_2,\dots) : v_j^2 = \frac{\sigma^2(1 - \eta a_j)_+}{\eta a_j} \text{ if } a_j &gt; 0, v_j \in \mathbb{R}\text{ if } a_j = 0\Big\}
+\]</span> and write <span class="math display">\[\begin{align}
+\sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)}\inf_{\boldsymbol{\lambda}}R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) &amp;\geq \sup_{\mathbf{v}\in V}\inf_{\boldsymbol{\lambda}}R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) \\
+&amp;= \sup_{\mathbf{v}\in V}\Big\{ \sum_{j=1}^\infty\frac{\sigma^2 v_j^2}{\sigma^2 + v_j^2}\Big\} \\
+&amp;= \sup_{\mathbf{v}\in V}\Big\{ \sum_{j:~ a_j = 0} \frac{\sigma^2 v_j^2}{\sigma^2 + v_j^2} + \sum_{j:~ a_j &gt; 0} \frac{\sigma^4 (1 - \eta a_j)_+}{\sigma^2\eta a_j + \sigma^2(1 - \eta a_j)_+}\Big\} \\
+&amp;= |\{j: a_j = 0\}| + \sigma^2 \sum_{j:~ a_j &gt; 0} (1 - \eta a_j)_+ \\
+&amp;= \sigma^2\sum_{j=1}^\infty \ell_j.
+\end{align}\]</span> This completes the proof.</p>
+</div>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-tsybakov2008introduction" class="csl-entry" role="listitem">
+Tsybakov, Alexandre B. 2008. <em>Introduction to Nonparametric Estimation</em>. Springer Science &amp; Business Media.
+</div>
+</div>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./sobolev.html" class="pagination-link" aria-label="Sobolev functions and ellipsoids">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sobolev functions and ellipsoids</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./boot.html" class="pagination-link" aria-label="The bootstrap">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">The bootstrap</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
