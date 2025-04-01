@@ -445,22 +445,23 @@ M_{\text{lin}}(\Theta(c,a_1,a_2,\dots))  = \sup_{\boldsymbol{\theta}\in \Theta(c
 R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) = \sum_{j=1}^\infty(\lambda_j^2\sigma^2 + (1-\lambda_j)^2\theta_j^2).
 \]</span> This is minimized when <span class="math inline">\(\lambda_j = \theta_j^2/(\sigma^2 + \theta_j^2)\)</span> for each <span class="math inline">\(j\)</span> (simple calculus will show this). Plugging these values in for <span class="math inline">\(\lambda_1,\lambda_2,\dots\)</span> gives <span class="math display">\[
 \inf_\boldsymbol{\lambda}R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) = \sum_{j=1}^\infty\frac{\sigma^2\theta_j^2}{\sigma^2 + \theta_j^2}.
-\]</span> From here, one may find <span class="math display">\[
-\sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} \inf_{\boldsymbol{\lambda}} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta})
-\]</span> by solving the constrained optimization problem: <span class="math display">\[
-\text{ maximize }\sum_{j=1}^\infty\frac{\sigma^2\theta_j^2}{\sigma^2 + \theta_j^2} \quad \text{ subject to } \sum_{j=1}^\infty a_j^2\theta_j^2 \leq c^2.
+\]</span> Now, we find that an equation like <a href="#eq-etapinsker" class="quarto-xref">Equation&nbsp;<span>10.1</span></a> arises when we solve the optimization problem <span class="math display">\[
+\text{ maximize }\sum_{j=1}^\infty\frac{\sigma^2\theta_j^2}{\sigma^2 + \theta_j^2} \quad \text{ subject to } \sum_{j=1}^\infty a_j^2\theta_j^2 = c^2.
 \]</span> Introducing the Lagrangian function <span class="math display">\[
-\mathcal{L}(\kappa,\theta_1,\theta_2,\dots) = \sum_{j=1}^\infty\frac{\sigma^2\theta_j^2}{\sigma^2 + \theta_j^2} - \kappa \Big(\sum_{j=1}^\infty a_j^2\theta_j^2 - c^2\Big),
-\]</span> we set <span class="math display">\[\begin{align}
+\mathcal{L}(\kappa,\theta_1,\theta_2,\dots) = \sum_{j=1}^\infty\frac{\sigma^2\theta_j^2}{\sigma^2 + \theta_j^2} - \kappa \Big(\sum_{j=1}^\infty a_j^2\theta_j^2 - c^2\Big)
+\]</span> and setting <span class="math display">\[\begin{align}
 \frac{\partial}{\partial \theta_j}\mathcal{L}(\kappa,\theta_1,\theta_2,\dots) &amp;= 2\frac{\theta_j\sigma^4}{(\sigma^2 + \theta_j^2)^2} - 2\kappa a_j^2\theta_j = 0, \quad j=1,2,\dots\\
-\frac{\partial}{\partial \kappa}\mathcal{L}(\kappa,\theta_1,\theta_2,\dots) &amp;= \sum_{j=1}^\infty a_j^2\theta_j^2 - c^2 = 0,
-\end{align}\]</span> which gives <span id="eq-thetapinsker"><span class="math display">\[
+\frac{\partial}{\partial \kappa}\mathcal{L}(\kappa,\theta_1,\theta_2,\dots) &amp;= \sum_{j=1}^\infty a_j^2\theta_j^2 - c^2 = 0
+\end{align}\]</span> gives <span id="eq-thetapinsker"><span class="math display">\[
 \theta_j^2 = \frac{\sigma^2}{\sqrt{\kappa}a_j}(1 - \sqrt{\kappa}a_j)_+, \quad j=1,2,\dots,
-\tag{10.3}\]</span></span> as well as <span id="eq-kappa"><span class="math display">\[
+\tag{10.3}\]</span></span> and <span id="eq-kappa"><span class="math display">\[
 \frac{\sigma^2}{\sqrt{\kappa}}\sum_{j=1}^\infty a_j (1 - \sqrt{\kappa}a_j)_+ = c^2.
-\tag{10.4}\]</span></span> Lemma 3.3 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span> guarantees that a solution to <a href="#eq-kappa" class="quarto-xref">Equation&nbsp;<span>10.4</span></a> exists when the sequence <span class="math inline">\(a_j\)</span> is increasing with <span class="math inline">\(|\{j: a_j = 0\}| &lt;\infty\)</span> and <span class="math inline">\(a_j \to +\infty\)</span>. Now the optimal weights <span class="math inline">\(\lambda_j = \theta_j^2/(\sigma^2 + \theta_j^2)\)</span> with <span class="math inline">\(\theta_j^2\)</span> as obtained in <a href="#eq-thetapinsker" class="quarto-xref">Equation&nbsp;<span>10.3</span></a> become <span class="math inline">\(\lambda_j = (1 - \sqrt{\kappa}a_j)_+\)</span> for <span class="math inline">\(j=1,2,\dots\)</span> Under this choice of <span class="math inline">\(\lambda_1, \lambda_2,\dots\)</span> we obtain <span class="math inline">\(R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) = \sum_{j=1}^\infty(1 - \sqrt{\kappa}a_j)_+\)</span>. This serves as a lower bound on the linear minimax risk, since <span class="math display">\[\begin{align}
-\sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} \inf_{\boldsymbol{\lambda}} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) &amp;\leq  \inf_{\boldsymbol{\lambda}}  \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)}R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta})
-\end{align}\]</span> due to <a href="appendix.html#lem-supinf" class="quarto-xref">Lemma&nbsp;<span>29.1</span></a>.</p>
+\tag{10.4}\]</span></span> Lemma 3.3 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span> guarantees that a solution to <a href="#eq-kappa" class="quarto-xref">Equation&nbsp;<span>10.4</span></a> exists when the sequence <span class="math inline">\(a_j\)</span> is increasing with <span class="math inline">\(|\{j: a_j = 0\}| &lt;\infty\)</span> and <span class="math inline">\(a_j \to +\infty\)</span>. Now the optimal weights <span class="math inline">\(\lambda_j = \theta_j^2/(\sigma^2 + \theta_j^2)\)</span> with <span class="math inline">\(\theta_j^2\)</span> as obtained in <a href="#eq-thetapinsker" class="quarto-xref">Equation&nbsp;<span>10.3</span></a> become <span class="math inline">\(\lambda_j = (1 - \sqrt{\kappa}a_j)_+\)</span> for <span class="math inline">\(j=1,2,\dots\)</span> Under this choice of <span class="math inline">\(\lambda_1, \lambda_2,\dots\)</span> we obtain <span class="math inline">\(R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) = \sigma^2 \sum_{j=1}^\infty(1 - \sqrt{\kappa}a_j)_+\)</span>. This gives us a clue that we should propose <span class="math inline">\(\sigma^2\sum_{j=1}^\infty \ell_j\)</span> as a candidate for the linear minimax risk in <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>10.1</span></a>.</p>
+<!-- This serves as a lower bound on the linear minimax risk, since  -->
+<!-- \begin{align} -->
+<!-- \sup_{\btheta \in \Theta(c,a_1,a_2,\dots)} \inf_{\blambda} R(\hat{\btheta}_\blambda,\btheta) &\leq  \inf_{\blambda}  \sup_{\btheta \in \Theta(c,a_1,a_2,\dots)}R(\hat{\btheta}_\blambda,\btheta) -->
+<!-- \end{align} -->
+<!-- due to @lem-supinf. -->
 <p>Note that <a href="#eq-etapinsker" class="quarto-xref">Equation&nbsp;<span>10.1</span></a> in <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>10.1</span></a> is the same as <a href="#eq-kappa" class="quarto-xref">Equation&nbsp;<span>10.4</span></a> but with <span class="math inline">\(\sqrt{\kappa}\)</span> replaced by <span class="math inline">\(\eta\)</span>.</p>
 <!-- , where $\kappa$ solves @eq-kappa and define $\theta_1,\theta_2,\dots$ as in @eq-thetapinsker. Then we have -->
 <!-- \begin{align} -->
