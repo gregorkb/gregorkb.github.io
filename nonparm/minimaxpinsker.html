@@ -175,13 +175,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Nonparametric regression</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mnonparmreg.html" class="sidebar-item-text sidebar-link">
@@ -269,13 +269,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Bootstrap</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./boot.html" class="sidebar-item-text sidebar-link">
@@ -450,7 +450,7 @@ M_{\text{Lin}}(\Theta_{\text{Sob}}(\beta,L)) = \sup_{\boldsymbol{\theta}\in \The
 <p>Note that in this section and in the previous section we have only reported the minimax risk over all <em>linear</em> estimators of <span class="math inline">\(\boldsymbol{\theta}\)</span>. Since our focus was on linear estimators only, we could derive the minimax risk somewhat directly—that is without the use of any Bayesian arguments such as those used in <a href="minimaxnormalmeans.html" class="quarto-xref"><span>Chapter 8</span></a>.</p>
 <p>It turns out that finding the minimax rate over <em>all possible estimators</em> <span class="math inline">\(\hat{\boldsymbol{\theta}}\)</span> of <span class="math inline">\(\boldsymbol{\theta}\)</span> in the Normal means model when <span class="math inline">\(\boldsymbol{\theta}\)</span> lies in a Sobolev ellipsoid requires considerably more work. The details are given in Section 3.3 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>. Pinsker’s theorem establishes that the minimax risk over all possible estimators in this setting is the same as the linear minimax risk which we have presented.</p>
 <p>Even so, we have, in our foray into minimax theory, at last seen something resembling a nonparametric rate: If we make the infinite dimensional Normal means model finite-dimensional with dimension <span class="math inline">\(n\)</span> and replace the error term variance <span class="math inline">\(\sigma^2\)</span> with <span class="math inline">\(\sigma^2/n\)</span>, the linear minimax risk presented in <a href="#thm-linearminimaxsobolev" class="quarto-xref">Theorem&nbsp;<span>11.1</span></a> will take the form <span class="math display">\[
-C \sigma^2 n^{-\frac{4\beta}{2\beta + 1}}(1 + o(1))\quad \text{ as } n \to \infty,
+\tilde C n^{-\frac{4\beta}{2\beta + 1}}(1 + o(1))\quad \text{ as } n \to \infty,
 \]</span> which we can connect to the nonparametric rates of convergence we encountered in previous chapters on nonparametric regression and density estimation.</p>
 
 
