@@ -362,8 +362,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bootnonparmreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Bootstrap for nonparametric regression</span></span></a>
+  <a href="./nonparmregCB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence bands in nonparametric regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootCB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -371,7 +377,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -504,10 +510,10 @@ Proof of <a href="#thm-bootconsmean" class="quarto-xref">Theorem&nbsp;<span>16.1
 \]</span> By the Kolmogorov SLLN and the continuous mapping theorem we have <span class="math inline">\(\hat \sigma_n \overset{\text{a.s.}}{\longrightarrow}\sigma\)</span> almost surely, so that <span class="math inline">\(\sup_{x\in \mathbb{R}}|\Delta_{n2}(x) | \to 0\)</span> almost surely. By the Berry–Esseen theorem, we can bound the first term by <span class="math display">\[\begin{align}
 \sup_{x \in \mathbb{R}} |\Delta_{n1}(x)| &amp;= \sup_{x \in \mathbb{R}}|\mathbb{P}_*(\sqrt{n}(\bar X_n^* - \bar X_n)/\hat \sigma_n \leq x/\hat \sigma_n) - \Phi(x/\hat \sigma_n)| \\
   &amp;\leq C \frac{\mathbb{E}_*|X_1^* - \bar X_n|^3}{\hat \sigma_n^3\sqrt{n}}.
-\end{align}\]</span> Furthermore, by <a href="appendix.html#prp-minkowski" class="quarto-xref">Proposition&nbsp;<span>28.1</span></a> (Minkowski’s inequality) we have <span class="math display">\[\begin{align}
+\end{align}\]</span> Furthermore, by <a href="appendix.html#prp-minkowski" class="quarto-xref">Proposition&nbsp;<span>29.1</span></a> (Minkowski’s inequality) we have <span class="math display">\[\begin{align}
 (\mathbb{E}_*|X_1^* - \bar X_n|^3)^{1/3} &amp;\leq (\mathbb{E}_*|X_1^*|^3)^{1/3} + (|\bar X_n|^3)^{1/3} \\
 &amp; \leq 2 (\mathbb{E}_*|X_1^*|^3)^{1/3},
-\end{align}\]</span> where the second inequality comes from the application of <a href="appendix.html#prp-jensens" class="quarto-xref">Proposition&nbsp;<span>28.2</span></a> (Jensen’s inequality) <span class="math display">\[
+\end{align}\]</span> where the second inequality comes from the application of <a href="appendix.html#prp-jensens" class="quarto-xref">Proposition&nbsp;<span>29.2</span></a> (Jensen’s inequality) <span class="math display">\[
 |\bar X_n|^3 = |\mathbb{E}X_1^*|^3 \leq \mathbb{E}| X_1^*|^3,
 \]</span> which implies <span class="math inline">\(|\bar X_n| \leq (\mathbb{E}_*|X_1^*|^3)^{1/3}\)</span>. Noting that <span class="math inline">\(\mathbb{E}_*|X_1^*|^3\)</span> is equal to <span class="math inline">\(n^{-1}\sum_{i=1}^n |X_i|^3\)</span>, we can replace the Berry-Esseen bound by <span class="math display">\[
 \sup_{x \in \mathbb{R}} |\Delta_{n1}(x)|  \leq C \frac{2^3}{\hat \sigma_n^2 \sqrt{n}} \frac{1}{n}\sum_{i=1}^n |X_i|^3.

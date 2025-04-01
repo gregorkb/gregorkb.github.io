@@ -342,8 +342,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bootnonparmreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Bootstrap for nonparametric regression</span></span></a>
+  <a href="./nonparmregCB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence bands in nonparametric regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootCB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -351,7 +357,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -433,7 +439,7 @@ Proof of <a href="#thm-asympbbeta" class="quarto-xref">Theorem&nbsp;<span>25.1</
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>We first make use of <a href="appendix.html#cor-lindebergCLT" class="quarto-xref">Corollary&nbsp;<span>28.1</span></a> to show that <span class="math display">\[
+<p>We first make use of <a href="appendix.html#cor-lindebergCLT" class="quarto-xref">Corollary&nbsp;<span>29.1</span></a> to show that <span class="math display">\[
 Z_n = (\mathbf{c}^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{c})^{-1/2}\mathbf{c}^T(\hat{\boldsymbol{\beta}}_n - \boldsymbol{\beta})/\sigma
 \]</span> converges in distribution to a standard Normal random variable. We may write <span class="math display">\[\begin{align}
 Z_n &amp;=(\mathbf{c}^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{c})^{-1/2}\mathbf{c}^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{\varepsilon}/\sigma \\ &amp;=\Big(\sum_{j=1}^n a_j^2\Big)^{-1/2} \sum_{i=1}^na_i (\varepsilon_i / \sigma),
@@ -443,7 +449,7 @@ Z_n &amp;=(\mathbf{c}^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{c})^{-1/2}\mathbf{c}
 &amp;= \max_{1 \leq i \leq n} \sqrt{\mathbf{x}_i^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_i}\\
 &amp;= \max_{1 \leq i \leq n} \sqrt{h_{ii}}\\
 &amp; \to 0
-\end{align}\]</span> as <span class="math inline">\(n \to \infty\)</span> by the assumption in <a href="#eq-hiicond" class="quarto-xref">Equation&nbsp;<span>25.1</span></a>, where the inequality comes from Cauchy-Schwarz. So by <a href="appendix.html#cor-lindebergCLT" class="quarto-xref">Corollary&nbsp;<span>28.1</span></a> we have <span class="math display">\[
+\end{align}\]</span> as <span class="math inline">\(n \to \infty\)</span> by the assumption in <a href="#eq-hiicond" class="quarto-xref">Equation&nbsp;<span>25.1</span></a>, where the inequality comes from Cauchy-Schwarz. So by <a href="appendix.html#cor-lindebergCLT" class="quarto-xref">Corollary&nbsp;<span>29.1</span></a> we have <span class="math display">\[
 Z_n \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,1)
 \]</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
 <p>From here, the first result holds by <span class="math inline">\(\Omega_{\mathbf{c},n}^{-1/2}Q_n = Z_n \sigma\)</span>.</p>

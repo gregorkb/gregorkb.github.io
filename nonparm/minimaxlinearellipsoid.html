@@ -362,8 +362,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bootnonparmreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Bootstrap for nonparametric regression</span></span></a>
+  <a href="./nonparmregCB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence bands in nonparametric regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootCB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -371,7 +377,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -454,7 +460,7 @@ R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) = \sum_{j=
 \frac{\sigma^2}{\sqrt{\kappa}}\sum_{j=1}^\infty a_j (1 - \sqrt{\kappa}a_j)_+ = c^2.
 \tag{10.4}\]</span></span> Lemma 3.3 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span> guarantees that a solution to <a href="#eq-kappa" class="quarto-xref">Equation&nbsp;<span>10.4</span></a> exists when the sequence <span class="math inline">\(a_j\)</span> is increasing with <span class="math inline">\(|\{j: a_j = 0\}| &lt;\infty\)</span> and <span class="math inline">\(a_j \to +\infty\)</span>. Now the optimal weights <span class="math inline">\(\lambda_j = \theta_j^2/(\sigma^2 + \theta_j^2)\)</span> with <span class="math inline">\(\theta_j^2\)</span> as obtained in <a href="#eq-thetapinsker" class="quarto-xref">Equation&nbsp;<span>10.3</span></a> become <span class="math inline">\(\lambda_j = (1 - \sqrt{\kappa}a_j)_+\)</span> for <span class="math inline">\(j=1,2,\dots\)</span> Under this choice of <span class="math inline">\(\lambda_1, \lambda_2,\dots\)</span> we obtain <span class="math inline">\(R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) = \sum_{j=1}^\infty(1 - \sqrt{\kappa}a_j)_+\)</span>. This serves as a lower bound on the linear minimax risk, since <span class="math display">\[\begin{align}
 \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} \inf_{\boldsymbol{\lambda}} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) &amp;\leq  \inf_{\boldsymbol{\lambda}}  \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)}R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta})
-\end{align}\]</span> due to <a href="appendix.html#lem-supinf" class="quarto-xref">Lemma&nbsp;<span>28.1</span></a>.</p>
+\end{align}\]</span> due to <a href="appendix.html#lem-supinf" class="quarto-xref">Lemma&nbsp;<span>29.1</span></a>.</p>
 <p>Note that <a href="#eq-etapinsker" class="quarto-xref">Equation&nbsp;<span>10.1</span></a> in <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>10.1</span></a> is the same as <a href="#eq-kappa" class="quarto-xref">Equation&nbsp;<span>10.4</span></a> but with <span class="math inline">\(\sqrt{\kappa}\)</span> replaced by <span class="math inline">\(\eta\)</span>.</p>
 <!-- , where $\kappa$ solves @eq-kappa and define $\theta_1,\theta_2,\dots$ as in @eq-thetapinsker. Then we have -->
 <!-- \begin{align} -->
@@ -486,7 +492,7 @@ Proof of <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;
 <p>Now begin by noting <span class="math display">\[\begin{align}
 \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} \inf_{\boldsymbol{\lambda}} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta})  &amp;\leq  \inf_{\boldsymbol{\lambda}} \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)}  R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) \\
 &amp; \leq \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\ell},\boldsymbol{\theta}),
-\end{align}\]</span> where the first inequality always holds from changing the order of the supremum and the infimum (See <a href="appendix.html#lem-supinf" class="quarto-xref">Lemma&nbsp;<span>28.1</span></a>). From here, we see that it is sufficient to show <span id="eq-linearminimaxupper"><span class="math display">\[
+\end{align}\]</span> where the first inequality always holds from changing the order of the supremum and the infimum (See <a href="appendix.html#lem-supinf" class="quarto-xref">Lemma&nbsp;<span>29.1</span></a>). From here, we see that it is sufficient to show <span id="eq-linearminimaxupper"><span class="math display">\[
 \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\ell},\boldsymbol{\theta}) \leq \sigma^2\sum_{j=1}^\infty \ell_j
 \tag{10.5}\]</span></span> as well as <span id="eq-linearminimaxlower"><span class="math display">\[
 \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} \inf_{\boldsymbol{\lambda}} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) \geq \sigma^2 \sum_{j=1}^\infty \ell_j.

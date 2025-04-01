@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>28&nbsp; Appendix – Some of Nonparametric Statistics</title>
+<title>29&nbsp; Appendix – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,7 +51,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./references.html" rel="next">
-<link href="./bootnonparmreg.html" rel="prev">
+<link href="./bootCB.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -142,7 +142,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix.html"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Appendix</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix.html"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Appendix</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -362,8 +362,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bootnonparmreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Bootstrap for nonparametric regression</span></span></a>
+  <a href="./nonparmregCB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence bands in nonparametric regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootCB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -371,7 +377,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -393,7 +399,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-appendix" class="quarto-section-identifier"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Appendix</span></span></h1>
+<h1 class="title"><span id="sec-appendix" class="quarto-section-identifier"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Appendix</span></span></h1>
 </div>
 
 
@@ -416,7 +422,7 @@ window.Quarto = {
 </div>
 <p>Here we collect some miscellaneous definitions and results, some of which are adapted from <span class="citation" data-cites="athreya2006measure">Athreya and Lahiri (<a href="references.html#ref-athreya2006measure" role="doc-biblioref">2006</a>)</span>.</p>
 <div id="lem-supinf" class="theorem lemma">
-<p><span class="theorem-title"><strong>Lemma 28.1</strong></span> For a function <span class="math inline">\(f:\mathcal{X}\times\mathcal{Y}\to \mathbb{R}\)</span> we have <span class="math display">\[
+<p><span class="theorem-title"><strong>Lemma 29.1</strong></span> For a function <span class="math inline">\(f:\mathcal{X}\times\mathcal{Y}\to \mathbb{R}\)</span> we have <span class="math display">\[
 \sup_{y \in \mathcal{Y}} \inf_{x \in \mathcal{X}}f(x,y) \leq  \inf_{x \in \mathcal{X}} \sup_{y \in \mathcal{Y}} f(x,y).
 \]</span></p>
 </div>
@@ -426,7 +432,7 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Proof of <a href="#lem-supinf" class="quarto-xref">Lemma&nbsp;<span>28.1</span></a>
+Proof of <a href="#lem-supinf" class="quarto-xref">Lemma&nbsp;<span>29.1</span></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -444,22 +450,22 @@ Proof of <a href="#lem-supinf" class="quarto-xref">Lemma&nbsp;<span>28.1</span><
 </div>
 </div>
 <div id="def-lpnormrv" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 28.1 (<span class="math inline">\(\ell_p\)</span>-norm of a random variable)</strong></span> The <span class="math inline">\(\ell_p\)</span>-norm of a random variable <span class="math inline">\(X\)</span> is defined as <span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 29.1 (<span class="math inline">\(\ell_p\)</span>-norm of a random variable)</strong></span> The <span class="math inline">\(\ell_p\)</span>-norm of a random variable <span class="math inline">\(X\)</span> is defined as <span class="math display">\[
 |X|_p \equiv (\mathbb{E}|X|^p)^{1/p}
 \]</span> for <span class="math inline">\(p \in(0,\infty)\)</span>.</p>
 </div>
 <div id="prp-minkowski" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 28.1 (Minkowski’s inequality)</strong></span> For any random variables <span class="math inline">\(X,Y \in \mathbb{R}\)</span> and any <span class="math inline">\(p \in (1,\infty)\)</span> we have <span class="math display">\[
+<p><span class="theorem-title"><strong>Proposition 29.1 (Minkowski’s inequality)</strong></span> For any random variables <span class="math inline">\(X,Y \in \mathbb{R}\)</span> and any <span class="math inline">\(p \in (1,\infty)\)</span> we have <span class="math display">\[
 |X - Y|_p \leq |X|_p + |Y|_p.
 \]</span></p>
 </div>
 <div id="prp-jensens" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 28.2 (Jensen’s inequality)</strong></span> If <span class="math inline">\(g: \mathbb{R}\to \mathbb{R}\)</span> is a convex function, then or any random variabl <span class="math inline">\(X\)</span> we have <span class="math display">\[
+<p><span class="theorem-title"><strong>Proposition 29.2 (Jensen’s inequality)</strong></span> If <span class="math inline">\(g: \mathbb{R}\to \mathbb{R}\)</span> is a convex function, then or any random variabl <span class="math inline">\(X\)</span> we have <span class="math display">\[
 g(\mathbb{E}X) \leq \mathbb{E}g(X)
 \]</span> provided <span class="math inline">\(\mathbb{E}|X| &lt; \infty\)</span> and <span class="math inline">\(\mathbb{E}|g(X)| &lt; \infty\)</span>.</p>
 </div>
 <div id="prp-kolslln" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 28.3 (Kolmogorov’s strong law of large numbers)</strong></span> For <span class="math inline">\(X_1,\dots,X_n\)</span> identically distributed we have <span class="math display">\[
+<p><span class="theorem-title"><strong>Proposition 29.3 (Kolmogorov’s strong law of large numbers)</strong></span> For <span class="math inline">\(X_1,\dots,X_n\)</span> identically distributed we have <span class="math display">\[
 \bar X_n \overset{\text{a.s.}}{\longrightarrow}c
 \]</span> for some <span class="math inline">\(c \in \mathbb{R}\)</span> if and only if <span class="math inline">\(\mathbb{E}|X_1| &lt; \infty\)</span>, in which case <span class="math inline">\(c =\mathbb{E}X_1\)</span>.</p>
 </div>
@@ -472,19 +478,19 @@ g(\mathbb{E}X) \leq \mathbb{E}g(X)
 <!-- as $n \to \infty$. -->
 <!-- ::: -->
 <div id="thm-multinomial" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 28.1 (Multinomial theorem)</strong></span> For positive integers <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span> we have <span class="math display">\[
+<p><span class="theorem-title"><strong>Theorem 29.1 (Multinomial theorem)</strong></span> For positive integers <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span> we have <span class="math display">\[
 (a_1 + \dots + a_m)^n = \sum \Big(\frac{n!}{n_1!\cdots n_m!}\Big) a_1^{n_1}\cdots a_m^{n_m},
 \]</span> where the sum is taken over all <span class="math inline">\((n_1,\dots,n_m) \in \{0,\dots,n\}^m\)</span> such that <span class="math inline">\(n_1 + \dots + n_m = n\)</span></p>
 </div>
 <p>The following statement of the Lindeberg central limit theorem is adapted from Theorem 11.1.1 of <span class="citation" data-cites="athreya2006measure">Athreya and Lahiri (<a href="references.html#ref-athreya2006measure" role="doc-biblioref">2006</a>)</span>.</p>
 <div id="thm-lindebergCLT" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 28.2 (Lindeberg central limit theorem)</strong></span> For each <span class="math inline">\(n \geq 1\)</span> let <span class="math inline">\(U_1,\dots,U_n\)</span> be a collection of independent random variables with zero mean and finite variances and define <span class="math inline">\(V_1,\dots,V_n\)</span> such that <span class="math display">\[
+<p><span class="theorem-title"><strong>Theorem 29.2 (Lindeberg central limit theorem)</strong></span> For each <span class="math inline">\(n \geq 1\)</span> let <span class="math inline">\(U_1,\dots,U_n\)</span> be a collection of independent random variables with zero mean and finite variances and define <span class="math inline">\(V_1,\dots,V_n\)</span> such that <span class="math display">\[
 V_i = \Big(\sum_{j=1}^n \mathbb{V}U_j\Big)^{-1/2}U_{i}
 \]</span> for <span class="math inline">\(i = 1,\dots,n\)</span>. Then <span class="math display">\[
 \sum_{i=1}^n V_i \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,1)
 \]</span> as <span class="math inline">\(n \to \infty\)</span> provided <span id="eq-lindcond"><span class="math display">\[
 \sum_{i=1}^n \mathbb{E}|V_i|^2 \mathbf{1}( | V_i| &gt; \epsilon) \to 0
-\tag{28.1}\]</span></span> as <span class="math inline">\(n \to \infty\)</span> for every <span class="math inline">\(\epsilon &gt; 0\)</span>.</p>
+\tag{29.1}\]</span></span> as <span class="math inline">\(n \to \infty\)</span> for every <span class="math inline">\(\epsilon &gt; 0\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -492,16 +498,16 @@ V_i = \Big(\sum_{j=1}^n \mathbb{V}U_j\Big)^{-1/2}U_{i}
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Proof of <a href="#thm-lindebergCLT" class="quarto-xref">Theorem&nbsp;<span>28.2</span></a>
+Proof of <a href="#thm-lindebergCLT" class="quarto-xref">Theorem&nbsp;<span>29.2</span></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The proof follows pages 345–347 of <span class="citation" data-cites="athreya2006measure">Athreya and Lahiri (<a href="references.html#ref-athreya2006measure" role="doc-biblioref">2006</a>)</span>, but drops the triangular array notation.</p>
-<p>For each <span class="math inline">\(n \geq 1\)</span>, set <span class="math inline">\(\sigma^2_i = \mathbb{V}U_i\)</span> for <span class="math inline">\(i=1,\dots,n\)</span> and suppose (without loss of generality) that <span class="math inline">\(\sum_{i=1}^n \sigma^2_i =1\)</span>, so that <span class="math inline">\(V_i = U_i\)</span>. Given that the Lindeberg condition <a href="#eq-lindcond" class="quarto-xref">Equation&nbsp;<span>28.1</span></a> is satisfied, we may choose a sequence <span class="math inline">\(\epsilon_n \to 0\)</span> such that <span id="eq-lindcondsequence"><span class="math display">\[
+<p>For each <span class="math inline">\(n \geq 1\)</span>, set <span class="math inline">\(\sigma^2_i = \mathbb{V}U_i\)</span> for <span class="math inline">\(i=1,\dots,n\)</span> and suppose (without loss of generality) that <span class="math inline">\(\sum_{i=1}^n \sigma^2_i =1\)</span>, so that <span class="math inline">\(V_i = U_i\)</span>. Given that the Lindeberg condition <a href="#eq-lindcond" class="quarto-xref">Equation&nbsp;<span>29.1</span></a> is satisfied, we may choose a sequence <span class="math inline">\(\epsilon_n \to 0\)</span> such that <span id="eq-lindcondsequence"><span class="math display">\[
 \sum_{i=1}^n \mathbb{E}|V_i|^2 \mathbf{1}(|V_i|&gt;\epsilon_n) \to 0.
-\tag{28.2}\]</span></span> From here we will show that the characteristic function of <span class="math inline">\(\sum_{i=1}^n V_i\)</span> converges to that of the standard Normal distribution, which is given by <span class="math inline">\(\psi_Z(t) = \exp(-t^2/2)\)</span>. Letting <span class="math inline">\(\psi_i\)</span> represent the characteristic function of <span class="math inline">\(V_i\)</span> for each <span class="math inline">\(i=1,\dots,n\)</span>, we have <span class="math display">\[\begin{align}
+\tag{29.2}\]</span></span> From here we will show that the characteristic function of <span class="math inline">\(\sum_{i=1}^n V_i\)</span> converges to that of the standard Normal distribution, which is given by <span class="math inline">\(\psi_Z(t) = \exp(-t^2/2)\)</span>. Letting <span class="math inline">\(\psi_i\)</span> represent the characteristic function of <span class="math inline">\(V_i\)</span> for each <span class="math inline">\(i=1,\dots,n\)</span>, we have <span class="math display">\[\begin{align}
     \Big|\mathbb{E}&amp;\exp \left( \iota t \sum_{j=1}^n V_i \right)  - \exp\left(-\frac{t^2}{2}\right)\Big| \\
     &amp; \leq \left| \prod_{i=1}^n \psi_i(t) - \prod_{i=1}^n \left(1 - \frac{t^2\sigma_i^2}{2}\right)\right|  \\
     &amp; \quad \quad + \left|\prod_{i=1}^n \left(1 - \frac{t^2\sigma_i^2}{2}\right) - \prod_{i=1}^n\exp\left(-\frac{t^2\sigma_i^2}{2}\right) \right| \\
@@ -515,7 +521,7 @@ Proof of <a href="#thm-lindebergCLT" class="quarto-xref">Theorem&nbsp;<span>28.2
     &amp; \leq \sum_{i=1}^n \mathbb{E}|t V_i|^3\mathbf{1}(|V_i \leq \epsilon_n|) + \sum_{i=1}^n \mathbb{E}|t V_i|^2 \mathbf{1}(|V_i|&gt;\epsilon_n) \\
     &amp; \leq t^3 \epsilon_n \sum_{i=1}^n \mathbb{E}V_i^2 + t^2\sum_{i=1}^n\mathbb{E}|V_i|^2\mathbf{1}(|V_i| &gt; \epsilon_n)\\
     &amp; \to 0 \text{ as $n \to \infty$,}
-\end{align}\]</span> since <span class="math inline">\(\sum_{i=1}^n \mathbb{E}V_i^2=1\)</span> and <span class="math inline">\(\epsilon_n \to 0\)</span> and by <a href="#eq-lindcondsequence" class="quarto-xref">Equation&nbsp;<span>28.2</span></a>. Now, since <span class="math inline">\(|e^x - 1 - x | \leq x^2e^{|x|}\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>, we may write <span class="math display">\[\begin{align}
+\end{align}\]</span> since <span class="math inline">\(\sum_{i=1}^n \mathbb{E}V_i^2=1\)</span> and <span class="math inline">\(\epsilon_n \to 0\)</span> and by <a href="#eq-lindcondsequence" class="quarto-xref">Equation&nbsp;<span>29.2</span></a>. Now, since <span class="math inline">\(|e^x - 1 - x | \leq x^2e^{|x|}\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>, we may write <span class="math display">\[\begin{align}
     B_n &amp;:= \sum_{i=1}^n\left|1 - \frac{t^2\sigma_i^2}{2} - \exp\left(-\frac{t^2\sigma_i^2}{2}\right) \right| \\
     &amp;\leq \sum_{i=1}^n \left(\frac{t^2\sigma_i^2}{2}\right) \exp\left( \frac{t^2\sigma_i^2}{2}\right) \\
     &amp; \leq \frac{t^4}{4}\left(\max_{1\leq i \leq n}\sigma_i^2\right)\exp\left[\frac{t^2}{2}\left(\max_{1\leq i \leq n}\sigma_i^2\right)\right]\sum_{i=1}^n \sigma_i^2 \\
@@ -525,16 +531,16 @@ Proof of <a href="#thm-lindebergCLT" class="quarto-xref">Theorem&nbsp;<span>28.2
             &amp; =  \max_{1\leq i \leq n} \mathbb{E}\left[  |V_i|^2\mathbf{1}(|V_i|\leq\epsilon_n) + |V_i|^2\mathbf{1}(|V_i| &gt; \epsilon_n)\right] \\
             &amp; \leq  \epsilon_n^2 + \sum_{i=1}^n \mathbb{E}|V_i|^2\mathbf{1}(|V_i| &gt; \epsilon_n)\\
             &amp; \to 0 \text{ as $n \to \infty$,}
-\end{align*}\]</span> by <a href="#eq-lindcondsequence" class="quarto-xref">Equation&nbsp;<span>28.2</span></a>. This completes the proof.</p>
+\end{align*}\]</span> by <a href="#eq-lindcondsequence" class="quarto-xref">Equation&nbsp;<span>29.2</span></a>. This completes the proof.</p>
 </div>
 </div>
 </div>
 <div id="cor-lindebergCLT" class="theorem corollary">
-<p><span class="theorem-title"><strong>Corollary 28.1 (Corollary to the Lindeberg central limit theorem)</strong></span> For each <span class="math inline">\(n \geq 1\)</span>, let <span class="math inline">\(\xi_1,\dots,\xi_n\)</span> be independent random variables with zero mean and unit variance and let <span class="math inline">\(a_1,\dots,a_n \in \mathbb{R}\)</span> be a collection of real numbers. Then <span class="math display">\[
+<p><span class="theorem-title"><strong>Corollary 29.1 (Corollary to the Lindeberg central limit theorem)</strong></span> For each <span class="math inline">\(n \geq 1\)</span>, let <span class="math inline">\(\xi_1,\dots,\xi_n\)</span> be independent random variables with zero mean and unit variance and let <span class="math inline">\(a_1,\dots,a_n \in \mathbb{R}\)</span> be a collection of real numbers. Then <span class="math display">\[
 \Big(\sum_{i=1}^n a_i ^2\Big)^{-1/2}\sum_{i = 1}^n a_i \xi_i \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,1)
 \]</span> as <span class="math inline">\(n \to \infty\)</span> provided <span id="eq-maxacond"><span class="math display">\[
 \Big(\sum_{j=1}^n a_j ^2\Big)^{-1/2}\max_{1 \leq i \leq n} |a_i| \to 0
-\tag{28.3}\]</span></span> as <span class="math inline">\(n \to \infty\)</span>.</p>
+\tag{29.3}\]</span></span> as <span class="math inline">\(n \to \infty\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -542,19 +548,19 @@ Proof of <a href="#thm-lindebergCLT" class="quarto-xref">Theorem&nbsp;<span>28.2
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Proof of Corollary <a href="#cor-lindebergCLT" class="quarto-xref">Corollary&nbsp;<span>28.1</span></a>
+Proof of Corollary <a href="#cor-lindebergCLT" class="quarto-xref">Corollary&nbsp;<span>29.1</span></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>For each <span class="math inline">\(n \geq 1\)</span>, let <span class="math inline">\(U_i = a_i\xi_i\)</span>, so that <span class="math inline">\(\mathbb{V}U_i = a_i^2\)</span> for <span class="math inline">\(i =1,\dots,n\)</span>. Accordingly, set <span class="math inline">\(V_i = (\sum_{i=1}^n a_i^2)^{-1/2}a_i \xi_i\)</span>. Now we show that the collections of variables <span class="math inline">\(V_1,\dots,V_n\)</span>, <span class="math inline">\(n \geq 1\)</span>, satisfy the Lindeberg condition in <a href="#eq-lindcond" class="quarto-xref">Equation&nbsp;<span>28.1</span></a>. We have <span class="math display">\[\begin{align}
+<p>For each <span class="math inline">\(n \geq 1\)</span>, let <span class="math inline">\(U_i = a_i\xi_i\)</span>, so that <span class="math inline">\(\mathbb{V}U_i = a_i^2\)</span> for <span class="math inline">\(i =1,\dots,n\)</span>. Accordingly, set <span class="math inline">\(V_i = (\sum_{i=1}^n a_i^2)^{-1/2}a_i \xi_i\)</span>. Now we show that the collections of variables <span class="math inline">\(V_1,\dots,V_n\)</span>, <span class="math inline">\(n \geq 1\)</span>, satisfy the Lindeberg condition in <a href="#eq-lindcond" class="quarto-xref">Equation&nbsp;<span>29.1</span></a>. We have <span class="math display">\[\begin{align}
     \sum_{i=1}^n &amp;\mathbb{E}|V_i|^2 \mathbf{1}(|V_i| &gt; \epsilon) \\
      &amp;= \sum_{i=1}^n \frac{a_i^2 }{\sum_{j=1}^n a_j^2}\mathbb{E}|\xi_i|^2 \mathbf{1}\Big(|a_i \xi_i| &gt; \epsilon (\textstyle \sum_{j=1}^na_j^2)^{1/2}\Big)\\
      &amp;\leq  \sum_{i=1}^n \frac{a_i^2 }{\sum_{j=1}^na_j^2}\mathbb{E}|\xi_1|^2 \mathbf{1}\Big(|\xi_1|\max_{1\leq i \leq n}|a_i| &gt; \epsilon  \textstyle (\sum_{j=1}^n a_j^2)^{1/2}\big)\\
      &amp;= \mathbb{E}|\xi_1|^2 \mathbf{1}\Big( |\xi_1| &gt; \epsilon \frac{(\sum_{j=1}^na_j^2)^{1/2}}{\max_{1\leq i \leq n}|a_i|}\Big)\\
      &amp;\to 0
-\end{align}\]</span> by the dominated convergence theorem, since <span class="math inline">\(\mathbb{E}|\xi_1|^2 &lt; \infty\)</span> and by the condition in <a href="#eq-maxacond" class="quarto-xref">Equation&nbsp;<span>28.3</span></a>.</p>
+\end{align}\]</span> by the dominated convergence theorem, since <span class="math inline">\(\mathbb{E}|\xi_1|^2 &lt; \infty\)</span> and by the condition in <a href="#eq-maxacond" class="quarto-xref">Equation&nbsp;<span>29.3</span></a>.</p>
 </div>
 </div>
 </div>
@@ -1022,8 +1028,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./bootnonparmreg.html" class="pagination-link" aria-label="Bootstrap for nonparametric regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Bootstrap for nonparametric regression</span></span>
+      <a href="./bootCB.html" class="pagination-link" aria-label="Bootstrap confidence bands in nonparametric regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Additive model – Some of Nonparametric Statistics</title>
+<title>28&nbsp; Bootstrap confidence bands in nonparametric regression – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -50,8 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./additivebackfit.html" rel="next">
-<link href="./mNWestimator.html" rel="prev">
+<link href="./appendix.html" rel="next">
+<link href="./nonparmregCB.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -101,35 +81,6 @@ div.csl-indent {
   });
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -142,7 +93,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mnonparmreg.html">Nonparametric regression</a></li><li class="breadcrumb-item"><a href="./additivemodel.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Additive model</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootCB.html"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -196,7 +147,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./additivemodel.html" class="sidebar-item-text sidebar-link active">
+  <a href="./additivemodel.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
   </div>
 </li>
@@ -368,7 +319,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bootCB.html" class="sidebar-item-text sidebar-link">
+  <a href="./bootCB.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span></a>
   </div>
 </li>
@@ -397,9 +348,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mnonparmreg.html">Nonparametric regression</a></li><li class="breadcrumb-item"><a href="./additivemodel.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Additive model</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootCB.html"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-additivemodel" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Additive model</span></span></h1>
+<h1 class="title"><span id="sec-bootCB" class="quarto-section-identifier"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span></h1>
 </div>
 
 
@@ -420,37 +371,8 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<div id="def-additivity" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 3.1 (Additivity assumption)</strong></span> A function <span class="math inline">\(m:[0,1]^p \to \mathbb{R}\)</span> is said to satisfy the addivity assumption if <span class="math display">\[
-m(\mathbf{x}) = m_1(x_1) + \dots + m_p(x_p)
-\]</span> for all <span class="math inline">\(\mathbf{x}= (x_1,\dots,x_p) \in \mathbb{R}^p\)</span> for some functions <span class="math inline">\(m_j:[0,1]\to\mathbb{R}\)</span>, <span class="math inline">\(j=1,\dots,p\)</span>, which we call the additive components of <span class="math inline">\(m\)</span>.</p>
-</div>
-<p><span class="citation" data-cites="stone1985additive">Stone (<a href="references.html#ref-stone1985additive" role="doc-biblioref">1985</a>)</span> argued that a good many functions <span class="math inline">\(m:[0,1]^p \to \mathbb{R}\)</span> which are likely to arise in multiple regression could be well-approximated by additive functions.</p>
-<div id="def-additivemodel" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 3.2 (Additive model)</strong></span> The additive model for observed data <span class="math inline">\((\mathbf{x}_1,Y_1),\dots,(\mathbf{x}_n,Y_n) \in [0,1]^p \times \mathbb{R}\)</span> is <span id="eq-additivemodel"><span class="math display">\[
-Y_i = \mu +  m_1(x_{i1}) + \dots + m_p(x_{ip}) + \varepsilon_i,
-\tag{3.1}\]</span></span> for <span class="math inline">\(i = 1,\dots,n\)</span>, where <span class="math inline">\(\mu\)</span> is an unknown mean, <span class="math inline">\(m_1,\dots,m_p\)</span> are unknown functions on <span class="math inline">\([0,1]\)</span>, and <span class="math inline">\(\varepsilon_1,\dots,\varepsilon_n\)</span> are independent random variables with mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(\sigma^2\)</span>.</p>
-</div>
-<p>We must immediately consider the question of identifiability in the additive model: Are the additive components <span class="math inline">\(m_1,\dots,m_p\)</span> uniquely defined by the additivity assumption? We find, from the following example, that they are not.</p>
-<div id="exm-additiveunid" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.1 (Unidentifiability of additive components)</strong></span> Consider the additive model in the case <span class="math inline">\(p=2\)</span> with additive components <span class="math inline">\(m_1\)</span> and <span class="math inline">\(m_2\)</span>. Then for some constant <span class="math inline">\(c\)</span>, set <span class="math inline">\(m_1^*(x_1) = m_1(x_1) - c\)</span> and <span class="math inline">\(m_2^*(x_2) = m_2(x_2) + c\)</span>. Then we have <span class="math display">\[
-m_1(x_1) + m_2(x_2) = m_1^*(x_1) + m_2^*(x_2),
-\]</span> for all <span class="math inline">\(\mathbf{x}= (x_1,x_2) \in \mathbb{R}^2\)</span>. This demonstrates that the additive components are not uniquely determined in the additive model.</p>
-</div>
-<p>Before we can estimate the additive components <span class="math inline">\(m_1,\dots,m_p\)</span> in the additive model, we must remove from each one the unidentifiable constant which can shift the function up or down, as illustrated in <a href="#exm-additiveunid" class="quarto-xref">Example&nbsp;<span>3.1</span></a>. To this end we impose upon each <span class="math inline">\(m_j\)</span> the identifiability condition <span id="eq-idadditive"><span class="math display">\[
-\frac{1}{n}\sum_{i=1}^n m_j(x_{ij}) = 0
-\tag{3.2}\]</span></span> for <span class="math inline">\(j = 1,\dots,p\)</span>.</p>
-<div id="rem-idadditive" class="proof remark">
-<p><span class="proof-title"><em>Remark 3.1</em>. </span>Note: If the design points were iid random variables <span class="math inline">\(X_{1j},\dots,X_{nj}\)</span> (instead of being fixed) for each <span class="math inline">\(j = 1,\dots,p\)</span>, the condition in <a href="#eq-idadditive" class="quarto-xref">Equation&nbsp;<span>3.2</span></a> would be stated as <span class="math inline">\(\mathbb{E}m(X_{1j}) = 0\)</span> for all <span class="math inline">\(j =1,\dots,p\)</span>.</p>
-</div>
-<p>Under the identifiability condition in <a href="#eq-idadditive" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>, the additive model gives <span class="math inline">\(\mathbb{E}\bar Y_n = \mu\)</span>. Therefore, we will from now on assume <span class="math inline">\(Y_1,\dots,Y_n\)</span> have been centered to have mean <span class="math inline">\(0\)</span> and set <span class="math inline">\(\mu=0\)</span> in the additive model in <a href="additivesparse.html#eq-additivemodel" class="quarto-xref">Equation&nbsp;<span>6.1</span></a>. From here we will focus solely on the estimation of the additive components <span class="math inline">\(m_1,\dots,m_p\)</span>.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-stone1985additive" class="csl-entry" role="listitem">
-Stone, Charles J. 1985. <span>“Additive Regression and Other Nonparametric Models.”</span> <em>The Annals of Statistics</em>, 689–705.
-</div>
-</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -875,13 +797,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./mNWestimator.html" class="pagination-link" aria-label="Multivariate Nadaraya-Watson estimator">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></span>
+      <a href="./nonparmregCB.html" class="pagination-link" aria-label="Confidence bands in nonparametric regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence bands in nonparametric regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./additivebackfit.html" class="pagination-link" aria-label="Backfitting in the additive model">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Backfitting in the additive model</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./appendix.html" class="pagination-link" aria-label="Appendix">
+        <span class="nav-page-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Appendix</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
