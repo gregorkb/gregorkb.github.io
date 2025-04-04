@@ -374,12 +374,23 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./appendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
+  <a href="./miscresults.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
@@ -451,7 +462,7 @@ M(\Theta) \geq I_\pi - \sup_{\hat{\boldsymbol{\theta}}}\int_{\Theta^c} R(\hat{\b
 \tag{8.1}\]</span></span> where the second term will be equal to zero if <span class="math inline">\(\pi\)</span> has support only on <span class="math inline">\(\Theta\)</span> (or will converge to zero under a sequence of priors which concentrate on <span class="math inline">\(\Theta\)</span>). The inequality in <a href="#eq-minimaxlowerbound" class="quarto-xref">Equation&nbsp;<span>8.1</span></a> informs the following two-step strategy for finding the minimax risk:</p>
 <p>To find the minimax risk <span class="math inline">\(M(\Theta)\)</span>, propose a candidate value <span class="math inline">\(M^*\)</span> and then:</p>
 <ol type="1">
-<li>Find an estimator which has risk equal to (or bounded above by) <span class="math inline">\(M^*\)</span>. This shows <span class="math inline">\(M(\Theta) \leq M^*\)</span>.</li>
+<li>Find an estimator which has worst-case risk equal to (or bounded above by) <span class="math inline">\(M^*\)</span>. This shows <span class="math inline">\(M(\Theta) \leq M^*\)</span>.</li>
 <li>Find a prior (or a sequence of priors) such that the integrated Bayes risk over <span class="math inline">\(\Theta\)</span> is equal to (or converges to) <span class="math inline">\(M^*\)</span>. This will show <span class="math inline">\(M(\Theta) \geq M^*\)</span>.</li>
 </ol>
 <p>Steps 1 and 2 give <span class="math inline">\(M(\Theta) = M^*\)</span>.</p>

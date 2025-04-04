@@ -374,12 +374,23 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./appendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
+  <a href="./miscresults.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
@@ -564,7 +575,7 @@ Sketch of proof of <a href="#thm-edgeworth" class="quarto-xref">Theorem&nbsp;<sp
 \end{align}\]</span> Now we make a Taylor expansion of <span class="math inline">\(\mathbb{E}\exp(\iota t n^{-1/2} X_1)\)</span> around <span class="math inline">\(t = 0\)</span>. We have <span class="math display">\[\begin{align}
 \mathbb{E}\exp(\iota t n^{-1/2} X_1) &amp;= \mathbb{E}\Big[ \sum_{k=0}^4\frac{1}{k!}\Big(\frac{\iota X}{\sqrt{n}}\Big)^k t^k +o(n^{-2})\Big] \\
 &amp;= 1 - \frac{t^2}{2n} + \frac{\gamma(\iota t)^3}{6n^{3/2}} + \frac{\tau(\iota t)^4}{24n^2} + o(n^{-2}).
-\end{align}\]</span> Then <a href="appendix.html#thm-multinomial" class="quarto-xref">Theorem&nbsp;<span>29.1</span></a> (the multinomial theorem) gives <span class="math display">\[\begin{align}
+\end{align}\]</span> Then <a href="miscresults.html#thm-multinomial" class="quarto-xref">Theorem&nbsp;<span>29.1</span></a> (the multinomial theorem) gives <span class="math display">\[\begin{align}
 \psi_{Z_n}(t)  &amp;=[\mathbb{E}\exp(\iota t n^{-1/2} X_1)]^n \\
 &amp;=\Big[1 - \frac{t^2}{2n} + \frac{\gamma(\iota t)^3}{6n^{3/2}} + \frac{\tau(\iota t)^4}{24n^2} + o(n^{-2})\Big]^n \\
 &amp;=\Big(1 - \frac{t^2}{2n}\Big)^n + n \Big(1 - \frac{t^2}{2n}\Big)^{n-1}  \frac{\gamma(\iota t)^3}{6n^{3/2}} \\

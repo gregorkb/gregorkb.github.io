@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -325,12 +345,23 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./appendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Appendix</span></span></a>
+  <a href="./miscresults.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
@@ -381,8 +412,27 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="preface" class="level1 unnumbered">
 <h1 class="unnumbered">Preface</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/nonparm_topic_map.jpg" class="img-fluid figure-img"></p>
+<figcaption>Map of topics on <a href="https://en.wikipedia.org/wiki/File:Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg">Mount Everest.</a></figcaption>
+</figure>
+</div>
+<p>This is an eBook of notes for a graduate-level nonparametric statistics course I have taught a few times at the University of South Carolina.</p>
+<p>You see a map above charting the topics treated in this book, which I have entitled “Some of Nonparametric Statistics”, in a not-so-subtle riff on the title of Larry Wasserman’s famous book “All of Nonparametric Statistics”; see <span class="citation" data-cites="wasserman2006all">Wasserman (<a href="references.html#ref-wasserman2006all" role="doc-biblioref">2006</a>)</span>. I have intentionally left the summit unlabeled to emphasize that I do not presume to have covered, in any sense, “all” of nonparametric statistics—not all that has been to this date learned, nor indeed all that is yet to be learned in this realm.</p>
+<p>I must be forgiving, nevertheless, of Wasserman’s presumption, as these notes contain much that is adapted from his work, which served as a compass during my own journey through these topics. Another pointer to True North was the book “Introduction to Nonparametric Estimation” by Alexander Tsybakov, see <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>.</p>
+<p>I find myself indebted to Tsybakov not only for bringing into the world such a book, but also indebted to him personally for the great forbearance he demonstrated on an occasion which he may remember to this day (or perhaps not). I, a post-doc at the Universität Mannheim, was put in charge of finding a room in which the visiting Alexander Tsybakov, traveling from Paris, would make a presentation on his latest and ongoing work to the students, post-docs, and faculty composing our research group. In the callowness of youth, I asked our secretary to book a room, instructing her that the speaker would like it to have a whiteboard, as it was to be a whiteboard talk in the tradition of the Chalkboard Talk so celebrated by mathematicians of the Continent. Tragically, when we arrived at the room, we found that it possessed not a vast wall-mounted whiteboard as I had imagined, but rather an easel-mounted one the size of a bathroom mirror. So the venerable Alexander Tsybakov wrote, and then erased, and then wrote and erased for an hour, presenting all the while quite eloquently in spite of the diminutive canvas on which he was forced to cram his notations. To his great credit he never expressed annoyance and was very kind to me throughout his visit. So, let warm appreciations emanate to the man Tsybakov for his book as well as for his equanimity.</p>
+<p>And now let us begin our climb out of the vale onto the snowy heights…</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-tsybakov2008introduction" class="csl-entry" role="listitem">
+Tsybakov, Alexandre B. 2008. <em>Introduction to Nonparametric Estimation</em>. Springer Science &amp; Business Media.
+</div>
+<div id="ref-wasserman2006all" class="csl-entry" role="listitem">
+Wasserman, Larry. 2006. <em>All of Nonparametric Statistics</em>. Springer Science &amp; Business Media.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
