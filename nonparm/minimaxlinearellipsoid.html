@@ -521,7 +521,7 @@ R(\hat{\boldsymbol{\theta}}_\boldsymbol{\ell},\boldsymbol{\theta}) &amp;= \sum_{
 <p>Now to establish <a href="#eq-linearminimaxlower" class="quarto-xref">Equation&nbsp;<span>10.6</span></a>, let <span class="math display">\[
 V = \Big\{(v_1,v_2,\dots) : v_j^2 = \frac{\sigma^2(1 - \eta a_j)_+}{\eta a_j} \text{ if } a_j &gt; 0, v_j \in \mathbb{R}\text{ if } a_j = 0\Big\}
 \]</span> and write <span class="math display">\[\begin{align}
-\sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)}\inf_{\boldsymbol{\lambda}}R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) &amp;\geq \sup_{\mathbf{v}\in V}\inf_{\boldsymbol{\lambda}}R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) \\
+\sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)}\inf_{\boldsymbol{\lambda}}R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) &amp;\geq \sup_{\mathbf{v}\in V}\inf_{\boldsymbol{\lambda}}R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\mathbf{v}) \\
 &amp;= \sup_{\mathbf{v}\in V}\Big\{ \sum_{j=1}^\infty\frac{\sigma^2 v_j^2}{\sigma^2 + v_j^2}\Big\} \\
 &amp;= \sup_{\mathbf{v}\in V}\Big\{ \sum_{j:~ a_j = 0} \frac{\sigma^2 v_j^2}{\sigma^2 + v_j^2} + \sum_{j:~ a_j &gt; 0} \frac{\sigma^4 (1 - \eta a_j)_+}{\sigma^2\eta a_j + \sigma^2(1 - \eta a_j)_+}\Big\} \\
 &amp;= |\{j: a_j = 0\}| + \sigma^2 \sum_{j:~ a_j &gt; 0} (1 - \eta a_j)_+ \\
