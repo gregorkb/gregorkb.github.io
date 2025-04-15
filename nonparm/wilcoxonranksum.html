@@ -84,7 +84,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./miscresults.html" rel="next">
+<link href="./wilcoxonasymptotic.html" rel="next">
 <link href="./bootCB.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -423,6 +423,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./wilcoxonasymptotic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Asymptotic distribution of the Wilcoxon rank sum statistic</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -437,7 +443,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./miscresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
   </div>
 </li>
       </ul>
@@ -500,11 +506,35 @@ W_{XY} = \sum_{i=1}^n\sum_{j=1}^m \mathbf{1}(X_i \leq Y_j)
 <p>The more effective the treatment at “making the <span class="math inline">\(Y_i\)</span> greater than the <span class="math inline">\(X_i\)</span>,” the greater we expect the value <span class="math inline">\(W_{XY}\)</span> to be, so we reject the null hypothesis when <span class="math inline">\(W_{XY}\)</span> meets or exceeds some threshold.</p>
 <p>We can write <span class="math inline">\(W_{XY}\)</span> in the form of a sum of ranks as follows:</p>
 <ol type="1">
-<li>Let <span class="math inline">\((Z_1,\dots,Z_{n + m}) = (X_1,\dots,X_n,Y_1,\dots,Y_m)\)</span> denote the complete set of data values.</li>
-<li>Obtain the ranks of the treatment observations as <span class="math inline">\(R_j = \sum_{i=1}^{n+m}\mathbf{1}(Z_i \leq Y_j)\)</span>, <span class="math inline">\(j = 1,\dots,m\)</span> (Assume there are no tied data values so that no two ranks among <span class="math inline">\(R_1,\dots,R_m\)</span> will be equal).</li>
+<li>Let <span class="math inline">\((Z_1,\dots,Z_N) = (X_1,\dots,X_n,Y_1,\dots,Y_m)\)</span> denote the complete set of data values.</li>
+<li>Obtain the ranks of the treatment observations as <span class="math inline">\(R_j = \sum_{i=1}^N\mathbf{1}(Z_i \leq Y_j)\)</span>, <span class="math inline">\(j = 1,\dots,m\)</span> (Assume there are no tied data values so that no two ranks among <span class="math inline">\(R_1,\dots,R_m\)</span> will be equal).</li>
 <li>Set <span class="math inline">\(W_R = \sum_{j=1}^m R_j\)</span>.</li>
 </ol>
-<p>Then one can show <span class="math inline">\(W_{XY} = W_R - m(m+1)/2\)</span>. Hence the name “rank sum test”.</p>
+<p>Then one can show <span id="eq-WXYfromWR"><span class="math display">\[
+W_{XY} = W_R - m(m+1)/2.
+\tag{29.1}\]</span></span> Hence the name “rank sum test”.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Derivation of equation <a href="#eq-WXYfromWR" class="quarto-xref">Equation&nbsp;<span>29.1</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Write <span class="math display">\[\begin{align}
+W_{XY} &amp;= \sum_{i=1}^n\sum_{j=1}^m\mathbf{1}(X_i \leq Y_j) \\
+      &amp;= \sum_{j=1}^m \sum_{i=1}^n \mathbf{1}(X_i \leq Y_{(j)}) \\
+      &amp;= \sum_{j=1}^m \Big[\sum_{i=1}^n \mathbf{1}(X_i \leq Y_{(j)}) + \sum_{k=1}^m \mathbf{1}(Y_k \leq Y_{(j)}) - \sum_{k=1}^m \mathbf{1}(Y_k \leq Y_{(j)}) \Big]\\
+      &amp;= \sum_{j=1}^m R_j - \sum_{j=1}^m \sum_{k=1}^m \mathbf{1}(Y_k \leq Y_{(j)})\\
+      &amp;= W_R - \frac{m(m+1)}{2}.
+\end{align}\]</span></p>
+</div>
+</div>
+</div>
 <p>Since <span class="math inline">\(W_{XY}\)</span> is merely a shifted version of <span class="math inline">\(W_R\)</span>, the two statistics carry equivalent information. We will find it more convenient to analyze the rank sum <span class="math inline">\(W_R\)</span>. Here is as good a place as any to mention that the Wilcoxon rank sum test is equivalent to a test called the Mann-Whitney U test.</p>
 <p>Interestingly, under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(F = G\)</span> one can tabulate the exact distribution of the statistics <span class="math inline">\(W_{XY}\)</span> and <span class="math inline">\(W_R\)</span>. If <span class="math inline">\(F\)</span> and <span class="math inline">\(G\)</span> are both continuous distributions (so that ties occur with probability zero), we have <span class="math display">\[
 P( (R_1,\dots,R_m) = (r_1,\dots,r_m)) = \frac{1}{{ N \choose m}}
@@ -647,12 +677,12 @@ Table&nbsp;29.2: Distribution of <span class="math inline">\(W_{XY}\)</span> whe
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>WXY <span class="ot">&lt;-</span> <span class="fu">sum</span>(R) <span class="sc">-</span> m<span class="sc">*</span>(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>WXY</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 197</code></pre>
+<pre><code>[1] 242</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pval <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pwilcox</span>(WXY<span class="dv">-1</span>,<span class="at">m =</span> m, <span class="at">n =</span> n) <span class="co"># must subtract 1, since we reject when WXY &gt;= c</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pval</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8879321</code></pre>
+<pre><code>[1] 0.5762009</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># see that the wilcox.test() function gives the same values</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="at">x=</span>Y,<span class="at">y=</span>X,<span class="at">alternative=</span><span class="st">"greater"</span>,<span class="at">exact =</span> <span class="cn">TRUE</span>) <span class="co"># switch X and Y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -661,7 +691,7 @@ Table&nbsp;29.2: Distribution of <span class="math inline">\(W_{XY}\)</span> whe
     Wilcoxon rank sum exact test
 
 data:  Y and X
-W = 197, p-value = 0.8879
+W = 242, p-value = 0.5762
 alternative hypothesis: true location shift is greater than 0</code></pre>
 </div>
 </div>
@@ -1102,8 +1132,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./miscresults.html" class="pagination-link" aria-label="Miscellaneous results">
-        <span class="nav-page-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./wilcoxonasymptotic.html" class="pagination-link" aria-label="Asymptotic distribution of the Wilcoxon rank sum statistic">
+        <span class="nav-page-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Asymptotic distribution of the Wilcoxon rank sum statistic</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

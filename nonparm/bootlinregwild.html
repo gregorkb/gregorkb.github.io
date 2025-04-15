@@ -423,6 +423,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./wilcoxonasymptotic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Asymptotic distribution of the Wilcoxon rank sum statistic</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -437,7 +443,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./miscresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
   </div>
 </li>
       </ul>
@@ -525,7 +531,7 @@ Partial proof of <a href="#thm-asympbbetahet" class="quarto-xref">Theorem&nbsp;<
 Z_n = \sqrt{n}\mathbf{c}^T(\hat{\boldsymbol{\beta}}_n - \boldsymbol{\beta})/\sigma_{\mathbf{c},n}
 \]</span> and note that we may write <span class="math inline">\(Z_n\)</span> in the form <span class="math display">\[
 Z_n = \Big(\sum_{i=1}^n a_i^2\Big)^{-1/2}\sum_{i=1}^n a_i\xi_i,
-\]</span> where <span class="math inline">\(a_i = \mathbf{c}^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_i\sigma_i\)</span> and <span class="math inline">\(\xi_i = \varepsilon_i / \sigma_i\)</span> for <span class="math inline">\(i=1,\dots,n\)</span>. Now, by <a href="miscresults.html#cor-lindebergCLT" class="quarto-xref">Corollary&nbsp;<span>30.1</span></a> <span class="math inline">\(Z_n \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,1)\)</span> provided <span class="math display">\[
+\]</span> where <span class="math inline">\(a_i = \mathbf{c}^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_i\sigma_i\)</span> and <span class="math inline">\(\xi_i = \varepsilon_i / \sigma_i\)</span> for <span class="math inline">\(i=1,\dots,n\)</span>. Now, by <a href="miscresults.html#cor-lindebergCLT" class="quarto-xref">Corollary&nbsp;<span>31.1</span></a> <span class="math inline">\(Z_n \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,1)\)</span> provided <span class="math display">\[
 \Big(\sum_{i=1}^n a_i^2\Big)^{-1/2}\max_{1 \leq i \leq n} |a_i| \to 0
 \]</span> as <span class="math inline">\(n \to \infty\)</span>. Rewriting <span class="math inline">\(a_i\)</span> as <span class="math display">\[
 a_i = \mathbf{c}^T(\mathbf{X}^T\mathbf{X})^{-1}(\mathbf{X}^T\mathbf{D}\mathbf{X})^{1/2}(\mathbf{X}^T\mathbf{D}\mathbf{X})^{-1/2}\mathbf{x}_i\sigma_i,
@@ -882,23 +888,23 @@ Figure&nbsp;26.1: Least-squares estimates of linear effects with points <span cl
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Q (resid)</td>
-<td style="text-align: right;">0.47</td>
+<td style="text-align: right;">0.52</td>
 <td style="text-align: right;">0.85</td>
+<td style="text-align: right;">0.90</td>
 <td style="text-align: right;">0.91</td>
-<td style="text-align: right;">0.91</td>
-<td style="text-align: right;">0.94</td>
-<td style="text-align: right;">0.95</td>
-<td style="text-align: right;">0.95</td>
-<td style="text-align: right;">0.97</td>
-<td style="text-align: right;">0.95</td>
 <td style="text-align: right;">0.93</td>
+<td style="text-align: right;">0.96</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.95</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">T (resid)</td>
-<td style="text-align: right;">0.98</td>
-<td style="text-align: right;">0.98</td>
-<td style="text-align: right;">0.98</td>
 <td style="text-align: right;">0.97</td>
+<td style="text-align: right;">0.99</td>
+<td style="text-align: right;">0.97</td>
+<td style="text-align: right;">0.98</td>
 <td style="text-align: right;">0.97</td>
 <td style="text-align: right;">0.98</td>
 <td style="text-align: right;">0.98</td>
@@ -908,55 +914,55 @@ Figure&nbsp;26.1: Least-squares estimates of linear effects with points <span cl
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Asymp iid (19.2)</td>
-<td style="text-align: right;">0.80</td>
-<td style="text-align: right;">0.94</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">0.96</td>
+<td style="text-align: right;">0.96</td>
 <td style="text-align: right;">0.95</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">0.97</td>
 <td style="text-align: right;">0.97</td>
 <td style="text-align: right;">0.97</td>
 <td style="text-align: right;">0.97</td>
 <td style="text-align: right;">0.96</td>
-<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.96</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Q (wild)</td>
-<td style="text-align: right;">0.46</td>
-<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: right;">0.89</td>
 <td style="text-align: right;">0.90</td>
-<td style="text-align: right;">0.90</td>
-<td style="text-align: right;">0.92</td>
 <td style="text-align: right;">0.92</td>
 <td style="text-align: right;">0.93</td>
-<td style="text-align: right;">0.96</td>
 <td style="text-align: right;">0.94</td>
-<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">0.94</td>
+<td style="text-align: right;">0.94</td>
+<td style="text-align: right;">0.94</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">H (wild)</td>
-<td style="text-align: right;">0.87</td>
+<td style="text-align: right;">0.89</td>
+<td style="text-align: right;">0.94</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">0.94</td>
+<td style="text-align: right;">0.94</td>
 <td style="text-align: right;">0.94</td>
 <td style="text-align: right;">0.94</td>
 <td style="text-align: right;">0.92</td>
 <td style="text-align: right;">0.93</td>
-<td style="text-align: right;">0.92</td>
-<td style="text-align: right;">0.93</td>
-<td style="text-align: right;">0.95</td>
-<td style="text-align: right;">0.93</td>
-<td style="text-align: right;">0.90</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Asymp het (20.1)</td>
-<td style="text-align: right;">0.46</td>
+<td style="text-align: right;">0.48</td>
 <td style="text-align: right;">0.84</td>
-<td style="text-align: right;">0.91</td>
-<td style="text-align: right;">0.90</td>
-<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">0.89</td>
 <td style="text-align: right;">0.92</td>
+<td style="text-align: right;">0.93</td>
 <td style="text-align: right;">0.94</td>
-<td style="text-align: right;">0.95</td>
 <td style="text-align: right;">0.94</td>
-<td style="text-align: right;">0.91</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">0.93</td>
 </tr>
 </tbody>
 </table>

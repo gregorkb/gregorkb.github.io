@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Getting to the Normal means model – Some of Nonparametric Statistics</title>
+<title>30&nbsp; Asymptotic distribution of the Wilcoxon rank sum statistic – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -54,27 +54,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -84,8 +64,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./minimaxnormalmeans.html" rel="next">
-<link href="./additivesparse.html" rel="prev">
+<link href="./miscresults.html" rel="next">
+<link href="./wilcoxonranksum.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -176,7 +156,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./minimaxnonparmnormalmeans.html">Minimax Theory</a></li><li class="breadcrumb-item"><a href="./minimaxnonparmnormalmeans.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Getting to the Normal means model</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./wilcoxonranksum.html">Traditional nonparametrics</a></li><li class="breadcrumb-item"><a href="./wilcoxonasymptotic.html"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Asymptotic distribution of the Wilcoxon rank sum statistic</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -256,16 +236,16 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Minimax Theory</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./minimaxnonparmnormalmeans.html" class="sidebar-item-text sidebar-link active">
+  <a href="./minimaxnonparmnormalmeans.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Getting to the Normal means model</span></span></a>
   </div>
 </li>
@@ -410,13 +390,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Traditional nonparametrics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./wilcoxonranksum.html" class="sidebar-item-text sidebar-link">
@@ -425,7 +405,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./wilcoxonasymptotic.html" class="sidebar-item-text sidebar-link">
+  <a href="./wilcoxonasymptotic.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Asymptotic distribution of the Wilcoxon rank sum statistic</span></span></a>
   </div>
 </li>
@@ -465,9 +445,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./minimaxnonparmnormalmeans.html">Minimax Theory</a></li><li class="breadcrumb-item"><a href="./minimaxnonparmnormalmeans.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Getting to the Normal means model</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./wilcoxonranksum.html">Traditional nonparametrics</a></li><li class="breadcrumb-item"><a href="./wilcoxonasymptotic.html"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Asymptotic distribution of the Wilcoxon rank sum statistic</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-minimaxnonparmnormalmeans" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Getting to the Normal means model</span></span></h1>
+<h1 class="title"><span id="sec-wilcoxonasymptotic" class="quarto-section-identifier"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Asymptotic distribution of the Wilcoxon rank sum statistic</span></span></h1>
 </div>
 
 
@@ -488,32 +468,12 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>Suppose we observe <span class="math inline">\(Y_1,\dots,Y_n\)</span> arising as <span class="math display">\[
-Y_i = m(i/n) + \sigma \varepsilon_i, \quad i = 1,\dots,n
-\]</span> for some function <span class="math inline">\(m:[0,1]\to\mathbb{R}\)</span>, where <span class="math inline">\(\varepsilon_1,\dots,\varepsilon_n\)</span> are independent <span class="math inline">\(\mathcal{N}(0,1)\)</span> random variables, and <span class="math inline">\(\sigma &gt; 0\)</span>. We have set the design points <span class="math inline">\(x_i = i/n\)</span> for <span class="math inline">\(i=1,\dots,n\)</span> for the sake of later convenience.</p>
-<p>Recall the quote from <span class="citation" data-cites="wasserman2006all">Wasserman (<a href="references.html#ref-wasserman2006all" role="doc-biblioref">2006</a>)</span>:</p>
-<blockquote class="blockquote">
-<p>The basic idea of nonparametric inference is to use data to infer an unknown quantity while making as few assumptions as possible. Usually, this means using statistical models that are infinite-dimensional.</p>
-</blockquote>
-<p>Following the quotation, we will equate the estimation of <span class="math inline">\(m\)</span> with that of an infinite-dimensional parameter <span class="math inline">\(\boldsymbol{\theta}= (\theta_1,\theta_2,\dots)\)</span>. First, let <span class="math display">\[
-L_2([0,1]) = \Big\{g:[0,1]\to \mathbb{R}: \int_0^1 |g(x)|^2dx &lt; \infty\Big\},
-\]</span> be the set of square integrable functions on <span class="math inline">\([0,1]\)</span> and assume <span class="math inline">\(m \in L_2([0,1])\)</span>. our strategy will be to express <span class="math inline">\(m\)</span> as a weighted sum of an infinite number of basis functions, so that knowing the weights will be the same as knowing the function <span class="math inline">\(m\)</span>. We first define an orthonormal basis for <span class="math inline">\(L_2([0,1])\)</span>.</p>
-<div id="def-orthonormalbasis" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 7.1 (Orthonormal basis for <span class="math inline">\(L_2([0,1])\)</span>)</strong></span> Let <span class="math inline">\(\varphi_1,\varphi_2,\dots~:[0,1]\to \mathbb{R}\)</span> be a collection of functions such that <span class="math display">\[
-\int_0^1 \varphi_i(x)\varphi_j(x)dx = \left\{\begin{array}{ll}
-1&amp; i = j\\
-0&amp; i \neq j,
-\end{array}\right.
-\]</span> for all <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> and such that for any function <span class="math inline">\(g \in L_2([0,1])\)</span> <span class="math display">\[
-\int_0^1 g(x)\varphi_j(x)dx = 0 \quad \forall j \iff g(x) = 0.
-\]</span> Then the functions <span class="math inline">\(\varphi_1,\varphi_2,\dots\)</span> comprise an orthonormal basis for <span class="math inline">\(L_2([0,1])\)</span>.</p>
-</div>
-<div id="thm-parseval" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 7.1 (Weights for an orthonormal basis and Parseval’s identity)</strong></span> For <span class="math inline">\(g \in L_2([0,1])\)</span> we may write <span class="math display">\[
-g(x) = \sum_{j=1}^\infty \theta_j \varphi_j(x),
-\]</span> where <span class="math display">\[
-\theta_j = \int_0^1 g(x)\varphi_j(x)dx, \quad j = 1,2,\dots
-\]</span> Moreover we have <span class="math inline">\(\int_0^1|g(x)|^2dx = \sum_{j=1}^\infty \theta_j^2\)</span>, which is called Parseval’s identity.</p>
+<p>Here we will state and prove a result describing the asymptotic behavior of the Wilcoxon rank sum statistic <span class="math inline">\(W_R\)</span> as the sample sizes <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span> grow. We begin by stating a result giving its mean and variance.</p>
+<div id="prp-ranksummoments" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 30.1 (Mean and variance of the rank-sum statistic)</strong></span> The rank-sum statistic <span class="math inline">\(W_R\)</span> must take a value between <span class="math inline">\(m(m+1)/2\)</span> and <span class="math inline">\(mn + m(m+1)/2\)</span>. Moreover, if <span class="math inline">\(F = G\)</span> we have <span class="math display">\[\begin{align}
+\mathbb{E}W_R &amp;= \frac{1}{2}m(N + 1)\\
+\mathbb{V}W_R &amp; = \frac{1}{12}mn(N+1).
+\end{align}\]</span></p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -521,138 +481,210 @@ g(x) = \sum_{j=1}^\infty \theta_j \varphi_j(x),
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Heuristic for <a href="#thm-parseval" class="quarto-xref">Theorem&nbsp;<span>7.1</span></a>
+Proof of <a href="#prp-ranksummoments" class="quarto-xref">Proposition&nbsp;<span>30.1</span></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>For any integer <span class="math inline">\(N \geq 1\)</span>, let <span class="math inline">\(\boldsymbol{\varphi}_1,\dots,\boldsymbol{\varphi}_N\)</span> be vectors in <span class="math inline">\(\mathbb{R}^N\)</span> such that <span class="math display">\[
-\boldsymbol{\varphi}_i^T\boldsymbol{\varphi}_j = \left\{\begin{array}{ll}
-1&amp; i = j\\
-0&amp; i \neq j,
+<p>First, <span class="math inline">\(W_R\)</span> takes its smallest value when <span class="math inline">\(Y_1,\dots,Y_m\)</span> are the smallest <span class="math inline">\(m\)</span> observations among <span class="math inline">\(Z_1,\dots,Z_{n+m}\)</span>. In this case the set of ranks <span class="math inline">\(\{R_1,\dots,R_m\}\)</span> is equal to the set of integers <span class="math inline">\(\{1,\dots,m\}\)</span> so that <span class="math inline">\(\sum_{j=1}^m R_j = m(m+1)/2\)</span>. On the other hand, <span class="math inline">\(W_R\)</span> takes its largest value when <span class="math inline">\(Y_1,\dots,Y_m\)</span> are the largest <span class="math inline">\(m\)</span> observations among <span class="math inline">\(Z_1,\dots,Z_{n+m}\)</span>, in which case the set of ranks <span class="math inline">\(\{R_1,\dots,R_m\}\)</span> is equal to the set of integers <span class="math inline">\(\{n+1,\dots,n+m\}\)</span> the sum of which is <span class="math inline">\(mn + m(m+1)/2\)</span>.</p>
+<p>To compute the expected value and variance of <span class="math inline">\(W_R\)</span>, we first note that under <span class="math inline">\(H_0\)</span> the position of a data point <span class="math inline">\(Y_j\)</span> in the ordering of the <span class="math inline">\(N = n + m\)</span> data points is a random draw from the integers <span class="math inline">\(1,\dots,N\)</span> such that each position occurs with probability <span class="math inline">\(1/N\)</span>. That is, for any <span class="math inline">\(r_j =1,\dots,N\)</span> we have <span class="math inline">\(\mathbb{P}(R_j = r_j) = 1/N\)</span>, so that <span class="math display">\[
+\mathbb{E}R_j = \frac{N+1}{2} \quad \text{ and } \quad
+\mathbb{V}R_j = \frac{N^2 - 1}{12},
+\]</span> where these are simply the mean and variance of the discrete uniform distribution on the integers <span class="math inline">\(1,\dots,N\)</span>.</p>
+<p>From here we obtain <span class="math display">\[
+\mathbb{E}W_R = \mathbb{E}\sum_{j=1}^m R_j = \frac{1}{2}m(N+1).
+\]</span></p>
+<p>To find <span class="math inline">\(\mathbb{V}W_R\)</span> we write <span class="math display">\[\begin{align}
+\mathbb{V}W_R &amp;= \mathbb{V}\Big(\sum_{j=1}^m R_j\Big) \\
+       &amp;= \sum_{j=1}^m \mathbb{V}R_j + 2\sum_{j &lt; k} \mathbb{C}(R_j,R_k) \\
+       &amp;= m \mathbb{V}R_1 + m(m-1)\mathbb{C}(R_1,R_2),
+\end{align}\]</span> since <span class="math inline">\(\mathbb{C}(R_j,R_k)\)</span> is the same for every <span class="math inline">\(j \neq k\)</span>. In order to find <span class="math inline">\(\mathbb{C}(R_1,R_2)\)</span>, assume for a moment that <span class="math inline">\(m = N\)</span>. In this case we must have <span class="math inline">\(W_R = N(N+1)/2\)</span> so <span class="math inline">\(\mathbb{V}W_R = 0\)</span>, giving <span class="math display">\[
+N \mathbb{V}R_1 + N(N-1)\mathbb{C}(R_1,R_2) = 0,
+\]</span> so that <span class="math display">\[
+\mathbb{C}(R_1,R_2) = -\frac{N \mathbb{V}R_1 }{N(N-1)} = -\frac{N^2-1}{12(N-1)} = -\frac{N+1}{12}.
+\]</span> Plugging this into our earlier expression for <span class="math inline">\(\mathbb{V}W_R\)</span>, we obtain <span class="math display">\[\begin{align}
+\mathbb{V}W_R &amp;= m \frac{N^2-1}{12} - m(m-1)\frac{N+1}{12} \\
+      &amp;=  m \frac{(N+1)(N-1)}{12} - m(m-1)\frac{N+1}{12} \\
+      &amp;=  \frac{1}{12}mn(N+1).
+\end{align}\]</span></p>
+</div>
+</div>
+</div>
+<p>Now we state a central limit result for <span class="math inline">\(W_R\)</span>.</p>
+<div id="thm-wilcoxonasymp" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 30.1 (Asymptotic Normality of rank sum statistic under the null)</strong></span> Under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(F = G\)</span> we have <span id="eq-WRindist"><span class="math display">\[
+\frac{W_R - \mathbb{E}W_R}{\sqrt{\mathbb{V}W_R}} \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,1)
+\tag{30.1}\]</span></span> as <span class="math inline">\(n,m \to \infty\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof of <a href="#thm-wilcoxonasymp" class="quarto-xref">Theorem&nbsp;<span>30.1</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The main complication in proving the result is that <span class="math inline">\(W_R = R_1,\dots,R_m\)</span> is a sum of <em>dependent</em> random variables rather than <em>independent</em> random variables. Our strategy will be to</p>
+<ol type="1">
+<li>Introduce an approximation <span class="math inline">\(\tilde W_R\)</span> to <span class="math inline">\(W_R\)</span> which is a sum of <em>independent</em> random variables and such that we can show <span id="eq-tildeWRindist"><span class="math display">\[
+  \frac{\tilde W_R - \mathbb{E}\tilde W_R}{\sqrt{ \mathbb{V}\tilde W_R}} \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,1)
+   \tag{30.2}\]</span></span> as <span class="math inline">\(n,m \to \infty\)</span>.</li>
+<li>Show that the approximation of <span class="math inline">\(\tilde W_R\)</span> to <span class="math inline">\(W_R\)</span> is close enough for the convergence in <a href="#eq-tildeWRindist" class="quarto-xref">Equation&nbsp;<span>30.2</span></a> to imply the convergence in <a href="#eq-WRindist" class="quarto-xref">Equation&nbsp;<span>30.1</span></a>.</li>
+</ol>
+<p>Here we go. Under the null hypothesis <span class="math inline">\(H_0\)</span>: <span class="math inline">\(F = G\)</span>, the ranks <span class="math inline">\(R_1,\dots,R_m\)</span> are simply <span class="math inline">\(m\)</span> integers sampled without replacement from <span class="math inline">\(1,\dots,N\)</span>. One way to draw a sample of size <span class="math inline">\(m\)</span> without replacement from the integers <span class="math inline">\(1,\dots,N\)</span> is to (i) generate <span class="math inline">\(N\)</span> independent realizations <span class="math inline">\(U_1,\dots,U_N\)</span> from the <span class="math inline">\(\mathcal{U}(0,1)\)</span> distribution, (ii) denote their order statistics by <span class="math inline">\(U_{(1)} &lt;\dots &lt;U_{(N)}\)</span>, and (iii) keep the integers in the set <span class="math inline">\(\{i: U_i \leq U_{(m)}\}\)</span>. Under this sampling scheme we find we may write <span class="math display">\[
+W_R = \sum_{i=1}^N i J_i,
+\]</span> where <span class="math inline">\(J_i = \mathbf{1}(U_i \leq U_{(m)})\)</span> is an indicator equal to <span class="math inline">\(1\)</span> if the integer <span class="math inline">\(i\)</span> was drawn and equal to zero otherwise for each <span class="math inline">\(i=1,\dots,N\)</span>. Note that <span class="math inline">\(J_1,\dots,J_N\)</span> are <em>dependent</em> random variables.</p>
+<p>Now, to construct an approximation <span class="math inline">\(\tilde W_R\)</span> to <span class="math inline">\(W_R\)</span>, we consider replacing the dependent random variables <span class="math inline">\(J_i\)</span> with independent analogues <span class="math inline">\(K_i\)</span> defined as <span class="math inline">\(K_i = \mathbf{1}(U_i \leq m/N)\)</span> for <span class="math inline">\(i=1,\dots,N\)</span>, where the <span class="math inline">\(U_1,\dots,U_N\)</span> are the same <span class="math inline">\(\mathcal{U}(0,1)\)</span> realizations with which the <span class="math inline">\(J_i\)</span> were defined. Then we set <!-- $$ --> <!-- \tilde W_R = \sum_{i=1}^N i K_i - \sum_{i=1}^N\Big(K_i - \frac{m}{N}\Big)\frac{N+1}{2}. --> <!-- $$ --> <span class="math display">\[
+\tilde W_R = \sum_{i=1}^N \Big(i - \frac{N+1}{2}\Big)K_i + \frac{1}{2}m(N+1)
+\]</span> Now, noting that <span class="math inline">\(\mathbb{E}K_i = m/N\)</span> and <span class="math inline">\(\mathbb{V}K_i = m/N(1 - m/N)\)</span>, we have <span class="math display">\[\begin{align}
+\mathbb{E}\tilde W_R &amp;=\sum_{i=1}^N \Big(i - \frac{N+1}{2}\Big)\frac{m}{N} + \frac{1}{2}m(N+1) \\
+          &amp;= \frac{1}{2}m(N+1)
+\end{align}\]</span> and <span class="math display">\[\begin{align}
+\mathbb{V}\tilde W_R &amp;= \sum_{i=1}^N \Big(i - \frac{N+1}{2}\Big)^2 \frac{m}{N}\Big(1 - \frac{m}{N}\Big)  =\frac{N-1}{N}\mathbb{V}W_R,
+\end{align}\]</span> where the second equality will be useful later and requires some work to show. Now we find we may write <span class="math display">\[\begin{align}
+\frac{\tilde W_R - \mathbb{E}\tilde W_R}{\sqrt{\mathbb{V}\tilde W_R}} = \frac{\sum_{i=1}^N a_i \xi_i}{\sqrt{\sum_{i=1}^N a_i^2}},
+\end{align}\]</span> where <span class="math display">\[
+a_i = i - \frac{N+1}{2} \quad \text{ and } \quad \xi_i = \frac{K_i - m/N}{\sqrt{m/N(1-m/N)}}
+\]</span> for <span class="math inline">\(i=1,\dots,N\)</span>. Note that <span class="math inline">\(\xi_1,\dots,\xi_N\)</span> are independent random variables with zero mean and unit variance, so according to the corollary to the Lindeberg central limit theorem stated in <a href="miscresults.html#cor-lindebergCLT" class="quarto-xref">Corollary&nbsp;<span>31.1</span></a>, the convergence in <a href="#eq-tildeWRindist" class="quarto-xref">Equation&nbsp;<span>30.2</span></a> holds provided <span id="eq-tildeWaicondition"><span class="math display">\[
+\frac{\max_{1\leq i \leq N} |a_i|}{\sqrt{\sum_{i=1}^Na_i^2}} \to 0
+\tag{30.3}\]</span></span> as <span class="math inline">\(n,m \to \infty\)</span>. We have <span class="math display">\[
+\max_{1 \leq i \leq N} |a_i| = \Big( \Big|1 - \frac{N+1}{2}\Big| \vee \Big|N - \frac{N+1}{2}\Big|\Big) = \frac{N-1}{2}
+\]</span> and we can (with some work) show <span class="math display">\[
+\sum_{i=1}^N a_i^2 = \frac{N(N^2 - 1)}{12}.
+\]</span> Thus we see that <a href="#eq-tildeWaicondition" class="quarto-xref">Equation&nbsp;<span>30.3</span></a> holds and the convergence in <a href="#eq-tildeWRindist" class="quarto-xref">Equation&nbsp;<span>30.2</span></a> is established.</p>
+<p>Now we consider the quality of the approximation of <span class="math inline">\(\tilde W_R\)</span> to <span class="math inline">\(W_R\)</span>. We may write <span class="math display">\[
+\frac{W_R - \mathbb{E}W_R}{\sqrt{\mathbb{V}W_R}} = \Big(\frac{\tilde W_R - \mathbb{E}\tilde W_R}{\sqrt{\mathbb{V}\tilde W_R}}  + \frac{W_R - \tilde W_R}{\sqrt{\mathbb{V}\tilde W_R}} \Big)\sqrt{\frac{\mathbb{V}\tilde W_R}{\mathbb{V}W_R}},
+\]</span> since <span class="math inline">\(\mathbb{E}\tilde W_R = \mathbb{E}W_R\)</span>. Now, since <span class="math inline">\(\mathbb{V}\tilde W_R = N^{-1}(N-1)\mathbb{V}W_R\)</span>, a sufficient condition for the convergence in <a href="#eq-tildeWRindist" class="quarto-xref">Equation&nbsp;<span>30.2</span></a> to imply the convergence in <a href="#eq-WRindist" class="quarto-xref">Equation&nbsp;<span>30.1</span></a> is the condition <span id="eq-convcondWR"><span class="math display">\[
+\frac{\mathbb{E}(W_R - \tilde W_R)^2}{\mathbb{V}\tilde W_R} \to 0
+\tag{30.4}\]</span></span> as <span class="math inline">\(n,m \to 0\)</span>.</p>
+<p>First, it will be useful to write <span class="math display">\[\begin{align}
+W_R - \tilde W_R &amp;= \sum_{i=1}^N i J_i - \sum_{i=1}^N\Big(i - \frac{N+1}{2}\Big)K_i - \frac{m(N+1)}{2} \\
+&amp;= \sum_{i=1}^N \Big(i - \frac{N+1}{2}\Big)(J_i - K_i),
+\end{align}\]</span> where we have used the fact that <span class="math inline">\(\sum_{i=1}^N J_i = m\)</span>.</p>
+<p>Now, since <span class="math inline">\(\mathbb{E}W_R = \mathbb{E}\tilde W_R\)</span> we have <span class="math inline">\(\mathbb{E}(W_R - \tilde W_R)^2 = \mathbb{V}(W_R - \tilde W_R)\)</span>, so <span id="eq-EWRminustildeWR"><span class="math display">\[
+\mathbb{E}(W_R - \tilde W_R)^2 = \mathbb{V}(\mathbb{E}[W_R - \tilde W_R | U_{(1)},\dots,U_{(N)}]) + \mathbb{E}(\mathbb{V}[W_R - \tilde W_R | U_{(1)},\dots,U_{(N)}]),
+\tag{30.5}\]</span></span> where <span class="math display">\[\begin{align}
+\mathbb{E}[W_R - \tilde W_R | U_{(1)},\dots,U_{(N)}] &amp;= \mathbb{E}\Big[\sum_{i=1}^N \Big(i - \frac{N+1}{2}\Big)(J_i - K_i)| U_{(1)},\dots,U_{(N)}\Big]\\
+&amp;= \sum_{i=1}^N \Big(i - \frac{N+1}{2}\Big)\mathbb{E}[(J_1 - K_1)| U_{(1)},\dots,U_{(N)}]\\
+&amp;= 0,
+\end{align}\]</span> and <span class="math display">\[
+\mathbb{V}[W_R - \tilde W_R | U_{(1)},\dots,U_{(N)}] = \mathbb{V}\Big[ \sum_{i=1}^N \Big(i - \frac{N+1}{2}\Big)(J_i - K_i) | U_{(1)},\dots,U_{(N)}\Big].
+\]</span> To find the above variance, it helps to note that after conditioning on <span class="math inline">\(U_{(1)},\dots,U_{(N)}\)</span> the values <span class="math inline">\(U_1,\dots,U_N\)</span> on which <span class="math inline">\(K_1,\dots,K_N\)</span> and <span class="math inline">\(J_1,\dots,J_N\)</span> are based are a random permutation of <span class="math inline">\(U_{(1)},\dots,U_{(N)}\)</span>. We can therefore use <a href="miscresults.html#lem-permutation" class="quarto-xref">Lemma&nbsp;<span>31.2</span></a> to write <span class="math display">\[\begin{align}
+\mathbb{V}[W_R - \tilde W_R | U_{(1)},\dots,U_{(N)}] &amp;= \frac{1}{N-1} \sum_{i=1}^N \Big(i - \frac{N+1}{2}\Big)^2\sum_{i=1}^N((J_i - K_i) - (\bar J - \bar K))^2 \\
+&amp;\leq \frac{1}{N-1} \sum_{i=1}^N \Big(i - \frac{N+1}{2}\Big)^2\sum_{i=1}^N(J_i - K_i)^2,
+\end{align}\]</span> where <span class="math inline">\(\bar J = N^{-1}\sum_{i=1}^N J_i\)</span> and <span class="math inline">\(\bar K =N^{-1}\sum_{i=1}^N K_i\)</span>, since the mean minimizes the least-squares criterion. Plugging the above result into <a href="#eq-EWRminustildeWR" class="quarto-xref">Equation&nbsp;<span>30.5</span></a>, we have <span class="math display">\[
+\mathbb{E}(W_R - \tilde W_R)^2 \leq \frac{1}{N-1} \sum_{i=1}^N \Big(i - \frac{N+1}{2}\Big)^2 \mathbb{E}\sum_{i=1}^N (J_i - K_i)^2.
+\]</span> In order to take the expectation, let <span class="math inline">\(K_{(1)},\dots,K_{(N)}\)</span> and <span class="math inline">\(J_{(1)},\dots,J_{(N)}\)</span> denote <span class="math inline">\(K_1,\dots,K_N\)</span> and <span class="math inline">\(J_1,\dots,J_N\)</span> when re-ordered according to the order of <span class="math inline">\(U_1,\dots,U_N\)</span>, so that <span class="math inline">\(K_{(i)} = \mathbf{1}(U_{(i)}\leq m/N)\)</span> and <span class="math inline">\(J_{(i)} = \mathbf{1}(U_{(i)}\leq U_{(m)})\)</span>. Now, letting <span class="math inline">\(D = \sum_{i=1}^N\mathbf{1}(U_i \leq m/N)\)</span>, we may write <span class="math display">\[
+K_{(i)} = \left\{\begin{array}{ll}
+1,&amp; i = 1,\dots,D\\
+0,&amp; i = D+1,\dots,N
+\end{array}\right. \quad \text{ and } \quad J_{(i)} = \left\{\begin{array}{ll}
+1,&amp; i = 1,\dots,m\\
+0,&amp; i = m+1,\dots,N,
 \end{array}\right.
-\]</span> for all <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> and such that <span class="math inline">\(\boldsymbol{\varphi}_j^T\mathbf{g}= 0\)</span> for all <span class="math inline">\(j\)</span> if and only if <span class="math inline">\(\mathbf{g}= \mathbf{0}\)</span>. Then <span class="math inline">\(\boldsymbol{\varphi}_1,\dots,\boldsymbol{\varphi}_N\)</span> comprise an orthonormal basis for <span class="math inline">\(\mathbb{R}^N\)</span>. In consequence, for any <span class="math inline">\(\mathbf{g}\in \mathbb{R}^N\)</span> we have <span class="math display">\[
-\mathbf{g}= \sum_{j=1}^N  (\boldsymbol{\varphi}_j^T\mathbf{g}) \boldsymbol{\varphi}_j,
-\]</span> where the right hand side is the orthogonal projection of <span class="math inline">\(\mathbf{g}\)</span> onto the space spanned by <span class="math inline">\(\boldsymbol{\varphi}_1,\dots,\boldsymbol{\varphi}_N\)</span>. Setting <span class="math inline">\(\theta_j = \boldsymbol{\varphi}_j^T\mathbf{g}\)</span> allows us to write <span class="math inline">\(\mathbf{g}= \sum_{j=1}^N  \theta_j \boldsymbol{\varphi}_j\)</span>. Moreover, we have <span class="math inline">\(\mathbf{g}^T\mathbf{g}= \sum_{j=1}^N \theta_j^2\)</span>. <a href="#thm-parseval" class="quarto-xref">Theorem&nbsp;<span>7.1</span></a> is essentially a limiting version of these same arguments as <span class="math inline">\(N \to \infty\)</span>.</p>
+\]</span> so if <span class="math inline">\(D &lt; m\)</span> we have <span class="math display">\[
+\sum_{i=1}^N(J_{(i)} - K_{(i)})^2 =\sum_{i=1}^D(J_{(i)} - K_{(i)})^2+\sum_{i=D+1}^m(J_{(i)} - K_{(i)})^2+\sum_{i=m}^N(J_{(i)} - K_{(i)})^2 = m - D
+\]</span> and if <span class="math inline">\(D &gt; m\)</span> we have <span class="math display">\[
+\sum_{i=1}^N(J_{(i)} - K_{(i)})^2 =\sum_{i=1}^m(J_{(i)} - K_{(i)})^2+\sum_{i=m+1}^D(J_{(i)} - K_{(i)})^2+\sum_{i=D}^N(J_{(i)} - K_{(i)})^2 = D - m,
+\]</span> and if <span class="math inline">\(D = m\)</span> we have <span class="math inline">\(\sum_{i=1}^N(J_{(i)} - K_{(i)})^2 = 0\)</span>. Putting these cases together and using the fact <span class="math inline">\(\sum_{i=1}^N (J_i - K_i)^2 = \sum_{i=1}^N (J_{(i)} - K_{(i)})^2\)</span> gives <span class="math display">\[
+\sum_{i=1}^N (J_i - K_i)^2 = |D - n|,
+\]</span> where <span class="math inline">\(D \sim \mathcal{B}(N,m/N)\)</span>, so, using Jensen’s inequality, we have <span class="math display">\[
+\mathbb{E}\sum_{i=1}^N (J_i - K_i)^2 = \mathbb{E}|D - m| \leq \sqrt{\mathbb{E}(D - m)^2}=\sqrt{Nm/N(1-m/N)}.
+\]</span> From here we write <span class="math display">\[\begin{align}
+\frac{\mathbb{E}(W_R - \tilde W_R)^2}{\mathbb{V}\tilde W_R} &amp;\leq \frac{(N-1)^{-1} \sum_{i=1}^N \Big(i - \frac{N+1}{2}\Big)^2 \sqrt{Nm/N(1-m/N)}}{\sum_{i=1}^N \Big(i - \frac{N+1}{2}\Big)^2 m/N\Big(1 - m/N\Big) }\\
+&amp;= \frac{N}{N-1}\sqrt{\frac{N}{m(N-m)}}\\
+&amp;\leq \left\{\begin{array}{ll}
+N(N-1)^{-1}\sqrt{2/n},&amp; m \leq N/2\\
+N(N-1)^{-1}\sqrt{2/m},&amp; m &gt; N/2.
+\end{array}\right.\\
+&amp;\to 0
+\end{align}\]</span> as <span class="math inline">\(n,m\to \infty\)</span>. This completes the proof.</p>
 </div>
 </div>
 </div>
-<p>The Fourier basis in <a href="#def-fourierbasis" class="quarto-xref">Definition&nbsp;<span>7.2</span></a> is such an orthonormal basis.</p>
-<div id="def-fourierbasis" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 7.2 (Fourier basis)</strong></span> The Fourier basis on <span class="math inline">\([0,1]\)</span> is the collection of functions <span class="math inline">\(\varphi_1(x) = 1\)</span> and <span class="math display">\[\begin{align}
-\varphi_{2k}(x) &amp;= \sqrt{2}\cos(2\pi k x) \\
-\varphi_{2k+1}(x) &amp;= \sqrt{2}\sin(2\pi k x)
-\end{align}\]</span> for <span class="math inline">\(k=1,2,\dots\)</span></p>
-</div>
-<p>The panels of <a href="#fig-fourierbasis" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> plot the Fourier basis functions <span class="math inline">\(\varphi_1,\dots,\varphi_{2K+1}\)</span> for <span class="math inline">\(K=1,2,3,4\)</span>.</p>
+<p>According to <a href="#thm-wilcoxonasymp" class="quarto-xref">Theorem&nbsp;<span>30.1</span></a>, the rule which rejects <span class="math inline">\(H_0\)</span>: <span class="math inline">\(F = G\)</span> when <span id="eq-WXYasymprule"><span class="math display">\[
+W_{XY} \geq \mathbb{E}W_R - m(m+1)/2 + z_\alpha \sqrt{\mathbb{V}W_R}
+\tag{30.6}\]</span></span> will have Type I error rate converging to <span class="math inline">\(\alpha\)</span> as <span class="math inline">\(n,m\to \infty\)</span> (Recall from the previous section that <span class="math inline">\(W_{XY} = W_R - m(m+1)/2\)</span>). A “continuity correction” is often employed, whereby one adds <span class="math inline">\(1/2\)</span> to the right hand side of <a href="#eq-WXYasymprule" class="quarto-xref">Equation&nbsp;<span>30.6</span></a>.</p>
+<p>Figure <a href="#fig-typeIifuseasympdist" class="quarto-xref">Figure&nbsp;<span>30.1</span></a> gives an idea of how quickly the convergence in <a href="#thm-wilcoxonasymp" class="quarto-xref">Theorem&nbsp;<span>30.1</span></a> takes place as <span class="math inline">\(n,m \to \infty\)</span>. It plots the exact Type I error rate of the rejection rule in <a href="#eq-WXYasymprule" class="quarto-xref">Equation&nbsp;<span>30.6</span></a> over an increasing sequence of <span class="math inline">\(N\)</span> values, with <span class="math inline">\(m = \lfloor N/3 \rfloor\)</span> for each <span class="math inline">\(N\)</span>, at <span class="math inline">\(\alpha = 0.01,0.05,0.10\)</span>, with and without the “continuity correction.” We see that as <span class="math inline">\(N\)</span> grows large, the rejection rule based on the asymptotic distribution has Type I error rates approaching the nominal levels. The continuity correction appears to make the Type I error rate significantly closer to the nominal level for smaller values of <span class="math inline">\(N\)</span>. Note that this plot is not the result of a simulation; each curve is computed according to the exact distribution of the statistic <span class="math inline">\(W_{XY}\)</span> under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(F = G\)</span> with the function <code>pwilcox()</code>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>plotFourier0to1 <span class="ot">&lt;-</span> <span class="cf">function</span>(K){</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">length =</span> <span class="dv">201</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  Bx <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="fu">length</span>(x),<span class="dv">2</span><span class="sc">*</span>K<span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  Bx[,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>K){</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    Bx[,<span class="dv">2</span><span class="sc">*</span>j] <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>j<span class="sc">*</span>x)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    Bx[,<span class="dv">2</span><span class="sc">*</span>j<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>j<span class="sc">*</span>x)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="cn">NA</span>,</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fu">sqrt</span>(<span class="dv">2</span>),<span class="fu">sqrt</span>(<span class="dv">2</span>)),</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlim =</span> <span class="fu">range</span>(x),</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">""</span>,</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">""</span>)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  xpos <span class="ot">&lt;-</span> <span class="fu">grconvertX</span>(.<span class="dv">5</span>, <span class="at">from =</span> <span class="st">"nfc"</span>, <span class="at">to =</span> <span class="st">"user"</span>)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  ypos <span class="ot">&lt;-</span> <span class="fu">grconvertY</span>(.<span class="dv">92</span>, <span class="at">from =</span> <span class="st">"nfc"</span>, <span class="at">to =</span> <span class="st">"user"</span>)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">text</span>(<span class="at">x =</span> xpos, <span class="at">y =</span> ypos, <span class="at">labels =</span> <span class="fu">paste</span>(<span class="st">"K = "</span>,K, <span class="at">sep =</span> <span class="st">""</span>), <span class="at">xpd =</span> <span class="cn">NA</span>)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>( k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(<span class="dv">2</span><span class="sc">*</span>K<span class="sc">+</span><span class="dv">1</span>)){</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(Bx[,k]<span class="sc">~</span>x, <span class="at">col =</span> k)</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>),<span class="at">mar=</span> <span class="fu">c</span>(<span class="fl">2.1</span>,<span class="fl">2.1</span>,<span class="fl">2.1</span>,<span class="fl">1.1</span>))</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>){</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotFourier0to1</span>(<span class="at">K =</span> k)</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>NN <span class="ot">&lt;-</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">50</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>typ1_01_exact <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(NN))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>typ1_05_exact <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(NN))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>typ1_10_exact <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(NN))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>typ1_corr_01_exact <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(NN))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>typ1_corr_05_exact <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(NN))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>typ1_corr_10_exact <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(NN))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(NN)){</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">&lt;-</span> NN[i]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">floor</span>(N<span class="sc">/</span><span class="dv">3</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> N <span class="sc">-</span> m</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> m<span class="sc">*</span>(N<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  sigma <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(m<span class="sc">*</span>(N<span class="sc">-</span>m)<span class="sc">*</span>(N<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">12</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  c01_asymp <span class="ot">&lt;-</span> mu <span class="sc">-</span> m<span class="sc">*</span>(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.99</span>)<span class="sc">*</span>sigma</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  c05_asymp <span class="ot">&lt;-</span> mu <span class="sc">-</span> m<span class="sc">*</span>(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.95</span>)<span class="sc">*</span>sigma</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  c10_asymp <span class="ot">&lt;-</span> mu <span class="sc">-</span> m<span class="sc">*</span>(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.90</span>)<span class="sc">*</span>sigma</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  typ1_01_exact[i] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pwilcox</span>(c01_asymp<span class="dv">-1</span>,<span class="at">m=</span>m,<span class="at">n=</span>n)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  typ1_05_exact[i] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pwilcox</span>(c05_asymp<span class="dv">-1</span>,<span class="at">m=</span>m,<span class="at">n=</span>n)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  typ1_10_exact[i] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pwilcox</span>(c10_asymp<span class="dv">-1</span>,<span class="at">m=</span>m,<span class="at">n=</span>n)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  c01_asymp_corr <span class="ot">&lt;-</span> mu <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">-</span> m<span class="sc">*</span>(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.99</span>)<span class="sc">*</span>sigma</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  c05_asymp_corr <span class="ot">&lt;-</span> mu <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">-</span> m<span class="sc">*</span>(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.95</span>)<span class="sc">*</span>sigma</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  c10_asymp_corr <span class="ot">&lt;-</span> mu <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">-</span> m<span class="sc">*</span>(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.90</span>)<span class="sc">*</span>sigma</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  typ1_corr_01_exact[i] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pwilcox</span>(c01_asymp_corr<span class="dv">-1</span>,<span class="at">m=</span>m,<span class="at">n=</span>n)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  typ1_corr_05_exact[i] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pwilcox</span>(c05_asymp_corr<span class="dv">-1</span>,<span class="at">m=</span>m,<span class="at">n=</span>n)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  typ1_corr_10_exact[i] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pwilcox</span>(c10_asymp_corr<span class="dv">-1</span>,<span class="at">m=</span>m,<span class="at">n=</span>n)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="cn">NA</span>,</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">range</span>(NN),</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">range</span>(typ1_01_exact, typ1_05_exact,typ1_10_exact),</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Type I error rate"</span>,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"N"</span>)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(typ1_01_exact <span class="sc">~</span> NN)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(typ1_corr_01_exact <span class="sc">~</span> NN, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">0.01</span>,<span class="at">lty =</span> <span class="dv">3</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(typ1_05_exact <span class="sc">~</span> NN, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(typ1_corr_05_exact <span class="sc">~</span> NN, <span class="at">col =</span><span class="st">"blue"</span>,<span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">0.05</span>,<span class="at">lty =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(typ1_10_exact <span class="sc">~</span> NN,<span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(typ1_corr_10_exact <span class="sc">~</span> NN, <span class="at">col =</span> <span class="st">"red"</span>,<span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">0.10</span>,<span class="at">lty =</span> <span class="dv">3</span>, <span class="at">col =</span><span class="st">"red"</span>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="dv">30</span>,</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="fl">0.27</span>, </span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"0.10"</span>,<span class="st">"0.10 with correction"</span>, <span class="st">"0.05"</span>,<span class="st">"0.05 with correction"</span>,<span class="st">"0.01"</span>, <span class="st">"0.01 with correction"</span>),</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"red"</span>,<span class="st">"red"</span>,<span class="st">"blue"</span>,<span class="st">"blue"</span>,<span class="st">"black"</span>,<span class="st">"black"</span>),</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>),</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">"n"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="fig-fourierbasis" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Four panels showing increasing numbers of Fourier basis functions.">
+<div id="fig-typeIifuseasympdist" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Curves tracing the Type I error rate over increasing $N$.">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-fourierbasis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="minimaxnonparmnormalmeans_files/figure-html/fig-fourierbasis-1.png" class="img-fluid figure-img" alt="Four panels showing increasing numbers of Fourier basis functions." width="672">
+<div aria-describedby="fig-typeIifuseasympdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="wilcoxonasymptotic_files/figure-html/fig-typeIifuseasympdist-1.png" class="img-fluid figure-img" alt="Curves tracing the Type I error rate over increasing $N$." width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fourierbasis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.1: Fourier basis functions for <span class="math inline">\(k=1,\dots,K\)</span>.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-typeIifuseasympdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;30.1: The exact Type I error rate of the rejection rule in <a href="#eq-WXYasymprule" class="quarto-xref">Equation&nbsp;<span>30.6</span></a> over increasing <span class="math inline">\(N\)</span> with <span class="math inline">\(m = \lfloor N / 3 \rfloor\)</span> at each <span class="math inline">\(\alpha = 0.01,0.05,0.10\)</span>. Dashed lines trace the Type I error rates when the continuity correction is used.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Now, suppose we can write <span class="math display">\[
-m(x) = \sum_{j=1}^\infty \theta_j \varphi_j(x),
-\]</span> where <span class="math inline">\(\theta_j = \int_0^1m(x)\varphi_j(x)dx\)</span> for <span class="math inline">\(j=1,2,\dots\)</span>, that is, suppose <span class="math inline">\(m\)</span> lies in the space of functions spanned by <span class="math inline">\(\varphi_1,\varphi_2,\dots\)</span> Moreover, suppose (we will make this more precise later) that for large enough <span class="math inline">\(n\)</span> we have <span class="math display">\[
-m(x) \approx \sum_{j=1}^n \theta_j\varphi_j(x),
-\]</span> so that the prominent features of the function <span class="math inline">\(m\)</span> can be resolved with coefficients <span class="math inline">\(\theta_j\)</span> corresponding to small indices <span class="math inline">\(j=1,\dots,n\)</span>. In this setup, consider estimating <span class="math inline">\(\theta_1,\dots,\theta_n\)</span> based on <span class="math inline">\(Y_1,\dots,Y_n\)</span> with <span class="math display">\[
-\hat \theta_j = \frac{1}{n}\sum_{i=1}^n Y_i \varphi_j(i/n)
-\]</span> for <span class="math inline">\(j = 1,\dots,n\)</span>. Then we have <span class="math display">\[
-\hat \theta_j = \frac{1}{n}\sum_{i=1}^n m(i/n)\varphi_j(i/n) + \frac{1}{n}\sum_{i=1}^n \varepsilon_i \varphi_j(i/n),
-\]</span> where <span class="math display">\[
-\frac{1}{n}\sum_{i=1}^n m(i/n)\varphi_j(i/n) \to \int_0^1 m(x)\varphi_j(x)dx = \theta_j
-\]</span> as <span class="math inline">\(n \to \infty\)</span> and the second term is Normally distributed with variance such that <span class="math display">\[
-n\mathbb{V}\Big(\frac{1}{n}\sum_{i=1}^n \varepsilon_i \varphi_j(i/n)\Big) = \frac{\sigma^2}{n}\sum_{i=1}^n\varphi^2_j(i/n) \to \sigma^2 \int_0^1\varphi_j^2(x)dx = \sigma^2
-\]</span> as <span class="math inline">\(n \to \infty\)</span>. Thus for large <span class="math inline">\(n\)</span> we may write <span class="math display">\[
-\hat \theta_j \overset{d}{\approx} \theta_j + n^{-1/2}\sigma \xi_j,
-\]</span> for <span class="math inline">\(j=1,\dots,n\)</span>, where <span class="math inline">\(\xi_1,\dots,\xi_n\)</span> are independent <span class="math inline">\(\mathcal{N}(0,1)\)</span> random variables.</p>
-<p>Moreover, setting <span class="math inline">\(\hat m_n(x) = \sum_{i=1}^n \hat \theta_j\varphi_j(x)\)</span>, the mean integrated squared error of the estimator <span class="math inline">\(\hat m_n\)</span> is given by <span class="math display">\[
-\operatorname{MISE}\hat m_n = \int_0^1|\hat m_n(x) - m(x)|^2dx \approx \sum_{i=1}^n(\hat \theta_i - \theta_i)^2.
-\]</span></p>
-<p>This brings us to the so-called Normal means model:</p>
-<div id="def-normalmeansmodel" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 7.3 (Normal means model)</strong></span> Let <span class="math display">\[
-Z_i = \theta_i + n^{-1/2}\sigma \xi_i
-\]</span> for <span class="math inline">\(i = 1,\dots,n\)</span>, where <span class="math inline">\(\boldsymbol{\theta}= (\theta_1,\dots,\theta_n) \in \Theta \subset \mathbb{R}^n\)</span> is unknown, <span class="math inline">\(\xi_1,\dots,\xi_n\)</span> are independent <span class="math inline">\(\mathcal{N}(0,1)\)</span> random variables, and <span class="math inline">\(\sigma &gt; 0\)</span>.</p>
-</div>
-<p>Due to the reduction of the nonparametric regression model to the Normal means model via the approximations outlined above, what we learn about estimation in the Normal means model can be to some extent carried over to nonparametric regression. That is, studying how well we can estimate <span class="math inline">\(\theta_1,\theta_2,\dots\)</span> in the Normal means model can help us understand how well we can estimate the unknown function <span class="math inline">\(m\)</span> in the original nonparametric regression model.</p>
-<p>One might imagine that assumptions concerning the smoothness of the unknown function <span class="math inline">\(m\)</span> will correspond to assumptions about the parameters <span class="math inline">\(\theta_1,\theta_2,\dots\)</span> This is indeed the case, as we will see in the next section, where we introduce the periodic Sobolev class of functions. These functions can be constructed from the Fourier basis such that the coefficients <span class="math inline">\(\theta_1,\theta_2,\dots\)</span> will satisfy certain constraints. We will see that for smoother functions, the coefficients <span class="math inline">\(\theta_1,\theta_2,\dots\)</span> must satisfy stricter constraints, making them “easier” to estimate.</p>
-<!-- In the next section we discuss a particular class of functions under which there is a clean connection between nonparametric regression and the Normal means model. -->
-<!-- ```{r} -->
-<!-- m <- function(x){ - 100 * (x - 1/2) * dnorm(8*(x - 1/2))} -->
-<!-- n <- 100 -->
-<!-- X <- c(1:n)/n -->
-<!-- Y <- m(X) -->
-<!-- K <- n -->
-<!-- Phi <- matrix(0,length(X),K+1) -->
-<!-- Phi[,1] <- 1 -->
-<!-- for(k in 1:(K/2)){ -->
-<!--   Phi[,2*k] <- sqrt(2)*cos(2*pi*k*X) -->
-<!--   Phi[,2*k+1] <- sqrt(2)*sin(2*pi*k*X) -->
-<!-- } -->
-<!-- th <- t(Phi) %*% Y / n -->
-<!-- Yhat <- Phi %*% th -->
-<!-- plot(Y~X) -->
-<!-- lines(Yhat ~ X, col = "red") -->
-<!-- ``` -->
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-wasserman2006all" class="csl-entry" role="listitem">
-Wasserman, Larry. 2006. <em>All of Nonparametric Statistics</em>. Springer Science &amp; Business Media.
-</div>
-</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1077,13 +1109,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./additivesparse.html" class="pagination-link" aria-label="Sparse additive model">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sparse additive model</span></span>
+      <a href="./wilcoxonranksum.html" class="pagination-link" aria-label="The Wilcoxon rank sum test">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./minimaxnormalmeans.html" class="pagination-link" aria-label="Minimax risk in the Normal means model">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Minimax risk in the Normal means model</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./miscresults.html" class="pagination-link" aria-label="Miscellaneous results">
+        <span class="nav-page-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
