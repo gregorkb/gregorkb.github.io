@@ -377,7 +377,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">Traditional nonparametrics</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -385,8 +385,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./wilcoxonranksum.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./miscresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
   </div>
 </li>
       </ul>
@@ -504,7 +521,7 @@ Proof of <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;
 <p>Now begin by noting <span class="math display">\[\begin{align}
 \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} \inf_{\boldsymbol{\lambda}} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta})  &amp;\leq  \inf_{\boldsymbol{\lambda}} \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)}  R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) \\
 &amp; \leq \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\ell},\boldsymbol{\theta}),
-\end{align}\]</span> where the first inequality always holds from changing the order of the supremum and the infimum (See <a href="miscresults.html#lem-supinf" class="quarto-xref">Lemma&nbsp;<span>29.1</span></a>). From here, we see that it is sufficient to show <span id="eq-linearminimaxupper"><span class="math display">\[
+\end{align}\]</span> where the first inequality always holds from changing the order of the supremum and the infimum (See <a href="miscresults.html#lem-supinf" class="quarto-xref">Lemma&nbsp;<span>30.1</span></a>). From here, we see that it is sufficient to show <span id="eq-linearminimaxupper"><span class="math display">\[
 \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\ell},\boldsymbol{\theta}) \leq \sigma^2\sum_{j=1}^\infty \ell_j
 \tag{10.5}\]</span></span> as well as <span id="eq-linearminimaxlower"><span class="math display">\[
 \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} \inf_{\boldsymbol{\lambda}} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) \geq \sigma^2 \sum_{j=1}^\infty \ell_j.

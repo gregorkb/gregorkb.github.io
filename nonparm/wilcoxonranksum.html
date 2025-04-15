@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>22&nbsp; The percentile bootstrap – Some of Nonparametric Statistics</title>
+<title>29&nbsp; The Wilcoxon rank sum test – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -50,8 +84,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./statfunctionals.html" rel="next">
-<link href="./edgeworthboot.html" rel="prev">
+<link href="./miscresults.html" rel="next">
+<link href="./bootCB.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -142,7 +176,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootpercentile.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The percentile bootstrap</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./wilcoxonranksum.html">Traditional nonparametrics</a></li><li class="breadcrumb-item"><a href="./wilcoxonranksum.html"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -269,13 +303,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Bootstrap</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./boot.html" class="sidebar-item-text sidebar-link">
@@ -332,7 +366,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bootpercentile.html" class="sidebar-item-text sidebar-link active">
+  <a href="./bootpercentile.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The percentile bootstrap</span></span></a>
   </div>
 </li>
@@ -376,16 +410,16 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Traditional nonparametrics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./wilcoxonranksum.html" class="sidebar-item-text sidebar-link">
+  <a href="./wilcoxonranksum.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></a>
   </div>
 </li>
@@ -425,9 +459,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootpercentile.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The percentile bootstrap</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./wilcoxonranksum.html">Traditional nonparametrics</a></li><li class="breadcrumb-item"><a href="./wilcoxonranksum.html"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-bootpercentile" class="quarto-section-identifier"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The percentile bootstrap</span></span></h1>
+<h1 class="title"><span id="sec-wilcoxonranksum" class="quarto-section-identifier"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></h1>
 </div>
 
 
@@ -448,32 +482,195 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>Another approach to constructing confidence intervals for a parameter is the percentile bootstrap, which is a special case of a kind of bootstrap confidence interval called a bias-corrected and accelerated <span class="math inline">\(BC_a\)</span> interval. The rationale behind the construction of these intervals is very different from that of the intervals we have discussed so far; rather than attempting to estimate the sampling distribution of a pivotal quantity, the <span class="math inline">\(BC_a\)</span> approach constructs upper and lower confidence bounds somewhat more directly. For details, see <span class="citation" data-cites="diciccio1996bootstrap">DiCiccio and Efron (<a href="references.html#ref-diciccio1996bootstrap" role="doc-biblioref">1996</a>)</span>.</p>
-<p>We will illustrate a special case of the <span class="math inline">\(BC_a\)</span> intervals known as the percentile interval. Let <span class="math inline">\(X_1,\dots,X_n\)</span> be independent, identically distributed random variables and let <span class="math inline">\(\hat \theta_n = \hat \theta_n(X_1,\dots,X_n)\)</span> be an estimator of some parameter <span class="math inline">\(\theta\)</span> such that <span class="math display">\[
-\sqrt{n}(\hat \theta_n - \theta) \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,\vartheta)
-\]</span> as <span class="math inline">\(n \to \infty\)</span>, for some variance <span class="math inline">\(\vartheta &gt; 0\)</span>.</p>
-<div id="def-percentileinterval" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 22.1 (Bootstrap percentile interval)</strong></span> Conditional on <span class="math inline">\(X_1,\dots,X_n\)</span>, introduce independent, identically distributed random variables <span class="math inline">\(X_1^*,\dots,X_n^*\)</span> having cdf <span class="math inline">\(\hat F_n\)</span>, where <span class="math inline">\(\hat F_n\)</span> is the empirical distribution of <span class="math inline">\(X_1,\dots,X_n\)</span>. Then set <span class="math inline">\(\hat \theta_n^* = \hat \theta_n(X_1^*,\dots,X_n^*)\)</span> and let <span class="math display">\[
-\hat G_{\hat \theta_n}(x) = \mathbb{P}_*(\hat\theta_n^* \leq x)
-\]</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span> be the cdf of <span class="math inline">\(\hat \theta_n^*\)</span> conditional on <span class="math inline">\(X_1,\dots,X_n\)</span>. Then the <span class="math inline">\((1-\alpha)100\%\)</span> percentile interval for <span class="math inline">\(\theta\)</span> is defined as <span id="eq-bootpercentileinterval"><span class="math display">\[
-\Big[\hat G_{\hat \theta_n}^{-1}(\alpha/2),\hat G_{\hat \theta_n}^{-1}(1-\alpha/2)\Big].
-\tag{22.1}\]</span></span></p>
-</div>
-<p>To implement the percentile bootstrap one may choose a large <span class="math inline">\(B\)</span> and for each <span class="math inline">\(b = 1,\dots,B\)</span> do</p>
+<p>The Wilcoxon rank sum test is the quintessential traditional nonparametric test. We take a deep dive into this one; other rank-based methods develop similarly.</p>
+<p>Suppose we collect random samples from a “control” and “treatment” population such that <span class="math display">\[\begin{align}
+X_1,\dots,X_n &amp;\overset{\text{ind}}{\sim}F \quad \text{``control''} \\
+Y_1,\dots,Y_m &amp;\overset{\text{ind}}{\sim}G \quad \text{``treatment''}
+\end{align}\]</span> with <span class="math inline">\(N = n + m\)</span> the total number of observations.</p>
+<p>The Wilcoxon rank sum test was contrived as a way to test the effectiveness of a treatment (say we draw <span class="math inline">\(N\)</span> subjects from a population and randomly assign <span class="math inline">\(n\)</span> to the control and <span class="math inline">\(m\)</span> to the treatment group). For our development, suppose the treatment is effective if it tends to <em>increase</em> the measured outcomes—that is if it tends to make the <span class="math inline">\(Y_i\)</span> greater than the <span class="math inline">\(X_i\)</span>.</p>
+<p>There are various senses in which a treatment could “tend to make the <span class="math inline">\(Y_i\)</span> greater than the <span class="math inline">\(X_i\)</span>.” The Wilcoxon rank sum test essentially estimates the probability <span class="math inline">\(P(X \leq Y)\)</span>, where <span class="math inline">\(X \sim F\)</span> and <span class="math inline">\(Y \sim G\)</span>, and concludes effectiveness of the treatment if this estimate is significantly greater than <span class="math inline">\(1/2\)</span>. Some other ways found in the literature of ordering two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are the following:</p>
 <ul>
-<li>Draw <span class="math inline">\(X_1^{*(b)},\dots,X_n^{*(b)}\)</span> with replacement from <span class="math inline">\(X_1,\dots,X_n\)</span>.</li>
-<li>Compute <span class="math inline">\(\hat \theta^{*(b)}_n= \hat \theta_n(X_1^{*(b)},\dots,X_n^{*(b)})\)</span></li>
+<li>If <span class="math inline">\(G(x)\leq F(x)\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span> then we say <span class="math inline">\(Y\)</span> is <em>stochastically greater</em> than <span class="math inline">\(X\)</span>.</li>
+<li>If <span class="math inline">\((1-F(x)/(1 - G(x))\)</span> non-increasing then <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> satisfy a <em>uniform stochastic ordering</em>.</li>
+<li>If <span class="math inline">\(f(x)/g(x)\)</span> is non-increasing, where <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are the densities of <span class="math inline">\(F\)</span> and <span class="math inline">\(G\)</span> respectively, provided they exist, then <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> satisfy a <em>liklihood ratio ordering</em>.</li>
 </ul>
-<p>Then a Monte Carlo approximation to the bootstrap percentile interval in <a href="#eq-bootpercentileinterval" class="quarto-xref">Equation&nbsp;<span>22.1</span></a> is given by <span class="math display">\[
-\Big[\hat \theta^{*(\lceil (\alpha/2) B\rceil)}_n,\hat \theta^{*(\lceil (1-\alpha/2) B\rceil)}_n\Big],
-\]</span> after sorting the Monte Carlo realizations of <span class="math inline">\(\hat \theta^*_n\)</span> such that <span class="math inline">\(\hat \theta^{*(1)}_n \leq \dots \leq \hat \theta^{*(B)}_n\)</span>.</p>
-<p>This is a special, and the simplest, case of the <span class="math inline">\(BC_a\)</span> intervals, which are described in <span class="citation" data-cites="diciccio1996bootstrap">DiCiccio and Efron (<a href="references.html#ref-diciccio1996bootstrap" role="doc-biblioref">1996</a>)</span>. This interval, under mild conditions, is first-order correct; it can be adjusted to achieve second-order correctness in some settings. Your humble statistics professor, however, prefers the approach of bootstrapping pivotal quantities to the <span class="math inline">\(BC_a\)</span> approach, so he will not enter into any more details about the latter.</p>
-<p><a href="bootmeanstudentized.html#fig-bootmeanstudcvg" class="quarto-xref">Figure&nbsp;<span>17.1</span></a> compares the performance of the percentile bootstrap confidence interval for a mean to that of the interval obtained from bootstrapping the pivotal quantity <span class="math inline">\(T_n = \sqrt{n}(\bar X_n - \mu)/S_n\)</span>. The plot shows that the percentile bootstrap does not, under the settings considered, make any improvement upon the confidence interval based on the limiting Normal distribution of the quantity <span class="math inline">\(T_n\)</span>.</p>
+<p>The Wilcoxon rank sum test calls for the rejection of the null hypothesis <span class="math inline">\(H_0\)</span>: <span class="math inline">\(F = G\)</span> when the test statistic <span class="math display">\[
+W_{XY} = \sum_{i=1}^n\sum_{j=1}^m \mathbf{1}(X_i \leq Y_j)
+\]</span> is large, that is when <span class="math inline">\(W_{XY} \geq c\)</span> for some critical value <span class="math inline">\(c\)</span> calibrated to control the Type I error rate. Note that <span class="math inline">\((nm)^{-1}W_{XY}\)</span> is an unbiased estimator of <span class="math inline">\(P(X \leq Y)\)</span>, which has the value <span class="math inline">\(1/2\)</span> under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(F = G\)</span>.</p>
+<p>The more effective the treatment at “making the <span class="math inline">\(Y_i\)</span> greater than the <span class="math inline">\(X_i\)</span>,” the greater we expect the value <span class="math inline">\(W_{XY}\)</span> to be, so we reject the null hypothesis when <span class="math inline">\(W_{XY}\)</span> meets or exceeds some threshold.</p>
+<p>We can write <span class="math inline">\(W_{XY}\)</span> in the form of a sum of ranks as follows:</p>
+<ol type="1">
+<li>Let <span class="math inline">\((Z_1,\dots,Z_{n + m}) = (X_1,\dots,X_n,Y_1,\dots,Y_m)\)</span> denote the complete set of data values.</li>
+<li>Obtain the ranks of the treatment observations as <span class="math inline">\(R_j = \sum_{i=1}^{n+m}\mathbf{1}(Z_i \leq Y_j)\)</span>, <span class="math inline">\(j = 1,\dots,m\)</span> (Assume there are no tied data values so that no two ranks among <span class="math inline">\(R_1,\dots,R_m\)</span> will be equal).</li>
+<li>Set <span class="math inline">\(W_R = \sum_{j=1}^m R_j\)</span>.</li>
+</ol>
+<p>Then one can show <span class="math inline">\(W_{XY} = W_R - m(m+1)/2\)</span>. Hence the name “rank sum test”.</p>
+<p>Since <span class="math inline">\(W_{XY}\)</span> is merely a shifted version of <span class="math inline">\(W_R\)</span>, the two statistics carry equivalent information. We will find it more convenient to analyze the rank sum <span class="math inline">\(W_R\)</span>. Here is as good a place as any to mention that the Wilcoxon rank sum test is equivalent to a test called the Mann-Whitney U test.</p>
+<p>Interestingly, under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(F = G\)</span> one can tabulate the exact distribution of the statistics <span class="math inline">\(W_{XY}\)</span> and <span class="math inline">\(W_R\)</span>. If <span class="math inline">\(F\)</span> and <span class="math inline">\(G\)</span> are both continuous distributions (so that ties occur with probability zero), we have <span class="math display">\[
+P( (R_1,\dots,R_m) = (r_1,\dots,r_m)) = \frac{1}{{ N \choose m}}
+\]</span> for each set of <span class="math inline">\(m\)</span> distinct ranks <span class="math inline">\(r_1,\dots,r_m \in \{1,\dots,N\}\)</span>. This allows us to tabulate the distribution of <span class="math inline">\(W_{XY}\)</span> and <span class="math inline">\(W_R\)</span> for any <span class="math inline">\(m\)</span> and <span class="math inline">\(N\)</span> as in <a href="#exm-tabranksumdist" class="quarto-xref">Example&nbsp;<span>29.1</span></a>. When tied data values are allowed, writing down the exact distribution of <span class="math inline">\(W_{XY}\)</span> or <span class="math inline">\(W_R\)</span> becomes cumbersome; see <span class="citation" data-cites="lehmann1975nonparametrics">Lehmann (<a href="references.html#ref-lehmann1975nonparametrics" role="doc-biblioref">1975</a>)</span>.</p>
+<div id="exm-tabranksumdist" class="theorem example">
+<p><span class="theorem-title"><strong>Example 29.1 (Tabulating the distribution of the rank-sum statistic)</strong></span> For <span class="math inline">\(N = 5\)</span> and <span class="math inline">\(m = 2\)</span>, for all possible pairs of ranks <span class="math inline">\((r_1,r_2)\)</span>, the values of <span class="math inline">\(W_S\)</span> and <span class="math inline">\(W_{XY}\)</span> are enumerated in <a href="#tbl-allpossiblepairsofranks" class="quarto-xref">Table&nbsp;<span>29.1</span></a></p>
+<div id="tbl-allpossiblepairsofranks" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-allpossiblepairsofranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;29.1: Value of <span class="math inline">\(W_R\)</span> and <span class="math inline">\(W_{XY}\)</span> for all possible pairs of ranks <span class="math inline">\((r_1,r_2)\)</span> when <span class="math inline">\(N = 5\)</span> and <span class="math inline">\(m = 2\)</span>.
+</figcaption>
+<div aria-describedby="tbl-allpossiblepairsofranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><span class="math inline">\(r_1\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(r_2\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(W_R\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(W_{XY}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Since each pair of ranks occurs with equal probability (under the null hypothesis), we can tabulate the null distribution of the statistic <span class="math inline">\(W_{XY}\)</span> as in <a href="#tbl-tabranksumdist" class="quarto-xref">Table&nbsp;<span>29.2</span></a>.</p>
+<div id="tbl-tabranksumdist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tabranksumdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;29.2: Distribution of <span class="math inline">\(W_{XY}\)</span> when <span class="math inline">\(N = 5\)</span> and <span class="math inline">\(m = 2\)</span>.
+</figcaption>
+<div aria-describedby="tbl-tabranksumdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><span class="math inline">\(w\)</span></th>
+<th style="text-align: left;">0</th>
+<th style="text-align: left;">1</th>
+<th style="text-align: left;">2</th>
+<th style="text-align: left;">3</th>
+<th style="text-align: left;">4</th>
+<th style="text-align: left;">5</th>
+<th style="text-align: left;">6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(P(W_{XY} = w)\)</span></td>
+<td style="text-align: left;">0.1</td>
+<td style="text-align: left;">0.1</td>
+<td style="text-align: left;">0.2</td>
+<td style="text-align: left;">0.2</td>
+<td style="text-align: left;">0.2</td>
+<td style="text-align: left;">0.1</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>From <a href="#tbl-tabranksumdist" class="quarto-xref">Table&nbsp;<span>29.2</span></a>, we see that the test which rejects <span class="math inline">\(H_0\)</span> when <span class="math inline">\(W_{XY} \geq 6\)</span> has a Type I error rate of <span class="math inline">\(0.1\)</span>. Note that since <span class="math inline">\(W_{XY}\)</span> is discrete, one may not be able to identify a critical value <span class="math inline">\(c\)</span> such that the Type I error rate of the rule <span class="math inline">\(W_{XY} \geq c\)</span> is exactly equal to the desired rate. Note that the distribution of <span class="math inline">\(W_R\)</span> can be tabulated in the same manner.</p>
+</div>
+<p><span class="citation" data-cites="lehmann1975nonparametrics">Lehmann (<a href="references.html#ref-lehmann1975nonparametrics" role="doc-biblioref">1975</a>)</span> has several pages of tables in the back giving values of <span class="math inline">\(\mathbb{P}(W_{XY} \leq c)\)</span> for different (small) values of <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span>. When <span class="math inline">\(m\)</span> and <span class="math inline">\(N\)</span> are both large, it can be computationally costly to compute probabilities for <span class="math inline">\(W_{XY}\)</span> and <span class="math inline">\(W_R\)</span> from their exact probability distributions, as one must essentially count rows of a table like that in <a href="#exm-tabranksumdist" class="quarto-xref">Example&nbsp;<span>29.1</span></a>. Therefore when <span class="math inline">\(m\)</span> and <span class="math inline">\(N\)</span> are large, one may prefer to use an approximations to the distributions of <span class="math inline">\(W_{XY}\)</span> and <span class="math inline">\(W_R\)</span>.</p>
+<p>Below is a quick illustration in R showing how to calculate the rank sum statistic <span class="math inline">\(W_R\)</span> as well as the statistic <span class="math inline">\(W_{XY}\)</span>. The code exhibits the function <code>pwilcox()</code>, which evaluates the exact cdf of <span class="math inline">\(W_{XY}\)</span>. It is slow (the documentation warns) when <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span> are large. One can compare the p-value obtained using the <code>pwilcox()</code> function to that obtained from the function <code>wilcox.test()</code>, which makes use of the exact distribution of <span class="math inline">\(W_{XY}\)</span> so long as <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span> are not too large.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate some data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(m,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># compute WR and WXY</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">&lt;-</span> <span class="fu">c</span>(X,Y)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,n),<span class="fu">rep</span>(<span class="dv">2</span>,m))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">rank</span>(Z)[id <span class="sc">==</span> <span class="dv">2</span>]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>WR <span class="ot">&lt;-</span> <span class="fu">sum</span>(R)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>WXY <span class="ot">&lt;-</span> <span class="fu">sum</span>(R) <span class="sc">-</span> m<span class="sc">*</span>(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>WXY</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 197</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pval <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pwilcox</span>(WXY<span class="dv">-1</span>,<span class="at">m =</span> m, <span class="at">n =</span> n) <span class="co"># must subtract 1, since we reject when WXY &gt;= c</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pval</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8879321</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># see that the wilcox.test() function gives the same values</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="at">x=</span>Y,<span class="at">y=</span>X,<span class="at">alternative=</span><span class="st">"greater"</span>,<span class="at">exact =</span> <span class="cn">TRUE</span>) <span class="co"># switch X and Y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum exact test
+
+data:  Y and X
+W = 197, p-value = 0.8879
+alternative hypothesis: true location shift is greater than 0</code></pre>
+</div>
+</div>
+<p>In the next section we will study a Normal approximation to the distribution of <span class="math inline">\(W_R\)</span>. <!-- One can show --> <!-- $$ --> <!-- \P(X \leq Y) = \int_0^1 F(G^{-1}(u))du, --> <!-- $$ --> <!-- so that under $H_0$: $F = G$ we have  --> <!-- $$ --> <!--  (nm)^{-1}\E W_{XY} = 1/2. --> <!-- $$ --></p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-diciccio1996bootstrap" class="csl-entry" role="listitem">
-DiCiccio, Thomas J, and Bradley Efron. 1996. <span>“Bootstrap Confidence Intervals.”</span> <em>Statistical Science</em> 11 (3): 189–228.
+<div id="ref-lehmann1975nonparametrics" class="csl-entry" role="listitem">
+Lehmann, E L. 1975. <em>Nonparametrics</em>. Holden-Day, Inc.
 </div>
 </div>
 
@@ -900,13 +1097,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./edgeworthboot.html" class="pagination-link" aria-label="Edgeworth expansions for the bootstrap">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Edgeworth expansions for the bootstrap</span></span>
+      <a href="./bootCB.html" class="pagination-link" aria-label="Bootstrap confidence bands in nonparametric regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./statfunctionals.html" class="pagination-link" aria-label="Statistical functionals">
-        <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Statistical functionals</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./miscresults.html" class="pagination-link" aria-label="Miscellaneous results">
+        <span class="nav-page-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

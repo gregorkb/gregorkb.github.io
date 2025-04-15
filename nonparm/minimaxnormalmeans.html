@@ -377,7 +377,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">Traditional nonparametrics</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -385,8 +385,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./wilcoxonranksum.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./miscresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
   </div>
 </li>
       </ul>
@@ -536,7 +553,7 @@ R(\hat{\boldsymbol{\theta}}_\lambda,\boldsymbol{\theta}) = \sum_{j=1}^n \mathbb{
 \sup_{\boldsymbol{\theta}\in \Theta} R(\hat{\boldsymbol{\theta}}_\lambda,\boldsymbol{\theta}) = \lambda^2\sigma^2 + (1-\lambda)^2 c^2.
 \]</span> The value of <span class="math inline">\(\lambda\)</span> which minimizes the worst-case risk (take the derivative with respect to <span class="math inline">\(\lambda\)</span> and set this equal to zero) is <span class="math inline">\(\lambda =  c^2 / (\sigma^2 + c^2)\)</span>. Plugging this in, we find <span class="math display">\[
 \inf_{\lambda} \sup_{\boldsymbol{\theta}\in \Theta} R(\hat{\boldsymbol{\theta}}_\lambda,\boldsymbol{\theta}) = \frac{c^4}{(\sigma^2 + c^2)^2}\sigma^2 + \frac{\sigma^4}{(\sigma^2 + c^2)^2}c^2 = \frac{\sigma^2 c^2}{\sigma^2 + c^2},
-\]</span> which shows <span class="math inline">\(M(\Theta_n(c)) \leq M^*\)</span>. That is, if an estimator of the form <span class="math inline">\(\hat{\boldsymbol{\theta}}_\lambda = (\lambda Z_1,\dots,\lambda Z_n)\)</span> can achieve worst-case risk <span class="math inline">\(M^*\)</span>, then the smallest worst-case risk achievable by <em>any</em> estimator is not larger than <span class="math inline">\(M^*\)</span>.</p></li>
+\]</span> which shows <span class="math inline">\(M(\Theta_n(c)) \leq M^*\)</span>. That is, if an estimator of the form <span class="math inline">\(\hat{\boldsymbol{\theta}}_\lambda = (\lambda Z_1,\dots,\lambda Z_n)\)</span> can achieve worst-case risk <span class="math inline">\(M^*\)</span>, then the smallest worst-case risk achievable by <em>any</em> estimator is equal to or less than <span class="math inline">\(M^*\)</span>.</p></li>
 <li><p>Choose for the prior <span class="math inline">\(\pi\)</span> the <span class="math inline">\(\mathcal{N}(\mathbf{0},n^{-1}c^2\delta^2\mathbf{I}_n)\)</span> distribution. Note that this prior has support on <span class="math inline">\(\mathbb{R}^n\)</span>, some of which is outside of <span class="math inline">\(\Theta_n(c)\)</span>, so the second term in <a href="#eq-minimaxlowerbound" class="quarto-xref">Equation&nbsp;<span>8.1</span></a> will have to be handled, as it is not equal to zero. As <span class="math inline">\(n\)</span> grows, however, most of the support of the <span class="math inline">\(\mathcal{N}(\mathbf{0},n^{-1}c^2\delta^2\mathbf{I}_n)\)</span> distribution will fall within the ball <span class="math inline">\(\Theta_n(c)\)</span>, so this term will disappear. This is shown rigorously in the proof given by <span class="citation" data-cites="wasserman2006all">Wasserman (<a href="references.html#ref-wasserman2006all" role="doc-biblioref">2006</a>)</span>, but we omit the details here. Under this prior the Bayes estimator (the posterior mean) of <span class="math inline">\(\boldsymbol{\theta}\)</span> is given by <span class="math display">\[
   \hat{\boldsymbol{\theta}}_\pi = \Big(Z_1 \frac{c^2\delta^2}{\sigma^2 + c^2\delta^2},\dots,Z_n\frac{c^2\delta^2}{\sigma^2 + c^2\delta^2}\Big).
   \]</span> The risk of the Bayes estimator is given by <span class="math display">\[

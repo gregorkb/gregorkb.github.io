@@ -411,7 +411,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">Traditional nonparametrics</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -419,8 +419,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./wilcoxonranksum.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./miscresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
   </div>
 </li>
       </ul>
@@ -718,7 +735,7 @@ T(F + \epsilon(\delta_x - F)) &amp;= \int\Big(s - \int t d(F + \epsilon(\delta_x
 \end{align}\]</span> so that <span class="math display">\[
 \varphi_F(x) = \frac{d}{d\epsilon}T(F + \epsilon(\delta_x - F))\Big|_{\epsilon = 0} = (x - \mu)^2 - \sigma^2.
 \]</span> Then <span class="math display">\[
-\sigma^2_T = \int \Big((x - \mu)^2 - \sigma^2\Big)dF(x) = \mu_4 - \sigma^2,
+\sigma^2_T = \int \Big((x - \mu)^2 - \sigma^2\Big)^2dF(x) = \mu_4 - \sigma^4,
 \]</span> where <span class="math inline">\(\mu_4 = \int (x - \mu)^4 dF(x)\)</span>.</p>
 <p><strong>A probability</strong></p>
 <p>For the functional <span class="math inline">\(T(F) = \int_AdF(x)\)</span> we have <span class="math display">\[\begin{align}
