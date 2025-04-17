@@ -429,6 +429,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Asymptotic distribution of the Wilcoxon rank sum statistic</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./wilcoxonpower.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Power of the Wilcoxon rank sum test</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -443,7 +449,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./miscresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
   </div>
 </li>
       </ul>
@@ -677,12 +683,12 @@ Table&nbsp;29.2: Distribution of <span class="math inline">\(W_{XY}\)</span> whe
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>WXY <span class="ot">&lt;-</span> <span class="fu">sum</span>(R) <span class="sc">-</span> m<span class="sc">*</span>(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>WXY</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 242</code></pre>
+<pre><code>[1] 315</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pval <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pwilcox</span>(WXY<span class="dv">-1</span>,<span class="at">m =</span> m, <span class="at">n =</span> n) <span class="co"># must subtract 1, since we reject when WXY &gt;= c</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pval</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5762009</code></pre>
+<pre><code>[1] 0.07091832</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># see that the wilcox.test() function gives the same values</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="at">x=</span>Y,<span class="at">y=</span>X,<span class="at">alternative=</span><span class="st">"greater"</span>,<span class="at">exact =</span> <span class="cn">TRUE</span>) <span class="co"># switch X and Y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -691,7 +697,7 @@ Table&nbsp;29.2: Distribution of <span class="math inline">\(W_{XY}\)</span> whe
     Wilcoxon rank sum exact test
 
 data:  Y and X
-W = 242, p-value = 0.5762
+W = 315, p-value = 0.07092
 alternative hypothesis: true location shift is greater than 0</code></pre>
 </div>
 </div>

@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./miscresults.html" rel="next">
+<link href="./wilcoxonpower.html" rel="next">
 <link href="./wilcoxonranksum.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -409,6 +409,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Asymptotic distribution of the Wilcoxon rank sum statistic</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./wilcoxonpower.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Power of the Wilcoxon rank sum test</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -423,7 +429,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./miscresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
   </div>
 </li>
       </ul>
@@ -512,7 +518,7 @@ N \mathbb{V}R_1 + N(N-1)\mathbb{C}(R_1,R_2) = 0,
 </div>
 </div>
 <p>Now we state a central limit result for <span class="math inline">\(W_R\)</span>.</p>
-<div id="thm-wilcoxonasymp" class="theorem">
+<div id="thm-wilcoxonasympnull" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 30.1 (Asymptotic Normality of rank sum statistic under the null)</strong></span> Under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(F = G\)</span> we have <span id="eq-WRindist"><span class="math display">\[
 \frac{W_R - \mathbb{E}W_R}{\sqrt{\mathbb{V}W_R}} \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,1)
 \tag{30.1}\]</span></span> as <span class="math inline">\(n,m \to \infty\)</span>.</p>
@@ -523,7 +529,7 @@ N \mathbb{V}R_1 + N(N-1)\mathbb{C}(R_1,R_2) = 0,
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Proof of <a href="#thm-wilcoxonasymp" class="quarto-xref">Theorem&nbsp;<span>30.1</span></a>
+Proof of <a href="#thm-wilcoxonasympnull" class="quarto-xref">Theorem&nbsp;<span>30.1</span></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -550,7 +556,7 @@ W_R = \sum_{i=1}^N i J_i,
 \frac{\tilde W_R - \mathbb{E}\tilde W_R}{\sqrt{\mathbb{V}\tilde W_R}} = \frac{\sum_{i=1}^N a_i \xi_i}{\sqrt{\sum_{i=1}^N a_i^2}},
 \end{align}\]</span> where <span class="math display">\[
 a_i = i - \frac{N+1}{2} \quad \text{ and } \quad \xi_i = \frac{K_i - m/N}{\sqrt{m/N(1-m/N)}}
-\]</span> for <span class="math inline">\(i=1,\dots,N\)</span>. Note that <span class="math inline">\(\xi_1,\dots,\xi_N\)</span> are independent random variables with zero mean and unit variance, so according to the corollary to the Lindeberg central limit theorem stated in <a href="miscresults.html#cor-lindebergCLT" class="quarto-xref">Corollary&nbsp;<span>31.1</span></a>, the convergence in <a href="#eq-tildeWRindist" class="quarto-xref">Equation&nbsp;<span>30.2</span></a> holds provided <span id="eq-tildeWaicondition"><span class="math display">\[
+\]</span> for <span class="math inline">\(i=1,\dots,N\)</span>. Note that <span class="math inline">\(\xi_1,\dots,\xi_N\)</span> are independent random variables with zero mean and unit variance, so according to the corollary to the Lindeberg central limit theorem stated in <a href="miscresults.html#cor-lindebergCLT" class="quarto-xref">Corollary&nbsp;<span>32.1</span></a>, the convergence in <a href="#eq-tildeWRindist" class="quarto-xref">Equation&nbsp;<span>30.2</span></a> holds provided <span id="eq-tildeWaicondition"><span class="math display">\[
 \frac{\max_{1\leq i \leq N} |a_i|}{\sqrt{\sum_{i=1}^Na_i^2}} \to 0
 \tag{30.3}\]</span></span> as <span class="math inline">\(n,m \to \infty\)</span>. We have <span class="math display">\[
 \max_{1 \leq i \leq N} |a_i| = \Big( \Big|1 - \frac{N+1}{2}\Big| \vee \Big|N - \frac{N+1}{2}\Big|\Big) = \frac{N-1}{2}
@@ -574,7 +580,7 @@ W_R - \tilde W_R &amp;= \sum_{i=1}^N i J_i - \sum_{i=1}^N\Big(i - \frac{N+1}{2}\
 &amp;= 0,
 \end{align}\]</span> and <span class="math display">\[
 \mathbb{V}[W_R - \tilde W_R | U_{(1)},\dots,U_{(N)}] = \mathbb{V}\Big[ \sum_{i=1}^N \Big(i - \frac{N+1}{2}\Big)(J_i - K_i) | U_{(1)},\dots,U_{(N)}\Big].
-\]</span> To find the above variance, it helps to note that after conditioning on <span class="math inline">\(U_{(1)},\dots,U_{(N)}\)</span> the values <span class="math inline">\(U_1,\dots,U_N\)</span> on which <span class="math inline">\(K_1,\dots,K_N\)</span> and <span class="math inline">\(J_1,\dots,J_N\)</span> are based are a random permutation of <span class="math inline">\(U_{(1)},\dots,U_{(N)}\)</span>. We can therefore use <a href="miscresults.html#lem-permutation" class="quarto-xref">Lemma&nbsp;<span>31.2</span></a> to write <span class="math display">\[\begin{align}
+\]</span> To find the above variance, it helps to note that after conditioning on <span class="math inline">\(U_{(1)},\dots,U_{(N)}\)</span> the values <span class="math inline">\(U_1,\dots,U_N\)</span> on which <span class="math inline">\(K_1,\dots,K_N\)</span> and <span class="math inline">\(J_1,\dots,J_N\)</span> are based are a random permutation of <span class="math inline">\(U_{(1)},\dots,U_{(N)}\)</span>. We can therefore use <a href="miscresults.html#lem-permutation" class="quarto-xref">Lemma&nbsp;<span>32.2</span></a> to write <span class="math display">\[\begin{align}
 \mathbb{V}[W_R - \tilde W_R | U_{(1)},\dots,U_{(N)}] &amp;= \frac{1}{N-1} \sum_{i=1}^N \Big(i - \frac{N+1}{2}\Big)^2\sum_{i=1}^N((J_i - K_i) - (\bar J - \bar K))^2 \\
 &amp;\leq \frac{1}{N-1} \sum_{i=1}^N \Big(i - \frac{N+1}{2}\Big)^2\sum_{i=1}^N(J_i - K_i)^2,
 \end{align}\]</span> where <span class="math inline">\(\bar J = N^{-1}\sum_{i=1}^N J_i\)</span> and <span class="math inline">\(\bar K =N^{-1}\sum_{i=1}^N K_i\)</span>, since the mean minimizes the least-squares criterion. Plugging the above result into <a href="#eq-EWRminustildeWR" class="quarto-xref">Equation&nbsp;<span>30.5</span></a>, we have <span class="math display">\[
@@ -607,10 +613,15 @@ N(N-1)^{-1}\sqrt{2/m},&amp; m &gt; N/2.
 </div>
 </div>
 </div>
-<p>According to <a href="#thm-wilcoxonasymp" class="quarto-xref">Theorem&nbsp;<span>30.1</span></a>, the rule which rejects <span class="math inline">\(H_0\)</span>: <span class="math inline">\(F = G\)</span> when <span id="eq-WXYasymprule"><span class="math display">\[
-W_{XY} \geq \mathbb{E}W_R - m(m+1)/2 + z_\alpha \sqrt{\mathbb{V}W_R}
-\tag{30.6}\]</span></span> will have Type I error rate converging to <span class="math inline">\(\alpha\)</span> as <span class="math inline">\(n,m\to \infty\)</span> (Recall from the previous section that <span class="math inline">\(W_{XY} = W_R - m(m+1)/2\)</span>). A “continuity correction” is often employed, whereby one adds <span class="math inline">\(1/2\)</span> to the right hand side of <a href="#eq-WXYasymprule" class="quarto-xref">Equation&nbsp;<span>30.6</span></a>.</p>
-<p>Figure <a href="#fig-typeIifuseasympdist" class="quarto-xref">Figure&nbsp;<span>30.1</span></a> gives an idea of how quickly the convergence in <a href="#thm-wilcoxonasymp" class="quarto-xref">Theorem&nbsp;<span>30.1</span></a> takes place as <span class="math inline">\(n,m \to \infty\)</span>. It plots the exact Type I error rate of the rejection rule in <a href="#eq-WXYasymprule" class="quarto-xref">Equation&nbsp;<span>30.6</span></a> over an increasing sequence of <span class="math inline">\(N\)</span> values, with <span class="math inline">\(m = \lfloor N/3 \rfloor\)</span> for each <span class="math inline">\(N\)</span>, at <span class="math inline">\(\alpha = 0.01,0.05,0.10\)</span>, with and without the “continuity correction.” We see that as <span class="math inline">\(N\)</span> grows large, the rejection rule based on the asymptotic distribution has Type I error rates approaching the nominal levels. The continuity correction appears to make the Type I error rate significantly closer to the nominal level for smaller values of <span class="math inline">\(N\)</span>. Note that this plot is not the result of a simulation; each curve is computed according to the exact distribution of the statistic <span class="math inline">\(W_{XY}\)</span> under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(F = G\)</span> with the function <code>pwilcox()</code>.</p>
+<p>According to <a href="#thm-wilcoxonasympnull" class="quarto-xref">Theorem&nbsp;<span>30.1</span></a>, the rule which rejects <span class="math inline">\(H_0\)</span>: <span class="math inline">\(F = G\)</span> when <span class="math display">\[
+W_R \geq \mathbb{E}W_R + z_\alpha \sqrt{\mathbb{V}W_R},
+\]</span> which is equivalent to <span id="eq-WXYasymprule"><span class="math display">\[
+W_{XY} \geq \frac{1}{2}nm + z_\alpha \sqrt{\frac{1}{12}m(N - m)(N+1)},
+\tag{30.6}\]</span></span> will have Type I error rate converging to <span class="math inline">\(\alpha\)</span> as <span class="math inline">\(n,m\to \infty\)</span> (Recall from the previous section that <span class="math inline">\(W_{XY} = W_R - m(m+1)/2\)</span>, so <span class="math inline">\(\mathbb{E}W_{XY} = nm/2\)</span> and <span class="math inline">\(\mathbb{V}W_{XY} = \mathbb{V}W_R\)</span>). A “continuity correction” is often employed, whereby one adds <span class="math inline">\(1/2\)</span> to the right hand side of <a href="#eq-WXYasymprule" class="quarto-xref">Equation&nbsp;<span>30.6</span></a>.</p>
+<p>The corresponding p-value is given by <span class="math display">\[
+\text{p-value }\approx 1 - \Phi\Big(\frac{W_{XY} - nm/2}{\sqrt{(m(N-m)(N+1)/12}}\Big),
+\]</span> to which one can apply the continuity correction by subracting <span class="math inline">\(1/2\)</span> from the numerator of the argument in <span class="math inline">\(\Phi(\cdot)\)</span>.</p>
+<p>Figure <a href="#fig-typeIifuseasympdist" class="quarto-xref">Figure&nbsp;<span>30.1</span></a> gives an idea of how quickly the convergence in <a href="#thm-wilcoxonasympnull" class="quarto-xref">Theorem&nbsp;<span>30.1</span></a> takes place as <span class="math inline">\(n,m \to \infty\)</span>. It plots the exact Type I error rate of the rejection rule in <a href="#eq-WXYasymprule" class="quarto-xref">Equation&nbsp;<span>30.6</span></a> over an increasing sequence of <span class="math inline">\(N\)</span> values, with <span class="math inline">\(m = \lfloor N/3 \rfloor\)</span> for each <span class="math inline">\(N\)</span>, at <span class="math inline">\(\alpha = 0.01,0.05,0.10\)</span>, with and without the “continuity correction.” We see that as <span class="math inline">\(N\)</span> grows large, the rejection rule based on the asymptotic distribution has Type I error rates approaching the nominal levels. The continuity correction appears to make the Type I error rate significantly closer to the nominal level for smaller values of <span class="math inline">\(N\)</span>. Note that this plot is not the result of a simulation; each curve is computed according to the exact distribution of the statistic <span class="math inline">\(W_{XY}\)</span> under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(F = G\)</span> with the function <code>pwilcox()</code>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -626,19 +637,19 @@ W_{XY} \geq \mathbb{E}W_R - m(m+1)/2 + z_\alpha \sqrt{\mathbb{V}W_R}
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">&lt;-</span> NN[i]</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">floor</span>(N<span class="sc">/</span><span class="dv">3</span>)</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> N <span class="sc">-</span> m</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> m<span class="sc">*</span>(N<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> n<span class="sc">*</span>m<span class="sc">/</span><span class="dv">2</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  sigma <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(m<span class="sc">*</span>(N<span class="sc">-</span>m)<span class="sc">*</span>(N<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">12</span>)</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  c01_asymp <span class="ot">&lt;-</span> mu <span class="sc">-</span> m<span class="sc">*</span>(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.99</span>)<span class="sc">*</span>sigma</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  c05_asymp <span class="ot">&lt;-</span> mu <span class="sc">-</span> m<span class="sc">*</span>(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.95</span>)<span class="sc">*</span>sigma</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  c10_asymp <span class="ot">&lt;-</span> mu <span class="sc">-</span> m<span class="sc">*</span>(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.90</span>)<span class="sc">*</span>sigma</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  c01_asymp <span class="ot">&lt;-</span> mu <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.99</span>)<span class="sc">*</span>sigma</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  c05_asymp <span class="ot">&lt;-</span> mu <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.95</span>)<span class="sc">*</span>sigma</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  c10_asymp <span class="ot">&lt;-</span> mu <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.90</span>)<span class="sc">*</span>sigma</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  typ1_01_exact[i] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pwilcox</span>(c01_asymp<span class="dv">-1</span>,<span class="at">m=</span>m,<span class="at">n=</span>n)</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  typ1_05_exact[i] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pwilcox</span>(c05_asymp<span class="dv">-1</span>,<span class="at">m=</span>m,<span class="at">n=</span>n)</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  typ1_10_exact[i] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pwilcox</span>(c10_asymp<span class="dv">-1</span>,<span class="at">m=</span>m,<span class="at">n=</span>n)</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  c01_asymp_corr <span class="ot">&lt;-</span> mu <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">-</span> m<span class="sc">*</span>(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.99</span>)<span class="sc">*</span>sigma</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  c05_asymp_corr <span class="ot">&lt;-</span> mu <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">-</span> m<span class="sc">*</span>(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.95</span>)<span class="sc">*</span>sigma</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  c10_asymp_corr <span class="ot">&lt;-</span> mu <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">-</span> m<span class="sc">*</span>(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.90</span>)<span class="sc">*</span>sigma</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  c01_asymp_corr <span class="ot">&lt;-</span> mu <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.99</span>)<span class="sc">*</span>sigma</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  c05_asymp_corr <span class="ot">&lt;-</span> mu <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.95</span>)<span class="sc">*</span>sigma</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  c10_asymp_corr <span class="ot">&lt;-</span> mu <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.90</span>)<span class="sc">*</span>sigma</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  typ1_corr_01_exact[i] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pwilcox</span>(c01_asymp_corr<span class="dv">-1</span>,<span class="at">m=</span>m,<span class="at">n=</span>n)</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  typ1_corr_05_exact[i] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pwilcox</span>(c05_asymp_corr<span class="dv">-1</span>,<span class="at">m=</span>m,<span class="at">n=</span>n)</span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  typ1_corr_10_exact[i] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pwilcox</span>(c10_asymp_corr<span class="dv">-1</span>,<span class="at">m=</span>m,<span class="at">n=</span>n)</span>
@@ -1114,8 +1125,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./miscresults.html" class="pagination-link" aria-label="Miscellaneous results">
-        <span class="nav-page-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./wilcoxonpower.html" class="pagination-link" aria-label="Power of the Wilcoxon rank sum test">
+        <span class="nav-page-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Power of the Wilcoxon rank sum test</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
