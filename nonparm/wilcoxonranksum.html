@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>29&nbsp; The Wilcoxon rank sum test – Some of Nonparametric Statistics</title>
+<title>31&nbsp; The Wilcoxon rank sum test – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -176,7 +176,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./wilcoxonranksum.html">Traditional nonparametrics</a></li><li class="breadcrumb-item"><a href="./wilcoxonranksum.html"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./wilcoxonranksum.html">Traditional nonparametrics</a></li><li class="breadcrumb-item"><a href="./wilcoxonranksum.html"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -210,7 +210,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">Nonparametric regression</span></a>
+ <span class="menu-text">Density estimation</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -218,38 +218,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mnonparmreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Multivariate nonparametric regression</span></span></a>
+  <a href="./kderosenblatt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Kernel density estimation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mNWestimator.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./additivemodel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./additivebackfit.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Backfitting in the additive model</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./additiveresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Additive model pros and cons</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./additivesparse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sparse additive model</span></span></a>
+  <a href="./kdemse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mean squared error of kernel density estimators</span></span></a>
   </div>
 </li>
       </ul>
@@ -257,7 +233,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Minimax Theory</span></a>
+ <span class="menu-text">Nonparametric regression</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -265,38 +241,38 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./minimaxnonparmnormalmeans.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Getting to the Normal means model</span></span></a>
+  <a href="./mnonparmreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multivariate nonparametric regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./minimaxnormalmeans.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Minimax risk in the Normal means model</span></span></a>
+  <a href="./mNWestimator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./minimaxsobolev.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sobolev functions and ellipsoids</span></span></a>
+  <a href="./additivemodel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./minimaxlinearellipsoid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear minimax risk over general ellipsoids</span></span></a>
+  <a href="./additivebackfit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Backfitting in the additive model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./minimaxpinsker.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Pinsker’s Theorem for Sobolev ellipsoids</span></span></a>
+  <a href="./additiveresults.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Additive model pros and cons</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./minimaxadaptive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></span></a>
+  <a href="./additivesparse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Sparse additive model</span></span></a>
   </div>
 </li>
       </ul>
@@ -304,7 +280,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">Bootstrap</span></a>
+ <span class="menu-text">Minimax Theory</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -312,144 +288,191 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./minimaxnonparmnormalmeans.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Getting to the Normal means model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./minimaxnormalmeans.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Minimax risk in the Normal means model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./minimaxsobolev.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sobolev functions and ellipsoids</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./minimaxlinearellipsoid.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Linear minimax risk over general ellipsoids</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./minimaxpinsker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Pinsker’s Theorem for Sobolev ellipsoids</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./minimaxadaptive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Bootstrap</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./boot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootmean.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootMC.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootmeanconsistency.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootmeanstudentized.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bootstrap for the studentized sample mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Bootstrap for the studentized sample mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworth.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworthplay.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworthmulti.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Multivariate Edgeworth expansions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Multivariate Edgeworth expansions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworthboot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Edgeworth expansions for the bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Edgeworth expansions for the bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootpercentile.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The percentile bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The percentile bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statfunctionals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Statistical functionals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Statistical functionals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootstatfunctionals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootlinreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootlinregwild.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Wild bootstrap for regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Wild bootstrap for regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./nonparmregCB.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence bands in nonparametric regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Confidence bands in nonparametric regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootCB.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Traditional nonparametrics</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./wilcoxonranksum.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></a>
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./wilcoxonasymptotic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Asymptotic distribution of the Wilcoxon rank sum statistic</span></span></a>
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Asymptotic null distribution of the Wilcoxon rank sum statistic</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./wilcoxonpower.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Power of the Wilcoxon rank sum test</span></span></a>
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Power of the Wilcoxon rank sum test</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./miscresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
   </div>
 </li>
       </ul>
@@ -471,9 +494,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./wilcoxonranksum.html">Traditional nonparametrics</a></li><li class="breadcrumb-item"><a href="./wilcoxonranksum.html"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./wilcoxonranksum.html">Traditional nonparametrics</a></li><li class="breadcrumb-item"><a href="./wilcoxonranksum.html"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-wilcoxonranksum" class="quarto-section-identifier"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></h1>
+<h1 class="title"><span id="sec-wilcoxonranksum" class="quarto-section-identifier"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></h1>
 </div>
 
 
@@ -518,14 +541,14 @@ W_{XY} = \sum_{i=1}^n\sum_{j=1}^m \mathbf{1}(X_i \leq Y_j)
 </ol>
 <p>Then one can show <span id="eq-WXYfromWR"><span class="math display">\[
 W_{XY} = W_R - m(m+1)/2.
-\tag{29.1}\]</span></span> Hence the name “rank sum test”.</p>
+\tag{31.1}\]</span></span> Hence the name “rank sum test”.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Derivation of equation <a href="#eq-WXYfromWR" class="quarto-xref">Equation&nbsp;<span>29.1</span></a>
+Derivation of equation <a href="#eq-WXYfromWR" class="quarto-xref">Equation&nbsp;<span>31.1</span></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -544,13 +567,13 @@ W_{XY} &amp;= \sum_{i=1}^n\sum_{j=1}^m\mathbf{1}(X_i \leq Y_j) \\
 <p>Since <span class="math inline">\(W_{XY}\)</span> is merely a shifted version of <span class="math inline">\(W_R\)</span>, the two statistics carry equivalent information. We will find it more convenient to analyze the rank sum <span class="math inline">\(W_R\)</span>. Here is as good a place as any to mention that the Wilcoxon rank sum test is equivalent to a test called the Mann-Whitney U test.</p>
 <p>Interestingly, under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(F = G\)</span> one can tabulate the exact distribution of the statistics <span class="math inline">\(W_{XY}\)</span> and <span class="math inline">\(W_R\)</span>. If <span class="math inline">\(F\)</span> and <span class="math inline">\(G\)</span> are both continuous distributions (so that ties occur with probability zero), we have <span class="math display">\[
 P( (R_1,\dots,R_m) = (r_1,\dots,r_m)) = \frac{1}{{ N \choose m}}
-\]</span> for each set of <span class="math inline">\(m\)</span> distinct ranks <span class="math inline">\(r_1,\dots,r_m \in \{1,\dots,N\}\)</span>. This allows us to tabulate the distribution of <span class="math inline">\(W_{XY}\)</span> and <span class="math inline">\(W_R\)</span> for any <span class="math inline">\(m\)</span> and <span class="math inline">\(N\)</span> as in <a href="#exm-tabranksumdist" class="quarto-xref">Example&nbsp;<span>29.1</span></a>. When tied data values are allowed, writing down the exact distribution of <span class="math inline">\(W_{XY}\)</span> or <span class="math inline">\(W_R\)</span> becomes cumbersome; see <span class="citation" data-cites="lehmann1975nonparametrics">Lehmann (<a href="references.html#ref-lehmann1975nonparametrics" role="doc-biblioref">1975</a>)</span>.</p>
+\]</span> for each set of <span class="math inline">\(m\)</span> distinct ranks <span class="math inline">\(r_1,\dots,r_m \in \{1,\dots,N\}\)</span>. This allows us to tabulate the distribution of <span class="math inline">\(W_{XY}\)</span> and <span class="math inline">\(W_R\)</span> for any <span class="math inline">\(m\)</span> and <span class="math inline">\(N\)</span> as in <a href="#exm-tabranksumdist" class="quarto-xref">Example&nbsp;<span>31.1</span></a>. When tied data values are allowed, writing down the exact distribution of <span class="math inline">\(W_{XY}\)</span> or <span class="math inline">\(W_R\)</span> becomes cumbersome; see <span class="citation" data-cites="lehmann1975nonparametrics">Lehmann (<a href="references.html#ref-lehmann1975nonparametrics" role="doc-biblioref">1975</a>)</span>.</p>
 <div id="exm-tabranksumdist" class="theorem example">
-<p><span class="theorem-title"><strong>Example 29.1 (Tabulating the distribution of the rank-sum statistic)</strong></span> For <span class="math inline">\(N = 5\)</span> and <span class="math inline">\(m = 2\)</span>, for all possible pairs of ranks <span class="math inline">\((r_1,r_2)\)</span>, the values of <span class="math inline">\(W_S\)</span> and <span class="math inline">\(W_{XY}\)</span> are enumerated in <a href="#tbl-allpossiblepairsofranks" class="quarto-xref">Table&nbsp;<span>29.1</span></a></p>
+<p><span class="theorem-title"><strong>Example 31.1 (Tabulating the distribution of the rank-sum statistic)</strong></span> For <span class="math inline">\(N = 5\)</span> and <span class="math inline">\(m = 2\)</span>, for all possible pairs of ranks <span class="math inline">\((r_1,r_2)\)</span>, the values of <span class="math inline">\(W_S\)</span> and <span class="math inline">\(W_{XY}\)</span> are enumerated in <a href="#tbl-allpossiblepairsofranks" class="quarto-xref">Table&nbsp;<span>31.1</span></a></p>
 <div id="tbl-allpossiblepairsofranks" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-allpossiblepairsofranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;29.1: Value of <span class="math inline">\(W_R\)</span> and <span class="math inline">\(W_{XY}\)</span> for all possible pairs of ranks <span class="math inline">\((r_1,r_2)\)</span> when <span class="math inline">\(N = 5\)</span> and <span class="math inline">\(m = 2\)</span>.
+Table&nbsp;31.1: Value of <span class="math inline">\(W_R\)</span> and <span class="math inline">\(W_{XY}\)</span> for all possible pairs of ranks <span class="math inline">\((r_1,r_2)\)</span> when <span class="math inline">\(N = 5\)</span> and <span class="math inline">\(m = 2\)</span>.
 </figcaption>
 <div aria-describedby="tbl-allpossiblepairsofranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -628,11 +651,11 @@ Table&nbsp;29.1: Value of <span class="math inline">\(W_R\)</span> and <span cla
 </div>
 </figure>
 </div>
-<p>Since each pair of ranks occurs with equal probability (under the null hypothesis), we can tabulate the null distribution of the statistic <span class="math inline">\(W_{XY}\)</span> as in <a href="#tbl-tabranksumdist" class="quarto-xref">Table&nbsp;<span>29.2</span></a>.</p>
+<p>Since each pair of ranks occurs with equal probability (under the null hypothesis), we can tabulate the null distribution of the statistic <span class="math inline">\(W_{XY}\)</span> as in <a href="#tbl-tabranksumdist" class="quarto-xref">Table&nbsp;<span>31.2</span></a>.</p>
 <div id="tbl-tabranksumdist" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tabranksumdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;29.2: Distribution of <span class="math inline">\(W_{XY}\)</span> when <span class="math inline">\(N = 5\)</span> and <span class="math inline">\(m = 2\)</span>.
+Table&nbsp;31.2: Distribution of <span class="math inline">\(W_{XY}\)</span> when <span class="math inline">\(N = 5\)</span> and <span class="math inline">\(m = 2\)</span>.
 </figcaption>
 <div aria-describedby="tbl-tabranksumdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -664,9 +687,9 @@ Table&nbsp;29.2: Distribution of <span class="math inline">\(W_{XY}\)</span> whe
 </div>
 </figure>
 </div>
-<p>From <a href="#tbl-tabranksumdist" class="quarto-xref">Table&nbsp;<span>29.2</span></a>, we see that the test which rejects <span class="math inline">\(H_0\)</span> when <span class="math inline">\(W_{XY} \geq 6\)</span> has a Type I error rate of <span class="math inline">\(0.1\)</span>. Note that since <span class="math inline">\(W_{XY}\)</span> is discrete, one may not be able to identify a critical value <span class="math inline">\(c\)</span> such that the Type I error rate of the rule <span class="math inline">\(W_{XY} \geq c\)</span> is exactly equal to the desired rate. Note that the distribution of <span class="math inline">\(W_R\)</span> can be tabulated in the same manner.</p>
+<p>From <a href="#tbl-tabranksumdist" class="quarto-xref">Table&nbsp;<span>31.2</span></a>, we see that the test which rejects <span class="math inline">\(H_0\)</span> when <span class="math inline">\(W_{XY} \geq 6\)</span> has a Type I error rate of <span class="math inline">\(0.1\)</span>. Note that since <span class="math inline">\(W_{XY}\)</span> is discrete, one may not be able to identify a critical value <span class="math inline">\(c\)</span> such that the Type I error rate of the rule <span class="math inline">\(W_{XY} \geq c\)</span> is exactly equal to the desired rate. Note that the distribution of <span class="math inline">\(W_R\)</span> can be tabulated in the same manner.</p>
 </div>
-<p><span class="citation" data-cites="lehmann1975nonparametrics">Lehmann (<a href="references.html#ref-lehmann1975nonparametrics" role="doc-biblioref">1975</a>)</span> has several pages of tables in the back giving values of <span class="math inline">\(\mathbb{P}(W_{XY} \leq c)\)</span> for different (small) values of <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span>. When <span class="math inline">\(m\)</span> and <span class="math inline">\(N\)</span> are both large, it can be computationally costly to compute probabilities for <span class="math inline">\(W_{XY}\)</span> and <span class="math inline">\(W_R\)</span> from their exact probability distributions, as one must essentially count rows of a table like that in <a href="#exm-tabranksumdist" class="quarto-xref">Example&nbsp;<span>29.1</span></a>. Therefore when <span class="math inline">\(m\)</span> and <span class="math inline">\(N\)</span> are large, one may prefer to use an approximations to the distributions of <span class="math inline">\(W_{XY}\)</span> and <span class="math inline">\(W_R\)</span>.</p>
+<p><span class="citation" data-cites="lehmann1975nonparametrics">Lehmann (<a href="references.html#ref-lehmann1975nonparametrics" role="doc-biblioref">1975</a>)</span> has several pages of tables in the back giving values of <span class="math inline">\(\mathbb{P}(W_{XY} \leq c)\)</span> for different (small) values of <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span>. When <span class="math inline">\(m\)</span> and <span class="math inline">\(N\)</span> are both large, it can be computationally costly to compute probabilities for <span class="math inline">\(W_{XY}\)</span> and <span class="math inline">\(W_R\)</span> from their exact probability distributions, as one must essentially count rows of a table like that in <a href="#exm-tabranksumdist" class="quarto-xref">Example&nbsp;<span>31.1</span></a>. Therefore when <span class="math inline">\(m\)</span> and <span class="math inline">\(N\)</span> are large, one may prefer to use an approximations to the distributions of <span class="math inline">\(W_{XY}\)</span> and <span class="math inline">\(W_R\)</span>.</p>
 <p>Below is a quick illustration in R showing how to calculate the rank sum statistic <span class="math inline">\(W_R\)</span> as well as the statistic <span class="math inline">\(W_{XY}\)</span>. The code exhibits the function <code>pwilcox()</code>, which evaluates the exact cdf of <span class="math inline">\(W_{XY}\)</span>. It is slow (the documentation warns) when <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span> are large. One can compare the p-value obtained using the <code>pwilcox()</code> function to that obtained from the function <code>wilcox.test()</code>, which makes use of the exact distribution of <span class="math inline">\(W_{XY}\)</span> so long as <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span> are not too large.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate some data</span></span>
@@ -683,12 +706,12 @@ Table&nbsp;29.2: Distribution of <span class="math inline">\(W_{XY}\)</span> whe
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>WXY <span class="ot">&lt;-</span> <span class="fu">sum</span>(R) <span class="sc">-</span> m<span class="sc">*</span>(m<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>WXY</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 315</code></pre>
+<pre><code>[1] 219</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pval <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pwilcox</span>(WXY<span class="dv">-1</span>,<span class="at">m =</span> m, <span class="at">n =</span> n) <span class="co"># must subtract 1, since we reject when WXY &gt;= c</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pval</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.07091832</code></pre>
+<pre><code>[1] 0.7621875</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># see that the wilcox.test() function gives the same values</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="at">x=</span>Y,<span class="at">y=</span>X,<span class="at">alternative=</span><span class="st">"greater"</span>,<span class="at">exact =</span> <span class="cn">TRUE</span>) <span class="co"># switch X and Y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -697,7 +720,7 @@ Table&nbsp;29.2: Distribution of <span class="math inline">\(W_{XY}\)</span> whe
     Wilcoxon rank sum exact test
 
 data:  Y and X
-W = 315, p-value = 0.07092
+W = 219, p-value = 0.7622
 alternative hypothesis: true location shift is greater than 0</code></pre>
 </div>
 </div>
@@ -1134,12 +1157,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./bootCB.html" class="pagination-link" aria-label="Bootstrap confidence bands in nonparametric regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./wilcoxonasymptotic.html" class="pagination-link" aria-label="Asymptotic distribution of the Wilcoxon rank sum statistic">
-        <span class="nav-page-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Asymptotic distribution of the Wilcoxon rank sum statistic</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./wilcoxonasymptotic.html" class="pagination-link" aria-label="Asymptotic null distribution of the Wilcoxon rank sum statistic">
+        <span class="nav-page-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Asymptotic null distribution of the Wilcoxon rank sum statistic</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

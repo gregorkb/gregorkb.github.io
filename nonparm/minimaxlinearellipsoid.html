@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Linear minimax risk over general ellipsoids – Some of Nonparametric Statistics</title>
+<title>12&nbsp; Linear minimax risk over general ellipsoids – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -142,7 +142,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./minimaxnonparmnormalmeans.html">Minimax Theory</a></li><li class="breadcrumb-item"><a href="./minimaxlinearellipsoid.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear minimax risk over general ellipsoids</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./minimaxnonparmnormalmeans.html">Minimax Theory</a></li><li class="breadcrumb-item"><a href="./minimaxlinearellipsoid.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Linear minimax risk over general ellipsoids</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -176,7 +176,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">Nonparametric regression</span></a>
+ <span class="menu-text">Density estimation</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -184,192 +184,108 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./kderosenblatt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Kernel density estimation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kdemse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mean squared error of kernel density estimators</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Nonparametric regression</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./mnonparmreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Multivariate nonparametric regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multivariate nonparametric regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mNWestimator.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./additivemodel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./additivebackfit.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Backfitting in the additive model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Backfitting in the additive model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./additiveresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Additive model pros and cons</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Additive model pros and cons</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./additivesparse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sparse additive model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Sparse additive model</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Minimax Theory</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxnonparmnormalmeans.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Getting to the Normal means model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Getting to the Normal means model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxnormalmeans.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Minimax risk in the Normal means model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Minimax risk in the Normal means model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxsobolev.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sobolev functions and ellipsoids</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sobolev functions and ellipsoids</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxlinearellipsoid.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear minimax risk over general ellipsoids</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Linear minimax risk over general ellipsoids</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxpinsker.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Pinsker’s Theorem for Sobolev ellipsoids</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Pinsker’s Theorem for Sobolev ellipsoids</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxadaptive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">Bootstrap</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./boot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The bootstrap</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./bootmean.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./bootMC.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./bootmeanconsistency.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./bootmeanstudentized.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bootstrap for the studentized sample mean</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./edgeworth.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./edgeworthplay.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./edgeworthmulti.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Multivariate Edgeworth expansions</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./edgeworthboot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Edgeworth expansions for the bootstrap</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./bootpercentile.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The percentile bootstrap</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./statfunctionals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Statistical functionals</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./bootstatfunctionals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./bootlinreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./bootlinregwild.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Wild bootstrap for regression</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./nonparmregCB.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence bands in nonparametric regression</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./bootCB.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></span></a>
   </div>
 </li>
       </ul>
@@ -377,7 +293,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">Traditional nonparametrics</span></a>
+ <span class="menu-text">Bootstrap</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -385,20 +301,98 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./wilcoxonranksum.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></a>
+  <a href="./boot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./wilcoxonasymptotic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Asymptotic distribution of the Wilcoxon rank sum statistic</span></span></a>
+  <a href="./bootmean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./wilcoxonpower.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Power of the Wilcoxon rank sum test</span></span></a>
+  <a href="./bootMC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootmeanconsistency.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootmeanstudentized.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Bootstrap for the studentized sample mean</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./edgeworth.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./edgeworthplay.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./edgeworthmulti.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Multivariate Edgeworth expansions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./edgeworthboot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Edgeworth expansions for the bootstrap</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootpercentile.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The percentile bootstrap</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./statfunctionals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Statistical functionals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootstatfunctionals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootlinreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootlinregwild.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Wild bootstrap for regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nonparmregCB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Confidence bands in nonparametric regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bootCB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -406,7 +400,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">Traditional nonparametrics</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -414,8 +408,37 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./wilcoxonranksum.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./wilcoxonasymptotic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Asymptotic null distribution of the Wilcoxon rank sum statistic</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./wilcoxonpower.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Power of the Wilcoxon rank sum test</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./miscresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
   </div>
 </li>
       </ul>
@@ -437,9 +460,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./minimaxnonparmnormalmeans.html">Minimax Theory</a></li><li class="breadcrumb-item"><a href="./minimaxlinearellipsoid.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear minimax risk over general ellipsoids</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./minimaxnonparmnormalmeans.html">Minimax Theory</a></li><li class="breadcrumb-item"><a href="./minimaxlinearellipsoid.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Linear minimax risk over general ellipsoids</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-minimaxlinearellipsoid" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear minimax risk over general ellipsoids</span></span></h1>
+<h1 class="title"><span id="sec-minimaxlinearellipsoid" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Linear minimax risk over general ellipsoids</span></span></h1>
 </div>
 
 
@@ -473,19 +496,19 @@ R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) = \sum_{j=
 \]</span> under squared error loss.</p>
 <p>The following result is adapted from some results given in Section 3.2 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>.</p>
 <div id="thm-linearminimaxellipsoid" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 10.1 (Linear minimax risk on a general ellipsoid)</strong></span> Let <span class="math inline">\(a_1,a_2,\dots\)</span> be an increasing sequence such that <span class="math inline">\(|\{j:a_j = 0\}|&lt;\infty\)</span> and <span class="math inline">\(a_j \to +\infty\)</span>. Then a unique solution to <span id="eq-etapinsker"><span class="math display">\[
+<p><span class="theorem-title"><strong>Theorem 12.1 (Linear minimax risk on a general ellipsoid)</strong></span> Let <span class="math inline">\(a_1,a_2,\dots\)</span> be an increasing sequence such that <span class="math inline">\(|\{j:a_j = 0\}|&lt;\infty\)</span> and <span class="math inline">\(a_j \to +\infty\)</span>. Then a unique solution to <span id="eq-etapinsker"><span class="math display">\[
 \eta^{-1}\sigma^2\sum_{i=1}^\infty a_j (1 - \eta a_j)_+ = c^2
-\tag{10.1}\]</span></span> over <span class="math inline">\(\eta &gt; 0\)</span> exists such that, setting <span class="math inline">\(\ell_j = (1 - \eta a_j)_+\)</span> for <span class="math inline">\(j=1,2,\dots\)</span> and <span class="math inline">\(\boldsymbol{\ell}= (\ell_1,\ell_2,\dots)\)</span>, we have <span id="eq-linearminimaxellipsoid"><span class="math display">\[
+\tag{12.1}\]</span></span> over <span class="math inline">\(\eta &gt; 0\)</span> exists such that, setting <span class="math inline">\(\ell_j = (1 - \eta a_j)_+\)</span> for <span class="math inline">\(j=1,2,\dots\)</span> and <span class="math inline">\(\boldsymbol{\ell}= (\ell_1,\ell_2,\dots)\)</span>, we have <span id="eq-linearminimaxellipsoid"><span class="math display">\[
 M_{\text{lin}}(\Theta(c,a_1,a_2,\dots))  = \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\ell},\boldsymbol{\theta}) = \sigma^2\sum_{j=1}^\infty \ell_j,
-\tag{10.2}\]</span></span> provided the sum is finite.</p>
+\tag{12.2}\]</span></span> provided the sum is finite.</p>
 </div>
-<p>The values <span class="math inline">\(\ell_1,\ell_2,\dots\)</span> defined in <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>10.1</span></a> are called the Pinsker weights. When we define the Pinsker weights we use <span class="math inline">\((x)_+ = \mathbf{1}(x &gt; 0)(x)\)</span> for all <span class="math inline">\(x\in \mathbb{R}\)</span>.</p>
-<p><a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>10.1</span></a> does not appear particularly illuminating, but when we choose <span class="math inline">\(a_1,a_2,\dots\)</span> and <span class="math inline">\(c\)</span> such that <span class="math inline">\(\Theta(c,a_1,a_2,\dots)\)</span> becomes the Sobolev ellipsoid <span class="math inline">\(\Theta_{\text{Sob}}(\beta,L)\)</span>, the result will show us something interesting.</p>
-<p>Before stating the proof of <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>10.1</span></a>, we give some insight into how one arrives at the Pinsker weights—in particular how the equation <a href="#eq-etapinsker" class="quarto-xref">Equation&nbsp;<span>10.1</span></a> arises. Note that for any <span class="math inline">\(\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)\)</span> we have <span class="math display">\[
+<p>The values <span class="math inline">\(\ell_1,\ell_2,\dots\)</span> defined in <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>12.1</span></a> are called the Pinsker weights. When we define the Pinsker weights we use <span class="math inline">\((x)_+ = \mathbf{1}(x &gt; 0)(x)\)</span> for all <span class="math inline">\(x\in \mathbb{R}\)</span>.</p>
+<p><a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>12.1</span></a> does not appear particularly illuminating, but when we choose <span class="math inline">\(a_1,a_2,\dots\)</span> and <span class="math inline">\(c\)</span> such that <span class="math inline">\(\Theta(c,a_1,a_2,\dots)\)</span> becomes the Sobolev ellipsoid <span class="math inline">\(\Theta_{\text{Sob}}(\beta,L)\)</span>, the result will show us something interesting.</p>
+<p>Before stating the proof of <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>12.1</span></a>, we give some insight into how one arrives at the Pinsker weights—in particular how the equation <a href="#eq-etapinsker" class="quarto-xref">Equation&nbsp;<span>12.1</span></a> arises. Note that for any <span class="math inline">\(\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)\)</span> we have <span class="math display">\[
 R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) = \sum_{j=1}^\infty(\lambda_j^2\sigma^2 + (1-\lambda_j)^2\theta_j^2).
 \]</span> This is minimized when <span class="math inline">\(\lambda_j = \theta_j^2/(\sigma^2 + \theta_j^2)\)</span> for each <span class="math inline">\(j\)</span> (simple calculus will show this). Plugging these values in for <span class="math inline">\(\lambda_1,\lambda_2,\dots\)</span> gives <span class="math display">\[
 \inf_\boldsymbol{\lambda}R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) = \sum_{j=1}^\infty\frac{\sigma^2\theta_j^2}{\sigma^2 + \theta_j^2}.
-\]</span> Now, we find that an equation like <a href="#eq-etapinsker" class="quarto-xref">Equation&nbsp;<span>10.1</span></a> arises when we solve the optimization problem <span class="math display">\[
+\]</span> Now, we find that an equation like <a href="#eq-etapinsker" class="quarto-xref">Equation&nbsp;<span>12.1</span></a> arises when we solve the optimization problem <span class="math display">\[
 \text{ maximize }\sum_{j=1}^\infty\frac{\sigma^2\theta_j^2}{\sigma^2 + \theta_j^2} \quad \text{ subject to } \sum_{j=1}^\infty a_j^2\theta_j^2 = c^2.
 \]</span> Introducing the Lagrangian function <span class="math display">\[
 \mathcal{L}(\kappa,\theta_1,\theta_2,\dots) = \sum_{j=1}^\infty\frac{\sigma^2\theta_j^2}{\sigma^2 + \theta_j^2} - \kappa \Big(\sum_{j=1}^\infty a_j^2\theta_j^2 - c^2\Big)
@@ -494,15 +517,15 @@ R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) = \sum_{j=
 \frac{\partial}{\partial \kappa}\mathcal{L}(\kappa,\theta_1,\theta_2,\dots) &amp;= \sum_{j=1}^\infty a_j^2\theta_j^2 - c^2 = 0
 \end{align}\]</span> gives <span id="eq-thetapinsker"><span class="math display">\[
 \theta_j^2 = \frac{\sigma^2}{\sqrt{\kappa}a_j}(1 - \sqrt{\kappa}a_j)_+, \quad j=1,2,\dots,
-\tag{10.3}\]</span></span> and <span id="eq-kappa"><span class="math display">\[
+\tag{12.3}\]</span></span> and <span id="eq-kappa"><span class="math display">\[
 \frac{\sigma^2}{\sqrt{\kappa}}\sum_{j=1}^\infty a_j (1 - \sqrt{\kappa}a_j)_+ = c^2.
-\tag{10.4}\]</span></span> Lemma 3.3 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span> guarantees that a solution to <a href="#eq-kappa" class="quarto-xref">Equation&nbsp;<span>10.4</span></a> exists when the sequence <span class="math inline">\(a_j\)</span> is increasing with <span class="math inline">\(|\{j: a_j = 0\}| &lt;\infty\)</span> and <span class="math inline">\(a_j \to +\infty\)</span>. Now the optimal weights <span class="math inline">\(\lambda_j = \theta_j^2/(\sigma^2 + \theta_j^2)\)</span> with <span class="math inline">\(\theta_j^2\)</span> as obtained in <a href="#eq-thetapinsker" class="quarto-xref">Equation&nbsp;<span>10.3</span></a> become <span class="math inline">\(\lambda_j = (1 - \sqrt{\kappa}a_j)_+\)</span> for <span class="math inline">\(j=1,2,\dots\)</span> Under this choice of <span class="math inline">\(\lambda_1, \lambda_2,\dots\)</span> we obtain <span class="math inline">\(R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) = \sigma^2 \sum_{j=1}^\infty(1 - \sqrt{\kappa}a_j)_+\)</span>. This gives us a clue that we should propose <span class="math inline">\(\sigma^2\sum_{j=1}^\infty \ell_j\)</span> as a candidate for the linear minimax risk in <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>10.1</span></a>.</p>
+\tag{12.4}\]</span></span> Lemma 3.3 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span> guarantees that a solution to <a href="#eq-kappa" class="quarto-xref">Equation&nbsp;<span>12.4</span></a> exists when the sequence <span class="math inline">\(a_j\)</span> is increasing with <span class="math inline">\(|\{j: a_j = 0\}| &lt;\infty\)</span> and <span class="math inline">\(a_j \to +\infty\)</span>. Now the optimal weights <span class="math inline">\(\lambda_j = \theta_j^2/(\sigma^2 + \theta_j^2)\)</span> with <span class="math inline">\(\theta_j^2\)</span> as obtained in <a href="#eq-thetapinsker" class="quarto-xref">Equation&nbsp;<span>12.3</span></a> become <span class="math inline">\(\lambda_j = (1 - \sqrt{\kappa}a_j)_+\)</span> for <span class="math inline">\(j=1,2,\dots\)</span> Under this choice of <span class="math inline">\(\lambda_1, \lambda_2,\dots\)</span> we obtain <span class="math inline">\(R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) = \sigma^2 \sum_{j=1}^\infty(1 - \sqrt{\kappa}a_j)_+\)</span>. This gives us a clue that we should propose <span class="math inline">\(\sigma^2\sum_{j=1}^\infty \ell_j\)</span> as a candidate for the linear minimax risk in <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>12.1</span></a>.</p>
 <!-- This serves as a lower bound on the linear minimax risk, since  -->
 <!-- \begin{align} -->
 <!-- \sup_{\btheta \in \Theta(c,a_1,a_2,\dots)} \inf_{\blambda} R(\hat{\btheta}_\blambda,\btheta) &\leq  \inf_{\blambda}  \sup_{\btheta \in \Theta(c,a_1,a_2,\dots)}R(\hat{\btheta}_\blambda,\btheta) -->
 <!-- \end{align} -->
 <!-- due to @lem-supinf. -->
-<p>Note that <a href="#eq-etapinsker" class="quarto-xref">Equation&nbsp;<span>10.1</span></a> in <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>10.1</span></a> is the same as <a href="#eq-kappa" class="quarto-xref">Equation&nbsp;<span>10.4</span></a> but with <span class="math inline">\(\sqrt{\kappa}\)</span> replaced by <span class="math inline">\(\eta\)</span>.</p>
+<p>Note that <a href="#eq-etapinsker" class="quarto-xref">Equation&nbsp;<span>12.1</span></a> in <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>12.1</span></a> is the same as <a href="#eq-kappa" class="quarto-xref">Equation&nbsp;<span>12.4</span></a> but with <span class="math inline">\(\sqrt{\kappa}\)</span> replaced by <span class="math inline">\(\eta\)</span>.</p>
 <!-- , where $\kappa$ solves @eq-kappa and define $\theta_1,\theta_2,\dots$ as in @eq-thetapinsker. Then we have -->
 <!-- \begin{align} -->
 <!-- \sum_{j=1}^\infty\frac{\sigma^2\theta_j^2}{\sigma^2 + \theta_j^2} &= \sum_{j=1}^\infty \frac{\sigma^4(1/(\eta a_j) - 1)_+}{\sigma^2 + \sigma^2(1/(\eta a_j) - 1)_+} \\ -->
@@ -522,22 +545,22 @@ R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) = \sum_{j=
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Proof of <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>10.1</span></a>
+Proof of <a href="#thm-linearminimaxellipsoid" class="quarto-xref">Theorem&nbsp;<span>12.1</span></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Rather than using the two-step strategy from <a href="minimaxnormalmeans.html" class="quarto-xref"><span>Chapter 8</span></a>, we can find the linear minimax risk over a general ellipsoid directly. We follow the arguments given in Section 3.2 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>.</p>
-<p>First, Lemma 3.3 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span> guarantees that a solution to <a href="#eq-etapinsker" class="quarto-xref">Equation&nbsp;<span>10.1</span></a> exists when the sequence <span class="math inline">\(a_j\)</span> is increasing with <span class="math inline">\(|\{j: a_j = 0\}| &lt;\infty\)</span> and <span class="math inline">\(a_j \to +\infty\)</span>.</p>
+<p>Rather than using the two-step strategy from <a href="minimaxnormalmeans.html" class="quarto-xref"><span>Chapter 10</span></a>, we can find the linear minimax risk over a general ellipsoid directly. We follow the arguments given in Section 3.2 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>.</p>
+<p>First, Lemma 3.3 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span> guarantees that a solution to <a href="#eq-etapinsker" class="quarto-xref">Equation&nbsp;<span>12.1</span></a> exists when the sequence <span class="math inline">\(a_j\)</span> is increasing with <span class="math inline">\(|\{j: a_j = 0\}| &lt;\infty\)</span> and <span class="math inline">\(a_j \to +\infty\)</span>.</p>
 <p>Now begin by noting <span class="math display">\[\begin{align}
 \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} \inf_{\boldsymbol{\lambda}} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta})  &amp;\leq  \inf_{\boldsymbol{\lambda}} \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)}  R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) \\
 &amp; \leq \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\ell},\boldsymbol{\theta}),
-\end{align}\]</span> where the first inequality always holds from changing the order of the supremum and the infimum (See <a href="miscresults.html#lem-supinf" class="quarto-xref">Lemma&nbsp;<span>32.1</span></a>). From here, we see that it is sufficient to show <span id="eq-linearminimaxupper"><span class="math display">\[
+\end{align}\]</span> where the first inequality always holds from changing the order of the supremum and the infimum (See <a href="miscresults.html#lem-supinf" class="quarto-xref">Lemma&nbsp;<span>34.1</span></a>). From here, we see that it is sufficient to show <span id="eq-linearminimaxupper"><span class="math display">\[
 \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\ell},\boldsymbol{\theta}) \leq \sigma^2\sum_{j=1}^\infty \ell_j
-\tag{10.5}\]</span></span> as well as <span id="eq-linearminimaxlower"><span class="math display">\[
+\tag{12.5}\]</span></span> as well as <span id="eq-linearminimaxlower"><span class="math display">\[
 \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)} \inf_{\boldsymbol{\lambda}} R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) \geq \sigma^2 \sum_{j=1}^\infty \ell_j.
-\tag{10.6}\]</span></span> For any <span class="math inline">\(\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)\)</span> we have <span class="math display">\[\begin{align}
+\tag{12.6}\]</span></span> For any <span class="math inline">\(\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)\)</span> we have <span class="math display">\[\begin{align}
 R(\hat{\boldsymbol{\theta}}_\boldsymbol{\ell},\boldsymbol{\theta}) &amp;= \sum_{j=1}^\infty(\ell_j^2\sigma^2 + (1-\ell_j)^2\theta_j^2) \\
 &amp;=\sigma^2 \sum_{j=1}^\infty \ell_j^2 + \sum_{j :~ a_j &gt; 0}(1 - \ell_j)^2a_j^{-2}a_j^2\theta_j^2 \quad \text{($\ell_j = 1$ if $a_j = 0$)} \\
 &amp; \leq \sigma^2 \sum_{j=1}^\infty \ell_j^2 + \sup_{j : ~a_j &gt; 0}|(1 - \ell_j)^2a_j^{-2}|\sum_{j = 1}^\infty a_j^2\theta_j^2\\
@@ -546,8 +569,8 @@ R(\hat{\boldsymbol{\theta}}_\boldsymbol{\ell},\boldsymbol{\theta}) &amp;= \sum_{
 &amp; \leq \sigma^2 \sum_{j=1}^\infty \ell_j(\ell_j + \eta a_j) \\
 &amp; \leq \sigma^2 \sum_{j :~\ell_j &gt; 0} \ell_j( 1 - \eta a_j + \eta a_j) \\
 &amp; \leq \sigma^2 \sum_{j=1}^\infty \ell_j,
-\end{align}\]</span> which establishes <a href="#eq-linearminimaxupper" class="quarto-xref">Equation&nbsp;<span>10.5</span></a>.</p>
-<p>Now to establish <a href="#eq-linearminimaxlower" class="quarto-xref">Equation&nbsp;<span>10.6</span></a>, let <span class="math display">\[
+\end{align}\]</span> which establishes <a href="#eq-linearminimaxupper" class="quarto-xref">Equation&nbsp;<span>12.5</span></a>.</p>
+<p>Now to establish <a href="#eq-linearminimaxlower" class="quarto-xref">Equation&nbsp;<span>12.6</span></a>, let <span class="math display">\[
 V = \Big\{(v_1,v_2,\dots) : v_j^2 = \frac{\sigma^2(1 - \eta a_j)_+}{\eta a_j} \text{ if } a_j &gt; 0, v_j \in \mathbb{R}\text{ if } a_j = 0\Big\}
 \]</span> and write <span class="math display">\[\begin{align}
 \sup_{\boldsymbol{\theta}\in \Theta(c,a_1,a_2,\dots)}\inf_{\boldsymbol{\lambda}}R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\boldsymbol{\theta}) &amp;\geq \sup_{\mathbf{v}\in V}\inf_{\boldsymbol{\lambda}}R(\hat{\boldsymbol{\theta}}_\boldsymbol{\lambda},\mathbf{v}) \\
@@ -991,12 +1014,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./minimaxsobolev.html" class="pagination-link" aria-label="Sobolev functions and ellipsoids">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sobolev functions and ellipsoids</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sobolev functions and ellipsoids</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./minimaxpinsker.html" class="pagination-link" aria-label="Pinsker's Theorem for Sobolev ellipsoids">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Pinsker’s Theorem for Sobolev ellipsoids</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Pinsker’s Theorem for Sobolev ellipsoids</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

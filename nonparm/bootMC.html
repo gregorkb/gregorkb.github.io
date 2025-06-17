@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>15&nbsp; Implementing the bootstrap – Some of Nonparametric Statistics</title>
+<title>17&nbsp; Implementing the bootstrap – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -156,7 +156,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootMC.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootMC.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -190,7 +190,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">Nonparametric regression</span></a>
+ <span class="menu-text">Density estimation</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -198,38 +198,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mnonparmreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Multivariate nonparametric regression</span></span></a>
+  <a href="./kderosenblatt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Kernel density estimation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mNWestimator.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./additivemodel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./additivebackfit.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Backfitting in the additive model</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./additiveresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Additive model pros and cons</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./additivesparse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sparse additive model</span></span></a>
+  <a href="./kdemse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mean squared error of kernel density estimators</span></span></a>
   </div>
 </li>
       </ul>
@@ -237,7 +213,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Minimax Theory</span></a>
+ <span class="menu-text">Nonparametric regression</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -245,174 +221,192 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./mnonparmreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multivariate nonparametric regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mNWestimator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additivemodel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additivebackfit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Backfitting in the additive model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additiveresults.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Additive model pros and cons</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additivesparse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Sparse additive model</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Minimax Theory</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./minimaxnonparmnormalmeans.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Getting to the Normal means model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Getting to the Normal means model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxnormalmeans.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Minimax risk in the Normal means model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Minimax risk in the Normal means model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxsobolev.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sobolev functions and ellipsoids</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sobolev functions and ellipsoids</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxlinearellipsoid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear minimax risk over general ellipsoids</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Linear minimax risk over general ellipsoids</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxpinsker.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Pinsker’s Theorem for Sobolev ellipsoids</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Pinsker’s Theorem for Sobolev ellipsoids</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxadaptive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Bootstrap</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./boot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootmean.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootMC.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootmeanconsistency.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootmeanstudentized.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bootstrap for the studentized sample mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Bootstrap for the studentized sample mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworth.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworthplay.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworthmulti.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Multivariate Edgeworth expansions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Multivariate Edgeworth expansions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworthboot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Edgeworth expansions for the bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Edgeworth expansions for the bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootpercentile.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The percentile bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The percentile bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statfunctionals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Statistical functionals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Statistical functionals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootstatfunctionals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootlinreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootlinregwild.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Wild bootstrap for regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Wild bootstrap for regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./nonparmregCB.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence bands in nonparametric regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Confidence bands in nonparametric regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootCB.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">Traditional nonparametrics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./wilcoxonranksum.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./wilcoxonasymptotic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Asymptotic distribution of the Wilcoxon rank sum statistic</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./wilcoxonpower.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Power of the Wilcoxon rank sum test</span></span></a>
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -420,7 +414,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">Traditional nonparametrics</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -428,8 +422,37 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./wilcoxonranksum.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./wilcoxonasymptotic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Asymptotic null distribution of the Wilcoxon rank sum statistic</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./wilcoxonpower.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Power of the Wilcoxon rank sum test</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./miscresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
   </div>
 </li>
       </ul>
@@ -451,9 +474,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootMC.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootMC.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-bootMC" class="quarto-section-identifier"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span></h1>
+<h1 class="title"><span id="sec-bootMC" class="quarto-section-identifier"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span></h1>
 </div>
 
 
@@ -481,20 +504,20 @@ window.Quarto = {
 \end{align}\]</span> where, conditional on <span class="math inline">\(X_1,\dots,X_n\)</span>, the sum <span class="math inline">\(\sum_{i=1}^n X_i^*\)</span> has a discrete distribution with as many as <span class="math inline">\(2n-1 \choose n\)</span> atoms (think of putting <span class="math inline">\(n\)</span> balls in as many urns).</p>
 <p>It is possible to evaluate cumulative probabilities for <span class="math inline">\(\sum_{i=1}^nX_i^*|X_1,\dots,X_n\)</span> exactly, but this can take too much time. We therefore almost always use Monte Carlo simulation to approximate the bootstrap estimator <span class="math inline">\(\hat G_{Y_n}\)</span> of <span class="math inline">\(G_{Y_n}\)</span> and its quantile function.</p>
 <div id="def-MCbootmean" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 15.1 (Monte Carlo approximation to bootstrap estimator <span class="math inline">\(\hat G_{Y_n}\)</span>)</strong></span> Choose a large <span class="math inline">\(B\)</span>. Then for <span class="math inline">\(b=1,\dots,B\)</span> do:</p>
+<p><span class="theorem-title"><strong>Definition 17.1 (Monte Carlo approximation to bootstrap estimator <span class="math inline">\(\hat G_{Y_n}\)</span>)</strong></span> Choose a large <span class="math inline">\(B\)</span>. Then for <span class="math inline">\(b=1,\dots,B\)</span> do:</p>
 <ul>
 <li>Draw <span class="math inline">\(X_1^{*(b)},\dots,X_n^{*(b)}\)</span> with replacement from <span class="math inline">\(X_1,\dots,X_n\)</span>.</li>
 <li>Compute <span class="math inline">\(Y_n^{*(b)} =\sqrt{n}(\bar X_n^{*(b)} - \bar X_n)\)</span>, where <span class="math inline">\(\bar X^{*(b)} = n^{-1}\sum_{i=1}^n X_i^{*(b)}\)</span>.</li>
 </ul>
 <p>Then set <span class="math inline">\(\hat G_{Y_n}(x) = B^{-1}\sum_{b=1}^B \mathbf{1}(Y_n^{*(b)} \leq x)\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>.</p>
 </div>
-<p>We may call each sample <span class="math inline">\(X_1^{*(b)},\dots,X_n^{*(b)}\)</span> in <a href="#def-MCbootmean" class="quarto-xref">Definition&nbsp;<span>15.1</span></a> a bootstrap sample and each mean <span class="math inline">\(\bar X^{*(b)}\)</span> a bootstrap mean.</p>
+<p>We may call each sample <span class="math inline">\(X_1^{*(b)},\dots,X_n^{*(b)}\)</span> in <a href="#def-MCbootmean" class="quarto-xref">Definition&nbsp;<span>17.1</span></a> a bootstrap sample and each mean <span class="math inline">\(\bar X^{*(b)}\)</span> a bootstrap mean.</p>
 <p>Monte Carlo approximations to the quantiles <span class="math inline">\(\hat G^{-1}_{Y_n}(u)\)</span> for <span class="math inline">\(u \in (0,1)\)</span> may be obtained as follows: Sort the bootstrap realizations <span class="math inline">\(Y_n^{*(b)}\)</span> from the Monte Carlo simulation such that <span class="math inline">\(Y_n^{*(1)} \leq \dots \leq Y_n^{*(b)}\)</span> and then set <span class="math display">\[
 \hat G^{-1}_{Y_n}(u) = Y_n^{*(\lceil u B\rceil)}
-\]</span> for all <span class="math inline">\(u \in (0,1)\)</span>. Note that the bootstrap confidence interval in <a href="bootmean.html#eq-bootinterval" class="quarto-xref">Equation&nbsp;<span>14.3</span></a> can be constructed from the bootstrap means generated in the Monte Carlo simulation in <a href="#def-MCbootmean" class="quarto-xref">Definition&nbsp;<span>15.1</span></a> as <span id="eq-bootintervalMCversion"><span class="math display">\[
+\]</span> for all <span class="math inline">\(u \in (0,1)\)</span>. Note that the bootstrap confidence interval in <a href="bootmean.html#eq-bootinterval" class="quarto-xref">Equation&nbsp;<span>16.3</span></a> can be constructed from the bootstrap means generated in the Monte Carlo simulation in <a href="#def-MCbootmean" class="quarto-xref">Definition&nbsp;<span>17.1</span></a> as <span id="eq-bootintervalMCversion"><span class="math display">\[
 \big[2\bar X_n - \bar X_n^{*(\lceil(1-\alpha/2)B \rceil)} , 2\bar X_n - \bar X_n^{*(\lceil(\alpha/2)B \rceil)} \big]
-\tag{15.1}\]</span></span> after sorting them such that <span class="math inline">\(\bar X_n^{*(1)} \leq \dots \leq \bar X_n^{*(B)}\)</span>.</p>
-<p><a href="#fig-bootmeancvg" class="quarto-xref">Figure&nbsp;<span>15.1</span></a> shows, over an increasing sample size <span class="math inline">\(n\)</span>, the realized coverage of the bootstrap interval in <a href="#eq-bootintervalMCversion" class="quarto-xref">Equation&nbsp;<span>15.1</span></a> when the nominal coverage is set to <span class="math inline">\(1 - \alpha = 0.95\)</span>. Note that the coverage approaches the nominal level as the sample sizes increases.</p>
+\tag{17.1}\]</span></span> after sorting them such that <span class="math inline">\(\bar X_n^{*(1)} \leq \dots \leq \bar X_n^{*(B)}\)</span>.</p>
+<p><a href="#fig-bootmeancvg" class="quarto-xref">Figure&nbsp;<span>17.1</span></a> shows, over an increasing sample size <span class="math inline">\(n\)</span>, the realized coverage of the bootstrap interval in <a href="#eq-bootintervalMCversion" class="quarto-xref">Equation&nbsp;<span>17.1</span></a> when the nominal coverage is set to <span class="math inline">\(1 - \alpha = 0.95\)</span>. Note that the coverage approaches the nominal level as the sample sizes increases.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -549,7 +572,7 @@ window.Quarto = {
 <img src="bootMC_files/figure-html/fig-bootmeancvg-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bootmeancvg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.1: Coverage of confidence interval in <a href="#eq-bootintervalMCversion" class="quarto-xref">Equation&nbsp;<span>15.1</span></a> with coverage probability set to <span class="math inline">\(1-\alpha = 0.95\)</span> when <span class="math inline">\(X_1,\dots,X_n\)</span> have the Gamma distribution with mean <span class="math inline">\(6\)</span> and variance <span class="math inline">\(24\)</span>.
+Figure&nbsp;17.1: Coverage of confidence interval in <a href="#eq-bootintervalMCversion" class="quarto-xref">Equation&nbsp;<span>17.1</span></a> with coverage probability set to <span class="math inline">\(1-\alpha = 0.95\)</span> when <span class="math inline">\(X_1,\dots,X_n\)</span> have the Gamma distribution with mean <span class="math inline">\(6\)</span> and variance <span class="math inline">\(24\)</span>.
 </figcaption>
 </figure>
 </div>
@@ -983,12 +1006,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./bootmean.html" class="pagination-link" aria-label="Bootstrap for the sample mean">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./bootmeanconsistency.html" class="pagination-link" aria-label="Consistency of bootstrap for the sample mean">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

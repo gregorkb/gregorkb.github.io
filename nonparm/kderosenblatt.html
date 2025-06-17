@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>References – Some of Nonparametric Statistics</title>
+<title>1&nbsp; Kernel density estimation – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,7 +64,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./miscresults.html" rel="prev">
+<link href="./kdemse.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -99,6 +115,35 @@ div.csl-indent {
   });
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -111,7 +156,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kderosenblatt.html">Density estimation</a></li><li class="breadcrumb-item"><a href="./kderosenblatt.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Kernel density estimation</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -144,16 +189,16 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Density estimation</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./kderosenblatt.html" class="sidebar-item-text sidebar-link">
+  <a href="./kderosenblatt.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Kernel density estimation</span></span></a>
   </div>
 </li>
@@ -414,7 +459,7 @@ div.csl-indent {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -429,9 +474,9 @@ div.csl-indent {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kderosenblatt.html">Density estimation</a></li><li class="breadcrumb-item"><a href="./kderosenblatt.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Kernel density estimation</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span id="sec-rosenblattkde" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Kernel density estimation</span></span></h1>
 </div>
 
 
@@ -448,82 +493,147 @@ div.csl-indent {
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-athreya2006measure" class="csl-entry" role="listitem">
-Athreya, Krishna B, and Soumendra N Lahiri. 2006. <em>Measure Theory and
-Probability Theory</em>. Springer Science &amp; Business Media.
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
 </div>
-<div id="ref-buja1989linear" class="csl-entry" role="listitem">
-Buja, Andreas, Trevor Hastie, and Robert Tibshirani. 1989. <span>“Linear
-Smoothers and Additive Models.”</span> <em>The Annals of
-Statistics</em>, 453–510.
+<p>A problem central to nonparametric statistics is how to estimate a probability density function <span class="math inline">\(f\)</span> from a sample of independent realizations <span class="math inline">\(X_1,\dots,X_n\)</span> of a random variable <span class="math inline">\(X \sim f\)</span>. If one assumes <span class="math inline">\(f\)</span> belongs to a parametric family such that <span class="math inline">\(f(\cdot) = f(\cdot ; \boldsymbol{\theta})\)</span> for a set of parameters <span class="math inline">\(\boldsymbol{\theta}= (\theta_1,\dots,\theta_d) \in \Theta \subset \mathbb{R}^d\)</span> for some finite <span class="math inline">\(d \geq 1\)</span>, then one could estimate <span class="math inline">\(f\)</span> by estimating the parameters in <span class="math inline">\(\boldsymbol{\theta}\)</span>. That is, one could estimate <span class="math inline">\(f(\cdot)\)</span> with <span class="math inline">\(f(\cdot;\hat{\boldsymbol{\theta}})\)</span>, where <span class="math inline">\(\hat{\boldsymbol{\theta}}\)</span> is an estimator of <span class="math inline">\(\boldsymbol{\theta}\)</span>.</p>
+<p>For example, we might assume <span class="math display">\[
+f(x) = f(x;\boldsymbol{\theta}) = \frac{1}{\Gamma(\theta_1)\theta_2^{\theta_1}}x^{\theta_1 - 1}e^{-x/\theta_2}\mathbf{1}(x &gt; 0)
+\]</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>, where <span class="math inline">\(\boldsymbol{\theta}= (\theta_1,\theta_2)\)</span>, i.e.&nbsp;that <span class="math inline">\(X\)</span> has the gamma distribution with mean <span class="math inline">\(\theta_1\theta_2\)</span> and variance <span class="math inline">\(\theta_1\theta_2^2\)</span>. Then we could estimate <span class="math inline">\(f(x)\)</span> with <span class="math inline">\(f(x;\hat{\boldsymbol{\theta}})\)</span>, where <span class="math inline">\(\hat{\boldsymbol{\theta}} = (\hat \theta_1,\hat \theta_2)\)</span> and <span class="math inline">\(\hat \theta_1\)</span> and <span class="math inline">\(\hat \theta_2\)</span> are, say, the maximum likelihood estimators of <span class="math inline">\(\theta_1\)</span> and <span class="math inline">\(\theta_2\)</span>.</p>
+<p>In nonparametric statistics we wish to estimate <span class="math inline">\(f\)</span> without assuming it belongs to any particular parametric family. We have already discussed estimation of the cumulative distribution function (cdf) <span class="math inline">\(F\)</span> with the empirical cdf <span class="math display">\[
+\hat F_n(x) = \frac{1}{n}\sum_{i=1}^n \mathbf{1}(X_i \leq x).
+\]</span> The first nonparametric estimator of <span class="math inline">\(f\)</span> we will discuss is the so-called Rosenblatt estimator, which uses the fact if <span class="math inline">\(F\)</span> is differentiable, the density <span class="math inline">\(f\)</span> is equal to the derivative of <span class="math inline">\(F\)</span>. Using the definition of the derivative as a limit, we may write <span class="math display">\[
+f(x) = \frac{d}{dx}F(x) = \lim_{h\to 0}\frac{F(x + h) - F(x)}{h}.
+\]</span> Note that we can also write the derivative as <span class="math display">\[
+f(x) = \lim_{h\to 0} \frac{F(x + h) - F(x - h)}{2h}.
+\]</span> This formula motivates the Rosenblatt estimator; the estimator is constructed by replacing <span class="math inline">\(F\)</span> in the above expression by <span class="math inline">\(\hat F_n\)</span> and fixing <span class="math inline">\(h\)</span> at some small value. Thus set <span class="math display">\[
+\hat f_n^R(x) =\frac{\hat F_n(x + h) - \hat F_n(x - h)}{2h}
+\]</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span> for some small <span class="math inline">\(h &gt; 0\)</span>.</p>
+<p>The Rosenblatt estimator is a special case of a type of estimator called a kernel density estimator of a pdf.</p>
+<div id="def-kde" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 1.1 (Kernel density estimator)</strong></span> A kernel density estimator (KDE) takes the form <span id="eq-kde"><span class="math display">\[
+\hat f_n(x) = \frac{1}{nh}\sum_{i=1}^nK\Big(\frac{X_i - x}{h}\Big),
+\tag{1.1}\]</span></span> where the function <span class="math inline">\(K(\cdot)\)</span> is called the kernel and <span class="math inline">\(h &gt; 0\)</span> is called the bandwidth.</p>
 </div>
-<div id="ref-das2019perturbation" class="csl-entry" role="listitem">
-Das, Debraj, Karl Gregory, and Soumendra Lahiri. 2019.
-<span>“Perturbation Bootstrap in Adaptive Lasso.”</span> <em>The Annals
-of Statistics</em> 47 (4): 2080–2116.
+<p>Note that we may write <span class="math display">\[\begin{align*}
+\hat f_n^R(x) &amp;=\frac{\hat F_n(x + h) - \hat F_n(x - h)}{2h} \\
+            &amp;=\frac{1}{2nh}\sum_{i=1}^n\mathbf{1}(x -h \leq X_i \leq x + h) \\
+            &amp;=\frac{1}{nh}\sum_{i=1}^n\frac{1}{2}\mathbf{1}\Big(-1 \leq \frac{X_i - x}{h} \leq 1\Big),
+\end{align*}\]</span> which has the form of the KDE <span class="math inline">\(\hat f_n(x)\)</span> in <a href="#eq-kde" class="quarto-xref">Equation&nbsp;<span>1.1</span></a> with kernel <span class="math inline">\(K(\cdot)\)</span> given by <span class="math inline">\(K(u) = (1/2)\mathbf{1}(-1 \leq u \leq 1)\)</span>. We may refer to this kernel as the Rosenblatt kernel.</p>
+<p>Some kernels found in the literature are:</p>
+<ol type="1">
+<li>The triangular kernel <span class="math inline">\(K(u) = (1 - |u|)\mathbf{1}(|u|\leq 1)\)</span>.</li>
+<li>The Epanechnikov kernel <span class="math inline">\(K(u) = (3/4)(1 - u^2)\mathbf{1}(|u|\leq1)\)</span>.</li>
+<li>The Gaussian kernel <span class="math inline">\(K(u) = (2\pi)^{-1/2}e^{-u^2/2}\)</span>.</li>
+<li>The Silverman kernel <span class="math inline">\(K(u) = (1/2)e^{-|u|/2}\sin(|u|/\sqrt{2} + \pi/4)\)</span>.</li>
+</ol>
+<p>One may wonder what kinds of functions are suitable as kernels in a KDE. If one wishes the KDE <span class="math inline">\(\hat f_n\)</span> to be a valid probability density function, i.e.&nbsp;that <span class="math inline">\(\hat f_n(x) \geq 0\)</span> for all <span class="math inline">\(x\in \mathbb{R}\)</span> and <span class="math inline">\(\int_\mathbb{R}\hat f_n(x)dx = 1\)</span>, one can guarantee this by selecting a kernel <span class="math inline">\(K\)</span> which is itself a density.</p>
+<div id="prp-kdevaliddensity" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 1.1 (Conditions on the kernel for the KDE to be a valid density)</strong></span> If <span class="math inline">\(K\)</span> is a density then <span class="math inline">\(\hat f_n\)</span> is a density.</p>
 </div>
-<div id="ref-diciccio1996bootstrap" class="csl-entry" role="listitem">
-DiCiccio, Thomas J, and Bradley Efron. 1996. <span>“Bootstrap Confidence
-Intervals.”</span> <em>Statistical Science</em> 11 (3): 189–228.
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div id="ref-fernholz2012mises" class="csl-entry" role="listitem">
-Fernholz, Luisa Turrin. 2012. <em>Von Mises Calculus for Statistical
-Functionals</em>. Vol. 19. Springer Science &amp; Business Media.
+<div class="callout-title-container flex-fill">
+Proof of <a href="#prp-kdevaliddensity" class="quarto-xref">Proposition&nbsp;<span>1.1</span></a>
 </div>
-<div id="ref-hall2013bootstrap" class="csl-entry" role="listitem">
-Hall, Peter. 2013. <em>The Bootstrap and Edgeworth Expansion</em>.
-Springer Science &amp; Business Media.
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="ref-lehmann1975nonparametrics" class="csl-entry" role="listitem">
-Lehmann, E L. 1975. <em>Nonparametrics</em>. Holden-Day, Inc.
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(K\)</span> be a density. Then <span class="math inline">\(K(u) \geq 0\)</span> for all <span class="math inline">\(u \in \mathbb{R}\)</span>, so <span class="math inline">\(\hat f_n(x) \geq 0\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>. Moreover <span class="math display">\[\begin{align*}
+\int_\mathbb{R}\hat f_n(x)dx &amp;= \frac{1}{nh} \sum_{i=1}^n \int_\mathbb{R}K\Big(\frac{X_i - x}{h}\Big)dx \\
+    &amp;= \frac{1}{nh} \sum_{i=1}^n \int_\infty^{-\infty} K(u)(-h)du \quad \text{ sub } u = (X_i - x)/h\\
+    &amp;= \int_{-\infty}^\infty K(u)du\\
+    &amp;= 1,
+\end{align*}\]</span> so <span class="math inline">\(\hat f_n\)</span> is a density.</p>
 </div>
-<div id="ref-mammen1993bootstrap" class="csl-entry" role="listitem">
-Mammen, Enno. 1993. <span>“Bootstrap and Wild Bootstrap for High
-Dimensional Linear Models.”</span> <em>The Annals of Statistics</em>,
-255–85.
 </div>
-<div id="ref-meier2009high" class="csl-entry" role="listitem">
-Meier, Lukas, Sara Van de Geer, Peter Bühlmann, et al. 2009.
-<span>“High-Dimensional Additive Modeling.”</span> <em>The Annals of
-Statistics</em> 37 (6B): 3779–3821.
 </div>
-<div id="ref-ravikumar2009sparse" class="csl-entry" role="listitem">
-Ravikumar, Pradeep, John Lafferty, Han Liu, and Larry Wasserman. 2009.
-<span>“Sparse Additive Models.”</span> <em>Journal of the Royal
-Statistical Society: Series B (Statistical Methodology)</em> 71 (5):
-1009–30.
+<p>Figure <a href="#fig-KDEcompare" class="quarto-xref">Figure&nbsp;<span>1.1</span></a> shows KDEs with the Rosenblatt and Gaussian kernels computed on a sample of size <span class="math inline">\(n = 200\)</span> at three different choices of the bandwidth. The true density from which the data were drawn is overlaid in each plot. One notes that the Gaussian kernel is rather more pleasing to the eye.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># draw a random sample from a mixture distribution</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),n,<span class="at">replace=</span><span class="cn">TRUE</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> d <span class="sc">*</span> <span class="fu">rgamma</span>(n,<span class="dv">3</span>,<span class="at">scale =</span> <span class="dv">3</span>) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">-</span> d) <span class="sc">*</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># define a sequence of x values over which to compute the KDEs</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>min <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(.<span class="dv">005</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>max <span class="ot">&lt;-</span> <span class="fu">qgamma</span>(.<span class="dv">995</span>,<span class="dv">3</span>,<span class="at">scale =</span> <span class="dv">3</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(min,max,<span class="at">length =</span> <span class="dv">300</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the value of the true density over the values of x</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(x,<span class="dv">3</span>,<span class="at">scale =</span> <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">dnorm</span>(x) <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># define a function to compute the KDE at a point x</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>kde <span class="ot">&lt;-</span> <span class="cf">function</span>(x,Y,h,<span class="at">K =</span> dnorm) <span class="fu">mean</span>(<span class="fu">K</span>((Y<span class="sc">-</span>x)<span class="sc">/</span>h)) <span class="sc">/</span> h</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># compute two kdes at each of three bandwidths</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>hh <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>kde_gauss_x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="fu">length</span>(x),<span class="fu">length</span>(hh))</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>kde_rosenblatt_x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="fu">length</span>(x),<span class="fu">length</span>(hh))</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(hh)){</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  kde_gauss_x[,j] <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="at">X =</span> x, </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                            <span class="at">FUN =</span> kde, </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Y =</span> Y, </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                            <span class="at">h =</span> hh[j])</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  kde_rosenblatt_x[,j] <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="at">X =</span> x, </span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">FUN =</span> kde, </span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">Y =</span> Y, </span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">h =</span> hh[j], </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">K =</span> <span class="cf">function</span>(u){(<span class="fu">abs</span>(u) <span class="sc">&lt;=</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>})  </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">4.1</span>,<span class="fl">4.1</span>,<span class="fl">1.1</span>,<span class="fl">1.1</span>))</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>ylims <span class="ot">&lt;-</span> <span class="fu">range</span>(fx,kde_gauss_x,kde_rosenblatt_x)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(hh)){</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(fx<span class="sc">~</span>x,</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>       <span class="at">type =</span> <span class="st">"l"</span>,</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylim =</span> ylims,</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"x"</span>,</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">"density"</span>,</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">2</span>,</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"gray"</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(kde_rosenblatt_x[,j]<span class="sc">~</span> x, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">545</span>))</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(hh)){</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(fx<span class="sc">~</span>x,</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>       <span class="at">type =</span> <span class="st">"l"</span>,</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylim =</span> ylims,</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"x"</span>,</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">"density"</span>,</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">2</span>,</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"gray"</span>)</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(kde_gauss_x[,j]<span class="sc">~</span> x, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="fl">0.545</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-KDEcompare" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Six plots of kernel density estimates with true densities overlaid.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-KDEcompare-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="kderosenblatt_files/figure-html/fig-KDEcompare-1.png" class="img-fluid figure-img" alt="Six plots of kernel density estimates with true densities overlaid." width="672">
 </div>
-<div id="ref-rice1984bandwidth" class="csl-entry" role="listitem">
-Rice, John et al. 1984. <span>“Bandwidth Choice for Nonparametric
-Regression.”</span> <em>The Annals of Statistics</em> 12 (4): 1215–30.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-KDEcompare-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.1: Top: Rosenblatt KDE with bandwidth increasing from left to right. Bottom: Gaussian KDE with bandwidth increasing from left to right. True density shown in each plot.
+</figcaption>
+</figure>
 </div>
-<div id="ref-serfling2009approximation" class="csl-entry" role="listitem">
-Serfling, Robert J. 2009. <em>Approximation Theorems of Mathematical
-Statistics</em>. John Wiley &amp; Sons.
-</div>
-<div id="ref-stone1985additive" class="csl-entry" role="listitem">
-Stone, Charles J. 1985. <span>“Additive Regression and Other
-Nonparametric Models.”</span> <em>The Annals of Statistics</em>,
-689–705.
-</div>
-<div id="ref-sun1994simultaneous" class="csl-entry" role="listitem">
-Sun, Jiayang, Clive R Loader, et al. 1994. <span>“Simultaneous
-Confidence Bands for Linear Regression and Smoothing.”</span> <em>The
-Annals of Statistics</em> 22 (3): 1328–45.
-</div>
-<div id="ref-tsybakov2008introduction" class="csl-entry" role="listitem">
-Tsybakov, Alexandre B. 2008. <em>Introduction to Nonparametric
-Estimation</em>. Springer Science &amp; Business Media.
-</div>
-<div id="ref-wasserman2006all" class="csl-entry" role="listitem">
-Wasserman, Larry. 2006. <em>All of Nonparametric Statistics</em>.
-Springer Science &amp; Business Media.
-</div>
-<div id="ref-white1980heteroskedasticity" class="csl-entry" role="listitem">
-White, Halbert. 1980. <span>“A Heteroskedasticity-Consistent Covariance
-Matrix Estimator and a Direct Test for Heteroskedasticity.”</span>
-<em>Econometrica: Journal of the Econometric Society</em>, 817–38.
 </div>
 </div>
 
@@ -952,11 +1062,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./miscresults.html" class="pagination-link" aria-label="Miscellaneous results">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span>
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./kdemse.html" class="pagination-link" aria-label="Mean squared error of kernel density estimators">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mean squared error of kernel density estimators</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

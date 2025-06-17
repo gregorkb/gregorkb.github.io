@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>24&nbsp; Bootstrap for statistical functionals – Some of Nonparametric Statistics</title>
+<title>26&nbsp; Bootstrap for statistical functionals – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -176,7 +176,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootstatfunctionals.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootstatfunctionals.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -210,7 +210,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">Nonparametric regression</span></a>
+ <span class="menu-text">Density estimation</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -218,38 +218,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mnonparmreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Multivariate nonparametric regression</span></span></a>
+  <a href="./kderosenblatt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Kernel density estimation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mNWestimator.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./additivemodel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./additivebackfit.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Backfitting in the additive model</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./additiveresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Additive model pros and cons</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./additivesparse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sparse additive model</span></span></a>
+  <a href="./kdemse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mean squared error of kernel density estimators</span></span></a>
   </div>
 </li>
       </ul>
@@ -257,7 +233,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Minimax Theory</span></a>
+ <span class="menu-text">Nonparametric regression</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -265,174 +241,192 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./mnonparmreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multivariate nonparametric regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mNWestimator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additivemodel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additivebackfit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Backfitting in the additive model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additiveresults.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Additive model pros and cons</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additivesparse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Sparse additive model</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Minimax Theory</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./minimaxnonparmnormalmeans.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Getting to the Normal means model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Getting to the Normal means model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxnormalmeans.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Minimax risk in the Normal means model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Minimax risk in the Normal means model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxsobolev.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sobolev functions and ellipsoids</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sobolev functions and ellipsoids</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxlinearellipsoid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear minimax risk over general ellipsoids</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Linear minimax risk over general ellipsoids</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxpinsker.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Pinsker’s Theorem for Sobolev ellipsoids</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Pinsker’s Theorem for Sobolev ellipsoids</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxadaptive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Bootstrap</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./boot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootmean.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootMC.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootmeanconsistency.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootmeanstudentized.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bootstrap for the studentized sample mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Bootstrap for the studentized sample mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworth.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworthplay.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworthmulti.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Multivariate Edgeworth expansions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Multivariate Edgeworth expansions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworthboot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Edgeworth expansions for the bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Edgeworth expansions for the bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootpercentile.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The percentile bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The percentile bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statfunctionals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Statistical functionals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Statistical functionals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootstatfunctionals.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootlinreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootlinregwild.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Wild bootstrap for regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Wild bootstrap for regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./nonparmregCB.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence bands in nonparametric regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Confidence bands in nonparametric regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootCB.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">Traditional nonparametrics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./wilcoxonranksum.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./wilcoxonasymptotic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Asymptotic distribution of the Wilcoxon rank sum statistic</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./wilcoxonpower.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Power of the Wilcoxon rank sum test</span></span></a>
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -440,7 +434,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">Traditional nonparametrics</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -448,8 +442,37 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./wilcoxonranksum.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./wilcoxonasymptotic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Asymptotic null distribution of the Wilcoxon rank sum statistic</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./wilcoxonpower.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Power of the Wilcoxon rank sum test</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./miscresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
   </div>
 </li>
       </ul>
@@ -471,9 +494,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootstatfunctionals.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootstatfunctionals.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-bootstatfunctionals" class="quarto-section-identifier"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></span></h1>
+<h1 class="title"><span id="sec-bootstatfunctionals" class="quarto-section-identifier"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></span></h1>
 </div>
 
 
@@ -497,11 +520,11 @@ window.Quarto = {
 <p>This section draws from <span class="citation" data-cites="fernholz2012mises">Fernholz (<a href="references.html#ref-fernholz2012mises" role="doc-biblioref">2012</a>)</span> as well as from <span class="citation" data-cites="wasserman2006all">Wasserman (<a href="references.html#ref-wasserman2006all" role="doc-biblioref">2006</a>)</span>.</p>
 <p>We consider using the bootstrap to estimate the sampling distribution of an unstudentized pivot <span id="eq-statfunctionalpivot"><span class="math display">\[
 Y_n = \sqrt{n}(T(\hat F_n) - T(F)),
-\tag{24.1}\]</span></span> based on which we would like to make inferences on <span class="math inline">\(T(F)\)</span>. If the distribution, say <span class="math inline">\(G_{Y_n}\)</span> of <span class="math inline">\(Y_n\)</span> were known, then a <span class="math inline">\((1-\alpha)100\%\)</span> confidence interval for <span class="math inline">\(T(F)\)</span> could be constructed as <span class="math display">\[
+\tag{26.1}\]</span></span> based on which we would like to make inferences on <span class="math inline">\(T(F)\)</span>. If the distribution, say <span class="math inline">\(G_{Y_n}\)</span> of <span class="math inline">\(Y_n\)</span> were known, then a <span class="math inline">\((1-\alpha)100\%\)</span> confidence interval for <span class="math inline">\(T(F)\)</span> could be constructed as <span class="math display">\[
 \big[T(\hat F_n) - G_{Y_n}^{-1}(\alpha/2)/\sqrt{n},T(\hat F_n) - G_{Y_n}^{-1}(1-\alpha/2)/\sqrt{n}\big].
 \]</span> We consider replacing the unknown quantiles <span class="math inline">\(G_{Y_n}^{-1}(\alpha/2)\)</span> and <span class="math inline">\(G_{Y_n}^{-1}(1 - \alpha/2)\)</span> of the distribution of <span class="math inline">\(Y_n\)</span> with bootstrap estimates.</p>
 <div id="def-statfunctionalbootstrap" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 24.1 (Bootstrap for a statistical functional)</strong></span> Conditional on <span class="math inline">\(X_1,\dots,X_n\)</span>, introduce random variables <span class="math inline">\(X_1^*,\dots,X_n^*\)</span> such that <span class="math inline">\(X_1^*,\dots,X_n^*|X_1,\dots,X_n \overset{\text{ind}}{\sim}\hat F_n\)</span>, where <span class="math inline">\(\hat F_n\)</span> is the empirical distribution of <span class="math inline">\(X_1,\dots,X_n\)</span>, and define the bootstrap version <span class="math inline">\(Y_n^*\)</span> of <span class="math inline">\(Y_n = \sqrt{n}(T(\hat F_n) - T(F))\)</span> as</p>
+<p><span class="theorem-title"><strong>Definition 26.1 (Bootstrap for a statistical functional)</strong></span> Conditional on <span class="math inline">\(X_1,\dots,X_n\)</span>, introduce random variables <span class="math inline">\(X_1^*,\dots,X_n^*\)</span> such that <span class="math inline">\(X_1^*,\dots,X_n^*|X_1,\dots,X_n \overset{\text{ind}}{\sim}\hat F_n\)</span>, where <span class="math inline">\(\hat F_n\)</span> is the empirical distribution of <span class="math inline">\(X_1,\dots,X_n\)</span>, and define the bootstrap version <span class="math inline">\(Y_n^*\)</span> of <span class="math inline">\(Y_n = \sqrt{n}(T(\hat F_n) - T(F))\)</span> as</p>
 <p><span class="math display">\[
 Y_n^* \equiv \sqrt{n}(T(\hat F_n^*) - T(\hat F_n)),
 \]</span> where <span class="math inline">\(\hat F^*_n\)</span> is the empirical distribution of <span class="math inline">\(X_1^*,\dots,X_n^*\)</span>. Then the bootstrap estimator of <span class="math inline">\(G_{Y_n}\)</span> is given by <span class="math display">\[
@@ -511,31 +534,31 @@ Y_n^* \equiv \sqrt{n}(T(\hat F_n^*) - T(\hat F_n)),
 <p>In order to establish that the bootstrap works for a given statistical functional–that is that we can use the bootstrap to estimate its sampling distribution–we find it is sufficient to show that the functional has a property called Hadamard differentiability.</p>
 <p>Recall the Taylor-like expansion of a statistical functional <span class="math inline">\(T:\mathcal{D}\to\mathbb{R}\)</span> at the distribution <span class="math inline">\(F\)</span> evaluated at <span class="math inline">\(\hat F_n\)</span>, which allowed us to write <span id="eq-statfunctionalexpansion"><span class="math display">\[
 \sqrt{n}(T(\hat F_n) - T(F)) = \sqrt{n}T^{(1)}_F(\hat F_n - F) + \sqrt{n}R_F(\hat F_n - F),
-\tag{24.2}\]</span></span> where <span class="math inline">\(T^{(1)}_F(\hat F_n - F)\)</span> was the von Mises derivative of <span class="math inline">\(T\)</span> at <span class="math inline">\(F\)</span> in the direction of <span class="math inline">\(\hat F_n\)</span>. If the functional <span class="math inline">\(T\)</span> satisfies Hadamard differentiability, which we define shortly, the second term on the right hand side of <a href="#eq-statfunctionalexpansion" class="quarto-xref">Equation&nbsp;<span>24.2</span></a> will vanish and the first term will converge to a Normal limit; moreover, the bootstrap in <a href="#def-statfunctionalbootstrap" class="quarto-xref">Definition&nbsp;<span>24.1</span></a> will work.</p>
+\tag{26.2}\]</span></span> where <span class="math inline">\(T^{(1)}_F(\hat F_n - F)\)</span> was the von Mises derivative of <span class="math inline">\(T\)</span> at <span class="math inline">\(F\)</span> in the direction of <span class="math inline">\(\hat F_n\)</span>. If the functional <span class="math inline">\(T\)</span> satisfies Hadamard differentiability, which we define shortly, the second term on the right hand side of <a href="#eq-statfunctionalexpansion" class="quarto-xref">Equation&nbsp;<span>26.2</span></a> will vanish and the first term will converge to a Normal limit; moreover, the bootstrap in <a href="#def-statfunctionalbootstrap" class="quarto-xref">Definition&nbsp;<span>26.1</span></a> will work.</p>
 <p>Before presenting these results, we give the definition of Hadamard differentiability.</p>
 <div id="def-hadamard" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 24.2 (Hadamard differentiability of a statistical functional)</strong></span> A functional <span class="math inline">\(T:\mathcal{D}\to \mathbb{R}\)</span> is Hadamard differentiable at <span class="math inline">\(F \in \mathcal{D}\)</span> in the direction of <span class="math inline">\(G\in\mathcal{D}\)</span> if there exists a linear function <span class="math inline">\(T^{(1)}_F:\mathcal{D}\to \mathbb{R}\)</span> such that <span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 26.2 (Hadamard differentiability of a statistical functional)</strong></span> A functional <span class="math inline">\(T:\mathcal{D}\to \mathbb{R}\)</span> is Hadamard differentiable at <span class="math inline">\(F \in \mathcal{D}\)</span> in the direction of <span class="math inline">\(G\in\mathcal{D}\)</span> if there exists a linear function <span class="math inline">\(T^{(1)}_F:\mathcal{D}\to \mathbb{R}\)</span> such that <span class="math display">\[
 \lim_{n\to \infty} \Big|\frac{T(F + \varepsilon_n(G_n - F)) - T(F)}{\varepsilon_n} - T_F^{(1)}(G - F)\Big| = 0
 \]</span> for every sequence <span class="math inline">\(G_n\in \mathcal{D}\)</span> such that <span class="math inline">\(\sup_{x \in \mathbb{R}}|G_n(x) - G(x)| \to 0\)</span> as <span class="math inline">\(n \to \infty\)</span> and every sequence <span class="math inline">\(\varepsilon_n \downarrow 0\)</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
 </div>
 <p>Now we give a central limit theorem for statistical functionals:</p>
 <div id="thm-statfunctionalclt" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 24.1 (A central limit theorem for Hadamard differentiable functionals)</strong></span> Let <span class="math inline">\(T\)</span> be a Hadamard differentiable function with influence curve <span class="math inline">\(\varphi_F\)</span> such that <span class="math inline">\(\sigma_T^2 = \int \varphi^2_F(x) dF(x)&lt; \infty\)</span>. Then we have</p>
+<p><span class="theorem-title"><strong>Theorem 26.1 (A central limit theorem for Hadamard differentiable functionals)</strong></span> Let <span class="math inline">\(T\)</span> be a Hadamard differentiable function with influence curve <span class="math inline">\(\varphi_F\)</span> such that <span class="math inline">\(\sigma_T^2 = \int \varphi^2_F(x) dF(x)&lt; \infty\)</span>. Then we have</p>
 <ol type="1">
 <li><span class="math inline">\(\sqrt{n}(T(\hat F_n) - T(F)) \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,\sigma_T^2)\)</span></li>
 <li><span class="math inline">\(\sqrt{n}(T(\hat F_n) - T(F))/\hat \sigma_T^2 \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,1)\)</span>,</li>
 </ol>
 <p>as <span class="math inline">\(n \to \infty\)</span>, where <span class="math inline">\(\hat \sigma_T^2 = \int \varphi^2_{\hat F_n}(x) d\hat F_n(x)\)</span>.</p>
 </div>
-<p>We have not yet discussed estimation of the variance <span class="math inline">\(\sigma_T^2\)</span>. The estimator <span class="math inline">\(\hat \sigma_T^2\)</span> defined in <a href="#thm-statfunctionalclt" class="quarto-xref">Theorem&nbsp;<span>24.1</span></a> can be computed as the sample mean of what is called the empirical influence curve: The empirical influence curve <span class="math inline">\(\varphi_{\hat F_n}(x)\)</span> is given by <span id="eq-empiricalIF"><span class="math display">\[
+<p>We have not yet discussed estimation of the variance <span class="math inline">\(\sigma_T^2\)</span>. The estimator <span class="math inline">\(\hat \sigma_T^2\)</span> defined in <a href="#thm-statfunctionalclt" class="quarto-xref">Theorem&nbsp;<span>26.1</span></a> can be computed as the sample mean of what is called the empirical influence curve: The empirical influence curve <span class="math inline">\(\varphi_{\hat F_n}(x)\)</span> is given by <span id="eq-empiricalIF"><span class="math display">\[
 \varphi_{\hat F_n}(x) = T_{\hat F_n}^{(1)}(\delta_x - \hat F_n) = \frac{d}{d\epsilon} T(\hat F_n + \epsilon(\delta_x - \hat F_n))\Big|_{\epsilon = 0},
-\tag{24.3}\]</span></span> with which we may compute <span class="math inline">\(\hat \sigma_T^2\)</span> as <span id="eq-vareststatfunctional"><span class="math display">\[
+\tag{26.3}\]</span></span> with which we may compute <span class="math inline">\(\hat \sigma_T^2\)</span> as <span id="eq-vareststatfunctional"><span class="math display">\[
 \hat \sigma_T^2 = \frac{1}{n}\sum_{i=1}^n \varphi_{\hat F_n}^2(X_i).
-\tag{24.4}\]</span></span></p>
+\tag{26.4}\]</span></span></p>
 <div id="tbl-hadamardempiricalIFs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-hadamardempiricalIFs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;24.1: Empirical influence functions and plug-in estimators for <span class="math inline">\(\sigma_T^2\)</span> of some Hadamard-differentiable statistical functionals
+Table&nbsp;26.1: Empirical influence functions and plug-in estimators for <span class="math inline">\(\sigma_T^2\)</span> of some Hadamard-differentiable statistical functionals
 </figcaption>
 <div aria-describedby="tbl-hadamardempiricalIFs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -589,13 +612,13 @@ Table&nbsp;24.1: Empirical influence functions and plug-in estimators for <span 
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Derivations of empirical influence functions and variance estimators in <a href="#tbl-hadamardempiricalIFs" class="quarto-xref">Table&nbsp;<span>24.1</span></a>
+Derivations of empirical influence functions and variance estimators in <a href="#tbl-hadamardempiricalIFs" class="quarto-xref">Table&nbsp;<span>26.1</span></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>For each functional we compute the empirical influence curve <span class="math inline">\(\varphi_{\hat F_n}\)</span> and the variance estimator <span class="math inline">\(\hat \sigma^2_T\)</span> according to <a href="#eq-empiricalIF" class="quarto-xref">Equation&nbsp;<span>24.3</span></a> and <a href="#eq-vareststatfunctional" class="quarto-xref">Equation&nbsp;<span>24.4</span></a>, respectively.</p>
+<p>For each functional we compute the empirical influence curve <span class="math inline">\(\varphi_{\hat F_n}\)</span> and the variance estimator <span class="math inline">\(\hat \sigma^2_T\)</span> according to <a href="#eq-empiricalIF" class="quarto-xref">Equation&nbsp;<span>26.3</span></a> and <a href="#eq-vareststatfunctional" class="quarto-xref">Equation&nbsp;<span>26.4</span></a>, respectively.</p>
 <p><strong>The mean</strong></p>
 <p>For the mean functional <span class="math inline">\(T(F) = \int x dF(x)\)</span> we have <span class="math display">\[\begin{align}
 \varphi_{\hat F_n}(x) &amp;= \frac{d}{d\epsilon} \int x d(\hat F_n + \epsilon(\delta_x - \hat F_n))(x)\Big|_{\epsilon = 0} \\
@@ -639,18 +662,18 @@ T(\hat F_n + \epsilon(\delta_x - \hat F_n)) &amp;= \int_Ad(\hat F_n + \epsilon(\
 </div>
 </div>
 </div>
-<p>Note that the second result in <a href="#thm-statfunctionalclt" class="quarto-xref">Theorem&nbsp;<span>24.1</span></a> gives that the interval <span class="math display">\[
+<p>Note that the second result in <a href="#thm-statfunctionalclt" class="quarto-xref">Theorem&nbsp;<span>26.1</span></a> gives that the interval <span class="math display">\[
 T(\hat F_n) \pm z_{\alpha/2} \hat \sigma^2_T /\sqrt{n}
 \]</span> will contain the target <span class="math inline">\(T(F)\)</span> with probability approaching <span class="math inline">\(1-\alpha\)</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
 <p>The follow result is adapted from Theorem 3.21 on page 35 of <span class="citation" data-cites="wasserman2006all">Wasserman (<a href="references.html#ref-wasserman2006all" role="doc-biblioref">2006</a>)</span>:</p>
 <div id="thm-bootconsistencystatfunctional" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 24.2 (Bootstrap works for Hadamard differentiable functionals)</strong></span> If <span class="math inline">\(T\)</span> is Hadamard differentiable and <span class="math inline">\(\sigma_T^2 = \int \varphi_F^2(x)dF(x) &lt; \infty\)</span>, then <span class="math display">\[
+<p><span class="theorem-title"><strong>Theorem 26.2 (Bootstrap works for Hadamard differentiable functionals)</strong></span> If <span class="math inline">\(T\)</span> is Hadamard differentiable and <span class="math inline">\(\sigma_T^2 = \int \varphi_F^2(x)dF(x) &lt; \infty\)</span>, then <span class="math display">\[
 \sup_{x \in \mathbb{R}} \Big| \mathbb{P}_*(Y_n^* \leq x) - \mathbb{P}(Y_n \leq x)\Big| \overset{\text{p}}{\longrightarrow}0,
-\]</span> as <span class="math inline">\(n \to \infty\)</span>, where <span class="math inline">\(Y_n\)</span> is as in <a href="#eq-statfunctionalpivot" class="quarto-xref">Equation&nbsp;<span>24.1</span></a> and <span class="math inline">\(Y_n^*\)</span> is as in <a href="#def-statfunctionalbootstrap" class="quarto-xref">Definition&nbsp;<span>24.1</span></a>.</p>
+\]</span> as <span class="math inline">\(n \to \infty\)</span>, where <span class="math inline">\(Y_n\)</span> is as in <a href="#eq-statfunctionalpivot" class="quarto-xref">Equation&nbsp;<span>26.1</span></a> and <span class="math inline">\(Y_n^*\)</span> is as in <a href="#def-statfunctionalbootstrap" class="quarto-xref">Definition&nbsp;<span>26.1</span></a>.</p>
 </div>
 <p>Just in the case of the sample mean, it is too computationally expensive to compute the bootstrap estimate <span class="math inline">\(\hat G_{Y_n}(x) = \mathbb{P}_*(Y_n^* \leq x)\)</span> of <span class="math inline">\(G_{Y_n}(x)\)</span> exactly. Instead we obtain a Monte Carlo approximation as follows:</p>
 <div id="def-MCbootmeanstatfun" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 24.3 (Monte Carlo approximation to bootstrap estimator <span class="math inline">\(\hat G_{Y_n}\)</span>)</strong></span> Choose a large <span class="math inline">\(B\)</span>. Then for <span class="math inline">\(b=1,\dots,B\)</span> do:</p>
+<p><span class="theorem-title"><strong>Definition 26.3 (Monte Carlo approximation to bootstrap estimator <span class="math inline">\(\hat G_{Y_n}\)</span>)</strong></span> Choose a large <span class="math inline">\(B\)</span>. Then for <span class="math inline">\(b=1,\dots,B\)</span> do:</p>
 <ul>
 <li>Draw <span class="math inline">\(X_1^{*(b)},\dots,X_n^{*(b)}\)</span> with replacement from <span class="math inline">\(X_1,\dots,X_n\)</span>.</li>
 <li>Compute <span class="math inline">\(Y_n^{*(b)} =\sqrt{n}(T(\hat F_n^{*(b)}) - T(\hat F_n))\)</span>, where <span class="math inline">\(\hat F_n^{*(b)} = n^{-1}\sum_{i=1}^n \delta_{X_i^{*(b)}}\)</span>.</li>
@@ -661,9 +684,9 @@ T(\hat F_n) \pm z_{\alpha/2} \hat \sigma^2_T /\sqrt{n}
 \big[T(\hat F_n) - \hat G_{Y_n}^{-1}(\alpha/2)/\sqrt{n},T(\hat F_n) - \hat G_{Y_n}^{-1}(1-\alpha/2)/\sqrt{n}\big]
 \]</span> may be obtained as <span id="eq-bootintervalMCstatfun"><span class="math display">\[
 \big[2T(\hat F_n) - T^{*(\lceil (\alpha/2)B\rceil)},2T(\hat F_n) - T^{*(\lceil (1-\alpha/2)B\rceil)}\big],
-\tag{24.5}\]</span></span> where <span class="math inline">\(T^{*(1)} \leq \dots \leq T^{*(B)}\)</span> are values of <span class="math inline">\(T(\hat F^{*(1)}_n),\dots,T(\hat F^{*(1)}_n)\)</span> sorted in increasing order.</p>
+\tag{26.5}\]</span></span> where <span class="math inline">\(T^{*(1)} \leq \dots \leq T^{*(B)}\)</span> are values of <span class="math inline">\(T(\hat F^{*(1)}_n),\dots,T(\hat F^{*(1)}_n)\)</span> sorted in increasing order.</p>
 <div id="exm-trimmedmeansim" class="theorem example">
-<p><span class="theorem-title"><strong>Example 24.1 (Bootstrap for the trimmed mean–not Hadamard)</strong></span> Consider the coverage of the <span class="math inline">\((1-\alpha)100\%\)</span> bootstrap confidence interval in <a href="#eq-bootintervalMCstatfun" class="quarto-xref">Equation&nbsp;<span>24.5</span></a> for the <span class="math inline">\(\xi\)</span>-trimmed mean when <span class="math inline">\(X_1,\dots,X_n\)</span> are independent realizations of the random variable <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 26.1 (Bootstrap for the trimmed mean–not Hadamard)</strong></span> Consider the coverage of the <span class="math inline">\((1-\alpha)100\%\)</span> bootstrap confidence interval in <a href="#eq-bootintervalMCstatfun" class="quarto-xref">Equation&nbsp;<span>26.5</span></a> for the <span class="math inline">\(\xi\)</span>-trimmed mean when <span class="math inline">\(X_1,\dots,X_n\)</span> are independent realizations of the random variable <span class="math display">\[
 X = D(G - ab) +  (1-D)\upsilon |T|
 \]</span> where <span class="math inline">\(D\)</span>, <span class="math inline">\(G\)</span>, and <span class="math inline">\(T\)</span> are independent random variables such that <span class="math inline">\(D\)</span> is a Bernoulli random variable with <span class="math inline">\(P(D = 1) = \delta\)</span>, <span class="math inline">\(G\)</span> has the Gamma distribution with mean <span class="math inline">\(ab\)</span> and variance <span class="math inline">\(ab^2\)</span>, and <span class="math inline">\(T\)</span> has the <span class="math inline">\(t\)</span> distribution with degrees of freedom 2. The simulation is run with <span class="math inline">\(a = 1/2\)</span>, <span class="math inline">\(b = 6\)</span>, <span class="math inline">\(\delta = 0.8\)</span>, <span class="math inline">\(\upsilon = 10\)</span>, <span class="math inline">\(\xi = 0.10\)</span>, <span class="math inline">\(B = 500\)</span>, and <span class="math inline">\(\alpha = 0.05\)</span> at increasing sample sizes <span class="math inline">\(n\)</span>.</p>
 <div class="cell">
@@ -760,23 +783,23 @@ X = D(G - ab) +  (1-D)\upsilon |T|
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">20</td>
-<td style="text-align: right;">0.902</td>
+<td style="text-align: right;">0.876</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">40</td>
-<td style="text-align: right;">0.922</td>
+<td style="text-align: right;">0.920</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">80</td>
-<td style="text-align: right;">0.926</td>
+<td style="text-align: right;">0.918</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">160</td>
-<td style="text-align: right;">0.926</td>
+<td style="text-align: right;">0.934</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">320</td>
-<td style="text-align: right;">0.934</td>
+<td style="text-align: right;">0.936</td>
 </tr>
 </tbody>
 </table>
@@ -1218,12 +1241,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./statfunctionals.html" class="pagination-link" aria-label="Statistical functionals">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Statistical functionals</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Statistical functionals</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./bootlinreg.html" class="pagination-link" aria-label="Bootstrap for linear regression">
-        <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

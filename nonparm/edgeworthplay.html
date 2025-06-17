@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>19&nbsp; Playing with Edgeworth expansions – Some of Nonparametric Statistics</title>
+<title>21&nbsp; Playing with Edgeworth expansions – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -156,7 +156,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./edgeworthplay.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./edgeworthplay.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -190,7 +190,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">Nonparametric regression</span></a>
+ <span class="menu-text">Density estimation</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -198,38 +198,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mnonparmreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Multivariate nonparametric regression</span></span></a>
+  <a href="./kderosenblatt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Kernel density estimation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mNWestimator.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./additivemodel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./additivebackfit.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Backfitting in the additive model</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./additiveresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Additive model pros and cons</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./additivesparse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sparse additive model</span></span></a>
+  <a href="./kdemse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mean squared error of kernel density estimators</span></span></a>
   </div>
 </li>
       </ul>
@@ -237,7 +213,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Minimax Theory</span></a>
+ <span class="menu-text">Nonparametric regression</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -245,174 +221,192 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./mnonparmreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multivariate nonparametric regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mNWestimator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additivemodel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Additive model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additivebackfit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Backfitting in the additive model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additiveresults.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Additive model pros and cons</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additivesparse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Sparse additive model</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Minimax Theory</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./minimaxnonparmnormalmeans.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Getting to the Normal means model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Getting to the Normal means model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxnormalmeans.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Minimax risk in the Normal means model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Minimax risk in the Normal means model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxsobolev.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sobolev functions and ellipsoids</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sobolev functions and ellipsoids</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxlinearellipsoid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear minimax risk over general ellipsoids</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Linear minimax risk over general ellipsoids</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxpinsker.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Pinsker’s Theorem for Sobolev ellipsoids</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Pinsker’s Theorem for Sobolev ellipsoids</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxadaptive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Bootstrap</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./boot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootmean.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootMC.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootmeanconsistency.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Consistency of bootstrap for the sample mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootmeanstudentized.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bootstrap for the studentized sample mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Bootstrap for the studentized sample mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworth.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworthplay.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworthmulti.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Multivariate Edgeworth expansions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Multivariate Edgeworth expansions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./edgeworthboot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Edgeworth expansions for the bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Edgeworth expansions for the bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootpercentile.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The percentile bootstrap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The percentile bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statfunctionals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Statistical functionals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Statistical functionals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootstatfunctionals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Bootstrap for statistical functionals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootlinreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Bootstrap for linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootlinregwild.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Wild bootstrap for regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Wild bootstrap for regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./nonparmregCB.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence bands in nonparametric regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Confidence bands in nonparametric regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bootCB.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">Traditional nonparametrics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./wilcoxonranksum.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./wilcoxonasymptotic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Asymptotic distribution of the Wilcoxon rank sum statistic</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./wilcoxonpower.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Power of the Wilcoxon rank sum test</span></span></a>
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Bootstrap confidence bands in nonparametric regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -420,7 +414,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">Traditional nonparametrics</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -428,8 +422,37 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./wilcoxonranksum.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">The Wilcoxon rank sum test</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./wilcoxonasymptotic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Asymptotic null distribution of the Wilcoxon rank sum statistic</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./wilcoxonpower.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Power of the Wilcoxon rank sum test</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./miscresults.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span></a>
   </div>
 </li>
       </ul>
@@ -450,17 +473,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#for-the-standardized-pivot" id="toc-for-the-standardized-pivot" class="nav-link active" data-scroll-target="#for-the-standardized-pivot"><span class="header-section-number">19.1</span> For the standardized pivot</a></li>
-  <li><a href="#for-the-studentized-pivot" id="toc-for-the-studentized-pivot" class="nav-link" data-scroll-target="#for-the-studentized-pivot"><span class="header-section-number">19.2</span> For the studentized pivot</a></li>
+  <li><a href="#for-the-standardized-pivot" id="toc-for-the-standardized-pivot" class="nav-link active" data-scroll-target="#for-the-standardized-pivot"><span class="header-section-number">21.1</span> For the standardized pivot</a></li>
+  <li><a href="#for-the-studentized-pivot" id="toc-for-the-studentized-pivot" class="nav-link" data-scroll-target="#for-the-studentized-pivot"><span class="header-section-number">21.2</span> For the studentized pivot</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./edgeworthplay.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./edgeworthplay.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-edgeworthplay" class="quarto-section-identifier"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></span></h1>
+<h1 class="title"><span id="sec-edgeworthplay" class="quarto-section-identifier"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Playing with Edgeworth expansions</span></span></h1>
 </div>
 
 
@@ -482,9 +505,9 @@ window.Quarto = {
 <p>$$</p>
 </div>
 <p>Here we present some examples of Edgeworth expansions in order to demonstrate their ability to approximate the sampling distribution of the standardized pivot <span class="math inline">\(Z_n = \sqrt{n}(\bar X_n - \mu)/\sigma\)</span> as well as that of the studentized pivot <span class="math inline">\(T_n = \sqrt{n}(\bar X_n - \mu) /S_n\)</span>.</p>
-<section id="for-the-standardized-pivot" class="level2" data-number="19.1">
-<h2 data-number="19.1" class="anchored" data-anchor-id="for-the-standardized-pivot"><span class="header-section-number">19.1</span> For the standardized pivot</h2>
-<p>We first consider the case of the standardized pivot <span class="math inline">\(Z_n = \sqrt{n}(\bar X_n - \mu)/\sigma\)</span>. We begin by defining, following the proof of <a href="edgeworth.html#thm-edgeworth" class="quarto-xref">Theorem&nbsp;<span>18.1</span></a>, the first-order Edgeworth expansions of the cdf <span class="math inline">\(F_{Z_n}\)</span> and the pdf <span class="math inline">\(f_{Z_n}\)</span> of <span class="math inline">\(Z_n\)</span> as <span class="math display">\[\begin{align}
+<section id="for-the-standardized-pivot" class="level2" data-number="21.1">
+<h2 data-number="21.1" class="anchored" data-anchor-id="for-the-standardized-pivot"><span class="header-section-number">21.1</span> For the standardized pivot</h2>
+<p>We first consider the case of the standardized pivot <span class="math inline">\(Z_n = \sqrt{n}(\bar X_n - \mu)/\sigma\)</span>. We begin by defining, following the proof of <a href="edgeworth.html#thm-edgeworth" class="quarto-xref">Theorem&nbsp;<span>20.1</span></a>, the first-order Edgeworth expansions of the cdf <span class="math inline">\(F_{Z_n}\)</span> and the pdf <span class="math inline">\(f_{Z_n}\)</span> of <span class="math inline">\(Z_n\)</span> as <span class="math display">\[\begin{align}
 \tilde F^{(1)}_{Z_n}(z) &amp;\equiv \Phi(z) - \frac{1}{6\sqrt{n}}\frac{\mu_3}{\sigma^3}(z^2 - 1)\phi(z)\\
 \tilde f^{(1)}_{Z_n}(z) &amp;\equiv \phi(z) + \frac{1}{6\sqrt{n}}\frac{\mu_3}{\sigma^3}(z^3 - 3z)\phi(z)
 \end{align}\]</span> and their second-order counterparts as <span class="math display">\[\begin{align}
@@ -496,10 +519,10 @@ window.Quarto = {
 \end{align}\]</span> as Edgeworth expansions of order zero.</p>
 <p>We are interested in checking how close the approximations <span class="math inline">\(\tilde F^{(j)}_{Z_n}\)</span> and <span class="math inline">\(\tilde f^{(j)}_{Z_n}\)</span> are to the exact cdf <span class="math inline">\(F_{Z_n}\)</span> and exact pdf <span class="math inline">\(f_{Z_n}\)</span>, respectively, of <span class="math inline">\(Z_n\)</span> for orders <span class="math inline">\(j=0,1,2\)</span> in finite-<span class="math inline">\(n\)</span> settings.</p>
 <div id="exm-gammaedgeworth" class="theorem example">
-<p><span class="theorem-title"><strong>Example 19.1</strong></span> Let <span class="math inline">\(X_1,\dots,X_n\)</span> be independent random variables having the exponential distribution with mean <span class="math inline">\(\lambda\)</span>. Since <span class="math inline">\(\mathbb{E}X_1 = \lambda\)</span> and <span class="math inline">\(\mathbb{V}X_1 = \lambda^2\)</span>, the studentized pivot <span class="math inline">\(Z_n\)</span> is given by <span class="math inline">\(Z_n = \sqrt{n}(\bar{X}_n - \lambda) / \lambda\)</span>. This random variable has, for each <span class="math inline">\(n\geq 1\)</span>, the <span class="math inline">\(\mathcal{G}(n,n^{-1/2})\)</span> distribution centered to have mean zero, where <span class="math inline">\(\mathcal{G}(a,b)\)</span> denotes the Gamma distribution with mean <span class="math inline">\(ab\)</span> and variance <span class="math inline">\(ab^2\)</span>. The density of <span class="math inline">\(Z_n\)</span> is therefore given by <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 21.1</strong></span> Let <span class="math inline">\(X_1,\dots,X_n\)</span> be independent random variables having the exponential distribution with mean <span class="math inline">\(\lambda\)</span>. Since <span class="math inline">\(\mathbb{E}X_1 = \lambda\)</span> and <span class="math inline">\(\mathbb{V}X_1 = \lambda^2\)</span>, the studentized pivot <span class="math inline">\(Z_n\)</span> is given by <span class="math inline">\(Z_n = \sqrt{n}(\bar{X}_n - \lambda) / \lambda\)</span>. This random variable has, for each <span class="math inline">\(n\geq 1\)</span>, the <span class="math inline">\(\mathcal{G}(n,n^{-1/2})\)</span> distribution centered to have mean zero, where <span class="math inline">\(\mathcal{G}(a,b)\)</span> denotes the Gamma distribution with mean <span class="math inline">\(ab\)</span> and variance <span class="math inline">\(ab^2\)</span>. The density of <span class="math inline">\(Z_n\)</span> is therefore given by <span class="math display">\[
 f_{Z_n}(z) = \frac{1}{\Gamma(n)(1/\sqrt{n})^n}(z+\sqrt{n})^{n-1}\exp\left(-\frac{z +\sqrt{n}}{1/\sqrt{n}}\right)\mathbf{1}(z &gt; -\sqrt{n}).
 \]</span> Based on the moments of the exponential distribution, we find <span class="math inline">\(\mu_3/\sigma^3 = 2\)</span> and <span class="math inline">\(\mu_4/\sigma^4 = 9\)</span>, with which the first- and second-order Edgeworth expansions can be defined.</p>
-<p><a href="#fig-edgegamma" class="quarto-xref">Figure&nbsp;<span>19.1</span></a> overlays the cdfs <span class="math inline">\(F_{Z_n}\)</span> and <span class="math inline">\(\tilde F_{Z_n}^{(j)}\)</span> for <span class="math inline">\(j=0,1,2\)</span> as well as the pdfs <span class="math inline">\(f_{Z_n}\)</span> and <span class="math inline">\(\tilde f_{Z_n}^{(j)}\)</span> for <span class="math inline">\(j=0,1,2\)</span> and plots the approximation errors of the expansions. We see that the first-order Edgeworth expansion provides a much better approximation to the true distribution of <span class="math inline">\(Z_n\)</span> than the asymptotic <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution (which is the order-0 Edgeworth expansion). The second-order Edgeworth expansion does not appear to improve much on the quality of the first-order expansion.</p>
+<p><a href="#fig-edgegamma" class="quarto-xref">Figure&nbsp;<span>21.1</span></a> overlays the cdfs <span class="math inline">\(F_{Z_n}\)</span> and <span class="math inline">\(\tilde F_{Z_n}^{(j)}\)</span> for <span class="math inline">\(j=0,1,2\)</span> as well as the pdfs <span class="math inline">\(f_{Z_n}\)</span> and <span class="math inline">\(\tilde f_{Z_n}^{(j)}\)</span> for <span class="math inline">\(j=0,1,2\)</span> and plots the approximation errors of the expansions. We see that the first-order Edgeworth expansion provides a much better approximation to the true distribution of <span class="math inline">\(Z_n\)</span> than the asymptotic <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution (which is the order-0 Edgeworth expansion). The second-order Edgeworth expansion does not appear to improve much on the quality of the first-order expansion.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -590,7 +613,7 @@ f_{Z_n}(z) = \frac{1}{\Gamma(n)(1/\sqrt{n})^n}(z+\sqrt{n})^{n-1}\exp\left(-\frac
 <img src="edgeworthplay_files/figure-html/fig-edgegamma-1.png" class="img-fluid figure-img" alt="Four plots showing the quality of the Edgeworth expansion approximations." width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-edgegamma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19.1: Quality of Edgeworth expansions of order 0, 1, and 2 for the distribution of <span class="math inline">\(Z_n\)</span> when <span class="math inline">\(X_1,\dots,X_n\)</span> have the exponential distribution. Results shown for the sample size <span class="math inline">\(n = 6\)</span>.
+Figure&nbsp;21.1: Quality of Edgeworth expansions of order 0, 1, and 2 for the distribution of <span class="math inline">\(Z_n\)</span> when <span class="math inline">\(X_1,\dots,X_n\)</span> have the exponential distribution. Results shown for the sample size <span class="math inline">\(n = 6\)</span>.
 </figcaption>
 </figure>
 </div>
@@ -598,9 +621,9 @@ Figure&nbsp;19.1: Quality of Edgeworth expansions of order 0, 1, and 2 for the d
 </div>
 </div>
 </section>
-<section id="for-the-studentized-pivot" class="level2" data-number="19.2">
-<h2 data-number="19.2" class="anchored" data-anchor-id="for-the-studentized-pivot"><span class="header-section-number">19.2</span> For the studentized pivot</h2>
-<p>Now we consider the studentized pivot <span class="math inline">\(T_n = \sqrt{n}(\bar X_n - \mu) /S_n\)</span>. As in the previous section, we will begin by defining first- and second-order Edgeworth expansions, but this time according to <a href="edgeworth.html#thm-edgeworthstudentized" class="quarto-xref">Theorem&nbsp;<span>18.2</span></a>. Let the first-order Edgeworth expansions of the cdf <span class="math inline">\(F_{T_n}\)</span> and the pdf <span class="math inline">\(f_{T_n}\)</span> of <span class="math inline">\(T_n\)</span> be defined as <span class="math display">\[\begin{align}
+<section id="for-the-studentized-pivot" class="level2" data-number="21.2">
+<h2 data-number="21.2" class="anchored" data-anchor-id="for-the-studentized-pivot"><span class="header-section-number">21.2</span> For the studentized pivot</h2>
+<p>Now we consider the studentized pivot <span class="math inline">\(T_n = \sqrt{n}(\bar X_n - \mu) /S_n\)</span>. As in the previous section, we will begin by defining first- and second-order Edgeworth expansions, but this time according to <a href="edgeworth.html#thm-edgeworthstudentized" class="quarto-xref">Theorem&nbsp;<span>20.2</span></a>. Let the first-order Edgeworth expansions of the cdf <span class="math inline">\(F_{T_n}\)</span> and the pdf <span class="math inline">\(f_{T_n}\)</span> of <span class="math inline">\(T_n\)</span> be defined as <span class="math display">\[\begin{align}
 \hat F^{(1)}_{T_n}(t) &amp;\equiv \Phi(t) + \frac{1}{6\sqrt{n}}\frac{\mu_3}{\sigma^3}(2t^2 + 1)\phi(t)\\
 \hat f^{(1)}_{T_n}(t) &amp;\equiv \phi(t) - \frac{1}{6\sqrt{n}}\frac{\mu_3}{\sigma^3}(2t^3 - 3t)\phi(t)
 \end{align}\]</span> and their second-order counterparts as <span class="math display">\[\begin{align}
@@ -612,7 +635,7 @@ Figure&nbsp;19.1: Quality of Edgeworth expansions of order 0, 1, and 2 for the d
 \end{align}\]</span> as Edgeworth expansions of order zero.</p>
 <p>We are interested in checking how close the approximations <span class="math inline">\(\hat F^{(j)}_{Z_n}\)</span> and <span class="math inline">\(\hat f^{(j)}_{Z_n}\)</span> are to the exact cdf <span class="math inline">\(F_{Z_n}\)</span> and exact pdf <span class="math inline">\(f_{Z_n}\)</span>, respectively, of <span class="math inline">\(Z_n\)</span> for orders <span class="math inline">\(j=0,1,2\)</span> in finite-<span class="math inline">\(n\)</span> settings.</p>
 <div id="exm-wbos09" class="theorem example">
-<p><span class="theorem-title"><strong>Example 19.2</strong></span> To assess the quality of the Edgeworth approximations for the studentized pivot, we run a simulation in which we treat the women’s finishing times for the 2009 Boston Marathon as a population and repeatedly draw random samples of size <span class="math inline">\(n\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 21.2</strong></span> To assess the quality of the Edgeworth approximations for the studentized pivot, we run a simulation in which we treat the women’s finishing times for the 2009 Boston Marathon as a population and repeatedly draw random samples of size <span class="math inline">\(n\)</span>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -637,7 +660,7 @@ Figure&nbsp;19.1: Quality of Edgeworth expansions of order 0, 1, and 2 for the d
 <img src="edgeworthplay_files/figure-html/fig-wbos09hist-1.png" class="img-fluid figure-img" alt="A histogram." width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wbos09hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19.2: Histogram of finishing times (in hours) of 9303 women in the 2009 Boston Marathon.
+Figure&nbsp;21.2: Histogram of finishing times (in hours) of 9303 women in the 2009 Boston Marathon.
 </figcaption>
 </figure>
 </div>
@@ -1157,12 +1180,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./edgeworth.html" class="pagination-link" aria-label="Edgeworth expansions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Edgeworth expansions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./edgeworthmulti.html" class="pagination-link" aria-label="Multivariate Edgeworth expansions">
-        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Multivariate Edgeworth expansions</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Multivariate Edgeworth expansions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

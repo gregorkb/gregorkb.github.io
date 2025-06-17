@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>References – Some of Nonparametric Statistics</title>
+<title>2&nbsp; Mean squared error of kernel density estimators – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,10 +20,45 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -49,7 +84,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./miscresults.html" rel="prev">
+<link href="./mnonparmreg.html" rel="next">
+<link href="./kderosenblatt.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -99,6 +135,35 @@ div.csl-indent {
   });
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -111,7 +176,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kderosenblatt.html">Density estimation</a></li><li class="breadcrumb-item"><a href="./kdemse.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mean squared error of kernel density estimators</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -144,13 +209,13 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Density estimation</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./kderosenblatt.html" class="sidebar-item-text sidebar-link">
@@ -159,7 +224,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./kdemse.html" class="sidebar-item-text sidebar-link">
+  <a href="./kdemse.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mean squared error of kernel density estimators</span></span></a>
   </div>
 </li>
@@ -414,7 +479,7 @@ div.csl-indent {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -429,9 +494,9 @@ div.csl-indent {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kderosenblatt.html">Density estimation</a></li><li class="breadcrumb-item"><a href="./kdemse.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mean squared error of kernel density estimators</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span id="sec-kdemse" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mean squared error of kernel density estimators</span></span></h1>
 </div>
 
 
@@ -448,86 +513,237 @@ div.csl-indent {
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-athreya2006measure" class="csl-entry" role="listitem">
-Athreya, Krishna B, and Soumendra N Lahiri. 2006. <em>Measure Theory and
-Probability Theory</em>. Springer Science &amp; Business Media.
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
 </div>
-<div id="ref-buja1989linear" class="csl-entry" role="listitem">
-Buja, Andreas, Trevor Hastie, and Robert Tibshirani. 1989. <span>“Linear
-Smoothers and Additive Models.”</span> <em>The Annals of
-Statistics</em>, 453–510.
+<p>We now wish to analyze the estimation properties of kernel density estimators (KDEs). In particular, we will establish upper bounds on the variance and on the magnitude of the bias of the KDE <span class="math inline">\(\hat f_n(x)\)</span> from <a href="kderosenblatt.html#def-kde" class="quarto-xref">Definition&nbsp;<span>1.1</span></a> at any fixed point <span class="math inline">\(x \in \mathbb{R}\)</span>. Ultimately we are interested in combinin our bounds on the variance and bias into a bound on the mean squared error <span class="math display">\[
+\operatorname{MSE}\hat f_n(x) = |\mathbb{E}\hat f_n(x) - f(x)|^2 + \mathbb{V}\hat f_n(x)
+\]</span> of the estimator <span class="math inline">\(\hat f_n(x)\)</span> at the point <span class="math inline">\(x \in \mathbb{R}\)</span>, where the first term is the squared bias and the second term is the variance. We will closely follow Chapter 1 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>.</p>
+<p>It is far simpler to bound the variance of <span class="math inline">\(\hat f_n(x)\)</span> than to bound its bias. We will find that this is generally the case in nonparametric estimation; the reason for this is that the bias will depend on smoothness properties of the unknown functions we are trying to estimate, whereas the variance will not. So we begin with the variance.</p>
+<p>Throughout we will assume <span class="math inline">\(X_1,\dots,X_n\)</span> are independent realizations of a random variable <span class="math inline">\(X \sim f\)</span>.</p>
+<!-- and for each $x \in \bbR$ we define the variance term -->
+<!-- $$ -->
+<!-- \sigma^2(x) = \V\hat f_n(x) -->
+<!-- $$  -->
+<!-- and the bias term (I MIGHT NOT WANT TO DEFINE THIS EXTRA NOTATION) -->
+<!-- $$ -->
+<!-- b(x) = \E \hat f_n(x) - f(x). -->
+<!-- $$ -->
+<div id="prp-kdevarbound" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 2.1 (KDE variance bound)</strong></span> Suppose <span class="math inline">\(f(x) \leq f_{\max} &lt; \infty\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span> and let <span class="math inline">\(\hat f_n(x)\)</span> be a KDE with kernel <span class="math inline">\(K\)</span> satisfying <span class="math inline">\(\int_\mathbb{R}K^2(u)du \leq \kappa^2 &lt; \infty\)</span>. Then for any <span class="math inline">\(x \in \mathbb{R}\)</span> we have <span class="math display">\[
+\mathbb{V}\hat f_n(x) \leq \frac{1}{nh}\kappa^2 f_\max.
+\]</span></p>
 </div>
-<div id="ref-das2019perturbation" class="csl-entry" role="listitem">
-Das, Debraj, Karl Gregory, and Soumendra Lahiri. 2019.
-<span>“Perturbation Bootstrap in Adaptive Lasso.”</span> <em>The Annals
-of Statistics</em> 47 (4): 2080–2116.
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div id="ref-diciccio1996bootstrap" class="csl-entry" role="listitem">
-DiCiccio, Thomas J, and Bradley Efron. 1996. <span>“Bootstrap Confidence
-Intervals.”</span> <em>Statistical Science</em> 11 (3): 189–228.
+<div class="callout-title-container flex-fill">
+Proof of <a href="#prp-kdevarbound" class="quarto-xref">Proposition&nbsp;<span>2.1</span></a>
 </div>
-<div id="ref-fernholz2012mises" class="csl-entry" role="listitem">
-Fernholz, Luisa Turrin. 2012. <em>Von Mises Calculus for Statistical
-Functionals</em>. Vol. 19. Springer Science &amp; Business Media.
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="ref-hall2013bootstrap" class="csl-entry" role="listitem">
-Hall, Peter. 2013. <em>The Bootstrap and Edgeworth Expansion</em>.
-Springer Science &amp; Business Media.
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>For a point <span class="math inline">\(x \in \mathbb{R}\)</span> we have <span class="math display">\[\begin{align*}
+\mathbb{V}K\Big(\frac{X_1 - x}{h}\Big) &amp;= \mathbb{E}K^2\Big(\frac{X_1 - x}{h}\Big) - \Big[\mathbb{E}K\Big(\frac{X_1 - x}{h}\Big)\Big]^2 \\
+&amp; \leq \mathbb{E}K^2\Big(\frac{X_1 - x}{h}\Big) \\
+&amp; = \int_\mathbb{R}K^2\Big(\frac{t - x}{h}\Big) f(t)dt \\
+&amp; \leq f_\max \int_\mathbb{R}K^2\Big(\frac{t - x}{h}\Big) dt \\
+&amp; \leq  h f_\max \int_\mathbb{R}K^2(u) du \quad \text{ sub } u = (t - x)/h\\
+&amp; \leq  h f_\max \kappa^2.
+\end{align*}\]</span> From here we write <span class="math display">\[\begin{align*}
+\mathbb{V}\hat f_n(x) &amp;= \frac{1}{(nh)^2}\sum_{i=1}^n \mathbb{V}K\Big(\frac{X_i - x}{h}\Big)\\
+&amp;\leq \frac{1}{(nh)^2}\sum_{i=1}^n h f_\max \kappa^2\\
+&amp;= \frac{1}{nh}\kappa^2 f_\max.
+\end{align*}\]</span></p>
 </div>
-<div id="ref-lehmann1975nonparametrics" class="csl-entry" role="listitem">
-Lehmann, E L. 1975. <em>Nonparametrics</em>. Holden-Day, Inc.
 </div>
-<div id="ref-mammen1993bootstrap" class="csl-entry" role="listitem">
-Mammen, Enno. 1993. <span>“Bootstrap and Wild Bootstrap for High
-Dimensional Linear Models.”</span> <em>The Annals of Statistics</em>,
-255–85.
 </div>
-<div id="ref-meier2009high" class="csl-entry" role="listitem">
-Meier, Lukas, Sara Van de Geer, Peter Bühlmann, et al. 2009.
-<span>“High-Dimensional Additive Modeling.”</span> <em>The Annals of
-Statistics</em> 37 (6B): 3779–3821.
+<p><a href="#prp-kdevarbound" class="quarto-xref">Proposition&nbsp;<span>2.1</span></a> tells us that as long as <span class="math inline">\(nh \to \infty\)</span>, the variance of <span class="math inline">\(\hat f_n(x)\)</span> will go to zero; there is really only one condition, which is that the density <span class="math inline">\(f\)</span> be finite at the point <span class="math inline">\(x\)</span>. Note that the constant <span class="math inline">\(\kappa^2\)</span> simply comes from the choice of the kernel.</p>
+<p>As already alluded to, we find that the bias depends on the “smoothness” of the density <span class="math inline">\(f\)</span>. To understand what is meant by this, we note that, provided <span class="math inline">\(\int_\mathbb{R}K(u)du = 1\)</span>, we can (in a few steps) re-write the bias of <span class="math inline">\(\hat f_n(x)\)</span> for any <span class="math inline">\(x \in \mathbb{R}\)</span> as <span id="eq-kdebias"><span class="math display">\[
+\mathbb{E}\hat f_n(x) - f(x) = \int_\mathbb{R}K(u) [f(x + uh) - f(x)] du.
+\tag{2.1}\]</span></span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div id="ref-ravikumar2009sparse" class="csl-entry" role="listitem">
-Ravikumar, Pradeep, John Lafferty, Han Liu, and Larry Wasserman. 2009.
-<span>“Sparse Additive Models.”</span> <em>Journal of the Royal
-Statistical Society: Series B (Statistical Methodology)</em> 71 (5):
-1009–30.
+<div class="callout-title-container flex-fill">
+Derivation of <a href="#eq-kdebias" class="quarto-xref">Equation&nbsp;<span>2.1</span></a>
 </div>
-<div id="ref-rice1984bandwidth" class="csl-entry" role="listitem">
-Rice, John et al. 1984. <span>“Bandwidth Choice for Nonparametric
-Regression.”</span> <em>The Annals of Statistics</em> 12 (4): 1215–30.
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="ref-serfling2009approximation" class="csl-entry" role="listitem">
-Serfling, Robert J. 2009. <em>Approximation Theorems of Mathematical
-Statistics</em>. John Wiley &amp; Sons.
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We may write <span class="math display">\[\begin{align*}
+\mathbb{E}\hat f_n(x) - f(x) &amp;= \frac{1}{nh}\sum_{i=1}^n \mathbb{E}K\Big(\frac{X_i - x}{h}\Big) - f(x) \\
+&amp;=\frac{1}{h} \mathbb{E}K\Big(\frac{X_1 - x}{h}\Big) - f(x) \\
+&amp;=\frac{1}{h} \int_\mathbb{R}K\Big(\frac{t - x}{h}\Big)f(t)dt - f(x) \\
+&amp;=\int_\mathbb{R}K(u)f(x + uh)dt - f(x) \quad \text{ sub } u = (t-x)/h\\
+&amp;=\int_\mathbb{R}K(u)[f(x + uh) - f(x)]dt,
+\end{align*}\]</span> where the last equality comes from <span class="math inline">\(\int_\mathbb{R}K(u)du = 1\)</span>.</p>
 </div>
-<div id="ref-stone1985additive" class="csl-entry" role="listitem">
-Stone, Charles J. 1985. <span>“Additive Regression and Other
-Nonparametric Models.”</span> <em>The Annals of Statistics</em>,
-689–705.
 </div>
-<div id="ref-sun1994simultaneous" class="csl-entry" role="listitem">
-Sun, Jiayang, Clive R Loader, et al. 1994. <span>“Simultaneous
-Confidence Bands for Linear Regression and Smoothing.”</span> <em>The
-Annals of Statistics</em> 22 (3): 1328–45.
 </div>
+<p>Now, suppose <span class="math inline">\(K\)</span> places most of its mass close to zero so that <span class="math inline">\(K(u)\)</span> vanishes for large <span class="math inline">\(u\)</span> and suppose <span class="math inline">\(h&gt;0\)</span> is small. Then from <a href="#eq-kdebias" class="quarto-xref">Equation&nbsp;<span>2.1</span></a> we can see that if the density <span class="math inline">\(f\)</span> is allowed to change by a large amount from the point <span class="math inline">\(x\)</span> to the nearby point <span class="math inline">\(x + uh\)</span>, the bias will be large; on the other hand, if the density may change by only a small amount from <span class="math inline">\(x\)</span> to the nearby <span class="math inline">\(x + uh\)</span>, the bias will be small.</p>
+<p>The simplest way to limit the amount by which the function <span class="math inline">\(f\)</span> may change within a small neighborhood of a point <span class="math inline">\(x\)</span> is to place it in the class of Lipschitz functions, which we now define.</p>
+<div id="def-Lipschitz" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 2.1 (The Lipschitz class of functions)</strong></span> Let <span class="math inline">\(T\)</span> be an interval in <span class="math inline">\(\mathbb{R}\)</span> and let <span class="math inline">\(L &gt; 0\)</span>. Then the Lipschitz class of functions <span class="math inline">\(\operatorname{Lipschitz}(L)\)</span> on <span class="math inline">\(T\)</span> is the set of functions <span class="math inline">\(f:T\to\mathbb{R}\)</span> satisfying <span class="math display">\[
+|f(x) - f(x')| \leq L |x - x'| \quad \text{ for all } x,x' \in T.
+\]</span></p>
+</div>
+<p>Assuming <span class="math inline">\(f\)</span> belongs to the class <span class="math inline">\(\operatorname{Lipschitz}(L)\)</span> on <span class="math inline">\(\mathbb{R}\)</span> allows us to write <span class="math display">\[
+|f(x + uh) - f(x)| \leq L |uh|,
+\]</span> for any <span class="math inline">\(x \in \mathbb{R}\)</span>. This allows us to obtain the bias bound in the next result.</p>
+<div id="prp-kdebiasLipschitz" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 2.2 (KDE bias bound under Lipschitz smoothness)</strong></span> Suppose <span class="math inline">\(\int_\mathbb{R}K(u)du = 1\)</span> and <span class="math inline">\(\int_\mathbb{R}|u| |K(u)| du \leq \kappa_1 &lt; \infty\)</span>. Then if <span class="math inline">\(f\)</span> belongs to the <span class="math inline">\(\operatorname{Lipschitz}(L)\)</span> class on <span class="math inline">\(\mathbb{R}\)</span> we have <span class="math display">\[
+|\mathbb{E}\hat f_n(x) - f(x) | \leq h L\kappa_1
+\]</span> for each <span class="math inline">\(x \in \mathbb{R}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof of Proposition <a href="#prp-kdebiasLipschitz" class="quarto-xref">Proposition&nbsp;<span>2.2</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Starting from <a href="#eq-kdebias" class="quarto-xref">Equation&nbsp;<span>2.1</span></a>, we write <span class="math display">\[\begin{align*}
+|\mathbb{E}\hat f_n(x) - f(x) | &amp;\leq \int_\mathbb{R}K(u) |f(x + uh) - f(x)| du \\
+&amp;\leq \int_\mathbb{R}|K(u)| L|uh| du \\
+&amp;=hL \int_\mathbb{R}|u||K(u)|du\\
+&amp; \leq h L \kappa_1.
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<p><a href="#prp-kdebiasLipschitz" class="quarto-xref">Proposition&nbsp;<span>2.2</span></a> tells us that the bias must decrease as the bandwidth decreases. The value <span class="math inline">\(\kappa_1\)</span> can be computed directly from the kernel <span class="math inline">\(K\)</span>, whereas the Lipschitz constant <span class="math inline">\(L\)</span> is unknown; we can understand, however, that smaller values of <span class="math inline">\(L\)</span>, which correspond to functions which are not allowed to change by much within small neighborhoods, lead to a smaller bias bound. On the other hand, larger values of <span class="math inline">\(L\)</span> allow greater changes in the density within small neighborhoods, leading to potentially larger bias.</p>
+<p>Combining the variance bound in <a href="#prp-kdevarbound" class="quarto-xref">Proposition&nbsp;<span>2.1</span></a> and the bias bound in <a href="#prp-kdebiasLipschitz" class="quarto-xref">Proposition&nbsp;<span>2.2</span></a> gives the mean squared error bound in the next result. The mean squared error bound gives insight into how one should choose the bandwidth <span class="math inline">\(h\)</span>.</p>
+<div id="prp-kdemseLipschitz" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 2.3 (MSE of KDE under Lipschitz smoothness)</strong></span> Under the conditions of <a href="#prp-kdevarbound" class="quarto-xref">Proposition&nbsp;<span>2.1</span></a> and <a href="#prp-kdebiasLipschitz" class="quarto-xref">Proposition&nbsp;<span>2.2</span></a>, we have <span id="eq-kdemseLipschitz"><span class="math display">\[
+\operatorname{MSE}\hat f_n(x) \leq h^2L^2\kappa_1^2 + \frac{1}{nh} \kappa^2 f_\max
+\tag{2.2}\]</span></span> with <span class="math inline">\(\operatorname{MSE}\)</span>-optimal bandwidth <span class="math inline">\(h\)</span> given by <span class="math inline">\(h_\operatorname{opt} = n^{-1/3}C_1\)</span> such that <span class="math display">\[
+\operatorname{MSE}\hat f^{h_{\operatorname{opt}}}_n(x) \leq n^{-2/3}C_2,
+\]</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>, where <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> are constants depending on <span class="math inline">\(f_\max\)</span>, <span class="math inline">\(L\)</span>, <span class="math inline">\(\kappa^2\)</span>, and <span class="math inline">\(\kappa_1^2\)</span>.</p>
+</div>
+<p>In the above, <span class="math inline">\(\hat f^{h_{\operatorname{opt}}}\)</span> denotes the KDE under the MSE-optimal choice of bandwidth <span class="math inline">\(h\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof of Proposition <a href="#prp-kdemseLipschitz" class="quarto-xref">Proposition&nbsp;<span>2.3</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The bound in <a href="#eq-kdemseLipschitz" class="quarto-xref">Equation&nbsp;<span>2.2</span></a> follows immediately from <a href="#prp-kdevarbound" class="quarto-xref">Proposition&nbsp;<span>2.1</span></a> and <a href="#prp-kdebiasLipschitz" class="quarto-xref">Proposition&nbsp;<span>2.2</span></a>. To find the MSE-optimal choice of the bandwidth, we minimize the right side of <a href="#eq-kdemseLipschitz" class="quarto-xref">Equation&nbsp;<span>2.2</span></a> in <span class="math inline">\(h\)</span>. Setting <span class="math display">\[
+\frac{d}{dh}(h^2L^2\kappa_1^2 + \frac{1}{nh} \kappa^2 f_\max) = 2hL^2\kappa_1^2 - \frac{1}{nh^2}\kappa^2 f_\max=0
+\]</span> and solving for <span class="math inline">\(h\)</span> gives <span class="math display">\[
+h = n^{-1/3}\Big(\frac{\kappa^2f_\max }{2L^2\kappa_1^2}\Big)^{1/3}.
+\]</span> Plugging this back into <a href="#eq-kdemseLipschitz" class="quarto-xref">Equation&nbsp;<span>2.2</span></a> gives the bound <span class="math display">\[
+\operatorname{MSE}\hat f^{h_{\operatorname{opt}}}_n(x) \leq n^{-2/3}\Big[ \Big( \frac{ \kappa^2f_\max }{2L^2\kappa_1^2}\Big)^{2/3}L^2\kappa^2_1 + \Big( \frac{2L^2\kappa_1^2}{\kappa^2f_\max }\Big)^{1/3}\kappa^2 f_\max \Big].
+\]</span></p>
+</div>
+</div>
+</div>
+<p><a href="#eq-kdemseLipschitz" class="quarto-xref">Equation&nbsp;<span>2.2</span></a> exhibits the <em>bias-variance trade-off</em> entailed in the choice of the bandwidth <span class="math inline">\(h\)</span>. Small <span class="math inline">\(h\)</span> leads to small bias but large variance; large <span class="math inline">\(h\)</span> leads to small variance but large bias. One way of defining an optimal bandwidth is as the bandwidth corresponding to the smallest bound on the MSE, which we may call the MSE-optimal bandwidth, say <span class="math inline">\(h_{\operatorname{opt}}\)</span>. <a href="#prp-kdemseLipschitz" class="quarto-xref">Proposition&nbsp;<span>2.3</span></a> shows that a Lipschitz density can be estimated at any point with MSE going to zero at the rate <span class="math inline">\(O(n^{-2/3})\)</span> if the bandwidth is chosen as <span class="math inline">\(h_{\operatorname{opt}}\sim n^{-1/3}\)</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
+<p>The simulation output in <a href="#fig-hopt" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> illustrates the bias-variance trade-off. The figure also shows us that the optimal bandwidth can depend on <span class="math inline">\(x\)</span>, so the MSE bound in <a href="#eq-kdemseLipschitz" class="quarto-xref">Equation&nbsp;<span>2.2</span></a>, which holds for all <span class="math inline">\(x\)</span>, does not tell the whole story. From the figure it appears that where <span class="math inline">\(f\)</span> is smoother (less steep, less curvy), larger bandwidths may be optimal, whereas where <span class="math inline">\(f\)</span> is less smooth (steeper, curvier), smaller bandwidths may be optimal.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define the true density function</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">dgamma</span>(x,<span class="dv">3</span>,<span class="at">scale =</span> <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">dnorm</span>(x) <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># choose values of x at which to estimate the density</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">15</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># define a function to compute the KDE at a point x</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>kde <span class="ot">&lt;-</span> <span class="cf">function</span>(x,Y,h,<span class="at">K =</span> dnorm) <span class="fu">mean</span>(<span class="fu">K</span>((Y<span class="sc">-</span>x)<span class="sc">/</span>h)) <span class="sc">/</span> h</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># run simulation</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>hh <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.2</span>,<span class="dv">5</span>, <span class="at">length=</span><span class="dv">151</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>kde_hh <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">0</span>,<span class="at">dim =</span> <span class="fu">c</span>(S,<span class="fu">length</span>(hh),<span class="fu">length</span>(x0)))</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(s <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>S){</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># draw a sample from a distribution with density f</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),n,<span class="at">replace=</span><span class="cn">TRUE</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> d <span class="sc">*</span> <span class="fu">rgamma</span>(n,<span class="dv">3</span>,<span class="at">scale =</span> <span class="dv">3</span>) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">-</span> d) <span class="sc">*</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># obtain KDEs of f(x0) across sequence of bandwidths </span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(hh))</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x0)){</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>      kde_hh[s,j,k] <span class="ot">&lt;-</span> <span class="fu">kde</span>(<span class="at">x =</span> x0[k], <span class="at">Y =</span> Y, <span class="at">h =</span> hh[j], <span class="at">K =</span> dnorm)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="fu">length</span>(x0),<span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="fl">4.1</span>,<span class="fl">1.2</span>,<span class="fl">1.1</span>))</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x0)){</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  min <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(.<span class="dv">005</span>)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  max <span class="ot">&lt;-</span> <span class="fu">qgamma</span>(.<span class="dv">995</span>,<span class="dv">3</span>,<span class="at">scale =</span> <span class="dv">3</span>)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">seq</span>(min,max,<span class="at">length =</span> <span class="dv">300</span>)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="fu">f</span>(x) <span class="sc">~</span> x, </span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>       <span class="at">type =</span> <span class="st">"l"</span>,</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"x"</span>,</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">"density"</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> x0[k], <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">"gray"</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  v <span class="ot">&lt;-</span> <span class="fu">apply</span>(kde_hh[,,k],<span class="dv">2</span>,var)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  b2 <span class="ot">&lt;-</span> (<span class="fu">apply</span>(kde_hh[,,k],<span class="dv">2</span>,mean) <span class="sc">-</span> <span class="fu">f</span>(x0[k]))<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  mse <span class="ot">&lt;-</span> b2 <span class="sc">+</span> v</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  <span class="co"># locate hopt (find the dip)</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  hopt <span class="ot">&lt;-</span> hh[<span class="fu">min</span>(<span class="fu">which</span>(<span class="fu">diff</span>(mse) <span class="sc">&gt;</span> <span class="dv">0</span>))]</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(v<span class="sc">~</span>hh,</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>       <span class="at">type =</span> <span class="st">"l"</span>, </span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">range</span>(v,b2,mse),</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"bandwidth"</span>,</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">"squared bias, variance, MSE"</span>,</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"green"</span>, <span class="at">lty =</span> <span class="dv">4</span>)</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(b2<span class="sc">~</span>hh, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(mse<span class="sc">~</span>hh, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> hopt, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">"gray"</span>)</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-hopt" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Plot with four panels, two showing a true density and the other two with curves showing bias, variance and mean squared error.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hopt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="kdemse_files/figure-html/fig-hopt-1.png" class="img-fluid figure-img" alt="Plot with four panels, two showing a true density and the other two with curves showing bias, variance and mean squared error." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hopt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Squared bias, variance, and MSE of kernel density estimator at two choices of <span class="math inline">\(x \in \mathbb{R}\)</span>. Right panels show true density with vertical line at point <span class="math inline">\(x\)</span> at which <span class="math inline">\(f(x)\)</span> is to be estimated. Right panels show the squared bias (red dashed), variance (green dot-dashed), and mean squared error (blue solid) of <span class="math inline">\(\hat f_n(x)\)</span> over a sequence of bandwidth values <span class="math inline">\(h\)</span>. Vertical dotted lines indicate the optimal bandwidth.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-tsybakov2008introduction" class="csl-entry" role="listitem">
-Tsybakov, Alexandre B. 2008. <em>Introduction to Nonparametric
-Estimation</em>. Springer Science &amp; Business Media.
-</div>
-<div id="ref-wasserman2006all" class="csl-entry" role="listitem">
-Wasserman, Larry. 2006. <em>All of Nonparametric Statistics</em>.
-Springer Science &amp; Business Media.
-</div>
-<div id="ref-white1980heteroskedasticity" class="csl-entry" role="listitem">
-White, Halbert. 1980. <span>“A Heteroskedasticity-Consistent Covariance
-Matrix Estimator and a Direct Test for Heteroskedasticity.”</span>
-<em>Econometrica: Journal of the Econometric Society</em>, 817–38.
+Tsybakov, Alexandre B. 2008. <em>Introduction to Nonparametric Estimation</em>. Springer Science &amp; Business Media.
 </div>
 </div>
-
-
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -952,11 +1168,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./miscresults.html" class="pagination-link" aria-label="Miscellaneous results">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Miscellaneous results</span></span>
+      <a href="./kderosenblatt.html" class="pagination-link" aria-label="Kernel density estimation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Kernel density estimation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./mnonparmreg.html" class="pagination-link" aria-label="Multivariate nonparametric regression">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multivariate nonparametric regression</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
