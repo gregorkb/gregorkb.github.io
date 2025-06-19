@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>17&nbsp; Bootstrap for the sample mean – Some of Nonparametric Statistics</title>
+<title>3&nbsp; Kernel density estimation of Hölder densities – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./bootMC.html" rel="next">
-<link href="./boot.html" rel="prev">
+<link href="./mnonparmreg.html" rel="next">
+<link href="./kdemse.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -122,7 +122,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootmean.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kderosenblatt.html">Density estimation</a></li><li class="breadcrumb-item"><a href="./kdeholder.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Kernel density estimation of Hölder densities</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -155,13 +155,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Density estimation</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./kderosenblatt.html" class="sidebar-item-text sidebar-link">
@@ -176,7 +176,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./kdeholder.html" class="sidebar-item-text sidebar-link">
+  <a href="./kdeholder.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Kernel density estimation of Hölder densities</span></span></a>
   </div>
 </li>
@@ -278,13 +278,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text">Bootstrap</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./boot.html" class="sidebar-item-text sidebar-link">
@@ -293,7 +293,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bootmean.html" class="sidebar-item-text sidebar-link active">
+  <a href="./bootmean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span></a>
   </div>
 </li>
@@ -446,9 +446,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boot.html">Bootstrap</a></li><li class="breadcrumb-item"><a href="./bootmean.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kderosenblatt.html">Density estimation</a></li><li class="breadcrumb-item"><a href="./kdeholder.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Kernel density estimation of Hölder densities</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-bootmean" class="quarto-section-identifier"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bootstrap for the sample mean</span></span></h1>
+<h1 class="title"><span id="sec-kdeholder" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Kernel density estimation of Hölder densities</span></span></h1>
 </div>
 
 
@@ -469,58 +469,115 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>Throughout this section, let <span class="math inline">\(X_1,\dots,X_n\)</span> be independent, identically distributed random variables with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2 &lt; \infty\)</span>. We will consider using the bootstrap to construct a confidence interval for <span class="math inline">\(\mu\)</span>.</p>
-<p>Let <span class="math inline">\(\bar X_n = n^{-1}\sum_{i=1}^n X_i\)</span> and consider the quantity</p>
-<!-- I might be able to just take out the middle one. -->
-<p><span class="math display">\[
-Y_{n} \equiv \sqrt{n}(\bar X_n - \mu) \overset{\text{d}}{\longrightarrow}\mathcal{N}(0,\sigma^2),
-\]</span> as <span class="math inline">\(n \to \infty\)</span>, where the convergence in distribution is given by the central limit theorem. Making use of the asymptotic distribution of <span class="math inline">\(Y_n\)</span>, we see that the interval with endpoints given by <span class="math display">\[
-\bar X_n \pm z_{\alpha/2}\sigma/\sqrt{n}
-\]</span> will have coverage probability approaching <span class="math inline">\(1-\alpha\)</span> as <span class="math inline">\(n \to \infty\)</span> for any <span class="math inline">\(\alpha \in (0,1)\)</span>. However, this interval is infeasible without knowledge of the variance <span class="math inline">\(\sigma^2\)</span>. If we substitute an estimator for <span class="math inline">\(\sigma\)</span>, say the sample standard deviation <span class="math inline">\(S_n\)</span>, where <span class="math inline">\(S_n^2 = (n-1)^{-1}\sum_{i=1}^n(X_i - \bar X_n)^2\)</span>, the central limit theorem together with Slutzky’s Theorem gives that the interval with endpoints <span id="eq-asympinterval"><span class="math display">\[
-\bar X_n \pm z_{\alpha/2} S_n/\sqrt{n}
-\tag{17.1}\]</span></span> will have coverage probability approaching <span class="math inline">\(1-\alpha\)</span> as <span class="math inline">\(n \to \infty\)</span> provided <span class="math inline">\(\mathbb{E}|X_1|^3 &lt; \infty\)</span> (this moment condition ensures that <span class="math inline">\(S_n\)</span> is a consistent estimator of <span class="math inline">\(\sigma\)</span>). However, the interval in <a href="#eq-asympinterval" class="quarto-xref">Equation&nbsp;<span>17.1</span></a> has notoriously bad coverage (has a coverage probability far from the nominal level) in some settings even when the sample size <span class="math inline">\(n\)</span> is moderately large. The idea of the bootstrap is to estimate the sampling distribution of the quantity <span class="math inline">\(Y_n\)</span> under the sample size <span class="math inline">\(n\)</span> at hand and to use this estimated sampling distribution to make inferences on <span class="math inline">\(\mu\)</span>.</p>
-<p>So, for each <span class="math inline">\(n\geq 1\)</span>, define the cumulative distribution function <span class="math inline">\(G_{Y_n}\)</span> as <span class="math display">\[
-G_{Y_n}(x) = \mathbb{P}(Y_n \leq x)
-\]</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>, and denote the corresponding quantile function by <span class="math inline">\(G^{-1}_{Y_n}\)</span>. Now, if one knew the function <span class="math inline">\(G^{-1}_{Y_n}\)</span>, one could construct a confidence interval for <span class="math inline">\(\mu\)</span> having coverage probability exactly equal to <span class="math inline">\(1-\alpha\)</span> as</p>
-<p><!-- 1. $\displaystyle \Big(\bar X_n - G_{Y_n}^{-1}(1-\alpha/2)\frac{1}{\sqrt{n}}, \bar X_n - G_{Y_n}^{-1}(\alpha/2)\frac{1}{\sqrt{n}}\Big)$ --> <!-- <!-- 2.  $\displaystyle \Big(\bar X_n - G_{Z_n}^{-1}(1-\alpha/2)\frac{\sigma}{\sqrt{n}}, \bar X_n - G_{Z_n}^{-1}(\alpha/2)\frac{\sigma}{\sqrt{n}}\Big)$ --> <!-- 2.  $\displaystyle \Big(\bar X_n - G_{T_n}^{-1}(1-\alpha/2)\frac{S_n}{\sqrt{n}}, \bar X_n - G_{T_n}^{-1}(\alpha/2)\frac{S_n}{\sqrt{n}}\Big)$ --></p>
-<p><span id="eq-exactinterval"><span class="math display">\[
-\big[\bar X_n - G_{Y_n}^{-1}(1-\alpha/2)/\sqrt{n}, \bar X_n - G_{Y_n}^{-1}(\alpha/2)/\sqrt{n}\big].
-\tag{17.2}\]</span></span></p>
+<p>We now introduce a more general class of functions than Lipschitz functions, namely Hölder classes of functions, which we may think of as describing functions which are “smoother” than Lipschitz functions. We begin by presenting the Hölder condition, which is a generalization of the Lipschitz condition from <a href="kdemse.html#def-Lipschitz" class="quarto-xref">Definition&nbsp;<span>2.1</span></a>.</p>
+<div id="def-Hölder" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3.1 (Hölder condition)</strong></span> Let <span class="math inline">\(T\)</span> be an interval on <span class="math inline">\(\mathbb{R}\)</span>. A function <span class="math inline">\(f\)</span> satisfies the Hölder condition with constants <span class="math inline">\(C \geq 0\)</span> and <span class="math inline">\(\alpha \in (0,1]\)</span> on <span class="math inline">\(T\)</span> if <span class="math display">\[
+|f(x) - f(x')| \leq C |x - x'|^{\alpha} \quad \text{ for all } \quad x,x' \in T.
+\]</span></p>
+</div>
+<p>Note that when <span class="math inline">\(\alpha = 1\)</span>, the Hölder condition is equivalent to the Lipschitz condition with <span class="math inline">\(C = L\)</span>.</p>
+<p>We now use the Hölder condition to define Hölder function classes.</p>
+<div id="def-Hölderclass" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3.2 (Hölder class of functions)</strong></span> For an interval <span class="math inline">\(T\in \mathbb{R}\)</span> and constants <span class="math inline">\(C \geq 0\)</span>, <span class="math inline">\(\alpha \in (0,1]\)</span>, and <span class="math inline">\(m\)</span> a nonnegative integer, the Hölder class of functions <span class="math inline">\(\text{Hölder}(C,m,\alpha,T)\)</span> is the set of functions <span class="math inline">\(f\)</span> which have <span class="math inline">\(m\)</span> continuous derivatives on <span class="math inline">\(T\)</span> and for which <span class="math display">\[
+|f^{(m)}(x) - f^{(m)}(x')| \leq C |x - x'|^{\alpha} \quad \text{ for all } \quad x,x' \in T,
+\]</span> i.e.&nbsp;the <span class="math inline">\(m\)</span>-th derivative satisfies the Hölder condition with Hölder constants <span class="math inline">\(C\)</span> and <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+<p>If <span class="math inline">\(\alpha = 1\)</span>, then <span class="math inline">\(f \in \text{Hölder}(C,m,\alpha,T)\)</span> means that the <span class="math inline">\(m\)</span>-th derivative of <span class="math inline">\(f\)</span> satisfies the Lipschitz condition with Lipschitz constant <span class="math inline">\(L = C\)</span>. Moreover <span class="math inline">\(\text{Hölder}(C,0,1,T) = \text{Lipschitz}(C,\mathbb{R})\)</span>, so that if <span class="math inline">\(m=0\)</span> and <span class="math inline">\(\alpha=1\)</span>, the Hölder class is a Lipschitz class. We may think of larger values of <span class="math inline">\(m\)</span> as corresponding to smoother functions.</p>
+<p>We will consider the bias of the kernel density estimator (KDE) <span class="math inline">\(\hat f_n\)</span> of a density <span class="math inline">\(f \in \text{Hölder}(C,m,\alpha,T)\)</span>. Before proceeding, we will require one more definition.</p>
+<div id="def-kernelorderm" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3.3 (Kernel of order <span class="math inline">\(m\)</span>)</strong></span> For a positive integer <span class="math inline">\(m\)</span>, a function <span class="math inline">\(K: \mathbb{R}\to \mathbb{R}\)</span> is kernel of order <span class="math inline">\(m\)</span> if <span class="math display">\[
+\int_\mathbb{R}K(u)du = 1 \quad \text{ and } \quad \int_{\mathbb{R}}u^j K(u)du = 0 \quad \text{ for } j = 1,\dots,m.
+\]</span></p>
+</div>
+<p>If <span class="math inline">\(f\)</span> has <span class="math inline">\(m\)</span> continuous derivatives and if <span class="math inline">\(K\)</span> is a kernel of order <span class="math inline">\(m\)</span>, we find we can use Taylor expansion together with the above properties of the kernel to express the bias of <span class="math inline">\(\hat f_n(x)\)</span> as <span id="eq-kdebiasm"><span class="math display">\[
+\mathbb{E}\hat f_n(x) - f(x) = \frac{h^m}{m!}\int_\mathbb{R}u^mK(u) \big[f^{(m)}(x + \tau(u)uh) - f^{(m)}(x)\big] du,
+\tag{3.1}\]</span></span> where <span class="math inline">\(\tau(u) \in [0,1]\)</span> for all <span class="math inline">\(u \in \mathbb{R}\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Derivation of the interval in <a href="#eq-exactinterval" class="quarto-xref">Equation&nbsp;<span>17.2</span></a>
+Derivation of <a href="#eq-kdebiasm" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If <span class="math inline">\(Y_n \sim G_{Y_n}\)</span> we may write <span class="math display">\[
-\mathbb{P}(G_{Y_n}^{-1}(\alpha/2) \leq \sqrt{n}(\bar X_n - \mu) \leq G_{Y_n}^{-1}(1-\alpha/2)) = 1-\alpha.
-\]</span> Now, if we rearrange the expression inside the probability operator we find <span class="math display">\[
-\mathbb{P}(\bar X_n - G_{Y_n}^{-1}(1-\alpha/2)/\sqrt{n} \leq \mu \leq \bar X_n - G_{Y_n}^{-1}(\alpha/2)/\sqrt{n}) = 1-\alpha,
-\]</span> which gives the upper and lower endpoints of the interval in <a href="#eq-exactinterval" class="quarto-xref">Equation&nbsp;<span>17.2</span></a>.</p>
-</div>
-</div>
-</div>
-<p>The bootstrap provides a method for estimating the distribution <span class="math inline">\(G_{Y_n}\)</span>, which is as follows:</p>
-<div id="def-bootmean" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 17.1 (Bootstrap estimator of <span class="math inline">\(G_{Y_n}\)</span>)</strong></span> Conditional on <span class="math inline">\(X_1,\dots,X_n\)</span>, introduce random variables <span class="math inline">\(X_1^*,\dots,X_n^*\)</span> such that <span class="math inline">\(X_1^*,\dots,X_n^*|X_1,\dots,X_n \overset{\text{ind}}{\sim}\hat F_n\)</span>, where <span class="math inline">\(\hat F_n\)</span> is the empirical distribution of <span class="math inline">\(X_1,\dots,X_n\)</span>, and define the bootstrap version <span class="math inline">\(Y_n^*\)</span> of <span class="math inline">\(Y_n = \sqrt{n}(\bar X_n - \mu)\)</span> as</p>
-<p><span class="math display">\[
-Y_n^* \equiv \sqrt{n}(\bar X_n^* - \bar X_n),
+<p>Recall that <a href="kdemse.html#eq-kdebias" class="quarto-xref">Equation&nbsp;<span>2.1</span></a> gives <span class="math display">\[
+\mathbb{E}\hat f_n(x) - f(x) = \int_\mathbb{R}K(u) [f(x + uh) - f(x)] du.
 \]</span></p>
-<p>where <span class="math inline">\(\bar X_n^* = n^{-1}\sum_{i=1}^n X_i\)</span>. Then the bootstrap estimator <span class="math inline">\(\hat G_{Y_n}(x)\)</span> of <span class="math inline">\(G_{Y_n}(x)\)</span> is defined as <span class="math display">\[
-\hat G_{Y_n}(x) = \mathbb{P}(Y_n^* \leq x | X_1,\dots,X_n)
+<p>Now consider a Taylor expansion of <span class="math inline">\(f\)</span> around the point <span class="math inline">\(x\)</span>, evaluated at <span class="math inline">\(x + uh\)</span>. For each <span class="math inline">\(u \in \mathbb{R}\)</span>, using the Lagrange form of the remainder, we may write <span class="math display">\[
+f(x + uh)  - f(x) = \left\{\begin{array}{ll}
+f^{(1)}(x + \tau(u)uh)uh,&amp; m = 1\\
+\displaystyle \sum_{j=1}^{m-1}\frac{f^{(j)}(x)(uh)^j}{j!} + \frac{f^{(m)}(x+ \tau(u)uh)}{m!}(uh)^m,&amp; m &gt; 1,\end{array}\right.
+\]</span> for some <span class="math inline">\(\tau(u) \in[0,1]\)</span>.</p>
+<p>Now, in the case <span class="math inline">\(m =1\)</span>, we have <span class="math display">\[\begin{align*}
+\int_\mathbb{R}K(u) [f(x + uh) - f(x)] &amp;= \int_\mathbb{R}K(u) f^{(1)}(x + \tau(u)uh) uh du \\
+&amp;= h\int_\mathbb{R}uK(u) [f^{(1)}(x + \tau(u)uh)  - f^{(1)}(x)] du],
+\end{align*}\]</span> by the assumption <span class="math inline">\(\int_\mathbb{R}u K(u)du = 0\)</span>, whereby <span class="math inline">\(\int_\mathbb{R}u K(u)f^{(1)}(x)du = 0\)</span>.</p>
+<p>In the case <span class="math inline">\(m &gt; 1\)</span>, using the properties of a kernel of order <span class="math inline">\(m\)</span>, we have <span class="math display">\[\begin{align*}
+\int_\mathbb{R}K(u) [f(x + uh) - f(x)] &amp;= \int_\mathbb{R}K(u)\Big[ \sum_{j=1}^{m-1}\frac{f^{(j)}(x)(uh)^j}{j!} + \frac{f^{(m)}(x+ \tau(u)uh)}{m!}(uh)^m\Big] du \\
+&amp;= \frac{h^m}{m!}\int_\mathbb{R}u^m K(u) [f^{(m)}(x + \tau(u)uh)  - f^{(m)}(x)] du.
+\end{align*}\]</span> This completes the derivation of <a href="#eq-kdebiasm" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>.</p>
+</div>
+</div>
+</div>
+<p>From the expression for the bias in <a href="#eq-kdebiasm" class="quarto-xref">Equation&nbsp;<span>3.1</span></a> we can obtain the bias bound presented in the following result:</p>
+<div id="prp-kdebiasHölder" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 3.1 (KDE bias bound for a Hölder density)</strong></span> Suppose <span class="math inline">\(f \in \text{Hölder}(C,m,\alpha,\mathbb{R})\)</span> and set <span class="math inline">\(\beta = m+\alpha\)</span>. Then if <span class="math inline">\(K\)</span> is a kernel of order <span class="math inline">\(m\)</span> satisfying <span class="math inline">\(\int_\mathbb{R}|u|^\beta |K(u)| du \leq \kappa_\beta &lt; \infty\)</span> we have <span class="math display">\[
+|\mathbb{E}\hat f_n(x) - f(x)| \leq h^{\beta} \frac{1}{m!}  C \kappa_{\beta}
 \]</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>.</p>
 </div>
-<p>Once one has obtained the bootstrap estimate <span class="math inline">\(\hat G_{Y_n}(x)\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>, one can use the corresponding quantile function to construct the bootstrap confidence interval</p>
-<p><span id="eq-bootinterval"><span class="math display">\[
-[\bar X_n - \hat G_{Y_n}^{-1}(1-\alpha/2)/\sqrt{n}, \bar X_n - \hat G_{Y_n}^{-1}(\alpha/2)/\sqrt{n}].
-\tag{17.3}\]</span></span></p>
-<p>How do we actually <em>obtain</em> the bootstrap estimators <span class="math inline">\(\hat G_{Y_n}^{-1}(1-\alpha/2)\)</span> and <span class="math inline">\(G_{Y_n}^{-1}(\alpha/2)\)</span> with which to construct the bootstrap interval in <a href="#eq-bootinterval" class="quarto-xref">Equation&nbsp;<span>17.3</span></a>? We describe this next.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof of <a href="#prp-kdebiasHölder" class="quarto-xref">Proposition&nbsp;<span>3.1</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><a href="#eq-kdebiasm" class="quarto-xref">Equation&nbsp;<span>3.1</span></a> implies <span class="math display">\[\begin{align*}
+|\mathbb{E}\hat f_n(x) - f(x)| &amp;\leq \frac{h^m}{m!}\int_\mathbb{R}|u|^m |K(u)| |f^{(m)}(x + \tau(u)uh)  - f^{(m)}(x)| du \\
+&amp;\leq \frac{h^m}{m!}\int_\mathbb{R}|u|^m |K(u)| C|\tau(u)uh|^\alpha du \\
+&amp;\leq \frac{h^{m+\alpha}}{m!} C \int_\mathbb{R}|u|^{m+\alpha} |K(u)|  du  \\
+&amp;\leq h^{\beta} \frac{C \kappa_{\beta}}{m!}.
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<p>Having obtained a bias bound, we may easily formulate a bound for the mean squared error of the KDE when the density to be estimated lies in a Hölder class; the variance bound in <a href="kdemse.html#prp-kdevarbound" class="quarto-xref">Proposition&nbsp;<span>2.1</span></a> still holds, as the variance is unaffected by the smoothness properties of the density.</p>
+<div id="prp-kdemseHölder" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 3.2 (MSE of KDE under Hölder smoothness)</strong></span> Under the assumptions of <a href="kdemse.html#prp-kdevarbound" class="quarto-xref">Proposition&nbsp;<span>2.1</span></a> and <a href="#prp-kdebiasHölder" class="quarto-xref">Proposition&nbsp;<span>3.1</span></a> we have <span id="eq-kdemseHölder"><span class="math display">\[
+\operatorname{MSE}\hat f_n(x) \leq h^{2\beta} \Big(\frac{1}{m!}C\kappa_\beta\Big)^2 + \frac{1}{nh} \kappa^2 f_\max
+\tag{3.2}\]</span></span> for each <span class="math inline">\(x \in \mathbb{R}\)</span> with <span class="math inline">\(\operatorname{MSE}\)</span>-optimal bandwidth <span class="math inline">\(h\)</span> given by <span class="math inline">\(h_\operatorname{opt} = c^*n^{-1/(2\beta + 1)}\)</span> such that <span id="eq-kdemseHölderrate"><span class="math display">\[
+\operatorname{MSE}\hat f^{h_{\operatorname{opt}}}_n(x) \leq C^*n^{-2\beta/(2\beta + 1)},
+\tag{3.3}\]</span></span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>, where <span class="math inline">\(c^* &gt; 0\)</span> and <span class="math inline">\(C^*&gt;0\)</span> depend on <span class="math inline">\(f_\max\)</span>, <span class="math inline">\(C\)</span>, <span class="math inline">\(m\)</span>, <span class="math inline">\(\kappa^2\)</span>, and <span class="math inline">\(\kappa_\beta\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof of <a href="#prp-kdemseHölder" class="quarto-xref">Proposition&nbsp;<span>3.2</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The bound in <a href="#eq-kdemseHölder" class="quarto-xref">Equation&nbsp;<span>3.2</span></a> follows immediately from <a href="kdemse.html#prp-kdevarbound" class="quarto-xref">Proposition&nbsp;<span>2.1</span></a> and <a href="#prp-kdebiasHölder" class="quarto-xref">Proposition&nbsp;<span>3.1</span></a>. To find the MSE-optimal choice of the bandwidth, we minimize the right side of <a href="#eq-kdemseHölder" class="quarto-xref">Equation&nbsp;<span>3.2</span></a> in <span class="math inline">\(h\)</span>. Setting <span class="math display">\[
+\frac{d}{dh}\Big(h^{2\beta} \Big(\frac{1}{m!}C\kappa_\beta\Big)^2 + \frac{1}{nh} \kappa^2 f_\max\Big) = 2\beta h^{2\beta - 1}\Big(\frac{1}{m!}C\kappa_\beta\Big)^2 - \frac{1}{nh^2}\kappa^2 f_\max=0
+\]</span> and solving for <span class="math inline">\(h\)</span> gives <span class="math inline">\(h_{\operatorname{opt}}\)</span> and plugging <span class="math inline">\(h_{\operatorname{opt}}\)</span> back into <a href="#eq-kdemseHölder" class="quarto-xref">Equation&nbsp;<span>3.2</span></a> gives the bound in <a href="#eq-kdemseHölderrate" class="quarto-xref">Equation&nbsp;<span>3.3</span></a>.</p>
+</div>
+</div>
+</div>
+<p>We see again in <a href="#prp-kdemseHölder" class="quarto-xref">Proposition&nbsp;<span>3.2</span></a> the bias-variance trade-off entailed in the choice of the bandwidth <span class="math inline">\(h\)</span>. Note that with <span class="math inline">\(\beta = 1\)</span>, the MSE bound becomes equal to those in <a href="kdemse.html#prp-kdemseLipschitz" class="quarto-xref">Proposition&nbsp;<span>2.3</span></a> under Lipschitz smoothness.</p>
+<p>We will come to recognize <span class="math inline">\(n^{-2\beta/(2\beta +1)}\)</span> as the typical “convergence rate” of nonparametric estimators. As <span class="math inline">\(\beta \to \infty\)</span> the function <span class="math inline">\(f\)</span> is constrained to be more and more smooth, and <span class="math inline">\(n^{-2\beta/(2\beta +1)}\)</span> approaches the “parametric rate” of <span class="math inline">\(n^{-1}\)</span> which obtains when one is estimating a finite number of parameters.</p>
 
 
 
@@ -947,13 +1004,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./boot.html" class="pagination-link" aria-label="The bootstrap">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The bootstrap</span></span>
+      <a href="./kdemse.html" class="pagination-link" aria-label="Mean squared error of kernel density estimators">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Mean squared error of kernel density estimators</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./bootMC.html" class="pagination-link" aria-label="Implementing the bootstrap">
-        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Implementing the bootstrap</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./mnonparmreg.html" class="pagination-link" aria-label="Multivariate nonparametric regression">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Multivariate nonparametric regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
