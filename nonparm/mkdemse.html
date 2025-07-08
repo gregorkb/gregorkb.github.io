@@ -492,7 +492,7 @@ window.Quarto = {
 \]</span> for all <span class="math inline">\(\mathbf{x}\in \mathbb{R}\)</span>, which was introduced in <a href="mkde.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
 <p>First we consider the variance, as we can obtain an upper bound for the variance without making assumptions about the smoothness of the true density <span class="math inline">\(f\)</span>. We have the following result:</p>
 <div id="prp-mkdevar" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 6.1 (Multivariate KDE variance bound)</strong></span> Suppose <span class="math inline">\(f(\mathbf{x}) \leq f_\max &lt; \infty\)</span> for all <span class="math inline">\(\mathbf{x}\in \mathbb{R}^d\)</span> and let <span class="math inline">\(\hat f_{n,h}(\mathbf{x})\)</span> be a multivariate KDE with kernel <span class="math inline">\(K_d\)</span> satisfying <span class="math inline">\(\int_{\mathbb{R}^d}K_d(\mathbf{u})d\mathbf{u}\leq \kappa^2 &lt; \infty\)</span>. Then for any <span class="math inline">\(\mathbf{x}\in \mathbb{R}^d\)</span> we have <span class="math display">\[
+<p><span class="theorem-title"><strong>Proposition 6.1 (Multivariate KDE variance bound)</strong></span> Suppose <span class="math inline">\(f(\mathbf{x}) \leq f_\max &lt; \infty\)</span> for all <span class="math inline">\(\mathbf{x}\in \mathbb{R}^d\)</span> and let <span class="math inline">\(\hat f_{n,h}(\mathbf{x})\)</span> be a multivariate KDE with kernel <span class="math inline">\(K_d\)</span> satisfying <span class="math inline">\(\int_{\mathbb{R}^d}K^2_d(\mathbf{u})d\mathbf{u}\leq \kappa^2 &lt; \infty\)</span>. Then for any <span class="math inline">\(\mathbf{x}\in \mathbb{R}^d\)</span> we have <span class="math display">\[
 \mathbb{V}\hat f_{n,h}(\mathbf{x}) \leq \frac{1}{nh^d} \kappa^2 f_\max.
 \]</span></p>
 </div>
@@ -521,8 +521,8 @@ Proof of <a href="#prp-mkdevar" class="quarto-xref">Proposition&nbsp;<span>6.1</
 </div>
 </div>
 <p>As before, bounding the bias requires that we put some assumptions on the smoothness of the true density <span class="math inline">\(f\)</span>. In the univariate setting we began our analysis of the bias by establishing the identity in <a href="kdemse.html#eq-kdebias" class="quarto-xref">Equation&nbsp;<span>2.1</span></a>. Similarly, in the multivariate setting we have <span id="eq-mkdebias"><span class="math display">\[
-\mathbb{E}\hat f_{n,h}(\mathbf{x}) - f(\mathbf{x}) = \int_{\mathbb{R}^d} K(\mathbf{u})[f(\mathbf{x}+ h \mathbf{u}) - f(\mathbf{x})]d\mathbf{u}
-\tag{6.1}\]</span></span> for all <span class="math inline">\(\mathbf{x}\in \mathbb{R}^d\)</span>, provided <span class="math inline">\(\int_{\mathbb{R}^d}K(\mathbf{u})d\mathbf{u}= 1\)</span>.</p>
+\mathbb{E}\hat f_{n,h}(\mathbf{x}) - f(\mathbf{x}) = \int_{\mathbb{R}^d} K_d(\mathbf{u})[f(\mathbf{x}+ h \mathbf{u}) - f(\mathbf{x})]d\mathbf{u}
+\tag{6.1}\]</span></span> for all <span class="math inline">\(\mathbf{x}\in \mathbb{R}^d\)</span>, provided <span class="math inline">\(\int_{\mathbb{R}^d}K_d(\mathbf{u})d\mathbf{u}= 1\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -545,7 +545,7 @@ Derivation of <a href="#eq-mkdebias" class="quarto-xref">Equation&nbsp;<span>6.1
 </div>
 </div>
 </div>
-<p>To control the bias, we will make an assumption governing how far <span class="math inline">\(f(\mathbf{x}+ h\mathbf{u})\)</span> may be from <span class="math inline">\(f(\mathbf{x})\)</span> for small values of <span class="math inline">\(h &gt; 0\)</span>. To do so, we will introduce a multivariate class of Hölder functions. Defining such functions will require so-called multi-index notation, which we introduce next.</p>
+<p>To control the bias, we will make an assumption governing how different the value of <span class="math inline">\(f(\mathbf{x}+ h\mathbf{u})\)</span> may be from that of <span class="math inline">\(f(\mathbf{x})\)</span> for small values of <span class="math inline">\(h &gt; 0\)</span>. To do so, we will introduce a multivariate class of Hölder functions. Defining such functions will require so-called multi-index notation, which we introduce next.</p>
 <div id="def-multiindexnotation" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 6.1 (Multi-index notation)</strong></span> For a <span class="math inline">\(d\times 1\)</span> vector of real numbers <span class="math inline">\(\mathbf{x}= (x_1,\dots,x_d)^T\)</span> and a vector of positive integers <span class="math inline">\(\boldsymbol{\upsilon}= (\upsilon_1,\dots,\upsilon_d)^T\)</span>, let <span class="math inline">\(\mathbf{x}^{\boldsymbol{\upsilon}} = \prod_{j=1}^dx_j^{\upsilon_j}\)</span>, <span class="math inline">\(|\mathbf{x}|^{\boldsymbol{\upsilon}} = \prod_{j=1}^d|x_j|^{\upsilon_j}\)</span>, <span class="math inline">\(|\boldsymbol{\upsilon}| =\sum_{j=1}^d\upsilon_j\)</span>, and <span class="math inline">\(\boldsymbol{\upsilon}! = \prod_{j=1}^d \upsilon_j!\)</span>. Moreover define <span class="math inline">\(\mathbf{D}^\boldsymbol{\upsilon}\)</span> as <span class="math display">\[
 \mathbf{D}^{\boldsymbol{\upsilon}} = \frac{\partial^{\boldsymbol{\upsilon}}}{\partial \mathbf{x}^\boldsymbol{\upsilon}}= \frac{\partial^{|\boldsymbol{\upsilon}|}}{\partial x_1^{\upsilon_1}\cdots \partial x_d^{\upsilon_d}}.
@@ -559,8 +559,8 @@ Derivation of <a href="#eq-mkdebias" class="quarto-xref">Equation&nbsp;<span>6.1
 </div>
 <p>Lastly, before stating our result on the bias, we must define a <span class="math inline">\(d\)</span>-dimensional kernel of order <span class="math inline">\(m\)</span>:</p>
 <div id="def-mkernelorderm" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 6.3 (Kernel of order <span class="math inline">\(m\)</span>)</strong></span> For a positive integer <span class="math inline">\(m\)</span>, a function <span class="math inline">\(K: \mathbb{R}^d \to \mathbb{R}\)</span> is <span class="math inline">\(d\)</span>-dimensional kernel of order <span class="math inline">\(m\)</span> if <span class="math display">\[
-\int_{\mathbb{R}^d} K(\mathbf{u})d\mathbf{u}= 1 \quad \text{ and } \quad \int_{\mathbb{R}^d}\mathbf{u}^\boldsymbol{\upsilon}K(\mathbf{u})d\mathbf{u}= 0
+<p><span class="theorem-title"><strong>Definition 6.3 (Kernel of order <span class="math inline">\(m\)</span>)</strong></span> For a positive integer <span class="math inline">\(m\)</span>, a function <span class="math inline">\(K_d: \mathbb{R}^d \to \mathbb{R}\)</span> is <span class="math inline">\(d\)</span>-dimensional kernel of order <span class="math inline">\(m\)</span> if <span class="math display">\[
+\int_{\mathbb{R}^d} K_d(\mathbf{u})d\mathbf{u}= 1 \quad \text{ and } \quad \int_{\mathbb{R}^d}\mathbf{u}^\boldsymbol{\upsilon}K_d(\mathbf{u})d\mathbf{u}= 0
 \]</span> for all <span class="math inline">\(d \times 1\)</span> vectors <span class="math inline">\(\boldsymbol{\upsilon}\)</span> of positive integers with <span class="math inline">\(|\boldsymbol{\upsilon}| \in\{ 1,\dots,m\}\)</span>.</p>
 </div>
 <div id="prp-mkdebias" class="theorem proposition">
