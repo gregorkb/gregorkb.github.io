@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>18&nbsp; Adaptive estimation – Some of Nonparametric Statistics</title>
+<title>6&nbsp; Bias and variance of multivariate kernel density estimators – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -50,8 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./boot.html" rel="next">
-<link href="./minimaxpinsker.html" rel="prev">
+<link href="./mnonparmreg.html" rel="next">
+<link href="./mkde.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -142,7 +122,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./minimaxnonparmnormalmeans.html">Minimax Theory</a></li><li class="breadcrumb-item"><a href="./minimaxadaptive.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kderosenblatt.html">Density estimation</a></li><li class="breadcrumb-item"><a href="./mkdemse.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bias and variance of multivariate kernel density estimators</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -175,13 +155,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Density estimation</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./kderosenblatt.html" class="sidebar-item-text sidebar-link">
@@ -214,7 +194,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mkdemse.html" class="sidebar-item-text sidebar-link">
+  <a href="./mkdemse.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bias and variance of multivariate kernel density estimators</span></span></a>
   </div>
 </li>
@@ -269,13 +249,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Minimax Theory</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxnonparmnormalmeans.html" class="sidebar-item-text sidebar-link">
@@ -308,7 +288,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./minimaxadaptive.html" class="sidebar-item-text sidebar-link active">
+  <a href="./minimaxadaptive.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></span></a>
   </div>
 </li>
@@ -484,9 +464,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./minimaxnonparmnormalmeans.html">Minimax Theory</a></li><li class="breadcrumb-item"><a href="./minimaxadaptive.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kderosenblatt.html">Density estimation</a></li><li class="breadcrumb-item"><a href="./mkdemse.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bias and variance of multivariate kernel density estimators</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-minimaxadaptive" class="quarto-section-identifier"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></span></h1>
+<h1 class="title"><span id="sec-mkdemse" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bias and variance of multivariate kernel density estimators</span></span></h1>
 </div>
 
 
@@ -507,16 +487,146 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>Next time I teach the course I will add a note here on adaptive estimation! The main point is that, even though we have found the minimax risk in a few situations, for example in the Normal means model with <span class="math inline">\(\boldsymbol{\theta}\)</span> lying in a general or Sobolev ellipsoid, we cannot compute the Pinsker weights, which are defined in terms unknown parameters <span class="math inline">\(a_1,a_2,\dots\)</span> or <span class="math inline">\(\beta\)</span>.</p>
-<p>An estimator which is able to achieve the minimax risk asymptotically as <span class="math inline">\(n \to \infty\)</span> no matter the values of the unknown parameters is called an adaptive (in the minimax sense) estimator. The James–Stein estimator is one such estimator. It is minimax adaptive in the Normal means model with <span class="math inline">\(\boldsymbol{\theta}\)</span> lies in a ball in <span class="math inline">\(\mathbb{R}^n\)</span> of finite radius centered at the origin.</p>
-<p>See Section 3.7 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>.</p>
-
-
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-tsybakov2008introduction" class="csl-entry" role="listitem">
-Tsybakov, Alexandre B. 2008. <em>Introduction to Nonparametric Estimation</em>. Springer Science &amp; Business Media.
+<p>Here we will consider the variance and the bias of the multivariate kernel density estimator (KDE) given by <span class="math display">\[
+\hat f_{n,h}(\mathbf{x}) = \frac{1}{nh^d}\sum_{i=1}^n K_d(h^{-1}(\mathbf{X}_i - \mathbf{x}))
+\]</span> for all <span class="math inline">\(\mathbf{x}\in \mathbb{R}\)</span>, which was introduced in <a href="mkde.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
+<p>First we consider the variance, as we can obtain an upper bound for the variance without making assumptions about the smoothness of the true density <span class="math inline">\(f\)</span>. We have the following result:</p>
+<div id="prp-mkdevar" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 6.1 (Multivariate KDE variance bound)</strong></span> Suppose <span class="math inline">\(f(\mathbf{x}) \leq f_\max &lt; \infty\)</span> for all <span class="math inline">\(\mathbf{x}\in \mathbb{R}^d\)</span> and let <span class="math inline">\(\hat f_{n,h}(\mathbf{x})\)</span> be a multivariate KDE with kernel <span class="math inline">\(K_d\)</span> satisfying <span class="math inline">\(\int_{\mathbb{R}^d}K_d(\mathbf{u})d\mathbf{u}\leq \kappa^2 &lt; \infty\)</span>. Then for any <span class="math inline">\(\mathbf{x}\in \mathbb{R}^d\)</span> we have <span class="math display">\[
+\mathbb{V}\hat f_{n,h}(\mathbf{x}) \leq \frac{1}{nh^d} \kappa^2 f_\max.
+\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof of <a href="#prp-mkdevar" class="quarto-xref">Proposition&nbsp;<span>6.1</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We have <span class="math display">\[\begin{align*}
+\mathbb{V}\hat f_{n,h}(\mathbf{x}) &amp; = \mathbb{V}\Big( \frac{1}{nh^d}\sum_{i=1}^n K_d(h^{-1}(\mathbf{X}_i - \mathbf{x}))\Big) \\
+&amp; = \frac{1}{n^2h^{2d}} \sum_{i=1}^n\mathbb{V}K_d(h^{-1}(\mathbf{X}_i - \mathbf{x}))\Big)\\
+&amp;= \frac{1}{nh^{2d}}\mathbb{V}K_d\Big(h^{-1}(\mathbf{X}_1 - \mathbf{x})\Big) \\
+&amp;\leq \frac{1}{nh^{2d}}\mathbb{E}K^2_d\Big(h^{-1}(\mathbf{X}_1 - \mathbf{x})\Big) \\
+&amp;= \frac{1}{nh^{2d}} \int_{\mathbb{R}^d} K^2_d\Big(h^{-1}(\mathbf{z}- \mathbf{x})\Big) f(\mathbf{z})d\mathbf{z}\\
+&amp;= \frac{1}{nh^d} \int_{\mathbb{R}^d} K^2_d(\mathbf{u}) f(\mathbf{x}+ h\mathbf{u}) d\mathbf{u}\quad \text{ with } \mathbf{u}= h^{-1}(\mathbf{z}- \mathbf{x})\\
+&amp; \leq \frac{1}{nh^d} \kappa^2 f_\max,
+\end{align*}\]</span> noting that the substitution <span class="math inline">\(\mathbf{u}= h^{-1}(\mathbf{z}- \mathbf{x})\)</span> has Jacobian <span class="math inline">\(|\partial \mathbf{z}/ \partial\mathbf{u}|=|h\mathbf{I}_d| = h^d\)</span>.</p>
 </div>
 </div>
+</div>
+<p>As before, bounding the bias requires that we put some assumptions on the smoothness of the true density <span class="math inline">\(f\)</span>. In the univariate setting we began our analysis of the bias by establishing the identity in <a href="kdemse.html#eq-kdebias" class="quarto-xref">Equation&nbsp;<span>2.1</span></a>. Similarly, in the multivariate setting we have <span id="eq-mkdebias"><span class="math display">\[
+\mathbb{E}\hat f_{n,h}(\mathbf{x}) - f(\mathbf{x}) = \int_{\mathbb{R}^d} K(\mathbf{u})[f(\mathbf{x}+ h \mathbf{u}) - f(\mathbf{x})]d\mathbf{u}
+\tag{6.1}\]</span></span> for all <span class="math inline">\(\mathbf{x}\in \mathbb{R}^d\)</span>, provided <span class="math inline">\(\int_{\mathbb{R}^d}K(\mathbf{u})d\mathbf{u}= 1\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Derivation of <a href="#eq-mkdebias" class="quarto-xref">Equation&nbsp;<span>6.1</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We have <span class="math display">\[\begin{align*}
+\mathbb{E}\hat f_{n,h}(\mathbf{x}) - f(\mathbf{x}) &amp;= \mathbb{E}\frac{1}{nh^d}\sum_{i=1}^n K_d(h^{-1}(\mathbf{X}_i - \mathbf{x})) - f(\mathbf{x}) \\
+&amp;= \frac{1}{h^d} \mathbb{E}K_d(h^{-1}(\mathbf{X}_1 - \mathbf{x})) - f(\mathbf{x})\\
+&amp;= \frac{1}{h^d} \int_{\mathbb{R}^d} K_d(h^{-1}(\mathbf{z}- \mathbf{x}))f(\mathbf{z})d\mathbf{z}- f(\mathbf{x})\\
+&amp;= \int_{\mathbb{R}^d} K_d(\mathbf{u})f(\mathbf{x}+ h \mathbf{u})d\mathbf{u}- f(\mathbf{x}) \quad \text{ with } \mathbf{u}= h^{-1}(\mathbf{z}- \mathbf{x})\\
+&amp;=\int_{\mathbb{R}^d} K_d(\mathbf{u})[f(\mathbf{x}+ h \mathbf{u})d\mathbf{u}- f(\mathbf{x}) ] d \mathbf{u},
+\end{align*}\]</span> where the last equality follows from the assumption that <span class="math inline">\(\int_{\mathbb{R}^d}K(\mathbf{u})d\mathbf{u}= 1\)</span>.</p>
+</div>
+</div>
+</div>
+<p>To control the bias, we will make an assumption governing how far <span class="math inline">\(f(\mathbf{x}+ h\mathbf{u})\)</span> may be from <span class="math inline">\(f(\mathbf{x})\)</span> for small values of <span class="math inline">\(h &gt; 0\)</span>. To do so, we will introduce a multivariate class of Hölder functions. Defining such functions will require so-called multi-index notation, which we introduce next.</p>
+<div id="def-multiindexnotation" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 6.1 (Multi-index notation)</strong></span> For a <span class="math inline">\(d\times 1\)</span> vector of real numbers <span class="math inline">\(\mathbf{x}= (x_1,\dots,x_d)^T\)</span> and a vector of positive integers <span class="math inline">\(\boldsymbol{\upsilon}= (\upsilon_1,\dots,\upsilon_d)^T\)</span>, let <span class="math inline">\(\mathbf{x}^{\boldsymbol{\upsilon}} = \prod_{j=1}^dx_j^{\upsilon_j}\)</span>, <span class="math inline">\(|\mathbf{x}|^{\boldsymbol{\upsilon}} = \prod_{j=1}^d|x_j|^{\upsilon_j}\)</span>, <span class="math inline">\(|\boldsymbol{\upsilon}| =\sum_{j=1}^d\upsilon_j\)</span>, and <span class="math inline">\(\boldsymbol{\upsilon}! = \prod_{j=1}^d \upsilon_j!\)</span>. Moreover define <span class="math inline">\(\mathbf{D}^\boldsymbol{\upsilon}\)</span> as <span class="math display">\[
+\mathbf{D}^{\boldsymbol{\upsilon}} = \frac{\partial^{\boldsymbol{\upsilon}}}{\partial \mathbf{x}^\boldsymbol{\upsilon}}= \frac{\partial^{|\boldsymbol{\upsilon}|}}{\partial x_1^{\upsilon_1}\cdots \partial x_d^{\upsilon_d}}.
+\]</span></p>
+</div>
+<p>Now we are ready to define a multivariate class of Hölder functions.</p>
+<div id="def-mholder" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 6.2 (Multivariate Hölder class)</strong></span> For a subset <span class="math inline">\(T \subset \mathbb{R}^d\)</span> and constants <span class="math inline">\(C \geq 0\)</span>, <span class="math inline">\(\alpha \in (0,1]\)</span>, and <span class="math inline">\(m\)</span> a nonnegative integer, the Hölder class of <span class="math inline">\(d\)</span>-dimensional functions <span class="math inline">\(\text{Hölder}_d(C,m,\alpha,T)\)</span> is the set of functions <span class="math inline">\(f:\mathbb{R}^d \to \mathbb{R}\)</span> having all partial derivatives up to order <span class="math inline">\(m\)</span> and satisfying <span class="math display">\[
+|\mathbf{D}^\boldsymbol{\upsilon}f(\mathbf{x}) -\mathbf{D}^\boldsymbol{\upsilon}f(\mathbf{x}')  | \leq C \|\mathbf{x}- \mathbf{x}'\|_2^\alpha \quad \text{ for all } \quad \mathbf{x}, \mathbf{x}' \in T
+\]</span> for all vectors of positive integers <span class="math inline">\(\boldsymbol{\upsilon}\)</span> such that <span class="math inline">\(|\boldsymbol{\upsilon}|= m\)</span>.</p>
+</div>
+<p>Lastly, before stating our result on the bias, we must define a <span class="math inline">\(d\)</span>-dimensional kernel of order <span class="math inline">\(m\)</span>:</p>
+<div id="def-mkernelorderm" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 6.3 (Kernel of order <span class="math inline">\(m\)</span>)</strong></span> For a positive integer <span class="math inline">\(m\)</span>, a function <span class="math inline">\(K: \mathbb{R}^d \to \mathbb{R}\)</span> is <span class="math inline">\(d\)</span>-dimensional kernel of order <span class="math inline">\(m\)</span> if <span class="math display">\[
+\int_{\mathbb{R}^d} K(\mathbf{u})d\mathbf{u}= 1 \quad \text{ and } \quad \int_{\mathbb{R}^d}\mathbf{u}^\boldsymbol{\upsilon}K(\mathbf{u})d\mathbf{u}= 0
+\]</span> for all <span class="math inline">\(d \times 1\)</span> vectors <span class="math inline">\(\boldsymbol{\upsilon}\)</span> of positive integers with <span class="math inline">\(|\boldsymbol{\upsilon}| \in\{ 1,\dots,m\}\)</span>.</p>
+</div>
+<div id="prp-mkdebias" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 6.2 (Multivariate KDE bias bound for a Hölder density)</strong></span> Suppose <span class="math inline">\(f \in \text{Hölder}_d(C,M,\alpha,\mathbb{R}^d)\)</span> and set <span class="math inline">\(\beta = m+\alpha\)</span>. Then if <span class="math inline">\(K_d\)</span> is a <span class="math inline">\(d\)</span>-dimensional kernel of order <span class="math inline">\(m\)</span> satisfying <span class="math inline">\(\int_{\mathbb{R}^d} |\mathbf{u}|^\boldsymbol{\upsilon}\|\mathbf{u}\|_2^\alpha |K_d(\mathbf{u})|d\mathbf{u}\leq \kappa_\beta &lt; \infty\)</span> for all <span class="math inline">\(d\times 1\)</span> vectors <span class="math inline">\(\boldsymbol{\upsilon}\)</span> of positive integers with <span class="math inline">\(|\boldsymbol{\upsilon}|=m\)</span> we have <span class="math display">\[
+|\mathbb{E}\hat f_{n,h}(\mathbf{x}) - f(\mathbf{x})| \leq h^\beta\Big(\sum_{|\boldsymbol{\upsilon}| = m}  \frac{1}{\boldsymbol{\upsilon}!} \Big)C \kappa_\beta
+\]</span> for all <span class="math inline">\(\mathbf{x}\in \mathbb{R}^d\)</span>.</p>
+</div>
+<p>Compare this with the result in <a href="kdeholder.html#prp-kdebiasHölder" class="quarto-xref">Proposition&nbsp;<span>3.1</span></a>, noting that the results match in the case <span class="math inline">\(d = 1\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof of <a href="#prp-mkdebias" class="quarto-xref">Proposition&nbsp;<span>6.2</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>According to the Taylor expansion in <a href="miscresults.html#prp-mtaylor" class="quarto-xref">Proposition&nbsp;<span>38.1</span></a> we may write <span class="math display">\[
+f(\mathbf{x}+ h\mathbf{u}) = f(\mathbf{x}) + \sum_{1 \leq |\boldsymbol{\upsilon}| \leq m-1} \frac{\mathbf{D}^\boldsymbol{\upsilon}f(\mathbf{x})}{\boldsymbol{\upsilon}!}(h\mathbf{u})^\boldsymbol{\upsilon}+ \sum_{|\boldsymbol{\upsilon}| = m} \frac{\mathbf{D}^\boldsymbol{\upsilon}f(\mathbf{x}+\tau h\mathbf{u})}{\boldsymbol{\upsilon}!}(h\mathbf{u})^\boldsymbol{\upsilon},
+\]</span> for some <span class="math inline">\(\tau \in [0,1]\)</span>, where the first sum on the right side appears only when <span class="math inline">\(m &gt; 1\)</span>.</p>
+<p>Now, beginning from the expression in <a href="#eq-mkdebias" class="quarto-xref">Equation&nbsp;<span>6.1</span></a>, we may use the assumption that <span class="math inline">\(K_d\)</span> is a <span class="math inline">\(d\)</span>-dimensional kernel of order <span class="math inline">\(m\)</span> to write <span class="math display">\[\begin{align*}
+\mathbb{E}\hat f_{n,h}(\mathbf{x}) - f(\mathbf{x}) &amp;= \int_{\mathbb{R}^d} K_d(\mathbf{u})[f(\mathbf{x}+ h \mathbf{u}) - f(\mathbf{x})]d\mathbf{u}\\
+&amp;= \int_{\mathbb{R}^d} K_d(\mathbf{u})\sum_{|\boldsymbol{\upsilon}| = m} \frac{\mathbf{D}^\boldsymbol{\upsilon}f(\mathbf{x}+\tau h\mathbf{u})}{\boldsymbol{\upsilon}!}(h\mathbf{u})^\boldsymbol{\upsilon}d\mathbf{u}\\
+&amp;= h^m\sum_{|\boldsymbol{\upsilon}| = m}  \frac{1}{\boldsymbol{\upsilon}!}\int_{\mathbb{R}^d} \mathbf{u}^\boldsymbol{\upsilon}K_d(\mathbf{u})[\mathbf{D}^\boldsymbol{\upsilon}f(\mathbf{x}+\tau h\mathbf{u})  - \mathbf{D}^\boldsymbol{\upsilon}f(\mathbf{x})] d\mathbf{u}.
+\end{align*}\]</span> From here, using the definition of the Hölder class, we have <span class="math display">\[\begin{align*}
+|\mathbb{E}\hat f_{n,h}(\mathbf{x}) - f(\mathbf{x})| &amp;\leq h^m \sum_{|\boldsymbol{\upsilon}| = m}  \frac{1}{\boldsymbol{\upsilon}!}\int_{\mathbb{R}^d} |\mathbf{u}|^\boldsymbol{\upsilon}|K_d(\mathbf{u})||\mathbf{D}^\boldsymbol{\upsilon}f(\mathbf{x}+\tau h\mathbf{u})  - \mathbf{D}^\boldsymbol{\upsilon}f(\mathbf{x})| d\mathbf{u}\\
+&amp;\leq h^m \sum_{|\boldsymbol{\upsilon}| = m}  \frac{1}{\boldsymbol{\upsilon}!}\int_{\mathbb{R}^d} |\mathbf{u}|^\boldsymbol{\upsilon}|K_d(\mathbf{u})| L\|\tau h \mathbf{u}\|_2^\alpha d\mathbf{u}\\
+&amp;\leq h^{m + \alpha} C\sum_{|\boldsymbol{\upsilon}| = m}  \frac{1}{\boldsymbol{\upsilon}!}\int_{\mathbb{R}^d} |\mathbf{u}|^\boldsymbol{\upsilon}\|\mathbf{u}\|_2^\alpha |K_d(\mathbf{u})| d\mathbf{u}\\
+&amp;\leq h^\beta C \kappa_\beta \sum_{|\boldsymbol{\upsilon}| = m}  \frac{1}{\boldsymbol{\upsilon}!}.
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<p>Putting the variance and bias bounds in <a href="#prp-mkdevar" class="quarto-xref">Proposition&nbsp;<span>6.1</span></a> and <a href="#prp-mkdebias" class="quarto-xref">Proposition&nbsp;<span>6.2</span></a>, respectively, together gives a bound on the MSE.</p>
+<div id="prp-mkdemse" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 6.3 (MSE of multivariate KDE under Hölder smoothness)</strong></span> Under the assumptions of <a href="#prp-mkdevar" class="quarto-xref">Proposition&nbsp;<span>6.1</span></a> and <a href="#prp-mkdebias" class="quarto-xref">Proposition&nbsp;<span>6.2</span></a> we have <span id="eq-mkdemse"><span class="math display">\[
+\operatorname{MSE}\hat f_{n,h}(\mathbf{x}) \leq h^{2\beta}\Big(\sum_{|\boldsymbol{\upsilon}| = m}  \frac{1}{\boldsymbol{\upsilon}!} C \kappa_\beta\Big)^2 + \frac{1}{nh^d} \kappa^2 f_\max
+\tag{6.2}\]</span></span> for each <span class="math inline">\(\mathbf{x}\in \mathbb{R}^d\)</span> with MSE-optimal bandwidth <span class="math inline">\(h\)</span> given by <span class="math inline">\(h_{\operatorname{opt}}= c^*n^{-1/(2\beta + d)}\)</span> such that <span id="eq-mkdemserate"><span class="math display">\[
+\operatorname{MSE}\hat f_{n,h}(\mathbf{x}) \leq C^* n^{-2\beta/(2\beta + d)}
+\tag{6.3}\]</span></span> for all <span class="math inline">\(\mathbf{x}\in \mathbb{R}^d\)</span>, where <span class="math inline">\(c^*,C^* &gt; 0\)</span> depend on <span class="math inline">\(f_\max\)</span>, <span class="math inline">\(C\)</span>, <span class="math inline">\(m\)</span>, <span class="math inline">\(\kappa^2\)</span>, and <span class="math inline">\(\kappa_\beta\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof of <a href="#prp-mkdemse" class="quarto-xref">Proposition&nbsp;<span>6.3</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The bound in <a href="#eq-mkdemse" class="quarto-xref">Equation&nbsp;<span>6.2</span></a> follows immediately from <a href="#prp-mkdevar" class="quarto-xref">Proposition&nbsp;<span>6.1</span></a> and <a href="#prp-mkdebias" class="quarto-xref">Proposition&nbsp;<span>6.2</span></a>. To find the MSE-optimal choice of the bandwidth, we minimize the right side of <a href="#eq-mkdemse" class="quarto-xref">Equation&nbsp;<span>6.2</span></a> in <span class="math inline">\(h\)</span>. Setting <span class="math display">\[\begin{align*}
+\frac{d}{dh}\Big(h^{2\beta} &amp;\Big(\sum_{|\boldsymbol{\upsilon}| = m}  \frac{1}{\boldsymbol{\upsilon}!} C \kappa_\beta\Big)^2 + \frac{1}{nh^d} \kappa^2 f_\max\Big) \\
+&amp;= 2\beta h^{2\beta - 1}\Big(\sum_{|\boldsymbol{\upsilon}| = m}  \frac{1}{\boldsymbol{\upsilon}!} C \kappa_\beta\Big)^2 - \frac{d}{nh^{d+1}}\kappa^2 f_\max=0
+\end{align*}\]</span> and solving for <span class="math inline">\(h\)</span> gives <span class="math inline">\(h_{\operatorname{opt}}\)</span> and plugging <span class="math inline">\(h_{\operatorname{opt}}\)</span> back into <a href="#eq-mkdemse" class="quarto-xref">Equation&nbsp;<span>6.2</span></a> gives the bound in <a href="#eq-mkdemserate" class="quarto-xref">Equation&nbsp;<span>6.3</span></a>.</p>
+</div>
+</div>
+</div>
+<p>The main thing to note about the MSE bound in <a href="#prp-mkdemse" class="quarto-xref">Proposition&nbsp;<span>6.3</span></a>, in particular in the bound in <a href="#eq-mkdemserate" class="quarto-xref">Equation&nbsp;<span>6.3</span></a> obtained under the MSE-optimal choice of <span class="math inline">\(h\)</span>, is the dependence of the bound on the dimension <span class="math inline">\(d\)</span>. In particular, for larger values of <span class="math inline">\(d\)</span> the bound approaches <span class="math inline">\(0\)</span> more slowly as <span class="math inline">\(n \to \infty\)</span>. We will next see just how dramatically increasing the dimension can affect the variance (note that it does not affect the bias) of the multivariate kernel density estimator. It turns out that achieving a given variance bound as the dimension <span class="math inline">\(d\)</span> increases requires an exponentially increasing sample size <span class="math inline">\(n\)</span>. This effect of the dimension <span class="math inline">\(d\)</span> is known as <em>the curse of dimensionality</em>.</p>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -941,13 +1051,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./minimaxpinsker.html" class="pagination-link" aria-label="Pinsker's Theorem for Sobolev ellipsoids">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Pinsker’s Theorem for Sobolev ellipsoids</span></span>
+      <a href="./mkde.html" class="pagination-link" aria-label="Multivariate kernel density estimation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Multivariate kernel density estimation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./boot.html" class="pagination-link" aria-label="The bootstrap">
-        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The bootstrap</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./mnonparmreg.html" class="pagination-link" aria-label="Multivariate nonparametric regression">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Multivariate nonparametric regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

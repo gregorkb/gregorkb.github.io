@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>18&nbsp; Adaptive estimation – Some of Nonparametric Statistics</title>
+<title>5&nbsp; Multivariate kernel density estimation – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -50,8 +64,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./boot.html" rel="next">
-<link href="./minimaxpinsker.html" rel="prev">
+<link href="./mkdemse.html" rel="next">
+<link href="./kdecv.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -142,7 +156,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./minimaxnonparmnormalmeans.html">Minimax Theory</a></li><li class="breadcrumb-item"><a href="./minimaxadaptive.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kderosenblatt.html">Density estimation</a></li><li class="breadcrumb-item"><a href="./mkde.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Multivariate kernel density estimation</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -175,13 +189,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Density estimation</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./kderosenblatt.html" class="sidebar-item-text sidebar-link">
@@ -208,7 +222,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mkde.html" class="sidebar-item-text sidebar-link">
+  <a href="./mkde.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Multivariate kernel density estimation</span></span></a>
   </div>
 </li>
@@ -269,13 +283,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Minimax Theory</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxnonparmnormalmeans.html" class="sidebar-item-text sidebar-link">
@@ -308,7 +322,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./minimaxadaptive.html" class="sidebar-item-text sidebar-link active">
+  <a href="./minimaxadaptive.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></span></a>
   </div>
 </li>
@@ -484,9 +498,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./minimaxnonparmnormalmeans.html">Minimax Theory</a></li><li class="breadcrumb-item"><a href="./minimaxadaptive.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kderosenblatt.html">Density estimation</a></li><li class="breadcrumb-item"><a href="./mkde.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Multivariate kernel density estimation</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-minimaxadaptive" class="quarto-section-identifier"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></span></h1>
+<h1 class="title"><span id="sec-mkde" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Multivariate kernel density estimation</span></span></h1>
 </div>
 
 
@@ -507,16 +521,113 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>Next time I teach the course I will add a note here on adaptive estimation! The main point is that, even though we have found the minimax risk in a few situations, for example in the Normal means model with <span class="math inline">\(\boldsymbol{\theta}\)</span> lying in a general or Sobolev ellipsoid, we cannot compute the Pinsker weights, which are defined in terms unknown parameters <span class="math inline">\(a_1,a_2,\dots\)</span> or <span class="math inline">\(\beta\)</span>.</p>
-<p>An estimator which is able to achieve the minimax risk asymptotically as <span class="math inline">\(n \to \infty\)</span> no matter the values of the unknown parameters is called an adaptive (in the minimax sense) estimator. The James–Stein estimator is one such estimator. It is minimax adaptive in the Normal means model with <span class="math inline">\(\boldsymbol{\theta}\)</span> lies in a ball in <span class="math inline">\(\mathbb{R}^n\)</span> of finite radius centered at the origin.</p>
-<p>See Section 3.7 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>.</p>
-
-
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-tsybakov2008introduction" class="csl-entry" role="listitem">
-Tsybakov, Alexandre B. 2008. <em>Introduction to Nonparametric Estimation</em>. Springer Science &amp; Business Media.
+<p>So far we have considered estimation of a univariate density. Now we will suppose we observe <span class="math inline">\(\mathbf{X}_1,\dots,\mathbf{X}_n \in \mathbb{R}^d\)</span> with dimension <span class="math inline">\(d \geq 1\)</span> which are independent realizations of a random vector <span class="math inline">\(\mathbf{X}\in \mathbb{R}^d\)</span> having density <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathbb{R}^d\)</span>. For each <span class="math inline">\(i= 1,\dots,n\)</span>, index the entries in <span class="math inline">\(\mathbf{X}_i\)</span> such that <span class="math inline">\(\mathbf{X}_i = (X_{i1},\dots,X_{id})^T\)</span>.</p>
+<p>Given a <span class="math inline">\(d\)</span>-dimensional kernel function <span class="math inline">\(K_d:\mathbb{R}^d \to \mathbb{R}\)</span>, consider the multivariate kernel density estimator (KDE) of <span class="math inline">\(f\)</span> given by <span class="math display">\[
+\hat f_{n,\mathbf{H}}(\mathbf{x}) = \frac{1}{n|\mathbf{H}|^{1/2}}\sum_{i=1}^nK_d\Big(\mathbf{H}^{-1/2}(\mathbf{X}_i - \mathbf{x})\Big)
+\]</span> for all <span class="math inline">\(\mathbf{x}\in \mathbb{R}^d\)</span>, where <span class="math inline">\(\mathbf{H}\)</span> is a positive definite bandwidth matrix.</p>
+<div id="prp-mkdevalid" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 5.1 (Validity of multivariate kernel density estimator)</strong></span> If <span class="math inline">\(K_d : \mathbb{R}^d\to \mathbb{R}\)</span> is a density then <span class="math inline">\(\hat f_{n,\mathbf{H}}\)</span> is a density.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof of <a href="#prp-mkdevalid" class="quarto-xref">Proposition&nbsp;<span>5.1</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(K_d\)</span> is a density then <span class="math inline">\(K_d(\mathbf{x}) \geq 0\)</span> for all <span class="math inline">\(\mathbf{x}\in \mathbb{R}^d\)</span> and <span class="math inline">\(\int_{\mathbb{R}^d}K_d(\mathbf{x})d\mathbf{x}= 1\)</span>. Therefore <span class="math inline">\(\hat f_{n,\mathbf{H}}(\mathbf{x}) \geq 0\)</span> for all <span class="math inline">\(\mathbf{x}\in \mathbb{R}^d\)</span> and <span class="math display">\[\begin{align*}
+\int_{\mathbb{R}^d}\hat f_{n,\mathbf{H}}(\mathbf{x}) d\mathbf{x}&amp;=  \frac{1}{n}\sum_{i=1}^n\int_{\mathbb{R}^d}\frac{1}{|\mathbf{H}|^{1/2}}K_d\Big(\mathbf{H}^{-1/2}(\mathbf{X}_i - \mathbf{x})\Big) d\mathbf{x}\\
+&amp;= \frac{1}{n} \sum_{i=1}^n\int_{\mathbb{R}^d}K_d(\mathbf{u}_i)d\mathbf{u}_i\\
+&amp;= 1,
+\end{align*}\]</span> using for each <span class="math inline">\(i=1,\dots,n\)</span> the substitution <span class="math inline">\(\mathbf{u}_i = \mathbf{H}^{-1/2}(\mathbf{X}_i - \mathbf{x})\)</span>, for which the absolute value of the Jacobian is <span class="math inline">\(|\mathbf{H}|^{1/2}\)</span>. Therefore <span class="math inline">\(\hat f_{n,\mathbf{H}}\)</span> is a density.</p>
 </div>
 </div>
+</div>
+<p>For further analysis, we will consider a simpler version of <span class="math inline">\(\hat f_{n,\mathbf{H}}\)</span> corresponding to the choice <span class="math inline">\(\mathbf{H}= h^2 \mathbf{I}_d\)</span> for some scalar bandwidth <span class="math inline">\(h &gt; 0\)</span>. Define <span class="math display">\[
+\hat f_{n,h}(\mathbf{x}) = \frac{1}{nh^d}\sum_{i=1}^n K_d(h^{-1}(\mathbf{X}_i - \mathbf{x}))
+\]</span> for all <span class="math inline">\(\mathbf{x}\in \mathbb{R}^d\)</span>. We expect that the estimator <span class="math inline">\(\hat f_{n,h}\)</span> will be in most situations preferable to <span class="math inline">\(\hat f_{n,\mathbf{H}}\)</span>, as using the latter entails choosing <span class="math inline">\(d(d+1)/2\)</span> entries of the (symmetric) matrix <span class="math inline">\(\mathbf{H}\)</span> as opposed to choosing a single, scalar bandwidth <span class="math inline">\(h &gt; 0\)</span>.</p>
+<p><a href="#fig-mkdegalaxy" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> shows contours of the estimator <span class="math inline">\(\hat f_{n,h}\)</span> computed on a simulated data set with <span class="math inline">\(d = 2\)</span> at several choices of the bandwidth <span class="math inline">\(h\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bivariate kde function</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>biv_kde <span class="ot">&lt;-</span> <span class="cf">function</span>(x,data,h){</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  val <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">dnorm</span>(data[,<span class="dv">1</span>] <span class="sc">-</span> x[<span class="dv">1</span>],<span class="dv">0</span>,h) <span class="sc">*</span> <span class="fu">dnorm</span>(data[,<span class="dv">2</span>]<span class="sc">-</span> x[<span class="dv">2</span>],<span class="dv">0</span>,h))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(val)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># generate bivariate data points that make a "galaxy"</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">runif</span>(n,<span class="dv">0</span>,<span class="dv">2</span><span class="sc">*</span>pi)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>),n,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> s <span class="sc">*</span> a <span class="sc">*</span> <span class="fu">exp</span>(b <span class="sc">*</span> theta)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>,n,<span class="dv">2</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>X[,<span class="dv">1</span>] <span class="ot">&lt;-</span> r <span class="sc">*</span> <span class="fu">cos</span>(theta) <span class="sc">+</span> <span class="fu">rnorm</span>(n,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>X[,<span class="dv">2</span>] <span class="ot">&lt;-</span> r <span class="sc">*</span> <span class="fu">sin</span>(theta) <span class="sc">+</span> <span class="fu">rnorm</span>(n,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">2.1</span>,<span class="fl">2.1</span>,<span class="fl">1.1</span>,<span class="fl">1.1</span>))</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># make a scatterplot of the data points</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(X[,<span class="dv">2</span>] <span class="sc">~</span> X[,<span class="dv">1</span>],</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">""</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">""</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># make contour plots of kdes at several choices of the bandwidth</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>hh <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">8</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>gridsize <span class="ot">&lt;-</span> <span class="dv">120</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(X[,<span class="dv">1</span>]),<span class="fu">max</span>(X[,<span class="dv">1</span>]),<span class="at">length =</span> gridsize)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(X[,<span class="dv">2</span>]),<span class="fu">max</span>(X[,<span class="dv">2</span>]),<span class="at">length =</span> gridsize)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>zz <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>,gridsize,gridsize)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>( k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(hh)){</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(X[,<span class="dv">2</span>] <span class="sc">~</span> X[,<span class="dv">1</span>],</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">""</span>,</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">""</span>,</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>       <span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>       <span class="at">yaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"gray"</span>)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>( <span class="at">v =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>( <span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  zz <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>,gridsize,gridsize)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>gridsize)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>gridsize){</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>      zz[i,j] <span class="ot">&lt;-</span> <span class="fu">biv_kde</span>(<span class="at">x =</span> <span class="fu">c</span>(x1[i],x2[j]),<span class="at">data =</span> X, <span class="at">h =</span> hh[k])  </span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">contour</span>(x1, x2, zz, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">nlevels =</span> <span class="dv">20</span>)</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-mkdegalaxy" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Plot with six panels, each with a scatterplot and contour lines.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mkdegalaxy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="mkde_files/figure-html/fig-mkdegalaxy-1.png" class="img-fluid figure-img" alt="Plot with six panels, each with a scatterplot and contour lines." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mkdegalaxy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: Contours of bivariate kernel density estimator at several bandwidths.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -941,13 +1052,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./minimaxpinsker.html" class="pagination-link" aria-label="Pinsker's Theorem for Sobolev ellipsoids">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Pinsker’s Theorem for Sobolev ellipsoids</span></span>
+      <a href="./kdecv.html" class="pagination-link" aria-label="Mean integrated squared error and crossvalidation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Mean integrated squared error and crossvalidation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./boot.html" class="pagination-link" aria-label="The bootstrap">
-        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The bootstrap</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./mkdemse.html" class="pagination-link" aria-label="Bias and variance of multivariate kernel density estimators">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bias and variance of multivariate kernel density estimators</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

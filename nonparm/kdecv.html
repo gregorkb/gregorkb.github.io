@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>18&nbsp; Adaptive estimation – Some of Nonparametric Statistics</title>
+<title>4&nbsp; Mean integrated squared error and crossvalidation – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -50,8 +84,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./boot.html" rel="next">
-<link href="./minimaxpinsker.html" rel="prev">
+<link href="./mkde.html" rel="next">
+<link href="./kdeholder.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -142,7 +176,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./minimaxnonparmnormalmeans.html">Minimax Theory</a></li><li class="breadcrumb-item"><a href="./minimaxadaptive.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kderosenblatt.html">Density estimation</a></li><li class="breadcrumb-item"><a href="./kdecv.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Mean integrated squared error and crossvalidation</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -175,13 +209,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Density estimation</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./kderosenblatt.html" class="sidebar-item-text sidebar-link">
@@ -202,7 +236,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./kdecv.html" class="sidebar-item-text sidebar-link">
+  <a href="./kdecv.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Mean integrated squared error and crossvalidation</span></span></a>
   </div>
 </li>
@@ -269,13 +303,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Minimax Theory</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./minimaxnonparmnormalmeans.html" class="sidebar-item-text sidebar-link">
@@ -308,7 +342,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./minimaxadaptive.html" class="sidebar-item-text sidebar-link active">
+  <a href="./minimaxadaptive.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></span></a>
   </div>
 </li>
@@ -484,9 +518,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./minimaxnonparmnormalmeans.html">Minimax Theory</a></li><li class="breadcrumb-item"><a href="./minimaxadaptive.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./kderosenblatt.html">Density estimation</a></li><li class="breadcrumb-item"><a href="./kdecv.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Mean integrated squared error and crossvalidation</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-minimaxadaptive" class="quarto-section-identifier"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Adaptive estimation</span></span></h1>
+<h1 class="title"><span id="sec-kdecv" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Mean integrated squared error and crossvalidation</span></span></h1>
 </div>
 
 
@@ -507,9 +541,113 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>Next time I teach the course I will add a note here on adaptive estimation! The main point is that, even though we have found the minimax risk in a few situations, for example in the Normal means model with <span class="math inline">\(\boldsymbol{\theta}\)</span> lying in a general or Sobolev ellipsoid, we cannot compute the Pinsker weights, which are defined in terms unknown parameters <span class="math inline">\(a_1,a_2,\dots\)</span> or <span class="math inline">\(\beta\)</span>.</p>
-<p>An estimator which is able to achieve the minimax risk asymptotically as <span class="math inline">\(n \to \infty\)</span> no matter the values of the unknown parameters is called an adaptive (in the minimax sense) estimator. The James–Stein estimator is one such estimator. It is minimax adaptive in the Normal means model with <span class="math inline">\(\boldsymbol{\theta}\)</span> lies in a ball in <span class="math inline">\(\mathbb{R}^n\)</span> of finite radius centered at the origin.</p>
-<p>See Section 3.7 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>.</p>
+<p>Now we consider the selection of the bandwidth <span class="math inline">\(h\)</span>. While various methods for selecting <span class="math inline">\(h\)</span> have been proposed, we will present a crossvalidation approach, following closely Section 1.4 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>. In particular, we will select <span class="math inline">\(h\)</span> which minimizes an estimate, obtained via a method called crossvalidation, of the mean integrated squared error (MISE) of the kernel density estimator (KDE) <span class="math inline">\(\hat f_{n,h}(x)\)</span>, where the MISE is defined as <span class="math display">\[
+\operatorname{MISE}\hat f_{n,h} = \mathbb{E}\int_\mathbb{R}[\hat f_{n,h}(x) - f(x)]^2dx.
+\]</span> Crossvalidation typically involves leaving out one or more observations from the data and computing an estimator on the remaining data, after which one checks how will the estimator “performs” in modeling or predicting the observations which were left out. We will define an estimator of <span class="math inline">\(\operatorname{MISE}\{\hat f_{n,h} \}\)</span> based on leave-one-out crossvalidation, which will will minimize over a set of candidate bandwidth choices <span class="math inline">\(h\)</span>. To this end, define leave-one-out estimators of <span class="math inline">\(f(x)\)</span> as <span class="math display">\[
+\hat f_{n,h,-i}(x) = \frac{1}{(n-1)h}\sum_{j \neq i} K\Big(\frac{X_j - x}{h}\Big), \quad x \in\mathbb{R},
+\]</span> for <span class="math inline">\(i =1,\dots,n\)</span>, where each of these is the KDE of <span class="math inline">\(f(x)\)</span> after removing one observation from among <span class="math inline">\(X_1,\dots,X_n\)</span>.</p>
+<p>To understand how the leave-one-out versions of <span class="math inline">\(\hat f_{n,h}\)</span> can be used to estimate <span class="math inline">\(\operatorname{MISE}\{\hat f_{n,h} \}\)</span>, note that we can decompose the latter as <span id="eq-MISEdecompKDE"><span class="math display">\[
+\operatorname{MISE}\hat f_{n,h}  = \mathbb{E}\int_\mathbb{R}\hat f_{n,h}^2(x) dx - 2 \mathbb{E}\int_\mathbb{R}\hat f_{n,h}(x)f(x)dx - \int_\mathbb{R}f^2(x)dx,
+\tag{4.1}\]</span></span> where only the first two terms involve the bandwidth <span class="math inline">\(h\)</span>. We find we can use the leave-one-out versions of <span class="math inline">\(\hat f_{n,h}\)</span> to estimate the second term. In particular, we have <span id="eq-Eloo"><span class="math display">\[
+\mathbb{E}\frac{1}{n}\sum_{i=1}^n \hat f_{n,h,-i}(X_i) = \mathbb{E}\int_\mathbb{R}\hat f_{n,h}(x)f(x)dx,
+\tag{4.2}\]</span></span> where, for each <span class="math inline">\(i\)</span>, we have plugged the left-out observation <span class="math inline">\(X_i\)</span> back into the leave-one-out estimator <span class="math inline">\(\hat f_{n,h,-i}\)</span> obtained without this observation, and then computed the mean of these evaluations.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Derivation of <a href="#eq-Eloo" class="quarto-xref">Equation&nbsp;<span>4.2</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We may write <span class="math display">\[\begin{align*}
+\mathbb{E}\frac{1}{n}\sum_{i=1}^n \hat f_{n,h,-i}(X_i) &amp;= \frac{1}{n}\sum_{i=1}^n \frac{1}{(n-1)h}\sum_{j \neq i} \mathbb{E}K\Big(\frac{X_j - X_i}{h}\Big)\\
+      &amp;= \frac{1}{h} \mathbb{E}K\Big(\frac{X_1 - X_2}{h}\Big) \\
+      &amp;= \frac{1}{h} \int_\mathbb{R}\int_\mathbb{R}K\Big(\frac{x - z}{h}\Big)f(z)f(x)dzdx.
+\end{align*}\]</span> At the same time we have also <span class="math display">\[\begin{align*}
+\mathbb{E}\int_\mathbb{R}\hat f_{n,h}(x)f(x)dx &amp;= \mathbb{E}\int_\mathbb{R}\frac{1}{nh}\sum_{i=1}^nK\Big(\frac{X_i - x}{h}\Big)f(x)dx \\
+&amp;=\frac{1}{h} \int_\mathbb{R}\int_\mathbb{R}K\Big(\frac{x - z}{h}\Big)f(z)f(x)dzdx.
+\end{align*}\]</span> So, provided this integral is finite, <a href="#eq-Eloo" class="quarto-xref">Equation&nbsp;<span>4.2</span></a> holds.</p>
+</div>
+</div>
+</div>
+<p>Further noting that the realized value of <span class="math inline">\(\int_\mathbb{R}\hat f_{n,h}^2(x) dx\)</span> is an unbiased estimator for its own expected value (a random variable <span class="math inline">\(X\)</span> is trivially an unbiased estimator of <span class="math inline">\(\mathbb{E}X\)</span>), we define <span class="math display">\[
+\operatorname{CV}_n(h) = \int_\mathbb{R}\hat f_{n,h}^2(x)dx - \frac{2}{n}\sum_{i=1}^n \hat f_{n,h,-i}(X_i),
+\]</span> for which we have the following result:</p>
+<div id="thm-KDEloocv" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.1 (Leave-one-out crossvalidation for KDE bandwidth selection)</strong></span> Provided <span class="math inline">\(\int_\mathbb{R}f^2(x)dx &lt; \infty\)</span> and <span class="math display">\[
+\int_\mathbb{R}\int_\mathbb{R}\Big|K\Big(\frac{z-x}{h}\Big)\Big|f(z)f(x)dzdx &lt; \infty
+\]</span> for all <span class="math inline">\(h &gt; 0\)</span>. Then for all <span class="math inline">\(h&gt;0\)</span> we have <span class="math display">\[
+\mathbb{E}\operatorname{CV}_n(h) = \operatorname{MISE}\hat f_{n,h} + \int_\mathbb{R}f^2(x)dx.
+\]</span></p>
+</div>
+<p><a href="#thm-KDEloocv" class="quarto-xref">Theorem&nbsp;<span>4.1</span></a> follows from <a href="#eq-Eloo" class="quarto-xref">Equation&nbsp;<span>4.2</span></a> and <a href="#eq-MISEdecompKDE" class="quarto-xref">Equation&nbsp;<span>4.1</span></a> and suggests selecting <span class="math inline">\(h\)</span> as <span class="math display">\[
+\hat h_{\operatorname{CV}}= \operatorname{argmin}_{h &gt; 0} \operatorname{CV}_n(h).
+\]</span></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define the true density function</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">dgamma</span>(x,<span class="dv">3</span>,<span class="at">scale =</span> <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">dnorm</span>(x) <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># draw a sample from a distribution with density f</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),n,<span class="at">replace=</span><span class="cn">TRUE</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> d <span class="sc">*</span> <span class="fu">rgamma</span>(n,<span class="dv">3</span>,<span class="at">scale =</span> <span class="dv">3</span>) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">-</span> d) <span class="sc">*</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># define a function to compute the KDE at a point x</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>kde <span class="ot">&lt;-</span> <span class="cf">function</span>(x,Y,h,<span class="at">K =</span> dnorm) <span class="fu">mean</span>(<span class="fu">K</span>((Y<span class="sc">-</span>x)<span class="sc">/</span>h)) <span class="sc">/</span> h</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># crossvalidation</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>hh <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.1</span>,<span class="dv">2</span>,<span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>CV <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(hh))</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(Y),<span class="fu">max</span>(Y),<span class="at">length=</span><span class="dv">1000</span>) <span class="co"># a range over which to integrate</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(hh)){</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  fx <span class="ot">&lt;-</span> <span class="fu">sapply</span>(x,<span class="at">FUN=</span>kde, <span class="at">Y =</span> Y, <span class="at">h =</span> hh[j])</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  A <span class="ot">&lt;-</span> <span class="fu">sum</span>(fx<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span>(x[<span class="dv">2</span>]<span class="sc">-</span>x[<span class="dv">1</span>]) <span class="co"># numerical integration</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  B <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) B <span class="ot">&lt;-</span> B <span class="sc">+</span> <span class="fu">kde</span>(Y[i],Y[<span class="sc">-</span>i],hh[j]) <span class="sc">/</span> n</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  CV[j] <span class="ot">&lt;-</span> A <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>B</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CV<span class="sc">~</span>hh,</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"h"</span>,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"CV(h)"</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>hcv <span class="ot">&lt;-</span> hh[<span class="fu">which.min</span>(CV)]</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># plot kde with crossvalidation choice of h</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">sapply</span>(x,<span class="at">FUN=</span>kde, <span class="at">Y =</span> Y, <span class="at">h =</span> hcv)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fx<span class="sc">~</span>x,</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">"l"</span>,</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">range</span>(<span class="fu">f</span>(x),fx), </span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">545</span>),</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"density"</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">f</span>(x)<span class="sc">~</span>x,<span class="at">lty=</span><span class="dv">2</span>, <span class="at">col =</span> <span class="st">"gray"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-hcv" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Plot with two panels, one showing a curve with a minimum, the other showing a density with a kernel density estimate overlaid.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hcv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="kdecv_files/figure-html/fig-hcv-1.png" class="img-fluid figure-img" alt="Plot with two panels, one showing a curve with a minimum, the other showing a density with a kernel density estimate overlaid." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hcv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: Left: Crossvalidation to select the bandwidth <span class="math inline">\(h\)</span>. Right: The KDE with bandwidth chosen by crossvalidation.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>It is difficult to obtain results giving the performance of the estimator <span class="math inline">\(\hat f_{n,h}\)</span> under the choice of bandwidth <span class="math inline">\(h = \hat h_{\operatorname{CV}}\)</span>. Specifically, the size of <span class="math inline">\(\hat h_{\operatorname{CV}}\)</span> with respect to <span class="math inline">\(n\)</span> as <span class="math inline">\(n \to \infty\)</span> is not immediately clear.</p>
+<p>Here, we considered bandwidth selection with a view to minimizing <span class="math inline">\(\operatorname{MISE}\hat f_{n,h}\)</span>, where we introduced the latter quantity in this section for this purpose. However, one may be interested in analyzing <span class="math inline">\(\operatorname{MISE}\hat f_{n,h}\)</span> even outside the context of bandwidth selection. In particular, one may be interested in obtaining bounds for <span class="math inline">\(\operatorname{MISE}\hat f_{n,h}\)</span> analogous to those we have obtained for <span class="math inline">\(\operatorname{MSE}\hat f_{n,h}(x)\)</span> in previous sections, which is undertaken in Section 1.2.3 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -941,13 +1079,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./minimaxpinsker.html" class="pagination-link" aria-label="Pinsker's Theorem for Sobolev ellipsoids">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Pinsker’s Theorem for Sobolev ellipsoids</span></span>
+      <a href="./kdeholder.html" class="pagination-link" aria-label="Kernel density estimation of Hölder densities">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Kernel density estimation of Hölder densities</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./boot.html" class="pagination-link" aria-label="The bootstrap">
-        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The bootstrap</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./mkde.html" class="pagination-link" aria-label="Multivariate kernel density estimation">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Multivariate kernel density estimation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
