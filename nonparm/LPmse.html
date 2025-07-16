@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Karl Gregory">
 
-<title>Some of Nonparametric Statistics</title>
+<title>11&nbsp; Mean squared error of the local polynomial estimator – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,7 +50,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./kderosenblatt.html" rel="next">
+<link href="./LPcv.html" rel="next">
+<link href="./LPestimator.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -101,6 +101,35 @@ div.csl-indent {
   });
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -113,7 +142,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./NWestimator.html">Nonparametric regression</a></li><li class="breadcrumb-item"><a href="./LPmse.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mean squared error of the local polynomial estimator</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -140,7 +169,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -199,13 +228,13 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Nonparametric regression</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./NWestimator.html" class="sidebar-item-text sidebar-link">
@@ -226,7 +255,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./LPmse.html" class="sidebar-item-text sidebar-link">
+  <a href="./LPmse.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mean squared error of the local polynomial estimator</span></span></a>
   </div>
 </li>
@@ -485,33 +514,21 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./NWestimator.html">Nonparametric regression</a></li><li class="breadcrumb-item"><a href="./LPmse.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mean squared error of the local polynomial estimator</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Some of Nonparametric Statistics</h1>
+<h1 class="title"><span id="sec-LPmse" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mean squared error of the local polynomial estimator</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Karl Gregory </p>
-          </div>
-  </div>
     
   
     
@@ -522,30 +539,26 @@ div.csl-indent {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/nonparm_topic_map.jpg" class="img-fluid figure-img"></p>
-<figcaption>Map of topics. Photo is of <a href="https://en.wikipedia.org/wiki/File:Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg">Mount Everest.</a></figcaption>
-</figure>
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
 </div>
-<p>This is an eBook of notes for a graduate-level nonparametric statistics course I have taught a few times at the University of South Carolina.</p>
-<p>You see a map above charting the topics treated in this book, which I have entitled “Some of Nonparametric Statistics”, in a not-so-subtle riff on the title of Larry Wasserman’s famous book “All of Nonparametric Statistics”; see <span class="citation" data-cites="wasserman2006all">Wasserman (<a href="references.html#ref-wasserman2006all" role="doc-biblioref">2006</a>)</span>. I have intentionally left the summit unlabeled to emphasize that I do not presume to have covered, in any sense, “all” of nonparametric statistics—not all that has been to this date learned, nor indeed all that is yet to be learned in this realm.</p>
-<p>I must be forgiving, nevertheless, of Wasserman’s presumption, as these notes contain much that is adapted from his work, which served as a compass during my own journey through these topics. Another pointer to True North was the book “Introduction to Nonparametric Estimation” by Alexander Tsybakov, see <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>.</p>
-<p>I find myself indebted to Tsybakov not only for bringing into the world such a book, but also indebted to him personally for the great forbearance he demonstrated on an occasion which he may remember to this day (or perhaps not). I, a post-doc at the Universität Mannheim, was put in charge of finding a room in which the visiting Alexander Tsybakov, traveling from Paris, would make a presentation on his latest work to the students, post-docs, and faculty composing our research group. In the callowness of youth, I asked our secretary to book a room, telling her the speaker wanted a whiteboard, as it was to be a talk in the tradition of the Chalkboard Talk long celebrated by mathematicians of the Continent. Tragically, when we arrived at the room, we found that it possessed not a vast wall-mounted whiteboard as I had imagined, but rather an easel-mounted one about the size of a bathroom mirror. So the venerable Alexander Tsybakov wrote, and then erased, and then wrote and erased for an hour, presenting all the while quite eloquently in spite of the diminutive canvas on which he was forced to cram his notations. To his great credit he never expressed annoyance and was very kind to me throughout his visit. So, let warm appreciations emanate to the man Tsybakov for his book as well as for his equanimity.</p>
-<p>Now let us begin our climb out of the vale onto the snowy heights…</p>
+<p>Here we merely present a result given in <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>. One makes assumptions serving the same purposes as those made in <a href="NWmse.html" class="quarto-xref"><span>Chapter 9</span></a> and establishes the result similarly. There is nothing conceptually new here.</p>
+<div id="prp-LPmse" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 11.1 (MSE of local polynomial estimator under Hölder smoothness)</strong></span> Suppose <span class="math inline">\(m \in \text{Hölder}(C,k,\alpha,[0,1])\)</span> and let <span class="math inline">\(\beta = k + \alpha\)</span>. Then under assumptions given in Section 1.6 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span> we have <span id="eq-kdemseHölder"><span class="math display">\[
+\operatorname{MSE}\hat m^{\operatorname{LP}(k)}_{n,h}(x) \leq h^{2\beta} C_1 + \frac{1}{nh} C_2
+\tag{11.1}\]</span></span> for each <span class="math inline">\(x \in [0,1]\)</span> with <span class="math inline">\(\operatorname{MSE}\)</span>-optimal bandwidth <span class="math inline">\(h\)</span> given by <span class="math inline">\(h_\operatorname{opt} = c^*n^{-1/(2\beta + 1)}\)</span> such that <span id="eq-kdemseHölderrate"><span class="math display">\[
+\operatorname{MSE}\hat m^{\operatorname{LP}(k)}_{n,h_{\operatorname{opt}}}(x) \leq C^*n^{-2\beta/(2\beta + 1)},
+\tag{11.2}\]</span></span> for all <span class="math inline">\(x \in [0,1]\)</span>, for some constants <span class="math inline">\(C_1,C_2,c^*,C^*&gt;0\)</span>.</p>
+</div>
+<p>Next we consider how to choose the bandwidth via crossvalidation for the local polynomial and Nadaraya-Watson estimators.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-tsybakov2008introduction" class="csl-entry" role="listitem">
 Tsybakov, Alexandre B. 2008. <em>Introduction to Nonparametric Estimation</em>. Springer Science &amp; Business Media.
 </div>
-<div id="ref-wasserman2006all" class="csl-entry" role="listitem">
-Wasserman, Larry. 2006. <em>All of Nonparametric Statistics</em>. Springer Science &amp; Business Media.
 </div>
-</div>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -970,10 +983,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./LPestimator.html" class="pagination-link" aria-label="The local polynomial estimator">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The local polynomial estimator</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./kderosenblatt.html" class="pagination-link" aria-label="Kernel density estimation">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Kernel density estimation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./LPcv.html" class="pagination-link" aria-label="Bandwidth selection for the local polynomial estimator via crossvalidation">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Bandwidth selection for the local polynomial estimator via crossvalidation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Karl Gregory">
 
-<title>Some of Nonparametric Statistics</title>
+<title>13&nbsp; A variance estimator in nonparametric regression – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,7 +50,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./kderosenblatt.html" rel="next">
+<link href="./mNWestimator.html" rel="next">
+<link href="./LPcv.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -101,6 +101,35 @@ div.csl-indent {
   });
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -113,7 +142,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./NWestimator.html">Nonparametric regression</a></li><li class="breadcrumb-item"><a href="./varest.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A variance estimator in nonparametric regression</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -140,7 +169,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -199,13 +228,13 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Nonparametric regression</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./NWestimator.html" class="sidebar-item-text sidebar-link">
@@ -238,7 +267,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./varest.html" class="sidebar-item-text sidebar-link">
+  <a href="./varest.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A variance estimator in nonparametric regression</span></span></a>
   </div>
 </li>
@@ -485,33 +514,21 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./NWestimator.html">Nonparametric regression</a></li><li class="breadcrumb-item"><a href="./varest.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A variance estimator in nonparametric regression</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Some of Nonparametric Statistics</h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">A variance estimator in nonparametric regression</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Karl Gregory </p>
-          </div>
-  </div>
     
   
     
@@ -522,30 +539,89 @@ div.csl-indent {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/nonparm_topic_map.jpg" class="img-fluid figure-img"></p>
-<figcaption>Map of topics. Photo is of <a href="https://en.wikipedia.org/wiki/File:Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg">Mount Everest.</a></figcaption>
-</figure>
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
 </div>
-<p>This is an eBook of notes for a graduate-level nonparametric statistics course I have taught a few times at the University of South Carolina.</p>
-<p>You see a map above charting the topics treated in this book, which I have entitled “Some of Nonparametric Statistics”, in a not-so-subtle riff on the title of Larry Wasserman’s famous book “All of Nonparametric Statistics”; see <span class="citation" data-cites="wasserman2006all">Wasserman (<a href="references.html#ref-wasserman2006all" role="doc-biblioref">2006</a>)</span>. I have intentionally left the summit unlabeled to emphasize that I do not presume to have covered, in any sense, “all” of nonparametric statistics—not all that has been to this date learned, nor indeed all that is yet to be learned in this realm.</p>
-<p>I must be forgiving, nevertheless, of Wasserman’s presumption, as these notes contain much that is adapted from his work, which served as a compass during my own journey through these topics. Another pointer to True North was the book “Introduction to Nonparametric Estimation” by Alexander Tsybakov, see <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>.</p>
-<p>I find myself indebted to Tsybakov not only for bringing into the world such a book, but also indebted to him personally for the great forbearance he demonstrated on an occasion which he may remember to this day (or perhaps not). I, a post-doc at the Universität Mannheim, was put in charge of finding a room in which the visiting Alexander Tsybakov, traveling from Paris, would make a presentation on his latest work to the students, post-docs, and faculty composing our research group. In the callowness of youth, I asked our secretary to book a room, telling her the speaker wanted a whiteboard, as it was to be a talk in the tradition of the Chalkboard Talk long celebrated by mathematicians of the Continent. Tragically, when we arrived at the room, we found that it possessed not a vast wall-mounted whiteboard as I had imagined, but rather an easel-mounted one about the size of a bathroom mirror. So the venerable Alexander Tsybakov wrote, and then erased, and then wrote and erased for an hour, presenting all the while quite eloquently in spite of the diminutive canvas on which he was forced to cram his notations. To his great credit he never expressed annoyance and was very kind to me throughout his visit. So, let warm appreciations emanate to the man Tsybakov for his book as well as for his equanimity.</p>
-<p>Now let us begin our climb out of the vale onto the snowy heights…</p>
+<p>Again, suppose we observe covariate and response data <span class="math inline">\((x_1,Y_1),\dots,(x_n,Y_n)\in [0,1] \times \mathbb{R}\)</span>, where <span class="math display">\[
+Y_i = m(x_i) + \varepsilon_i,
+\]</span> <span class="math inline">\(i = 1,\dots,n\)</span>, where <span class="math inline">\(m:[0,1] \to \mathbb{R}\)</span> is an unknown function and <span class="math inline">\(\varepsilon_1,\dots,\varepsilon_n\)</span> are independent random variables with mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>So far we have focused on estimating the unknown function <span class="math inline">\(m\)</span>. Now we will consider the estimation of the error term variance <span class="math inline">\(\sigma^2\)</span>, which will be necessary if we wish to making inferences on the function <span class="math inline">\(m\)</span>, for example via the construction of pointwise confidence intervals for <span class="math inline">\(m(x)\)</span> for each <span class="math inline">\(x \in [0,1]\)</span> or of a confidence band <span class="math inline">\(\{[L(x),U(x)], x\in [0,1]\}\)</span> for the set of values <span class="math inline">\(\{m(x),x \in [0,1]\}\)</span>.</p>
+<p>While it is typical in regression contexts to base estimates of an error term variance on residuals, which in this case would be the values <span class="math inline">\(\hat \varepsilon_i = Y_i - \hat m_n(x_i)\)</span>, <span class="math inline">\(i=1,\dots,n\)</span>, we will consider an estimator which does not depend on an estimate of the unknown function <span class="math inline">\(m\)</span>. Such an estimator may not seem possible, but, if it can be assumed that the function <span class="math inline">\(m\)</span> changes by only small increments between adjacent design points among <span class="math inline">\(x_1,\dots,x_n\)</span>, this smoothness can be exploited to define a very simple estimator of <span class="math inline">\(\sigma^2\)</span> based on differencing re-reordered response values.</p>
+<div id="def-varest" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.1 (Differencing estimator of the error term variance)</strong></span> Let <span class="math inline">\((x_{(1)},Y_{(1)}),\dots,(x_{(n)},Y_{(n)})\)</span> represent the data pairs <span class="math inline">\((x_1,Y_1),\dots,(x_n,Y_n)\)</span> after re-ordering these such that <span class="math inline">\(x_{(1)} \leq \dots \leq x_{(n)}\)</span>. Then the differencing estimator of the error term variance is defined as <span class="math display">\[
+\hat \sigma_n^2 = \frac{1}{2(n-1)}\sum_{i=1}^{n-1}(Y_{(i+1)} - Y_{(i)})^2.
+\]</span></p>
+</div>
+<p>The estimator <span class="math inline">\(\hat \sigma^2\)</span>, which is recommended, for example, in <span class="citation" data-cites="rice1984bandwidth">Rice et al. (<a href="references.html#ref-rice1984bandwidth" role="doc-biblioref">1984</a>)</span>, is based on writing <span class="math display">\[
+Y_{(i+1)} - Y_{(i)} = m(x_{(i+1)}) -  m(x_{(i)})  + \varepsilon_{(i+1)} - \varepsilon_{(i)},
+\]</span> and assuming that the difference <span class="math inline">\(m(x_{(i+1)}) -  m(x_{(i)})\)</span> will be small (if <span class="math inline">\(m\)</span> is “smooth” and the design points <span class="math inline">\(x_{(i+1)}\)</span> and <span class="math inline">\(x_{(i)}\)</span> are close to each other), where we have re-indexed the error terms <span class="math inline">\(\varepsilon_1,\dots,\varepsilon_n\)</span> as <span class="math inline">\(\varepsilon_{(1)},\dots,\varepsilon_{(n)}\)</span> according to the same re-ordering of the data pairs as in <a href="#def-varest" class="quarto-xref">Definition&nbsp;<span>13.1</span></a>.</p>
+<div id="prp-varestLip" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 13.1 (Consistency of differencing estimator of variance under Lipschitz smoothness)</strong></span> If <span class="math inline">\(\varepsilon_1,\dots,\varepsilon_n\)</span> are identically distributed and if <span class="math inline">\(\mathbb{E}\varepsilon_1^4 &lt; \infty\)</span> and <span class="math inline">\(m \in \text{Lipschitz}(L,[0,1])\)</span> then <span class="math display">\[
+\hat \sigma_n^2 \stackrel{p}{\rightarrow}\sigma^2
+\]</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof of <a href="#prp-varestLip" class="quarto-xref">Proposition&nbsp;<span>13.1</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We begin by writing <span class="math display">\[
+\begin{align*}
+\hat \sigma_n^2 &amp;= \frac{1}{2(n-1)}\sum_{i=1}^{n-1}[m(x_{(i+1)}) -  m(x_{(i)})  + \varepsilon_{(i+1)} - \varepsilon_{(i)}]^2 \\
+&amp;= \frac{1}{2(n-1)}\sum_{i=1}^{n-1} (\varepsilon_{(i+1)} - \varepsilon_{(i)})^2+ \frac{1}{2(n-1)}\sum_{i=1}^{n-1} [m(x_{(i+1)}) -  m(x_{(i)})]^2\\
+&amp; \quad \quad \quad  + \frac{2}{2(n-1)}\sum_{i=1}^{n-1} (\varepsilon_{(i+1)} - \varepsilon_{(i)})[m(x_{(i+1)}) -  m(x_{(i)})],
+\end{align*}
+\]</span> where we notice the first term has expectation <span class="math inline">\(\sigma^2\)</span>, the last term has expectation <span class="math inline">\(0\)</span>, and the second term may be bounded as <span class="math display">\[
+\begin{align}
+\frac{1}{2(n-1)}\sum_{i=1}^{n-1} [m(x_{(i+1)}) -  m(x_{(i)})]^2 &amp;\leq \frac{1}{2(n-1)}\sum_{i=1}^{n-1} L^2(x_{(i+1)} -  x_{(i)})^2 \\
+&amp;\leq \frac{1}{2(n-1)}\sum_{i=1}^{n-1} L^2|x_{(i+1)} -  x_{(i)}|\\
+&amp;\leq \frac{L^2}{2(n-1)},
+\end{align}
+\]</span> where we have used the fact that <span class="math inline">\(x_1,\dots,x_n \in [0,1]\)</span>, implying <span class="math inline">\(|x_{(i+1)} - x_{(i)}| &lt; 1\)</span> for each <span class="math inline">\(i=1,\dots,n-1\)</span>, and <span class="math inline">\(\sum_{i=1}^{n-1}|x_{(i+1)} -  x_{(i)}| \leq 1\)</span>. It follows that <span class="math inline">\(\mathbb{E}\sigma_n^2 \to \sigma^2\)</span>.</p>
+<p>It remains to show that the variance of <span class="math inline">\(\sigma_n^2\)</span> converges to <span class="math inline">\(0\)</span> as <span class="math inline">\(n \to \infty\)</span>. We have <span class="math display">\[
+\begin{align}
+\mathbb{V}\hat \sigma_n^2 &amp;= \frac{1}{4(n-1)^2}\Big[\sum_{i=1}^{n-1} \mathbb{V}( (Y_{(i+1)} - Y_{(i)})^2) + \sum_{|i-j|=1}\mathbb{C}( (Y_{(i+1)} - Y_{(i)})^2,(Y_{(j+1)} - Y_{(j)})^2)\Big] \\
+&amp;\leq\frac{1}{4(n-1)^2}\Big[\sum_{i=1}^{n-1} \mathbb{V}( (Y_{(i+1)} - Y_{(i)})^2) + \sum_{|i-j|=1}\sqrt{\mathbb{V}((Y_{(i+1)} - Y_{(i)})^2)\mathbb{V}((Y_{(j+1)} - Y_{(j)})^2)}\Big],
+\end{align}
+\]</span> where we have used the Cauchy-Schwarz inequality. Further, for each <span class="math inline">\(i\)</span> we have <span class="math display">\[
+\begin{align}
+\mathbb{V}(Y_{(i+1)} - Y_{(i)}) &amp;= \mathbb{V}((m(x_{(i+1)}) -  m(x_{(i)})  + \varepsilon_{(i+1)} - \varepsilon_{(i)})^2) \\
+&amp;= \mathbb{V}( (\varepsilon_{(i+1)} - \varepsilon_{(i)})^2 + 2(\varepsilon_{(i+1)} - \varepsilon_{(i)}) (m(x_{(i+1)}) -  m(x_{(i)}))) \\
+&amp;\leq 2 \mathbb{V}((\varepsilon_{(i+1)} - \varepsilon_{(i)})^2 ) + 2 \mathbb{V}( 2(\varepsilon_{(i+1)} - \varepsilon_{(i)}) (m(x_{(i+1)}) -  m(x_{(i)}))) \\
+&amp; \leq 2 \mathbb{E}(\varepsilon_{(i+1)} - \varepsilon_{(i)})^4 + 8 |m(x_{(i+1)}) -  m(x_{(i)})|^2 \mathbb{E}(\varepsilon_{(i+1)} - \varepsilon_{(i)})^2 \\
+&amp;\leq 2(2\mu_4 + 6 \sigma^4) + 16 \sigma^2 L^2
+\end{align}
+\]</span> for all <span class="math inline">\(i = 1,\dots,n\)</span>, where <span class="math inline">\(\mu_4 = \mathbb{E}\varepsilon_1^4\)</span>, since <span class="math display">\[
+\begin{align*}
+\mathbb{E}(\varepsilon_{(i+1)} - \varepsilon_{(i)})^4 &amp;= \mathbb{E}[\varepsilon_{(i+1)}^4 - 4 \varepsilon_{(i+1)}^3 \varepsilon_{(i)} + 6 \varepsilon_{(i+1)}^2\varepsilon_{(i)}^2 - 4 \varepsilon_{(i+1)}\varepsilon_{(i)}^3 + \varepsilon_{(i)}^4]  \\
+&amp;= 2\mu_4 + 6 \sigma^4
+\end{align*}
+\]</span> and <span class="math inline">\(|m(x_{(i+1)}) -  m(x_{(i)})|^2 \leq L^2|x_{(i+1)} - x_{(i)}|^2 \leq L^2\)</span>. We may therefore write <span class="math display">\[
+\begin{align}
+\mathbb{V}\hat \sigma_n^2 &amp;\leq \frac{1}{4(n-1)^2}[(n-1) + 2(n-1)][2(2\mu_4 + 6 \sigma^4) + 16 \sigma^2 L^2] \\
+&amp; =\frac{3}{2(n-1)}[(2\mu_4 + 6 \sigma^4) + 8 \sigma^2 L^2] \\
+&amp; \to 0
+\end{align}
+\]</span> as <span class="math inline">\(n \to \infty\)</span>. This completes the proof.</p>
+</div>
+</div>
+</div>
+<p>The reader is encouraged to run a simulation to assess the performance of the estimator <span class="math inline">\(\hat \sigma_n^2\)</span> in various settings.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-tsybakov2008introduction" class="csl-entry" role="listitem">
-Tsybakov, Alexandre B. 2008. <em>Introduction to Nonparametric Estimation</em>. Springer Science &amp; Business Media.
-</div>
-<div id="ref-wasserman2006all" class="csl-entry" role="listitem">
-Wasserman, Larry. 2006. <em>All of Nonparametric Statistics</em>. Springer Science &amp; Business Media.
+<div id="ref-rice1984bandwidth" class="csl-entry" role="listitem">
+Rice, John et al. 1984. <span>“Bandwidth Choice for Nonparametric Regression.”</span> <em>The Annals of Statistics</em> 12 (4): 1215–30.
 </div>
 </div>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -970,10 +1046,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./LPcv.html" class="pagination-link" aria-label="Bandwidth selection for the local polynomial estimator via crossvalidation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Bandwidth selection for the local polynomial estimator via crossvalidation</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./kderosenblatt.html" class="pagination-link" aria-label="Kernel density estimation">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Kernel density estimation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./mNWestimator.html" class="pagination-link" aria-label="Multivariate Nadaraya-Watson estimator">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multivariate Nadaraya-Watson estimator</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

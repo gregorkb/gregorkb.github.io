@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Karl Gregory">
 
-<title>Some of Nonparametric Statistics</title>
+<title>8&nbsp; Nonparametric regression with the Nadaraya-Watson estimator – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -51,7 +84,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./kderosenblatt.html" rel="next">
+<link href="./NWmse.html" rel="next">
+<link href="./mkdecurse.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -101,6 +135,35 @@ div.csl-indent {
   });
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -113,7 +176,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./NWestimator.html">Nonparametric regression</a></li><li class="breadcrumb-item"><a href="./NWestimator.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Nonparametric regression with the Nadaraya-Watson estimator</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -140,7 +203,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -199,16 +262,16 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Nonparametric regression</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./NWestimator.html" class="sidebar-item-text sidebar-link">
+  <a href="./NWestimator.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Nonparametric regression with the Nadaraya-Watson estimator</span></span></a>
   </div>
 </li>
@@ -485,33 +548,21 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./NWestimator.html">Nonparametric regression</a></li><li class="breadcrumb-item"><a href="./NWestimator.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Nonparametric regression with the Nadaraya-Watson estimator</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Some of Nonparametric Statistics</h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Nonparametric regression with the Nadaraya-Watson estimator</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Karl Gregory </p>
-          </div>
-  </div>
     
   
     
@@ -522,30 +573,121 @@ div.csl-indent {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/nonparm_topic_map.jpg" class="img-fluid figure-img"></p>
-<figcaption>Map of topics. Photo is of <a href="https://en.wikipedia.org/wiki/File:Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg">Mount Everest.</a></figcaption>
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
+</div>
+<p>Suppose we observe covariate and response data <span class="math inline">\((x_1,Y_1),\dots,(x_n,Y_n)\in [0,1] \times \mathbb{R}\)</span>, where <span class="math display">\[
+Y_i = m(x_i) + \varepsilon_i,
+\]</span> <span class="math inline">\(i = 1,\dots,n\)</span>, where <span class="math inline">\(m:[0,1] \to \mathbb{R}\)</span> is an unknown function and <span class="math inline">\(\varepsilon_1,\dots,\varepsilon_n\)</span> are independent random variables with mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>Here, for each <span class="math inline">\(i=1,\dots,n\)</span>, <span class="math inline">\(Y_i\)</span> represents a <em>response</em> value and <span class="math inline">\(x_i\)</span> a <em>covariate</em> value. We note that the interval <span class="math inline">\([0,1]\)</span> is arbitrary and chosen for convenience (one can always rescale the observed covariate values to lie in this interval). We will for the most part treat <span class="math inline">\(x_1,\dots,x_n\)</span> as deterministic, that is, not as random variables, since in most regression contexts one usually conditions on the observed covariate values. We will sometimes refer to <span class="math inline">\(x_1,\dots,x_n\)</span> as the set of <em>design points</em>.</p>
+<p>Our aim is to estimate the unknown function <span class="math inline">\(m\)</span> without making assumptions about its shape. Our development will follow closely Section 1.5 of <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>.</p>
+<p>Parametric regression methods assume a functional form for <span class="math inline">\(m\)</span> such that <span class="math inline">\(m\)</span> is determined by a finite number of parameters. For example, simple linear regression assumes <span class="math inline">\(m\)</span> takes the form <span class="math inline">\(m(x) = \beta_0 + \beta_1 x\)</span> for some intercept and slope parameters <span class="math inline">\(\beta_0,\beta_1\in \mathbb{R}\)</span>, so that one may estimate <span class="math inline">\(m\)</span> simply by estimating the values of the two parameters <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>. In contrast, nonparametric regression methods, assume only that <span class="math inline">\(m\)</span> belongs to some class of functions, for example <span class="math inline">\(m \in \text{Lipschitz}(L,[0,1])\)</span>; see <a href="kdemse.html#def-Lipschitzclass" class="quarto-xref">Definition&nbsp;<span>2.1</span></a>.</p>
+<p>There are myriad ways to estimate an unknown function “nonparametrically”, that is, without assuming a parametric form for <span class="math inline">\(m\)</span>. In this section we will focus on the Nadaraya-Watson estimator, which can be concieved as a generalization of the most rudimentary estimator in nonparametric regression—the local average estimator, which is given, for some <span class="math inline">\(h&gt;0\)</span>, by <span class="math display">\[
+\bar m_{n,h}(x) = \frac{\sum_{i=1}^n Y_i \cdot \mathbb{I}(x - h \leq x_i \leq x + h)}{\sum_{j=1}^n  \mathbb{I}(x - h \leq x_j \leq x + h)}
+\]</span> for all <span class="math inline">\(x\)</span>, where <span class="math inline">\(\mathbb{I}\)</span> is an indicator function. This estimator computes, for each <span class="math inline">\(x\)</span>, the mean of the response values <span class="math inline">\(Y_i\)</span> for which the covariate value <span class="math inline">\(x_i\)</span> lies within a distance <span class="math inline">\(h&gt;0\)</span> of <span class="math inline">\(x\)</span>.</p>
+<p>The Nadaraya-Watson estimator generalizes the local average estimator by allowing the specification of a kernel function <span class="math inline">\(K\)</span> designed to place greater weight on observations for which <span class="math inline">\(x_i\)</span> is closer to <span class="math inline">\(x\)</span>, and to allow the weight to decay smoothly to zero as <span class="math inline">\(x_i\)</span> is further from <span class="math inline">\(x\)</span>.</p>
+<div id="def-NWestimator" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8.1 (The Nadaraya-Watson estimator)</strong></span> For some kernel function <span class="math inline">\(K:\mathbb{R}\to \mathbb{R}\)</span> and bandwidth <span class="math inline">\(h&gt;0\)</span>, the Nadaraya-Watson estimator is given by <span class="math display">\[
+\hat m_{n,h}^{\operatorname{NW}}(x) = \frac{\sum_{i=1}^n Y_iK((x_i - x)/h)}{\sum_{j=1}^nK((x_j - x)/h)}
+\]</span> for all <span class="math inline">\(x\)</span>.</p>
+</div>
+<p>Note that under <span class="math inline">\(K(u) = (1/2)\mathbb{I}(u \in[-1,1])\)</span>, the Nadaraya-Watson estimator becomes the local-average estimator. Typically <span class="math inline">\(K\)</span> is chosen as a density, just as in kernel density estimation.</p>
+<p>Note that when <span class="math inline">\(K\)</span> has bounded support, <span class="math inline">\(\hat m_{n,h}^{\operatorname{NW}}(x)\)</span> may be undefined for some <span class="math inline">\(x\)</span>; for example, the local-average estimator will be undefined at <span class="math inline">\(x\)</span> if there are no covariate values <span class="math inline">\(x_i\)</span> within the distance <span class="math inline">\(h\)</span> of <span class="math inline">\(x\)</span>. Choosing <span class="math inline">\(K\)</span> to be, for example, the Gaussian kernel, which has support on all of <span class="math inline">\(\mathbb{R}\)</span>, ensures that the Nadaraya-Watson estimator is defined for all <span class="math inline">\(x\)</span>. One can also simply increase the bandwidth. In establishing <span class="math inline">\(\operatorname{MSE}\)</span> bounds later on, we will find it convenient to assume the kernel has support only on <span class="math inline">\([-1,1]\)</span>, as in the case of the local-average kernel.</p>
+<p>Otherwise than as a generalization of the local-average estimator, we can understand the Nadaraya-Watson estimator as computing the conditional mean of <span class="math inline">\(Y_i\)</span> when <span class="math inline">\(x_i = x\)</span> according to a kernel density estimate of the conditional distribution. That is, letting <span id="eq-NWdensities"><span class="math display">\[
+\begin{align}
+\hat f_{n,h}(x) &amp;= \frac{1}{nh}\sum_{i=1}^nK\Big(\frac{x_i- x}{h}\Big) \\
+\hat f_{n,h}(x,y) &amp; = \frac{1}{nh^2}\sum_{i=1}^nK\Big(\frac{Y_i - y}{h}\Big)K\Big(\frac{x_i- x}{h}\Big)
+\end{align}
+\tag{8.1}\]</span></span> for all <span class="math inline">\(x,y\)</span>, and then setting <span class="math inline">\(\hat f_{n,h}(y|x) = \hat f_{n,h}(x) / \hat f_{n,h}(x,y)\)</span>, we have <span id="eq-NWascondmean"><span class="math display">\[
+\hat m_{n,h}^{\operatorname{NW}}(x) = \int_\mathbb{R}y \hat f_{n,h}(y|x)dy,
+\tag{8.2}\]</span></span> provided the kernel <span class="math inline">\(K\)</span> satisfies <span class="math inline">\(\int_\mathbb{R}K(u)du = 1\)</span> and <span class="math inline">\(\int_\mathbb{R}u K(u)du = 0\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Derivation of <a href="#eq-NWascondmean" class="quarto-xref">Equation&nbsp;<span>8.2</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We may write <span class="math display">\[
+\begin{align}
+\int_\mathbb{R}y \hat f_{n,h}(y|x)dy &amp;= \frac{1}{\hat f_{n,h}(x)}\int_\mathbb{R}y \hat f_{n,h}(x,y)dy\\
+&amp;= \frac{1}{\hat f_{n,h}(x)}\sum_{i=1}^n K((x_i- x)/h)\frac{1}{h}\int_\mathbb{R}y K((Y_i - y)/h)dy \\
+&amp;= \frac{\sum_{i=1}^n Y_iK((x_i - x)/h)}{\sum_{j=1}^nK((x_j - x)/h)},
+\end{align}
+\]</span> since for each <span class="math inline">\(i=1,\dots,n\)</span> we have <span class="math display">\[
+\frac{1}{h}\int_\mathbb{R}y K((Y_i - y)/h)dy  = \int_\mathbb{R}(Y_i - uh)K(u)du = Y_i,
+\]</span> by the assumptions on the kernel <span class="math inline">\(K\)</span>.</p>
+</div>
+</div>
+</div>
+<p><a href="#fig-NMdemo" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> shows the Nadaraya-Watson estimator computed on a synthetic data set under two different choices of the kernel <span class="math inline">\(K\)</span> and under three choices of the bandwidth <span class="math inline">\(h\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Epanechnikov kernel</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>epker <span class="ot">&lt;-</span> <span class="cf">function</span>(x){<span class="dv">3</span><span class="sc">/</span><span class="dv">4</span><span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> x<span class="sc">^</span><span class="dv">2</span>) <span class="sc">*</span>((x <span class="sc">&lt;=</span> <span class="dv">1</span>) <span class="sc">&amp;</span> (x <span class="sc">&gt;=</span> <span class="sc">-</span> <span class="dv">1</span>)) }</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># NW estimator</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mNW <span class="ot">&lt;-</span> <span class="cf">function</span>(x,data,K,h){</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  Wx <span class="ot">&lt;-</span> <span class="fu">K</span>((data<span class="sc">$</span>X <span class="sc">-</span> x)<span class="sc">/</span>h) <span class="sc">/</span> <span class="fu">sum</span>(<span class="fu">K</span>((data<span class="sc">$</span>X <span class="sc">-</span> x)<span class="sc">/</span>h))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  mNWx <span class="ot">&lt;-</span> <span class="fu">sum</span>(Wx<span class="sc">*</span>data<span class="sc">$</span>Y)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(mNWx)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># true function m</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="dv">5</span><span class="sc">*</span>x<span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">+</span> x)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> (<span class="dv">5</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span>x</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># generate data</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">runif</span>(n)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">m</span>(X) <span class="sc">+</span> e</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">X =</span> X,<span class="at">Y =</span> Y)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># plot NW estimator at two choices of kernel and three choices of bandwidth</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">mar=</span> <span class="fu">c</span>(<span class="fl">2.1</span>,<span class="fl">2.1</span>,<span class="fl">1.1</span>,<span class="fl">1.1</span>))</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">length=</span><span class="dv">200</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>hh <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.02</span>,<span class="fl">0.05</span>,<span class="fl">0.10</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>KK <span class="ot">&lt;-</span> <span class="fu">list</span>(epker, dnorm)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">545</span>,<span class="dv">1</span>),<span class="fu">rgb</span>(<span class="fl">0.545</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    mNWx <span class="ot">&lt;-</span> <span class="fu">sapply</span>(x,<span class="at">FUN=</span>mNW,<span class="at">data=</span>data,<span class="at">h=</span>hh[j],<span class="at">K=</span>KK[[k]])</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(Y<span class="sc">~</span>X, <span class="at">col =</span> <span class="st">"gray"</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(<span class="fu">m</span>(x)<span class="sc">~</span>x)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(mNWx<span class="sc">~</span>x,<span class="at">col=</span>cols[k])</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-NMdemo" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Six panels with scatterplots and curves">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-NMdemo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="NWestimator_files/figure-html/fig-NMdemo-1.png" class="img-fluid figure-img" alt="Six panels with scatterplots and curves" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NMdemo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.1: Nadaraya-Watson estimator under two choices of the kernel function <span class="math inline">\(K\)</span> (top row Epanechnikov, bottom row Gaussian), and three choices of the bandwith <span class="math inline">\(h\)</span> (increasing from left to right) on a synthetic data set.
+</figcaption>
 </figure>
 </div>
-<p>This is an eBook of notes for a graduate-level nonparametric statistics course I have taught a few times at the University of South Carolina.</p>
-<p>You see a map above charting the topics treated in this book, which I have entitled “Some of Nonparametric Statistics”, in a not-so-subtle riff on the title of Larry Wasserman’s famous book “All of Nonparametric Statistics”; see <span class="citation" data-cites="wasserman2006all">Wasserman (<a href="references.html#ref-wasserman2006all" role="doc-biblioref">2006</a>)</span>. I have intentionally left the summit unlabeled to emphasize that I do not presume to have covered, in any sense, “all” of nonparametric statistics—not all that has been to this date learned, nor indeed all that is yet to be learned in this realm.</p>
-<p>I must be forgiving, nevertheless, of Wasserman’s presumption, as these notes contain much that is adapted from his work, which served as a compass during my own journey through these topics. Another pointer to True North was the book “Introduction to Nonparametric Estimation” by Alexander Tsybakov, see <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>.</p>
-<p>I find myself indebted to Tsybakov not only for bringing into the world such a book, but also indebted to him personally for the great forbearance he demonstrated on an occasion which he may remember to this day (or perhaps not). I, a post-doc at the Universität Mannheim, was put in charge of finding a room in which the visiting Alexander Tsybakov, traveling from Paris, would make a presentation on his latest work to the students, post-docs, and faculty composing our research group. In the callowness of youth, I asked our secretary to book a room, telling her the speaker wanted a whiteboard, as it was to be a talk in the tradition of the Chalkboard Talk long celebrated by mathematicians of the Continent. Tragically, when we arrived at the room, we found that it possessed not a vast wall-mounted whiteboard as I had imagined, but rather an easel-mounted one about the size of a bathroom mirror. So the venerable Alexander Tsybakov wrote, and then erased, and then wrote and erased for an hour, presenting all the while quite eloquently in spite of the diminutive canvas on which he was forced to cram his notations. To his great credit he never expressed annoyance and was very kind to me throughout his visit. So, let warm appreciations emanate to the man Tsybakov for his book as well as for his equanimity.</p>
-<p>Now let us begin our climb out of the vale onto the snowy heights…</p>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-tsybakov2008introduction" class="csl-entry" role="listitem">
 Tsybakov, Alexandre B. 2008. <em>Introduction to Nonparametric Estimation</em>. Springer Science &amp; Business Media.
 </div>
-<div id="ref-wasserman2006all" class="csl-entry" role="listitem">
-Wasserman, Larry. 2006. <em>All of Nonparametric Statistics</em>. Springer Science &amp; Business Media.
 </div>
-</div>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -970,10 +1112,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./mkdecurse.html" class="pagination-link" aria-label="The curse of dimensionality">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The curse of dimensionality</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./kderosenblatt.html" class="pagination-link" aria-label="Kernel density estimation">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Kernel density estimation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./NWmse.html" class="pagination-link" aria-label="Mean squared error of the Nadaraya-Watson estimator">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Mean squared error of the Nadaraya-Watson estimator</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

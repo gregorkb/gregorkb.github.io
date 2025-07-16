@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Karl Gregory">
 
-<title>Some of Nonparametric Statistics</title>
+<title>10&nbsp; The local polynomial estimator – Some of Nonparametric Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -51,7 +84,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./kderosenblatt.html" rel="next">
+<link href="./LPmse.html" rel="next">
+<link href="./NWmse.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -101,6 +135,35 @@ div.csl-indent {
   });
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -113,7 +176,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./NWestimator.html">Nonparametric regression</a></li><li class="breadcrumb-item"><a href="./LPestimator.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The local polynomial estimator</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -140,7 +203,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -199,13 +262,13 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Nonparametric regression</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./NWestimator.html" class="sidebar-item-text sidebar-link">
@@ -220,7 +283,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./LPestimator.html" class="sidebar-item-text sidebar-link">
+  <a href="./LPestimator.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The local polynomial estimator</span></span></a>
   </div>
 </li>
@@ -485,33 +548,21 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./NWestimator.html">Nonparametric regression</a></li><li class="breadcrumb-item"><a href="./LPestimator.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The local polynomial estimator</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Some of Nonparametric Statistics</h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The local polynomial estimator</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Karl Gregory </p>
-          </div>
-  </div>
     
   
     
@@ -522,30 +573,167 @@ div.csl-indent {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/nonparm_topic_map.jpg" class="img-fluid figure-img"></p>
-<figcaption>Map of topics. Photo is of <a href="https://en.wikipedia.org/wiki/File:Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg">Mount Everest.</a></figcaption>
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
+</div>
+<p>The Nadaraya-Watson estimator is well suited to regression functions <span class="math inline">\(m\)</span> belonging to a Lipschitz class. However, if <span class="math inline">\(m\)</span> belongs to a Hölder class, which we may think of as a “smoother” class of functions, an estimator called a local polynomial estimator may achieve better accuracy (in the form of a smaller bound on the <span class="math inline">\(\operatorname{MSE}\)</span>).</p>
+<p>The idea behind the local polynomial estimator is, first, to assume that the function <span class="math inline">\(m\)</span> to be estimated possesses <span class="math inline">\(k\)</span> continuous derivatives, such that for each <span class="math inline">\(x\)</span> one may write the order-<span class="math inline">\(k\)</span> Taylor expansion of <span class="math inline">\(m\)</span> around <span class="math inline">\(x\)</span> evaluated at <span class="math inline">\(x'\)</span> as <span class="math display">\[
+m_k(x';x) = m(x) + \sum_{l=1}^{k}\frac{1}{l!}m^{(l)}(x)(x'-x)^l,
+\]</span> and, second, re-writing the expansion as <span class="math display">\[
+m_k(x';x) = a_0(x) + a_1(x)(x' - x) + \dots + a_k(x)(x' - x)^k,
+\]</span> where <span class="math display">\[
+a_0(x) = m(x),\quad a_l(x) = \frac{1}{l!}m^{(l)}(x),\quad l = 1,\dots,k,
+\]</span> to estimate these coefficients by minimizing the criterion <span id="eq-LPobjective"><span class="math display">\[
+\sum_{i=1}^n \Big[Y_i - \Big(t_0 + \sum_{l=1}^kt_l\Big(\frac{x_i - x}{h}\Big)^l\Big)\Big]^2K\Big(\frac{x_i - x}{h}\Big)
+\tag{10.1}\]</span></span> over <span class="math inline">\(t_0,t_1,\dots,t_k\)</span>. Denoting the minimizers of the above as <span class="math inline">\(\hat a_0(x),\hat a_1(x),\dots,\hat a_k(x)\)</span>, one lastly defines the order <span class="math inline">\(k\)</span> local polynomial estimator of <span class="math inline">\(m(x)\)</span> as <span class="math display">\[
+\hat m_{n,h}^{\operatorname{LP}(k)}(x) = \hat a_0(x).
+\]</span></p>
+<p>The strategy is therefore to approximate <span class="math inline">\(m(x)\)</span> with a polynomial function of order <span class="math inline">\(k\)</span> and then to estimate its coefficients using data “local” to the point <span class="math inline">\(x\)</span>, where a kernel <span class="math inline">\(K\)</span> and bandwidth <span class="math inline">\(h\)</span> are selected to place higher weight on data pairs for which <span class="math inline">\(x_i\)</span> is nearer the point <span class="math inline">\(x\)</span>. Afterwards, one discards the coefficients belonging to higher order terms, keeping only the estimate of the coefficient representing the actual target of estimation, <span class="math inline">\(a_0(x) = m(x)\)</span>.</p>
+<p>In order to compute the local polynomial estimator, one may define for each <span class="math inline">\(x\)</span> the <span class="math inline">\(n \times (k+1)\)</span> matrix <span class="math display">\[
+\mathbf{U}_x = \Big[ \Big(\frac{x_i - x}{h}\Big)^l\Big]_{1 \leq i \leq n, 0 \leq l \leq k}
+\]</span> as well as the diagonal matrix <span class="math display">\[
+\mathbf{K}_x = \operatorname{diag}\Big(K\Big(\frac{x_i - x}{h}\Big), i = 1,\dots,n\Big)
+\]</span> and the vector <span class="math inline">\(\mathbf{Y}= (Y_1,\dots,Y_n)^T\)</span>. Then <span class="math inline">\(\hat m_{n,h}^{\operatorname{LP}(k)}(x)\)</span> may be obtained as the first entry of the <span class="math inline">\((k+1)\times 1\)</span> vector <span id="eq-LPwls"><span class="math display">\[
+\hat{\mathbf{a}}_x = (\mathbf{U}_x^T\mathbf{K}_x\mathbf{U}_x)^{-1} \mathbf{U}_x^T\mathbf{K}_x\mathbf{Y}.
+\tag{10.2}\]</span></span> The above can be seen after re-writing the minimand in <a href="#eq-LPobjective" class="quarto-xref">Equation&nbsp;<span>10.1</span></a> in matrix form in terms of <span class="math inline">\(\mathbf{U}_x\)</span>, <span class="math inline">\(\mathbf{K}_x\)</span>, and <span class="math inline">\(\mathbf{Y}\)</span>.</p>
+<div id="lem-LPlinear" class="theorem lemma">
+<p><span class="theorem-title"><strong>Lemma 10.1 (Local polynomial estimator as a linear estimator)</strong></span> Noting that <span class="math inline">\(\mathbf{U}_x = \mathbf{1}\)</span> in the case <span class="math inline">\(k=0\)</span> and partitioning <span class="math inline">\(\mathbf{U}_x\)</span> as <span class="math inline">\(\mathbf{U}_x = [\mathbf{1}~ \tilde{\mathbf{U}}_x]\)</span> in the case <span class="math inline">\(k \geq 1\)</span>, where <span class="math inline">\(\tilde{\mathbf{U}}_x = [((x_i - x)/h)^l]_{1 \leq i \leq n, 1 \leq l \leq k}\)</span>, define the vector <!-- $$ --> <!-- \Rmat_x = \left\{\begin{array}{ll} --> <!-- \Kmat_x, & k = 0\\ --> <!-- \Kmat_x - \Kmat_x \tilde{\Umat}_x(\tilde{\Umat}_x^T\Kmat_x\tilde{\Umat}_x)^{-1}\tilde{\Umat}_x\Kmat_x, & k \geq 1.\end{array}\right. --> <!-- $$ --></p>
+<p><span class="math display">\[
+\mathbf{r}_x = \left\{\begin{array}{ll}
+\mathbf{k}_x, &amp; k = 0\\
+\mathbf{k}_x - \mathbf{K}_x \tilde{\mathbf{U}}_x(\tilde{\mathbf{U}}_x^T\mathbf{K}_x\tilde{\mathbf{U}}_x)^{-1}\tilde{\mathbf{U}}_x\mathbf{k}_x, &amp; k \geq 1,\end{array}\right.
+\]</span> where <span class="math inline">\(\mathbf{k}_x\)</span> is the <span class="math inline">\(n\times 1\)</span> vector with entries <span class="math inline">\(K((x_i - x)/h)\)</span>, <span class="math inline">\(i = 1,\dots,n\)</span>. <!-- Then --> <!-- $$ --> <!-- \hat m_{n,h}^{\LP(k)}(x) = \frac{\onevec^T\Rmat_x\Ymat}{\onevec^T\Rmat_x\onevec} = \sum_{i=1}^n W_{ni}(x)Y_i, --> <!-- $$ --> <!-- where $W_{ni}(x) = \evec_i^T\Rmat_x\onevec / \onevec^T\Rmat_x\onevec$, where $\evec_i$ is the $n\times 1$ unit vector with entry $i$ equal to $1$. --> Then <span class="math display">\[
+\hat m_{n,h}^{\operatorname{LP}(k)}(x) = \frac{\mathbf{r}_x^T\mathbf{Y}}{\mathbf{r}_x^T\mathbf{1}} = \sum_{i=1}^n W_{ni}(x)Y_i,
+\]</span> where, for each <span class="math inline">\(i=1,\dots,n\)</span>, the weight <span class="math inline">\(W_{ni}(x)\)</span> is given by entry <span class="math inline">\(i\)</span> of the vector <span class="math inline">\((\mathbf{r}_x^T\mathbf{1})^{-1}\mathbf{r}_x\)</span>.</p>
+</div>
+<p>A similar representation of the local polynomial estimator is found in <span class="citation" data-cites="xia2002asymptotic">Xia and Li (<a href="references.html#ref-xia2002asymptotic" role="doc-biblioref">2002</a>)</span>.</p>
+<!-- From @eq-LPwls, we see that we may write the local polynomial estimator in the form -->
+<!-- $$ -->
+<!-- \hat m_{n,h}^{\LP(k)}(x) = \sum_{i=1}^nW_{ni}(x)Y_i, -->
+<!-- $$ -->
+<!-- where the weights $W_{n,i}(x)$ are given by  -->
+<!-- $$ -->
+<!-- W_{ni}(x) =  \evec_1^T(\Umat_x^T\Kmat_x\Umat_x)^{-1}\Big[1 ~~\Big(\frac{x_i - x}{h}\Big) ~~\cdots ~~ \Big(\frac{x_i - x}{h}\Big)^k~\Big]^T K\Big(\frac{x_i - x}{h}\Big). -->
+<!-- $$ -->
+<!-- where $\evec_1$ is the $(k+1)\times 1$ unit vector with first entry equal to $1$. -->
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof of Lemma <a href="#lem-LPlinear" class="quarto-xref">Lemma&nbsp;<span>10.1</span></a>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The case <span class="math inline">\(k=0\)</span> corresponds to the Nadaraya-Watson estimator. For <span class="math inline">\(k \geq 1\)</span>, write <span class="math display">\[
+\mathbf{U}^T_x \mathbf{K}_x \mathbf{U}_x = \left[\begin{array}{cc}
+\mathbf{1}^T\mathbf{K}_n \mathbf{1}&amp; \mathbf{1}^T\mathbf{K}_x\tilde{\mathbf{U}}_x\\
+\tilde{\mathbf{U}}_x\mathbf{K}_x \mathbf{1}&amp; \tilde{\mathbf{U}}^T\mathbf{K}_x\tilde{\mathbf{U}}_x
+\end{array}\right]
+\]</span> and use a block inversion formula to take the inverse <span class="math inline">\((\mathbf{U}^T_x \mathbf{K}_x \mathbf{U}_x)^{-1}\)</span>. The result follows from writing <span class="math display">\[
+\hat m_{n,h}^{\operatorname{LP}(k)}(x) = \mathbf{e}_1^T(\mathbf{U}_x^T\mathbf{K}_x\mathbf{U}_x)^{-1} \mathbf{U}_x^T\mathbf{K}_x\mathbf{Y},
+\]</span> following <a href="#eq-LPwls" class="quarto-xref">Equation&nbsp;<span>10.2</span></a>, where <span class="math inline">\(\mathbf{e}_1\)</span> is the <span class="math inline">\((k+1)\times 1\)</span> unit vector with the first entry equal to <span class="math inline">\(1\)</span>.</p>
+</div>
+</div>
+</div>
+<p>Note that if <span class="math inline">\(k=0\)</span>, the local polynomial estimator reduces to the Nadaraya-Watson estimator, which can be formulated as <span class="math display">\[
+\hat m_{n,h}^\operatorname{NW}(x) = \underset{t_0}{\operatorname{argmin}} \sum_{i=1}^n(Y_i - t_0)^2K\Big(\frac{x_i - x}{h}\Big).
+\]</span></p>
+<p><a href="#fig-LPdemo" class="quarto-xref">Figure&nbsp;<span>10.1</span></a> shows the local polynomial estimator computed on a synthetic data set under two choices of the kernel and with <span class="math inline">\(k=0,1,2\)</span>, where the <span class="math inline">\(k=0\)</span> estimator corresponds to the Nadaraya-Watson estimator. For this data set we note that with order <span class="math inline">\(k=2\)</span> or <span class="math inline">\(k=3\)</span> the local polynomial estimator appears to do a better job reaching the peaks and valleys of the function than with order <span class="math inline">\(k=0\)</span> or <span class="math inline">\(k=1\)</span>. We observe, however, that the local polynomial estimator can exhibit some erratic behavior at the boundary of the interval over which <span class="math inline">\(x_1,\dots,x_n\)</span> are observed.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set the random seed so that we get a data set which causes erratic boundary behavior</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Epanechnikov kernel</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>epker <span class="ot">&lt;-</span> <span class="cf">function</span>(x){<span class="dv">3</span><span class="sc">/</span><span class="dv">4</span><span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> x<span class="sc">^</span><span class="dv">2</span>) <span class="sc">*</span>((x <span class="sc">&lt;=</span> <span class="dv">1</span>) <span class="sc">&amp;</span> (x <span class="sc">&gt;=</span> <span class="sc">-</span> <span class="dv">1</span>)) }</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># LP estimator</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>mLP <span class="ot">&lt;-</span> <span class="cf">function</span>(x,data,K,h,k){</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  kx <span class="ot">&lt;-</span> <span class="fu">K</span>((data<span class="sc">$</span>X <span class="sc">-</span> x)<span class="sc">/</span>h)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(k <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    Wx <span class="ot">&lt;-</span> kx <span class="sc">/</span> <span class="fu">sum</span>(kx)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span>(k <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    Ux <span class="ot">&lt;-</span> <span class="fu">outer</span>((data<span class="sc">$</span>X <span class="sc">-</span> x)<span class="sc">/</span>h,<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>k),<span class="at">FUN =</span> <span class="st">"^"</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    rx <span class="ot">&lt;-</span> kx <span class="sc">-</span>  kx<span class="sc">*</span>Ux <span class="sc">%*%</span> <span class="fu">solve</span>(<span class="fu">t</span>(kx<span class="sc">*</span>Ux) <span class="sc">%*%</span> Ux) <span class="sc">%*%</span> <span class="fu">t</span>(Ux) <span class="sc">%*%</span> kx</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    Wx <span class="ot">&lt;-</span> rx <span class="sc">/</span> <span class="fu">sum</span>(rx)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  mLPx <span class="ot">&lt;-</span> <span class="fu">sum</span>(Wx<span class="sc">*</span>data<span class="sc">$</span>Y)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(mLPx)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># true function m</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="dv">5</span><span class="sc">*</span>x<span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">+</span> x)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> (<span class="dv">5</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span>x</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># generate data</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">runif</span>(n)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">m</span>(X) <span class="sc">+</span> e</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">X =</span> X,<span class="at">Y =</span> Y)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># plot LP estimator at two choices of kernel and three choices of the order k</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="fl">2.1</span>,<span class="fl">2.1</span>,<span class="fl">1.1</span>,<span class="fl">1.1</span>))</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">length=</span><span class="dv">200</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>kk <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>KK <span class="ot">&lt;-</span> <span class="fu">list</span>(epker, dnorm)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">545</span>,<span class="dv">1</span>),<span class="fu">rgb</span>(<span class="fl">0.545</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(l <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>){</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(Y<span class="sc">~</span>X, <span class="at">col =</span> <span class="st">"gray"</span>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(<span class="fu">m</span>(x)<span class="sc">~</span>x)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(kk)){</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    mLPx <span class="ot">&lt;-</span> <span class="fu">sapply</span>(x,<span class="at">FUN=</span>mLP,<span class="at">data=</span>data,<span class="at">K=</span>KK[[l]],<span class="at">h=</span>h,<span class="at">k=</span>kk[j])</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(mLPx<span class="sc">~</span>x,<span class="at">col=</span>cols[l],<span class="at">lty=</span>j)</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">legend</span>(<span class="at">x =</span> <span class="fu">grconvertX</span>(<span class="at">from=</span><span class="st">"nfc"</span>, <span class="at">to=</span><span class="st">"user"</span>, <span class="fl">0.15</span>),</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="fu">grconvertY</span>(<span class="at">from=</span><span class="st">"nfc"</span>, <span class="at">to=</span><span class="st">"user"</span>, <span class="fl">0.3</span>),</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>         <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(kk)),</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>         <span class="at">col =</span> cols[l],</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>         <span class="at">legend =</span> <span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">"k = "</span>,kk,<span class="at">sep=</span><span class="st">""</span>)),</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>         <span class="at">bty =</span> <span class="st">"n"</span>)</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-LPdemo" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two panels with scatterplots and curves">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-LPdemo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="LPestimator_files/figure-html/fig-LPdemo-1.png" class="img-fluid figure-img" alt="Two panels with scatterplots and curves" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-LPdemo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.1: Local polynomial estimator of order <span class="math inline">\(k=0,1,2\)</span> on a synthetic data set with Epanechnikov (left) and Gaussian (right) kernel under a fixed bandwidth.
+</figcaption>
 </figure>
 </div>
-<p>This is an eBook of notes for a graduate-level nonparametric statistics course I have taught a few times at the University of South Carolina.</p>
-<p>You see a map above charting the topics treated in this book, which I have entitled “Some of Nonparametric Statistics”, in a not-so-subtle riff on the title of Larry Wasserman’s famous book “All of Nonparametric Statistics”; see <span class="citation" data-cites="wasserman2006all">Wasserman (<a href="references.html#ref-wasserman2006all" role="doc-biblioref">2006</a>)</span>. I have intentionally left the summit unlabeled to emphasize that I do not presume to have covered, in any sense, “all” of nonparametric statistics—not all that has been to this date learned, nor indeed all that is yet to be learned in this realm.</p>
-<p>I must be forgiving, nevertheless, of Wasserman’s presumption, as these notes contain much that is adapted from his work, which served as a compass during my own journey through these topics. Another pointer to True North was the book “Introduction to Nonparametric Estimation” by Alexander Tsybakov, see <span class="citation" data-cites="tsybakov2008introduction">Tsybakov (<a href="references.html#ref-tsybakov2008introduction" role="doc-biblioref">2008</a>)</span>.</p>
-<p>I find myself indebted to Tsybakov not only for bringing into the world such a book, but also indebted to him personally for the great forbearance he demonstrated on an occasion which he may remember to this day (or perhaps not). I, a post-doc at the Universität Mannheim, was put in charge of finding a room in which the visiting Alexander Tsybakov, traveling from Paris, would make a presentation on his latest work to the students, post-docs, and faculty composing our research group. In the callowness of youth, I asked our secretary to book a room, telling her the speaker wanted a whiteboard, as it was to be a talk in the tradition of the Chalkboard Talk long celebrated by mathematicians of the Continent. Tragically, when we arrived at the room, we found that it possessed not a vast wall-mounted whiteboard as I had imagined, but rather an easel-mounted one about the size of a bathroom mirror. So the venerable Alexander Tsybakov wrote, and then erased, and then wrote and erased for an hour, presenting all the while quite eloquently in spite of the diminutive canvas on which he was forced to cram his notations. To his great credit he never expressed annoyance and was very kind to me throughout his visit. So, let warm appreciations emanate to the man Tsybakov for his book as well as for his equanimity.</p>
-<p>Now let us begin our climb out of the vale onto the snowy heights…</p>
+</div>
+</div>
+<p>We next present a bound on the <span class="math inline">\(\operatorname{MSE}\)</span> of the local polynomial estimator when the true regression function lies in a Hölder class.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-tsybakov2008introduction" class="csl-entry" role="listitem">
-Tsybakov, Alexandre B. 2008. <em>Introduction to Nonparametric Estimation</em>. Springer Science &amp; Business Media.
-</div>
-<div id="ref-wasserman2006all" class="csl-entry" role="listitem">
-Wasserman, Larry. 2006. <em>All of Nonparametric Statistics</em>. Springer Science &amp; Business Media.
+<div id="ref-xia2002asymptotic" class="csl-entry" role="listitem">
+Xia, Yingcun, and Wai Keung Li. 2002. <span>“Asymptotic Behavior of Bandwidth Selected by the Cross-Validation Method for Local Polynomial Fitting.”</span> <em>Journal of Multivariate Analysis</em> 83 (2): 265–87.
 </div>
 </div>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -970,10 +1158,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./NWmse.html" class="pagination-link" aria-label="Mean squared error of the Nadaraya-Watson estimator">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Mean squared error of the Nadaraya-Watson estimator</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./kderosenblatt.html" class="pagination-link" aria-label="Kernel density estimation">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Kernel density estimation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./LPmse.html" class="pagination-link" aria-label="Mean squared error of the local polynomial estimator">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mean squared error of the local polynomial estimator</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
