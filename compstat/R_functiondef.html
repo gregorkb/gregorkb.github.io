@@ -290,6 +290,10 @@ window.Quarto = {
   </ul></li>
   <li><a href="#functions-involving-conditional-programming" id="toc-functions-involving-conditional-programming" class="nav-link" data-scroll-target="#functions-involving-conditional-programming">Functions involving conditional programming</a></li>
   <li><a href="#the-ever-handy-ifelse-function" id="toc-the-ever-handy-ifelse-function" class="nav-link" data-scroll-target="#the-ever-handy-ifelse-function">The ever-handy ifelse() function</a></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a>
+  <ul class="collapse">
+  <li><a href="#write-code" id="toc-write-code" class="nav-link" data-scroll-target="#write-code">Write code</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -321,6 +325,10 @@ window.Quarto = {
 </header>
 
 
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
+</div>
 <p>An essential part of programming is learning how to write original functions so that other people or you yourself can use them.</p>
 <p>A function in R is a type of object, and we can create new functions just as we can create new vectors or matrices:</p>
 <div class="cell">
@@ -716,8 +724,24 @@ f(x) = \left\{\begin{array}{ll}
 <pre><code> [1] "pass" "fail" "pass" "fail" "pass" "fail" "pass" "pass" "pass" "fail"</code></pre>
 </div>
 </div>
+</section>
+<section id="practice" class="level2">
+<h2 class="anchored" data-anchor-id="practice">Practice</h2>
+<p>Practice writing code and anticipating the output of code with the following exercises.</p>
+<section id="write-code" class="level3">
+<h3 class="anchored" data-anchor-id="write-code">Write code</h3>
+<ol type="1">
+<li>Write an R function to evaluate the soft-thresholding function <span class="math display">\[
+  S(x,\lambda) = \left\{\begin{array}{lc}
+  x + \lambda, &amp; x &lt; - \lambda\\
+  0,&amp; -\lambda \leq x \leq \lambda\\
+  x - \lambda, &amp; \lambda &lt; x,
+  \end{array}\right.
+  \]</span> at any <span class="math inline">\(x \in \mathbb{R}\)</span> for a user-specified <span class="math inline">\(\lambda &gt; 0\)</span>.</li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

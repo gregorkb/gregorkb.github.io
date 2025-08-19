@@ -336,6 +336,10 @@ window.Quarto = {
 </header>
 
 
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
+</div>
 <p>The while uses the same logic as the for loop, but it is for the special situation in which one does not know how many times one will need to execute the commands inside the loop. When would this be the case?</p>
 <p>It turns out that in statistics this is very often the case. Many estimators in statistics are computed as the minimizers or maximizers of complicated functions involving observed data; in many cases it is not possible to compute the minimizers or maximizers according to any formula. One must instead <em>search</em> for the minimizer or maximizer with what are called numerical methods. These usually involve selecting an arbitrary initial guess and then making updates to the guess in such a way that one can guarantee that the guess will approach the minimizer or maximizer eventually. In this situation, the number of times one will need to update the initial guess before it can be considered close to converging upon its target is unknown before one begins making the updates. So come convergence criterion is specified to stop the iteration at some point.</p>
 <p>Before diving into an example of this, let’s learn the syntax of the while loop.</p>
