@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>Importing data – Computing in Statistics</title>
+<title>Importing and formatting data – Computing in Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R_running.html">R</a></li><li class="breadcrumb-item"><a href="./R_importdata.html">Importing data</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R_running.html">R</a></li><li class="breadcrumb-item"><a href="./R_importdata.html">Importing and formatting data</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -194,7 +194,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./R_importdata.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Importing data</span></a>
+ <span class="menu-text">Importing and formatting data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R_manipulatedata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Merging, stacking, reshaping, and aggregating data</span></a>
   </div>
 </li>
       </ul>
@@ -261,17 +267,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#dates" id="toc-dates" class="nav-link" data-scroll-target="#dates">Dates</a></li>
   <li><a href="#text-processing" id="toc-text-processing" class="nav-link" data-scroll-target="#text-processing">Text processing</a></li>
   <li><a href="#date-times" id="toc-date-times" class="nav-link" data-scroll-target="#date-times">Date-times</a></li>
+  <li><a href="#sorting-a-data-frame" id="toc-sorting-a-data-frame" class="nav-link" data-scroll-target="#sorting-a-data-frame">Sorting a data frame</a></li>
   </ul></li>
-  <li><a href="#merging-data-sets" id="toc-merging-data-sets" class="nav-link" data-scroll-target="#merging-data-sets">Merging data sets</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R_running.html">R</a></li><li class="breadcrumb-item"><a href="./R_importdata.html">Importing data</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R_running.html">R</a></li><li class="breadcrumb-item"><a href="./R_importdata.html">Importing and formatting data</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Importing data</h1>
+<h1 class="title">Importing and formatting data</h1>
 </div>
 
 
@@ -604,17 +610,17 @@ date,wildebeest,laughing hyena,crocodile,weather,start,end,fun,guide
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>() <span class="co"># today's date</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>today</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2025-08-21"</code></pre>
+<pre><code>[1] "2025-08-22"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>today <span class="sc">-</span> <span class="dv">30</span> <span class="co"># the date 30 days ago</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2025-07-22"</code></pre>
+<pre><code>[1] "2025-07-23"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(today,<span class="at">by=</span><span class="st">"3 days"</span>,<span class="at">length =</span> <span class="dv">12</span>) <span class="co"># make a sequence of dates</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "2025-08-21" "2025-08-24" "2025-08-27" "2025-08-30" "2025-09-02"
- [6] "2025-09-05" "2025-09-08" "2025-09-11" "2025-09-14" "2025-09-17"
-[11] "2025-09-20" "2025-09-23"</code></pre>
+<pre><code> [1] "2025-08-22" "2025-08-25" "2025-08-28" "2025-08-31" "2025-09-03"
+ [6] "2025-09-06" "2025-09-09" "2025-09-12" "2025-09-15" "2025-09-18"
+[11] "2025-09-21" "2025-09-24"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">weekdays</span>(<span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"2014-07-05"</span>,<span class="st">"2017-07-05"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -629,15 +635,15 @@ date,wildebeest,laughing hyena,crocodile,weather,start,end,fun,guide
 <div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(today,<span class="st">"%m/%d/%y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "08/21/25"</code></pre>
+<pre><code>[1] "08/22/25"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(today,<span class="st">"%b %d, %Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Aug 21, 2025"</code></pre>
+<pre><code>[1] "Aug 22, 2025"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(today,<span class="st">"%B %d, %Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "August 21, 2025"</code></pre>
+<pre><code>[1] "August 22, 2025"</code></pre>
 </div>
 </div>
 <p>In the date column of the safari data set, the dates are recorded in many different formats. It takes a little bit of work to standardize the formats: Below, we use a loop to go through the entries of the date column to extract the date from each one with the <code>as.Date()</code> function. We have to list all the different formats to try by using the <code>tryFormats</code> option. Then we re-print the date in the format we want to keep. After the loop is done, we use <code>as.Date()</code> again to convert the entire vector of character strings into a column having the date class.</p>
@@ -1023,118 +1029,48 @@ attr(,"useBytes")
 </div>
 </div>
 </section>
+<section id="sorting-a-data-frame" class="level3">
+<h3 class="anchored" data-anchor-id="sorting-a-data-frame">Sorting a data frame</h3>
+<p>We can use the <code>sort_by()</code> function to sort the rows of a data frame according to the values in one (or more columns):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort_by</span>(safari, <span class="sc">~</span> date) <span class="co"># sort by the date column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        date wildebeest laughing.hyena crocodile       weather start   end
+5 1988-02-28          2              6         3 partly cloudy 04:53 14:16
+1 1999-01-13         12              0         2         sunny 07:21 16:14
+2 2001-04-28          3              1         1        cloudy 06:25 12:33
+4 2006-03-02          1             14         5     hot/sunny 07:15 15:12
+3 2010-10-15          3              6        NA         rainy 08:12  &lt;NA&gt;
+6 2015-07-14          3             12         0        cloudy 05:47 15:46
+    fun      guide       day overcast duration
+5  TRUE  B. Habing    Sunday     TRUE    09:23
+1  TRUE   J. Tebbs Wednesday    FALSE    08:53
+2  TRUE    E. Peña  Saturday     TRUE    06:08
+4  TRUE    L. Wang  Thursday    FALSE    07:57
+3 FALSE K. Gregory    Friday     TRUE     &lt;NA&gt;
+6 FALSE    Edwards   Tuesday     TRUE    09:59</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort_by</span>(safari, <span class="sc">~</span> fun <span class="sc">+</span> date) <span class="co"># sort first by fun, then by date within fun</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        date wildebeest laughing.hyena crocodile       weather start   end
+3 2010-10-15          3              6        NA         rainy 08:12  &lt;NA&gt;
+6 2015-07-14          3             12         0        cloudy 05:47 15:46
+5 1988-02-28          2              6         3 partly cloudy 04:53 14:16
+1 1999-01-13         12              0         2         sunny 07:21 16:14
+2 2001-04-28          3              1         1        cloudy 06:25 12:33
+4 2006-03-02          1             14         5     hot/sunny 07:15 15:12
+    fun      guide       day overcast duration
+3 FALSE K. Gregory    Friday     TRUE     &lt;NA&gt;
+6 FALSE    Edwards   Tuesday     TRUE    09:59
+5  TRUE  B. Habing    Sunday     TRUE    09:23
+1  TRUE   J. Tebbs Wednesday    FALSE    08:53
+2  TRUE    E. Peña  Saturday     TRUE    06:08
+4  TRUE    L. Wang  Thursday    FALSE    07:57</code></pre>
+</div>
+</div>
+
+
 </section>
-<section id="merging-data-sets" class="level2">
-<h2 class="anchored" data-anchor-id="merging-data-sets">Merging data sets</h2>
-<p>I collected the results from the 2023 and 2024 <a href="https://ultrasignup.com/results_event.aspx?did=113602">Table Rock 50k</a> by copying and pasting two tables like this into text files:</p>
-<p><img src="images/tr50k_data.png" class="img-fluid"></p>
-<p>The text files look like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">readLines</span>(<span class="at">con =</span> <span class="st">"data/tr50k_2023.txt"</span>, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "results\t1\tJames\tThompson\tAsheville\tNC\t39\tM\t1\t4:42:18\t93.55"    
- [2] "results\t2\tRobbie\tHarms\tFletcher\tNC\t30\tM\t2\t4:46:22\t87.05"       
- [3] "results\t3\tChris\tIngram\tCharlotte\tNC\t43\tM\t3\t4:47:12\t81.69"      
- [4] "results\t4\tAlex\tBlack\tMarshall\tNC\t33\tM\t4\t4:56:19\t77.94"         
- [5] "results\t5\tMark\tRebholz\tCharlotte\tNC\t33\tM\t5\t4:56:44\t88.1"       
- [6] "results\t6\tWilliam\tConnell\tAstoria\tNY\t40\tM\t6\t4:57:45\t86.15"     
- [7] "results\t7\tKyle\tBergemann\tAsheville\tNC\t31\tM\t7\t5:19:16\t83.54"    
- [8] "results\t8\tRory\tJoyce\tLenoir\tNC\t40\tM\t8\t5:19:41\t79.42"           
- [9] "results\t9\tLance\tHarden\tMoncure\tNC\t36\tM\t9\t5:21:40\t88.55"        
-[10] "results\t10\tTimothy\tCalcagni\tAsheville\tNC\t32\tM\t10\t5:25:07\t93.77"</code></pre>
-</div>
-</div>
-<p>Below we read in each text file to a data frame with the brilliant and beautiful <code>read.table()</code> function. There is no “header” in this file giving the names of the columns, so if we want nice column names we have to provide them (otherwise they will be named V1, V2, and so on), which we can do with the <code>col.names =</code> option. We can specify the classes of the columns with the <code>colClasses =</code> option; with this option we can also specify which, if any, columns we <em>don’t</em> want read in:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>tr50k_2023 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"data/tr50k_2023.txt"</span>, </span>
-<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="co"># data are tab separated</span></span>
-<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">quote =</span> <span class="st">""</span>, <span class="co"># some apparently Irish folk ran this race, with names like O'Something.  The "'" is used by default as a quote character, so this messed things up. Had to specify the option quote = "".</span></span>
-<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">col.names =</span> <span class="fu">c</span>(<span class="cn">NA</span>,</span>
-<span id="cb118-5"><a href="#cb118-5" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"Place"</span>,</span>
-<span id="cb118-6"><a href="#cb118-6" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"First"</span>,</span>
-<span id="cb118-7"><a href="#cb118-7" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"Last"</span>, </span>
-<span id="cb118-8"><a href="#cb118-8" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"City"</span>, </span>
-<span id="cb118-9"><a href="#cb118-9" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"State"</span>, </span>
-<span id="cb118-10"><a href="#cb118-10" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"Age"</span>, </span>
-<span id="cb118-11"><a href="#cb118-11" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"Division"</span>, </span>
-<span id="cb118-12"><a href="#cb118-12" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"DP"</span>, </span>
-<span id="cb118-13"><a href="#cb118-13" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"Time"</span>, </span>
-<span id="cb118-14"><a href="#cb118-14" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"Rank"</span>),</span>
-<span id="cb118-15"><a href="#cb118-15" aria-hidden="true" tabindex="-1"></a>                         <span class="at">colClasses=</span> <span class="fu">c</span>(<span class="st">"NULL"</span>, <span class="co"># put "NULL" if you want to skip a column! We don't want the first one.</span></span>
-<span id="cb118-16"><a href="#cb118-16" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"numeric"</span>,</span>
-<span id="cb118-17"><a href="#cb118-17" aria-hidden="true" tabindex="-1"></a>                                       <span class="fu">rep</span>(<span class="st">"character"</span>,<span class="dv">4</span>),</span>
-<span id="cb118-18"><a href="#cb118-18" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"numeric"</span>,</span>
-<span id="cb118-19"><a href="#cb118-19" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"character"</span>,</span>
-<span id="cb118-20"><a href="#cb118-20" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"numeric"</span>,</span>
-<span id="cb118-21"><a href="#cb118-21" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"character"</span>,</span>
-<span id="cb118-22"><a href="#cb118-22" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"numeric"</span>))</span>
-<span id="cb118-23"><a href="#cb118-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-24"><a href="#cb118-24" aria-hidden="true" tabindex="-1"></a><span class="co"># read the 2024 data in the same way</span></span>
-<span id="cb118-25"><a href="#cb118-25" aria-hidden="true" tabindex="-1"></a>tr50k_2024 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"data/tr50k_2024.txt"</span>, </span>
-<span id="cb118-26"><a href="#cb118-26" aria-hidden="true" tabindex="-1"></a>                         <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>,</span>
-<span id="cb118-27"><a href="#cb118-27" aria-hidden="true" tabindex="-1"></a>                         <span class="at">quote =</span> <span class="st">""</span>, </span>
-<span id="cb118-28"><a href="#cb118-28" aria-hidden="true" tabindex="-1"></a>                         <span class="at">col.names =</span> <span class="fu">c</span>(<span class="cn">NA</span>,</span>
-<span id="cb118-29"><a href="#cb118-29" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"Place"</span>,</span>
-<span id="cb118-30"><a href="#cb118-30" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"First"</span>,</span>
-<span id="cb118-31"><a href="#cb118-31" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"Last"</span>, </span>
-<span id="cb118-32"><a href="#cb118-32" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"City"</span>, </span>
-<span id="cb118-33"><a href="#cb118-33" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"State"</span>, </span>
-<span id="cb118-34"><a href="#cb118-34" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"Age"</span>, </span>
-<span id="cb118-35"><a href="#cb118-35" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"Division"</span>, </span>
-<span id="cb118-36"><a href="#cb118-36" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"DP"</span>, </span>
-<span id="cb118-37"><a href="#cb118-37" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"Time"</span>, </span>
-<span id="cb118-38"><a href="#cb118-38" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"Rank"</span>),</span>
-<span id="cb118-39"><a href="#cb118-39" aria-hidden="true" tabindex="-1"></a>                         <span class="at">colClasses=</span> <span class="fu">c</span>(<span class="st">"NULL"</span>,</span>
-<span id="cb118-40"><a href="#cb118-40" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"numeric"</span>,</span>
-<span id="cb118-41"><a href="#cb118-41" aria-hidden="true" tabindex="-1"></a>                                       <span class="fu">rep</span>(<span class="st">"character"</span>,<span class="dv">4</span>),</span>
-<span id="cb118-42"><a href="#cb118-42" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"numeric"</span>,</span>
-<span id="cb118-43"><a href="#cb118-43" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"character"</span>,</span>
-<span id="cb118-44"><a href="#cb118-44" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"numeric"</span>,</span>
-<span id="cb118-45"><a href="#cb118-45" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"character"</span>,</span>
-<span id="cb118-46"><a href="#cb118-46" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"numeric"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now, a handful of the long-distance runner types actually ran the Table Rock 50k in 2023 <em>and</em> 2024. Suppose we want to make a data set of just these runners, so we can compare their performances in the two years.</p>
-<p>To <em>merge</em> the data sets, we need a column which will serve as a unique identifier for each runner. Using just the first name or just the last name is probably a bad idea, since there will likely be duplicates of these, so let’s make a new column in each data set containing the runners’ full names. We can use the <code>paste()</code> to constructe the full names.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>tr50k_2024<span class="sc">$</span>Full <span class="ot">&lt;-</span> <span class="fu">paste</span>(tr50k_2024<span class="sc">$</span>First,tr50k_2024<span class="sc">$</span>Last)</span>
-<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>tr50k_2023<span class="sc">$</span>Full <span class="ot">&lt;-</span> <span class="fu">paste</span>(tr50k_2023<span class="sc">$</span>First,tr50k_2023<span class="sc">$</span>Last)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>From here we will use the <code>merge()</code> function.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>tr50k_merged <span class="ot">&lt;-</span> <span class="fu">merge</span>(tr50k_2023,tr50k_2024,</span>
-<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">by =</span> <span class="st">"Full"</span>, </span>
-<span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">suffixes =</span> <span class="fu">c</span>(<span class="st">"_2023"</span>,<span class="st">"_2024"</span>))</span>
-<span id="cb120-4"><a href="#cb120-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-5"><a href="#cb120-5" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(tr50k_merged, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">"Full"</span>,<span class="st">"Place_2023"</span>,<span class="st">"Place_2024"</span>,<span class="st">"Time_2023"</span>,<span class="st">"Time_2024"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>               Full Place_2023 Place_2024 Time_2023 Time_2024
-1        Adam Corey         12          9   5:29:05   5:31:55
-2      Amy McDowell        173        192   9:15:15   9:44:09
-3       Andrew Hall         44         39   6:29:50   6:25:33
-4      Bryson Peter         47         45   6:31:10   6:44:51
-5     Daniel Merlin         49         15   6:33:04   5:42:52
-6      Daniel Wells        136        150   7:57:52   8:35:15
-7     David Nielsen         25         27   5:55:03   6:01:44
-8      Hunter Steed         56         53   6:35:50   6:52:47
-9           Ivan Ng         57         76   6:36:15   7:13:36
-10     Jake Hinshaw         59         40   6:39:17   6:25:35
-11    Jared Wingler         99         89   7:29:25   7:27:15
-12     Kati Cushman        133         64   7:55:59   6:59:52
-13   Liana Hastings        108        157   7:33:00   8:41:13
-14    Matthew Steed         27         12   5:57:55   5:41:34
-15    Michelle Gray         34         47   6:17:49   6:48:08
-16 Patrick Donoghue         21         26   5:50:24   5:55:23
-17        Rick Gray        186        203   9:58:03  10:18:03
-18         Rio Kira        141        127   8:01:30   8:13:46
-19        Ryan Ford         67        107   6:50:58   7:54:12
-20    Spencer Wells        137        154   7:57:55   8:38:07
-21   Timothy Newell         94         55   7:20:10   6:55:19
-22      Travis Pace         24         21   5:53:17   5:46:06
-23     Tyson Jeffus         48         32   6:32:04   6:07:53</code></pre>
-</div>
-</div>
-
-
 </section>
 
 </main> <!-- /main -->

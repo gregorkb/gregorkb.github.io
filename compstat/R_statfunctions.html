@@ -243,7 +243,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./R_importdata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Importing data</span></a>
+ <span class="menu-text">Importing and formatting data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R_manipulatedata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Merging, stacking, reshaping, and aggregating data</span></a>
   </div>
 </li>
       </ul>
@@ -347,15 +353,15 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">50</span>) <span class="co"># generate 50 pseudo-random Uniform(0,1) realizations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.23150594 0.22962344 0.82595249 0.38021315 0.39910785 0.92147683
- [7] 0.53143241 0.60931945 0.82629092 0.51672875 0.03754097 0.63833545
-[13] 0.04896561 0.91346903 0.15315860 0.90940665 0.54813720 0.92775567
-[19] 0.68777312 0.06716711 0.96057420 0.34677929 0.64608052 0.10905049
-[25] 0.20002822 0.48923159 0.66864690 0.34683004 0.68777899 0.33183405
-[31] 0.29594455 0.91897889 0.41781041 0.75935529 0.24942753 0.67131175
-[37] 0.33291249 0.41401738 0.49194118 0.77939907 0.33850279 0.43480428
-[43] 0.55395958 0.70855695 0.57794917 0.95353147 0.83208930 0.51465577
-[49] 0.98001497 0.86029084</code></pre>
+<pre><code> [1] 0.482863030 0.209184492 0.193696055 0.402800542 0.645574328 0.165383565
+ [7] 0.574715146 0.232515640 0.322126505 0.162848420 0.119141611 0.529849206
+[13] 0.555797880 0.812390951 0.961421055 0.936051921 0.343872617 0.178019748
+[19] 0.381642893 0.887393071 0.748431329 0.462016750 0.262691758 0.376875277
+[25] 0.889157990 0.347075723 0.059577780 0.618702882 0.004847557 0.160983357
+[31] 0.956157852 0.128339107 0.103630452 0.582426095 0.895102931 0.493830282
+[37] 0.687738711 0.605275023 0.662197495 0.013020676 0.369193482 0.843896155
+[43] 0.177168843 0.390675913 0.770176403 0.989782802 0.459732375 0.841535998
+[49] 0.867399236 0.151639585</code></pre>
 </div>
 </div>
 <p>Once one has obtained a random realization on the interval <span class="math inline">\((0,1)\)</span>, one can transform it into a realization of a random variable from any other distribution by passing it through the quantile function of that distribution. Specifically, suppose <span class="math inline">\(X\)</span> is a random variable with cdf given by <span class="math display">\[
