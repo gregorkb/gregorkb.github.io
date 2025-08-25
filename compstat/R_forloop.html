@@ -102,6 +102,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -193,6 +222,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./R_MCsim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Monte Carlo simulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./R_importdata.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Importing and formatting data</span></a>
   </div>
@@ -257,11 +292,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#writing-a-for-loop" id="toc-writing-a-for-loop" class="nav-link active" data-scroll-target="#writing-a-for-loop">Writing a for loop</a>
   <ul class="collapse">
-  <li><a href="#a-for-loop-to-compute-a-sum" id="toc-a-for-loop-to-compute-a-sum" class="nav-link" data-scroll-target="#a-for-loop-to-compute-a-sum">A for loop to compute a sum</a></li>
+  <li><a href="#for-loop-to-compute-a-sum" id="toc-for-loop-to-compute-a-sum" class="nav-link" data-scroll-target="#for-loop-to-compute-a-sum">For loop to compute a sum</a></li>
   <li><a href="#double-for-loop-for-sorting-a-vector" id="toc-double-for-loop-for-sorting-a-vector" class="nav-link" data-scroll-target="#double-for-loop-for-sorting-a-vector">Double for loop for sorting a vector</a></li>
   <li><a href="#for-loop-to-count-characters-in-a-string" id="toc-for-loop-to-count-characters-in-a-string" class="nav-link" data-scroll-target="#for-loop-to-count-characters-in-a-string">For loop to count characters in a string</a></li>
   </ul></li>
   <li><a href="#sapply-is-just-doing-a-for-loop" id="toc-sapply-is-just-doing-a-for-loop" class="nav-link" data-scroll-target="#sapply-is-just-doing-a-for-loop"><code>sapply()</code> is just doing a for loop</a></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a>
+  <ul class="collapse">
+  <li><a href="#write-code" id="toc-write-code" class="nav-link" data-scroll-target="#write-code">Write code</a></li>
+  <li><a href="#read-code" id="toc-read-code" class="nav-link" data-scroll-target="#read-code">Read code</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -301,8 +341,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="writing-a-for-loop" class="level2">
 <h2 class="anchored" data-anchor-id="writing-a-for-loop">Writing a for loop</h2>
 <p>Think of the functions <code>sum()</code>, <code>mean()</code>, <code>sd()</code>, <code>var()</code>, <code>min()</code>, <code>max()</code>, and <code>median()</code>, which we have already introduced. These functions are all based on for loops; they have for loops running deep down inside of them some more efficient programming language like C or Fortran, which are closer to the very 0s and 1s of your computer machine than R is. R provides many functions designed to help us save time, so we don’t in practice have to roll up our sleeves and code loops to compute these simple statistics; however, it will be worthwhile to study how these functions depend on the for loop, as in the remainder of the course we will find many more applications of for loops.</p>
-<section id="a-for-loop-to-compute-a-sum" class="level3">
-<h3 class="anchored" data-anchor-id="a-for-loop-to-compute-a-sum">A for loop to compute a sum</h3>
+<section id="for-loop-to-compute-a-sum" class="level3">
+<h3 class="anchored" data-anchor-id="for-loop-to-compute-a-sum">For loop to compute a sum</h3>
 <p>Let’s start with the <code>sum()</code> function. This function takes a numeric vector and adds up all of its entries.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>,  <span class="fl">1.3</span>, <span class="sc">-</span><span class="fl">1.7</span>,  <span class="fl">0.6</span>,  <span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">1.8</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.6</span>,  <span class="fl">0.6</span>,  <span class="fl">1.3</span>)</span>
@@ -487,8 +527,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The above is exactly what the <code>sapply()</code> function is doing. In some situations, it will be necessary to use a for loop as above, but if <code>sapply()</code> can be used, it will most likely be computationally faster, since the <code>sapply()</code> function can use the computer’s memory more efficiently than R’s for loop can (this is anyway standard lore and standard advice).</p>
+</section>
+<section id="practice" class="level2">
+<h2 class="anchored" data-anchor-id="practice">Practice</h2>
+<p>Practice writing code and reading code with the following exercises.</p>
+<section id="write-code" class="level3">
+<h3 class="anchored" data-anchor-id="write-code">Write code</h3>
+<ol type="1">
+<li>Write a function to compute the sample variance <span class="math inline">\(S_n^2 = (n-1)^{-1}\sum_{i=1}^n(X_i - \bar X_n)^2\)</span> of a random sample <span class="math inline">\(X_1,\dots,X_n\)</span> given in a numeric vector <code>x</code>. Use for loops to compute sums.</li>
+</ol>
+<ol start="2" type="1">
+<li>Write a function which uses a loop to count the number of words in the character string below:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>chstr <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="st">   If we shadows have offended,</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="st">   Think but this, and all is mended,</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="st">   That you have but slumber’d here</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="st">   While these visions did appear.</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="st">   And this weak and idle theme,</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="st">   No more yielding but a dream,</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="st">   Gentles, do not reprehend.</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="st">   If you pardon, we will mend.</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="st">   And, as I am an honest Puck,</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="st">   If we have unearnèd luck</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="st">   Now to ’scape the serpent’s tongue,</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="st">   We will make amends ere long;</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="st">   Else the Puck a liar call.</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="st">   So, good night unto you all.</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="st">   Give me your hands, if we be friends,</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="st">   And Robin shall restore amends."</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>chstr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "\n   If we shadows have offended,\n   Think but this, and all is mended,\n   That you have but slumber’d here\n   While these visions did appear.\n   And this weak and idle theme,\n   No more yielding but a dream,\n   Gentles, do not reprehend.\n   If you pardon, we will mend.\n   And, as I am an honest Puck,\n   If we have unearnèd luck\n   Now to ’scape the serpent’s tongue,\n   We will make amends ere long;\n   Else the Puck a liar call.\n   So, good night unto you all.\n   Give me your hands, if we be friends,\n   And Robin shall restore amends."</code></pre>
+</div>
+</div>
+</section>
+<section id="read-code" class="level3">
+<h3 class="anchored" data-anchor-id="read-code">Read code</h3>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

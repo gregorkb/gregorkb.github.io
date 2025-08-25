@@ -242,6 +242,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./R_MCsim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Monte Carlo simulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./R_importdata.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Importing and formatting data</span></a>
   </div>
@@ -310,6 +316,11 @@ window.Quarto = {
   <li><a href="#while-loop-for-newtons-method" id="toc-while-loop-for-newtons-method" class="nav-link" data-scroll-target="#while-loop-for-newtons-method">While loop for Newton’s method</a>
   <ul class="collapse">
   <li><a href="#finding-the-interest-rate" id="toc-finding-the-interest-rate" class="nav-link" data-scroll-target="#finding-the-interest-rate">Finding the interest rate</a></li>
+  </ul></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a>
+  <ul class="collapse">
+  <li><a href="#write-code" id="toc-write-code" class="nav-link" data-scroll-target="#write-code">Write code</a></li>
+  <li><a href="#read-code" id="toc-read-code" class="nav-link" data-scroll-target="#read-code">Read code</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -521,6 +532,43 @@ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
 </figure>
 </div>
 </div>
+</div>
+</section>
+</section>
+<section id="practice" class="level2">
+<h2 class="anchored" data-anchor-id="practice">Practice</h2>
+<p>Practice writing code and reading code with the following exercises.</p>
+<section id="write-code" class="level3">
+<h3 class="anchored" data-anchor-id="write-code">Write code</h3>
+</section>
+<section id="read-code" class="level3">
+<h3 class="anchored" data-anchor-id="read-code">Read code</h3>
+<ol type="1">
+<li>Counting in binary. Anticipate the output of the code below:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ctbin <span class="ot">&lt;-</span> <span class="cf">function</span>(a){</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">^</span>a</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>,n,a)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">0</span><span class="sc">:</span>(n<span class="dv">-1</span>)){</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    m <span class="ot">&lt;-</span> i</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    j <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span>(m <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>      M[i<span class="sc">+</span><span class="dv">1</span>,a <span class="sc">-</span> j] <span class="ot">&lt;-</span> m <span class="sc">%%</span> <span class="dv">2</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>      m <span class="ot">&lt;-</span> <span class="fu">floor</span>(m <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>      j <span class="ot">&lt;-</span> j <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(M)</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ctbin</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

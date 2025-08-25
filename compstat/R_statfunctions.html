@@ -242,6 +242,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./R_MCsim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Monte Carlo simulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./R_importdata.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Importing and formatting data</span></a>
   </div>
@@ -310,6 +316,11 @@ window.Quarto = {
   <li><a href="#normal-distribution-functions" id="toc-normal-distribution-functions" class="nav-link" data-scroll-target="#normal-distribution-functions">Normal distribution functions</a></li>
   <li><a href="#binomial-distribution-functions" id="toc-binomial-distribution-functions" class="nav-link" data-scroll-target="#binomial-distribution-functions">Binomial distribution functions</a></li>
   </ul></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a>
+  <ul class="collapse">
+  <li><a href="#write-code" id="toc-write-code" class="nav-link" data-scroll-target="#write-code">Write code</a></li>
+  <li><a href="#read-code" id="toc-read-code" class="nav-link" data-scroll-target="#read-code">Read code</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -353,15 +364,15 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">50</span>) <span class="co"># generate 50 pseudo-random Uniform(0,1) realizations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.482863030 0.209184492 0.193696055 0.402800542 0.645574328 0.165383565
- [7] 0.574715146 0.232515640 0.322126505 0.162848420 0.119141611 0.529849206
-[13] 0.555797880 0.812390951 0.961421055 0.936051921 0.343872617 0.178019748
-[19] 0.381642893 0.887393071 0.748431329 0.462016750 0.262691758 0.376875277
-[25] 0.889157990 0.347075723 0.059577780 0.618702882 0.004847557 0.160983357
-[31] 0.956157852 0.128339107 0.103630452 0.582426095 0.895102931 0.493830282
-[37] 0.687738711 0.605275023 0.662197495 0.013020676 0.369193482 0.843896155
-[43] 0.177168843 0.390675913 0.770176403 0.989782802 0.459732375 0.841535998
-[49] 0.867399236 0.151639585</code></pre>
+<pre><code> [1] 0.84228835 0.30272520 0.85165741 0.86781060 0.36320036 0.30325628
+ [7] 0.44767971 0.40824767 0.20167089 0.60093513 0.75613991 0.86980565
+[13] 0.57857887 0.16450735 0.32126072 0.64617821 0.72914348 0.42947485
+[19] 0.84273855 0.47143067 0.10133284 0.55765753 0.37855059 0.54852708
+[25] 0.78040864 0.92714177 0.83810743 0.69409896 0.49768018 0.33734011
+[31] 0.31132187 0.96751147 0.63378957 0.39462161 0.95876010 0.28790082
+[37] 0.05713590 0.71109034 0.93601540 0.59425808 0.27439205 0.07120329
+[43] 0.04767233 0.35430081 0.11400633 0.29968944 0.22800239 0.82450513
+[49] 0.22081591 0.81705224</code></pre>
 </div>
 </div>
 <p>Once one has obtained a random realization on the interval <span class="math inline">\((0,1)\)</span>, one can transform it into a realization of a random variable from any other distribution by passing it through the quantile function of that distribution. Specifically, suppose <span class="math inline">\(X\)</span> is a random variable with cdf given by <span class="math display">\[
@@ -652,6 +663,29 @@ P(X = x) = {n \choose x}p^x(1-p)^{n-x}  \approx \left\{\begin{array}{ll}\Phi\Big
 </div>
 </div>
 <p>You may experiment with the <code>qbinom()</code> function on your own!</p>
+</section>
+</section>
+<section id="practice" class="level2">
+<h2 class="anchored" data-anchor-id="practice">Practice</h2>
+<p>Practice writing code and anticipating the output of code with the following exercises.</p>
+<section id="write-code" class="level3">
+<h3 class="anchored" data-anchor-id="write-code">Write code</h3>
+</section>
+<section id="read-code" class="level3">
+<h3 class="anchored" data-anchor-id="read-code">Read code</h3>
+<ol type="1">
+<li>Explain what this function will do:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>rdbexp <span class="ot">&lt;-</span> <span class="cf">function</span>(n,<span class="at">lambda =</span> <span class="dv">3</span>){ </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  sgn <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>),n,<span class="at">replace=</span>T)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n,lambda)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  val <span class="ot">&lt;-</span> sgn <span class="sc">*</span> x</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(val)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 

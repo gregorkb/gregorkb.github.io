@@ -222,6 +222,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./R_MCsim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Monte Carlo simulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./R_importdata.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Importing and formatting data</span></a>
   </div>
@@ -299,6 +305,7 @@ window.Quarto = {
   <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a>
   <ul class="collapse">
   <li><a href="#write-code" id="toc-write-code" class="nav-link" data-scroll-target="#write-code">Write code</a></li>
+  <li><a href="#read-code" id="toc-read-code" class="nav-link" data-scroll-target="#read-code">Read code</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -489,6 +496,7 @@ $b
 <h2 class="anchored" data-anchor-id="conditional-programming">Conditional programming</h2>
 <p>We will be able to make much more interesting functions if we know how to do conditional programming, that is, if we know how to write code which will execute different actions depending on some criteria.</p>
 <p>We’ll begin exploring conditional programming outside the context of defining functions, and one we have learned a couple of things, we will define some more interesting functions which use conditional programming.</p>
+<p>In the following, in order to make the examples interesting, I have used a few functions we have not yet discussed: The function <code>Sys.Date()</code> which returns the current date; the function <code>format()</code>, which can be used to print dates in specified formats; the function <code>substr()</code> which can extract a sub-string of characters from a character string; and the function <code>cat()</code> which prints text to the console without skipping to a new line. Consult the help on any of these functions if the code to follow becomes confusing.</p>
 <section id="ifthen" class="level3">
 <h3 class="anchored" data-anchor-id="ifthen">if/then</h3>
 <p>First we consider a simple if/then program. We want to check if a condition is satisfied, and if it is, we want to execute some action. Here is an example:</p>
@@ -563,36 +571,38 @@ $b
 <p>If there are a large number of conditions to check, a cleaner way write the program is to use the <code>switch()</code> function. The code below gives messages pointing out some “silver lining” for those whose birthday is not in the current month.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>my_birthday <span class="ot">&lt;-</span> <span class="st">"01/15"</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">format</span>(<span class="fu">Sys.Date</span>(),<span class="st">"%m/%d"</span>)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>today_month <span class="ot">&lt;-</span> <span class="fu">format</span>(<span class="fu">Sys.Date</span>(),<span class="st">"%m"</span>)</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(my_birthday <span class="sc">==</span> today){</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  lucky_number <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,<span class="dv">1</span>)</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"It is your birthday. Your lucky number this year is "</span>,lucky_number,<span class="st">"."</span>, <span class="at">sep =</span> <span class="st">""</span>))</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(<span class="fu">substr</span>(my_birthday,<span class="dv">1</span>,<span class="dv">2</span>) <span class="sc">==</span> today_month){</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">format</span>(<span class="fu">Sys.Date</span>(),<span class="st">"%m/%d"</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>today_month <span class="ot">&lt;-</span> <span class="fu">format</span>(<span class="fu">Sys.Date</span>(),<span class="st">"%m"</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(my_birthday <span class="sc">==</span> today){</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  lucky_number <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,<span class="dv">1</span>)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"It is your birthday. Your lucky number this year is "</span>,lucky_number,<span class="st">"."</span>, <span class="at">sep =</span> <span class="st">""</span>))</span>
 <span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Today is not your birthday, but your birthday is this month."</span>)</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(<span class="fu">substr</span>(my_birthday,<span class="dv">1</span>,<span class="dv">2</span>) <span class="sc">==</span> today_month){</span>
 <span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Today is not your birthday, but your birthday is this month."</span>)</span>
 <span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Sorry, your birthday is not this month, but "</span>)</span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">switch</span>(<span class="fu">as.numeric</span>(<span class="fu">substr</span>(my_birthday,<span class="dv">1</span>,<span class="dv">2</span>)), </span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"January is nice and wintry."</span>),</span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"February is not a bad month for a birthday."</span>),</span>
-<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"at least in March you get Spring Break."</span>),</span>
-<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"April is always good."</span>),</span>
-<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"wildflowers should be blooming in May."</span>),</span>
-<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"June birthdays are always a good time."</span>),</span>
-<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"in July you can celebrate at the beach."</span>),</span>
-<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"August will come soon enough."</span>),</span>
-<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"September birthdays are lucky."</span>),</span>
-<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"October is nice and autumnal."</span>),</span>
-<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"in November you'll get Thanksgiving break."</span>),</span>
-<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"December is everyone's favorite month."</span>))</span>
-<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Sorry, your birthday is not this month, but "</span>)</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">switch</span>(<span class="fu">as.numeric</span>(<span class="fu">substr</span>(my_birthday,<span class="dv">1</span>,<span class="dv">2</span>)), </span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"January is nice and wintry."</span>),</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"February is not a bad month for a birthday."</span>),</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"at least in March you get Spring Break."</span>),</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"April is always good."</span>),</span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"wildflowers should be blooming in May."</span>),</span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"June birthdays are always a good time."</span>),</span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"in July you can celebrate at the beach."</span>),</span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"August will come soon enough."</span>),</span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"September birthdays are lucky."</span>),</span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"October is nice and autumnal."</span>),</span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"in November you'll get Thanksgiving break."</span>),</span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a>         <span class="fu">cat</span>(<span class="st">"December is everyone's favorite month."</span>))</span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sorry, your birthday is not this month, but January is nice and wintry.</code></pre>
 </div>
@@ -743,8 +753,98 @@ f(x) = \left\{\begin{array}{ll}
   0,&amp; -\lambda \leq x \leq \lambda\\
   x - \lambda, &amp; \lambda &lt; x,
   \end{array}\right.
-  \]</span> at any <span class="math inline">\(x \in \mathbb{R}\)</span> for a user-specified <span class="math inline">\(\lambda &gt; 0\)</span>.</li>
+  \]</span> at any <span class="math inline">\(x \in \mathbb{R}\)</span> for a user-specified <span class="math inline">\(\lambda &gt; 0\)</span>. Write the function so that the default value for <span class="math inline">\(\lambda\)</span> is <span class="math inline">\(1\)</span> and so that it can be evaluated when a numeric vector is given for <span class="math inline">\(x\)</span> and a single value is given for <span class="math inline">\(\lambda\)</span>. For <span class="math inline">\(\lambda = 1\)</span>, the function looks like this:</li>
 </ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="R_functiondef_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Write a function which, given a vector <code>x</code>, returns the middle value of <code>x</code> if <code>x</code> has an odd number of entries but returns the midpoint between the middle two values of <code>x</code> if <code>x</code> has an even number of entries (this is one way to define the median).</li>
+</ol>
+<ol start="3" type="1">
+<li>Write a function giving the roots of the polynomial <span class="math inline">\(f(x) = ax^2 + bx + c\)</span> when a real root exists; if a real root does not exist, make the function print a message to the console communicating this.</li>
+</ol>
+<ol start="4" type="1">
+<li>Write a function which takes two vectors <code>x</code> and <code>y</code> containing the values of two random samples <span class="math inline">\(X_1,\dots,X_n\)</span> and <span class="math inline">\(Y_1,\dots,Y_m\)</span> and returns a list containing the the two sample sizes <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span>, the two sample means <span class="math inline">\(\bar X_n\)</span> and <span class="math inline">\(\bar Y_m\)</span>, the two sample variances <span class="math inline">\(S^2_X\)</span> and <span class="math inline">\(S_Y^2\)</span>, the pooled sample variance <span class="math display">\[
+S^2_{\operatorname{pooled}} = \frac{(n-1)S^2_X + (m-1)S^2_Y}{n + m - 2},
+\]</span> and the test statistic of the pooled-variance two-sample t-test <span class="math display">\[
+T_{n,m} = \frac{\bar X_n - \bar Y_m}{S_{\operatorname{pooled}}\sqrt{1/n + 1/m}}.
+\]</span></li>
+</ol>
+</section>
+<section id="read-code" class="level3">
+<h3 class="anchored" data-anchor-id="read-code">Read code</h3>
+<p>Anticipate the output of the following code chunks:</p>
+<ol type="1">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>expcdf <span class="ot">&lt;-</span> <span class="cf">function</span>(x) (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">exp</span>(<span class="sc">-</span>x))<span class="sc">*</span>(x <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(expcdf,<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">4</span>),<span class="at">ylab =</span> <span class="st">"cdf"</span>,<span class="at">xlab =</span> <span class="st">"x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>()</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>dow <span class="ot">&lt;-</span> <span class="fu">weekdays</span>(today) <span class="co"># weekdays() function pulls the weekday from a date</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>wkdays <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Monday"</span>,<span class="st">"Tuesday"</span>,<span class="st">"Wednesday"</span>,<span class="st">"Thursday"</span>,<span class="st">"Friday"</span>)</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">any</span>(dow <span class="sc">==</span> wkday)){</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Keep working."</span>)</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Take a break."</span>)</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>rg <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">sort</span>(x)</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>  val <span class="ot">&lt;-</span> x[n] <span class="sc">-</span> x[<span class="dv">1</span>]</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(val)</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">7</span>,<span class="sc">-</span><span class="dv">9</span>)</span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rg</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>trm <span class="ot">&lt;-</span> <span class="cf">function</span>(x,alpha){</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">sort</span>(x)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  tr <span class="ot">&lt;-</span> <span class="fu">floor</span>(alpha<span class="sc">*</span>n)</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>  l <span class="ot">&lt;-</span> trm <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  u <span class="ot">&lt;-</span> n <span class="sc">-</span> tr</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>  val <span class="ot">&lt;-</span> <span class="fu">mean</span>(x[l<span class="sc">:</span>u])</span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(val)</span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">9</span>,<span class="sc">-</span><span class="dv">9</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="sc">-</span><span class="dv">7</span>,<span class="sc">-</span><span class="dv">3</span>)</span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a><span class="fu">tm</span>(x,<span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
