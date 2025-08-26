@@ -85,6 +85,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./R_MCsim.html" rel="next">
+<link href="./R_whileloop.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -364,15 +366,15 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">50</span>) <span class="co"># generate 50 pseudo-random Uniform(0,1) realizations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.84228835 0.30272520 0.85165741 0.86781060 0.36320036 0.30325628
- [7] 0.44767971 0.40824767 0.20167089 0.60093513 0.75613991 0.86980565
-[13] 0.57857887 0.16450735 0.32126072 0.64617821 0.72914348 0.42947485
-[19] 0.84273855 0.47143067 0.10133284 0.55765753 0.37855059 0.54852708
-[25] 0.78040864 0.92714177 0.83810743 0.69409896 0.49768018 0.33734011
-[31] 0.31132187 0.96751147 0.63378957 0.39462161 0.95876010 0.28790082
-[37] 0.05713590 0.71109034 0.93601540 0.59425808 0.27439205 0.07120329
-[43] 0.04767233 0.35430081 0.11400633 0.29968944 0.22800239 0.82450513
-[49] 0.22081591 0.81705224</code></pre>
+<pre><code> [1] 0.494447696 0.232708909 0.570814109 0.182058817 0.738420896 0.430687738
+ [7] 0.655980433 0.150253761 0.455457645 0.444603506 0.222979339 0.258886219
+[13] 0.084191210 0.552090601 0.447824290 0.616287756 0.714350680 0.439020634
+[19] 0.019589534 0.951813713 0.670881838 0.009959074 0.148447842 0.570898660
+[25] 0.297348426 0.145022606 0.461842848 0.349559874 0.175959149 0.584081292
+[31] 0.814341366 0.417709522 0.688393209 0.854589170 0.221742617 0.396779256
+[37] 0.902135320 0.245289780 0.774952783 0.446239380 0.403853233 0.597947059
+[43] 0.785460275 0.590501688 0.395858448 0.938564443 0.075798048 0.002077924
+[49] 0.147477811 0.369583311</code></pre>
 </div>
 </div>
 <p>Once one has obtained a random realization on the interval <span class="math inline">\((0,1)\)</span>, one can transform it into a realization of a random variable from any other distribution by passing it through the quantile function of that distribution. Specifically, suppose <span class="math inline">\(X\)</span> is a random variable with cdf given by <span class="math display">\[
@@ -1120,6 +1122,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./R_whileloop.html" class="pagination-link" aria-label="While loops">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">While loops</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./R_MCsim.html" class="pagination-link" aria-label="Monte Carlo simulation">
+        <span class="nav-page-text">Monte Carlo simulation</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

@@ -65,6 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./R_whileloop.html" rel="next">
+<link href="./R_functiondef.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -556,13 +558,35 @@ window.Quarto = {
 <span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="st">   Else the Puck a liar call.</span></span>
 <span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="st">   So, good night unto you all.</span></span>
 <span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="st">   Give me your hands, if we be friends,</span></span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="st">   And Robin shall restore amends."</span></span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>chstr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="st">   And Robin shall restore amends."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>Write a for loop which computes the first 30 values in the Fibonacci sequence. The first two numbers of the sequence are <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>; values after this are obtained as the sum of the two preceding values.</li>
+</ol>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "\n   If we shadows have offended,\n   Think but this, and all is mended,\n   That you have but slumber’d here\n   While these visions did appear.\n   And this weak and idle theme,\n   No more yielding but a dream,\n   Gentles, do not reprehend.\n   If you pardon, we will mend.\n   And, as I am an honest Puck,\n   If we have unearnèd luck\n   Now to ’scape the serpent’s tongue,\n   We will make amends ere long;\n   Else the Puck a liar call.\n   So, good night unto you all.\n   Give me your hands, if we be friends,\n   And Robin shall restore amends."</code></pre>
+<pre><code> [1]      0      1      1      2      3      5      8     13     21     34
+[11]     55     89    144    233    377    610    987   1597   2584   4181
+[21]   6765  10946  17711  28657  46368  75025 121393 196418 317811 514229</code></pre>
 </div>
 </div>
+<ol start="4" type="1">
+<li>Suppose you borrow an amount <span class="math inline">\(P_0\)</span> at annual interest rate <span class="math inline">\(r\)</span>, compounded monthly, and you make monthly payments in the amount <span class="math inline">\(p\)</span>. If <span class="math inline">\(P_n\)</span> is the amount you owe at the beginning of month <span class="math inline">\(n\)</span>, the amount you owe at the beginning of month <span class="math inline">\(n+1\)</span> is given by <span class="math display">\[
+  P_{n+1} \leftarrow P_n(1 + r/12) - p.
+  \]</span> Write a for loop to compute the amount you will owe after making <span class="math inline">\(36\)</span> monthly payments in the amount <span class="math inline">\(\$200\)</span> on a loan of <span class="math inline">\(\$10000\)</span> at annual interest rate <span class="math inline">\(0.056\)</span>, compounded monthly.</li>
+</ol>
+<ol start="5" type="1">
+<li>The binary numbering system represents numbers as sequences of <span class="math inline">\(0\)</span>s and <span class="math inline">\(1\)</span>s. For example <span class="math inline">\(10110\)</span> is equivalent to the number twenty two, represented as 22 in the decimal system. The decimal system represents whole numbers as sequences of digits, say <span class="math inline">\(d_kd_{k-1}\dots d_1d_0\)</span>, where each digit is a number <span class="math inline">\(0,\dots,9\)</span>, such that the sequence <span class="math inline">\(d_kd_{k-1}\dots d_1d_0\)</span> represents the number <span class="math display">\[
+d_k 10^k + d_{k-1}  10^{k-1} + \dots + d_1 10^1 + d_0 10^0.
+\]</span> So the decimal system represents the number twenty two as <span class="math display">\[
+22 = 2 \times  10^1 + 2 \times  10^0.
+\]</span><br>
+In binary, numbers are represented as sequences of binary digits <span class="math inline">\(b_kb_{k-1}\dots b_1b_0\)</span>, where each is a number <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>. The sequence <span class="math inline">\(b_kb_{k-1}\dots b_1b_0\)</span> represents the number <span class="math display">\[
+b_k  2^k + b_{k-1}  10^{k-1}\dots + b_1 2^1 + b_0  2^0.
+\]</span> So the binary system represents the number twenty two as <span class="math display">\[
+10110 = 1 \times  2^4 + 0 \times  2^3 + 1 \times  2^2 + 1 \times  2^1 + 0 \times 2^0.
+\]</span> Write a function which takes a character string such as <span class="math inline">\(10110\)</span> (you can assume the string begins with a <span class="math inline">\(1\)</span>) and returns the number it represents in decimal representation.</li>
+</ol>
 </section>
 <section id="read-code" class="level3">
 <h3 class="anchored" data-anchor-id="read-code">Read code</h3>
@@ -992,6 +1016,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./R_functiondef.html" class="pagination-link" aria-label="Defining functions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Defining functions</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./R_whileloop.html" class="pagination-link" aria-label="While loops">
+        <span class="nav-page-text">While loops</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

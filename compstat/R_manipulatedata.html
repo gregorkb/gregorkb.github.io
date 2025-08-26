@@ -65,6 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./Python_objects.html" rel="next">
+<link href="./R_importdata.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -532,15 +534,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">Response =</span> <span class="fu">rnorm</span>(<span class="dv">8</span>))</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>toy_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Subject Observation     Response
-1       1           1  0.004299341
-2       1           2  0.800251694
-3       1           3  0.867178565
-4       1           4 -1.054975299
-5       2           1  0.024752424
-6       2           2 -0.880105585
-7       2           3  1.716517116
-8       2           4 -1.362284401</code></pre>
+<pre><code>  Subject Observation   Response
+1       1           1  0.5457775
+2       1           2  2.2594080
+3       1           3 -0.5005702
+4       1           4 -2.2369141
+5       2           1  0.9554624
+6       2           2  0.9579228
+7       2           3 -0.9290037
+8       2           4 -1.2061189</code></pre>
 </div>
 </div>
 <p>If we want instead to represent the data in a table having one row for each subject and four columns giving the four observations, we can obtain it with the <code>reshape()</code> function as follows:</p>
@@ -553,9 +555,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">new.row.names =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) <span class="co"># keep the row names from getting wacky</span></span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Subject  Response 1 Response 2 Response 3 Response 4
-1       1 0.004299341  0.8002517  0.8671786  -1.054975
-2       2 0.024752424 -0.8801056  1.7165171  -1.362284</code></pre>
+<pre><code>  Subject Response 1 Response 2 Response 3 Response 4
+1       1  0.5457775  2.2594080 -0.5005702  -2.236914
+2       2  0.9554624  0.9579228 -0.9290037  -1.206119</code></pre>
 </div>
 </div>
 <p>Now let’s try to make the table we want for the Table Rock 50k data. We’ll use the <code>reshape()</code> function, treating the place column as the “subject”:</p>
@@ -593,15 +595,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">new.row.names =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>) <span class="co"># keep the row names from getting wacky</span></span>
 <span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Subject Observation     Response
-1       1           1  0.004299341
-2       2           1  0.024752424
-3       1           2  0.800251694
-4       2           2 -0.880105585
-5       1           3  0.867178565
-6       2           3  1.716517116
-7       1           4 -1.054975299
-8       2           4 -1.362284401</code></pre>
+<pre><code>  Subject Observation   Response
+1       1           1  0.5457775
+2       2           1  0.9554624
+3       1           2  2.2594080
+4       2           2  0.9579228
+5       1           3 -0.5005702
+6       2           3 -0.9290037
+7       1           4 -2.2369141
+8       2           4 -1.2061189</code></pre>
 </div>
 </div>
 <p>We see that things are sorted in a different way, but it is the same data set as the original one.</p>
@@ -1116,6 +1118,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./R_importdata.html" class="pagination-link" aria-label="Importing and formatting data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Importing and formatting data</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Python_objects.html" class="pagination-link" aria-label="Coming soon...">
+        <span class="nav-page-text">Coming soon…</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
