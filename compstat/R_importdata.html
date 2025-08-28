@@ -618,17 +618,17 @@ date,wildebeest,laughing hyena,crocodile,weather,start,end,fun,guide
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>() <span class="co"># today's date</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>today</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2025-08-26"</code></pre>
+<pre><code>[1] "2025-08-28"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>today <span class="sc">-</span> <span class="dv">30</span> <span class="co"># the date 30 days ago</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2025-07-27"</code></pre>
+<pre><code>[1] "2025-07-29"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(today,<span class="at">by=</span><span class="st">"3 days"</span>,<span class="at">length =</span> <span class="dv">12</span>) <span class="co"># make a sequence of dates</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "2025-08-26" "2025-08-29" "2025-09-01" "2025-09-04" "2025-09-07"
- [6] "2025-09-10" "2025-09-13" "2025-09-16" "2025-09-19" "2025-09-22"
-[11] "2025-09-25" "2025-09-28"</code></pre>
+<pre><code> [1] "2025-08-28" "2025-08-31" "2025-09-03" "2025-09-06" "2025-09-09"
+ [6] "2025-09-12" "2025-09-15" "2025-09-18" "2025-09-21" "2025-09-24"
+[11] "2025-09-27" "2025-09-30"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">weekdays</span>(<span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"2014-07-05"</span>,<span class="st">"2017-07-05"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -643,15 +643,15 @@ date,wildebeest,laughing hyena,crocodile,weather,start,end,fun,guide
 <div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(today,<span class="st">"%m/%d/%y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "08/26/25"</code></pre>
+<pre><code>[1] "08/28/25"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(today,<span class="st">"%b %d, %Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Aug 26, 2025"</code></pre>
+<pre><code>[1] "Aug 28, 2025"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(today,<span class="st">"%B %d, %Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "August 26, 2025"</code></pre>
+<pre><code>[1] "August 28, 2025"</code></pre>
 </div>
 </div>
 <p>In the date column of the safari data set, the dates are recorded in many different formats. It takes a little bit of work to standardize the formats: Below, we use a loop to go through the entries of the date column to extract the date from each one with the <code>as.Date()</code> function. We have to list all the different formats to try by using the <code>tryFormats</code> option. Then we re-print the date in the format we want to keep. After the loop is done, we use <code>as.Date()</code> again to convert the entire vector of character strings into a column having the date class.</p>

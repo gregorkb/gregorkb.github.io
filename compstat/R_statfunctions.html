@@ -366,15 +366,14 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">50</span>) <span class="co"># generate 50 pseudo-random Uniform(0,1) realizations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.638291609 0.428446064 0.106888941 0.938503791 0.362126607 0.746664378
- [7] 0.826058471 0.763407068 0.922454086 0.141806474 0.075744815 0.951819521
-[13] 0.295922302 0.569156884 0.932403828 0.397496642 0.890958357 0.822374194
-[19] 0.336101011 0.210039582 0.550584924 0.780334499 0.614289051 0.112273464
-[25] 0.973320044 0.912888495 0.182602506 0.987316203 0.396846226 0.233968418
-[31] 0.814567968 0.087766016 0.621287584 0.482099481 0.486310921 0.332062885
-[37] 0.713302406 0.456343901 0.432675849 0.679334964 0.404715940 0.209897726
-[43] 0.316128543 0.523802189 0.560329258 0.512829235 0.253668634 0.005167751
-[49] 0.889745246 0.239437473</code></pre>
+<pre><code> [1] 0.7336558 0.8650553 0.4096315 0.5651462 0.4908512 0.3832740 0.2715389
+ [8] 0.1383434 0.2586023 0.2170856 0.8451170 0.9367074 0.5167167 0.8704585
+[15] 0.0364290 0.2602397 0.1017540 0.6011486 0.3399429 0.3551073 0.4553782
+[22] 0.9407526 0.6005384 0.3235561 0.4128135 0.2279533 0.4457174 0.8328186
+[29] 0.1913622 0.4377682 0.8487989 0.8789464 0.2502380 0.5962381 0.7961855
+[36] 0.4504133 0.7066193 0.9063279 0.1480254 0.6094874 0.6251863 0.1810333
+[43] 0.9958663 0.3080822 0.2658543 0.9438500 0.8103232 0.1356044 0.6563224
+[50] 0.8812072</code></pre>
 </div>
 </div>
 <p>Once one has obtained a random realization on the interval <span class="math inline">\((0,1)\)</span>, one can transform it into a realization of a random variable from any other distribution by passing it through the quantile function of that distribution. Specifically, suppose <span class="math inline">\(X\)</span> is a random variable with cdf given by <span class="math display">\[
