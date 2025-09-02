@@ -542,11 +542,26 @@ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
 <p>Practice writing code and reading code with the following exercises.</p>
 <section id="write-code" class="level3">
 <h3 class="anchored" data-anchor-id="write-code">Write code</h3>
+<ol type="1">
+<li>Leibniz is credited with discovering that we can express the value <span class="math inline">\(\pi\)</span> as the infinite series <span class="math display">\[
+\pi = \sum_{i=1}^\infty (-1)^{i+1}\frac{4}{2i-1}.
+\]</span> We can obtain an approximation to <span class="math inline">\(\pi\)</span> by adding up a large number of terms in the sum. Write a function which adds terms in the series until the result is within a user-specified distance of the value <span class="math inline">\(3.141593\)</span>. Write the function so that it returns a list containing the approximation to <span class="math inline">\(\pi\)</span> as well as the number of terms that were required to obtain the approximation.</li>
+</ol>
+<ol start="2" type="1">
+<li>Suppose you invest an amount <span class="math inline">\(P_0\)</span> in an investment fund which yields an annual interest rate of <span class="math inline">\(r\)</span> and you contribute to the fund an additional amount <span class="math inline">\(p\)</span> at the end of each month. Basing calculations on monthly compounded interest, if the value of your investment at the beginning of month <span class="math inline">\(n\)</span> is <span class="math inline">\(P_n\)</span>, the value at the beginning of month <span class="math inline">\(P_{n+1}\)</span> may be calculated as <span class="math display">\[
+P_{n+1} = P_n(1 + r/12) + p.
+\]</span> Write a loop which tells you how many months it will take for you to have accumulated a specified goal amount. Your function will take as arguments the initial investment, the interest rate, the size of the monthly contribution, and the goal amount.</li>
+</ol>
+<ol start="3" type="1">
+<li>An algorithm for obtaining an approximation to the square root of a number <span class="math inline">\(S\)</span> is to make an initial guess <span class="math inline">\(x_0\)</span> and update the guess according to the recursion <span class="math display">\[
+x_{n + 1} = (x_n + S/x_n)/2  
+\]</span> “until convergence”, meaning until the update from <span class="math inline">\(x_n\)</span> to <span class="math inline">\(x_{n+1}\)</span> becomes small enough to be negligible. Write a function which takes the argument <span class="math inline">\(S\)</span> as well as an argument for specifying some tolerance, say <span class="math inline">\(\epsilon\)</span>, such that the updates will stop when <span class="math inline">\(S(x_{n+1} - x_{n})^2 &lt; \epsilon\)</span>. Your function should return the approximation to <span class="math inline">\(\sqrt{S}\)</span> as well as the number of iterations it took for the algorithm to converge. You can think up your own way of choosing the initial guess <span class="math inline">\(x_0\)</span> at which to begin the algorithm. Try your function out and see how it compares to the built-int <code>sqrt()</code> function.</li>
+</ol>
 </section>
 <section id="read-code" class="level3">
 <h3 class="anchored" data-anchor-id="read-code">Read code</h3>
 <ol type="1">
-<li>Counting in binary. Anticipate the output of the code below:</li>
+<li>Anticipate the output of the code below:</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ctbin <span class="ot">&lt;-</span> <span class="cf">function</span>(a){</span>
@@ -571,6 +586,24 @@ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
 <span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ctbin</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Explain what the following code does.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>my_ini <span class="ot">&lt;-</span> <span class="st">"KBG"</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>ini <span class="ot">&lt;-</span> <span class="st">"AAA"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(ini <span class="sc">!=</span> my_ini){</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  ini <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">sample</span>(LETTERS,<span class="dv">3</span>,<span class="at">replace =</span> F),<span class="at">collapse=</span><span class="st">""</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>i</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7409</code></pre>
+</div>
 </div>
 
 

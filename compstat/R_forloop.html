@@ -294,11 +294,17 @@ window.Quarto = {
   <ul>
   <li><a href="#writing-a-for-loop" id="toc-writing-a-for-loop" class="nav-link active" data-scroll-target="#writing-a-for-loop">Writing a for loop</a>
   <ul class="collapse">
-  <li><a href="#for-loop-to-compute-a-sum" id="toc-for-loop-to-compute-a-sum" class="nav-link" data-scroll-target="#for-loop-to-compute-a-sum">For loop to compute a sum</a></li>
-  <li><a href="#double-for-loop-for-sorting-a-vector" id="toc-double-for-loop-for-sorting-a-vector" class="nav-link" data-scroll-target="#double-for-loop-for-sorting-a-vector">Double for loop for sorting a vector</a></li>
-  <li><a href="#for-loop-to-count-characters-in-a-string" id="toc-for-loop-to-count-characters-in-a-string" class="nav-link" data-scroll-target="#for-loop-to-count-characters-in-a-string">For loop to count characters in a string</a></li>
-  </ul></li>
+  <li><a href="#computing-a-sum" id="toc-computing-a-sum" class="nav-link" data-scroll-target="#computing-a-sum">Computing a sum</a></li>
+  <li><a href="#counting-characters-in-a-string" id="toc-counting-characters-in-a-string" class="nav-link" data-scroll-target="#counting-characters-in-a-string">Counting characters in a string</a></li>
+  <li><a href="#adding-up-terms-in-a-series" id="toc-adding-up-terms-in-a-series" class="nav-link" data-scroll-target="#adding-up-terms-in-a-series">Adding up terms in a series</a></li>
   <li><a href="#sapply-is-just-doing-a-for-loop" id="toc-sapply-is-just-doing-a-for-loop" class="nav-link" data-scroll-target="#sapply-is-just-doing-a-for-loop"><code>sapply()</code> is just doing a for loop</a></li>
+  </ul></li>
+  <li><a href="#nested-for-loops" id="toc-nested-for-loops" class="nav-link" data-scroll-target="#nested-for-loops">Nested for loops</a>
+  <ul class="collapse">
+  <li><a href="#evaluate-a-bivariate-function-over-a-grid-of-points" id="toc-evaluate-a-bivariate-function-over-a-grid-of-points" class="nav-link" data-scroll-target="#evaluate-a-bivariate-function-over-a-grid-of-points">Evaluate a bivariate function over a grid of points</a></li>
+  <li><a href="#sorting-a-vector" id="toc-sorting-a-vector" class="nav-link" data-scroll-target="#sorting-a-vector">Sorting a vector</a></li>
+  </ul></li>
+  <li><a href="#why-learn-about-for-loops-in-r" id="toc-why-learn-about-for-loops-in-r" class="nav-link" data-scroll-target="#why-learn-about-for-loops-in-r">Why learn about for loops in R?</a></li>
   <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a>
   <ul class="collapse">
   <li><a href="#write-code" id="toc-write-code" class="nav-link" data-scroll-target="#write-code">Write code</a></li>
@@ -343,8 +349,8 @@ window.Quarto = {
 <section id="writing-a-for-loop" class="level2">
 <h2 class="anchored" data-anchor-id="writing-a-for-loop">Writing a for loop</h2>
 <p>Think of the functions <code>sum()</code>, <code>mean()</code>, <code>sd()</code>, <code>var()</code>, <code>min()</code>, <code>max()</code>, and <code>median()</code>, which we have already introduced. These functions are all based on for loops; they have for loops running deep down inside of them some more efficient programming language like C or Fortran, which are closer to the very 0s and 1s of your computer machine than R is. R provides many functions designed to help us save time, so we don’t in practice have to roll up our sleeves and code loops to compute these simple statistics; however, it will be worthwhile to study how these functions depend on the for loop, as in the remainder of the course we will find many more applications of for loops.</p>
-<section id="for-loop-to-compute-a-sum" class="level3">
-<h3 class="anchored" data-anchor-id="for-loop-to-compute-a-sum">For loop to compute a sum</h3>
+<section id="computing-a-sum" class="level3">
+<h3 class="anchored" data-anchor-id="computing-a-sum">Computing a sum</h3>
 <p>Let’s start with the <code>sum()</code> function. This function takes a numeric vector and adds up all of its entries.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>,  <span class="fl">1.3</span>, <span class="sc">-</span><span class="fl">1.7</span>,  <span class="fl">0.6</span>,  <span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">1.8</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.6</span>,  <span class="fl">0.6</span>,  <span class="fl">1.3</span>)</span>
@@ -419,82 +425,101 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="double-for-loop-for-sorting-a-vector" class="level3">
-<h3 class="anchored" data-anchor-id="double-for-loop-for-sorting-a-vector">Double for loop for sorting a vector</h3>
-<p>Sorting a vector one step at a time is not as trivial as it may sound. To understand the steps, it helps to make some props for yourself: Number some small shreds of paper with the numbers one through ten and place them in random order in front of you. You can sort them in increasing order as follows: Starting with the paper on the far left, compare it with the one immediately to the right of it. If the paper on the left has a higher value than the paper to its right, swap the locations of the papers; otherwise don’t. Now, still focusing on the paper on the far left, compare it with the paper two places to the right; if the leftmost paper has a higher value than this one, swap the locations of the papers (otherwise don’t). Now compare the leftmost paper with the paper three places to the right, swap or don’t swap accordingly, and so on until you have made a comparison between the leftmost and the rightmost paper. At this point you will have the minimum value placed leftmost. Now do the same to find the second smallest value: disregard the minimum, which has already been found, and begin making comparisons and position swaps as before, focusing now on the paper which is second to leftmost. Continue this and you will end up with the sorted vector.</p>
-<p>This can all be achieved with a double for loop:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>my_sort <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(n<span class="dv">-1</span>))</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(j <span class="cf">in</span> (i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>n){</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span>(x[i] <span class="sc">&gt;</span> x[j]){</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        tmp <span class="ot">&lt;-</span> x[i] <span class="co"># make the swap by temporarily storing one of the values in a variable called tmp</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        x[i] <span class="ot">&lt;-</span> x[j]</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        x[j] <span class="ot">&lt;-</span> tmp</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(x)</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="fu">my_sort</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] -1.8 -1.7 -0.6 -0.5  0.1  0.5  0.6  0.6  1.3  1.3</code></pre>
-</div>
-</div>
-<p>Note that functions like <code>min()</code>, <code>max()</code>, and <code>median()</code> all depend on sorting a numeric vector.</p>
-</section>
-<section id="for-loop-to-count-characters-in-a-string" class="level3">
-<h3 class="anchored" data-anchor-id="for-loop-to-count-characters-in-a-string">For loop to count characters in a string</h3>
+<section id="counting-characters-in-a-string" class="level3">
+<h3 class="anchored" data-anchor-id="counting-characters-in-a-string">Counting characters in a string</h3>
 <p>Some of the AI chatbots were recently struggling to answer the question of how many times the letter “r” occurred in the word “strawberry”. It appears to be fixed in ChatGPT now. Below is a for loop which counts this. It looks at each character and adds 1 to the count if the character is “r”:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ch <span class="ot">&lt;-</span> <span class="st">"strawberry"</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nchar</span>(ch) <span class="co"># get the number of characters in the string</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>nr <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># start the count at zero</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) nr <span class="ot">&lt;-</span> nr <span class="sc">+</span> (<span class="fu">substr</span>(ch,i,i) <span class="sc">==</span> <span class="st">"r"</span>) <span class="co"># add 1 if character i is "r"</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>nr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ch <span class="ot">&lt;-</span> <span class="st">"strawberry"</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nchar</span>(ch) <span class="co"># get the number of characters in the string</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>nr <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># start the count at zero</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) nr <span class="ot">&lt;-</span> nr <span class="sc">+</span> (<span class="fu">substr</span>(ch,i,i) <span class="sc">==</span> <span class="st">"r"</span>) <span class="co"># add 1 if character i is "r"</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>nr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
 <p>Note that if the loop only executes one line of code in each iteration, we do not need to put the line in curly braces!</p>
 </section>
+<section id="adding-up-terms-in-a-series" class="level3">
+<h3 class="anchored" data-anchor-id="adding-up-terms-in-a-series">Adding up terms in a series</h3>
+<p>It turns out one can write <span class="math inline">\(\pi/4\)</span> as <span class="math display">\[
+\frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \dots
+\]</span></p>
+<p>We can use a for loop to find the <span class="math inline">\(n\)</span>th term in the sequence:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>lpi <span class="ot">&lt;-</span> <span class="cf">function</span>(n){ <span class="co"># lpi after Leibniz</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  val <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) val <span class="ot">&lt;-</span> val <span class="sc">+</span> (<span class="sc">-</span><span class="dv">1</span>)<span class="sc">^</span>(i<span class="sc">+</span><span class="dv">1</span>) <span class="sc">/</span> (<span class="dv">2</span><span class="sc">*</span>i <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(val)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lpi</span>(<span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7848982</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>pi<span class="sc">/</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7853982</code></pre>
+</div>
+</div>
+<p>If we want to make a plot of the series to study its convergence, we can modify our function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>lpiseq <span class="ot">&lt;-</span> <span class="cf">function</span>(n){ <span class="co"># lpi after Leibniz</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  val <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  val[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n) val[i] <span class="ot">&lt;-</span> val[i<span class="dv">-1</span>] <span class="sc">+</span> (<span class="sc">-</span><span class="dv">1</span>)<span class="sc">^</span>(i<span class="sc">+</span><span class="dv">1</span>) <span class="sc">/</span> (<span class="dv">2</span><span class="sc">*</span>i <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(val)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lpiseq</span>(<span class="dv">50</span>),<span class="at">type =</span> <span class="st">"l"</span>,<span class="at">xlab =</span> <span class="st">"n"</span>,<span class="at">ylab =</span> <span class="st">""</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> pi<span class="sc">/</span><span class="dv">4</span>,<span class="at">lty =</span> <span class="dv">3</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="dv">1</span>, </span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="dv">1</span>, </span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Approximation"</span>,<span class="st">"\u03c0/4"</span>),</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>),</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">"n"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="R_forloop_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="sapply-is-just-doing-a-for-loop" class="level2">
-<h2 class="anchored" data-anchor-id="sapply-is-just-doing-a-for-loop"><code>sapply()</code> is just doing a for loop</h2>
+<section id="sapply-is-just-doing-a-for-loop" class="level3">
+<h3 class="anchored" data-anchor-id="sapply-is-just-doing-a-for-loop"><code>sapply()</code> is just doing a for loop</h3>
 <p>Do you recall our earlier struggle with having defined a function with conditional statements which could not be evaluated on a vector?</p>
 <p>Here was one such case:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># some scores</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">75.7</span>, <span class="fl">64.1</span>, <span class="fl">88.4</span>, <span class="fl">59.2</span>, <span class="fl">86.9</span>, <span class="fl">67.5</span>, <span class="fl">83.8</span>, <span class="fl">86.6</span>, <span class="fl">73.1</span>, <span class="fl">65.2</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># a function to decide whether a score is a pass or fail</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>pf <span class="ot">&lt;-</span> <span class="cf">function</span>(score){</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(score <span class="sc">&gt;=</span> <span class="dv">70</span>){</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    val <span class="ot">&lt;-</span> <span class="st">"pass"</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    val <span class="ot">&lt;-</span> <span class="st">"fail"</span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(val)</span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># some scores</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">75.7</span>, <span class="fl">64.1</span>, <span class="fl">88.4</span>, <span class="fl">59.2</span>, <span class="fl">86.9</span>, <span class="fl">67.5</span>, <span class="fl">83.8</span>, <span class="fl">86.6</span>, <span class="fl">73.1</span>, <span class="fl">65.2</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># a function to decide whether a score is a pass or fail</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>pf <span class="ot">&lt;-</span> <span class="cf">function</span>(score){</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(score <span class="sc">&gt;=</span> <span class="dv">70</span>){</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    val <span class="ot">&lt;-</span> <span class="st">"pass"</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    val <span class="ot">&lt;-</span> <span class="st">"fail"</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(val)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We wanted to evaluate the <code>pf()</code> function on each entry of the vector <code>scores</code>, but we get</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pf</span>(scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pf</span>(scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in if (score &gt;= 70) {: the condition has length &gt; 1</code></pre>
 </div>
@@ -502,29 +527,145 @@ window.Quarto = {
 <p>because <code>if()</code> can only accept single values, not vectors.</p>
 <p>Our solution had been to use the <code>sapply()</code> function in this situation to evaluate the function <code>pf()</code> on each value in the vector <code>scores</code> separately. The result is</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(scores,pf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(scores,pf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "pass" "fail" "pass" "fail" "pass" "fail" "pass" "pass" "pass" "fail"</code></pre>
 </div>
 </div>
 <p>We can do the same with for loops, now that we know how to use them. Here is how:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(scores)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>passfail <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n) <span class="co"># create empty vector in which to store the pass/fail decisions</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># now run a for loop:</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  passfail[i] <span class="ot">&lt;-</span> <span class="fu">pf</span>(scores[i])</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>passfail</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(scores)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>passfail <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n) <span class="co"># create empty vector in which to store the pass/fail decisions</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># now run a for loop:</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  passfail[i] <span class="ot">&lt;-</span> <span class="fu">pf</span>(scores[i])</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>passfail</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "pass" "fail" "pass" "fail" "pass" "fail" "pass" "pass" "pass" "fail"</code></pre>
 </div>
 </div>
 <p>The above is exactly what the <code>sapply()</code> function is doing. In some situations, it will be necessary to use a for loop as above, but if <code>sapply()</code> can be used, it will most likely be computationally faster, since the <code>sapply()</code> function can use the computer’s memory more efficiently than R’s for loop can (this is anyway standard lore and standard advice).</p>
+</section>
+</section>
+<section id="nested-for-loops" class="level2">
+<h2 class="anchored" data-anchor-id="nested-for-loops">Nested for loops</h2>
+<p>Often there is occasion for nesting one loop inside another! We discuss two examples:</p>
+<section id="evaluate-a-bivariate-function-over-a-grid-of-points" class="level3">
+<h3 class="anchored" data-anchor-id="evaluate-a-bivariate-function-over-a-grid-of-points">Evaluate a bivariate function over a grid of points</h3>
+<p>Suppose we want to evaluate the function <span class="math inline">\(f(x,y) = \sin(x)x(1-y^2)\)</span> for <span class="math inline">\(x \in [0,\pi)\)</span> and <span class="math inline">\(y \in [-1,1]\)</span> over a grid of <span class="math inline">\((x,y)\)</span> values so we can make a plot. We can fix a grid of <span class="math inline">\(x\)</span> values and a grid of <span class="math inline">\(y\)</span> values and use nested loops to fill in a table (a matrix) with the evaluations of the function <span class="math inline">\(f(x,y)\)</span> at the grid points. This can then be used for plotting:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y) <span class="fu">sin</span>(x)<span class="sc">*</span>x<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>y<span class="sc">^</span><span class="dv">2</span>)   <span class="co"># define the function</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>gs <span class="ot">&lt;-</span> <span class="dv">30</span>                              <span class="co"># specify the "grid size"</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,pi,<span class="at">length =</span> gs)            <span class="co"># create x grid points</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="at">length =</span> gs)            <span class="co"># create y grid points</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>,gs,gs)                  <span class="co"># create empty matrix to store function evaluations</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>gs)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>gs){</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    z[i,j] <span class="ot">&lt;-</span> <span class="fu">f</span>(x[i],y[j]) </span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">1.1</span>,<span class="fl">1.1</span>,<span class="fl">1.1</span>,<span class="fl">1.1</span>))           <span class="co"># make a 3d plot with the persp() function</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(x,y,z, </span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">theta =</span> <span class="dv">30</span>, </span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">phi =</span> <span class="dv">30</span>,</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">ticktype =</span> <span class="st">"detailed"</span>,</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">cex.axis =</span> <span class="fl">0.8</span>,</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">expand =</span> <span class="fl">0.5</span>,</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">border =</span> <span class="fu">rgb</span>(.<span class="dv">545</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">zlab =</span> <span class="st">"f(x,y)"</span>,</span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">box =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="R_forloop_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We could also use a double for loop to compute a Riemann sum to approximate the volume under this function over the region <span class="math inline">\(x \in [0,\pi)\)</span> and <span class="math inline">\(y \in [-1,1]\)</span>. Given sequences <span class="math inline">\(0 =x_1 &lt; \dots &lt; x_N = 2\pi\)</span> and <span class="math inline">\(-1 = y_1 &lt; \dots &lt; y_N = 1\)</span>, where adjacent values in each sequence are separated by some <span class="math inline">\(\delta &gt; 0\)</span>, the Riemann sum (using left endpoints) is given by <span class="math display">\[
+R_n = \delta ^2\sum_{i=1}^N\sum_{j=1}^N f(x_i,y_j).
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fl">0.01</span>                               <span class="co"># set the resolution of the Riemann sum</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,pi,<span class="at">by =</span> d)                   <span class="co"># construct x grid</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="at">by =</span> d)                   <span class="co"># construct y grid</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>val <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)) </span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(y)){</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    val <span class="ot">&lt;-</span> val <span class="sc">+</span> <span class="fu">f</span>(x[i],y[j])</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>val <span class="ot">&lt;-</span> val <span class="sc">*</span> d<span class="sc">**</span><span class="dv">2</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>val</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.188679</code></pre>
+</div>
+</div>
+<p>The result is close to the true integral <span class="math display">\[
+\int_0^\pi\int_{-1}^1\sin(x)x(1-y^2)dydx = \frac{4}{3}\pi = 4.1887902.
+\]</span></p>
+<p>It is worth noting that R has a shortcut way of implementing the nested for loops in this example. We can use the <code>outer()</code> function to evaluate a function at every combination of a value from a vector <code>x</code> and a vector <code>y</code> (which will cause R to run nested for loops deep in its bowels). Here is how we could compute the Riemman sum in just a couple of lines of code by using the <code>outer()</code> function and the <code>sum()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">outer</span>(x,y,<span class="at">FUN =</span> f) <span class="co"># we just need to have our x and y grids set up</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(z<span class="sc">*</span>d<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.188679</code></pre>
+</div>
+</div>
+</section>
+<section id="sorting-a-vector" class="level3">
+<h3 class="anchored" data-anchor-id="sorting-a-vector">Sorting a vector</h3>
+<p>Sorting a vector one step at a time is not as trivial as it may sound. To understand the steps, it helps to make some props for yourself: Number some small shreds of paper with the numbers one through ten and place them in random order in front of you. You can sort them in increasing order as follows: Starting with the paper on the far left, compare it with the one immediately to the right of it. If the paper on the left has a higher value than the paper to its right, swap the locations of the papers; otherwise don’t. Now, still focusing on the paper on the far left, compare it with the paper two places to the right; if the leftmost paper has a higher value than this one, swap the locations of the papers (otherwise don’t). Now compare the leftmost paper with the paper three places to the right, swap or don’t swap accordingly, and so on until you have made a comparison between the leftmost and the rightmost paper. At this point you will have the minimum value placed leftmost. Now do the same to find the second smallest value: disregard the minimum, which has already been found, and begin making comparisons and position swaps as before, focusing now on the paper which is second to leftmost. Continue this and you will end up with the sorted vector.</p>
+<p>This can all be achieved with a double for loop:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>my_sort <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(n<span class="dv">-1</span>))</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(j <span class="cf">in</span> (i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>n){</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span>(x[i] <span class="sc">&gt;</span> x[j]){</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>        tmp <span class="ot">&lt;-</span> x[i] <span class="co"># make the swap by temporarily storing one of the values in a variable called tmp</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>        x[i] <span class="ot">&lt;-</span> x[j]</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>        x[j] <span class="ot">&lt;-</span> tmp</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(x)</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>,  <span class="fl">1.3</span>, <span class="sc">-</span><span class="fl">1.7</span>,  <span class="fl">0.6</span>,  <span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">1.8</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.6</span>,  <span class="fl">0.6</span>,  <span class="fl">1.3</span>)</span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a><span class="fu">my_sort</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] -1.8 -1.7 -0.6 -0.5  0.1  0.5  0.6  0.6  1.3  1.3</code></pre>
+</div>
+</div>
+<p>Note that functions like <code>min()</code>, <code>max()</code>, and <code>median()</code> all depend on sorting a numeric vector.</p>
+</section>
+</section>
+<section id="why-learn-about-for-loops-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="why-learn-about-for-loops-in-r">Why learn about for loops in R?</h2>
+<p>For most of the examples in this note, one does not actually need to write a for loop in R to get the desired result, because R has a built-in function, like the <code>sum()</code> or the <code>sort()</code> function. So why are we learning about loops? Well, for two reasons:</p>
+<ol type="1">
+<li><p>So many basic operations, like <code>sum()</code>, require R to run a loop somewhere “deep inside your computer”. In fact, when functions like <code>sum()</code> or <code>sort()</code> are executed, R makes calls to functions written in languages like Fortran or C, which can more efficiently use the computer’s memory when running loops (I think of these languages as being closer to the 0s and 1s which make up the computer’s native tongue). Since for loops are hiding behind so many of the functions we use, it is important (and satisfying!) to understand them.</p></li>
+<li><p>There <em>are</em> situations when you really <em>do</em> need loops in R. One example is running Monte Carlo simulations, which we will cover later. So it is important to learn how to write and understand for loops.</p></li>
+</ol>
 </section>
 <section id="practice" class="level2">
 <h2 class="anchored" data-anchor-id="practice">Practice</h2>
@@ -538,23 +679,23 @@ window.Quarto = {
 <li>Write a function which uses a loop to count the number of words in the character string below:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>chstr <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="st">   If we shadows have offended,</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="st">   Think but this, and all is mended,</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="st">   That you have but slumber’d here</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="st">   While these visions did appear.</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="st">   And this weak and idle theme,</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="st">   No more yielding but a dream,</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="st">   Gentles, do not reprehend.</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="st">   If you pardon, we will mend.</span></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="st">   And, as I am an honest Puck,</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="st">   If we have unearnèd luck</span></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="st">   Now to ’scape the serpent’s tongue,</span></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="st">   We will make amends ere long;</span></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="st">   Else the Puck a liar call.</span></span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="st">   So, good night unto you all.</span></span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="st">   Give me your hands, if we be friends,</span></span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="st">   And Robin shall restore amends."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>chstr <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="st">   If we shadows have offended,</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="st">   Think but this, and all is mended,</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="st">   That you have but slumber’d here</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="st">   While these visions did appear.</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="st">   And this weak and idle theme,</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="st">   No more yielding but a dream,</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="st">   Gentles, do not reprehend.</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="st">   If you pardon, we will mend.</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="st">   And, as I am an honest Puck,</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="st">   If we have unearnèd luck</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="st">   Now to ’scape the serpent’s tongue,</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="st">   We will make amends ere long;</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="st">   Else the Puck a liar call.</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="st">   So, good night unto you all.</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="st">   Give me your hands, if we be friends,</span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="st">   And Robin shall restore amends."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="3" type="1">
 <li>Write a for loop which computes the first 30 values in the Fibonacci sequence. The first two numbers of the sequence are <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>; values after this are obtained as the sum of the two preceding values.</li>
@@ -590,23 +731,23 @@ b_k  2^k + b_{k-1}  10^{k-1}\dots + b_1 2^1 + b_0  2^0.
 <li>Figure out what this function is computing:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ncm <span class="ot">&lt;-</span> <span class="cf">function</span>(n,m){</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(m <span class="sc">&gt;</span> n) <span class="fu">return</span>(<span class="dv">0</span>)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(m <span class="sc">==</span> <span class="dv">0</span>) <span class="fu">return</span>(<span class="dv">1</span>) <span class="co"># note that after a conditional return(), we don't need an "else", because the function will finish executing when it hits a return()</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  val <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>m){</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    val <span class="ot">&lt;-</span> val<span class="sc">*</span>(n<span class="sc">-</span>i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span>i</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(val)</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ncm</span>(<span class="dv">15</span>,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>ncm <span class="ot">&lt;-</span> <span class="cf">function</span>(n,m){</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(m <span class="sc">&gt;</span> n) <span class="fu">return</span>(<span class="dv">0</span>)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(m <span class="sc">==</span> <span class="dv">0</span>) <span class="fu">return</span>(<span class="dv">1</span>) <span class="co"># note that after a conditional return(), we don't need an "else", because the function will finish executing when it hits a return()</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  val <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>m){</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    val <span class="ot">&lt;-</span> val<span class="sc">*</span>(n<span class="sc">-</span>i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span>i</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(val)</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ncm</span>(<span class="dv">15</span>,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 455</code></pre>
 </div>
@@ -615,12 +756,12 @@ b_k  2^k + b_{k-1}  10^{k-1}\dots + b_1 2^1 + b_0  2^0.
 <li>Study the following code carefully and describe what it is doing.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>exams <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">23</span>,<span class="dv">19</span>,</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">21</span>,<span class="dv">24</span>,<span class="dv">22</span>,</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">23</span>,<span class="dv">13</span>,<span class="dv">18</span>,</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">20</span>,<span class="dv">20</span>,<span class="dv">21</span>),<span class="at">nrow =</span> <span class="dv">4</span>,<span class="at">byrow =</span> T)</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(exams) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"exam1"</span>,<span class="st">"exam2"</span>,<span class="st">"final"</span>)</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>exams</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>exams <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">23</span>,<span class="dv">19</span>,</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">21</span>,<span class="dv">24</span>,<span class="dv">22</span>,</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">23</span>,<span class="dv">13</span>,<span class="dv">18</span>,</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">20</span>,<span class="dv">20</span>,<span class="dv">21</span>),<span class="at">nrow =</span> <span class="dv">4</span>,<span class="at">byrow =</span> T)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(exams) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"exam1"</span>,<span class="st">"exam2"</span>,<span class="st">"final"</span>)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>exams</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     exam1 exam2 final
 [1,]    20    23    19
@@ -628,34 +769,34 @@ b_k  2^k + b_{k-1}  10^{k-1}\dots + b_1 2^1 + b_0  2^0.
 [3,]    23    13    18
 [4,]    20    20    21</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>exr <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>((x[<span class="dv">1</span>] <span class="sc">&lt;</span> x[<span class="dv">3</span>])<span class="sc">|</span>(x[<span class="dv">2</span>] <span class="sc">&lt;</span> x[<span class="dv">3</span>])){</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(x[<span class="dv">1</span>] <span class="sc">&lt;=</span> x[<span class="dv">2</span>]){</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>      x[<span class="dv">1</span>] <span class="ot">&lt;-</span> x[<span class="dv">3</span>]</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>      x[<span class="dv">2</span>] <span class="ot">&lt;-</span> x[<span class="dv">3</span>]</span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(x)</span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>exams_new <span class="ot">&lt;-</span> exams</span>
-<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(exams)){</span>
-<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>  exams_new[i,] <span class="ot">&lt;-</span> <span class="fu">exr</span>(exams[i,])</span>
-<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>exams_new</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>exr <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>((x[<span class="dv">1</span>] <span class="sc">&lt;</span> x[<span class="dv">3</span>])<span class="sc">|</span>(x[<span class="dv">2</span>] <span class="sc">&lt;</span> x[<span class="dv">3</span>])){</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(x[<span class="dv">1</span>] <span class="sc">&lt;=</span> x[<span class="dv">2</span>]){</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>      x[<span class="dv">1</span>] <span class="ot">&lt;-</span> x[<span class="dv">3</span>]</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>      x[<span class="dv">2</span>] <span class="ot">&lt;-</span> x[<span class="dv">3</span>]</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(x)</span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>exams_new <span class="ot">&lt;-</span> exams</span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(exams)){</span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>  exams_new[i,] <span class="ot">&lt;-</span> <span class="fu">exr</span>(exams[i,])</span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a>exams_new</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     exam1 exam2 final
 [1,]    20    23    19
@@ -668,27 +809,27 @@ b_k  2^k + b_{k-1}  10^{k-1}\dots + b_1 2^1 + b_0  2^0.
 <li>Try to figure out what the plot will look like before running the code:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="cn">NA</span>,</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">asp =</span> <span class="dv">1</span>, </span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty =</span> <span class="st">"n"</span>,</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">"n"</span>,</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">""</span>,</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">""</span>,</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>),</span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">8</span></span>
-<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>th <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">2</span><span class="sc">*</span>pi,<span class="at">by=</span><span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span>n) <span class="sc">-</span> pi<span class="sc">/</span>n</span>
-<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>  th_poly <span class="ot">&lt;-</span> <span class="fu">seq</span>(th[i],th[i<span class="sc">+</span><span class="dv">1</span>],<span class="at">by=</span>pi<span class="sc">/</span><span class="dv">180</span>)</span>
-<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>  x_poly <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">cos</span>(th_poly))</span>
-<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>  y_poly <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">sin</span>(th_poly))</span>
-<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">polygon</span>(x_poly,y_poly,<span class="at">col=</span>i)</span>
-<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="cn">NA</span>,</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">asp =</span> <span class="dv">1</span>, </span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty =</span> <span class="st">"n"</span>,</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">""</span>,</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">""</span>,</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">8</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>th <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">2</span><span class="sc">*</span>pi,<span class="at">by=</span><span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span>n) <span class="sc">-</span> pi<span class="sc">/</span>n</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>  th_poly <span class="ot">&lt;-</span> <span class="fu">seq</span>(th[i],th[i<span class="sc">+</span><span class="dv">1</span>],<span class="at">by=</span>pi<span class="sc">/</span><span class="dv">180</span>)</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>  x_poly <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">cos</span>(th_poly))</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>  y_poly <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">sin</span>(th_poly))</span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">polygon</span>(x_poly,y_poly,<span class="at">col=</span>i)</span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- 4.  -->
 <!-- ```{r} -->
@@ -705,15 +846,15 @@ b_k  2^k + b_{k-1}  10^{k-1}\dots + b_1 2^1 + b_0  2^0.
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>nlk <span class="ot">&lt;-</span> <span class="cf">function</span>(n){</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  val <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) val <span class="ot">&lt;-</span> val <span class="sc">+</span> <span class="dv">4</span><span class="sc">*</span>(<span class="sc">-</span><span class="dv">1</span>)<span class="sc">^</span>(i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span>((<span class="dv">2</span><span class="sc">*</span>i)<span class="sc">*</span>(<span class="dv">2</span><span class="sc">*</span>i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">*</span>(<span class="dv">2</span><span class="sc">*</span>i<span class="sc">+</span><span class="dv">2</span>)) </span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(val)</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,nlk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>nlk <span class="ot">&lt;-</span> <span class="cf">function</span>(n){</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  val <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) val <span class="ot">&lt;-</span> val <span class="sc">+</span> <span class="dv">4</span><span class="sc">*</span>(<span class="sc">-</span><span class="dv">1</span>)<span class="sc">^</span>(i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span>((<span class="dv">2</span><span class="sc">*</span>i)<span class="sc">*</span>(<span class="dv">2</span><span class="sc">*</span>i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">*</span>(<span class="dv">2</span><span class="sc">*</span>i<span class="sc">+</span><span class="dv">2</span>)) </span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(val)</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,nlk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
