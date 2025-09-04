@@ -366,15 +366,15 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">50</span>) <span class="co"># generate 50 pseudo-random Uniform(0,1) realizations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.67741623 0.85863979 0.14569885 0.37129110 0.56625958 0.31591305
- [7] 0.12662328 0.77405899 0.26483183 0.60309800 0.94182776 0.96362124
-[13] 0.94701814 0.04263937 0.47522384 0.40192790 0.92811897 0.99696867
-[19] 0.23296680 0.71691330 0.89637759 0.93350825 0.13126467 0.06457699
-[25] 0.93566314 0.29868133 0.25966005 0.85713832 0.27564932 0.31564450
-[31] 0.09286458 0.35962282 0.90089048 0.85033475 0.51159202 0.24734615
-[37] 0.14312448 0.44170153 0.04453562 0.63646720 0.90792121 0.73449477
-[43] 0.83233173 0.04704506 0.64028154 0.53434956 0.05294009 0.70843610
-[49] 0.81685565 0.90956927</code></pre>
+<pre><code> [1] 0.85466451 0.26476767 0.16347401 0.45763959 0.85958879 0.36814294
+ [7] 0.47914166 0.25635555 0.11396768 0.39403323 0.65464785 0.99974650
+[13] 0.32160553 0.83184936 0.73751268 0.63549448 0.14853024 0.62251707
+[19] 0.70050759 0.62911692 0.61681797 0.58862848 0.04995126 0.63195133
+[25] 0.01912401 0.50696811 0.31591794 0.73114151 0.33318674 0.64754644
+[31] 0.06621852 0.88061578 0.87514425 0.76813015 0.25435473 0.98610416
+[37] 0.18476558 0.22641255 0.56931706 0.67980449 0.20011837 0.93114573
+[43] 0.84854928 0.87017244 0.51115104 0.06292677 0.60109661 0.51126855
+[49] 0.48052014 0.24993453</code></pre>
 </div>
 </div>
 <p>Once one has obtained a random realization on the interval <span class="math inline">\((0,1)\)</span>, one can transform it into a realization of a random variable from any other distribution by passing it through the quantile function of that distribution. Specifically, suppose <span class="math inline">\(X\)</span> is a random variable with cdf given by <span class="math display">\[
@@ -427,7 +427,7 @@ Q(u) = \inf\{x : F(x) \geq u\}, \quad u \in (0,1),
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n,<span class="at">mean =</span> mu,<span class="at">sd =</span> sigma) <span class="co"># specify mean and standard deviation</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># make a histogram of the realizations</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(X,<span class="at">freq =</span> F, <span class="at">breaks =</span> <span class="dv">20</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(X,<span class="at">freq =</span> F, <span class="at">breaks =</span> <span class="dv">20</span>) <span class="co"># set freq = F so it will have the height of a density</span></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># overlay pdf with dnorm() function evaluated at a sequence of x values</span></span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(mu <span class="sc">-</span> <span class="dv">4</span><span class="sc">*</span>sigma, mu <span class="sc">+</span> <span class="dv">4</span><span class="sc">*</span>sigma,<span class="at">length=</span><span class="dv">200</span>)</span>
@@ -590,13 +590,17 @@ Q(u) = \inf\{x : F(x) \geq u\}, \quad u \in (0,1),
 </div>
 </div>
 <p>Here we illustrate the <code>pbinom()</code> function in a program which makes some plots for visualizing the normal approximation to the binomial distribution. Recall that for <span class="math inline">\(X \sim \text{Binomial}(n,p)\)</span> we have <span class="math display">\[
+P(X = x) = {n \choose x}p^x(1-p)^{n-x}.
+\]</span> For large <span class="math inline">\(n\)</span>, the central limit theorem gives <span class="math display">\[
 X \overset{\text{approx}}{\sim} \text{Normal}(np,np(1-p)),
-\]</span> where the approximation improves as <span class="math inline">\(n \to \infty\)</span>. Letting <span class="math inline">\(\Phi\)</span> denote the cdf of the <span class="math inline">\(\text{Normal}(0,1)\)</span> distribution, the approximation implies <span class="math display">\[
-P(X \leq x) = \sum_{i=0}^x {n \choose i}p^i(1-p)^{n-i} \approx \Phi\Big(\frac{x - np}{\sqrt{np(1-p)}}\Big)
-\]</span> as well as <span class="math display">\[
-P(X = x) = {n \choose x}p^x(1-p)^{n-x}  \approx \left\{\begin{array}{ll}\Phi\Big(\frac{x - np}{\sqrt{np(1-p)}}\Big),&amp; x = 0\\
-\Phi\Big(\frac{x - np}{\sqrt{np(1-p)}}\Big) - \Phi\Big(\frac{x - 1 - np}{\sqrt{np(1-p)}}\Big),&amp;  x &gt; 0\end{array}\right.
-\]</span> where the approximations improve as <span class="math inline">\(n \to \infty\)</span>. Often a continuity correction is prescribed, which adds <span class="math inline">\(0.5\)</span> to the value <span class="math inline">\(x\)</span> when computing the normal approximations (it improves the approximation quite remarkably!). The code implements this correction.</p>
+\]</span> where the approximation improves as <span class="math inline">\(n \to \infty\)</span>. Now, we would like to use the Normal distribution to approximate the probabilities <span class="math inline">\(P(X = x)\)</span>, but since the Normal distribution is for a continuous random variable, it will assign probability zero to any single value <span class="math inline">\(x\)</span>. To get around this, we note that for the binomial random variable <span class="math inline">\(X\)</span>, which is discrete, we have <span class="math display">\[
+P(X = x) = P( x - 1/2 &lt; X &lt; x + 1/2)
+\]</span> for every integer-valued <span class="math inline">\(x\)</span>, so we will approximate the probability <span class="math inline">\(P(X = x)\)</span> with the probability assigned by the <span class="math inline">\(\text{Normal}(np,np(1-p))\)</span> distribution to the interval <span class="math inline">\((x - 1/2,x+1/2)\)</span>. That is, we will use the approximation <span class="math display">\[
+P(X = x) \approx \left\{\begin{array}{ll}\Phi\Big(\frac{x + 1/2 - np}{\sqrt{np(1-p)}}\Big),&amp; x = 0\\
+\Phi\Big(\frac{x + 1/2 - np}{\sqrt{np(1-p)}}\Big) - \Phi\Big(\frac{x - 1/2 - np}{\sqrt{np(1-p)}}\Big),&amp;  x &gt; 0, \end{array}\right.
+\]</span> where <span class="math inline">\(\Phi\)</span> denotes the cdf of the <span class="math inline">\(\text{Normal}(0,1)\)</span> distribution. Likewise, we will approximate the cumulative distribution function of the <span class="math inline">\(\text{Binomial}(n,p)\)</span> distribution as <span class="math display">\[
+P(X \leq x)  \approx \Phi\Big(\frac{x + 1/2 - np}{\sqrt{np(1-p)}}\Big)
+\]</span> These approximations improve as <span class="math inline">\(n \to \infty\)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">5</span> <span class="co"># success probability</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>nn <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">40</span>) <span class="co"># select a few sample sizes</span></span>
@@ -672,6 +676,60 @@ P(X = x) = {n \choose x}p^x(1-p)^{n-x}  \approx \left\{\begin{array}{ll}\Phi\Big
 <p>Practice writing code and anticipating the output of code with the following exercises.</p>
 <section id="write-code" class="level3">
 <h3 class="anchored" data-anchor-id="write-code">Write code</h3>
+<ol type="1">
+<li>Make a plot like the one below of a gamma distribution pdf. The pdf of the <span class="math inline">\(\text{Gamma}(\alpha,\beta)\)</span> distribution is given by <span class="math display">\[
+f(x,\alpha,\beta) = \frac{1}{\Gamma(\alpha)\beta^{\alpha}}x^{\alpha - 1}e^{-x/\beta}, \quad x &gt; 0
+\]</span> for a shape parameter <span class="math inline">\(\alpha\)</span> and a scale parameter <span class="math inline">\(\beta\)</span>; the expected value of a random variable <span class="math inline">\(X\)</span> having this density is <span class="math inline">\(\mathbb{E}X = \alpha\beta\)</span>. The gamma distribution functions in R are <code>rgamma()</code>, <code>dgamma()</code>, <code>pgamma()</code>, and <code>qgamma()</code>. Run <code>?dgamma()</code> to make sure you understand how to put in the arguments. Choose your own values of the shape and scale parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>. Put vertical lines at the mean, the median (the median is the 0.5 quantile of the distribution), and the mode (the value of <span class="math inline">\(x\)</span> for which <span class="math inline">\(f(x,\alpha,\beta)\)</span> is greatest) as shown.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Make the plot below showing the pdf of the chi-squared distribution for several values of the degrees of freedom parameter. The chi-squared pdf is given by <span class="math display">\[
+f(x,\nu) = \frac{1}{\Gamma(\nu)2^{\nu/2}}x^{\nu/2 - 1}e^{-x/2}, \quad x &gt; 0
+\]</span> where <span class="math inline">\(\nu &gt;0\)</span> is the degrees of freedom parameter and <span class="math inline">\(\Gamma(\cdot)\)</span> is the gamma function. The chi-squared pdf can be evaluated with the R function <code>dchisq()</code>. Write a for loop to put all the curves on the plot (note that you can put numbers in for <code>col=</code>)!</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>The standard bivariate normal probability density function is given by <span class="math display">\[
+f(z_1,z_2, \rho) = \frac{1}{2\pi\sqrt{1-\rho^2}}\exp\Big(\frac{z_1^2 - 2 \rho z_1z_2 + z_2^2}{2(1-\rho^2)}\Big) ,\quad z_1,z_2 \in \mathbb{R},
+\]</span> where <span class="math inline">\(\rho \in (-1,1)\)</span> is the correlation parameter. Make a plot like the one below of this function (you will have to define your own function and evaluate it over a grid of points) with your own choice of the parameter <span class="math inline">\(\rho\)</span>. You can use the <code>persp()</code> function to create the 3-d plot.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Fix some integers <span class="math inline">\(n \geq 1\)</span>, <span class="math inline">\(k \in \{1,\dots,n\}\)</span>, and <span class="math inline">\(S\)</span>, where <span class="math inline">\(S\)</span> is large (say at least a thousand). Then generate <span class="math inline">\(S\)</span> samples of size <span class="math inline">\(n\)</span> from the <span class="math inline">\(\text{Uniform}(0,1)\)</span> distribution and on each sample retrieve the <span class="math inline">\(k\)</span>th order statistic—this is the value appearing in position <span class="math inline">\(k\)</span> when the vector is sorted in increasing order. You can do the above with with a for loop or in some other way. Then make a histogram of these <span class="math inline">\(k\)</span>th order statistic values. On top of the histogram, overlay the pdf of the <span class="math inline">\(\text{Beta}(k,n-k+1)\)</span> distribution (can use <code>dbeta()</code> function). For <span class="math inline">\(n=10\)</span>, <span class="math inline">\(k = 2\)</span>, and <span class="math inline">\(S = 5000\)</span>, my plot looks like this:</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="read-code" class="level3">
 <h3 class="anchored" data-anchor-id="read-code">Read code</h3>
@@ -688,6 +746,50 @@ P(X = x) = {n \choose x}p^x(1-p)^{n-x}  \approx \left\{\begin{array}{ll}\Phi\Big
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<ol start="2" type="1">
+<li>Explain what the following code will do.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">numeric</span>(S)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(s <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>S){</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  Z <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(df)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  X[s] <span class="ot">&lt;-</span> <span class="fu">sum</span>(Z<span class="sc">**</span><span class="dv">2</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(X,<span class="at">freq =</span> F,<span class="at">breaks =</span> <span class="dv">50</span>)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">30</span>,<span class="at">length=</span><span class="dv">200</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">dchisq</span>(x,df)<span class="sc">~</span>x,<span class="at">col =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- 2. I was going to make one about finding the HPD region but I think it will be too difficult for them. -->
+<!-- ```{r} -->
+<!-- alpha <- 0.1 -->
+<!-- a <- 3 -->
+<!-- b <- 3 -->
+<!-- lt <- seq(0,alpha,length= 10000) -->
+<!-- lo <- qgamma(lt,a, b) -->
+<!-- up <- qgamma(lt + 1 - alpha,a, b) -->
+<!-- flo <- dgamma(lo, a, b) -->
+<!-- fup <- dgamma(up, a, b) -->
+<!-- w <- which.min(abs(flo - fup)) -->
+<!-- lt <- lt[w] -->
+<!-- rt <- alpha - lt -->
+<!-- lo <- lo[w] -->
+<!-- up <- up[w] -->
+<!-- flo <- flo[w] -->
+<!-- fup <- fup[w] -->
+<!-- x <- seq(0,qgamma(0.999,a,b),length = 200) -->
+<!-- fx <- dgamma(x,a,b) -->
+<!-- plot(fx ~ x,type = "l") -->
+<!-- xpoly <- c(lo,seq(lo,up,length=100),up) -->
+<!-- ypoly <- c(0,dgamma(seq(lo,up,length=100),a,b),0) -->
+<!-- polygon(xpoly,ypoly, col = "green",border=NA) -->
+<!-- abline(v = c(lo,up),lty = 3) -->
+<!-- abline(h = flo, lty = 3) -->
+<!-- ``` -->
 
 
 
