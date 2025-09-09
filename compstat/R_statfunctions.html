@@ -366,15 +366,16 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">50</span>) <span class="co"># generate 50 pseudo-random Uniform(0,1) realizations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.85466451 0.26476767 0.16347401 0.45763959 0.85958879 0.36814294
- [7] 0.47914166 0.25635555 0.11396768 0.39403323 0.65464785 0.99974650
-[13] 0.32160553 0.83184936 0.73751268 0.63549448 0.14853024 0.62251707
-[19] 0.70050759 0.62911692 0.61681797 0.58862848 0.04995126 0.63195133
-[25] 0.01912401 0.50696811 0.31591794 0.73114151 0.33318674 0.64754644
-[31] 0.06621852 0.88061578 0.87514425 0.76813015 0.25435473 0.98610416
-[37] 0.18476558 0.22641255 0.56931706 0.67980449 0.20011837 0.93114573
-[43] 0.84854928 0.87017244 0.51115104 0.06292677 0.60109661 0.51126855
-[49] 0.48052014 0.24993453</code></pre>
+<pre><code> [1] 0.9308787077 0.4566190194 0.3423241214 0.1388481127 0.5347049315
+ [6] 0.3907967699 0.2695951485 0.1702047708 0.3698448180 0.0007702245
+[11] 0.7132399790 0.0772755996 0.9763683723 0.9537657339 0.7771071785
+[16] 0.5586855146 0.8333425578 0.3559388467 0.2689520475 0.3119368011
+[21] 0.2071755244 0.8089807765 0.1426891489 0.6624902359 0.2159810779
+[26] 0.0204272333 0.0310420173 0.2935617536 0.4668650182 0.6845511305
+[31] 0.2843407975 0.9921871182 0.3674608748 0.2078510467 0.9063579065
+[36] 0.6289490701 0.7650181742 0.8604083005 0.5786431504 0.3609595336
+[41] 0.4559477731 0.6450185589 0.4616275323 0.4494822051 0.6420732702
+[46] 0.5413725451 0.2863077268 0.7698679457 0.4721740680 0.4448345422</code></pre>
 </div>
 </div>
 <p>Once one has obtained a random realization on the interval <span class="math inline">\((0,1)\)</span>, one can transform it into a realization of a random variable from any other distribution by passing it through the quantile function of that distribution. Specifically, suppose <span class="math inline">\(X\)</span> is a random variable with cdf given by <span class="math display">\[
@@ -464,8 +465,8 @@ Q(u) = \inf\{x : F(x) \geq u\}, \quad u \in (0,1),
 <span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">at =</span> qu, <span class="at">labels =</span> <span class="fu">sprintf</span>(qu,<span class="at">fmt=</span><span class="st">"%.3f"</span>))  </span>
 <span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">c</span>(qu[<span class="dv">1</span>],<span class="fu">seq</span>(qu[<span class="dv">1</span>],qu[<span class="dv">2</span>],<span class="at">length=</span><span class="dv">100</span>),qu[<span class="dv">2</span>],qu[<span class="dv">1</span>])</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">dnorm</span>(<span class="fu">seq</span>(qu[<span class="dv">1</span>],qu[<span class="dv">2</span>],<span class="at">length=</span><span class="dv">100</span>)),<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">c</span>(qu[<span class="dv">1</span>],<span class="fu">seq</span>(qu[<span class="dv">1</span>],qu[<span class="dv">2</span>],<span class="at">length=</span><span class="dv">100</span>),qu[<span class="dv">2</span>])</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">dnorm</span>(<span class="fu">seq</span>(qu[<span class="dv">1</span>],qu[<span class="dv">2</span>],<span class="at">length=</span><span class="dv">100</span>)),<span class="dv">0</span>)</span>
 <span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">polygon</span>(x, y, <span class="at">col =</span> <span class="st">"red"</span>,<span class="at">border =</span> <span class="st">"NA"</span>)</span>
 <span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">text</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fu">dnorm</span>(<span class="dv">0</span>), <span class="at">label =</span> <span class="fu">sprintf</span>(<span class="dv">1-2</span><span class="sc">*</span>u[j],<span class="at">fmt=</span><span class="st">"%.2f"</span>), <span class="at">col =</span> <span class="st">"white"</span>)</span>
@@ -747,7 +748,7 @@ f(z_1,z_2, \rho) = \frac{1}{2\pi\sqrt{1-\rho^2}}\exp\Big(\frac{z_1^2 - 2 \rho z_
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
-<li>Explain what the following code will do.</li>
+<li>If <span class="math inline">\(Z_1,\dots,Z_k\)</span> are independent <span class="math inline">\(\text{Normal}(0,1)\)</span> random variables, then <span class="math inline">\(\sum_{i=1}^kZ_k^2\)</span> will have the chi-squared distribution with degrees of freedom <span class="math inline">\(k\)</span>. With this beautiful truth in mind, explain what the following code will do. What would you write as a comment after each line of code to explain what it is doing?</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="dv">6</span></span>
@@ -763,6 +764,76 @@ f(z_1,z_2, \rho) = \frac{1}{2\pi\sqrt{1-\rho^2}}\exp\Big(\frac{z_1^2 - 2 \rho z_
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(X,<span class="at">freq =</span> F,<span class="at">breaks =</span> <span class="dv">50</span>)</span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">30</span>,<span class="at">length=</span><span class="dv">200</span>)</span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">dchisq</span>(x,df)<span class="sc">~</span>x,<span class="at">col =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>Consider drawing <span class="math inline">\(n\)</span> marbles from a bag containing <span class="math inline">\(N\)</span> marbles, <span class="math inline">\(M\)</span> of which are red, and counting the number of red marbles you draw. This random number follows a probability distribution called the hypergeometric distribution. If the number of marbles <span class="math inline">\(N\)</span> in the bag is increased to a very large number, and if the number of red marbles <span class="math inline">\(M\)</span> is increased proportionally with <span class="math inline">\(N\)</span>, the distribution of the number of red marbles you draw from the bag in your handful of <span class="math inline">\(n\)</span> becomes very close to the binomial distribution with the number of Bernoulli trials equal to <span class="math inline">\(n\)</span> and the success probability given by <span class="math inline">\(M/N\)</span>. Study the code below and see if you can explain what each line is doing. What would you write if you were to add a comment to each line of code?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">50</span><span class="sc">*</span><span class="dv">2</span><span class="sc">**</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">7</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">floor</span>(N<span class="sc">*</span>p)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="fu">length</span>(N),n<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(N)){</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  tab[i,] <span class="ot">&lt;-</span> <span class="fu">dhyper</span>(<span class="dv">0</span><span class="sc">:</span>n,<span class="at">m =</span> M[i], <span class="at">n =</span> N[i] <span class="sc">-</span> M[i], <span class="at">k =</span> n)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">rbind</span>(tab,<span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span>n,n,p))</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tab) <span class="ot">&lt;-</span> <span class="fu">c</span>(N,<span class="cn">Inf</span>)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tab) <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>n</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              0         1         2         3         4          5
+50   0.02507599 0.1492618 0.3256622 0.3256622 0.1492618 0.02507599
+100  0.02814225 0.1529470 0.3189108 0.3189108 0.1529470 0.02814225
+200  0.02969161 0.1546438 0.3156646 0.3156646 0.1546438 0.02969161
+400  0.03046975 0.1554579 0.3140723 0.3140723 0.1554579 0.03046975
+800  0.03085962 0.1558567 0.3132837 0.3132837 0.1558567 0.03085962
+1600 0.03105475 0.1560540 0.3128912 0.3128912 0.1560540 0.03105475
+3200 0.03115236 0.1561522 0.3126955 0.3126955 0.1561522 0.03115236
+6400 0.03120118 0.1562011 0.3125977 0.3125977 0.1562011 0.03120118
+Inf  0.03125000 0.1562500 0.3125000 0.3125000 0.1562500 0.03125000</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li>If <span class="math inline">\(X_1,\dots,X_n\)</span> is a random sample from a <span class="math inline">\(\text{Bernoulli}(p)\)</span> distribution, the Wald-type <span class="math inline">\((1-\alpha)\times 100\%\)</span> confidence interval for <span class="math inline">\(p\)</span> is the interval <span class="math display">\[
+\hat p_n \pm z_{\alpha/2} \sqrt{\frac{\hat p_n (1-\hat p_n)}{n} },
+\]</span> where <span class="math inline">\(\hat p_n = Y/n\)</span>, with <span class="math inline">\(Y = X_1 + \dots + X_n\)</span>, and <span class="math inline">\(z_{\alpha/2}\)</span> is the upper <span class="math inline">\(\alpha/2\)</span> quantile of the standard normal distribution. For a given sample size <span class="math inline">\(n\)</span> and significance level <span class="math inline">\(\alpha\)</span>, the code below computes, over a sequence of values of <span class="math inline">\(p\)</span> the exact probability that this interval will contain the true value of <span class="math inline">\(p\)</span>. It uses the fact that <span class="math inline">\(Y\)</span> has the <span class="math inline">\(\text{Binomial}(n,p)\)</span> distribution. Read the code and try writing a comment for each line to explain what it is doing.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>n</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>z_val <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>py <span class="ot">&lt;-</span> y<span class="sc">/</span>n</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>spy <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(py<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>py)<span class="sc">/</span>n)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>up <span class="ot">&lt;-</span> py <span class="sc">+</span> z_val <span class="sc">*</span> spy</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>lo <span class="ot">&lt;-</span> py <span class="sc">-</span> z_val <span class="sc">*</span> spy</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.01</span>,<span class="fl">0.99</span>, <span class="at">by =</span> <span class="fl">0.0001</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>cp <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(p))</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(p)){</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  ind <span class="ot">&lt;-</span> (lo <span class="sc">&lt;=</span> p[i]) <span class="sc">&amp;</span> (up <span class="sc">&gt;=</span> p[i])</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  cp[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">dbinom</span>(y[ind],n,p[i]))</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cp <span class="sc">~</span> p,</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"l"</span>,</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"coverage probability"</span>)</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">1</span><span class="sc">-</span>alpha, <span class="at">lty =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <!-- 2. I was going to make one about finding the HPD region but I think it will be too difficult for them. -->
 <!-- ```{r} -->
