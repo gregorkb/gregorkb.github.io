@@ -361,7 +361,7 @@ window.Quarto = {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>mgX <span class="ot">&lt;-</span> <span class="fu">mean</span>(gX)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mgX</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8206575</code></pre>
+<pre><code>[1] 0.81687</code></pre>
 </div>
 </div>
 <p>Try running this several times with smaller and larger choice of <span class="math inline">\(N\)</span>. You’ll notice that the result becomes more stable for larger value of <span class="math inline">\(N\)</span>.</p>
@@ -397,7 +397,7 @@ window.Quarto = {
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>mX <span class="ot">&lt;-</span> <span class="fu">mean</span>(X)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>mX</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.209</code></pre>
+<pre><code>[1] 0.1998</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a plot</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mX_seq <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(X)<span class="sc">/</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>N)</span>
@@ -445,10 +445,10 @@ window.Quarto = {
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8946</code></pre>
+<pre><code>[1] 0.8994</code></pre>
 </div>
 </div>
-<p>In the Monte Carlo simulation, the confidence interval <span class="math inline">\(\bar Y_n \pm t_{n-1,\alpha/2}S_n/\sqrt{n}\)</span> contained the true mean <span class="math inline">\(89.46\%\)</span> of the time.</p>
+<p>In the Monte Carlo simulation, the confidence interval <span class="math inline">\(\bar Y_n \pm t_{n-1,\alpha/2}S_n/\sqrt{n}\)</span> contained the true mean <span class="math inline">\(89.94\%\)</span> of the time.</p>
 </section>
 <section id="type-i-error-rate-of-a-test" class="level3">
 <h3 class="anchored" data-anchor-id="type-i-error-rate-of-a-test">Type I error rate of a test</h3>
@@ -484,10 +484,10 @@ F  = \frac{\operatorname{MS}_{\operatorname{Treatment}}}{\operatorname{MS}_{\ope
 <span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(X)                                       <span class="co"># the Type I error rate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0308</code></pre>
+<pre><code>[1] 0.0362</code></pre>
 </div>
 </div>
-<p>The Monte Carlo simulation approximated the Type I error rate of the test in this setup as 0.0308, somewhat lower than the nominal 0.05. We refer to 0.05 as the “nominal” size, because this is the advertised or “named” size of the test, whereas the test <em>actually</em> performs with a lower Type I error rate (not necessarily a good thing, because of the power/size trade-off), suggesting that the test is unduly conservative (overly reluctant to reject) in this setup.</p>
+<p>The Monte Carlo simulation approximated the Type I error rate of the test in this setup as 0.0362, somewhat lower than the nominal 0.05. We refer to 0.05 as the “nominal” size, because this is the advertised or “named” size of the test, whereas the test <em>actually</em> performs with a lower Type I error rate (not necessarily a good thing, because of the power/size trade-off), suggesting that the test is unduly conservative (overly reluctant to reject) in this setup.</p>
 </section>
 </section>
 <section id="practice" class="level2">
@@ -522,9 +522,9 @@ W = \sum_{j=1}^J\sum_{k=1}^K (O_{jk} - E_{jk})^2/E_{jk},
 <div class="cell-output cell-output-stdout">
 <pre><code>   V
 U    1  2  3  4
-  1 47 12 28 34
-  2 80 21 39 52
-  3 82 20 37 48</code></pre>
+  1 35  8 20 25
+  2 82 26 38 65
+  3 58 22 43 78</code></pre>
 </div>
 </div>
 

@@ -541,14 +541,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>toy_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Subject Observation    Response
-1       1           1  0.25742211
-2       1           2  0.05295437
-3       1           3 -0.49393211
-4       1           4  0.11885827
-5       2           1 -1.86703679
-6       2           2  0.13476569
-7       2           3 -0.72747925
-8       2           4 -1.05711173</code></pre>
+1       1           1  0.01787842
+2       1           2  0.91457723
+3       1           3 -0.85941318
+4       1           4  1.16931508
+5       2           1 -0.56463231
+6       2           2 -0.75039895
+7       2           3  1.01997934
+8       2           4 -1.51468230</code></pre>
 </div>
 </div>
 <p>If we want instead to represent the data in a table having one row for each subject and four columns giving the four observations, we can obtain it with the <code>reshape()</code> function as follows:</p>
@@ -561,9 +561,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">new.row.names =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) <span class="co"># keep the row names from getting wacky</span></span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Subject Response 1 Response 2 Response 3 Response 4
-1       1  0.2574221 0.05295437 -0.4939321  0.1188583
-2       2 -1.8670368 0.13476569 -0.7274793 -1.0571117</code></pre>
+<pre><code>  Subject  Response 1 Response 2 Response 3 Response 4
+1       1  0.01787842  0.9145772 -0.8594132   1.169315
+2       2 -0.56463231 -0.7503990  1.0199793  -1.514682</code></pre>
 </div>
 </div>
 <p>Now let’s try to make the table we want for the Table Rock 50k data. We’ll use the <code>reshape()</code> function, treating the place column as the “subject”:</p>
@@ -602,14 +602,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Subject Observation    Response
-1       1           1  0.25742211
-2       2           1 -1.86703679
-3       1           2  0.05295437
-4       2           2  0.13476569
-5       1           3 -0.49393211
-6       2           3 -0.72747925
-7       1           4  0.11885827
-8       2           4 -1.05711173</code></pre>
+1       1           1  0.01787842
+2       2           1 -0.56463231
+3       1           2  0.91457723
+4       2           2 -0.75039895
+5       1           3 -0.85941318
+6       2           3  1.01997934
+7       1           4  1.16931508
+8       2           4 -1.51468230</code></pre>
 </div>
 </div>
 <p>We see that things are sorted in a different way, but it is the same data set as the original one.</p>

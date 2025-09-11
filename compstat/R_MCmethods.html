@@ -396,7 +396,7 @@ g(x) = -\frac{2x\log(x)}{\log(x + 2)}
 </div>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>I</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.582</code></pre>
+<pre><code>[1] 0.555</code></pre>
 </div>
 </div>
 <p><a href="https://www.wolframalpha.com/input?i=integrate+-log%28x%29+%2F+log%28x+%2B+2%29+*2*x+from+x+%3D+0+to+1">Wolfram Alpha</a> gives the approximation <span class="math inline">\(0.568501\)</span> to this integral. From the picture above, we see that all we are doing is approximating the proportion of the rectangular area <span class="math inline">\([a,b]\times[0,c]\)</span> covered by the function and then scaling this by the total area <span class="math inline">\(c(b-a)\)</span>.</p>
@@ -421,7 +421,7 @@ I \approx (b-a)\frac{1}{N}\sum_{i=1}^N g(U_i).
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>I <span class="ot">&lt;-</span> (b<span class="sc">-</span>a)<span class="sc">*</span><span class="fu">mean</span>(<span class="fu">g</span>(U))</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>I</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5643206</code></pre>
+<pre><code>[1] 0.575542</code></pre>
 </div>
 </div>
 </section>
@@ -537,6 +537,60 @@ f(x) = \left\{\begin{array}{ll}
 </div>
 </div>
 </section>
+<section id="example-3" class="level4">
+<h4 class="anchored" data-anchor-id="example-3">Example 3</h4>
+<p>Consider minimizing the bivariate function <span class="math display">\[
+\begin{align}
+h(x,y) = (x \sin(20y) &amp;+ y(\sin(20x))^2 \cosh(\sin(10x)x) ~+ \\
+&amp;(x\cos(10y) - y\sin(10x))^2\cosh(\cos(20y)y)
+\end{align}
+\]</span> over the rectangle <span class="math inline">\([-1,1]\times[-1,1]\)</span>. We know that the function is minimized at <span class="math inline">\((x,y) = (0,0)\)</span>, but suppose we did not know this.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y){</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> (x<span class="sc">*</span><span class="fu">sin</span>(<span class="dv">20</span><span class="sc">*</span>y) <span class="sc">+</span> y<span class="sc">*</span><span class="fu">sin</span>(<span class="dv">20</span><span class="sc">*</span>x))<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="fu">cosh</span>(<span class="fu">sin</span>(<span class="dv">10</span><span class="sc">*</span>x)<span class="sc">*</span>x)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  b <span class="ot">&lt;-</span> (x<span class="sc">*</span><span class="fu">cos</span>(<span class="dv">10</span><span class="sc">*</span>y) <span class="sc">-</span> y<span class="sc">*</span><span class="fu">cos</span>(<span class="dv">10</span><span class="sc">*</span>x))<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="fu">cosh</span>(<span class="fu">cos</span>(<span class="dv">20</span><span class="sc">*</span>y)<span class="sc">*</span>y)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  val <span class="ot">&lt;-</span> a <span class="sc">+</span> b</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(val)  </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="at">length=</span><span class="dv">81</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">outer</span>(x,y,<span class="at">FUN=</span>h)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">1.1</span>,<span class="fl">1.1</span>,<span class="fl">1.1</span>,<span class="fl">1.1</span>))</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(x,y,z,      </span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">theta =</span> <span class="dv">24</span>, </span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">phi =</span> <span class="dv">30</span>,</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">cex.axis =</span> <span class="fl">0.8</span>,</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">expand =</span> <span class="fl">0.5</span>,</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">border =</span> <span class="fu">rgb</span>(.<span class="dv">545</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">box =</span> F,</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> .<span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In the bivariate case, we must generate <span class="math inline">\(U_1,\dots,U_n\)</span> as points uniformly distributed in the rectangle <span class="math inline">\([-1,1]\times [-1,1]\)</span>, which we demonstrate here:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>h2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">h</span>(x[<span class="dv">1</span>],x[<span class="dv">2</span>])</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">2</span><span class="sc">*</span>N,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>),<span class="at">nrow =</span> N)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>gU <span class="ot">&lt;-</span> <span class="fu">apply</span>(U,<span class="dv">1</span>,h2)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> U[<span class="fu">which.min</span>(gU),]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>x0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.1959214  0.1323608</code></pre>
+</div>
+</div>
+<p>When searching for the minimizer in a two-dimensional space, we need to generate a much larger number of points to obtain an accurate approximation. In spaces with dimension higher than two, the number of samples needed becomes so large that this method takes too much computational time to be practical.</p>
+<p>Simulated annealing is an alternative to uniform sampling which is designed to seek the minimizer in a more computationally efficient way.</p>
+</section>
 </section>
 <section id="simulated-annealing" class="level3">
 <h3 class="anchored" data-anchor-id="simulated-annealing">Simulated Annealing</h3>
@@ -550,56 +604,56 @@ f(x) = \left\{\begin{array}{ll}
 <p>The temperatures <span class="math inline">\(T_i\)</span> decrease across the iterations, so as the algorithm proceeds, it becomes less and less likely to accept proposals which do not decrease the objective function.</p>
 <p>In Step 1. one option for <span class="math inline">\(\varepsilon\)</span> is to generate it from the standard Normal distribution. Note that this algorithm can also work when <span class="math inline">\(g\)</span> takes vector-valued arguments, so we may be searching for the minimizer in a space with dimension greater than 1. In Step 3., one may update the temperatures according to some other rule—the point being that the temperatures should decrease, so in the latter iterations one insists strongly that the objective function should not increase.</p>
 <p>In Step 2. we can do an action “with probability” <em>something</em> by generating <span class="math inline">\(U \sim \text{Uniform}(0,1)\)</span> and doing the action if <span class="math inline">\(U\)</span> is less than <em>something</em>.</p>
-<section id="example-3" class="level4">
-<h4 class="anchored" data-anchor-id="example-3">Example</h4>
+<section id="example-4" class="level4">
+<h4 class="anchored" data-anchor-id="example-4">Example</h4>
 <p>The R code below defines a function which performs simulated annealing to search for the minimizer of a function <span class="math inline">\(g\)</span> over an interval <span class="math inline">\([a,b]\)</span>. Then simulated annealing is demonstrated for the same minimization as in Example 1 in the uniform sampling section.</p>
 <p>Note that the function defined below is a function which take as one of its arguments another function. This is something new for us. The <code>...</code> which appears in the list of arguments in the function definition stands in for any arguments which may need to be passed along to the function put in for <code>f</code>. We will make use of the <code>...</code> in the next example.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>simann <span class="ot">&lt;-</span> <span class="cf">function</span>(g,a,b,tmp,st,iter,...){</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  x0 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>,a,b)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  vals <span class="ot">&lt;-</span> <span class="fu">numeric</span>(iter)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  keep <span class="ot">&lt;-</span> <span class="fu">logical</span>(iter)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>iter){</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    x1 <span class="ot">&lt;-</span> x0 <span class="sc">+</span> st <span class="sc">*</span> <span class="fu">rnorm</span>(<span class="dv">1</span>)                                   <span class="co"># generate candidate next value</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    x1 <span class="ot">&lt;-</span> a<span class="sc">*</span>(x1 <span class="sc">&lt;</span> a) <span class="sc">+</span> b<span class="sc">*</span>(x1 <span class="sc">&gt;</span> b) <span class="sc">+</span> x1<span class="sc">*</span>((x1 <span class="sc">&gt;=</span> a) <span class="sc">&amp;</span> (x1 <span class="sc">&lt;=</span> b)) <span class="co"># keep value of x1 inside interval (a,b)</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    vals[i] <span class="ot">&lt;-</span> x1</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    g0 <span class="ot">&lt;-</span> <span class="fu">g</span>(x0,...)</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    g1 <span class="ot">&lt;-</span> <span class="fu">g</span>(x1,...)</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    d <span class="ot">&lt;-</span> g1 <span class="sc">-</span> g0</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    tmp <span class="ot">&lt;-</span> tmp <span class="sc">/</span> <span class="fu">log</span>(i<span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    ap <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="sc">-</span>d <span class="sc">/</span> tmp)</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>((d <span class="sc">&lt;=</span> <span class="dv">0</span>) <span class="sc">|</span> (<span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">&lt;</span> ap)){                              </span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>      x0 <span class="ot">&lt;-</span> x1</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>      keep[i] <span class="ot">&lt;-</span> T  </span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>  output <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> x0,</span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>                 <span class="at">vals =</span> vals,</span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>                 <span class="at">keep =</span> keep)</span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span><span class="fu">sin</span>(x<span class="sc">*</span>pi) <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">cos</span>(x<span class="sc">*</span><span class="dv">3</span><span class="sc">*</span>pi)</span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>simann_out <span class="ot">&lt;-</span> <span class="fu">simann</span>(g,<span class="at">a=</span><span class="sc">-</span><span class="dv">3</span>,<span class="at">b=</span><span class="dv">3</span>,<span class="at">tmp=</span><span class="dv">100</span>,<span class="at">st=</span><span class="dv">1</span>,<span class="at">iter=</span><span class="dv">200</span>)</span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="co"># make a plot</span></span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>,<span class="at">length=</span><span class="dv">500</span>)</span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">g</span>(x)<span class="sc">~</span>x,<span class="at">type =</span> <span class="st">"l"</span>)</span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> simann_out<span class="sc">$</span>vals, <span class="at">col =</span> <span class="fu">ifelse</span>(simann_out<span class="sc">$</span>keep,<span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">545</span>,.<span class="dv">5</span>),<span class="fu">rgb</span>(<span class="fl">0.545</span>,<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">1</span>)))</span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> simann_out<span class="sc">$</span>x,<span class="at">col=</span><span class="st">"chartreuse"</span>,<span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>simann <span class="ot">&lt;-</span> <span class="cf">function</span>(g,a,b,tmp,st,iter,...){</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  x0 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>,a,b)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  vals <span class="ot">&lt;-</span> <span class="fu">numeric</span>(iter)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  keep <span class="ot">&lt;-</span> <span class="fu">logical</span>(iter)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>iter){</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    x1 <span class="ot">&lt;-</span> x0 <span class="sc">+</span> st <span class="sc">*</span> <span class="fu">rnorm</span>(<span class="dv">1</span>)                                   <span class="co"># generate candidate next value</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    x1 <span class="ot">&lt;-</span> a<span class="sc">*</span>(x1 <span class="sc">&lt;</span> a) <span class="sc">+</span> b<span class="sc">*</span>(x1 <span class="sc">&gt;</span> b) <span class="sc">+</span> x1<span class="sc">*</span>((x1 <span class="sc">&gt;=</span> a) <span class="sc">&amp;</span> (x1 <span class="sc">&lt;=</span> b)) <span class="co"># keep value of x1 inside interval (a,b)</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    vals[i] <span class="ot">&lt;-</span> x1</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    g0 <span class="ot">&lt;-</span> <span class="fu">g</span>(x0,...)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    g1 <span class="ot">&lt;-</span> <span class="fu">g</span>(x1,...)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    d <span class="ot">&lt;-</span> g1 <span class="sc">-</span> g0</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    tmp <span class="ot">&lt;-</span> tmp <span class="sc">/</span> <span class="fu">log</span>(i<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    ap <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="sc">-</span>d <span class="sc">/</span> tmp)</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>((d <span class="sc">&lt;=</span> <span class="dv">0</span>) <span class="sc">|</span> (<span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">&lt;</span> ap)){                              </span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>      x0 <span class="ot">&lt;-</span> x1</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>      keep[i] <span class="ot">&lt;-</span> T  </span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>  output <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> x0,</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>                 <span class="at">vals =</span> vals,</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>                 <span class="at">keep =</span> keep)</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span><span class="fu">sin</span>(x<span class="sc">*</span>pi) <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">cos</span>(x<span class="sc">*</span><span class="dv">3</span><span class="sc">*</span>pi)</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>simann_out <span class="ot">&lt;-</span> <span class="fu">simann</span>(g,<span class="at">a=</span><span class="sc">-</span><span class="dv">3</span>,<span class="at">b=</span><span class="dv">3</span>,<span class="at">tmp=</span><span class="dv">100</span>,<span class="at">st=</span><span class="dv">1</span>,<span class="at">iter=</span><span class="dv">200</span>)</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a><span class="co"># make a plot</span></span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>,<span class="at">length=</span><span class="dv">500</span>)</span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">g</span>(x)<span class="sc">~</span>x,<span class="at">type =</span> <span class="st">"l"</span>)</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> simann_out<span class="sc">$</span>vals, <span class="at">col =</span> <span class="fu">ifelse</span>(simann_out<span class="sc">$</span>keep,<span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">545</span>,.<span class="dv">5</span>),<span class="fu">rgb</span>(<span class="fl">0.545</span>,<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">1</span>)))</span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> simann_out<span class="sc">$</span>x,<span class="at">col=</span><span class="st">"chartreuse"</span>,<span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
