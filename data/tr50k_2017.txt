@@ -1,0 +1,245 @@
+results	1	Eli	White	SALT LAKE CITY	UT	26	M	1	4:22:30	90.17
+results	2	Cody	Case	Nashville	TN	37	M	2	4:41:06	94.56
+results	3	Brian	Marshburn	Wake Forest	NC	38	M	3	4:54:47	90.24
+results	4	Joe	Moosbrugger	Rockbridge	OH	35	M	4	4:55:06	87.99
+results	5	Shaun	Pope	Black Mountain	NC	29	M	5	4:56:31	90.49
+results	6	Dan	Anthony	Asheville	NC	24	M	6	5:01:19	89.33
+results	7	Jonathan	Ibach	Asheville	NC	27	M	7	5:02:04	92.34
+results	8	J.P.	Delaney	Charlotte	NC	31	M	8	5:02:26	86.97
+results	9	Anne	George	Asheville	NC	32	F	1	5:03:03	94.17
+results	10	Alex	Brown	Lenoir City	TN	29	M	9	5:05:08	87.88
+results	11	Andrew	Snow	Asheville	NC	32	M	10	5:10:54	83.14
+results	12	Scotie	Jacobs	Freeville	NY	42	M	11	5:18:48	80.17
+results	13	Tim	Woods	Portland	ME	26	M	12	5:26:55	83.1
+results	14	Sara	Molskness	Asheville	NC	35	F	2	5:28:32	89.77
+results	15	Ciara	Alley	Nashville	TN	28	F	3	5:32:01	93.13
+results	16	Tim	Sommers	Atlanta	GA	37	M	13	5:33:01	86.98
+results	17	Brad	Reed	Jonesborogh	TN	42	M	14	5:37:49	79.74
+results	18	Ben	Grant	Swannanoa	NC	40	M	15	5:39:38	82.41
+results	19	Sheridan	Byers	Pisgah Forest	NC	36	M	16	5:44:12	90.52
+results	20	Michael	Fisher	Asheville	NC	33	M	17	5:44:54	85.25
+results	21	French	Clark	Knoxville	TN	29	M	18	5:44:59	76.09
+results	22	Alex	McLain	Columbia	SC	37	M	19	5:49:18	75.15
+results	23	Robert	Woodall	Sims	NC	39	M	20	5:50:28	72.85
+results	24	Brock	Nichols	Bristol	VA	40	M	21	5:51:46	72.95
+results	25	Brandon	Smith	Asheville	NC	32	M	22	5:52:16	79.66
+results	26	Frank	Tippett	Matthews	NC	47	M	23	5:53:13	67.79
+results	27	Alvaro	Figuerola	bradenton	FL	42	M	24	5:53:54	67.65
+results	28	Terry	Moore	Columbia	SC	46	M	25	5:58:22	61.04
+results	29	Ben	Engebretson	Asheville	NC	28	M	26	5:58:59	73.41
+results	30	Shannon	Johnstone	Cary	NC	44	F	4	6:03:19	83.92
+results	31	Logan	Roberts	Pensacola	FL	31	M	27	6:04:37	73.38
+results	32	John	Zarbock	Boone	NC	22	M	28	6:05:31	74.61
+results	33	Sam	Benton	Brevard	NC	35	M	29	6:08:18	83.96
+results	34	Neal	Caren	Chapel Hill	NC	44	M	30	6:10:30	75.08
+results	35	Chad	Cato	Wilson	NC	44	M	31	6:11:15	68.92
+results	36	Elizabeth	Minnick	Abingdon	VA	37	F	5	6:11:57	87.01
+results	37	Greg	Hohm	Charlotte	NC	48	M	32	6:17:26	75.41
+results	38	Randy	Deinhammer	Wake Forest	NC	50	M	33	6:17:45	72.98
+results	39	Sean	Butler	Pittsboro	NC	47	M	34	6:21:19	72.07
+results	40	Stephen	Perhac	Asheville	NC	41	M	35	6:28:00	65.69
+results	41	Robert	Wallace	Greensboro	NC	37	M	36	6:28:14	58.96
+results	42	Ryan	Carlson	Black Mountain	NC	39	M	37	6:28:26	77.83
+results	43	Jacob	Guffey	Iron Station	NC	39	M	38	6:29:11	68.59
+results	44	Jeffrey	Rutherford	Sanford	NC	31	M	39	6:31:10	75.86
+results	45	William	Scott	Raleigh	NC	34	M	40	6:32:40	65.98
+results	46	Matthew	Smith	Waxhaw	NC	34	M	41	6:33:17	58.92
+results	47	Jewly	Hight	Nashville	TN	36	F	6	6:36:53	91.48
+results	48	Kurt	Smith	Nashville	TN	30	M	42	6:42:43	71.18
+results	49	Lyle	Mitchell	Asheville	NC	30	M	43	6:43:49	74.46
+results	50	Dan	Vasil	Asheville	NC	27	M	44	6:44:00	68.11
+results	51	Jonathan	Roberts	Pensacola	FL	36	M	45	6:45:36	64.72
+results	52	Jay	Spadie	Raleigh	NC	47	M	46	6:45:44	70.15
+results	53	Glenn	Wells	Winston Salem	NC	54	M	47	6:46:11	72.36
+results	54	Michelle	Gray	Elizabethton	TN	48	F	7	6:46:25	85.16
+results	55	Robert	Cook	Tega Cay	SC	39	M	48	6:47:24	67.78
+results	56	Brett	Cottrell	Wilmington	NC	30	M	49	6:47:55	69.71
+results	57	Keith	Knowlton	Greenville	SC	31	M	50	6:48:57	64.19
+results	58	Andrew	Houseknecht	Kernersville	NC	30	M	51	6:51:59	72.19
+results	59	Justin	Hooker	Winston Salem	NC	37	M	52	6:54:16	69.27
+results	60	Kim	Maltempo	Antioch	TN	35	F	8	6:55:49	80.13
+results	61	Rob	Crandall	Boone	NC	51	M	53	6:56:44	66
+results	62	Jason	Moraitis	Conover	NC	40	M	54	06:56:47	62.39
+results	63	Wendy	Wang	Raleigh	NC	25	F	9	6:56:55	77.4
+results	64	Will	Warren	Columbia	SC	53	M	55	6:58:20	62.75
+results	65	Derek	Michel	Raleigh	NC	33	M	56	7:00:46	72.1
+results	66	David	Woodard	Raleigh	NC	52	M	57	7:02:16	66.59
+results	67	Michael	Merrill	Johnson City	TN	39	M	58	7:02:28	65.62
+results	68	Suzanne	Byers	Pisgah Forest	NC	37	F	10	7:02:45	80.74
+results	69	Steph	Jeffries	Raleigh	NC	45	F	11	7:03:29	77.04
+results	70	Sean	Oneal	Raleigh	NC	47	M	59	7:05:10	63.99
+results	71	Alexi	Gross	Boone	NC	25	F	12	7:05:26	86.57
+results	72	Chris	Geck	Apex	NC	41	M	60	7:07:11	72.48
+results	73	Seth	Holling	Cherokee	NC	37	M	61	7:07:40	71.97
+results	74	Matthew	Brandon	Lewisville	NC	43	M	62	7:08:07	62.56
+results	75	Wes	Barry	Charlotte	NC	37	M	63	7:11:14	76.44
+results	76	Scott	Fredrick	chesapeake	VA	42	M	64	7:11:23	63.17
+results	77	Lizzie	Sager	Durham	NC	28	F	13	7:12:57	76.07
+results	78	Sheena	Heise	Newfield	NY	35	F	14	7:13:42	82.08
+results	79	Jeff	Cody	greenville	SC	43	M	65	7:14:17	65.97
+results	80	Chris	Hawley	Wilson	NC	49	M	66	7:14:31	62.21
+results	81	Jubal	Stokes	Parkton	NC	29	M	67	7:15:31	74.22
+results	82	Kris	Huffman	Browns Summit	NC	39	M	68	7:15:59	70.78
+results	83	Nathan	Grundmann	Pinnacle	NC	31	M	69	7:16:06	74.92
+results	84	Jeremy	Morris	Black Mountain	NC	30	M	70	7:17:36	58.53
+results	85	Hilary	Heilig	Waxhaw	NC	44	F	15	7:17:41	72.46
+results	86	John	Cutrone	Fort Mill	SC	46	M	71	7:17:46	66.72
+results	87	Doug	Blackford	Todd	NC	70	M	72	7:17:56	67.13
+results	88	Chris	Gingrich	Va. Beach	VA	41	M	73	7:17:58	69.54
+results	89	Scott	Wait	Charlotte	NC	42	M	74	7:20:05	65.54
+results	90	Andrew	Ruthenbeck	Fort Mill	SC	33	M	75	7:20:10	67.23
+results	91	Brandon	Crews	Winston-Salem	NC	34	M	76	7:20:20	77.97
+results	92	Donica	Elliott	Nashville	TN	38	F	16	7:21:05	80.38
+results	93	Hardee	Sanders	Columbia	SC	30	M	77	7:22:04	57.61
+results	94	Jeannette	Pantani	Charlotte	NC	48	F	17	7:22:12	74.38
+results	95	Tom	Sharkey	Arden	NC	48	M	78	7:22:24	71.71
+results	96	Drew	Shelfer	Asheville	NC	43	M	79	7:23:13	75.83
+results	97	Maggie	Friedline	Swannanoa	NC	26	F	18	7:23:43	70.41
+results	98	Stephane	Daniel	Cary	NC	47	M	80	7:24:01	65.19
+results	99	Shawn	Roberts	Boone	NC	42	M	81	7:25:11	57.09
+results	100	Fred	Begeman	black mtn	NC	40	M	82	7:25:37	70.82
+results	101	Dorothy	Hans	Greensboro	NC	39	F	19	7:28:12	74.4
+results	102	Christopher	Collins	morganton	NC	29	M	83	7:28:31	65.69
+results	103	Maree	Newson	Washington	DC	31	F	20	7:28:43	73.34
+results	104	Michael	Drake	brevard	NC	47	M	84	7:28:57	59.88
+results	105	Breck	Phillips	nashville	TN	42	M	85	07:32:00	69.37
+results	106	Casey	Masters	Ozark	AL	36	M	86	7:32:07	60.14
+results	107	Paul	Houck	Fayetteville	NC	31	M	87	7:32:22	63.74
+results	108	Daniel	Moreno	Raleigh	NC	31	M	88	7:33:31	67.45
+results	109	Paul	Brooks	Raleigh	NC	43	M	89	7:34:06	66.51
+results	110	Lauren	Pulley	Nashville	TN	29	F	21	7:37:18	69.77
+results	111	Natalie	Daniel	mount holly	NC	40	F	22	7:38:11	87.99
+results	112	Kevin	Holcomb	Greensboro	NC	47	M	90	7:38:31	60.04
+results	113	Glenn	Edebohls	Loganville	GA	48	M	91	7:38:54	65.44
+results	114	Chris	Bradley	Jacksonville	NC	39	M	92	7:39:02	58.82
+results	115	Brian	Ingram	Columbia	SC	42	M	93	7:39:32	61.69
+results	116	Jonathan	Walvoord	Columbia	SC	38	M	94	7:39:56	58.92
+results	117	Benjamin	Walvoord	Greenville	SC	42	M	95	7:40:59	64.64
+results	118	Alan	Needle	Boone	NC	31	M	96	7:41:39	64.01
+results	119	Carin	Smith	Bakersville	NC	42	F	23	7:42:06	83.57
+results	120	Clay	Taylor	Hickory	NC	56	M	97	7:44:44	67.3
+results	121	Alejandro	Figuerola	Miami	FL	36	M	98	7:44:51	54.75
+results	122	Robie	Collins	Charlotte	NC	52	M	99	7:45:40	70.08
+results	123	Mark	Snyder	Bostic	NC	37	M	100	7:45:43	69.91
+results	124	Felipe	Troncoso	Greensboro	NC	43	M	101	7:45:46	71.14
+results	125	Rob	Hoyt	Clayton	NC	31	M	102	7:45:50	56.68
+results	126	Miroslaw	Mystkowski	Shelby	NC	49	M	103	7:46:31	75.67
+results	127	Kyle	Francis	Roanoke	VA	30	M	104	7:47:46	65.42
+results	128	Sinith	Suong	Madison	TN	33	M	105	7:51:20	63.67
+results	129	Russell	Galvan	Fayetteville	NC	30	M	106	7:51:50	70.44
+results	130	Joshua	Hamilton	Boone	NC	33	M	107	7:51:53	67.11
+results	131	Brian	Decker	Chapel Hill	NC	42	M	108	7:51:57	66.98
+results	132	Alicia	Hunker	Nashville	TN	33	F	24	7:54:37	70.36
+results	133	Ashley	Ahlholm	Nashville	TN	30	F	25	7:54:47	69.66
+results	134	Colt	Feimster	Lynchburg	VA	25	M	109	7:54:51	57.15
+results	135	Jimmy	Shaffer	Newport News	VA	43	M	110	7:54:54	60.28
+results	136	Daniel	McDonald	Miami	FL	42	M	111	7:55:22	63.48
+results	137	James	Delorme	Sumter	SC	38	M	112	7:56:05	67.48
+results	138	Mike	De Ridder	King	NC	46	M	113	7:56:08	57.73
+results	139	Kent	Gallup	Asheboro	NC	46	M	114	7:57:49	73.14
+results	140	Sasha	Stipanovich	Arden	NC	32	F	26	7:58:15	77.57
+results	141	Ruthie	Haugh	Cary	NC	45	F	27	7:59:21	62.77
+results	142	Douglas	Thompson	Morganton	NC	50	M	115	7:59:55	61.33
+results	143	Ford	Graham	Columbia	SC	40	M	116	8:00:53	68.39
+results	144	Robin	Pyle	Richmond	VA	31	M	117	8:01:33	65.49
+results	145	Mark	Rollins	Clyde	NC	50	M	118	8:02:43	62.71
+results	146	Tyler	Goode	Gastonia	NC	29	M	119	8:02:56	68.01
+results	147	Ben	Goff	Concord	NC	37	M	120	8:03:02	61.52
+results	148	Mark	Tibshrany	Columbia	SC	38	M	121	8:04:02	54.23
+results	149	Don	Rice	Fort Mill	SC	67	M	122	8:05:18	59.5
+results	150	Jonathan	Armstrong	Raleigh	NC	50	M	123	8:05:40	65.62
+results	151	Kenneth	Galloway	Arden	NC	48	M	124	8:06:19	59.73
+results	152	Raymond	Hrin	Columbia	SC	46	M	125	8:06:24	62.26
+results	153	Scott	Frey	Greer	SC	39	M	126	8:08:11	63.2
+results	154	Barry	Wright	Troy	NC	60	M	127	8:08:29	63.53
+results	155	Chris	Shearon	Wendell	NC	39	M	128	8:08:54	58.18
+results	156	Elizabeth	Lucarelli	Asheville	NC	35	F	28	8:09:06	67.88
+results	157	Jeff	McGonnell	Davidson	NC	57	M	129	8:11:30	62.42
+results	158	Meg	Smith	Nashville	TN	37	F	29	8:12:00	67.56
+results	159	Samuel	Smith	Nashville	TN	38	M	130	8:12:00	58.28
+results	160	Ellen	Glassberg	Asheville	NC	30	F	30	8:12:03	76.66
+results	161	Kasandra	Garner	Asheville	NC	45	F	31	8:14:16	67.23
+results	162	Jeffrey	Readman	Kitty Hawk	NC	44	M	131	8:16:35	61.01
+results	163	Patricia	Feeney	Hendersonville	NC	35	F	32	8:17:14	65.23
+results	164	Jeff	Eckard	East Bend	NC	34	M	132	8:23:22	62.46
+results	165	Andy	Zuber	Charlotte	NC	41	M	133	8:23:38	61.99
+results	166	Adam	Schutze	Whitsett	NC	43	M	134	8:23:41	67.49
+results	167	Jen	Picha	Greenville	NC	44	F	33	8:26:37	65
+results	168	Elizabeth	Nelson	GREENVILLE	NC	43	F	34	8:26:41	73.76
+results	169	Chase	Meyer	Ft. Bragg	NC	25	M	135	8:26:58	61.73
+results	170	Karrie	Moraitis	Conover	NC	39	F	35	8:27:16	71.72
+results	171	Laurie	Matecki	Sanford	NC	34	F	36	8:29:00	76.04
+results	172	Marie	Balboa	Bel Air	MD	26	F	37	8:33:12	60.42
+results	173	Jordan	Recknagel	Sanford	NC	34	M	136	8:34:19	53.27
+results	174	Grove	Scarborough	Southern Pines	NC	35	F	38	8:34:22	75.27
+results	175	Adam	Johnson	Southern Pines	NC	35	M	137	8:34:29	48.21
+results	176	Henderson	McGinnis	Winston Salem	NC	50	M	138	8:37:31	54.75
+results	177	Jeremiah	Gaddy	Winston Salem	NC	33	M	139	8:37:42	61.13
+results	178	Jason	Mesner	Oak Ridge	NC	34	M	140	8:37:45	58.27
+results	179	Matt	Laney	Glendale Springs	NC	43	M	141	8:37:51	72.6
+results	180	Dan	Eller	Greenville	SC	38	M	142	8:39:39	55.07
+results	181	Drew	Stanley	Boone	NC	34	M	143	8:41:04	62.05
+results	182	Lauren	Kern	Boone	NC	33	F	39	8:41:06	62.31
+results	183	Christian	Ward	Hickory	NC	45	M	144	8:41:54	54.71
+results	184	Randy	Sain	Zirconia	NC	53	M	145	8:43:03	61.51
+results	185	Zachary	Skidmore	Gastonia	NC	31	M	146	8:43:47	59.63
+results	186	Matt	Miller	Huntersville	NC	45	M	147	8:43:54	65
+results	187	Donnie	Poplin	Marion	NC	42	M	148	8:45:36	57.82
+results	188	Brandon	Burleson	Spruce Pine	NC	31	M	149	8:45:41	64.69
+results	189	Leon	Harmon	Lincolnton	NC	67	M	150	8:46:29	57.79
+results	190	Heather	Vickers	Tallahassee	FL	40	F	40	8:46:32	72.32
+results	191	John	Sherrer	Columbia	SC	48	M	151	8:48:35	58.66
+results	192	Caroline	Duncan	Morganton	NC	53	F	41	8:52:04	75.92
+results	193	Pete	Strimple	Hampstead	NC	36	M	152	8:52:36	55.72
+results	194	Randall	Blevins	Roanoke	VA	57	M	153	8:55:12	55.33
+results	195	Ocean	Pittenger	Raleigh	NC	37	F	42	8:57:36	64.81
+results	196	Justin	Campbell	Irmo	SC	36	M	154	8:58:18	60.51
+results	197	Andrew	Baltensperger	Charlotte	NC	52	M	155	8:58:35	61.19
+results	198	Laura	Morris	Black Mountain	NC	30	F	43	8:58:53	58.86
+results	199	Rebecca	Sullivan	Asheville	NC	37	F	44	8:59:00	62.49
+results	200	Andrea	McHugh	Suffolk	VA	37	F	45	8:59:04	79.32
+results	201	David	Griffith	Murfreesboro	NC	38	M	156	8:59:12	58.72
+results	202	Lucas	Loury	Raleigh	NC	30	M	157	8:59:15	55.41
+results	203	Anna	Walker	Roxboro	NC	30	F	46	8:59:53	65.92
+results	204	David	Moore	Davidson	NC	59	M	158	9:02:44	64.87
+results	205	Mitch	Cline	Lincolnton	NC	55	M	159	9:02:50	63.8
+results	206	Jeff	Branch	Durham	NC	30	M	160	9:05:01	57.05
+results	207	Bart	Smith	Asheville	NC	72	M	161	9:07:04	57.22
+results	208	Jillian	Breitwieser	Virginia Beach	VA	36	F	47	9:07:22	77.56
+results	209	Maureen	Percy	Cary	NC	55	F	48	9:11:18	64.01
+results	210	Allison	Alston	Cary	NC	28	F	49	9:12:24	70.48
+results	211	Joann	Zeise	Irmo	SC	42	F	50	9:13:05	71.55
+results	212	Kyle	Pitchford	Greenville	NC	46	M	162	9:15:36	52.22
+results	213	Ryan	Hampton	Cary	NC	33	M	163	9:18:39	62.21
+results	214	Robert	Jackson	Kingston Springs	TN	43	M	164	09:19:00	56.67
+results	215	Juan	Vila	Miami	FL	33	M	165	9:19:13	53.61
+results	216	Nicholas	Borja	Dallas	TX	35	M	166	9:19:17	62.67
+results	217	Michael	Borja	Miami	FL	35	M	167	9:19:22	49.74
+results	218	Elvina	Scott	Ithaca	NY	48	F	51	9:19:46	65.84
+results	219	Anthony	Dorch	Fayetteville	NC	50	M	168	9:19:49	61.25
+results	220	Stan	Selan	Rock Hill	SC	54	M	169	9:24:09	54.62
+results	221	Shelton	Ansley	Cairo	GA	65	M	170	9:28:33	51.27
+results	222	Vasu	Mandava	Cary	NC	45	M	171	9:29:22	53.75
+results	223	Kevin	Silvey	Pauline	SC	48	M	172	9:32:34	56.1
+results	224	Laura	Rollins	Clyde	NC	47	F	52	9:33:56	71.54
+results	225	A	Casey	Johnson City	TN	42	F	53	9:38:59	55.65
+results	226	Joey	Beason	Greenville	SC	38	M	173	9:39:39	53.91
+results	227	Mark	Long	Hamlet	NC	58	M	174	9:40:11	60.85
+results	228	Bret	Tracy	Simpsonville	SC	43	M	175	9:44:14	53.88
+results	229	Adam	Amundson	Greensboro	NC	32	M	176	9:44:18	47.58
+results	230	Bradley	Lawrence	Rockingham	NC	27	M	177	9:44:24	35.57
+results	231	Richard	Turner	Gaffney	SC	46	M	178	9:49:52	55.75
+results	232	Kristen	Scheiber	Cary	NC	42	F	54	9:49:55	51.39
+results	233	Tim	Bayless	Asheville	NC	30	M	179	10:09:47	51.92
+results	234	Benjamin	Klinger	Hamlet	NC	28	M	180	10:17:02	43.1
+results	235	Wayne	Fogel	Harker Heights	TX	40	M	181	10:20:51	60.32
+results	236	Lou	McLean	Boone	NC	53	F	55	10:30:12	67.73
+results	237	Jacob	Klinger	Hamlet	NC	27	M	182	10:31:38	41.56
+results	238	Duane	Buckner	Brunswick	GA	45	M	183	10:37:15	45.43
+results	239	Amanda	Winchell	Mount Vernon	IL	33	F	56	10:38:12	48.03
+results	240	Semia	Ostrover	Black Mountain	NC	45	F	57	10:45:06	59.85
+results	241	Maggie	Hurley	Bel Air	MD	52	F	58	10:52:38	58.8
+results	242	James	Webb	Columbia	SC	38	M	184	10:58:50	41.01
+results	243	Carlos	Nunez	miami	FL	43	M	185	11:09:25	39.21
+results	244	Chris	Howie	Rock Hill	SC	28	M	186	11:13:33	64.33
+results	245	Michael	Bell	Hope Mills	NC	32	M	187	11:24:31	48.33

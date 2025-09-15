@@ -1,0 +1,49 @@
+results	1	Will	Harlan	 	 	36	M	1	4:03:10	91.09
+results	2	Chris	Bolick	Lenoir	NC	39	M	2	4:31:35	67.5
+results	3	Dennis	Norris	Blowing Rock	NC	48	M	3	4:31:51	79.6
+results	4	Adrian	Camm	Wanaka	NZL	45	M	4	4:49:52	83.89
+results	5	Bill	Johncock	Hickory	NC	48	M	5	5:01:16	77.73
+results	6	John	Nussbaumer	Gastonia	NC	32	M	6	5:09:10	72.42
+results	7	Fred	Arnette	Fort Mill	SC	43	M	7	5:09:55	73.94
+results	8	Anji	Nussbaumer	Gastonia	NC	32	F	1	5:13:41	85.64
+results	9	Andrew	Shannon	Atlanta	GA	25	M	8	5:23:21	68.37
+results	10	Scot	Hayward	Hudson	NC	49	M	9	5:26:18	69.36
+results	11	Jeff	Kimrey	Southern Pines	NC	51	M	10	5:30:47	61.27
+results	12	Tim	Johnson	Morganton	NC	38	M	11	5:35:41	65.02
+results	13	Dulcinea	Groff	Quitman	AR	29	F	2	5:36:41	81.02
+results	14	Tony	Issenmann	Black Mountain	NC	33	M	12	5:38:58	68.54
+results	15	Melinda	Yelton	Charlotte	NC	46	F	3	5:40:24	75.26
+results	16	Kimberly	Hollifield-Smith	Morehead City	NC	33	F	4	5:40:34	73.24
+results	17	Jim	Lewis	Chapel Hill	NC	45	M	13	5:41:42	72.35
+results	18	Ashley	Funderburk	Charlotte	NC	35	F	5	5:42:03	71.81
+results	19	Ken	Sirois	Clinton	TN	65	M	14	5:42:41	65.95
+results	20	Tom	Patch	Charlotte	NC	53	M	15	5:45:33	60.8
+results	21	Sarah	Johnson	 	 	36	F	6	5:47:51	73.23
+results	22	Bedford	Boyce	Charlotte	NC	40	M	16	5:49:01	63.03
+results	23	Lee	Starnes	Granite Falls	NC	52	M	17	5:49:23	60.44
+results	24	Michelle	Macander	Surf City	NC	34	F	7	6:00:16	85.02
+results	24	Katie	Grove	Smyrna	GA	34	F	7	6:00:16	80.08
+results	26	Eric	Millsaps	Morganton	NC	50	M	18	6:02:01	66.66
+results	27	Jean-Gael	Morvan	Danville	VA	37	M	19	6:10:54	65.56
+results	28	Cameron	Kelly	Raleigh	NC	34	M	20	6:15:23	65.63
+results	29	Jeffrey	McCaslin	Annandale	VA	45	M	21	6:18:48	57.9
+results	30	Jennifer	Evans	Hickory	NC	28	F	9	6:25:42	62.5
+results	31	Darshana	Patel	Brick	NJ	36	F	10	6:26:15	74.76
+results	32	Tom	Crespo	Charlotte	NC	46	M	22	6:26:28	61.91
+results	33	Peter	Bellows	Greenville	SC	60	M	23	6:30:29	62.27
+results	34	Michael	Dacar	Durham	NC	36	M	24	6:31:21	61.67
+results	35	Zac	Vinson	Lincolnton	NC	31	M	25	6:36:51	62.74
+results	36	Bill	Keane	Winston-Salem	NC	68	M	26	6:37:00	62.53
+results	37	Jeffrey	Haas	Huntersville	NC	43	M	27	6:43:19	58.36
+results	38	Leon	Harmon	Lincolnton	NC	62	M	28	6:53:23	57.79
+results	39	Dan	Besse	Winston-Salem	NC	57	M	29	7:17:21	72.39
+results	40	Billy	Haley	Raeford	NC	36	M	30	7:19:43	53.72
+results	41	John	Rose	Cameron	NC	34	M	31	7:19:44	56.61
+results	41	Jeremy	Cope	Fayetteville	NC	28	M	31	7:19:44	55.3
+results	43	January	Krieg	 	 	29	M	33	7:19:45	55.3
+results	44	Steve	Grace	Charlotte	NC	37	M	34	7:31:05	57.11
+results	45	Janice	Moore	Charlotte	NC	43	F	11	7:37:05	68.68
+results	46	Holly	Gustafson	Waukegan	IL	25	F	12	7:38:59	68.34
+results	46	Whitney	Butler	Beaufort	SC	27	F	12	7:38:59	68.34
+results	48	Chad	Dillard	Charlotte	NC	37	M	35	7:46:50	53.39
+results	49	Shirley	Sirois	Clinton	TN	65	F	14	8:16:31	60.19
