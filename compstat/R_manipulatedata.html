@@ -541,14 +541,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>toy_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Subject Observation   Response
-1       1           1 -0.5592985
-2       1           2 -0.2552634
-3       1           3  0.1826320
-4       1           4  0.6336973
-5       2           1  3.0456640
-6       2           2  0.8648503
-7       2           3  0.3692043
-8       2           4 -0.1222015</code></pre>
+1       1           1  0.3075116
+2       1           2 -0.4448734
+3       1           3  0.8719280
+4       1           4  1.1459741
+5       2           1 -1.3532772
+6       2           2  1.4176831
+7       2           3 -0.6485197
+8       2           4  0.1893109</code></pre>
 </div>
 </div>
 <p>If we want instead to represent the data in a table having one row for each subject and four columns giving the four observations, we can obtain it with the <code>reshape()</code> function as follows:</p>
@@ -562,8 +562,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Subject Response 1 Response 2 Response 3 Response 4
-1       1 -0.5592985 -0.2552634  0.1826320  0.6336973
-2       2  3.0456640  0.8648503  0.3692043 -0.1222015</code></pre>
+1       1  0.3075116 -0.4448734  0.8719280  1.1459741
+2       2 -1.3532772  1.4176831 -0.6485197  0.1893109</code></pre>
 </div>
 </div>
 <p>Now let’s try to make the table we want for the Table Rock 50k data. We’ll use the <code>reshape()</code> function, treating the place column as the “subject”:</p>
@@ -602,14 +602,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Subject Observation   Response
-1       1           1 -0.5592985
-2       2           1  3.0456640
-3       1           2 -0.2552634
-4       2           2  0.8648503
-5       1           3  0.1826320
-6       2           3  0.3692043
-7       1           4  0.6336973
-8       2           4 -0.1222015</code></pre>
+1       1           1  0.3075116
+2       2           1 -1.3532772
+3       1           2 -0.4448734
+4       2           2  1.4176831
+5       1           3  0.8719280
+6       2           3 -0.6485197
+7       1           4  1.1459741
+8       2           4  0.1893109</code></pre>
 </div>
 </div>
 <p>We see that things are sorted in a different way, but it is the same data set as the original one.</p>

@@ -322,6 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="reading-data" class="level2">
 <h2 class="anchored" data-anchor-id="reading-data">Reading data</h2>
 <p>Typically data are stored in text files where each row corresponds to a row in a spreadsheet, and the values are separated by some character, very often a comma. If not a comma, it may be a tab (long space) or other delimiter. If the values are not delimited by a special character, they may be in so-called fixed-width format, which we describe in the following.</p>
+<p>The data sets used in this note can be downloaded from <a href="https://github.com/gregorkb/gregorkb.github.io/tree/master/data">this link</a>. In order to access a data file after you have saved it on your computer, you will have to provide the path to the file. This can be a complete file path or the relative file path from the current <em>working directory</em>. The working directory is usually the directory (i.e.&nbsp;folder) from where you opened your R script, but you can change it with the <code>setwd()</code> command, and you can find out what it is with the <code>getwd()</code> command. In the following, the data files are accessed in a folder called <code>data</code> which is sitting in the current working directory, so each file path looks like <code>data/&lt;filename&gt;</code>.</p>
 <section id="comma-separated" class="level3">
 <h3 class="anchored" data-anchor-id="comma-separated">Comma-separated</h3>
 <p>Suppose a data file looks like this:</p>
@@ -624,17 +625,17 @@ date,wildebeest,laughing hyena,crocodile,weather,start,end,fun,guide
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>() <span class="co"># today's date</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>today</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2025-09-11"</code></pre>
+<pre><code>[1] "2025-09-15"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>today <span class="sc">-</span> <span class="dv">30</span> <span class="co"># the date 30 days ago</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2025-08-12"</code></pre>
+<pre><code>[1] "2025-08-16"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(today,<span class="at">by=</span><span class="st">"3 days"</span>,<span class="at">length =</span> <span class="dv">12</span>) <span class="co"># make a sequence of dates</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "2025-09-11" "2025-09-14" "2025-09-17" "2025-09-20" "2025-09-23"
- [6] "2025-09-26" "2025-09-29" "2025-10-02" "2025-10-05" "2025-10-08"
-[11] "2025-10-11" "2025-10-14"</code></pre>
+<pre><code> [1] "2025-09-15" "2025-09-18" "2025-09-21" "2025-09-24" "2025-09-27"
+ [6] "2025-09-30" "2025-10-03" "2025-10-06" "2025-10-09" "2025-10-12"
+[11] "2025-10-15" "2025-10-18"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">weekdays</span>(<span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"2014-07-05"</span>,<span class="st">"2017-07-05"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -649,15 +650,15 @@ date,wildebeest,laughing hyena,crocodile,weather,start,end,fun,guide
 <div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(today,<span class="st">"%m/%d/%y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "09/11/25"</code></pre>
+<pre><code>[1] "09/15/25"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(today,<span class="st">"%b %d, %Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Sep 11, 2025"</code></pre>
+<pre><code>[1] "Sep 15, 2025"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(today,<span class="st">"%B %d, %Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "September 11, 2025"</code></pre>
+<pre><code>[1] "September 15, 2025"</code></pre>
 </div>
 </div>
 <p>In the date column of the safari data set, the dates are recorded in many different formats. It takes a little bit of work to standardize the formats: Below, we use a loop to go through the entries of the date column to extract the date from each one with the <code>as.Date()</code> function. We have to list all the different formats to try by using the <code>tryFormats</code> option. Then we re-print the date in the format we want to keep. After the loop is done, we use <code>as.Date()</code> again to convert the entire vector of character strings into a column having the date class.</p>
@@ -829,22 +830,23 @@ attr(,"useBytes")
 <span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.na</span>(x)) <span class="fu">return</span>(<span class="cn">NA</span>)</span>
 <span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a>  colon <span class="ot">&lt;-</span> <span class="fu">regexpr</span>(<span class="st">":"</span>,x) <span class="co"># get position of colon</span></span>
-<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a>  hh <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">substr</span>(x,<span class="at">start =</span> <span class="dv">1</span>,<span class="at">stop =</span> colon <span class="sc">-</span> <span class="dv">1</span>))</span>
-<span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a>  mm <span class="ot">&lt;-</span> <span class="fu">substr</span>(x,<span class="at">start =</span> colon <span class="sc">+</span> <span class="dv">1</span>, <span class="at">stop =</span> colon <span class="sc">+</span> <span class="dv">2</span>)</span>
-<span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">regexpr</span>(<span class="st">"m"</span>,x) <span class="co"># get position of character "m"</span></span>
-<span id="cb84-10"><a href="#cb84-10" aria-hidden="true" tabindex="-1"></a>  ap <span class="ot">&lt;-</span> <span class="fu">substr</span>(x,<span class="at">start=</span>m<span class="dv">-1</span>,<span class="at">stop =</span> m<span class="dv">-1</span>)</span>
-<span id="cb84-11"><a href="#cb84-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>((ap <span class="sc">==</span> <span class="st">"p"</span>) <span class="sc">&amp;</span> (hh <span class="sc">!=</span> <span class="dv">12</span>)) hh <span class="ot">&lt;-</span> hh <span class="sc">+</span> <span class="dv">12</span></span>
-<span id="cb84-12"><a href="#cb84-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>((ap <span class="sc">==</span> <span class="st">"a"</span>) <span class="sc">&amp;</span> (hh <span class="sc">==</span> <span class="dv">12</span>)) hh <span class="ot">&lt;-</span> hh <span class="sc">-</span> <span class="dv">12</span></span>
-<span id="cb84-13"><a href="#cb84-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb84-14"><a href="#cb84-14" aria-hidden="true" tabindex="-1"></a>  val <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">sprintf</span>(hh,<span class="at">fmt =</span> <span class="st">"%02d"</span>),mm,<span class="at">sep=</span><span class="st">":"</span>)</span>
-<span id="cb84-15"><a href="#cb84-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb84-16"><a href="#cb84-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(val)</span>
-<span id="cb84-17"><a href="#cb84-17" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb84-18"><a href="#cb84-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb84-19"><a href="#cb84-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb84-20"><a href="#cb84-20" aria-hidden="true" tabindex="-1"></a><span class="fu">twelve2twentyfour</span>(<span class="st">"2:20 pm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a>  colon <span class="ot">&lt;-</span> <span class="fu">regexpr</span>(<span class="st">":"</span>,x) <span class="co"># get position of colon</span></span>
+<span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a>  hh <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">substr</span>(x,<span class="at">start =</span> <span class="dv">1</span>,<span class="at">stop =</span> colon <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a>  mm <span class="ot">&lt;-</span> <span class="fu">substr</span>(x,<span class="at">start =</span> colon <span class="sc">+</span> <span class="dv">1</span>, <span class="at">stop =</span> colon <span class="sc">+</span> <span class="dv">2</span>)</span>
+<span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb84-10"><a href="#cb84-10" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">regexpr</span>(<span class="st">"m"</span>,x) <span class="co"># get position of character "m"</span></span>
+<span id="cb84-11"><a href="#cb84-11" aria-hidden="true" tabindex="-1"></a>  ap <span class="ot">&lt;-</span> <span class="fu">substr</span>(x,<span class="at">start=</span>m<span class="dv">-1</span>,<span class="at">stop =</span> m<span class="dv">-1</span>)</span>
+<span id="cb84-12"><a href="#cb84-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>((ap <span class="sc">==</span> <span class="st">"p"</span>) <span class="sc">&amp;</span> (hh <span class="sc">!=</span> <span class="dv">12</span>)) hh <span class="ot">&lt;-</span> hh <span class="sc">+</span> <span class="dv">12</span></span>
+<span id="cb84-13"><a href="#cb84-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>((ap <span class="sc">==</span> <span class="st">"a"</span>) <span class="sc">&amp;</span> (hh <span class="sc">==</span> <span class="dv">12</span>)) hh <span class="ot">&lt;-</span> hh <span class="sc">-</span> <span class="dv">12</span></span>
+<span id="cb84-14"><a href="#cb84-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb84-15"><a href="#cb84-15" aria-hidden="true" tabindex="-1"></a>  val <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">sprintf</span>(hh,<span class="at">fmt =</span> <span class="st">"%02d"</span>),mm,<span class="at">sep=</span><span class="st">":"</span>)</span>
+<span id="cb84-16"><a href="#cb84-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb84-17"><a href="#cb84-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(val)</span>
+<span id="cb84-18"><a href="#cb84-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb84-19"><a href="#cb84-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb84-20"><a href="#cb84-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-21"><a href="#cb84-21" aria-hidden="true" tabindex="-1"></a><span class="fu">twelve2twentyfour</span>(<span class="st">"2:20 pm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "14:20"</code></pre>
 </div>
@@ -906,38 +908,30 @@ attr(,"useBytes")
 6 FALSE            Edwards   Tuesday     TRUE</code></pre>
 </div>
 </div>
-<p>As another exercise, suppose we wish to replace the names in the guide column with the first initial, followed by a period, and then the last name after a space, where we do not change the name if only the last name is given. The code below makes a function to convert each name to this shortened version and applies the function to the guide column of the safari data set.</p>
+<p>As another exercise, suppose we wish to replace the names in the guide column with the first initial, followed by a period, and then the last name after a space, where we do not change the name if only the last name is given. The code below makes a function to convert each name to this shortened version and applies the function to the guide column of the safari data set. The <code>strsplit()</code> function comes in very handy here.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>shortname <span class="ot">&lt;-</span> <span class="cf">function</span>(ch){</span>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>nameabb <span class="ot">&lt;-</span> <span class="cf">function</span>(ch){</span>
 <span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># check for spaces in the name</span></span>
-<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a>  spaces <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">" "</span>,ch)</span>
-<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(spaces) <span class="sc">==</span> <span class="dv">0</span>){<span class="co"># if no spaces</span></span>
-<span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb96-7"><a href="#cb96-7" aria-hidden="true" tabindex="-1"></a>    val <span class="ot">&lt;-</span> ch</span>
-<span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb96-10"><a href="#cb96-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb96-11"><a href="#cb96-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># find position of first character in last name  </span></span>
-<span id="cb96-12"><a href="#cb96-12" aria-hidden="true" tabindex="-1"></a>    ln_start <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="fu">gregexpr</span>(<span class="st">" "</span>,ch)[[<span class="dv">1</span>]]) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>  full <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(ch,<span class="st">" "</span>)[[<span class="dv">1</span>]] <span class="co"># get first element of the list</span></span>
+<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(full)</span>
+<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(n <span class="sc">==</span> <span class="dv">1</span>){</span>
+<span id="cb96-7"><a href="#cb96-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a>    abb <span class="ot">&lt;-</span> full</span>
+<span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb96-10"><a href="#cb96-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb96-11"><a href="#cb96-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb96-12"><a href="#cb96-12" aria-hidden="true" tabindex="-1"></a>    abb <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">substr</span>(full[<span class="dv">1</span>],<span class="dv">1</span>,<span class="dv">1</span>),<span class="st">". "</span>,full[n],<span class="at">sep=</span><span class="st">""</span>)</span>
 <span id="cb96-13"><a href="#cb96-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb96-14"><a href="#cb96-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get last name</span></span>
-<span id="cb96-15"><a href="#cb96-15" aria-hidden="true" tabindex="-1"></a>    ln <span class="ot">&lt;-</span> <span class="fu">substr</span>(ch,ln_start,<span class="fu">nchar</span>(ch))</span>
-<span id="cb96-16"><a href="#cb96-16" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb96-17"><a href="#cb96-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get first initial</span></span>
-<span id="cb96-18"><a href="#cb96-18" aria-hidden="true" tabindex="-1"></a>    finit <span class="ot">&lt;-</span> <span class="fu">substr</span>(ch,<span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb96-19"><a href="#cb96-19" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb96-20"><a href="#cb96-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># put together</span></span>
-<span id="cb96-21"><a href="#cb96-21" aria-hidden="true" tabindex="-1"></a>    val <span class="ot">&lt;-</span> <span class="fu">paste</span>(finit,ln,<span class="at">sep =</span> <span class="st">". "</span>)  </span>
-<span id="cb96-22"><a href="#cb96-22" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb96-23"><a href="#cb96-23" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb96-24"><a href="#cb96-24" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb96-25"><a href="#cb96-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(val)</span>
-<span id="cb96-26"><a href="#cb96-26" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb96-27"><a href="#cb96-27" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb96-28"><a href="#cb96-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-29"><a href="#cb96-29" aria-hidden="true" tabindex="-1"></a>safari<span class="sc">$</span>guide <span class="ot">&lt;-</span> <span class="fu">sapply</span>(safari<span class="sc">$</span>guide,shortname)</span>
-<span id="cb96-30"><a href="#cb96-30" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb96-14"><a href="#cb96-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb96-15"><a href="#cb96-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb96-16"><a href="#cb96-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(abb)</span>
+<span id="cb96-17"><a href="#cb96-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-18"><a href="#cb96-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb96-19"><a href="#cb96-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-20"><a href="#cb96-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-21"><a href="#cb96-21" aria-hidden="true" tabindex="-1"></a>safari<span class="sc">$</span>guide <span class="ot">&lt;-</span> <span class="fu">sapply</span>(safari<span class="sc">$</span>guide,nameabb)</span>
+<span id="cb96-22"><a href="#cb96-22" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        date wildebeest laughing.hyena crocodile       weather start   end
 1 1999-01-13         12              0         2         sunny 07:21 16:14

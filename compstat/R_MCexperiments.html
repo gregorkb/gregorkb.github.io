@@ -298,13 +298,13 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#approximating-the-expected-value" id="toc-approximating-the-expected-value" class="nav-link active" data-scroll-target="#approximating-the-expected-value">Approximating the expected value</a></li>
-  <li><a href="#normal-example" id="toc-normal-example" class="nav-link" data-scroll-target="#normal-example">Normal example</a></li>
-  <li><a href="#bernoulli-examples" id="toc-bernoulli-examples" class="nav-link" data-scroll-target="#bernoulli-examples">Bernoulli examples</a>
+  <li><a href="#approximating-an-expected-value" id="toc-approximating-an-expected-value" class="nav-link active" data-scroll-target="#approximating-an-expected-value">Approximating an expected value</a>
   <ul class="collapse">
+  <li><a href="#normal-example" id="toc-normal-example" class="nav-link" data-scroll-target="#normal-example">Normal example</a></li>
+  <li><a href="#bernoulli-examples" id="toc-bernoulli-examples" class="nav-link" data-scroll-target="#bernoulli-examples">Bernoulli examples</a></li>
+  </ul></li>
   <li><a href="#coverage-probability-of-a-confidence-interval" id="toc-coverage-probability-of-a-confidence-interval" class="nav-link" data-scroll-target="#coverage-probability-of-a-confidence-interval">Coverage probability of a confidence interval</a></li>
   <li><a href="#type-i-error-rate-of-a-test" id="toc-type-i-error-rate-of-a-test" class="nav-link" data-scroll-target="#type-i-error-rate-of-a-test">Type I error rate of a test</a></li>
-  </ul></li>
   <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a>
   <ul class="collapse">
   <li><a href="#write-code" id="toc-write-code" class="nav-link" data-scroll-target="#write-code">Write code</a></li>
@@ -344,15 +344,16 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<section id="approximating-the-expected-value" class="level2">
-<h2 class="anchored" data-anchor-id="approximating-the-expected-value">Approximating the expected value</h2>
+<p>Statisticians have special uses for the Monte Carlo methods introduced in the previous note. Very often statisticians run computer experiments to check how well a statistical method performs. This is particularly important when a statistical method, say a test of hypotheses or the construction of a confidence interval, depends on asymptotic results established under the assumption that the sample size <span class="math inline">\(n\)</span> approaches infinity. You may recall the central limit theorem, which tells us that a sample mean, centered and then divided by its standard deviation, will have a distribution approaching the standard normal distribution as the sample size is increased to infinity. It is upon such results that so many statistical methods are based; but in practice, it is impossible to observe an infinite sample size. It therefore becomes important to know how large a sample size is large enough for asymptotic distribution theory to “kick in” and ensure that our methods have the advertized properties—Type I error rates of tests and coverage probabilities for confidence intervals, for example.</p>
+<p>These computer experiments are essentially Monte Carlo approximations to integrals, not so different from those we studied in the previous note.</p>
+<section id="approximating-an-expected-value" class="level2">
+<h2 class="anchored" data-anchor-id="approximating-an-expected-value">Approximating an expected value</h2>
 <p>The Monte Carlo method for approximating an integral can be used to approximation an <em>expected value</em>, which is useful when this is difficult to compute exactly. Recall that for a random variable <span class="math inline">\(X\)</span>, the expected value, denoted <span class="math inline">\(\mathbb{E}X\)</span> represents the central value of the distribution of <span class="math inline">\(X\)</span> in the sense that if one were to observe many realizations of <span class="math inline">\(X\)</span> and average them, this average should be close to <span class="math inline">\(\mathbb{E}X\)</span>. So we think of <span class="math inline">\(\mathbb{E}X\)</span> as the theoretical <em>mean</em> of <span class="math inline">\(X\)</span>, that is the mean we would obtain if we could observe <span class="math inline">\(X\)</span> an infinite number of times.</p>
 <p>For example, if <span class="math inline">\(X \sim \text{Normal}(\mu,\sigma^2)\)</span> for some <span class="math inline">\(\mu \in \mathbb{R}\)</span> and <span class="math inline">\(\sigma^2 &gt;0\)</span>, then <span class="math inline">\(\mathbb{E}X = \mu\)</span>. For another example, if <span class="math inline">\(X \sim \text{Binomial}(n,p)\)</span> for some number of Bernoulli trials <span class="math inline">\(n \geq 1\)</span> and some success probability <span class="math inline">\(p \in (0,1)\)</span>, then <span class="math inline">\(\mathbb{E}X = np\)</span>.</p>
 <p>In these two examples, formulas are available for obtaining <span class="math inline">\(\mathbb{E}X\)</span>, but this may not always be the case, especially if one is interested in the expected value of some transformed version of <span class="math inline">\(X\)</span>, say <span class="math inline">\(g(X)\)</span>. It may be quite difficult to obtain a formula giving an expression for <span class="math inline">\(\mathbb{E}g(X)\)</span>, depending on the particular function <span class="math inline">\(g\)</span>. For example, if <span class="math inline">\(X \sim \text{Normal}(\mu,\sigma^2)\)</span>, there are no no simple formulas giving <span class="math inline">\(\mathbb{E}\sin(X)\)</span> or <span class="math inline">\(\mathbb{E}\sqrt{|X|}\)</span>. In such cases, it may be sufficient to obtain a Monte Carlo approximation to the expected value as an alternative to working out how to compute the exact value.</p>
 <p>Here is how Monte Carlo simulation works: It is based on a result in probability theory called the Strong Law of Large Numbers, which says that as you draw a larger and larger number of realizations of a random variable, the average of these realizations will approach the expected value of the random variable. To leverage this result, the Monte Carlo strategy for constructing an approximation to the expected value of a random variable <span class="math inline">\(X\)</span> is to generate a large number <span class="math inline">\(N\)</span> of realization of <span class="math inline">\(X\)</span>, say <span class="math inline">\(X_1,\dots,X_N\)</span> and then use the average <span class="math inline">\(N^{-1}\sum_{i=1}^NX_i\)</span> as an approximation to <span class="math inline">\(\mathbb{E}X\)</span>. Similarly, to obtain an approximation to <span class="math inline">\(\mathbb{E}g(X)\)</span>, where <span class="math inline">\(g\)</span> is some function transforming the values of <span class="math inline">\(X\)</span>, one uses the average <span class="math inline">\(N^{-1}\sum_{i=1}^Ng(X_i)\)</span>.</p>
-</section>
-<section id="normal-example" class="level2">
-<h2 class="anchored" data-anchor-id="normal-example">Normal example</h2>
+<section id="normal-example" class="level3">
+<h3 class="anchored" data-anchor-id="normal-example">Normal example</h3>
 <p>Suppose we want to find <span class="math inline">\(\mathbb{E}\sqrt{|X|}\)</span>, where <span class="math inline">\(X \sim \text{Normal}(0,1)\)</span>. The code below runs a Monte Carlo simulation to obtain an approximation to <span class="math inline">\(\mathbb{E}\sqrt{|X|}\)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
@@ -361,10 +362,10 @@ window.Quarto = {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>mgX <span class="ot">&lt;-</span> <span class="fu">mean</span>(gX)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mgX</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8192428</code></pre>
+<pre><code>[1] 0.8276665</code></pre>
 </div>
 </div>
-<p>Try running this several times with smaller and larger choice of <span class="math inline">\(N\)</span>. You’ll notice that the result becomes more stable for larger value of <span class="math inline">\(N\)</span>.</p>
+<p>Try running this several times with smaller and larger choice of <span class="math inline">\(N\)</span>. You’ll notice that the result becomes more stable for larger values of <span class="math inline">\(N\)</span>.</p>
 <p>It is sometimes interesting, having generated <span class="math inline">\(X_1,\dots,X_N\)</span>, to make a plot of the sequence of Monte Carlo approximations <span class="math display">\[
 \frac{1}{i}(g(X_1) + \dots + g(X_i)), \quad i = 1,\dots, N.
 \]</span> We can see in the plot below that the approximation in the beginning (when we are averaging just a very small number of realizations) is very erratic and unreliable. However, the approximation becomes more stable as we include more realizations. The code below uses the <code>cumsum()</code> function, which takes a cumulative sum of a numeric vector. Run <code>?cumsum()</code> to learn how it works.</p>
@@ -384,8 +385,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="bernoulli-examples" class="level2">
-<h2 class="anchored" data-anchor-id="bernoulli-examples">Bernoulli examples</h2>
+<section id="bernoulli-examples" class="level3">
+<h3 class="anchored" data-anchor-id="bernoulli-examples">Bernoulli examples</h3>
 <p>We quite often use Monte Carlo simulation when our random variable <span class="math inline">\(X\)</span> is a Bernoulli random variable with an unknown success probability <span class="math inline">\(p\)</span>. Recalling how to compute the expected value for discrete random variables, we see that for <span class="math inline">\(X \sim \text{Bernoulli}(p)\)</span>, we have <span class="math display">\[
 \mathbb{E}X = 1 \cdot \mathbb{P}(X = 1) + 0 \cdot \mathbb{P}(X = 0) = p,
 \]</span> so the expected value <span class="math inline">\(\mathbb{E}X\)</span> is the same as the probability <span class="math inline">\(\mathbb{P}(X = 1) = p\)</span>.</p>
@@ -397,7 +398,7 @@ window.Quarto = {
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>mX <span class="ot">&lt;-</span> <span class="fu">mean</span>(X)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>mX</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1942</code></pre>
+<pre><code>[1] 0.2086</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a plot</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mX_seq <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(X)<span class="sc">/</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>N)</span>
@@ -416,8 +417,10 @@ window.Quarto = {
 </div>
 <p>We notice, as we did in the first example, that the Monte Carlo approximation improves as the number of realizations on which it is based increases.</p>
 <p>Now, how about a setting in which the true success probability <span class="math inline">\(p\)</span> is unknown to us? A very common application of Monte Carlo simulation is to evaluate the performance of confidence intervals or statistical tests advertised to guarantee a certain coverage probability or type I error rate. One can construct the confidence interval or run the test on a large number of simulated data sets in order to obtain a Monte Carlo approximation to the probability that the confidence interval will cover its target or that the test will reject its null hypothesis.</p>
-<section id="coverage-probability-of-a-confidence-interval" class="level3">
-<h3 class="anchored" data-anchor-id="coverage-probability-of-a-confidence-interval">Coverage probability of a confidence interval</h3>
+</section>
+</section>
+<section id="coverage-probability-of-a-confidence-interval" class="level2">
+<h2 class="anchored" data-anchor-id="coverage-probability-of-a-confidence-interval">Coverage probability of a confidence interval</h2>
 <p>First consider assessing the coverage performance of a confidence interval. Suppose one is to observe a random sample <span class="math inline">\(Y_1,\dots,Y_n\)</span> from some distribution having unknown mean <span class="math inline">\(\mu\)</span> and some finite variance, and one decides to construct a confidence interval for <span class="math inline">\(\mu\)</span> as <span class="math display">\[
 \bar Y_n \pm t_{n-1,\alpha/2}\frac{S_n}{\sqrt{n}},
 \]</span> where <span class="math inline">\(\bar Y_n = n^{-1}(Y_1+\dots+Y_n)\)</span>, <span class="math inline">\(S_n^2 = (n-1)^{-1}\sum_{i=1}^n(Y_i - \bar Y_n)^2\)</span>, and <span class="math inline">\(t_{n-1,\alpha/2}\)</span> is the upper <span class="math inline">\(\alpha/2\)</span> quantile of the <span class="math inline">\(t\)</span> distribution with degrees of freedom <span class="math inline">\(n-1\)</span>, where <span class="math inline">\(\alpha \in (0,1)\)</span>. This is the classical “<span class="math inline">\(t\)</span>-interval”, and it is guaranteed to capture the true mean with probability exactly <span class="math inline">\(1-\alpha\)</span> provided <span class="math inline">\(Y_1,\dots,Y_n\)</span> is a random sample from a population with a Normal distribution. However, if the population distribution is not Normal, this interval will not have exactly the advertised coverage probability of <span class="math inline">\(1-\alpha\)</span> (though one expects that its coverage probability will approach <span class="math inline">\(1-\alpha\)</span> as <span class="math inline">\(n\)</span> increases, because of the central limit theorem). To get an approximation to the probability with which this interval will cover its target when the population distribution is <em>not</em> normal, one can run a Monte Carlo simulation. Indeed, it is quite difficult to investigate the performance of this interval in any other way when the population is non-normal!</p>
@@ -445,13 +448,13 @@ window.Quarto = {
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9034</code></pre>
+<pre><code>[1] 0.8992</code></pre>
 </div>
 </div>
-<p>In the Monte Carlo simulation, the confidence interval <span class="math inline">\(\bar Y_n \pm t_{n-1,\alpha/2}S_n/\sqrt{n}\)</span> contained the true mean <span class="math inline">\(90.34\%\)</span> of the time.</p>
+<p>In the Monte Carlo simulation, the confidence interval <span class="math inline">\(\bar Y_n \pm t_{n-1,\alpha/2}S_n/\sqrt{n}\)</span> contained the true mean <span class="math inline">\(89.92\%\)</span> of the time.</p>
 </section>
-<section id="type-i-error-rate-of-a-test" class="level3">
-<h3 class="anchored" data-anchor-id="type-i-error-rate-of-a-test">Type I error rate of a test</h3>
+<section id="type-i-error-rate-of-a-test" class="level2">
+<h2 class="anchored" data-anchor-id="type-i-error-rate-of-a-test">Type I error rate of a test</h2>
 <p>Now let’s consider using Monte Carlo simulation to obtain the Type I error rate of a statistical test when the assumptions required for the test do not hold. Recall that the Type I error rate of a test is the probability that it rejects the null hypothesis when this is true. As an example of a test, let’s use the <span class="math inline">\(F\)</span> test for equality of means in a one-way ANOVA experiment (for a refresher on this, see my STAT 515 notes <a href="https://people.stat.sc.edu/gregorkb/STAT_515_fa_2023/STAT_515_Lec_17_slides_annotated.pdf">here</a>). Suppose we have <span class="math inline">\(K\)</span> treatment groups with <span class="math inline">\(n\)</span> subjects per treatment group and let <span class="math inline">\(Y_{ij}\)</span> denote the response observed on subject <span class="math inline">\(j\)</span> of treatment group <span class="math inline">\(i\)</span>. One typically assumes the model <span class="math display">\[
 Y_{ij} = \mu_i + \varepsilon_{ij}, \quad i = 1,\dots,K, \quad j = 1,\dots,n,
 \]</span> where the <span class="math inline">\(\mu_i\)</span> are treatment group means and the <span class="math inline">\(\varepsilon_{ij}\)</span> are independent error terms with the <span class="math inline">\(\text{Normal}(0,\sigma^2)\)</span> distribution for some unknown <span class="math inline">\(\sigma^2 &gt; 0\)</span>. The <span class="math inline">\(F\)</span> test rejects the equal-means hypothesis <span class="math display">\[
@@ -484,11 +487,10 @@ F  = \frac{\operatorname{MS}_{\operatorname{Treatment}}}{\operatorname{MS}_{\ope
 <span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(X)                                       <span class="co"># the Type I error rate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0342</code></pre>
+<pre><code>[1] 0.0346</code></pre>
 </div>
 </div>
-<p>The Monte Carlo simulation approximated the Type I error rate of the test in this setup as 0.0342, somewhat lower than the nominal 0.05. We refer to 0.05 as the “nominal” size, because this is the advertised or “named” size of the test, whereas the test <em>actually</em> performs with a lower Type I error rate (not necessarily a good thing, because of the power/size trade-off), suggesting that the test is unduly conservative (overly reluctant to reject) in this setup.</p>
-</section>
+<p>The Monte Carlo simulation approximated the Type I error rate of the test in this setup as 0.0346, somewhat lower than the nominal 0.05. We refer to 0.05 as the “nominal” size, because this is the advertised or “named” size of the test, whereas the test <em>actually</em> performs with a lower Type I error rate (not necessarily a good thing, because of the power/size trade-off), suggesting that the test is unduly conservative (overly reluctant to reject) in this setup.</p>
 </section>
 <section id="practice" class="level2">
 <h2 class="anchored" data-anchor-id="practice">Practice</h2>
@@ -522,9 +524,41 @@ W = \sum_{j=1}^J\sum_{k=1}^K (O_{jk} - E_{jk})^2/E_{jk},
 <div class="cell-output cell-output-stdout">
 <pre><code>   V
 U    1  2  3  4
-  1 31  5 18 37
-  2 81 15 37 56
-  3 85 20 40 75</code></pre>
+  1 38  6 24 35
+  2 79 19 44 60
+  3 75 19 42 59</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>The code below generates fake simple linear regression data according to the model <span class="math display">\[
+Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i, \quad i = 1,\dots,n,
+\]</span> where the error terms <span class="math inline">\(\varepsilon_i\)</span>, instead of having a normal distribution as is commonly assumed, have a skewed distribution—in particular a chi-squared distribution shifted so as to have zero mean and scaled so as to have unit variance. The code then uses the <code>lm()</code> function to obtain a table of coefficient estimates which includes the p-value for testing <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 = 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 \neq 0\)</span>. Note that the non-normality of the error terms shows up in the normal Q-Q plot to a degree that we might say we cannot trust an analysis based on the assumption of normal error terms. However, asymptotic theory suggests that even when the error terms are not normally distributed, the least-squares regression coefficient estimators should still have approximately normal distributions if the sample size is large. To investigate this, run a simulation, generating many data sets (say 1000) exactly as below and obtain for each data set the p-value for testing whether the coefficient <span class="math inline">\(\beta_1\)</span> is nonzero. Then record on what proportion of data sets the <span class="math inline">\(p\)</span>-value fell below <span class="math inline">\(0.05\)</span>. Note that in the code below the true value of <span class="math inline">\(\beta_1\)</span> is set to zero, so that the null hypothesis is true. The result of the simulation will therefore be an approximation to the actual Type I error rate of the test (remember that we reject <span class="math inline">\(H_0\)</span> when the p-value is less than our significance level <span class="math inline">\(\alpha\)</span>, and the Type I error rate is the probability of falsely rejecting <span class="math inline">\(H_0\)</span>). This simulation will tell us whether the non-normality of the error term distribution will cause our inferences to be invalid.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="dv">0</span> </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(n,<span class="dv">0</span>,<span class="dv">5</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> (<span class="fu">rchisq</span>(n,df) <span class="sc">-</span> df)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">2</span><span class="sc">*</span>df) <span class="co"># scale to have zero mean and unit variance</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>x <span class="sc">+</span> e</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(out,<span class="at">which =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="R_MCexperiments_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>summ_lm <span class="ot">&lt;-</span> <span class="fu">summary</span>(out)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>summ_lm<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Estimate Std. Error  t value  Pr(&gt;|t|)
+(Intercept) 0.4581373  0.3258679 1.405899 0.1767817
+x           0.1788889  0.1104461 1.619694 0.1226852</code></pre>
 </div>
 </div>
 
