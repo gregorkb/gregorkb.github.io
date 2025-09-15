@@ -372,15 +372,16 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">50</span>) <span class="co"># generate 50 pseudo-random Uniform(0,1) realizations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.25313472 0.73248432 0.51317142 0.43944741 0.24925496 0.72660020
- [7] 0.69609631 0.61841381 0.33209789 0.60693070 0.82176539 0.91517508
-[13] 0.72982933 0.94578287 0.26951820 0.24056141 0.26543550 0.45717075
-[19] 0.25513688 0.59495354 0.63355451 0.93217331 0.07655843 0.43567924
-[25] 0.86233092 0.17684688 0.03852161 0.02742156 0.16344826 0.40254671
-[31] 0.51936520 0.15861545 0.51675761 0.32619610 0.55120861 0.03474229
-[37] 0.79101202 0.90997731 0.84629317 0.65753827 0.10028187 0.41397395
-[43] 0.67791356 0.92575350 0.48172482 0.99714022 0.79722299 0.93673059
-[49] 0.83438473 0.39051950</code></pre>
+<pre><code> [1] 0.6255340758 0.3611118342 0.3050027308 0.7409359969 0.2171542228
+ [6] 0.6699977198 0.3830504015 0.5088300956 0.4474121979 0.7184492766
+[11] 0.9760142157 0.0908324334 0.3387139689 0.5198400093 0.5450049774
+[16] 0.1126235120 0.2408337242 0.7337061053 0.1401725095 0.2376067038
+[21] 0.8554905020 0.9444525836 0.0325810367 0.3329465785 0.4191782528
+[26] 0.8444208622 0.9715476539 0.2806590893 0.9222439346 0.0522869828
+[31] 0.6865432572 0.0391259529 0.7623381855 0.2245682159 0.9083317528
+[36] 0.5101207870 0.0007206015 0.5897165933 0.0483509281 0.6844672533
+[41] 0.5774221502 0.5235968817 0.1991799849 0.2276287298 0.7927050041
+[46] 0.3566632906 0.7984711837 0.2573740804 0.2089212977 0.2499235512</code></pre>
 </div>
 </div>
 <p>Once one has obtained a random realization on the interval <span class="math inline">\((0,1)\)</span>, one can transform it into a realization of a random variable from any other distribution by passing it through the quantile function of that distribution. Specifically, suppose <span class="math inline">\(X\)</span> is a random variable with cdf given by <span class="math display">\[
@@ -712,7 +713,7 @@ f(x,\nu) = \frac{1}{\Gamma(\nu)2^{\nu/2}}x^{\nu/2 - 1}e^{-x/2}, \quad x &gt; 0
 </div>
 <ol start="3" type="1">
 <li>The standard bivariate normal probability density function is given by <span class="math display">\[
-f(z_1,z_2, \rho) = \frac{1}{2\pi\sqrt{1-\rho^2}}\exp\Big(\frac{z_1^2 - 2 \rho z_1z_2 + z_2^2}{2(1-\rho^2)}\Big) ,\quad z_1,z_2 \in \mathbb{R},
+f(z_1,z_2, \rho) = \frac{1}{2\pi\sqrt{1-\rho^2}}\exp\Big(-\frac{z_1^2 - 2 \rho z_1z_2 + z_2^2}{2(1-\rho^2)}\Big) ,\quad z_1,z_2 \in \mathbb{R},
 \]</span> where <span class="math inline">\(\rho \in (-1,1)\)</span> is the correlation parameter. Make a plot like the one below of this function (you will have to define your own function and evaluate it over a grid of points) with your own choice of the parameter <span class="math inline">\(\rho\)</span>. You can use the <code>persp()</code> function to create the 3-d plot.</li>
 </ol>
 <div class="cell">
