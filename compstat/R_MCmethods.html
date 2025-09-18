@@ -250,7 +250,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a href="./Python_running.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -260,7 +260,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Python_objects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Coming soon…</span></a>
+ <span class="menu-text">Basic objects and NumPy arrays</span></a>
   </div>
 </li>
       </ul>
@@ -397,7 +397,7 @@ g(x) = -\frac{2x\log(x)}{\log(x + 2)}
 </div>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>I</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5985</code></pre>
+<pre><code>[1] 0.567</code></pre>
 </div>
 </div>
 <p><a href="https://www.wolframalpha.com/input?i=integrate+-log%28x%29+%2F+log%28x+%2B+2%29+*2*x+from+x+%3D+0+to+1">Wolfram Alpha</a> gives the approximation <span class="math inline">\(0.568501\)</span> to this integral. From the picture above, we see that all we are doing is approximating the proportion of the rectangular area <span class="math inline">\([a,b]\times[0,c]\)</span> covered by the function and then scaling this by the total area <span class="math inline">\(c(b-a)\)</span>.</p>
@@ -422,7 +422,7 @@ I \approx (b-a)\frac{1}{N}\sum_{i=1}^N g(U_i).
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>I <span class="ot">&lt;-</span> (b<span class="sc">-</span>a)<span class="sc">*</span><span class="fu">mean</span>(<span class="fu">g</span>(U))</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>I</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5860362</code></pre>
+<pre><code>[1] 0.5740904</code></pre>
 </div>
 </div>
 </section>

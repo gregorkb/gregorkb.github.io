@@ -270,7 +270,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a href="./Python_running.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -280,7 +280,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Python_objects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Coming soon…</span></a>
+ <span class="menu-text">Basic objects and NumPy arrays</span></a>
   </div>
 </li>
       </ul>
@@ -372,15 +372,15 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">50</span>) <span class="co"># generate 50 pseudo-random Uniform(0,1) realizations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.435799462 0.752696371 0.230524987 0.726168502 0.041084612 0.675575761
- [7] 0.300446853 0.089625136 0.801625191 0.075620905 0.661663070 0.156233502
-[13] 0.575234561 0.802593186 0.006288697 0.186535438 0.389912735 0.905154428
-[19] 0.422380632 0.677369667 0.689074324 0.702455403 0.085807002 0.322393303
-[25] 0.625351190 0.257303352 0.800031158 0.360968214 0.912346680 0.049858374
-[31] 0.531851427 0.230283338 0.881860939 0.912743552 0.253008483 0.851374013
-[37] 0.236551528 0.647223066 0.539350492 0.440308771 0.065246271 0.192228450
-[43] 0.064831053 0.743639539 0.534753629 0.889707550 0.435734451 0.946276559
-[49] 0.071072618 0.490784711</code></pre>
+<pre><code> [1] 0.611627551 0.244437926 0.647135692 0.759123760 0.257316218 0.273568090
+ [7] 0.827292588 0.676401332 0.750227513 0.041562916 0.236772655 0.326206325
+[13] 0.136998717 0.871529953 0.581809194 0.158353883 0.699809137 0.101765303
+[19] 0.701797043 0.092325787 0.513058430 0.710751815 0.340887032 0.172940344
+[25] 0.930936005 0.520646963 0.693894274 0.288672552 0.290828804 0.366543156
+[31] 0.969343808 0.390602405 0.443364744 0.976757543 0.378156521 0.583918750
+[37] 0.037846467 0.893053638 0.497304377 0.392499467 0.532384644 0.423107090
+[43] 0.041693038 0.511384499 0.022109604 0.962327833 0.950390306 0.404528093
+[49] 0.189641807 0.002539228</code></pre>
 </div>
 </div>
 <p>Once one has obtained a random realization on the interval <span class="math inline">\((0,1)\)</span>, one can transform it into a realization of a random variable from any other distribution by passing it through the quantile function of that distribution. Specifically, suppose <span class="math inline">\(X\)</span> is a random variable with cdf given by <span class="math display">\[
