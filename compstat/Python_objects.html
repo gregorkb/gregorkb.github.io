@@ -307,21 +307,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-python-list" class="level2">
 <h2 class="anchored" data-anchor-id="the-python-list">The Python list</h2>
 <p>The list is the basic type of “container” object in Python:</p>
-<div id="07ce1ca5" class="cell" data-execution_count="1">
+<div id="09a797fa" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>list</code></pre>
 </div>
 </div>
-<div id="58206d6e" class="cell" data-execution_count="2">
+<div id="8e0f0752" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>list</code></pre>
 </div>
 </div>
-<div id="74fa43f9" class="cell" data-execution_count="3">
+<div id="847ef4d2" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> [<span class="va">True</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">True</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -329,48 +329,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Note that when accessing list elements, the first entry is indexed at 0 (different from R!):</p>
-<div id="9ecd998f" class="cell" data-execution_count="4">
+<div id="26b55d4d" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>y[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>'b'</code></pre>
 </div>
 </div>
-<div id="6f6232e7" class="cell" data-execution_count="5">
+<div id="43169781" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>y[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>'a'</code></pre>
 </div>
 </div>
 <p>We may find it useful at this point to note that the <code>print</code> function in Python is in some ways like the <code>paste()</code> function in R.</p>
-<div id="cf4f4154" class="cell" data-execution_count="6">
+<div id="64cd1c87" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The first value in y is '"</span>,y[<span class="dv">0</span>],<span class="st">"'."</span>,sep<span class="op">=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The first value in y is 'a'.</code></pre>
 </div>
 </div>
 <p>You can also concatenate strings using <code>+</code>, as below:</p>
-<div id="99699420" class="cell" data-execution_count="7">
+<div id="ae539b30" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">"The first value is y is "</span> <span class="op">+</span> y[<span class="dv">0</span>] <span class="op">+</span> <span class="st">"."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>'The first value is y is a.'</code></pre>
 </div>
 </div>
 <p>We accessed the function <code>array</code> belonging to the NumPy library by typing <code>np.array</code>, where <code>np</code> is the alias we have given to the NumPy library. You could give it some alias other than <code>np</code>, but <em>everyone</em> uses <code>np</code> for NumPy, so to make your code understandable to others, it is best to use <code>np</code>.</p>
-<div id="67e360e1" class="cell" data-execution_count="8">
+<div id="b7a70d21" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>list</code></pre>
 </div>
 </div>
 <p>We can coerce a numeric value to a string with the <code>str</code> function:</p>
-<div id="1372f6d8" class="cell" data-execution_count="9">
+<div id="f2f0a6f4" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>(x[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>'1'</code></pre>
 </div>
 </div>
 <p>You can make a list with a sequence of values, for example, like this:</p>
-<div id="794c42d6" class="cell" data-execution_count="10">
+<div id="314149b5" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">2</span>))</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>u</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -378,7 +378,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>A Python list does not have to have elements all of one type:</p>
-<div id="499a2d92" class="cell" data-execution_count="11">
+<div id="f8b19f61" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> [<span class="va">True</span>, <span class="dv">0</span>, <span class="st">"whatever"</span>,[<span class="dv">1</span>,<span class="dv">2</span>]]</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(v[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -386,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>In Python we can assign values to multiple objects in one like of code like this:</p>
-<div id="db055dee" class="cell" data-execution_count="12">
+<div id="604cff0f" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>t, u, v <span class="op">=</span> <span class="dv">3</span>, [<span class="dv">4</span>,<span class="dv">5</span>], <span class="st">"hello"</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(t)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(u)</span>
@@ -398,7 +398,7 @@ hello</code></pre>
 </div>
 </div>
 <p>We can edit a value in a list as follows:</p>
-<div id="328f18f5" class="cell" data-execution_count="13">
+<div id="e0cea635" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>tuv <span class="op">=</span> [t,u,v]</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tuv)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>tuv[<span class="dv">2</span>] <span class="op">=</span> <span class="st">'good-bye'</span></span>
@@ -409,7 +409,7 @@ hello</code></pre>
 </div>
 </div>
 <p>To see that lists are fundamentally quite different objects from vectors in R, look what happens if you try the arithmetic operation <code>*</code> on a list:</p>
-<div id="054e070b" class="cell" data-execution_count="14">
+<div id="29131f03" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">*</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>[1, 2, 3, 1, 2, 3]</code></pre>
@@ -420,7 +420,7 @@ hello</code></pre>
 <h2 class="anchored" data-anchor-id="the-python-tuple">The Python tuple</h2>
 <p>A tuple is rather like a list, but it cannot be edited after it is created. In Python-speak tuples are “immutable”. This makes them more efficient users of a computer’s memory.</p>
 <p>We make a tuple with ordinary parentheses:</p>
-<div id="00ee3189" class="cell" data-execution_count="15">
+<div id="0515010b" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>salutations <span class="op">=</span> (<span class="st">'hey'</span>, <span class="st">'hi'</span>, <span class="st">'ahoy'</span>, <span class="st">'sup'</span>)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>salutations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
@@ -428,7 +428,7 @@ hello</code></pre>
 </div>
 </div>
 <p>We access elements of a tuple just as we would the elements of a list:</p>
-<div id="74d19cb8" class="cell" data-execution_count="16">
+<div id="f66d8c04" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>salutations[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>'hey'</code></pre>
@@ -440,7 +440,7 @@ hello</code></pre>
 <section id="the-python-dictionary" class="level2">
 <h2 class="anchored" data-anchor-id="the-python-dictionary">The Python dictionary</h2>
 <p>The Python dictionary object is a collection of what are called <em>key-value</em> pairs. You can access a value in a dictionary by giving the key. Here is an example:</p>
-<div id="c6907755" class="cell" data-execution_count="17">
+<div id="1f41fb87" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>span_eng <span class="op">=</span> {<span class="st">'guapo'</span> : <span class="st">'handsome'</span>,</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">'rico'</span>  : [<span class="st">'rich'</span>,<span class="st">'tasty'</span>]}</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -452,7 +452,7 @@ hello</code></pre>
 </div>
 </div>
 <p>But it doesn’t have to be as dictionary-like as that. Here is another example:</p>
-<div id="db0e24f1" class="cell" data-execution_count="18">
+<div id="ed446996" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>stat_540 <span class="op">=</span> {<span class="st">'nstudents'</span> : <span class="dv">29</span>,</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">'time'</span> : <span class="st">'1:15 - 2:30 pm'</span>,</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">'days'</span> : [<span class="st">'Tuesday'</span>, <span class="st">'Thursday'</span>],</span>
@@ -469,7 +469,7 @@ hello</code></pre>
 </div>
 </div>
 <p>We can create dictionaries as above or with the <code>dict</code> function:</p>
-<div id="ecb34cc5" class="cell" data-execution_count="19">
+<div id="c278e552" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>vehicle <span class="op">=</span> <span class="bu">dict</span>( make <span class="op">=</span> <span class="st">'Honda'</span>,</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>                model <span class="op">=</span> <span class="st">'Odyssey'</span>, </span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>                issues <span class="op">=</span> [<span class="st">'slow tire leak'</span>, <span class="st">'vexingly indecisive check engine light'</span>], </span>
@@ -485,7 +485,7 @@ hello</code></pre>
 </div>
 </div>
 <p>We can edit values in a dictionary like this:</p>
-<div id="ab32910d" class="cell" data-execution_count="20">
+<div id="f57e149c" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>vehicle[<span class="st">'col'</span>] <span class="op">=</span> <span class="st">'Gamecock Garnet'</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>vehicle</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
@@ -502,11 +502,11 @@ hello</code></pre>
 <section id="numpy-arrays" class="level2">
 <h2 class="anchored" data-anchor-id="numpy-arrays">NumPy arrays</h2>
 <p>NumPy arrays are more like the vectors and matrices we have encountered in R. They must contain values all of one type. “NumPy” refers to a library of functions written for Python. To have access to these functions we need to <em>import</em> this library. When you import a library into Python, you specify an alias or a name by which you can refer to the library. It looks like this:</p>
-<div id="01fd553b" class="cell" data-execution_count="21">
+<div id="bb7f391d" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now all the functions in the NumPy library will be available to us, and we can invoke these functions with the prefix <code>np.</code> Here is an example:</p>
-<div id="1bf810be" class="cell" data-execution_count="22">
+<div id="8081af94" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>])</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -517,7 +517,7 @@ hello</code></pre>
 </div>
 <p>We see that the type of object is <code>numpy.ndarray</code>. Let’s spend a moment playing with these.</p>
 <p>We can create NumPy array containing a sequence of values with the <code>np.arange()</code> function:</p>
-<div id="1ae7e6ac" class="cell" data-execution_count="23">
+<div id="54c32c4d" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>seq <span class="op">=</span> np.arange(a,b,<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>)</span>
@@ -527,7 +527,7 @@ hello</code></pre>
 </div>
 </div>
 <p>This array is one-dimensional, so we would call it a vector in R; however, in Python, there is no distinction between vectors and matrices. These are both simply arrays. We can learn about the dimensions of an array with the <code>np.ndim</code> and <code>np.shape</code> functions, as well as get the total number of entries in an array with the <code>np.size</code> function:</p>
-<div id="8c29aa7b" class="cell" data-execution_count="24">
+<div id="5713d92e" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.ndim(seq))</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.shape(seq))</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.size(seq) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -538,7 +538,7 @@ hello</code></pre>
 </div>
 </div>
 <p>To make an array with two dimensions, i.e.&nbsp;what we would call a matrix in R, we can give the <code>np.array</code> function a list of lists of equal length.</p>
-<div id="7b1081f6" class="cell" data-execution_count="25">
+<div id="18213c05" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]])</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
@@ -547,7 +547,7 @@ hello</code></pre>
 </div>
 </div>
 <p>Here the numeric entries will be coerced to character strings, since NumPy arrays must have values all of one type:</p>
-<div id="d9374d20" class="cell" data-execution_count="26">
+<div id="66067d5d" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>array([['1', '2', '3'],
