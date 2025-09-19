@@ -220,21 +220,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./Python_running.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Python</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Python_objects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basic objects and NumPy arrays</span></a>
-  </div>
-</li>
-      </ul>
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Python</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -280,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a>
   <ul class="collapse">
   <li><a href="#write-code" id="toc-write-code" class="nav-link" data-scroll-target="#write-code">Write code</a></li>
-  <li><a href="#predict-output" id="toc-predict-output" class="nav-link" data-scroll-target="#predict-output">Predict output</a></li>
+  <li><a href="#read-code" id="toc-read-code" class="nav-link" data-scroll-target="#read-code">Read code</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -541,14 +528,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>toy_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Subject Observation   Response
-1       1           1 -0.7026649
-2       1           2 -0.8251964
-3       1           3 -0.7046610
-4       1           4 -0.6035045
-5       2           1  0.3060608
-6       2           2 -0.6359479
-7       2           3 -0.3669177
-8       2           4  0.3439663</code></pre>
+1       1           1  0.6153951
+2       1           2  0.3516733
+3       1           3  1.7968207
+4       1           4  0.3082173
+5       2           1  0.2357362
+6       2           2 -1.1383106
+7       2           3 -2.4470869
+8       2           4  0.8691873</code></pre>
 </div>
 </div>
 <p>If we want instead to represent the data in a table having one row for each subject and four columns giving the four observations, we can obtain it with the <code>reshape()</code> function as follows:</p>
@@ -562,8 +549,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Subject Response 1 Response 2 Response 3 Response 4
-1       1 -0.7026649 -0.8251964 -0.7046610 -0.6035045
-2       2  0.3060608 -0.6359479 -0.3669177  0.3439663</code></pre>
+1       1  0.6153951  0.3516733   1.796821  0.3082173
+2       2  0.2357362 -1.1383106  -2.447087  0.8691873</code></pre>
 </div>
 </div>
 <p>Now let’s try to make the table we want for the Table Rock 50k data. We’ll use the <code>reshape()</code> function, treating the place column as the “subject”:</p>
@@ -602,14 +589,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Subject Observation   Response
-1       1           1 -0.7026649
-2       2           1  0.3060608
-3       1           2 -0.8251964
-4       2           2 -0.6359479
-5       1           3 -0.7046610
-6       2           3 -0.3669177
-7       1           4 -0.6035045
-8       2           4  0.3439663</code></pre>
+1       1           1  0.6153951
+2       2           1  0.2357362
+3       1           2  0.3516733
+4       2           2 -1.1383106
+5       1           3  1.7968207
+6       2           3 -2.4470869
+7       1           4  0.3082173
+8       2           4  0.8691873</code></pre>
 </div>
 </div>
 <p>We see that things are sorted in a different way, but it is the same data set as the original one.</p>
@@ -688,16 +675,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Practice writing code and anticipating the output of code with the following exercises.</p>
 <section id="write-code" class="level3">
 <h3 class="anchored" data-anchor-id="write-code">Write code</h3>
-<ol type="1">
-<li><p>Create a function called <code>hhmmss()</code> which will convert a character string in the form <em>hh:mm:ss</em> to a number of seconds.</p></li>
-<li><p>Modify your function so that when you give it a number of seconds it will convert it to a character string in the form <em>hh:mm:ss</em>.</p></li>
-<li><p>Use your function to compute, for the runners who participated in the Table Rock 50k in both 2023 and 2024, the change in their finishing times in the form <em>hh:mm:ss</em>. Add this column to the merged data set.</p></li>
-<li><p>Use your function <code>hhmmss()</code> to convert, in the stacked data set <code>tr50k</code>, the finishing times to a number of seconds; then sort the stacked data set according to the times.</p></li>
-</ol>
+<!-- 1. Create a function called `hhmmss()` which will convert a character string in the form *hh:mm:ss* to a number of seconds. -->
+<!-- 2. Modify your function so that when you give it a number of seconds it will convert it to a character string in the form *hh:mm:ss*. -->
+<!-- 3. Use your function to compute, for the runners who participated in the Table Rock 50k in both 2023 and 2024, the change in their finishing times in the form *hh:mm:ss*. Add this column to the merged data set. -->
+<!-- 4. Use your function `hhmmss()` to convert, in the stacked data set `tr50k`, the finishing times to a number of seconds; then sort the stacked data set according to the times. -->
 </section>
-<section id="predict-output" class="level3">
-<h3 class="anchored" data-anchor-id="predict-output">Predict output</h3>
-<p>Anticipate the output of the following code chunks (Coming soon):</p>
+<section id="read-code" class="level3">
+<h3 class="anchored" data-anchor-id="read-code">Read code</h3>
+<!-- Anticipate the output of the following code chunks (Coming soon): -->
 
 
 </section>

@@ -249,21 +249,8 @@ window.Quarto = {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./Python_running.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Python</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Python_objects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basic objects and NumPy arrays</span></a>
-  </div>
-</li>
-      </ul>
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Python</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -362,7 +349,7 @@ window.Quarto = {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>mgX <span class="ot">&lt;-</span> <span class="fu">mean</span>(gX)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mgX</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8206566</code></pre>
+<pre><code>[1] 0.8213095</code></pre>
 </div>
 </div>
 <p>Try running this several times with smaller and larger choice of <span class="math inline">\(N\)</span>. You’ll notice that the result becomes more stable for larger values of <span class="math inline">\(N\)</span>.</p>
@@ -398,7 +385,7 @@ window.Quarto = {
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>mX <span class="ot">&lt;-</span> <span class="fu">mean</span>(X)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>mX</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2104</code></pre>
+<pre><code>[1] 0.2032</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a plot</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mX_seq <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(X)<span class="sc">/</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>N)</span>
@@ -448,10 +435,10 @@ window.Quarto = {
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.908</code></pre>
+<pre><code>[1] 0.9028</code></pre>
 </div>
 </div>
-<p>In the Monte Carlo simulation, the confidence interval <span class="math inline">\(\bar Y_n \pm t_{n-1,\alpha/2}S_n/\sqrt{n}\)</span> contained the true mean <span class="math inline">\(90.8\%\)</span> of the time.</p>
+<p>In the Monte Carlo simulation, the confidence interval <span class="math inline">\(\bar Y_n \pm t_{n-1,\alpha/2}S_n/\sqrt{n}\)</span> contained the true mean <span class="math inline">\(90.28\%\)</span> of the time.</p>
 </section>
 <section id="type-i-error-rate-of-a-test" class="level2">
 <h2 class="anchored" data-anchor-id="type-i-error-rate-of-a-test">Type I error rate of a test</h2>
@@ -524,9 +511,9 @@ W = \sum_{j=1}^J\sum_{k=1}^K (O_{jk} - E_{jk})^2/E_{jk},
 <div class="cell-output cell-output-stdout">
 <pre><code>   V
 U    1  2  3  4
-  1 54 12 18 30
-  2 69 23 43 53
-  3 77 11 40 70</code></pre>
+  1 37 14 30 24
+  2 72 22 28 67
+  3 86 22 34 64</code></pre>
 </div>
 </div>
 <ol start="3" type="1">
@@ -556,9 +543,9 @@ Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i, \quad i = 1,\dots,n,
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>summ_lm <span class="ot">&lt;-</span> <span class="fu">summary</span>(out)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>summ_lm<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>              Estimate Std. Error   t value     Pr(&gt;|t|)
-(Intercept)  0.8890109 0.21799475  4.078130 0.0007057434
-x           -0.1073362 0.08099887 -1.325157 0.2016951754</code></pre>
+<pre><code>              Estimate Std. Error   t value   Pr(&gt;|t|)
+(Intercept) 0.82787968  0.4465373 1.8539989 0.08020037
+x           0.07756801  0.1621308 0.4784285 0.63810479</code></pre>
 </div>
 </div>
 
