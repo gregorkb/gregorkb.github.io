@@ -269,8 +269,45 @@ window.Quarto = {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Python</span></span>
+      <div class="sidebar-item-container"> 
+            <a href="./Python_running.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_objects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic objects and NumPy arrays</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_plots_functions_cond.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plots, functions, and conditional programming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_loops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">For and while loops</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_pandas_import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Importing data with Pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_pandas_manipulate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with data sets</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -291,6 +328,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./R_hw_gltmpplot.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Make this plot in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_hw_gltmpplots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Make this figure in Python</span></a>
   </div>
 </li>
       </ul>
@@ -359,15 +402,15 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">50</span>) <span class="co"># generate 50 pseudo-random Uniform(0,1) realizations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.17796835 0.01215483 0.37392305 0.69322607 0.15612021 0.67731814
- [7] 0.56588905 0.17543876 0.74130254 0.99496452 0.47605256 0.64001985
-[13] 0.37703887 0.65336102 0.82381633 0.49691855 0.85960468 0.57864378
-[19] 0.14856055 0.05609171 0.54826469 0.18941173 0.09339262 0.36906379
-[25] 0.92305399 0.48409796 0.31207796 0.43208814 0.65567023 0.44642754
-[31] 0.40198694 0.48588072 0.85009980 0.61155651 0.56348932 0.98872416
-[37] 0.86408677 0.62406462 0.47039633 0.81142288 0.43019778 0.64694046
-[43] 0.93779507 0.05369338 0.07428975 0.65654904 0.48527198 0.93955495
-[49] 0.96576152 0.36487105</code></pre>
+<pre><code> [1] 0.835822916 0.690807311 0.058861619 0.336395900 0.425601028 0.862989302
+ [7] 0.642449401 0.657059558 0.731554945 0.841120068 0.605608229 0.451234120
+[13] 0.928092071 0.530934150 0.430823337 0.244716253 0.116950151 0.618508339
+[19] 0.216491760 0.167110476 0.061976430 0.150807090 0.018974720 0.189538148
+[25] 0.623895788 0.570671391 0.150857406 0.205554700 0.623852056 0.227262623
+[31] 0.007033958 0.733386945 0.577017294 0.961354380 0.526071975 0.218178052
+[37] 0.261344195 0.681903349 0.363152036 0.425462133 0.141078614 0.638038762
+[43] 0.623776514 0.171911530 0.278223958 0.448808931 0.920082222 0.311168619
+[49] 0.832980339 0.430173976</code></pre>
 </div>
 </div>
 <p>Once one has obtained a random realization on the interval <span class="math inline">\((0,1)\)</span>, one can transform it into a realization of a random variable from any other distribution by passing it through the quantile function of that distribution. Specifically, suppose <span class="math inline">\(X\)</span> is a random variable with cdf given by <span class="math display">\[
@@ -387,7 +430,7 @@ Q(u) = \inf\{x : F(x) \geq u\}, \quad u \in (0,1),
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -428,7 +471,7 @@ Q(u) = \inf\{x : F(x) \geq u\}, \quad u \in (0,1),
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -467,7 +510,7 @@ Q(u) = \inf\{x : F(x) \geq u\}, \quad u \in (0,1),
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="1600"></p>
 </figure>
 </div>
 </div>
@@ -577,7 +620,7 @@ Q(u) = \inf\{x : F(x) \geq u\}, \quad u \in (0,1),
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -656,7 +699,7 @@ P(X \leq x)  \approx \Phi\Big(\frac{x + 1/2 - np}{\sqrt{np(1-p)}}\Big)
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -678,7 +721,7 @@ f(x,\alpha,\beta) = \frac{1}{\Gamma(\alpha)\beta^{\alpha}}x^{\alpha - 1}e^{-x/\b
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -692,7 +735,7 @@ f(x,\nu) = \frac{1}{\Gamma(\nu)2^{\nu/2}}x^{\nu/2 - 1}e^{-x/2}, \quad x &gt; 0
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -706,7 +749,7 @@ f(z_1,z_2, \rho) = \frac{1}{2\pi\sqrt{1-\rho^2}}\exp\Big(-\frac{z_1^2 - 2 \rho z
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -718,7 +761,7 @@ f(z_1,z_2, \rho) = \frac{1}{2\pi\sqrt{1-\rho^2}}\exp\Big(-\frac{z_1^2 - 2 \rho z
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -822,7 +865,7 @@ Inf  0.03125000 0.1562500 0.3125000 0.3125000 0.1562500 0.03125000</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_statfunctions_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>

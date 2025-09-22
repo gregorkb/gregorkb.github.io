@@ -249,8 +249,45 @@ window.Quarto = {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Python</span></span>
+      <div class="sidebar-item-container"> 
+            <a href="./Python_running.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_objects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic objects and NumPy arrays</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_plots_functions_cond.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plots, functions, and conditional programming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_loops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">For and while loops</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_pandas_import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Importing data with Pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_pandas_manipulate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with data sets</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -271,6 +308,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./R_hw_gltmpplot.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Make this plot in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_hw_gltmpplots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Make this figure in Python</span></a>
   </div>
 </li>
       </ul>
@@ -299,7 +342,6 @@ window.Quarto = {
   <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a>
   <ul class="collapse">
   <li><a href="#write-code" id="toc-write-code" class="nav-link" data-scroll-target="#write-code">Write code</a></li>
-  <li><a href="#read-code" id="toc-read-code" class="nav-link" data-scroll-target="#read-code">Read code</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -378,13 +420,13 @@ g(x) = -\frac{2x\log(x)}{\log(x + 2)}
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>I</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.567</code></pre>
+<pre><code>[1] 0.576</code></pre>
 </div>
 </div>
 <p><a href="https://www.wolframalpha.com/input?i=integrate+-log%28x%29+%2F+log%28x+%2B+2%29+*2*x+from+x+%3D+0+to+1">Wolfram Alpha</a> gives the approximation <span class="math inline">\(0.568501\)</span> to this integral. From the picture above, we see that all we are doing is approximating the proportion of the rectangular area <span class="math inline">\([a,b]\times[0,c]\)</span> covered by the function and then scaling this by the total area <span class="math inline">\(c(b-a)\)</span>.</p>
@@ -409,7 +451,7 @@ I \approx (b-a)\frac{1}{N}\sum_{i=1}^N g(U_i).
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>I <span class="ot">&lt;-</span> (b<span class="sc">-</span>a)<span class="sc">*</span><span class="fu">mean</span>(<span class="fu">g</span>(U))</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>I</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5698719</code></pre>
+<pre><code>[1] 0.5653938</code></pre>
 </div>
 </div>
 </section>
@@ -445,7 +487,7 @@ g(x) = x^2 - 3\sin(\pi x) + 2\cos(3\pi x)
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -470,7 +512,7 @@ f(x) = \left\{\begin{array}{ll}
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -497,7 +539,7 @@ f(x) = \left\{\begin{array}{ll}
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -519,7 +561,7 @@ f(x) = \left\{\begin{array}{ll}
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -569,7 +611,7 @@ h(x,y) = &amp;~(x \sin(20y) + y(\sin(20x))^2 \cosh(\sin(10x)x) \\
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -594,7 +636,7 @@ h(x,y) = &amp;~(x \sin(20y) + y(\sin(20x))^2 \cosh(\sin(10x)x) \\
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -666,7 +708,7 @@ h(x,y) = &amp;~(x \sin(20y) + y(\sin(20x))^2 \cosh(\sin(10x)x) \\
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -753,7 +795,7 @@ h(x,y) = &amp;~(x \sin(20y) + y(\sin(20x))^2 \cosh(\sin(10x)x) \\
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -791,14 +833,12 @@ g(x,y) = \frac{1}{\pi \sigma^4}\Big(\frac{x^2 + y^2}{2 \sigma^2} - 1\Big)\exp\Bi
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_MCmethods_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="read-code" class="level3">
-<h3 class="anchored" data-anchor-id="read-code">Read code</h3>
+<!-- ### Read code -->
 
 
 </section>

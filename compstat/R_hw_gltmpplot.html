@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -51,6 +85,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./Python_hw_gltmpplots.html" rel="next">
 <link href="./R_hw_tablesmake.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -205,8 +240,45 @@ div.csl-indent {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Python</span></span>
+      <div class="sidebar-item-container"> 
+            <a href="./Python_running.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_objects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic objects and NumPy arrays</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_plots_functions_cond.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plots, functions, and conditional programming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_loops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">For and while loops</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_pandas_import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Importing data with Pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_pandas_manipulate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with data sets</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -229,6 +301,12 @@ div.csl-indent {
  <span class="menu-text">Make this plot in R</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_hw_gltmpplots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Make this figure in Python</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -236,8 +314,14 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#tips" id="toc-tips" class="nav-link active" data-scroll-target="#tips">Tips:</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -278,7 +362,7 @@ div.csl-indent {
 <figcaption><span class="citation" data-cites="noaaAverageSurface"><span>“<span>A</span>verage <span>S</span>urface <span>W</span>ater <span>T</span>emperature — Coastwatch.glerl.noaa.gov”</span></span></figcaption>
 </figure>
 </div>
-<p>The plot shows the daily average temperatures over the years 1995-2024 as well as for the part of 2025 through August 10 (the day before I accessed it). Epastach daily temperature is some kind of average temperature across the surface of the lake.</p>
+<p>The plot shows the daily average temperatures over the years 1995-2024 as well as for the part of 2025 through August 10 (the day before I accessed it). Each daily temperature is some kind of average temperature across the surface of the lake.</p>
 <p><a href="https://coastwatch.glerl.noaa.gov/statistics/average-surface-water-temperature-glsea/">This site</a> makes available the daily temperature data on which the plot is based. This is what the links to the data files look like on the website (scroll all the way down):</p>
 <p><img src="images/great_lakes_tmps.png" class="img-fluid"> Alternatively, you can get the data files from my GitHub page <a href="https://github.com/gregorkb/gregorkb.github.io/tree/master/data/gltemps">here</a>.</p>
 <p>Ignoring the partial data for the year 2025, your assignment is to use R to reproduce from the raw data files the above plot as closely and in as much detail as you can. Below is my own rendition. You may use some discretion to make minor changes (for example I changed the upper limit of the vertical axis to 22 degrees celcius because I thought the original plot had too much empty space at the top).</p>
@@ -286,15 +370,25 @@ div.csl-indent {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="R_hw_gltmpplot_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="R_hw_gltmpplot_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Hint: To handle the presence of leap days on leap years, just remove leap days and treat each year as though it had 365 days.</p>
+<section id="tips" class="level3">
+<h3 class="anchored" data-anchor-id="tips">Tips:</h3>
+<ol type="1">
+<li><p>To handle the presence of leap days on leap years, just remove leap days and treat each year as though it had 365 days. Moreover, don’t bother treating the dates in these data as as actual dates.</p></li>
+<li><p>If you have a bunch of data files sitting in a folder and you want to import all of them, a nice way to do it is to get a vector containing all the names of the files (and then you can write a loop for reading them in!). The commands below will create a vector containing the names of all the “.dat” files in the current working directory.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="fu">getwd</span>())       <span class="co"># list all files in current working directory</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> files[<span class="fu">grep</span>(<span class="st">".dat"</span>,files)]   <span class="co"># select only those with extension .dat</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 
+</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-noaaAverageSurface" class="csl-entry" role="listitem">
@@ -728,6 +822,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./Python_hw_gltmpplots.html" class="pagination-link" aria-label="Make this figure in Python">
+        <span class="nav-page-text">Make this figure in Python</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
