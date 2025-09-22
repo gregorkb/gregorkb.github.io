@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>Computing in Statistics</title>
+<title>Running Python – Computing in Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./R_running.html" rel="next">
+<link href="./Python_objects.html" rel="next">
+<link href="./R_manipulatedata.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Python_running.html">Python</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -109,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -186,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./Python_running.html" class="sidebar-item-text sidebar-link">
+            <a href="./Python_running.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Python</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -267,7 +268,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Computing in Statistics</h1>
+<h1 class="title">Running Python</h1>
 </div>
 
 
@@ -290,8 +291,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>These are notes for a course on computing in statistics.</p>
-<p>Last updated on September 22, 2025.</p>
+<p>My preferred way of tinkering around in Python is to use a Jupyter notebook. If you download and install <a href="https://www.anaconda.com/docs/getting-started/anaconda/install">Anaconda</a> it will install Python on your computer as well as something called Anaconda Navigator; if you open Anaconda Navigator you can start a Jupyter notebook.</p>
+<p>It will look like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Jupyter_notebook_screenshot.png" class="img-fluid figure-img"></p>
+<figcaption>Jupyter notebook</figcaption>
+</figure>
+</div>
+<p>A Jupyter notebook consists of chunks of either code or Markdown language, so you can run code and then type descriptions of what the code is doing as you go.</p>
 
 
 
@@ -718,10 +726,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./R_manipulatedata.html" class="pagination-link" aria-label="Merging, stacking, reshaping, and aggregating data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Merging, stacking, reshaping, and aggregating data</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./R_running.html" class="pagination-link" aria-label="R">
-        <span class="nav-page-text">R</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Python_objects.html" class="pagination-link" aria-label="Basic objects and NumPy arrays">
+        <span class="nav-page-text">Basic objects and NumPy arrays</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

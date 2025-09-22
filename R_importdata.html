@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Karl Gregory">
+
+<title>Importing and formatting data – Computing in Statistics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./R_manipulatedata.html" rel="next">
+<link href="./R_MCexperiments.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R_running.html">R</a></li><li class="breadcrumb-item"><a href="./R_importdata.html">Importing and formatting data</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Computing in Statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./R_running.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R_objects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Types of objects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R_basicops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic operations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R_functiondef.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Defining functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R_forloop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">For loops</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R_whileloop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">While loops</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R_statfunctions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistics functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R_MCmethods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Monte Carlo methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R_MCexperiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Monte Carlo experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R_importdata.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Importing and formatting data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R_manipulatedata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Merging, stacking, reshaping, and aggregating data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Python_running.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_objects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic objects and NumPy arrays</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_plots_functions_cond.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plots, functions, and conditional programming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_loops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">For and while loops</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_pandas_import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Importing data with Pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_pandas_manipulate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with data sets</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Homework</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R_hw_tablesmake.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Make these tables in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R_hw_gltmpplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Make this plot in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Python_hw_gltmpplots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Make this figure in Python</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#reading-data" id="toc-reading-data" class="nav-link active" data-scroll-target="#reading-data">Reading data</a>
+  <ul class="collapse">
+  <li><a href="#comma-separated" id="toc-comma-separated" class="nav-link" data-scroll-target="#comma-separated">Comma-separated</a></li>
+  <li><a href="#other-delimited" id="toc-other-delimited" class="nav-link" data-scroll-target="#other-delimited">Other-delimited</a></li>
+  <li><a href="#fixed-width" id="toc-fixed-width" class="nav-link" data-scroll-target="#fixed-width">Fixed-width</a></li>
+  </ul></li>
+  <li><a href="#formatting-data" id="toc-formatting-data" class="nav-link" data-scroll-target="#formatting-data">Formatting data</a>
+  <ul class="collapse">
+  <li><a href="#column-classes" id="toc-column-classes" class="nav-link" data-scroll-target="#column-classes">Column classes</a></li>
+  <li><a href="#text-processing" id="toc-text-processing" class="nav-link" data-scroll-target="#text-processing">Text processing</a></li>
+  <li><a href="#dates" id="toc-dates" class="nav-link" data-scroll-target="#dates">Dates</a></li>
+  <li><a href="#times-datetimes" id="toc-times-datetimes" class="nav-link" data-scroll-target="#times-datetimes">Times (Datetimes)</a></li>
+  <li><a href="#sorting-a-data-frame" id="toc-sorting-a-data-frame" class="nav-link" data-scroll-target="#sorting-a-data-frame">Sorting a data frame</a></li>
+  </ul></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R_running.html">R</a></li><li class="breadcrumb-item"><a href="./R_importdata.html">Importing and formatting data</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Importing and formatting data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Karl Gregory </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
+</div>
+<p>Importing data tends to be a large part of the working statistician’s job (for good or ill). Here we’ll learn some tools for reading data sets into R when these are stored in a plain text file, sometimes with the extensions <code>.dat</code>,<code>.txt</code>, or <code>.csv</code>. The extension doesn’t really matter; we consider any file that can be opened by a simple text editor.</p>
+<section id="reading-data" class="level2">
+<h2 class="anchored" data-anchor-id="reading-data">Reading data</h2>
+<p>Typically data are stored in text files where each row corresponds to a row in a spreadsheet, and the values are separated by some character, very often a comma. If not a comma, it may be a tab (long space) or other delimiter. If the values are not delimited by a special character, they may be in so-called fixed-width format, which we describe in the following.</p>
+<p>The data sets used in this note can be downloaded from <a href="https://github.com/gregorkb/gregorkb.github.io/tree/master/data">this link</a>. Get these ones:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/safari_data_files.png" class="img-fluid figure-img" style="width:1.80556in"></p>
+<figcaption>Files you need for this note</figcaption>
+</figure>
+</div>
+<p>In order to access a data file after you have saved it on your computer, you will have to provide the path to the file. This can be a complete file path or the relative file path from the current <em>working directory</em>. The working directory is usually the directory (i.e.&nbsp;folder) from where you opened your R script, but you can change it with the <code>setwd()</code> command, and you can find out what it is with the <code>getwd()</code> command. In the following, the data files are accessed in a folder called <code>data</code> which is sitting in the current working directory, so each file path looks like <code>data/&lt;filename&gt;</code>.</p>
+<section id="comma-separated" class="level3">
+<h3 class="anchored" data-anchor-id="comma-separated">Comma-separated</h3>
+<p>Suppose a data file looks like this:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>date,wildebeest,laughing hyena,crocodile,weather,start,end,fun,guide
+1/13/1999,12,none,2,sunny,7:21 am,4:14 pm,yes,Joshua Tebbs
+4/28/2001,3,1,1,cloudy,6:25 am,12:33 pm,Y,Edsel Peña
+10/15/2010,3,0,6,rainy,8:12 am,11:34 am,no,Karl Bruce Gregory
+3/02/2006,1,14,5,hot/sunny,7:15 am,3:12 pm,y,Lianming Wang
+2/28/1988,2,6,3,partly cloudy,4:53 am,2:16 pm,Yes,Brian Habing
+7/14/2015,3,12,0,cloudy,5:47 am,3:46 pm,No,Edwards</code></pre>
+</div>
+</div>
+<p>We see that the first row appears to give column names, and that the values are separated by commas. We can read this into R with the <code>read.table()</code> function. We specify the options <code>sep = ","</code> since the values are separated by the character <code>,</code> and put <code>header = T</code> so that the first row is assumed to contain column names:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>safari <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"data/safari_comma.dat"</span>, </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">sep =</span> <span class="st">","</span>, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        date wildebeest laughing.hyena crocodile       weather   start      end
+1  1/13/1999         12           none         2         sunny 7:21 am  4:14 pm
+2  4/28/2001          3              1         1        cloudy 6:25 am 12:33 pm
+3 10/15/2010          3              0         6         rainy 8:12 am 11:34 am
+4  3/02/2006          1             14         5     hot/sunny 7:15 am  3:12 pm
+5  2/28/1988          2              6         3 partly cloudy 4:53 am  2:16 pm
+6  7/14/2015          3             12         0        cloudy 5:47 am  3:46 pm
+  fun              guide
+1 yes       Joshua Tebbs
+2   Y         Edsel Peña
+3  no Karl Bruce Gregory
+4   y      Lianming Wang
+5 Yes       Brian Habing
+6  No            Edwards</code></pre>
+</div>
+</div>
+<p>Sometimes the data do not begin on the first row of the text file. Suppose the file looked like this:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Some make-believe safari data
+Woohoo!!
+
+date,wildebeest,laughing hyena,crocodile,weather,start,end,fun,guide
+1/13/1999,12,none,2,sunny,7:21 am,4:14 pm,yes,Joshua Tebbs
+4/28/2001,3,1,1,cloudy,6:25 am,12:33 pm,Y,Edsel Peña
+10/15/2010,3,.,6,rainy,8:12 am,,no,Karl Bruce Gregory
+3/02/2006,1,14,5,hot/sunny,7:15 am,3:12 pm,y,Lianming Wang
+2/28/1988,2,6,3,partly cloudy,4:53 am,2:16 pm,Yes,Brian Habing
+7/14/2015,3,12,0,cloudy,5:47 am,3:46 pm,No,Edwards</code></pre>
+</div>
+</div>
+<p>Now, in addition to the fact that the data do not begin on line 1 of the file, we see that there are a couple of missing values in this version of the data. The statistician is forever coping with missing data. Here we must specify which characters should be taken as missing values. These we specify with the option <code>na.strings =</code> as shown below. In order to skip the first three lines of data, we use the <code>skip =</code> option.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>safari <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"data/safari_comma_missing.dat"</span>, </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">sep =</span> <span class="st">","</span>, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">skip =</span> <span class="dv">3</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">""</span>,<span class="st">"."</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        date wildebeest laughing.hyena crocodile       weather   start      end
+1  1/13/1999         12           none         2         sunny 7:21 am  4:14 pm
+2  4/28/2001          3              1         1        cloudy 6:25 am 12:33 pm
+3 10/15/2010          3           &lt;NA&gt;         6         rainy 8:12 am     &lt;NA&gt;
+4  3/02/2006          1             14         5     hot/sunny 7:15 am  3:12 pm
+5  2/28/1988          2              6         3 partly cloudy 4:53 am  2:16 pm
+6  7/14/2015          3             12         0        cloudy 5:47 am  3:46 pm
+  fun              guide
+1 yes       Joshua Tebbs
+2   Y         Edsel Peña
+3  no Karl Bruce Gregory
+4   y      Lianming Wang
+5 Yes       Brian Habing
+6  No            Edwards</code></pre>
+</div>
+</div>
+<p>In the special case that the data values are separated by commas and the first line contains column names, we can use the function <code>read.csv()</code> to achieve the same result. It is simply a “wrapper” for the <code>read.table()</code> function, which means that it simple executes the latter with certain options already specified, such as <code>sep = ","</code> and <code>header = T</code>. Data files with data values separated by commas often have the extension <code>.csv</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>safari <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/safari_comma_missing.dat"</span>, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">skip =</span> <span class="dv">3</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">""</span>,<span class="st">"."</span>))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        date wildebeest laughing.hyena crocodile       weather   start      end
+1  1/13/1999         12           none         2         sunny 7:21 am  4:14 pm
+2  4/28/2001          3              1         1        cloudy 6:25 am 12:33 pm
+3 10/15/2010          3           &lt;NA&gt;         6         rainy 8:12 am     &lt;NA&gt;
+4  3/02/2006          1             14         5     hot/sunny 7:15 am  3:12 pm
+5  2/28/1988          2              6         3 partly cloudy 4:53 am  2:16 pm
+6  7/14/2015          3             12         0        cloudy 5:47 am  3:46 pm
+  fun              guide
+1 yes       Joshua Tebbs
+2   Y         Edsel Peña
+3  no Karl Bruce Gregory
+4   y      Lianming Wang
+5 Yes       Brian Habing
+6  No            Edwards</code></pre>
+</div>
+</div>
+</section>
+<section id="other-delimited" class="level3">
+<h3 class="anchored" data-anchor-id="other-delimited">Other-delimited</h3>
+<p>As we have said, sometimes the data values are not delimited by a comma. For example, we might have a data file like this:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Some make-believe safari data
+Woohoo!!
+
+date;wildebeest;laughing hyena;crocodile;weather;start;end;fun;guide
+1/13/1999;12;none;2;sunny;7:21 am;4:14 pm;yes;Joshua Tebbs
+4/28/2001;3;1;1;cloudy;6:25 am;12:33 pm;Y;Edsel Peña
+10/15/2010;3;.;6;rainy;8:12 am;;no;Karl Bruce Gregory
+3/02/2006;1;14;5;hot/sunny;7:15 am;3:12 pm;y;Lianming Wang
+2/28/1988;2;6;3;partly cloudy;4:53 am;2:16 pm;Yes;Brian Habing
+7/14/2015;3;12;0;cloudy;5:47 am;3:46 pm;No;Edwards</code></pre>
+</div>
+</div>
+<p>To read this in, we have only to specify the delimiter with <code>sep = ";"</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>safari <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"data/safari_semi_missing.dat"</span>, </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">sep =</span> <span class="st">";"</span>, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">skip =</span> <span class="dv">3</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">""</span>,<span class="st">"."</span>))</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        date wildebeest laughing.hyena crocodile       weather   start      end
+1  1/13/1999         12           none         2         sunny 7:21 am  4:14 pm
+2  4/28/2001          3              1         1        cloudy 6:25 am 12:33 pm
+3 10/15/2010          3           &lt;NA&gt;         6         rainy 8:12 am     &lt;NA&gt;
+4  3/02/2006          1             14         5     hot/sunny 7:15 am  3:12 pm
+5  2/28/1988          2              6         3 partly cloudy 4:53 am  2:16 pm
+6  7/14/2015          3             12         0        cloudy 5:47 am  3:46 pm
+  fun              guide
+1 yes       Joshua Tebbs
+2   Y         Edsel Peña
+3  no Karl Bruce Gregory
+4   y      Lianming Wang
+5 Yes       Brian Habing
+6  No            Edwards</code></pre>
+</div>
+</div>
+<p>Data are often tab delimited, looking like this:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Some make-believe safari data
+Woohoo!!
+
+date    wildebeest  laughing hyena  crocodile   weather start   end fun guide
+1/13/1999   12  none    2   sunny   7:21 am 4:14 pm yes Joshua Tebbs
+4/28/2001   3   1   1   cloudy  6:25 am 12:33 pm    Y   Edsel Peña
+10/15/2010  3   .   6   rainy   8:12 am     no  Karl Bruce Gregory
+3/02/2006   1   14  5   hot/sunny   7:15 am 3:12 pm y   Lianming Wang
+2/28/1988   2   6   3   partly cloudy   4:53 am 2:16 pm Yes Brian Habing
+7/14/2015   3   12  0   cloudy  5:47 am 3:46 pm No  Edwards</code></pre>
+</div>
+</div>
+<p>To specify the tab as the delimiting character, one must put <code>sep = "\t"</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>safari <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"data/safari_tab_missing.dat"</span>, </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">skip =</span> <span class="dv">3</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">""</span>,<span class="st">"."</span>))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        date wildebeest laughing.hyena crocodile       weather   start      end
+1  1/13/1999         12           none         2         sunny 7:21 am  4:14 pm
+2  4/28/2001          3              1         1        cloudy 6:25 am 12:33 pm
+3 10/15/2010          3           &lt;NA&gt;         6         rainy 8:12 am     &lt;NA&gt;
+4  3/02/2006          1             14         5     hot/sunny 7:15 am  3:12 pm
+5  2/28/1988          2              6         3 partly cloudy 4:53 am  2:16 pm
+6  7/14/2015          3             12         0        cloudy 5:47 am  3:46 pm
+  fun              guide
+1 yes       Joshua Tebbs
+2   Y         Edsel Peña
+3  no Karl Bruce Gregory
+4   y      Lianming Wang
+5 Yes       Brian Habing
+6  No            Edwards</code></pre>
+</div>
+</div>
+</section>
+<section id="fixed-width" class="level3">
+<h3 class="anchored" data-anchor-id="fixed-width">Fixed-width</h3>
+<p>Sometimes the data values are not separated by any special delimiting character, but rather arranged in a format such that the values belonging to a column are always place in the same columns of text characters. This is called a fixed-width format. Here is an example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="fu">readLines</span>(<span class="at">con =</span> <span class="st">"data/safari_fwf_missing.dat"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Some make-believe safari data
+Woohoo!!
+
+date,wildebeest,laughing hyena,crocodile,weather,start,end,fun,guide
+1/13/1999  12 none 2  sunny         7:21 am  4:14 pm  yes Joshua Tebbs
+4/28/2001  3  1    1  cloudy        6:25 am  12:33 pm Y   Edsel Peña
+10/15/2010 3  6       rainy         8:12 am           no  Karl Bruce Gregory
+3/02/2006  1  14   5  hot/sunny     7:15 am  3:12 pm  y   Lianming Wang
+2/28/1988  2  6    3  partly cloudy 4:53 am  2:16 pm  Yes Brian Habing
+7/14/2015  3  12   0  cloudy        5:47 am  3:46 pm  No  Edwards</code></pre>
+</div>
+</div>
+<p>We can use the <code>read.fwf()</code> function to read this file. We must specify how many characters are alloted to each column using the <code>widths =</code> option. Also important is the <code>strip.white=T</code> option, which will remove from character strings the extra spaces that are read in when reading fixed-width data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>safari <span class="ot">&lt;-</span> <span class="fu">read.fwf</span>(<span class="at">file =</span> <span class="st">"data/safari_fwf_missing.dat"</span>, </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">11</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">14</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">18</span>),</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">header =</span> T,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">skip =</span> <span class="dv">3</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">na.strings  =</span> <span class="fu">c</span>(<span class="st">""</span>,<span class="st">"."</span>),</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">strip.white =</span> T,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sep =</span><span class="st">","</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        date wildebeest laughing.hyena crocodile       weather   start      end
+1  1/13/1999         12           none         2         sunny 7:21 am  4:14 pm
+2  4/28/2001          3              1         1        cloudy 6:25 am 12:33 pm
+3 10/15/2010          3              6        NA         rainy 8:12 am     &lt;NA&gt;
+4  3/02/2006          1             14         5     hot/sunny 7:15 am  3:12 pm
+5  2/28/1988          2              6         3 partly cloudy 4:53 am  2:16 pm
+6  7/14/2015          3             12         0        cloudy 5:47 am  3:46 pm
+  fun              guide
+1 yes       Joshua Tebbs
+2   Y         Edsel Peña
+3  no Karl Bruce Gregory
+4   y      Lianming Wang
+5 Yes       Brian Habing
+6  No            Edwards</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="formatting-data" class="level2">
+<h2 class="anchored" data-anchor-id="formatting-data">Formatting data</h2>
+<p>Reading the data into R is only the first step in preparing the data for analysis. The statistician must check that numbers are treated as numbers, character strings as character strings, and may wish also to check ensure that dates and times are interpreted as such, rather than as arbitrary character strings.</p>
+<section id="column-classes" class="level3">
+<h3 class="anchored" data-anchor-id="column-classes">Column classes</h3>
+<p>A good way to see the types, or more properly the <em>classes</em> assigned to the columns is to apply with <code>sapply()</code> the <code>class()</code> function to the data frame:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(safari,class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          date     wildebeest laughing.hyena      crocodile        weather 
+   "character"      "integer"    "character"      "integer"    "character" 
+         start            end            fun          guide 
+   "character"    "character"    "character"    "character" </code></pre>
+</div>
+</div>
+<p>The reason <code>laughing.hyena</code> is read in as character column is that it has the value <code>"none"</code> on one line. Let’s overwrite <code>"none"</code> with <code>0</code>, noting that when we do this, our <code>0</code> will be coerced to the character string <code>"0"</code>, since the column is a character column; however, we can fix this by changing the class of this column to <code>integer</code>, as below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>safari<span class="sc">$</span>laughing.hyena[safari<span class="sc">$</span>laughing.hyena<span class="sc">==</span><span class="st">"none"</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(safari<span class="sc">$</span>laughing.hyena) <span class="ot">&lt;-</span> <span class="st">"integer"</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(safari,class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          date     wildebeest laughing.hyena      crocodile        weather 
+   "character"      "integer"      "integer"      "integer"    "character" 
+         start            end            fun          guide 
+   "character"    "character"    "character"    "character" </code></pre>
+</div>
+</div>
+<p>The remaining columns appear to have been read in as expected. We may wish, however, that the years in the data column be recognized as such, whereas currently they are merely strings of characters which have no meaning to the software.</p>
+<p>If we want to change the names of the columns, we can use the <code>colnames()</code> function. Below we change the name of the laughing hyena column:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(safari)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "date"           "wildebeest"     "laughing.hyena" "crocodile"     
+[5] "weather"        "start"          "end"            "fun"           
+[9] "guide"         </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(safari)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"hyena"</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        date wildebeest hyena crocodile       weather   start      end fun
+1  1/13/1999         12     0         2         sunny 7:21 am  4:14 pm yes
+2  4/28/2001          3     1         1        cloudy 6:25 am 12:33 pm   Y
+3 10/15/2010          3     6        NA         rainy 8:12 am     &lt;NA&gt;  no
+4  3/02/2006          1    14         5     hot/sunny 7:15 am  3:12 pm   y
+5  2/28/1988          2     6         3 partly cloudy 4:53 am  2:16 pm Yes
+6  7/14/2015          3    12         0        cloudy 5:47 am  3:46 pm  No
+               guide
+1       Joshua Tebbs
+2         Edsel Peña
+3 Karl Bruce Gregory
+4      Lianming Wang
+5       Brian Habing
+6            Edwards</code></pre>
+</div>
+</div>
+</section>
+<section id="text-processing" class="level3">
+<h3 class="anchored" data-anchor-id="text-processing">Text processing</h3>
+<p>It is helpful to know a few tricks for dealing with text data. Here we will introduce a few functions that should come in handy.</p>
+<p>Suppose we want to standardize the responses in the fun column of the safari data. One way to do this is to make a character vector containing all the strings we should interpret as “yes”; then we can use the operator <code>%in%</code> to check, for each entry of the fun column of the safari data, if its value is one of the values in our vector. Thus:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>yes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"y"</span>,<span class="st">"yes"</span>,<span class="st">"Y"</span>,<span class="st">"Yes"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>safari<span class="sc">$</span>fun <span class="ot">&lt;-</span> safari<span class="sc">$</span>fun <span class="sc">%in%</span> yes</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        date wildebeest hyena crocodile       weather   start      end   fun
+1  1/13/1999         12     0         2         sunny 7:21 am  4:14 pm  TRUE
+2  4/28/2001          3     1         1        cloudy 6:25 am 12:33 pm  TRUE
+3 10/15/2010          3     6        NA         rainy 8:12 am     &lt;NA&gt; FALSE
+4  3/02/2006          1    14         5     hot/sunny 7:15 am  3:12 pm  TRUE
+5  2/28/1988          2     6         3 partly cloudy 4:53 am  2:16 pm  TRUE
+6  7/14/2015          3    12         0        cloudy 5:47 am  3:46 pm FALSE
+               guide
+1       Joshua Tebbs
+2         Edsel Peña
+3 Karl Bruce Gregory
+4      Lianming Wang
+5       Brian Habing
+6            Edwards</code></pre>
+</div>
+</div>
+<p>Now the fun column is has logical values.</p>
+<p>The <code>substr()</code> function extracts a substring from a character string:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(<span class="st">"howdy"</span>, <span class="at">start =</span> <span class="dv">2</span>, <span class="at">stop =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "ow"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(<span class="st">"howdy"</span>, <span class="at">start =</span> <span class="dv">5</span>, <span class="at">stop =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "y"</code></pre>
+</div>
+</div>
+<p>The <code>regexpr()</code> function returns the location in a character strong of the first match to a given <em>pattern</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">regexpr</span>(<span class="st">"ow"</span>,<span class="st">"howdy"</span>) <span class="co"># look for pattern "ow" in string "howdy"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2
+attr(,"match.length")
+[1] 2
+attr(,"index.type")
+[1] "chars"
+attr(,"useBytes")
+[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">regexpr</span>(<span class="st">"o"</span>,<span class="st">"howdy-do"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2
+attr(,"match.length")
+[1] 1
+attr(,"index.type")
+[1] "chars"
+attr(,"useBytes")
+[1] TRUE</code></pre>
+</div>
+</div>
+<p>The <code>gregexr()</code> returns not just the position of the first match, but of every match:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gregexpr</span>(<span class="st">"o"</span>,<span class="st">"howdy-do"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] 2 8
+attr(,"match.length")
+[1] 1 1
+attr(,"index.type")
+[1] "chars"
+attr(,"useBytes")
+[1] TRUE</code></pre>
+</div>
+</div>
+<p>The <code>gregexpr()</code> function and other functions like it (run <code>?gregexpr()</code> to see other similar functions) allow the use of <em>regular expressions</em> to set patterns for which to look for matches. These have a standard syntax across many software programs and operating systems (so they are useful not just for R). More can be found on regular expressions <a href="https://www.w3schools.com/python/python_regex.asp">here</a>. Below we use a regular expression to retrieve the positions of “o” when this is followed by any lower case letter:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gregexpr</span>(<span class="st">"o[a-z]"</span>,<span class="st">"howdy-do to you"</span>) <span class="co"># returns the position of "o" only when it is followed by a space</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1]  2 14
+attr(,"match.length")
+[1] 2 2
+attr(,"index.type")
+[1] "chars"
+attr(,"useBytes")
+[1] TRUE</code></pre>
+</div>
+</div>
+<p>The function <code>sprintf()</code> is used to print numbers as character strings in very specific formats:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="dv">1</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sprintf</span>(e,<span class="at">fmt =</span> <span class="st">"%f"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2.718282"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sprintf</span>(e,<span class="at">fmt =</span> <span class="st">"%.2f"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2.72"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sprintf</span>(e,<span class="at">fmt =</span> <span class="st">"%05.2f"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "02.72"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sprintf</span>(e,<span class="at">fmt =</span> <span class="st">"%E"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2.718282E+00"</code></pre>
+</div>
+</div>
+<p>Print integer values with leading zeros:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sprintf</span>(<span class="dv">1</span>,<span class="at">fmt =</span> <span class="st">"%02d"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "01"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sprintf</span>(<span class="dv">7</span>,<span class="at">fmt =</span> <span class="st">"%03d"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "007"</code></pre>
+</div>
+</div>
+<p>Another very useful function is the <code>grep()</code> function which looks for a pattern in the entries of a character vector and returns in the indices in which the pattern was found. Below, we make a new logical column in the safari data set called “overcast” which will be <code>TRUE</code> except when the pattern <code>"sunny"</code> appears in the string describing the weather.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>safari<span class="sc">$</span>overcast <span class="ot">&lt;-</span> <span class="cn">TRUE</span>                      <span class="co"># set all equal to true</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>sunny_days <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">"sunny"</span>,safari<span class="sc">$</span>weather)   <span class="co"># find which days are sunny</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>safari<span class="sc">$</span>overcast[sunny_days] <span class="ot">&lt;-</span> <span class="cn">FALSE</span>         <span class="co"># make false the sunny days</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        date wildebeest hyena crocodile       weather   start      end   fun
+1  1/13/1999         12     0         2         sunny 7:21 am  4:14 pm  TRUE
+2  4/28/2001          3     1         1        cloudy 6:25 am 12:33 pm  TRUE
+3 10/15/2010          3     6        NA         rainy 8:12 am     &lt;NA&gt; FALSE
+4  3/02/2006          1    14         5     hot/sunny 7:15 am  3:12 pm  TRUE
+5  2/28/1988          2     6         3 partly cloudy 4:53 am  2:16 pm  TRUE
+6  7/14/2015          3    12         0        cloudy 5:47 am  3:46 pm FALSE
+               guide overcast
+1       Joshua Tebbs    FALSE
+2         Edsel Peña     TRUE
+3 Karl Bruce Gregory     TRUE
+4      Lianming Wang    FALSE
+5       Brian Habing     TRUE
+6            Edwards     TRUE</code></pre>
+</div>
+</div>
+<p>As another exercise, suppose we wish to replace the names in the guide column with the first initial, followed by a period, and then the last name after a space, where we do not change the name if only the last name is given. The code below makes a function to convert each name to this shortened version and applies the function to the guide column of the safari data set. The <code>strsplit()</code> function comes in very handy here.</p>
+<p>It works like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>ch <span class="ot">&lt;-</span> <span class="st">"Howdy ho!"</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">strsplit</span>(ch,<span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "Howdy" "ho!"  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">strsplit</span>(ch,<span class="st">" "</span>)[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Howdy" "ho!"  </code></pre>
+</div>
+</div>
+<p>So now we use it to make a function to abbreviate the names:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>nameabb <span class="ot">&lt;-</span> <span class="cf">function</span>(ch){</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  full <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(ch,<span class="st">" "</span>)[[<span class="dv">1</span>]] <span class="co"># get first element of the list</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(full)</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(n <span class="sc">==</span> <span class="dv">1</span>){</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>    abb <span class="ot">&lt;-</span> full</span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>    abb <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">substr</span>(full[<span class="dv">1</span>],<span class="dv">1</span>,<span class="dv">1</span>),<span class="st">". "</span>,full[n],<span class="at">sep=</span><span class="st">""</span>)</span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(abb)</span>
+<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-20"><a href="#cb59-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-21"><a href="#cb59-21" aria-hidden="true" tabindex="-1"></a>safari<span class="sc">$</span>guide <span class="ot">&lt;-</span> <span class="fu">sapply</span>(safari<span class="sc">$</span>guide,nameabb)</span>
+<span id="cb59-22"><a href="#cb59-22" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        date wildebeest hyena crocodile       weather   start      end   fun
+1  1/13/1999         12     0         2         sunny 7:21 am  4:14 pm  TRUE
+2  4/28/2001          3     1         1        cloudy 6:25 am 12:33 pm  TRUE
+3 10/15/2010          3     6        NA         rainy 8:12 am     &lt;NA&gt; FALSE
+4  3/02/2006          1    14         5     hot/sunny 7:15 am  3:12 pm  TRUE
+5  2/28/1988          2     6         3 partly cloudy 4:53 am  2:16 pm  TRUE
+6  7/14/2015          3    12         0        cloudy 5:47 am  3:46 pm FALSE
+       guide overcast
+1   J. Tebbs    FALSE
+2    E. Peña     TRUE
+3 K. Gregory     TRUE
+4    L. Wang    FALSE
+5  B. Habing     TRUE
+6    Edwards     TRUE</code></pre>
+</div>
+</div>
+<p>Some other useful function are the <code>toupper()</code> and <code>tolower()</code> functions, which convert lower case to capital letters and vice versa, respectively:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>ch <span class="ot">&lt;-</span> <span class="st">"johann sebastian bach"</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">toupper</span>(ch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "JOHANN SEBASTIAN BACH"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>ch <span class="ot">&lt;-</span> <span class="st">"Die Jugend ist Allem fähig."</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tolower</span>(ch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "die jugend ist allem fähig."</code></pre>
+</div>
+</div>
+</section>
+<section id="dates" class="level3">
+<h3 class="anchored" data-anchor-id="dates">Dates</h3>
+<p>The first column of the safari data set contains dates, but they have been read in as character strings. We would like R to recognize them as dates. To convert character strings to dates we can use the <code>as.Date()</code> function. By default the function assumes the format <em>yyyy-mm-dd</em>, but other formats can be specified:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"2014-07-05"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2014-07-05"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"7/5/2014"</span>) <span class="co"># will not be recognized correctly. Must specify a format!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "0007-05-20"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"7/5/2014"</span>, <span class="at">format =</span> <span class="st">"%m/%d/%Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2014-07-05"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"July 7, 2014"</span>, <span class="at">format =</span> <span class="st">"%B %d, %Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2014-07-07"</code></pre>
+</div>
+</div>
+<p>Run <code>?as.Date</code> to read more about date formats.</p>
+<p>A date object stores the date as the number of days which have passed since January 1st, 1970. Dates earlier than this are stored as negative values:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1970-01-01"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1970-01-02"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1969-12-31"</code></pre>
+</div>
+</div>
+<p>There are several cool ways to play with dates in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>() <span class="co"># today's date</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>today</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2025-09-22"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>today <span class="sc">-</span> <span class="dv">30</span> <span class="co"># the date 30 days ago</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2025-08-23"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(today,<span class="at">by=</span><span class="st">"3 days"</span>,<span class="at">length =</span> <span class="dv">12</span>) <span class="co"># make a sequence of dates</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "2025-09-22" "2025-09-25" "2025-09-28" "2025-10-01" "2025-10-04"
+ [6] "2025-10-07" "2025-10-10" "2025-10-13" "2025-10-16" "2025-10-19"
+[11] "2025-10-22" "2025-10-25"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">weekdays</span>(<span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"2014-07-05"</span>,<span class="st">"2017-07-05"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Saturday"  "Wednesday"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">months</span>(today) <span class="co"># extract the month from a date</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "September"</code></pre>
+</div>
+</div>
+<p>We can print a date in a different formats other than the default with the <code>format()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(today,<span class="st">"%m/%d/%y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "09/22/25"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(today,<span class="st">"%b %d, %Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Sep 22, 2025"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(today,<span class="st">"%B %d, %Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "September 22, 2025"</code></pre>
+</div>
+</div>
+<p>In the date column of the safari data set, the dates are recorded in many different formats. It takes a little bit of work to standardize the formats: Below, we use a loop to go through the entries of the date column to extract the date from each one with the <code>as.Date()</code> function. We have to list all the different formats to try by using the <code>tryFormats</code> option. Then we re-print the date in the format we want to keep. After the loop is done, we use <code>as.Date()</code> again to convert the entire vector of character strings into a column having the date class.</p>
+<p>To convert the character strings in the data column of the safari data set, which represent dates to our eyes but which are not yet interpreted as dates by our software, we can use the <code>as.Date()</code> function, specifying the format in which they are written, to convert the character strings to actual date values. The code below overwrites the date colums with these true dates, and as a bonus, add to the data set a weekday column:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>safari<span class="sc">$</span>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(safari<span class="sc">$</span>date, <span class="st">"%m/%d/%Y"</span>)</span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>safari<span class="sc">$</span>day <span class="ot">&lt;-</span> <span class="fu">weekdays</span>(safari<span class="sc">$</span>date)</span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        date wildebeest hyena crocodile       weather   start      end   fun
+1 1999-01-13         12     0         2         sunny 7:21 am  4:14 pm  TRUE
+2 2001-04-28          3     1         1        cloudy 6:25 am 12:33 pm  TRUE
+3 2010-10-15          3     6        NA         rainy 8:12 am     &lt;NA&gt; FALSE
+4 2006-03-02          1    14         5     hot/sunny 7:15 am  3:12 pm  TRUE
+5 1988-02-28          2     6         3 partly cloudy 4:53 am  2:16 pm  TRUE
+6 2015-07-14          3    12         0        cloudy 5:47 am  3:46 pm FALSE
+       guide overcast       day
+1   J. Tebbs    FALSE Wednesday
+2    E. Peña     TRUE  Saturday
+3 K. Gregory     TRUE    Friday
+4    L. Wang    FALSE  Thursday
+5  B. Habing     TRUE    Sunday
+6    Edwards     TRUE   Tuesday</code></pre>
+</div>
+</div>
+<p>Now we see that the first column has the date class.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(safari,class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       date  wildebeest       hyena   crocodile     weather       start 
+     "Date"   "integer"   "integer"   "integer" "character" "character" 
+        end         fun       guide    overcast         day 
+"character"   "logical" "character"   "logical" "character" </code></pre>
+</div>
+</div>
+<p>Now that we have actual dates in the data set, the dates can be interpreted as such by other functions, such as the <code>plot()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wildebeest <span class="sc">~</span> date, <span class="at">data=</span>safari)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="R_importdata_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="1400"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="times-datetimes" class="level3">
+<h3 class="anchored" data-anchor-id="times-datetimes">Times (Datetimes)</h3>
+<p>Next, suppose we want to re-format the start and end times in the safari data set so that they are 24-hour clock times.</p>
+<p>We can use the <code>strptime()</code> function to turn character strings into actual time values:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">strptime</span>(<span class="st">"2:20 am"</span>,<span class="at">format=</span><span class="st">"%I:%M %p"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2025-09-22 02:20:00 EDT"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">strptime</span>(<span class="st">"2:20 pm"</span>,<span class="at">format=</span><span class="st">"%I:%M %p"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2025-09-22 14:20:00 EDT"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">strptime</span>(<span class="st">"7/5/2017 21:56"</span>, <span class="at">format =</span> <span class="st">"%m/%d/%Y %H:%M"</span>) <span class="co"># birth of Lois!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2017-07-05 21:56:00 EDT"</code></pre>
+</div>
+</div>
+<p>Note that if a date is not given, it uses the current day.</p>
+<p>These time values are values of a class called the <code>POSIXct</code> class. It stores calendar times as a number of seconds from the time 00:00:00 (midnight) in the timezone GMT on January 1st, 1970 (when the machines awoke…). The name “POSIX” refers to a set of standards designed to promote compatibility of code across operating systems, and “ct” stands for calendar time. The default format in which R prints objects of this class is <em>yyyy-mm-dd hh:mm:ss tz</em>, where <em>tz</em> is the time zone.</p>
+<p>Now we can use the <code>strftime()</code> to print the time values in whatever format we want:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>start <span class="ot">&lt;-</span> <span class="fu">strptime</span>(safari<span class="sc">$</span>start,<span class="at">format=</span><span class="st">"%I:%M %p"</span>) <span class="co"># get the values as actual time</span></span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>end <span class="ot">&lt;-</span> <span class="fu">strptime</span>(safari<span class="sc">$</span>end,<span class="at">format=</span><span class="st">"%I:%M %p"</span>)</span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a>start24 <span class="ot">&lt;-</span> <span class="fu">strftime</span>(start,<span class="at">format=</span><span class="st">"%H:%M"</span>)         <span class="co"># convert the times to strings in a particular format</span></span>
+<span id="cb106-5"><a href="#cb106-5" aria-hidden="true" tabindex="-1"></a>end24 <span class="ot">&lt;-</span> <span class="fu">strftime</span>(end,<span class="at">format=</span><span class="st">"%H:%M"</span>)</span>
+<span id="cb106-6"><a href="#cb106-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-7"><a href="#cb106-7" aria-hidden="true" tabindex="-1"></a>safari<span class="sc">$</span>start <span class="ot">&lt;-</span> start24                           <span class="co"># replace the columns of the data frame</span></span>
+<span id="cb106-8"><a href="#cb106-8" aria-hidden="true" tabindex="-1"></a>safari<span class="sc">$</span>end <span class="ot">&lt;-</span> end24</span>
+<span id="cb106-9"><a href="#cb106-9" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        date wildebeest hyena crocodile       weather start   end   fun
+1 1999-01-13         12     0         2         sunny 07:21 16:14  TRUE
+2 2001-04-28          3     1         1        cloudy 06:25 12:33  TRUE
+3 2010-10-15          3     6        NA         rainy 08:12  &lt;NA&gt; FALSE
+4 2006-03-02          1    14         5     hot/sunny 07:15 15:12  TRUE
+5 1988-02-28          2     6         3 partly cloudy 04:53 14:16  TRUE
+6 2015-07-14          3    12         0        cloudy 05:47 15:46 FALSE
+       guide overcast       day
+1   J. Tebbs    FALSE Wednesday
+2    E. Peña     TRUE  Saturday
+3 K. Gregory     TRUE    Friday
+4    L. Wang    FALSE  Thursday
+5  B. Habing     TRUE    Sunday
+6    Edwards     TRUE   Tuesday</code></pre>
+</div>
+</div>
+<p>Suppose we wish to create another column in the data set giving the duration of each safari, say in the format <em>hh:mm</em>.</p>
+<!-- ```{r} -->
+<!-- time0 <- as.POSIXct(0,tz="GMT") # Greenwich mean time -->
+<!-- time0 -->
+<!-- time0 + 30 # thirty seconds later -->
+<!-- time0 - 60 # one minute earlier -->
+<!-- # birth of my daughter Viva -->
+<!-- viva <- as.POSIXct("2015-11-22 02:23", tz="CET") -->
+<!-- as.numeric(viva) # number of seconds since "origin" -->
+<!-- print(viva,tz = "US/Eastern") # in EST -->
+<!-- print(viva,tz = "US/Central") # in CST -->
+<!-- ``` -->
+<p>We can use the <code>timediff()</code> function to get the difference in time between the calendar time representations of the start and end times. The below obtains these differences in minutes and then converts the number of minutes into the format <em>hh:mm</em>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>minutes <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">difftime</span>(end,start,<span class="at">unit=</span><span class="st">"min"</span>))           <span class="co"># get the difference in number of minutes</span></span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>duration <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">sprintf</span>(<span class="fu">floor</span>(minutes<span class="sc">/</span><span class="dv">60</span>),<span class="at">fmt=</span><span class="st">"%02.f"</span>),</span>
+<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">sprintf</span>(minutes <span class="sc">%%</span> <span class="dv">60</span>,<span class="at">fmt=</span><span class="st">"%02.f"</span>),<span class="at">sep=</span><span class="st">":"</span>)   <span class="co"># write this as hh:mm</span></span>
+<span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a><span class="co"># find durations with string "NA" replace with real NA</span></span>
+<span id="cb108-7"><a href="#cb108-7" aria-hidden="true" tabindex="-1"></a>duration[<span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"NA"</span>,<span class="at">x =</span> duration)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb108-8"><a href="#cb108-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-9"><a href="#cb108-9" aria-hidden="true" tabindex="-1"></a><span class="co"># add a column to the data set</span></span>
+<span id="cb108-10"><a href="#cb108-10" aria-hidden="true" tabindex="-1"></a>safari<span class="sc">$</span>duration <span class="ot">&lt;-</span> duration</span>
+<span id="cb108-11"><a href="#cb108-11" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        date wildebeest hyena crocodile       weather start   end   fun
+1 1999-01-13         12     0         2         sunny 07:21 16:14  TRUE
+2 2001-04-28          3     1         1        cloudy 06:25 12:33  TRUE
+3 2010-10-15          3     6        NA         rainy 08:12  &lt;NA&gt; FALSE
+4 2006-03-02          1    14         5     hot/sunny 07:15 15:12  TRUE
+5 1988-02-28          2     6         3 partly cloudy 04:53 14:16  TRUE
+6 2015-07-14          3    12         0        cloudy 05:47 15:46 FALSE
+       guide overcast       day duration
+1   J. Tebbs    FALSE Wednesday    08:53
+2    E. Peña     TRUE  Saturday    06:08
+3 K. Gregory     TRUE    Friday     &lt;NA&gt;
+4    L. Wang    FALSE  Thursday    07:57
+5  B. Habing     TRUE    Sunday    09:23
+6    Edwards     TRUE   Tuesday    09:59</code></pre>
+</div>
+</div>
+</section>
+<section id="sorting-a-data-frame" class="level3">
+<h3 class="anchored" data-anchor-id="sorting-a-data-frame">Sorting a data frame</h3>
+<p>We can use the <code>sort_by()</code> function to sort the rows of a data frame according to the values in one (or more columns):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort_by</span>(safari, <span class="sc">~</span> date) <span class="co"># sort by the date column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        date wildebeest hyena crocodile       weather start   end   fun
+5 1988-02-28          2     6         3 partly cloudy 04:53 14:16  TRUE
+1 1999-01-13         12     0         2         sunny 07:21 16:14  TRUE
+2 2001-04-28          3     1         1        cloudy 06:25 12:33  TRUE
+4 2006-03-02          1    14         5     hot/sunny 07:15 15:12  TRUE
+3 2010-10-15          3     6        NA         rainy 08:12  &lt;NA&gt; FALSE
+6 2015-07-14          3    12         0        cloudy 05:47 15:46 FALSE
+       guide overcast       day duration
+5  B. Habing     TRUE    Sunday    09:23
+1   J. Tebbs    FALSE Wednesday    08:53
+2    E. Peña     TRUE  Saturday    06:08
+4    L. Wang    FALSE  Thursday    07:57
+3 K. Gregory     TRUE    Friday     &lt;NA&gt;
+6    Edwards     TRUE   Tuesday    09:59</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort_by</span>(safari, <span class="sc">~</span> fun <span class="sc">+</span> date) <span class="co"># sort first by fun, then by date within fun</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        date wildebeest hyena crocodile       weather start   end   fun
+3 2010-10-15          3     6        NA         rainy 08:12  &lt;NA&gt; FALSE
+6 2015-07-14          3    12         0        cloudy 05:47 15:46 FALSE
+5 1988-02-28          2     6         3 partly cloudy 04:53 14:16  TRUE
+1 1999-01-13         12     0         2         sunny 07:21 16:14  TRUE
+2 2001-04-28          3     1         1        cloudy 06:25 12:33  TRUE
+4 2006-03-02          1    14         5     hot/sunny 07:15 15:12  TRUE
+       guide overcast       day duration
+3 K. Gregory     TRUE    Friday     &lt;NA&gt;
+6    Edwards     TRUE   Tuesday    09:59
+5  B. Habing     TRUE    Sunday    09:23
+1   J. Tebbs    FALSE Wednesday    08:53
+2    E. Peña     TRUE  Saturday    06:08
+4    L. Wang    FALSE  Thursday    07:57</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="practice" class="level2">
+<h2 class="anchored" data-anchor-id="practice">Practice</h2>
+<p>Practice importing and formatting the data set <code>bird_sightings.tsv</code> <a href="https://github.com/gregorkb/gregorkb.github.io/tree/master/data">downloadable from here</a>.</p>
+<ol type="1">
+<li>Read the data set in with the <code>read.table()</code> function. When properly imported it should look like this:</li>
+</ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                  bird distance..ft.         location              when
+1    Blue-footed booby            &lt;2 Isla de la Plata  October 22, 2004
+2                robin            20    out my window              &lt;NA&gt;
+3             Cardinal            10      In the yard     June 18, 2010
+4          Road runner             5            Texas December 20, 2023
+5 xantus’s hummingbird             4    at the feeder September 1, 2020
+6  Eastern wood-peewee            10         out east November 19, 2021
+7           bald eagle          &gt;100      on the lake      July 4, 2024
+  had.binoculars
+1             no
+2            yes
+3            yes
+4             no
+5             no
+6            yes
+7              Y</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Rename the columns so that the data set looks like this:</li>
+</ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                  Bird Dist(ft)         Location              Date Binocs
+1    Blue-footed booby       &lt;2 Isla de la Plata  October 22, 2004     no
+2                robin       20    out my window              &lt;NA&gt;    yes
+3             Cardinal       10      In the yard     June 18, 2010    yes
+4          Road runner        5            Texas December 20, 2023     no
+5 xantus’s hummingbird        4    at the feeder September 1, 2020     no
+6  Eastern wood-peewee       10         out east November 19, 2021    yes
+7           bald eagle     &gt;100      on the lake      July 4, 2024      Y</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Write code to convert the values in the date column to date values and then replace the values in this column with dates in the format <em>dd.mm.yyyy</em> so that the data set looks like this:</li>
+</ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                  Bird Dist(ft)         Location       Date Binocs
+1    Blue-footed booby       &lt;2 Isla de la Plata 22.10.2004     no
+2                robin       20    out my window       &lt;NA&gt;    yes
+3             Cardinal       10      In the yard 18.06.2010    yes
+4          Road runner        5            Texas 20.12.2023     no
+5 xantus’s hummingbird        4    at the feeder 01.09.2020     no
+6  Eastern wood-peewee       10         out east 19.11.2021    yes
+7           bald eagle     &gt;100      on the lake 04.07.2024      Y</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Make the capitalization of the bird names conform to this convention: Each word in a bird name should be capitalized, except when there is a sequence of hyphenated words; of these only the first word should be capitalized. Write a function which corrects capitalizations according to this convention and apply it to the bird column of the data set. The result should like like this:</li>
+</ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                  Bird Dist(ft)         Location       Date Binocs
+1    Blue-footed Booby       &lt;2 Isla de la Plata 22.10.2004     no
+2                Robin       20    out my window       &lt;NA&gt;    yes
+3             Cardinal       10      In the yard 18.06.2010    yes
+4          Road Runner        5            Texas 20.12.2023     no
+5 Xantus’s Hummingbird        4    at the feeder 01.09.2020     no
+6  Eastern Wood-peewee       10         out east 19.11.2021    yes
+7           Bald Eagle     &gt;100      on the lake 04.07.2024      Y</code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Remove the inequality characters from the distance column and make it a column of numeric values; the same time, create a new column called “Dcens” containing the character strings “gt” if “&gt;” was removed, “lt” if “&lt;” was removed, and “eq”, otherwise.</li>
+</ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                  Bird Dist(ft)         Location       Date Binocs Dcens
+1    Blue-footed Booby        2 Isla de la Plata 22.10.2004     no    lt
+2                Robin       20    out my window       &lt;NA&gt;    yes    eq
+3             Cardinal       10      In the yard 18.06.2010    yes    eq
+4          Road Runner        5            Texas 20.12.2023     no    eq
+5 Xantus’s Hummingbird        4    at the feeder 01.09.2020     no    eq
+6  Eastern Wood-peewee       10         out east 19.11.2021    yes    eq
+7           Bald Eagle      100      on the lake 04.07.2024      Y    gt</code></pre>
+</div>
+</div>
+<ol start="6" type="1">
+<li>Replace the values in the binoculars column with logical values.</li>
+</ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                  Bird Dist(ft)         Location       Date Binocs Dcens
+1    Blue-footed Booby        2 Isla de la Plata 22.10.2004  FALSE    lt
+2                Robin       20    out my window       &lt;NA&gt;   TRUE    eq
+3             Cardinal       10      In the yard 18.06.2010   TRUE    eq
+4          Road Runner        5            Texas 20.12.2023  FALSE    eq
+5 Xantus’s Hummingbird        4    at the feeder 01.09.2020  FALSE    eq
+6  Eastern Wood-peewee       10         out east 19.11.2021   TRUE    eq
+7           Bald Eagle      100      on the lake 04.07.2024   TRUE    gt</code></pre>
+</div>
+</div>
+<ol start="7" type="1">
+<li>Sort the data according to the distances at which the birds were seen.</li>
+</ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                  Bird Dist(ft)         Location       Date Binocs Dcens
+1    Blue-footed Booby        2 Isla de la Plata 22.10.2004  FALSE    lt
+5 Xantus’s Hummingbird        4    at the feeder 01.09.2020  FALSE    eq
+4          Road Runner        5            Texas 20.12.2023  FALSE    eq
+3             Cardinal       10      In the yard 18.06.2010   TRUE    eq
+6  Eastern Wood-peewee       10         out east 19.11.2021   TRUE    eq
+2                Robin       20    out my window       &lt;NA&gt;   TRUE    eq
+7           Bald Eagle      100      on the lake 04.07.2024   TRUE    gt</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./R_MCexperiments.html" class="pagination-link" aria-label="Monte Carlo experiments">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Monte Carlo experiments</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./R_manipulatedata.html" class="pagination-link" aria-label="Merging, stacking, reshaping, and aggregating data">
+        <span class="nav-page-text">Merging, stacking, reshaping, and aggregating data</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
