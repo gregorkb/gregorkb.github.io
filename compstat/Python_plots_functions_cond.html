@@ -370,16 +370,16 @@ window.Quarto = {
 <section id="making-plots" class="level2">
 <h2 class="anchored" data-anchor-id="making-plots">Making plots</h2>
 <p>We’ll discover in using Python that you will need to import a library to do whatever the thing is that you want to do. In this note the thing that we want to do is to make plots, so we will import a library called <code>matplotlib</code>, which has this website: <a href="https://matplotlib.org/">matplotlib.org</a>. This is not the only plotting library for Python, but it seems to be “the hottest” right now.</p>
-<div id="27481052" class="cell" data-execution_count="1">
+<div id="a25d48f4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The above is the standard way of importing this library of functions. On the website for the library there are millions of examples of how to make use of all the functionality of this package; to these I will add my own humble offering here.</p>
 <p>The first thing about <code>matplotlib</code> is that it plays well with NumPy, so let’s import the NumPy library also with the typical alias <code>np</code>:</p>
-<div id="c3c73245" class="cell" data-execution_count="2">
+<div id="678f6382" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here is a demo of how to make a plot:</p>
-<div id="48277318" class="cell" data-execution_count="3">
+<div id="c5ad7ae6" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">2</span><span class="op">*</span>np.pi,<span class="dv">361</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sinx <span class="op">=</span> np.sin(x)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x,sinx)</span>
@@ -393,7 +393,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Here is a plot with a few more features, including a legend. Legends can be created in an automatic kind of way if a <code>label=</code> is supplied for each feature added to the plot.</p>
-<div id="a1a79ee4" class="cell" data-execution_count="4">
+<div id="166c61ef" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate some scatterplot data such that the y values are equal to a function plus noise</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> np.random.random(<span class="dv">30</span>)<span class="op">*</span><span class="dv">2</span><span class="op">*</span>np.pi </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="fl">0.8</span><span class="op">*</span>np.sin(u) <span class="op">+</span> <span class="fl">0.2</span><span class="op">*</span>np.cos(u) <span class="op">+</span> np.random.normal(<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>,u.size) </span>
@@ -420,7 +420,7 @@ window.Quarto = {
 </div>
 <p>You can also spend some time setting up the axes and customizing the plot’s appearance before you <em>show</em> the plot. In the matplotlib tutorials, this seems to be the preferred way to do things. Here is how it works: You have to set up a figure as well as a set of axes. Then you add things to the axes with <code>ax.</code> commands. When you do things this way, a new figure is set up, so you don’t need to worry about your plotting commands simply adding things to your previous plot.</p>
 <p>The code below also demonstrates how to set up a second vertical axis on the same horizontal axis.</p>
-<div id="351f4708" class="cell" data-execution_count="5">
+<div id="f6faf9ff" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span> (<span class="dv">8</span>,<span class="dv">4</span>)) <span class="co"># set up figure and axes. You can here change the size of the figure</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ax.plot(u,v,<span class="st">'bo'</span>,label <span class="op">=</span> <span class="st">'Observations'</span>) </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx,label <span class="op">=</span> <span class="st">'True underlying function'</span>,linestyle<span class="op">=</span><span class="st">"--"</span>,color<span class="op">=</span>(<span class="fl">0.545</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">.5</span>))</span>
@@ -442,7 +442,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Using the latter approach of setting up a figure first allows one to create multi-plot figures. Each individual plot in a figure is referred to as an <em>axes</em>, or a set of axes.</p>
-<div id="4f0334ae" class="cell" data-execution_count="6">
+<div id="e0dddda6" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">3</span>)) <span class="co"># put in a 1 by 2 grid of plots, name each "axis" </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ax1.plot(u,v,<span class="st">'bo'</span>,label <span class="op">=</span> <span class="st">'observations'</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"x"</span>)</span>
@@ -464,7 +464,7 @@ window.Quarto = {
 </div>
 </div>
 <p>We can set up plots in a “mosaic” arrangement as follows:</p>
-<div id="93ca7c70" class="cell" data-execution_count="7">
+<div id="d35b99b9" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplot_mosaic([[<span class="st">'top_left'</span>,<span class="st">'top_right'</span>],</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                               [<span class="st">'bottom'</span>,<span class="st">'bottom'</span>]],</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                             ) </span>
@@ -487,7 +487,7 @@ window.Quarto = {
 <section id="defining-new-functions" class="level2">
 <h2 class="anchored" data-anchor-id="defining-new-functions">Defining new functions</h2>
 <p>Here is the syntax for defining a simple, one-liner function:</p>
-<div id="e97292ac" class="cell" data-execution_count="8">
+<div id="849cebac" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x): <span class="cf">return</span>(x<span class="op">*</span>np.sin(x))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(f(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -496,7 +496,7 @@ window.Quarto = {
 </div>
 </div>
 <p>We must tell the function explicitly to return a value, or it will not return anything. If there is more than one line of code, we indent the lines, as shown below (no curly braces like in R). When we stop indenting, Python knows that the function definition has come to an end.</p>
-<div id="e4423b97" class="cell" data-execution_count="9">
+<div id="167a41f2" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hyp(a,b):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    csq<span class="op">=</span> a<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b<span class="op">**</span><span class="dv">2</span></span>
@@ -510,7 +510,7 @@ window.Quarto = {
 </div>
 </div>
 <p>A function can be made to return more than one value. Just put every object to be returned in the <code>return</code> function.</p>
-<div id="d93cfb2c" class="cell" data-execution_count="10">
+<div id="3278bc64" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> eucl(r,th): </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> r<span class="op">*</span>np.cos(th)</span>
@@ -528,7 +528,7 @@ window.Quarto = {
 </div>
 </div>
 <p>We specify default values in Python just as we did in R:</p>
-<div id="5e659432" class="cell" data-execution_count="11">
+<div id="95038dcf" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> logistic(x,a<span class="op">=</span><span class="dv">0</span>,b<span class="op">=</span><span class="dv">1</span>):</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    l <span class="op">=</span> a <span class="op">+</span> x<span class="op">*</span>b</span>
@@ -561,7 +561,7 @@ window.Quarto = {
 <section id="conditional-programming" class="level2">
 <h2 class="anchored" data-anchor-id="conditional-programming">Conditional programming</h2>
 <p>The logic of conditional programming is the same across all programming languages. One has only to learn new syntax with each language. Here are some examples of conditional programs in Python:</p>
-<div id="c5701ff3" class="cell" data-execution_count="12">
+<div id="d75af7c5" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rolldice():</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    r1 <span class="op">=</span> np.random.choice(np.arange(<span class="dv">1</span>,<span class="dv">7</span>),<span class="dv">1</span>) <span class="co"># draw a number from 1 to 6</span></span>
@@ -583,11 +583,11 @@ window.Quarto = {
 <span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>rolldice()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[2][1]</code></pre>
+<pre><code>[5][2]</code></pre>
 </div>
 </div>
 <p>The <em>else if</em> syntax in Python is a little different: Instead of typing “else if” you type <code>elif</code>:</p>
-<div id="ff494b7b" class="cell" data-execution_count="13">
+<div id="4430fc02" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rolldice():</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    r1 <span class="op">=</span> np.random.choice(np.arange(<span class="dv">1</span>,<span class="dv">7</span>),<span class="dv">1</span>)</span>
@@ -624,8 +624,8 @@ window.Quarto = {
 <span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>rolldice()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Well now...
-[2][6]</code></pre>
+<pre><code>Ahh, sad rollin'.
+[2][5]</code></pre>
 </div>
 </div>
 <p>As we did before in R, we can take advantage of the coercion of a logical value to a numerical value to simplify the definition of piecewise defined functions. For example we can define the function <span class="math display">\[
@@ -634,7 +634,7 @@ x +\lambda,&amp; x &lt; - \lambda\\
 0,&amp; - \lambda \leq x \leq \lambda \\
 x - \lambda,&amp; \lambda &lt; x \end{array}\right.
 \]</span> for <span class="math inline">\(\lambda &gt; 0\)</span> as below:</p>
-<div id="455eaf89" class="cell" data-execution_count="14">
+<div id="dddb91dc" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> softthresh(x,lam):</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>((x <span class="op">+</span> lam) <span class="op">*</span> (x <span class="op">&lt;</span> <span class="op">-</span>lam) <span class="op">+</span> (x <span class="op">-</span> lam)<span class="op">*</span>(x <span class="op">&gt;</span> lam))</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -654,7 +654,7 @@ x - \lambda,&amp; \lambda &lt; x \end{array}\right.
 </div>
 </div>
 <p>Next we define a function to evaluate the bivariate standard normal density. Then we make a surface plot of the function:</p>
-<div id="878f68b0" class="cell" data-execution_count="15">
+<div id="9ae58844" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bivn(z1,z2,rho <span class="op">=</span> <span class="dv">0</span>):                    <span class="co"># make rho have by default the value 0</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> rho<span class="op">**</span><span class="dv">2</span></span>
@@ -704,7 +704,7 @@ x - \lambda,&amp; \lambda &lt; x \end{array}\right.
          9(1-u), &amp; 2/3 \leq u &lt;1.
     \end{array}\right.
 \]</span></p>
-<div id="53066187" class="cell" data-execution_count="16">
+<div id="efddcd60" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -718,7 +718,7 @@ x - \lambda,&amp; \lambda &lt; x \end{array}\right.
 I = \int_{-1}^1 -\frac{3(x+1)\log((x+1)/2)}{\log((x+1)/2 + 2)}dx
 \]</span> and make a plot like the one shown below:</li>
 </ol>
-<div id="28900763" class="cell" data-execution_count="17">
+<div id="78f3d2ed" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -752,7 +752,7 @@ y &amp;= r \sin \theta.
 <ol type="1">
 <li></li>
 </ol>
-<div id="63bfaee9" class="cell" data-execution_count="21">
+<div id="9bb5b10b" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> star(p,s):</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  th <span class="op">=</span> np.linspace(np.pi<span class="op">/</span><span class="dv">2</span>,np.pi<span class="op">/</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>s,s<span class="op">*</span>p<span class="op">+</span><span class="dv">1</span>)</span>
