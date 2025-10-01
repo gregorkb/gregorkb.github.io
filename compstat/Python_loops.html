@@ -379,14 +379,14 @@ window.Quarto = {
 </header>
 
 
-<div id="154b14e6" class="cell" data-execution_count="1">
+<div id="f49079f5" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="for-loops" class="level2">
 <h2 class="anchored" data-anchor-id="for-loops">For loops</h2>
 <p>The logic of loops in Python is just the same as it was in R. We need a list of index values, and then we give a set of commands to execute as our index proceeds through the list of index values:</p>
-<div id="2b8be2b2" class="cell" data-execution_count="2">
+<div id="a7d3e93e" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="st">"this"</span>, <span class="dv">1</span>, <span class="st">"that"</span>, <span class="va">True</span>]</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index <span class="kw">in</span> x:</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -398,7 +398,7 @@ True</code></pre>
 </div>
 </div>
 <p>Often our index is a list of numbers, which we can make with the <code>range</code> function.</p>
-<div id="023fb9c1" class="cell" data-execution_count="3">
+<div id="2a63af11" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i<span class="op">**</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -411,10 +411,10 @@ True</code></pre>
 </div>
 </div>
 <p>Here is something really cool: We can use a loop to create list!</p>
-<div id="1fd6312d" class="cell" data-execution_count="4">
+<div id="8325ee3d" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> [s <span class="op">+</span> <span class="st">" 1st"</span> <span class="cf">for</span> s <span class="kw">in</span> [<span class="st">'Jan'</span>,<span class="st">'Feb'</span>,<span class="st">'Mar'</span>,<span class="st">'Apr'</span>,<span class="st">'May'</span>,<span class="st">'Jun'</span>,<span class="st">'Jul'</span>,<span class="st">'Aug'</span>,<span class="st">'Sep'</span>,<span class="st">'Oct'</span>,<span class="st">'Nov'</span>,<span class="st">'Dec'</span>]]</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="46">
 <pre><code>['Jan 1st',
  'Feb 1st',
  'Mar 1st',
@@ -430,17 +430,17 @@ True</code></pre>
 </div>
 </div>
 <p>Here we make a list of powers of 2.</p>
-<div id="84bb6ac2" class="cell" data-execution_count="5">
+<div id="3f9561c5" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">2</span><span class="op">**</span>a <span class="cf">for</span> a <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">2</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>[1, 4, 16, 64, 256]</code></pre>
 </div>
 </div>
 <p>Here is another example of creating a list using a loop. Here we use the <code>ord()</code> function, which provides a number corresponding to a character string’s Unicode name together with the <code>chr()</code> function, which prints the character corresponding to this number. We can make a list containing all the lower case letters like this:</p>
-<div id="ae688339" class="cell" data-execution_count="6">
+<div id="3e8bb866" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>letters <span class="op">=</span> [<span class="bu">chr</span>(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">ord</span>(<span class="st">'a'</span>),<span class="bu">ord</span>(<span class="st">'z'</span>)<span class="op">+</span><span class="dv">1</span>)]</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>letters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>['a',
  'b',
  'c',
@@ -471,7 +471,7 @@ True</code></pre>
 </div>
 <p>In R we typically instruct our index to begin at 1, but in Python it is more natural to make it begin at 0 because if we want to access the first entry in a list or in a NumPy array, we do so using the index 0.</p>
 <p>Let’s write a loop to take the product of all the numbers in a NumPy array.</p>
-<div id="e87dd210" class="cell" data-execution_count="7">
+<div id="c4f99528" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.random(<span class="dv">5</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>val <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(x.size):</span>
@@ -479,7 +479,7 @@ True</code></pre>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.0043543083725904475</code></pre>
+<pre><code>0.001450501987770849</code></pre>
 </div>
 </div>
 <p>In Python we can use the syntax <code>x += y</code> as a shorthand for <code>x = x + y</code>, and the same works for any of the aritmetic operators <code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code>. This kind of shorthand notation is recognized in C, but not in R.</p>
@@ -489,7 +489,7 @@ True</code></pre>
 <p>Below we define a function which computes the sample variance <span class="math display">\[
 S_n^2 = \frac{1}{n-1}\sum_{i=1}^n(X_i - \bar X_n)^2
 \]</span> of a NumPy array containing the values <span class="math inline">\(X_1,\dots,X_n\)</span>:</p>
-<div id="f8369adc" class="cell" data-execution_count="8">
+<div id="65784db9" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> svar(x):</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> x.size</span>
@@ -504,15 +504,15 @@ S_n^2 = \frac{1}{n-1}\sum_{i=1}^n(X_i - \bar X_n)^2
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.normal(loc <span class="op">=</span> <span class="dv">0</span>, scale <span class="op">=</span> <span class="dv">1</span>,size<span class="op">=</span><span class="dv">100</span>)</span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>svar(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>np.float64(0.9292792871125005)</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<pre><code>np.float64(0.829330300911393)</code></pre>
 </div>
 </div>
 </section>
 <section id="add-several-lines-to-a-plot" class="level3">
 <h3 class="anchored" data-anchor-id="add-several-lines-to-a-plot">Add several lines to a plot</h3>
 <p>The code below makes a plot of several gamma distribution pdfs. To evaluate the gamma pdf, we need to import the SciPy package: <a href="https://scipy.org/">scipy.org</a>.</p>
-<div id="2ddc156f" class="cell" data-execution_count="9">
+<div id="2f9924fe" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">10</span>] <span class="co"># shape parameter values</span></span>
@@ -545,7 +545,7 @@ S_n^2 = \frac{1}{n-1}\sum_{i=1}^n(X_i - \bar X_n)^2
 <section id="make-a-grid-of-plots" class="level3">
 <h3 class="anchored" data-anchor-id="make-a-grid-of-plots">Make a grid of plots</h3>
 <p>Suppose we wanted to plot all the same gamma pdfs, but not on the same set of axes. We can set up a figure with a grid of subplots, setting the number of rows and columns. Then the sets of axes can be accessed by indexing within square brackets. Check out the code below:</p>
-<div id="a0c378ba" class="cell" data-execution_count="10">
+<div id="9faf9dd9" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">3</span>,figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">0</span></span>
@@ -573,7 +573,7 @@ S_n^2 = \frac{1}{n-1}\sum_{i=1}^n(X_i - \bar X_n)^2
 <p>If we observe a “control” sample <span class="math inline">\(X_1,\dots,X_n\)</span> and a “treatment” sample <span class="math inline">\(Y_1,\dots,Y_m\)</span>, the Wilcoxon Rank Sum test concludes a positive treatment effect (<span class="math inline">\(Y\)</span>’s tend to be greater than <span class="math inline">\(X\)</span>’s) if the statistic <span class="math display">\[
 W_{XY} = \sum_{i=1}^n\sum_{j=1}^m\mathbb{I}(X_i \leq Y_j)
 \]</span> exceeds a high enough threshold, where <span class="math inline">\(\mathbb{I}(A)\)</span> is equal to <span class="math inline">\(1\)</span> if <span class="math inline">\(A\)</span> is true and <span class="math inline">\(0\)</span> if <span class="math inline">\(A\)</span> is false. Let’s write a double for loop to compute the value of <span class="math inline">\(W_{XY}\)</span>:</p>
-<div id="2b8a9b1a" class="cell" data-execution_count="11">
+<div id="2f26b329" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> wilcx(X,Y):</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> X.size</span>
@@ -593,8 +593,8 @@ W_{XY} = \sum_{i=1}^n\sum_{j=1}^m\mathbb{I}(X_i \leq Y_j)
 <span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.random.normal(<span class="dv">0</span>,<span class="dv">1</span>,m)</span>
 <span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>wilcx(X,Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>np.int64(424)</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="53">
+<pre><code>np.int64(383)</code></pre>
 </div>
 </div>
 </section>
@@ -607,7 +607,7 @@ W_{XY} = \sum_{i=1}^n\sum_{j=1}^m\mathbb{I}(X_i \leq Y_j)
 <p>As a first example, let’s write a function which returns an approximation to <span class="math inline">\(\log(z)\)</span> for any <span class="math inline">\(z &gt; 0\)</span> given by a partial sum of the infinite series representation <span class="math display">\[
 \log(z) = 2 \sum_{k=0}^\infty \frac{1}{2k+1}\Big(\frac{z-1}{z+1}\Big)^{2k+1},
 \]</span> where <span class="math inline">\(\log(\cdot)\)</span> denotes the natural logarithm. Let’s set up the function so that it stops adding terms when the contribution of a new term is less than some tolerance level, and such that the function returns the number of terms added.</p>
-<div id="fffa77fd" class="cell" data-execution_count="12">
+<div id="ce98d2ac" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lnapp(z,tol<span class="op">=</span><span class="fl">1e-8</span>):</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    k <span class="op">=</span> <span class="dv">0</span></span>
@@ -643,7 +643,7 @@ f(x) =  a - 1/x.
 \]</span> Newton’s method prescribes choosing an initial guess <span class="math inline">\(x_0\)</span> for the reciprocal of <span class="math inline">\(a\)</span> and then making the updates <span class="math display">\[
 x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} = 2x_n - a x_n^2
 \]</span> until convergence. Let’s write a function for finding the reciprocal of a number in this way (it turns out you have to choose an initial value satisfying <span class="math inline">\(0 &lt; x_0 &lt; 2/a\)</span> in order <a href="https://www.mathworks.com/help/simulink/ref_obsolete_blocks/hdlreciprocalobsolete.html">for the algorithm to converge</a>. We will just choose the inital value to be close to zero, knowing that if <span class="math inline">\(a\)</span> is large, we may need to choose a smaller initial value). This example can be found on page 352 of the Calculus book. Let’s make the function so that it can find the reciprocal of a negative value.</p>
-<div id="9271055a" class="cell" data-execution_count="13">
+<div id="16b18e3b" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> recip(a,tol <span class="op">=</span> <span class="fl">1e-9</span>):</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(a <span class="op">&lt;</span> <span class="dv">0</span>):</span>
@@ -666,7 +666,7 @@ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} = 2x_n - a x_n^2
 <span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="9b171a7d" class="cell" data-execution_count="14">
+<div id="78c1922b" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(recip(<span class="op">-</span><span class="dv">6</span>))</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(recip(<span class="fl">0.1</span>))</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(recip(<span class="fl">14.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -683,7 +683,7 @@ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} = 2x_n - a x_n^2
 x_{n+1} = x_n - \frac{f'(x_n)}{f''(x_n)},
 \]</span> starting from an initial guess <span class="math inline">\(x_0\)</span>, as this algorithm will lead to the value of <span class="math inline">\(x\)</span> such that <span class="math inline">\(f'(x) = 0\)</span>. Note that the same algorithm can be used to <em>maximize</em> a <em>concave</em> function.</p>
 <p>As an example, the code below finds the minimizer of the function <span class="math inline">\(f(x) = x^2 + \sin(x)\)</span>, using <span class="math inline">\(f'(x) = 2x + \cos(x)\)</span> and <span class="math inline">\(f''(x) = x - \sin(x)\)</span>.</p>
-<div id="ceb42814" class="cell" data-execution_count="15">
+<div id="c3a30e1b" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">0</span> <span class="co"># initial guess</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>tol <span class="op">=</span> <span class="fl">1e-6</span> <span class="co"># convergence tolerance</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>conv <span class="op">=</span> <span class="va">False</span></span>
@@ -715,39 +715,50 @@ x_{n+1} = x_n - \frac{f'(x_n)}{f''(x_n)},
 <section id="computing-a-maximum-likelihood-estimator" class="level3">
 <h3 class="anchored" data-anchor-id="computing-a-maximum-likelihood-estimator">Computing a maximum likelihood estimator</h3>
 <p>If we observe a random sample <span class="math inline">\(X_1,\dots,X_n\)</span> from a probability distribution with pmf or pdf <span class="math inline">\(f(\cdot,\theta)\)</span> which depends on a parameter <span class="math inline">\(\theta \in \Theta \subset \mathbb{R}^p\)</span>, the maximum likelihood estimator of <span class="math inline">\(\theta\)</span> is defined as the maximizer over <span class="math inline">\(\Theta\)</span> of the likelihood function, which is given by <span class="math display">\[
-\mathcal{L}(\theta,X_1,\dots,X_n) = \prod_{i=1}^nf(X_i,\theta).
+\mathcal{L}_n(\theta) = \prod_{i=1}^nf(X_i,\theta).
 \]</span> The maximum likelihood estimator can be thought of as the value of the parameter which gives the greatest probability to the data observed.</p>
 <p>We can often use calculus methods to find the maximizer of the likelihood function; first, though, we usually transform the likelihood function into what we call the log-likelihood function by taking the natural log. This operation converts the product into a sum, on which it is easier to take derivatives. So, we define the log-likelihood as<br>
 <span class="math display">\[
-\ell(\theta,X_1,\dots,X_n) = \log \mathcal{L}(\theta,X_1,\dots,X_n) = \sum_{i=1}^n \log f(X_i,\theta),
-\]</span> Recall from your calculus classes that the minimizer of a function (in particular a convex function) can be found by setting the first derivative of the function equal to zero. Define <span class="math display">\[
-S(\theta,X_1,\dots,X_n) = \frac{\partial}{\partial \theta} \ell(\theta,X_1,\dots,X_n)
-\]</span> as the vector of first-order derivatives of the log-likelihood function with respect to the entries in <span class="math inline">\(\theta\)</span>. This is often called the <em>score function</em>. Then we can obtain an expression for the maximum likelihood estimator by solving the equation <span class="math display">\[
-S(\theta,X_1,\dots,X_n) = 0.
-\]</span> where this is a system of equations when <span class="math inline">\(p &gt; 1\)</span>, that is when <span class="math inline">\(\theta\)</span> denotes a vector of unknown parameter values.</p>
-<p>It is often the case that the solution to the previous equation or system of equation does not admit a closed-form expression; that is, rather than computing it with a formula, one must seek it with an algorithm. Newton’s algorithm again shines: Let <span class="math display">\[
-\mathcal{H}(\theta,X_1,\dots,X_n) = \frac{\partial^2}{\partial \theta \partial \theta^T}\ell(\theta,X_1,\dots,X_n)
-\]</span> denote the Hessian, or the matrix of second-order partial derivatives of the log-likelihood function with respect to the entries of <span class="math inline">\(\theta\)</span>. Then Newton’s method prescribes the updates <span class="math display">\[
-\theta_{n+1} = \theta_n - \mathcal{H}^{-1}(\theta_n,X_1,\dots,X_n)S(\theta_n,X_1,\dots,X_n)
+\ell_n(\theta) = \log \mathcal{L}_n(\theta) = \sum_{i=1}^n \log f(X_i,\theta),
+\]</span> Recall from your calculus classes that the minimizer of a function (in particular a convex function) can be found by setting the first derivative of the function equal to zero. Define the gradient <span class="math inline">\(\nabla \ell_n(\theta)\)</span> of the log-likelihood as the vector of partial derivatives of <span class="math inline">\(\ell_n(\theta)\)</span> taken with respect to the individual parameters <span class="math inline">\(\theta_1,\dots,\theta_p\)</span> in <span class="math inline">\(\theta\)</span>. That is, set <span class="math display">\[
+\nabla\ell_n(\theta) = \left[\begin{array}{c}
+\frac{\partial}{\partial \theta_1 \ell_n(\theta)}\\
+\vdots \\
+\frac{\partial}{\partial \theta_p \ell_n(\theta)}
+\end{array}\right]
+\]</span> This is often called the <em>score function</em>. Then we can obtain an expression for the maximum likelihood estimator by solving the equation <span class="math display">\[
+\nabla \ell_n(\theta) = 0.
+\]</span> where this is a system of <span class="math inline">\(p\)</span> equations, where <span class="math inline">\(p\)</span> is the number of parameters in <span class="math inline">\(\theta\)</span>.</p>
+<p>It is often the case that the solution to the previous equation or system of equation does not admit a closed-form expression; that is, rather than computing it with a formula, one must seek it with an algorithm. Newton’s algorithm again shines: Define the matrix of 2nd-order partial derivatives of <span class="math inline">\(\ell_n(\theta)\)</span> taken with respect to <span class="math inline">\(\theta_1,\dots,\theta_p\)</span> as <span class="math display">\[
+\nabla^2\ell_n(\theta) =\left[\begin{array}{ccc}
+\frac{\partial^2}{\partial \theta_1\partial \theta_1}\ell_n(\theta)&amp; \dots &amp;\frac{\partial^2}{\partial \theta_1\partial \theta_p}\ell_n(\theta)\\
+\vdots&amp;\ddots&amp;\vdots\\
+\frac{\partial^2}{\partial \theta_p\partial \theta_1}\ell_n(\theta)&amp;\dots&amp;\frac{\partial^2}{\partial \theta_p \partial \theta_p}\ell_n(\theta)
+\end{array}\right].
+\]</span> The matrix of second-order partial derivatives of a function is often called the <em>Hessian</em> of the function. From here, Newton’s method prescribes the updates <span class="math display">\[
+\theta_{n+1} = \theta_n - [\nabla^2\ell_n(\theta_n)]^{-1}\nabla \ell_n(\theta)
 \]</span> after initialization of <span class="math inline">\(\theta_0\)</span> at some arbitary starting point.</p>
+<p>Note that if <span class="math inline">\(\theta\)</span> contains only a single parameter (that is if <span class="math inline">\(\theta\)</span> is a scalar and not a vector), the gradient and the Hession simplify such that <span class="math inline">\(\nabla \ell_n(\theta) = \ell_n'(\theta)\)</span> and <span class="math inline">\(\nabla^2\ell_n(\theta) = \ell_n''(\theta)\)</span>, so that the Newton update may be written as <span class="math display">\[
+\theta_{n+1} = \theta_n - \frac{\ell_n'(\theta_n)}{\ell_n''(\theta_n)},
+\]</span> where <span class="math inline">\(\ell_n'(\theta)\)</span> and <span class="math inline">\(\ell_n''(\theta)\)</span> are the first- and second- order derivatives of the log-likelihood, respectively.</p>
 </section>
 <section id="gamma-shape-parameter" class="level3">
 <h3 class="anchored" data-anchor-id="gamma-shape-parameter">Gamma shape parameter</h3>
 <p>Suppose <span class="math inline">\(X_1,\dots,X_n\)</span> are a random sample from the <span class="math inline">\(\text{Gamma}(\alpha,1)\)</span> distribution, which has pdf given by <span class="math display">\[
 f(x,\alpha) = \frac{1}{\Gamma(\alpha)}x^{\alpha - 1}e^{-x}, \quad x &gt; 0,
 \]</span> where <span class="math inline">\(\Gamma(t) = \int_0^\infty x^{t - 1}e^{-x}\)</span> is the <em>gamma function</em>. The parameter <span class="math inline">\(\alpha\)</span> is called the shape parameter; usually the gamma distribution also has a scale parameter <span class="math inline">\(\beta\)</span>, but this gamma distribution has the scale parameter set equal to <span class="math inline">\(1\)</span>, so we will not have to estimate it. The likelihood function is given by <span class="math display">\[
-\mathcal{L}(\alpha,X_1,\dots,X_n) = \prod_{i=1}^n\frac{1}{\Gamma(\alpha)}X_i^{\alpha - 1}e^{-X_i} = \Gamma(\alpha)^{-n}\prod_{i=1}^n X_i^{\alpha - 1} \exp(-\sum_{i=1}^n X_i),
+\mathcal{L}_n(\alpha) = \prod_{i=1}^n\frac{1}{\Gamma(\alpha)}X_i^{\alpha - 1}e^{-X_i} = \Gamma(\alpha)^{-n}\prod_{i=1}^n X_i^{\alpha - 1} \exp(-\sum_{i=1}^n X_i),
 \]</span> and the log-likelihood is given by <span class="math display">\[
-\ell(\alpha,X_1,\dots,X_n) = -n \log \Gamma(\alpha) + (\alpha - 1)\sum_{i=1}^n \log X_i + \sum_{i=1}^n X_i.
+\ell_n(\alpha) = -n \log \Gamma(\alpha) + (\alpha - 1)\sum_{i=1}^n \log X_i + \sum_{i=1}^n X_i.
 \]</span> The score function is the first derivative of the log-likelihood with respect to <span class="math inline">\(\alpha\)</span>, which is given by <span class="math display">\[
-S(\alpha,X_1,\dots,X_n) = -n \frac{\Gamma'(\alpha)}{\Gamma(\alpha)} + \sum_{i=1}^n \log X_i = - n \psi(\alpha) + \sum_{i=1}^n \log X_i,
+\nabla \ell_n(\alpha) = -n \frac{\Gamma'(\alpha)}{\Gamma(\alpha)} + \sum_{i=1}^n \log X_i = - n \psi(\alpha) + \sum_{i=1}^n \log X_i,
 \]</span> where <span class="math inline">\(\Gamma'(\cdot)\)</span> is the first derivative of the gamma function and <span class="math inline">\(\psi(\cdot) = \Gamma'(\cdot) / \Gamma(\cdot)\)</span> is called the <em>digamma function</em>. The Hessian is given by <span class="math display">\[
-H(\alpha,X_1,\dots,X_n) = -n \psi'(\alpha),
+\nabla^2 \ell_n(\alpha) = -n \psi'(\alpha),
 \]</span> where <span class="math inline">\(\psi'(\cdot)\)</span> is the derivative of <span class="math inline">\(\psi(\cdot)\)</span> and is called the <em>trigamma function</em>. The Newton’s method update for seeking the maximum likelihood estimator for <span class="math inline">\(\alpha\)</span> can thus be written <span class="math display">\[
 \alpha_{n+1} = \alpha_n - \Big[\psi(\alpha_n) - n^{-1}\sum_{i=1}^n \log X_i \Big]/ \psi'(\alpha_n),
 \]</span> after initializing <span class="math inline">\(\alpha_0\)</span> at some starting value.</p>
 <p>The code below defines a function for seeking the maximum likelihood estimator with Newton’s algorithm. In order to evaluate the digamma and trigamma functions, we import a function called <code>polygamma</code> from a library called <code>scipy.special</code>. Rather than importing that entire library, we import only the needed function:</p>
-<div id="1b422fcb" class="cell" data-execution_count="16">
+<div id="24f8a9cb" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> polygamma <span class="co"># to compute the digamma and trigamma functions!</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gamshape(X,tol<span class="op">=</span><span class="fl">1e-6</span>): <span class="co"># function to compute the maximum likelihood estimator of alpha</span></span>
@@ -766,7 +777,7 @@ H(\alpha,X_1,\dots,X_n) = -n \psi'(\alpha),
 <span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.random.gamma(shape <span class="op">=</span> a_true,scale <span class="op">=</span> <span class="dv">1</span>, size<span class="op">=</span>n)</span>
 <span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>ahat <span class="op">=</span> gamshape(X)</span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">100</span>)</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">200</span>)</span>
 <span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>fxhat <span class="op">=</span> stats.gamma.pdf(x,a<span class="op">=</span>ahat,scale <span class="op">=</span> <span class="dv">1</span>)  <span class="co"># best-fitting gamma distribution</span></span>
 <span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
@@ -790,35 +801,72 @@ H(\alpha,X_1,\dots,X_n) = -n \psi'(\alpha),
 <section id="write-code" class="level3">
 <h3 class="anchored" data-anchor-id="write-code">Write code</h3>
 <ol type="1">
-<li>The code below computes the vertices of four tiles in a 4-tile unit of a pentagonal tiling, centering this at the origin. Make a figure like the one below in which 9 different selections of the input parameters are showcased. The command <code>ax.set_aspect('equal')</code> matches the scales of the horizontal and vertical axes, which makes each plot a square (guarantees that right angles look like right angles). You can use <code>ax.axis('off')</code> to remove the box around each plot.</li>
+<li>Create the list shown below with one line of code.</li>
 </ol>
-<div id="75ef978c" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tess(a,b,th):</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  th1 <span class="op">=</span> (<span class="dv">180</span><span class="op">-</span>th)<span class="op">/</span><span class="dv">180</span> <span class="op">*</span> <span class="fl">3.14159</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  A <span class="op">=</span> np.array([<span class="dv">0</span>,<span class="dv">0</span>])  </span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  B <span class="op">=</span> A <span class="op">+</span> [a,<span class="dv">0</span>]</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  C <span class="op">=</span> B <span class="op">+</span> [np.cos(th1)<span class="op">*</span>b,np.sin(th1)<span class="op">*</span>b]</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  D <span class="op">=</span> C <span class="op">+</span> [np.cos(th1<span class="op">+</span><span class="fl">3.14159</span><span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>b,np.sin(th1<span class="op">+</span><span class="fl">3.14159</span><span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>b]</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  E <span class="op">=</span> A <span class="op">+</span> [<span class="dv">0</span>,a]</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  P1 <span class="op">=</span> np.vstack((A,B,C,D,E,A))</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  P2 <span class="op">=</span> np.vstack((P1[:,<span class="dv">1</span>],<span class="op">-</span>P1[:,<span class="dv">0</span>])).T</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  P3 <span class="op">=</span> np.vstack((P2[:,<span class="dv">1</span>],<span class="op">-</span>P2[:,<span class="dv">0</span>])).T</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  P4 <span class="op">=</span> np.vstack((P3[:,<span class="dv">1</span>],<span class="op">-</span>P3[:,<span class="dv">0</span>])).T</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  P <span class="op">=</span> np.vstack((P1,P2,P3,P4)) </span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> P[:,<span class="dv">0</span>]</span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>  y <span class="op">=</span> P[:,<span class="dv">1</span>]</span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x, y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5f1cc283" class="cell" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="59">
+<pre><code>['Level 1', 'Level 3', 'Level 5', 'Level 7', 'Level 9']</code></pre>
 </div>
-<div id="901619fa" class="cell" data-execution_count="18">
+</div>
+<ol start="2" type="1">
+<li><p>Write a function in Python called to sort the entries of a one-dimensional NumPy array. Write the function so that it sorts the entries in increasing order by default, but allows the user to specify that the entries be sorted in decreasing order if desired.</p></li>
+<li><p>A Brownian motion is a random function <span class="math inline">\(B(t)\)</span> on the interval <span class="math inline">\(t \in [0,1]\)</span> satisfying certain properties. We can generate and plot an approximate, discretized realization of <span class="math inline">\(B(t)\)</span>, <span class="math inline">\(t \in [0,1]\)</span>, by generating, for some large <span class="math inline">\(N\)</span>, independent random variables <span class="math inline">\(Z_1,\dots,Z_N\)</span> from the standard normal distribution and plotting the points <span class="math inline">\((t_i,B_i)\)</span>, <span class="math inline">\(i=0,\dots,N\)</span>, where <span class="math inline">\((t_0,B_0) = (0,0)\)</span> and <span class="math display">\[
+t_i = i/N, \quad  B_i = \frac{1}{\sqrt{N}}\sum_{j=1}^iZ_j
+\]</span> for <span class="math inline">\(i = 1,\dots,N\)</span>. Write a loop which plots five realizations of Brownian motion on a single plot. Tip: Try making use of the <code>np.cumsum</code> function. The plot should resemble the one below (these approximations are based on <span class="math inline">\(N=1000\)</span>):</p></li>
+</ol>
+<div id="06a141ca" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Python_loops_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Python_loops_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>A Brownian bridge <span class="math inline">\(R(t)\)</span> is a random function on <span class="math inline">\(t\in [0,1]\)</span> constructed from a Brownian motion <span class="math inline">\(B(t)\)</span> such that <span class="math inline">\(R(t) = B(t) - tB(1)\)</span>. The Brownian bridge always “begins and ends” at <span class="math inline">\(0\)</span>. An approximate, discretized realization of a Brownian bridge can be visualized by plotting the points <span class="math inline">\((t_i,R_i)\)</span>, <span class="math inline">\(i = 0,\dots,N\)</span>, where <span class="math display">\[
+R_i = B_i - t_i B_{N},
+\]</span> with <span class="math inline">\(t_i\)</span> and <span class="math inline">\(B_i\)</span> defined as in the previous exercise, for <span class="math inline">\(i=0,\dots,N\)</span>. Generate and plot realizations of a Brownian bridge until you obtain one with maximum distance from zero exceeding the value <span class="math inline">\(1.5\)</span>. Plot the realizations as below.</li>
+</ol>
+<div id="51f019e5" class="cell" data-execution_count="20">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Python_loops_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="5" type="1">
+<li>The code below computes the vertices of four tiles in a 4-tile unit of a pentagonal tiling, centering this at the origin. Make a figure like the one below in which 9 different selections of the input parameters are showcased (use <code>a = 1</code>, <code>th=120</code>, and let <code>b = np.linspace(1/2,4/2,9)</code>. The command <code>ax.set_aspect('equal')</code> matches the scales of the horizontal and vertical axes, which makes each plot a square (guarantees that right angles look like right angles). You can use <code>ax.axis('off')</code> to remove the box around each plot.</li>
+</ol>
+<div id="7d34bc1e" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tess(a,b,th):</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  th1 <span class="op">=</span> (<span class="dv">180</span><span class="op">-</span>th)<span class="op">/</span><span class="dv">180</span> <span class="op">*</span> <span class="fl">3.14159</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  A <span class="op">=</span> np.array([<span class="dv">0</span>,<span class="dv">0</span>])  </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  B <span class="op">=</span> A <span class="op">+</span> [a,<span class="dv">0</span>]</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  C <span class="op">=</span> B <span class="op">+</span> [np.cos(th1)<span class="op">*</span>b,np.sin(th1)<span class="op">*</span>b]</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  D <span class="op">=</span> C <span class="op">+</span> [np.cos(th1<span class="op">+</span><span class="fl">3.14159</span><span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>b,np.sin(th1<span class="op">+</span><span class="fl">3.14159</span><span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>b]</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  E <span class="op">=</span> A <span class="op">+</span> [<span class="dv">0</span>,a]</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  P1 <span class="op">=</span> np.vstack((A,B,C,D,E,A))</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  P2 <span class="op">=</span> np.vstack((P1[:,<span class="dv">1</span>],<span class="op">-</span>P1[:,<span class="dv">0</span>])).T</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>  P3 <span class="op">=</span> np.vstack((P2[:,<span class="dv">1</span>],<span class="op">-</span>P2[:,<span class="dv">0</span>])).T</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>  P4 <span class="op">=</span> np.vstack((P3[:,<span class="dv">1</span>],<span class="op">-</span>P3[:,<span class="dv">0</span>])).T</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>  P <span class="op">=</span> np.vstack((P1,P2,P3,P4)) </span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> P[:,<span class="dv">0</span>]</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>  y <span class="op">=</span> P[:,<span class="dv">1</span>]</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x, y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="ee842a7a" class="cell" data-execution_count="22">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Python_loops_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -830,34 +878,34 @@ H(\alpha,X_1,\dots,X_n) = -n \psi'(\alpha),
 <ol type="1">
 <li>This code gives the representation of an integer on a <a href="https://www.sorobanexam.org/basics/read.html">soroban</a>. It returns an array with a column for each digit in the number, where each column gives the number of <em>heaven beads</em> and the number of <em>earth beads</em> in the soroban representation of the digit. Predict the output of the code.</li>
 </ol>
-<div id="c1b87938" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sb(x):</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> <span class="bu">int</span>(x)</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  xs <span class="op">=</span> <span class="bu">str</span>(x)</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  n <span class="op">=</span> <span class="bu">len</span>(xs)</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  sb <span class="op">=</span> np.zeros(n<span class="op">*</span><span class="dv">2</span>).reshape((<span class="dv">2</span>,n))</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,n):</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> <span class="bu">int</span>(xs[i])</span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(d <span class="op">&gt;=</span> <span class="dv">5</span>):</span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>      h <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>      e <span class="op">=</span> d <span class="op">-</span> <span class="dv">5</span></span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>      h <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>      e <span class="op">=</span> d</span>
-<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>    sb[<span class="dv">0</span>,i] <span class="op">=</span> h</span>
-<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>    sb[<span class="dv">1</span>,i] <span class="op">=</span> e</span>
-<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> sb</span>
-<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>sb(<span class="dv">348529</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6d43a23d" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sb(x):</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> <span class="bu">int</span>(x)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  xs <span class="op">=</span> <span class="bu">str</span>(x)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  n <span class="op">=</span> <span class="bu">len</span>(xs)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  sb <span class="op">=</span> np.zeros(n<span class="op">*</span><span class="dv">2</span>).reshape((<span class="dv">2</span>,n))</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,n):</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> <span class="bu">int</span>(xs[i])</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(d <span class="op">&gt;=</span> <span class="dv">5</span>):</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>      h <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>      e <span class="op">=</span> d <span class="op">-</span> <span class="dv">5</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>      h <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>      e <span class="op">=</span> d</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>    sb[<span class="dv">0</span>,i] <span class="op">=</span> h</span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>    sb[<span class="dv">1</span>,i] <span class="op">=</span> e</span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> sb</span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>sb(<span class="dv">348529</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
