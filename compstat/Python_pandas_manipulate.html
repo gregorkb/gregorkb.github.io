@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>Working with data sets – Computing in Statistics</title>
+<title>Manipulating data sets – Computing in Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Python_running.html">Python</a></li><li class="breadcrumb-item"><a href="./Python_pandas_manipulate.html">Working with data sets</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Python_running.html">Python</a></li><li class="breadcrumb-item"><a href="./Python_pandas_manipulate.html">Manipulating data sets</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -217,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./R_manipulatedata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Merging, stacking, reshaping, and aggregating data</span></a>
+ <span class="menu-text">Manipulating data sets</span></a>
   </div>
 </li>
       </ul>
@@ -258,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Python_pandas_manipulate.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Working with data sets</span></a>
+ <span class="menu-text">Manipulating data sets</span></a>
   </div>
 </li>
       </ul>
@@ -316,9 +316,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Python_running.html">Python</a></li><li class="breadcrumb-item"><a href="./Python_pandas_manipulate.html">Working with data sets</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Python_running.html">Python</a></li><li class="breadcrumb-item"><a href="./Python_pandas_manipulate.html">Manipulating data sets</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Working with data sets</h1>
+<h1 class="title">Manipulating data sets</h1>
 </div>
 
 
@@ -342,7 +342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>We’ll continue using the Pandas package for everything here.</p>
-<div id="9587d9c2" class="cell" data-execution_count="1">
+<div id="6027d582" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dr <span class="op">=</span> <span class="st">'/Users/karlgregory/Library/CloudStorage/OneDrive-UniversityofSouthCarolina/myBooks/compstat/data/'</span></span>
@@ -523,7 +523,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>In R, to read names like O’something, we had to specify that <code>'</code> should not be interpreted as a quoting character. The Pandas <code>read_table</code> function uses <code>"</code> by default, so our Irish names got read in okay this time.</p>
-<div id="f0232eae" class="cell" data-execution_count="2">
+<div id="dc5c4cde" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ir <span class="op">=</span> tr24[<span class="st">'Last'</span>].<span class="bu">str</span>.match(<span class="st">".*['].*"</span>) <span class="co"># are there any names with an apostrophe?</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>tr24[ir]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -581,7 +581,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="merging-data-sets" class="level2">
 <h2 class="anchored" data-anchor-id="merging-data-sets">Merging data sets</h2>
-<div id="656058fa" class="cell" data-execution_count="3">
+<div id="d0665cf0" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tr_merged0 <span class="op">=</span> pd.merge(tr23, tr24, on <span class="op">=</span> [<span class="st">'First'</span>, <span class="st">'Last'</span>], suffixes <span class="op">=</span> [<span class="st">' 2023'</span>,<span class="st">' 2024'</span>])</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tr_merged <span class="op">=</span> tr_merged0[[<span class="st">'First'</span>, <span class="st">'Last'</span>, <span class="st">'Time 2023'</span>, <span class="st">'Time 2024'</span>]]</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>tr_merged</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -772,7 +772,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="concatenating-data-sets" class="level2">
 <h2 class="anchored" data-anchor-id="concatenating-data-sets">Concatenating data sets</h2>
 <p>Let’s read the data in from all the years, 2011 through 2024, using a loop, combining all the data into one large data frame.</p>
-<div id="730ad548" class="cell" data-execution_count="4">
+<div id="2a234666" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>li <span class="op">=</span> <span class="bu">list</span>() <span class="co"># make a list of data frames to concatenate into one big one</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">11</span>,<span class="dv">25</span>):</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -970,7 +970,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="aggregating-data" class="level2">
 <h2 class="anchored" data-anchor-id="aggregating-data">Aggregating data</h2>
 <p>Let’s work towards getting the average time in each division for each year of the race. First we’ll need to convert the times to seconds, because right now they are just character strings. Below we define a function to make the conversion and then add a new column to the data set containing the columns in seconds.</p>
-<div id="d96f6105" class="cell" data-execution_count="5">
+<div id="d4b45cb0" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> secs(ch):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ch2 <span class="op">=</span> ch.replace(<span class="st">"`"</span>,<span class="st">""</span>) <span class="co"># for a tie, the character "`" is added, which we need to remove</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    h, m, s <span class="op">=</span> ch2.split(<span class="st">":"</span>) <span class="co"># split a character into multiple strings based on a splitting character</span></span>
@@ -1174,14 +1174,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Here we define a function which will convert a number of seconds into a time in the form <em>hh:mm:ss</em>:</p>
-<div id="30a14e12" class="cell" data-execution_count="6">
+<div id="301c3a20" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> secs2time(x):</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> time.strftime(<span class="st">"%H:%M:%S"</span>,time.gmtime(x)) <span class="co"># number of seconds from 00:00:00, Jan 1, 1970 GMT, re-express as hh:mm:ss</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we apply the function defined above to the seconds series of the data frame using <code>map</code>:</p>
-<div id="df447fc0" class="cell" data-execution_count="7">
+<div id="2e53dc7b" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tm0 <span class="op">=</span> tr.pivot_table(values <span class="op">=</span> <span class="st">'Seconds'</span>, index <span class="op">=</span> [<span class="st">'Year'</span>,<span class="st">'Division'</span>], aggfunc <span class="op">=</span> {<span class="st">'Seconds'</span> : <span class="st">'mean'</span>})</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tm0[<span class="st">'Ave. Time'</span>] <span class="op">=</span> tm0.Seconds.<span class="bu">map</span>(secs2time)  <span class="co"># use .map to apply the function</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>tm <span class="op">=</span> tm0.reset_index(<span class="va">None</span>)                     <span class="co"># the pivot_table creates multi-indexes that you can get rid of with .reset_index(None)</span></span>
@@ -1374,7 +1374,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="17e26e14" class="cell" data-execution_count="8">
+<div id="d572f9a0" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> tr.pivot_table(values <span class="op">=</span> <span class="st">'Age'</span>, index <span class="op">=</span> [<span class="st">'Year'</span>,<span class="st">'Division'</span>], aggfunc <span class="op">=</span> {<span class="st">'Age'</span> : [<span class="st">'min'</span>,<span class="st">'median'</span>,<span class="st">'max'</span>]}) <span class="co"># min, median, and max are recognized built-in functions</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
@@ -1587,7 +1587,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="ff93a21f" class="cell" data-execution_count="9">
+<div id="d0b54157" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> q10(x):</span>
@@ -1810,7 +1810,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Note that with pivot tables, Pandas introduces what is called a multi-index, which is just a hierarchical index. In this example we have the division within the year, so to access a row of the above table, we need to give both the year and the division as a tuple:</p>
-<div id="3c03bd4b" class="cell" data-execution_count="10">
+<div id="d92ae87a" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tr_pctl.loc[(<span class="st">'2011'</span>,<span class="st">'M'</span>),] <span class="co"># access rows of this with a tuple</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>90th percentile    18184.0
@@ -1820,11 +1820,11 @@ Name: (2011, M), dtype: float64</code></pre>
 </div>
 </div>
 <p>Let’s plot these quantiles over the years of the Table Rock 50k for each division.</p>
-<div id="ad66a738" class="cell" data-execution_count="11">
+<div id="2fe9a59e" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tr_pctl_M <span class="op">=</span> tr_pctl.loc[(<span class="bu">slice</span>(<span class="va">None</span>),<span class="st">'M'</span>),] <span class="co"># keep all rows of the first index </span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>tr_pctl_F <span class="op">=</span> tr_pctl.loc[(<span class="bu">slice</span>(<span class="va">None</span>),<span class="st">'F'</span>),] <span class="co"># keep all rows of the first index </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="155ea175" class="cell" data-execution_count="12">
+<div id="32f200e3" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tr_pctl_M.plot()</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>tr_pctl_F.plot() <span class="co"># would be nice to re-label these axes with hh:mm:ss times</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1848,7 +1848,7 @@ Name: (2011, M), dtype: float64</code></pre>
 <section id="long-to-wide" class="level3">
 <h3 class="anchored" data-anchor-id="long-to-wide">Long to wide</h3>
 <p>Let’s focus on the top 3 finishers each year.</p>
-<div id="f645d765" class="cell" data-execution_count="13">
+<div id="e9bcebbc" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pod <span class="op">=</span> tr[<span class="st">'Place'</span>] <span class="op">&lt;=</span> <span class="dv">3</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>tr_pod <span class="op">=</span> tr[pod]</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>tr_pod.pivot(index <span class="op">=</span> <span class="st">'Place'</span>, values <span class="op">=</span> <span class="st">'Time'</span>, columns<span class="op">=</span><span class="st">'Year'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1952,7 +1952,7 @@ Name: (2011, M), dtype: float64</code></pre>
 </div>
 </div>
 <p>Now let’s look at the top 3 places in each division in each year:</p>
-<div id="a4badf66" class="cell" data-execution_count="14">
+<div id="3795c97a" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>dpod <span class="op">=</span> tr[<span class="st">'DP'</span>] <span class="op">&lt;=</span> <span class="dv">3</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>tr_dpod <span class="op">=</span> tr[dpod]</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>tr_dpod.pivot(index <span class="op">=</span> [<span class="st">'DP'</span>,<span class="st">'Division'</span>], values <span class="op">=</span> <span class="st">'Time'</span>, columns<span class="op">=</span><span class="st">'Year'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2115,7 +2115,7 @@ Name: (2011, M), dtype: float64</code></pre>
 <section id="wide-to-long" class="level3">
 <h3 class="anchored" data-anchor-id="wide-to-long">Wide to long</h3>
 <p>The <code>wide_to_long</code> function can be used to convert a data set in “wide” format to “long” format. To illustrate how to do this, let’s convert our wide dataset showing the times of the top three finishers in each division in each year back into long format. In order to do that, we will need to “flatten out” the multi-indices created in the pivot operation.</p>
-<div id="6ec04e4d" class="cell" data-execution_count="15">
+<div id="7746e26c" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>wide0 <span class="op">=</span> pd.pivot(tr_dpod,index <span class="op">=</span> [<span class="st">'DP'</span>,<span class="st">'Division'</span>], values <span class="op">=</span> <span class="st">'Time'</span>, columns<span class="op">=</span><span class="st">'Year'</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>wide <span class="op">=</span> wide0.rename_axis(columns<span class="op">=</span><span class="va">None</span>).reset_index() <span class="co"># remove the multi-indices</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2267,7 +2267,7 @@ Name: (2011, M), dtype: float64</code></pre>
 </div>
 </div>
 <p>Now we will be able to access the column names in the way we will need to in order to use the <code>wide_to_long</code> function.</p>
-<div id="04b2b279" class="cell" data-execution_count="16">
+<div id="f812a767" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">long</span> <span class="op">=</span> pd.wide_to_long(wide,stubnames <span class="op">=</span> <span class="st">''</span>, sep <span class="op">=</span> <span class="st">""</span>, i <span class="op">=</span> [<span class="st">'DP'</span>,<span class="st">'Division'</span>], j <span class="op">=</span> <span class="st">'Year'</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">long</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">

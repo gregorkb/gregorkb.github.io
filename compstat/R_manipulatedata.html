@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>Merging, stacking, reshaping, and aggregating data – Computing in Statistics</title>
+<title>Manipulating data sets – Computing in Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R_running.html">R</a></li><li class="breadcrumb-item"><a href="./R_manipulatedata.html">Merging, stacking, reshaping, and aggregating data</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R_running.html">R</a></li><li class="breadcrumb-item"><a href="./R_manipulatedata.html">Manipulating data sets</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -214,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./R_manipulatedata.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Merging, stacking, reshaping, and aggregating data</span></a>
+ <span class="menu-text">Manipulating data sets</span></a>
   </div>
 </li>
       </ul>
@@ -255,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Python_pandas_manipulate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Working with data sets</span></a>
+ <span class="menu-text">Manipulating data sets</span></a>
   </div>
 </li>
       </ul>
@@ -318,9 +318,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R_running.html">R</a></li><li class="breadcrumb-item"><a href="./R_manipulatedata.html">Merging, stacking, reshaping, and aggregating data</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./R_running.html">R</a></li><li class="breadcrumb-item"><a href="./R_manipulatedata.html">Manipulating data sets</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Merging, stacking, reshaping, and aggregating data</h1>
+<h1 class="title">Manipulating data sets</h1>
 </div>
 
 
@@ -351,7 +351,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="merging-data-sets">Merging data sets</h2>
 <p>I collected the results from the 2023 and 2024 <a href="https://ultrasignup.com/results_event.aspx?did=113602">Table Rock 50k</a> by copying and pasting two tables like this into text files:</p>
 <p><img src="images/tr50k_data.png" class="img-fluid"></p>
-<p>The text files look like this:</p>
+<p>The text files <code>tr50k_2023.txt</code> and <code>tr50k_2024.txt</code> can be downloaded from <a href="https://github.com/gregorkb/gregorkb.github.io/tree/master/data">here</a>. They look like this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">readLines</span>(<span class="at">con =</span> <span class="st">"data/tr50k_2024.txt"</span>, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -571,14 +571,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>toy_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Subject Observation   Response
-1       1           1 -0.1564220
-2       1           2 -0.3718746
-3       1           3 -0.7895573
-4       1           4 -1.6597065
-5       2           1 -0.1323760
-6       2           2 -1.4978166
-7       2           3 -1.6342638
-8       2           4  1.1767295</code></pre>
+1       1           1  0.1671266
+2       1           2  0.8812613
+3       1           3  0.0534634
+4       1           4  1.7142947
+5       2           1 -0.5378772
+6       2           2 -0.7899396
+7       2           3  0.2954212
+8       2           4  1.0804170</code></pre>
 </div>
 </div>
 <p>If we want instead to represent the data in a table having one row for each subject and four columns giving the four observations, we can obtain it with the <code>reshape()</code> function as follows:</p>
@@ -592,8 +592,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Subject Response 1 Response 2 Response 3 Response 4
-1       1  -0.156422 -0.3718746 -0.7895573  -1.659707
-2       2  -0.132376 -1.4978166 -1.6342638   1.176730</code></pre>
+1       1  0.1671266  0.8812613  0.0534634   1.714295
+2       2 -0.5378772 -0.7899396  0.2954212   1.080417</code></pre>
 </div>
 </div>
 <p>Now let’s try to make the table we want for the Table Rock 50k data. We’ll use the <code>reshape()</code> function, treating the place column as the “subject”:</p>
@@ -632,14 +632,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Subject Observation   Response
-1       1           1 -0.1564220
-2       2           1 -0.1323760
-3       1           2 -0.3718746
-4       2           2 -1.4978166
-5       1           3 -0.7895573
-6       2           3 -1.6342638
-7       1           4 -1.6597065
-8       2           4  1.1767295</code></pre>
+1       1           1  0.1671266
+2       2           1 -0.5378772
+3       1           2  0.8812613
+4       2           2 -0.7899396
+5       1           3  0.0534634
+6       2           3  0.2954212
+7       1           4  1.7142947
+8       2           4  1.0804170</code></pre>
 </div>
 </div>
 <p>We see that things are sorted in a different way, but it is the same data set as the original one.</p>

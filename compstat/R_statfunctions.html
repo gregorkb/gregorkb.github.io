@@ -263,7 +263,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./R_manipulatedata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Merging, stacking, reshaping, and aggregating data</span></a>
+ <span class="menu-text">Manipulating data sets</span></a>
   </div>
 </li>
       </ul>
@@ -304,7 +304,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Python_pandas_manipulate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Working with data sets</span></a>
+ <span class="menu-text">Manipulating data sets</span></a>
   </div>
 </li>
       </ul>
@@ -402,15 +402,15 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">50</span>) <span class="co"># generate 50 pseudo-random Uniform(0,1) realizations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.835822916 0.690807311 0.058861619 0.336395900 0.425601028 0.862989302
- [7] 0.642449401 0.657059558 0.731554945 0.841120068 0.605608229 0.451234120
-[13] 0.928092071 0.530934150 0.430823337 0.244716253 0.116950151 0.618508339
-[19] 0.216491760 0.167110476 0.061976430 0.150807090 0.018974720 0.189538148
-[25] 0.623895788 0.570671391 0.150857406 0.205554700 0.623852056 0.227262623
-[31] 0.007033958 0.733386945 0.577017294 0.961354380 0.526071975 0.218178052
-[37] 0.261344195 0.681903349 0.363152036 0.425462133 0.141078614 0.638038762
-[43] 0.623776514 0.171911530 0.278223958 0.448808931 0.920082222 0.311168619
-[49] 0.832980339 0.430173976</code></pre>
+<pre><code> [1] 0.92618478 0.29344671 0.95198368 0.30633978 0.64929313 0.95484301
+ [7] 0.70780043 0.69184245 0.87783971 0.41869026 0.54071629 0.76981041
+[13] 0.15521850 0.90076364 0.45074690 0.76073099 0.37063379 0.67074426
+[19] 0.09449505 0.15294465 0.86674296 0.83687635 0.46566275 0.08257339
+[25] 0.39866541 0.06503234 0.73630872 0.77718056 0.73705852 0.57569409
+[31] 0.17172098 0.50420880 0.44277347 0.23474953 0.05046948 0.79840692
+[37] 0.14956137 0.17319110 0.17754988 0.43399454 0.05004080 0.98485599
+[43] 0.95650332 0.80432349 0.34485096 0.87812816 0.81981333 0.79126611
+[49] 0.65803917 0.57408262</code></pre>
 </div>
 </div>
 <p>Once one has obtained a random realization on the interval <span class="math inline">\((0,1)\)</span>, one can transform it into a realization of a random variable from any other distribution by passing it through the quantile function of that distribution. Specifically, suppose <span class="math inline">\(X\)</span> is a random variable with cdf given by <span class="math display">\[
@@ -783,7 +783,7 @@ f(z_1,z_2, \rho) = \frac{1}{2\pi\sqrt{1-\rho^2}}\exp\Big(-\frac{z_1^2 - 2 \rho z
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
-<li>If <span class="math inline">\(Z_1,\dots,Z_k\)</span> are independent <span class="math inline">\(\text{Normal}(0,1)\)</span> random variables, then <span class="math inline">\(\sum_{i=1}^kZ_k^2\)</span> will have the chi-squared distribution with degrees of freedom <span class="math inline">\(k\)</span>. With this beautiful truth in mind, explain what the following code will do. What would you write as a comment after each line of code to explain what it is doing?</li>
+<li>If <span class="math inline">\(Z_1,\dots,Z_k\)</span> are independent <span class="math inline">\(\text{Normal}(0,1)\)</span> random variables, then <span class="math inline">\(\sum_{i=1}^k Z_i^2\)</span> will have the chi-squared distribution with degrees of freedom <span class="math inline">\(k\)</span>. With this beautiful truth in mind, explain what the following code will do. What would you write as a comment after each line of code to explain what it is doing?</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="dv">6</span></span>

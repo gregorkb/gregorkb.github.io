@@ -263,7 +263,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./R_manipulatedata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Merging, stacking, reshaping, and aggregating data</span></a>
+ <span class="menu-text">Manipulating data sets</span></a>
   </div>
 </li>
       </ul>
@@ -304,7 +304,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Python_pandas_manipulate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Working with data sets</span></a>
+ <span class="menu-text">Manipulating data sets</span></a>
   </div>
 </li>
       </ul>
@@ -591,7 +591,7 @@ P_{n+1} = P_n(1 + r/12) + p.
 <ol start="3" type="1">
 <li>An algorithm for obtaining an approximation to the square root of a number <span class="math inline">\(S\)</span> is to make an initial guess <span class="math inline">\(x_0\)</span> and update the guess according to the recursion <span class="math display">\[
 x_{n + 1} = (x_n + S/x_n)/2  
-\]</span> “until convergence”, meaning until the update from <span class="math inline">\(x_n\)</span> to <span class="math inline">\(x_{n+1}\)</span> becomes small enough to be negligible. Write a function which takes the argument <span class="math inline">\(S\)</span> as well as an argument for specifying some tolerance, say <span class="math inline">\(\epsilon\)</span>, such that the updates will stop when <span class="math inline">\(S(x_{n+1} - x_{n})^2 &lt; \epsilon\)</span>. Your function should return the approximation to <span class="math inline">\(\sqrt{S}\)</span> as well as the number of iterations it took for the algorithm to converge. You can think up your own way of choosing the initial guess <span class="math inline">\(x_0\)</span> at which to begin the algorithm. Try your function out and see how it compares to the built-int <code>sqrt()</code> function.</li>
+\]</span> “until convergence”, meaning until the update from <span class="math inline">\(x_n\)</span> to <span class="math inline">\(x_{n+1}\)</span> becomes small enough to be negligible. Write a function which takes the argument <span class="math inline">\(S\)</span> as well as an argument for specifying some tolerance, say <span class="math inline">\(\epsilon\)</span>, such that the updates will stop when <span class="math inline">\(S(x_{n+1} - x_{n})^2 &lt; \epsilon\)</span>. Your function should return the approximation to <span class="math inline">\(\sqrt{S}\)</span> as well as the number of iterations it took for the algorithm to converge. You can think up your own way of choosing the initial guess <span class="math inline">\(x_0\)</span> at which to begin the algorithm. Try your function out and see how it compares to the built-in <code>sqrt()</code> function.</li>
 </ol>
 </section>
 <section id="read-code" class="level3">
@@ -638,7 +638,7 @@ x_{n + 1} = (x_n + S/x_n)/2
 <span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>i</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 31229</code></pre>
+<pre><code>[1] 10393</code></pre>
 </div>
 </div>
 
