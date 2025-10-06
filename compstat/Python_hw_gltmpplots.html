@@ -333,7 +333,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Using again the Great Lakes temperature data from <a href="https://coastwatch.glerl.noaa.gov/statistics/average-surface-water-temperature-glsea/">this website</a>, which you used already in previous homework, make a figure which is as close as you can make it to the figure shown below, displaying the daily average temperatures from 1995 to 2024 for the five Great Lakes as well as Lake St.&nbsp;Clair.</p>
 <p>This time use Python!</p>
 <p>The data files can be downloaded from <a href="https://github.com/gregorkb/gregorkb.github.io/tree/master/data/gltemps">here</a>.</p>
-<div id="153763f7" class="cell" data-execution_count="3">
+<div id="8df68c2e" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -347,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>If <code>dr</code> is a string giving the directory holding the data files, use the following commands to make a Python list of all the data files. This will help you read them all in in a convenient way.</li>
 </ol>
-<div id="3d2351bd" class="cell" data-execution_count="4">
+<div id="dd2d2d53" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> os <span class="im">import</span> listdir</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> pd.Series(listdir(dr))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dat_files <span class="op">=</span> files[files.<span class="bu">str</span>.match(<span class="st">'.*.dat'</span>)] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

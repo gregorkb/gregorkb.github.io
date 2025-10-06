@@ -341,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="importing-data" class="level2">
 <h2 class="anchored" data-anchor-id="importing-data">Importing data</h2>
 <p>Let’s consider importing data from a text file with Pandas. The code below shows how we can take a peek at what a file looks like.</p>
-<div id="d060fc20" class="cell" data-execution_count="1">
+<div id="d74c9fdd" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dr <span class="op">=</span> <span class="st">"/Users/karlgregory/Library/CloudStorage/OneDrive-UniversityofSouthCarolina/myBooks/compstat/data/"</span> <span class="co"># directory where I have my data files</span></span>
@@ -370,7 +370,7 @@ date,wildebeest,laughing hyena,crocodile,weather,start,end,fun,guide
 </div>
 <p>Now we will use the <code>read_table</code> function from the Pandas library to read in the data. It takes arguments similar to those we used in R when using the <code>read.table()</code> function, but it has some different default settings.</p>
 <p>The file whose contents we displayed above has comma separated values and a few missing values, where these are not always coded with the same character. Note how we can handle this with the <code>read_table</code> function:</p>
-<div id="3bebd59f" class="cell" data-execution_count="2">
+<div id="3dc01489" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>safari <span class="op">=</span> pd.read_table(filename,sep <span class="op">=</span> <span class="st">","</span>,skiprows <span class="op">=</span> <span class="dv">3</span>,na_values <span class="op">=</span> [<span class="st">'.'</span>,<span class="st">' '</span>])</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -472,7 +472,7 @@ date,wildebeest,laughing hyena,crocodile,weather,start,end,fun,guide
 </div>
 </div>
 <p>What type of object gets created when we read in a data set with the Pandas <code>read_table</code> function?</p>
-<div id="ccf040aa" class="cell" data-execution_count="3">
+<div id="3eeba750" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(safari)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>pandas.core.frame.DataFrame</code></pre>
@@ -480,7 +480,7 @@ date,wildebeest,laughing hyena,crocodile,weather,start,end,fun,guide
 </div>
 <p>One of the main Pandas objects is the <code>DataFrame</code>. It is much like a <code>data.frame</code> in R, as it can have columns of different data types (numeric, string, boolean). The Pandas “vector” object is called a <code>Series</code>, and we will see that a data frame consists of several series put together as columns in a spreadsheet-like way. The other kind of object in Pandas is the <code>Index</code>, about which more will be introduced as needed.</p>
 <p>Here is a tab-delimited version of the same data file:</p>
-<div id="de628233" class="cell" data-execution_count="4">
+<div id="d19af5af" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>filename <span class="op">=</span> dr <span class="op">+</span> <span class="st">"safari_tab_missing.dat"</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(filename)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>contents <span class="op">=</span> <span class="bu">file</span>.read()</span>
@@ -503,7 +503,7 @@ date    wildebeest  laughing hyena  crocodile   weather start   end fun guide
 <pre><code>&lt;function TextIOWrapper.close()&gt;</code></pre>
 </div>
 </div>
-<div id="da49fad7" class="cell" data-execution_count="5">
+<div id="cf87cc98" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>filename <span class="op">=</span> dr <span class="op">+</span> <span class="st">"safari_tab_missing.dat"</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>pd.read_table(filename,sep <span class="op">=</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>,skiprows <span class="op">=</span> <span class="dv">3</span>,na_values <span class="op">=</span> [<span class="st">'.'</span>,<span class="st">' '</span>]) <span class="co"># use \t </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -605,7 +605,7 @@ date    wildebeest  laughing hyena  crocodile   weather start   end fun guide
 </div>
 </div>
 <p>We can use the <code>read_fwf</code> function in Pandas to read data in fixed-width format:</p>
-<div id="adfe1ceb" class="cell" data-execution_count="6">
+<div id="f26294b2" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>filename <span class="op">=</span> dr <span class="op">+</span> <span class="st">"safari_fwf_missing.dat"</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(filename)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>contents <span class="op">=</span> <span class="bu">file</span>.read()</span>
@@ -732,24 +732,24 @@ date,wildebeest,laughing hyena,crocodile,weather,start,end,fun,guide
 <section id="dates-in-python" class="level2">
 <h2 class="anchored" data-anchor-id="dates-in-python">Dates in Python</h2>
 <p>The prescribed way to work with dates in Python is with the <code>datetime</code> library, which you can read about <a href="https://docs.python.org/3/library/datetime.html#">here</a>.</p>
-<div id="65019a91" class="cell" data-execution_count="7">
+<div id="38a5b0b8" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>tcm <span class="op">=</span> datetime.datetime.today() <span class="co">#(year, month, day, hour, minute, second, microsecond -- millionth of a second)</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>tcm <span class="co"># this current moment</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>datetime.datetime(2025, 10, 2, 14, 46, 15, 974886)</code></pre>
+<pre><code>datetime.datetime(2025, 10, 6, 11, 17, 29, 172358)</code></pre>
 </div>
 </div>
-<div id="6a148278" class="cell" data-execution_count="8">
+<div id="518f38a0" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tcm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>2025-10-02 14:46:15.974886</code></pre>
+<pre><code>2025-10-06 11:17:29.172358</code></pre>
 </div>
 </div>
 <p>If you need to put in a time zone other than the local one, you need to use the function <code>datetime.now()</code>, which takes a time zone argument. We won’t mess with this.</p>
 <p>A <code>datetime</code> object has the year, day, and so one as attributes that we can access with Python’s <code>&lt;object&gt;.&lt;attribute&gt;</code> syntax:</p>
-<div id="ade9e9dd" class="cell" data-execution_count="9">
+<div id="31931ce8" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tcm.year)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tcm.month)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tcm.day)</span>
@@ -760,11 +760,11 @@ date,wildebeest,laughing hyena,crocodile,weather,start,end,fun,guide
 <div class="cell-output cell-output-stdout">
 <pre><code>2025
 10
-2
-14
-46
-15
-974886</code></pre>
+6
+11
+17
+29
+172358</code></pre>
 </div>
 </div>
 <p>Here are two important functions:</p>
@@ -773,28 +773,28 @@ date,wildebeest,laughing hyena,crocodile,weather,start,end,fun,guide
 <li><code>strftime</code>: Convert a <code>datetime</code> object to a character string</li>
 </ul>
 <p>Here is an example of how these function work:</p>
-<div id="a560514f" class="cell" data-execution_count="10">
+<div id="c35e901b" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>viva <span class="op">=</span> datetime.datetime.strptime(<span class="st">'11/22/2015 02:23'</span>,<span class="st">'%m/</span><span class="sc">%d</span><span class="st">/%Y %H:%M'</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>viva</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>datetime.datetime(2015, 11, 22, 2, 23)</code></pre>
 </div>
 </div>
-<div id="37acf705" class="cell" data-execution_count="11">
+<div id="06515ab0" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>datetime.datetime.strftime(viva,<span class="st">'%B </span><span class="sc">%d</span><span class="st">, Anno Domini %Y, at %H:%M'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>'November 22, Anno Domini 2015, at 02:23'</code></pre>
 </div>
 </div>
 <p>Here is a <a href="https://docs.python.org/3/library/datetime.html">description of date/time formats</a>.</p>
-<div id="702c8687" class="cell" data-execution_count="12">
+<div id="6841c5b3" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> datetime.datetime.strptime(<span class="st">'2:20 pm'</span>,<span class="st">'%I:%M %p'</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>1900-01-01 14:20:00</code></pre>
 </div>
 </div>
-<div id="a5c0e43f" class="cell" data-execution_count="13">
+<div id="39703cea" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> datetime.datetime.strptime(<span class="st">'1/13/1999'</span>,<span class="st">'%m/</span><span class="sc">%d</span><span class="st">/%Y'</span>)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -802,7 +802,7 @@ date,wildebeest,laughing hyena,crocodile,weather,start,end,fun,guide
 </div>
 </div>
 <p>Pandas has some of its own functions for working with time data which are in a Pandas series or data frame. We can convert a Pandas series with character string dates into a series with date time values with the <code>to_datetime</code> function in Pandas. Notice that if no date information is given, the date is set to <code>1900-01-01</code>.</p>
-<div id="6566e722" class="cell" data-execution_count="14">
+<div id="2d1ad8ad" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> pd.to_datetime(safari.start,<span class="bu">format</span><span class="op">=</span><span class="st">'%I:%M %p'</span>) <span class="co"># convert the 12-hour clock times to 24-hour clock times</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> pd.to_datetime(safari.end,<span class="bu">format</span><span class="op">=</span><span class="st">'%I:%M %p'</span>) </span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(end)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -817,7 +817,7 @@ Name: end, dtype: datetime64[ns]</code></pre>
 </div>
 </div>
 <p>To take the difference between the date times in two Pandas series, we can simply use <code>-</code> to subtract one from the other. This creates a <code>timedelta</code> object.</p>
-<div id="9ade68ff" class="cell" data-execution_count="15">
+<div id="b897552a" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>safari[<span class="st">'duration'</span>] <span class="op">=</span> end <span class="op">-</span> start</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
@@ -926,7 +926,7 @@ Name: end, dtype: datetime64[ns]</code></pre>
 </div>
 </div>
 <p>Suppose I want the dates in a different format in the safari data. I can transform them to actual datetime values.</p>
-<div id="5d2d478a" class="cell" data-execution_count="16">
+<div id="e12bc51d" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>date <span class="op">=</span> pd.to_datetime(safari.date,<span class="bu">format</span><span class="op">=</span><span class="st">'%m/</span><span class="sc">%d</span><span class="st">/%Y'</span>)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>safari[<span class="st">'date'</span>] <span class="op">=</span> date</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1036,7 +1036,7 @@ Name: end, dtype: datetime64[ns]</code></pre>
 </div>
 </div>
 <p>Now let’s get the weekday of each safari. The <code>weekday</code> function gives Monday through Sunday the values 0 through 6, respectively.</p>
-<div id="dc2813f3" class="cell" data-execution_count="17">
+<div id="93d241f7" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>safari[<span class="st">'weekday'</span>] <span class="op">=</span> safari.date.dt.weekday</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
@@ -1155,7 +1155,7 @@ Name: end, dtype: datetime64[ns]</code></pre>
 <section id="working-with-text" class="level2">
 <h2 class="anchored" data-anchor-id="working-with-text">Working with text</h2>
 <p>Let’s learn a little bit about regular expressions. <a href="https://www.w3schools.com/python/python_regex.asp">Read more here</a></p>
-<div id="f96310a5" class="cell" data-execution_count="18">
+<div id="6b3fb505" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>ch <span class="op">=</span> <span class="st">'Karl Bruce Gregory'</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(re.sub(<span class="st">'Karl'</span>,<span class="st">'Yarnold'</span>,ch))  <span class="co"># replace a substring with another substring</span></span>
@@ -1180,7 +1180,7 @@ K--- B---- G------
 </div>
 </div>
 <p>We can use the <code>str.join</code> function to collapse a list of character strings to a single string, with a character in between:</p>
-<div id="d43503a2" class="cell" data-execution_count="19">
+<div id="c401dbf7" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>initials <span class="op">=</span> re.findall(<span class="st">'[A-Z]'</span>,ch) <span class="co"># get the capital letters</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co">'.'</span>.join(initials) <span class="op">+</span> <span class="st">'.'</span> <span class="co"># place a '.' in between</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
@@ -1188,7 +1188,7 @@ K--- B---- G------
 </div>
 </div>
 <p>Here is a function which gives a short version of someone’s name:</p>
-<div id="5740472b" class="cell" data-execution_count="20">
+<div id="18f0a634" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> nameabb(ch):</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    full <span class="op">=</span> re.split(<span class="st">' '</span>,ch)</span>
@@ -1221,7 +1221,7 @@ Snoopy</code></pre>
 </div>
 <p>When we are working with a Pandas data frame it will be best to use the Pandas collection of string operations. We’ll give examples of just a few of them. This topic is more exhaustively covered <a href="https://jakevdp.github.io/PythonDataScienceHandbook/03.10-working-with-strings.html">in this book chapter</a> as well as <a href="https://pandas.pydata.org/docs/user_guide/text.html">here</a>.</p>
 <p>Suppose I want to make a new column in the data set called “overcast” which has the value <code>False</code> when the string “sunny” appears in the weather column and which is true otherwise. Note that we can use <code>~</code> to negate the booleans in a boolean Pandas Series (we cannot use <code>not</code> in front). We use the <code>str.contains</code> function from Pandas to get our boolean series.</p>
-<div id="2496ef01" class="cell" data-execution_count="21">
+<div id="8b9b1dd5" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>safari[<span class="st">'overcast'</span>]<span class="op">=</span> <span class="op">~</span>safari.weather.<span class="bu">str</span>.contains(<span class="st">'sunny'</span>) <span class="co"># ~ turns False to True and True to False</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
@@ -1344,7 +1344,7 @@ Snoopy</code></pre>
 </div>
 </div>
 <p>We can apply a function to all the elemens in a Pandas series with the <code>map</code> function. For example, if we want to abbreviate the names of the guides, we can apply the <code>nameabb</code> function we defined earlier:</p>
-<div id="de9bfaee" class="cell" data-execution_count="22">
+<div id="a85c1aa7" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>safari.guide <span class="op">=</span> safari.guide.<span class="bu">map</span>(nameabb)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
@@ -1467,7 +1467,7 @@ Snoopy</code></pre>
 </div>
 </div>
 <p>Suppose we want to clean up the “fun” column and convert the values to booleans. One way to do this is through the use of a dictionary object. A dictionary can be used to create a mapping from the different values appearing in the “fun” series to the values True or False. Then we can use the <code>map</code> function in Pandas to perform the mapping:</p>
-<div id="ce1d3b7c" class="cell" data-execution_count="23">
+<div id="3536075f" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>fundict <span class="op">=</span> {<span class="st">'Yes'</span> : <span class="va">True</span>, <span class="st">'Y'</span> : <span class="va">True</span>, <span class="st">'y'</span> : <span class="va">True</span>, <span class="st">'yes'</span> : <span class="va">True</span>, <span class="st">'no'</span> : <span class="va">False</span>, <span class="st">'No'</span> : <span class="va">False</span>} <span class="co"># a dictionary</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>safari.fun <span class="op">=</span> safari.fun.<span class="bu">map</span>(fundict)</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1591,7 +1591,7 @@ Snoopy</code></pre>
 </div>
 </div>
 <p>If accessing a subset of a Pandas data frame, a good way is to use <code>.loc</code> and then provide the indices, as in the example below. If you try to access a subset using just square brackets as though the data frame were a numpy array, you may have problems. See <a href="https://jakevdp.github.io/PythonDataScienceHandbook/03.02-data-indexing-and-selection.html">this page</a> to learn more.</p>
-<div id="da803cc2" class="cell" data-execution_count="24">
+<div id="d9a9c003" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>rp <span class="op">=</span> safari[<span class="st">'laughing hyena'</span>] <span class="op">==</span> <span class="st">"none"</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>safari.loc[rp,<span class="st">'laughing hyena'</span>] <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1717,7 +1717,7 @@ Snoopy</code></pre>
 </section>
 <section id="sorting-a-pandas-data-frame" class="level2">
 <h2 class="anchored" data-anchor-id="sorting-a-pandas-data-frame">Sorting a Pandas data frame</h2>
-<div id="a9bd5bf4" class="cell" data-execution_count="25">
+<div id="1079fb43" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>safari.sort_values(by<span class="op">=</span><span class="st">'date'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <div>
@@ -1838,7 +1838,7 @@ Snoopy</code></pre>
 </div>
 </div>
 </div>
-<div id="f126ce9d" class="cell" data-execution_count="26">
+<div id="52ecb1b9" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>safari.sort_values(by<span class="op">=</span>[<span class="st">'fun'</span>,<span class="st">'date'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <div>
@@ -1960,7 +1960,7 @@ Snoopy</code></pre>
 </div>
 </div>
 <p>Note that the data do not stay sorted:</p>
-<div id="076dbeb6" class="cell" data-execution_count="27">
+<div id="21838433" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <div>
@@ -2082,7 +2082,7 @@ Snoopy</code></pre>
 </div>
 </div>
 <p>But we can make it stay sorted by setting <code>inplace = True</code>:</p>
-<div id="3d8a403d" class="cell" data-execution_count="28">
+<div id="43d3ba47" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>safari.sort_values(by<span class="op">=</span>[<span class="st">'fun'</span>,<span class="st">'date'</span>],inplace <span class="op">=</span> <span class="va">True</span>)</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>safari</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
