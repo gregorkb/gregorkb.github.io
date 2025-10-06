@@ -370,16 +370,16 @@ window.Quarto = {
 <section id="making-plots" class="level2">
 <h2 class="anchored" data-anchor-id="making-plots">Making plots</h2>
 <p>We’ll discover in using Python that you will need to import a library to do whatever the thing is that you want to do. In this note the thing that we want to do is to make plots, so we will import a library called <code>matplotlib</code>, which has this website: <a href="https://matplotlib.org/">matplotlib.org</a>. This is not the only plotting library for Python, but it seems to be “the hottest” right now.</p>
-<div id="69e90853" class="cell" data-execution_count="1">
+<div id="3fc83388" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The above is the standard way of importing this library of functions. On the website for the library there are millions of examples of how to make use of all the functionality of this package; to these I will add my own humble offering here.</p>
 <p>The first thing about <code>matplotlib</code> is that it plays well with NumPy, so let’s import the NumPy library also with the typical alias <code>np</code>:</p>
-<div id="1569196e" class="cell" data-execution_count="2">
+<div id="3a1123e9" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here is a demo of how to make a plot:</p>
-<div id="22797791" class="cell" data-execution_count="3">
+<div id="8eb953fb" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">2</span><span class="op">*</span>np.pi,<span class="dv">361</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sinx <span class="op">=</span> np.sin(x)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x,sinx)</span>
@@ -393,7 +393,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Here is a plot with a few more features, including a legend. Legends can be created in an automatic kind of way if a <code>label=</code> is supplied for each feature added to the plot.</p>
-<div id="abbcc1c3" class="cell" data-execution_count="4">
+<div id="c2267a23" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate some scatterplot data such that the y values are equal to a function plus noise</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> np.random.random(<span class="dv">30</span>)<span class="op">*</span><span class="dv">2</span><span class="op">*</span>np.pi </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="fl">0.8</span><span class="op">*</span>np.sin(u) <span class="op">+</span> <span class="fl">0.2</span><span class="op">*</span>np.cos(u) <span class="op">+</span> np.random.normal(<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>,u.size) </span>
@@ -420,8 +420,8 @@ window.Quarto = {
 </div>
 <p>You can also spend some time setting up the axes and customizing the plot’s appearance before you <em>show</em> the plot. In the matplotlib tutorials, this seems to be the preferred way to do things. Here is how it works: You have to set up a figure as well as a set of axes. Then you add things to the axes with <code>ax.</code> commands. When you do things this way, a new figure is set up, so you don’t need to worry about your plotting commands simply adding things to your previous plot.</p>
 <p>The code below also demonstrates how to set up a second vertical axis on the same horizontal axis.</p>
-<div id="a36319f0" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span> (<span class="dv">8</span>,<span class="dv">4</span>)) <span class="co"># set up figure and axes. You can here change the size of the figure</span></span>
+<div id="e189cca0" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span> (<span class="dv">10</span>,<span class="dv">5</span>)) <span class="co"># set up figure and axes. You can here change the size of the figure</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ax.plot(u,v,<span class="st">'bo'</span>,label <span class="op">=</span> <span class="st">'Observations'</span>) </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx,label <span class="op">=</span> <span class="st">'True underlying function'</span>,linestyle<span class="op">=</span><span class="st">"--"</span>,color<span class="op">=</span>(<span class="fl">0.545</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">.5</span>))</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"x"</span>)</span>
@@ -442,8 +442,8 @@ window.Quarto = {
 </div>
 </div>
 <p>Using the latter approach of setting up a figure first allows one to create multi-plot figures. Each individual plot in a figure is referred to as an <em>axes</em>, or a set of axes.</p>
-<div id="1e4c9c9c" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">3</span>)) <span class="co"># put in a 1 by 2 grid of plots, name each "axis" </span></span>
+<div id="72bcbae1" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">4</span>)) <span class="co"># put in a 1 by 2 grid of plots, name each "axis" </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ax1.plot(u,v,<span class="st">'bo'</span>,label <span class="op">=</span> <span class="st">'observations'</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"x"</span>)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"response"</span>)</span>
@@ -464,17 +464,16 @@ window.Quarto = {
 </div>
 </div>
 <p>We can set up plots in a “mosaic” arrangement as follows:</p>
-<div id="89fa1294" class="cell" data-execution_count="7">
+<div id="ccd0f378" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplot_mosaic([[<span class="st">'top_left'</span>,<span class="st">'top_right'</span>],</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                               [<span class="st">'bottom'</span>,<span class="st">'bottom'</span>]],</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                             ) </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>axs[<span class="st">'top_left'</span>].plot(u,v,<span class="st">'g+'</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>axs[<span class="st">'top_right'</span>].hist(u)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>axs[<span class="st">'bottom'</span>].plot(x,fx,linewidth <span class="op">=</span> <span class="dv">5</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'Three amazing plots!'</span>,y<span class="op">=</span><span class="fl">.99</span>,fontsize <span class="op">=</span> <span class="dv">20</span>) <span class="co"># add an overall title. Set y= to move it up or down.</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                               [<span class="st">'bottom'</span>,<span class="st">'bottom'</span>]],figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">8</span>)) </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>axs[<span class="st">'top_left'</span>].plot(u,v,<span class="st">'g+'</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>axs[<span class="st">'top_right'</span>].hist(u)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>axs[<span class="st">'bottom'</span>].plot(x,fx,linewidth <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'Three amazing plots!'</span>,y<span class="op">=</span><span class="fl">.99</span>,fontsize <span class="op">=</span> <span class="dv">20</span>) <span class="co"># add an overall title. Set y= to move it up or down.</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -487,7 +486,7 @@ window.Quarto = {
 <section id="defining-new-functions" class="level2">
 <h2 class="anchored" data-anchor-id="defining-new-functions">Defining new functions</h2>
 <p>Here is the syntax for defining a simple, one-liner function:</p>
-<div id="79305fd6" class="cell" data-execution_count="8">
+<div id="82f0260c" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x): <span class="cf">return</span>(x<span class="op">*</span>np.sin(x))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(f(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -496,7 +495,7 @@ window.Quarto = {
 </div>
 </div>
 <p>We must tell the function explicitly to return a value, or it will not return anything. If there is more than one line of code, we indent the lines, as shown below (no curly braces like in R). When we stop indenting, Python knows that the function definition has come to an end.</p>
-<div id="43629b3c" class="cell" data-execution_count="9">
+<div id="8a1b1eb7" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hyp(a,b):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    csq<span class="op">=</span> a<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b<span class="op">**</span><span class="dv">2</span></span>
@@ -510,7 +509,7 @@ window.Quarto = {
 </div>
 </div>
 <p>A function can be made to return more than one value. Just put every object to be returned in the <code>return</code> function.</p>
-<div id="45fa8c81" class="cell" data-execution_count="10">
+<div id="dde245f7" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> eucl(r,th): </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> r<span class="op">*</span>np.cos(th)</span>
@@ -528,7 +527,7 @@ window.Quarto = {
 </div>
 </div>
 <p>We specify default values in Python just as we did in R:</p>
-<div id="2f50ac4c" class="cell" data-execution_count="11">
+<div id="3124387c" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> logistic(x,a<span class="op">=</span><span class="dv">0</span>,b<span class="op">=</span><span class="dv">1</span>):</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    l <span class="op">=</span> a <span class="op">+</span> x<span class="op">*</span>b</span>
@@ -541,7 +540,7 @@ window.Quarto = {
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">200</span>)</span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>fx1 <span class="op">=</span> logistic(x) <span class="co"># use default values for a and b</span></span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>fx2 <span class="op">=</span> logistic(x,a <span class="op">=</span> <span class="op">-</span><span class="dv">2</span>, b <span class="op">=</span> <span class="dv">3</span>)</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx1,label <span class="op">=</span> <span class="st">'$a = 0$, $b = 1$'</span>)</span>
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx2,label <span class="op">=</span> <span class="st">'$a = -2$, $b = 3$'</span>)</span>
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>)</span>
@@ -561,7 +560,7 @@ window.Quarto = {
 <section id="conditional-programming" class="level2">
 <h2 class="anchored" data-anchor-id="conditional-programming">Conditional programming</h2>
 <p>The logic of conditional programming is the same across all programming languages. One has only to learn new syntax with each language. Here are some examples of conditional programs in Python:</p>
-<div id="61dd1c6b" class="cell" data-execution_count="12">
+<div id="aba59b56" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rolldice():</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    r1 <span class="op">=</span> np.random.choice(np.arange(<span class="dv">1</span>,<span class="dv">7</span>),<span class="dv">1</span>) <span class="co"># draw a number from 1 to 6</span></span>
@@ -583,11 +582,11 @@ window.Quarto = {
 <span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>rolldice()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[4][2]</code></pre>
+<pre><code>[1][5]</code></pre>
 </div>
 </div>
 <p>The <em>else if</em> syntax in Python is a little different: Instead of typing “else if” you type <code>elif</code>:</p>
-<div id="f8e7ca8c" class="cell" data-execution_count="13">
+<div id="732fe8b6" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rolldice():</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    r1 <span class="op">=</span> np.random.choice(np.arange(<span class="dv">1</span>,<span class="dv">7</span>),<span class="dv">1</span>)</span>
@@ -625,11 +624,11 @@ window.Quarto = {
 <span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>rolldice()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Ahh, sad rollin'.
-[2][3]</code></pre>
+[4][2]</code></pre>
 </div>
 </div>
 <p>For what it’s worth, there is a function called <code>bool()</code> which coerces its argument to a boolean value. It may come in handy at some point:</p>
-<div id="113b695c" class="cell" data-execution_count="14">
+<div id="5fdffaca" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">bool</span>(<span class="dv">1</span>))</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">bool</span>(<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -643,14 +642,14 @@ x +\lambda,&amp; x &lt; - \lambda\\
 0,&amp; - \lambda \leq x \leq \lambda \\
 x - \lambda,&amp; \lambda &lt; x \end{array}\right.
 \]</span> for <span class="math inline">\(\lambda &gt; 0\)</span> as below:</p>
-<div id="12440159" class="cell" data-execution_count="15">
+<div id="51cdbd0c" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> softthresh(x,lam):</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>((x <span class="op">+</span> lam) <span class="op">*</span> (x <span class="op">&lt;</span> <span class="op">-</span>lam) <span class="op">+</span> (x <span class="op">-</span> lam)<span class="op">*</span>(x <span class="op">&gt;</span> lam))</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">5</span>)</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>lam <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>fx <span class="op">=</span> softthresh(x,lam)</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize <span class="op">=</span> (<span class="dv">5</span>,<span class="dv">3</span>))</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">5</span>))</span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx)</span>
 <span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">0</span>,linestyle<span class="op">=</span><span class="st">"--"</span>,linewidth<span class="op">=</span><span class="fl">.5</span>)</span>
 <span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -663,7 +662,7 @@ x - \lambda,&amp; \lambda &lt; x \end{array}\right.
 </div>
 </div>
 <p>Next we define a function to evaluate the bivariate standard normal density. Then we make a surface plot of the function:</p>
-<div id="0d0592a3" class="cell" data-execution_count="16">
+<div id="c6355061" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bivn(z1,z2,rho <span class="op">=</span> <span class="dv">0</span>):                    <span class="co"># make rho have by default the value 0</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> rho<span class="op">**</span><span class="dv">2</span></span>
@@ -697,6 +696,18 @@ x - \lambda,&amp; \lambda &lt; x \end{array}\right.
 <section id="write-code" class="level3">
 <h3 class="anchored" data-anchor-id="write-code">Write code</h3>
 <ol type="1">
+<li>Let <span class="math inline">\(x_1,\dots,x_n\)</span> be a set of real numbers and denote by <span class="math inline">\(x_{(1)} \leq \dots \leq x_{(n)}\)</span> the same set of values sorted in increasing order. The the quantile function of the empirical distribution of the set of points <span class="math inline">\(x_1,\dots,x_n\)</span> is given by <span class="math display">\[
+Q_n(u) = x_{(\lfloor un \rfloor)},
+\]</span> for <span class="math inline">\(u \in (0,1)\)</span>, where <span class="math inline">\(\lfloor \cdot \rfloor\)</span> is the floor function. Write a function which will compute the interquartile range <span class="math inline">\(Q_n(3/4) - Q_n(1/4)\)</span> according to the quantile function defined above for a set of values <span class="math inline">\(x_1,\dots,x_n\)</span> when these are stored in a one-dimensional NumPy array. You may make use of the <code>np.sort()</code> function. You can check your function against the output below:</li>
+</ol>
+<div id="caf5fafc" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([ <span class="fl">1.29</span>,  <span class="fl">1.36</span>,  <span class="fl">0.3</span> , <span class="op">-</span><span class="fl">1.17</span>, <span class="op">-</span><span class="fl">0.70</span>,  <span class="fl">0.43</span>,  <span class="fl">1.02</span>,  <span class="fl">1.02</span>,  <span class="fl">0.09</span>,  <span class="fl">1.48</span>])</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(IQR(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1.72</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
 <li>Define <span class="math inline">\(g(u)\)</span> and <span class="math inline">\(g'(u)\)</span> as below and plot them over <span class="math inline">\(u \in [0,1]\)</span> on side-by-side panels in a single figure as shown.</li>
 </ol>
 <p><span class="math display">\[
@@ -713,30 +724,30 @@ x - \lambda,&amp; \lambda &lt; x \end{array}\right.
          9(1-u), &amp; 2/3 \leq u &lt;1.
     \end{array}\right.
 \]</span></p>
-<div id="4715c518" class="cell" data-execution_count="17">
+<div id="b5e7dc4c" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Python_plots_functions_cond_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<ol start="2" type="1">
-<li>Obtain a Monte Carlo approximation using the hit-or-miss method to the integral <span class="math display">\[
-I = \int_{-1}^1 -\frac{3(x+1)\log((x+1)/2)}{\log((x+1)/2 + 2)}dx
-\]</span> and make a plot like the one shown below:</li>
-</ol>
-<div id="6b3cb2b9" class="cell" data-execution_count="18">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Python_plots_functions_cond_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Python_plots_functions_cond_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <ol start="3" type="1">
+<li>Obtain a Monte Carlo approximation using the hit-or-miss method to the integral <span class="math display">\[
+I = \int_{-1}^1 -\frac{3(x+1)\log((x+1)/2)}{\log((x+1)/2 + 2)}dx
+\]</span> and make a plot like the one shown below:</li>
+</ol>
+<div id="3398c44a" class="cell" data-execution_count="20">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Python_plots_functions_cond_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
 <li>Write a function to convert a set of Euclidean <span class="math inline">\((x,y)\)</span> coordinates stored in NumPy arrays <code>x</code> and <code>y</code> to polar coordinates <span class="math inline">\((r,\theta)\)</span> via <span class="math display">\[
 \begin{align*}
 r &amp; = \sqrt{x^2 + y^2} \\
@@ -754,27 +765,27 @@ y &amp;= r \sin \theta.
 \end{align*}
 \]</span> Moreover, write a function to rotate a set of points given as <span class="math inline">\((x,y)\)</span> coordinates in the Euclidean plan (in some NumPy vectors <code>x</code> and <code>y</code>) a number of degrees counter-clockwise; you can achieve this by converting the points to polar coordinates and then adding to the value of the angle <span class="math inline">\(\theta\)</span>. Afterwards convert the points back to Euclidean coordinates. Use your functions to make the plot below of the points created in this code chunk rotated around the origin and plotted at every ten degrees.</li>
 </ol>
-<div id="833c4299" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">21</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4d9b2447" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">21</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="b3d99ef3" class="cell" data-execution_count="20">
+<div id="da9b5c54" class="cell" data-fig-height="3" data-fig-width="3" data-execution_count="22">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Python_plots_functions_cond_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Python_plots_functions_cond_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<ol start="4" type="1">
-<li>Make a plot of the polar function defined by <span class="math inline">\(r = \sin(\theta/4)\)</span> for <span class="math inline">\(\theta \in [0,8\pi)\)</span>. Evaluate the radius <span class="math inline">\(r\)</span> over a grid of <span class="math inline">\(\theta\)</span> values and then convert the values to Euclidean coordinates. The plot should look like this:</li>
+<ol start="5" type="1">
+<li>For <span class="math inline">\(j \in \{2,4,6,8\}\)</span>, make a plot of the polar function defined by <span class="math inline">\(r = \sin(\theta/j)\)</span> for <span class="math inline">\(\theta \in [0,4j\pi)\)</span>. Evaluate the radius <span class="math inline">\(r\)</span> over a grid of <span class="math inline">\(\theta\)</span> values and then convert the polar coordinates <span class="math inline">\((r,\theta)\)</span> to Euclidean coordinates <span class="math inline">\((x,y)\)</span> for plotting. The plots should look like this:</li>
 </ol>
-<div id="faf88701" class="cell" data-execution_count="21">
+<div id="7830f19e" class="cell" data-execution_count="23">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Python_plots_functions_cond_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Python_plots_functions_cond_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -786,22 +797,22 @@ y &amp;= r \sin \theta.
 <ol type="1">
 <li></li>
 </ol>
-<div id="71043ac7" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> star(p,s):</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  th <span class="op">=</span> np.linspace(np.pi<span class="op">/</span><span class="dv">2</span>,np.pi<span class="op">/</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>s,s<span class="op">*</span>p<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> np.cos(th[::s])</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  y <span class="op">=</span> np.sin(th[::s])</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x, y</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> star(<span class="dv">5</span>,<span class="dv">2</span>)</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>ax.axis(<span class="st">'off'</span>)</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>ax.plot(x,y)</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="38793a3b" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> star(p,s):</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  th <span class="op">=</span> np.linspace(np.pi<span class="op">/</span><span class="dv">2</span>,np.pi<span class="op">/</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>s,s<span class="op">*</span>p<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> np.cos(th[::s])</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  y <span class="op">=</span> np.sin(th[::s])</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x, y</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> star(<span class="dv">5</span>,<span class="dv">2</span>)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>ax.axis(<span class="st">'off'</span>)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>ax.plot(x,y)</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
