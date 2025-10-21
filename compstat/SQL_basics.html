@@ -394,11 +394,8 @@ div.csl-indent {
 <p>A database is a collection of (usually large) data sets, not stored on your local machine, and organized a way that facilitates retrieval of selected data. SQL stands for <em>structured query language</em> and is a language used to retrieve data stored in a database. SQL commands are not executed by your local machine, but rather by the machine storing the data, and the results of the “queries” submitted in SQL are sent to your machine. This allows you to work with massive data sets without storing them on your own computer.</p>
 <p>The first step in retrieving data with SQL queries is to create a <em>connection</em> to a database. We will do this from within R using the library <code>mdsr</code>, which provides the ability to connect to a database called “airlines”. We can do this with this code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mdsr) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'mdsr' was built under R version 4.4.1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>db <span class="ot">&lt;-</span> <span class="fu">dbConnect_scidb</span>(<span class="st">"airlines"</span>) <span class="co"># establish a connection to the database "airlines"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mdsr) </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>db <span class="ot">&lt;-</span> <span class="fu">dbConnect_scidb</span>(<span class="st">"airlines"</span>) <span class="co"># establish a connection to the database "airlines"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The airlines database contains information on about 18 million flights between US airports taking place during the years 2013–2015.</p>
 <section id="exploring-a-database" class="level2">
@@ -406,7 +403,7 @@ div.csl-indent {
 <p>Now that we have created a connection to a database, we can submit SQL queries to retrieve data from it. If we are compiling a <code>.qmd</code> document, we can execute SQL in a code chunk. We just need to open the code chunk with <code>{sql connection=&lt;db&gt;}</code>, where <code>&lt;db&gt;</code> is whatever you have named the database connection.</p>
 <p>The data sets in a database are called <em>tables</em>. To see a list of the tables, we can submit the following SQL command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>5 records</caption>
@@ -438,7 +435,7 @@ div.csl-indent {
 <p>We see that there are five tables, or data sets in the “airlines” database.</p>
 <p>In order to get a summary of one of the tables, we can use <code>DESCRIBE</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>DESCRIBE flights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>DESCRIBE flights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -538,7 +535,7 @@ div.csl-indent {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>DESCRIBE carriers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>DESCRIBE carriers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>2 records</caption>
@@ -574,7 +571,7 @@ div.csl-indent {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>DESCRIBE airports</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>DESCRIBE airports</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>9 records</caption>
@@ -665,6 +662,7 @@ div.csl-indent {
 </table>
 </div>
 </div>
+<p>The two pdfs <a href="gregorkb.github.io/data/airports_table_schema.pdf">airports_table_schema</a> and <a href="gregorkb.github.io/data/flights_table_schema.pdf">flights_table_schema</a> give descriptions of the airports and flights tables in the airlines database.</p>
 </section>
 <section id="retrieving-data" class="level2">
 <h2 class="anchored" data-anchor-id="retrieving-data">Retrieving data</h2>
@@ -685,8 +683,8 @@ div.csl-indent {
 <p>Every SQL query must have a <code>SELECT</code> and a <code>FROM</code> command.</p>
 <p>To get the names of the carriers in the carriers table, we can run the following:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> name</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> carriers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> name</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> carriers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -732,9 +730,9 @@ div.csl-indent {
 </div>
 <p>Here we pull several fields from the “flights” table, but we limit the number of records to pull so we don’t get an enormous amount of data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> carrier, origin, dest, dep_time, <span class="dt">year</span>, <span class="dt">month</span>, <span class="dt">day</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> carrier, origin, dest, dep_time, <span class="dt">year</span>, <span class="dt">month</span>, <span class="dt">day</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -846,9 +844,9 @@ div.csl-indent {
 </div>
 <p>We can also construct new variables out of the ones in the table. One way to do this is with <code>CONCAT</code> and <code>AS</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">CONCAT</span>(faa,<span class="st">' - '</span> ,name) <span class="kw">AS</span> airport, city</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> airports</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">CONCAT</span>(faa,<span class="st">' - '</span> ,name) <span class="kw">AS</span> airport, city</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> airports</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -905,9 +903,9 @@ div.csl-indent {
 </div>
 <p>We can use <code>AS</code> to rename variables as we read them from a table:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">CONCAT</span>(faa,<span class="st">' - '</span> ,name) <span class="kw">AS</span> airport, city <span class="kw">AS</span> location</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> airports</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">CONCAT</span>(faa,<span class="st">' - '</span> ,name) <span class="kw">AS</span> airport, city <span class="kw">AS</span> location</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> airports</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -963,9 +961,9 @@ div.csl-indent {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">CONCAT</span>(<span class="kw">hour</span>,<span class="st">':'</span>,<span class="kw">minute</span>) <span class="kw">AS</span> departure_time, <span class="fu">CONCAT</span>(origin,<span class="st">' to '</span>, dest) <span class="kw">AS</span> OrigDest, flight <span class="kw">AS</span> flight_number</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">CONCAT</span>(<span class="kw">hour</span>,<span class="st">':'</span>,<span class="kw">minute</span>) <span class="kw">AS</span> departure_time, <span class="fu">CONCAT</span>(origin,<span class="st">' to '</span>, dest) <span class="kw">AS</span> OrigDest, flight <span class="kw">AS</span> flight_number</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -1036,10 +1034,10 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="where">WHERE</h3>
 <p>Now suppose we only want flights which left from Dallas/Forth-Worth. We can use <code>WHERE</code> as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> carrier, origin, dest, <span class="dt">year</span>, <span class="dt">month</span>, <span class="dt">day</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> origin <span class="op">=</span> <span class="st">'DFW'</span> </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> carrier, origin, dest, <span class="dt">year</span>, <span class="dt">month</span>, <span class="dt">day</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> origin <span class="op">=</span> <span class="st">'DFW'</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -1140,10 +1138,10 @@ div.csl-indent {
 </div>
 <p>We can use <code>AND</code> to add more conditions:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> carrier, origin, dest, <span class="dt">year</span>, <span class="dt">month</span>, <span class="dt">day</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> origin <span class="op">=</span> <span class="st">'DFW'</span> <span class="kw">AND</span> <span class="dt">year</span> <span class="op">=</span> <span class="ot">"2013"</span> <span class="kw">AND</span> <span class="dt">month</span> <span class="op">=</span> <span class="dv">1</span> <span class="kw">AND</span> <span class="dt">day</span> <span class="op">=</span> <span class="dv">15</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> carrier, origin, dest, <span class="dt">year</span>, <span class="dt">month</span>, <span class="dt">day</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> origin <span class="op">=</span> <span class="st">'DFW'</span> <span class="kw">AND</span> <span class="dt">year</span> <span class="op">=</span> <span class="ot">"2013"</span> <span class="kw">AND</span> <span class="dt">month</span> <span class="op">=</span> <span class="dv">1</span> <span class="kw">AND</span> <span class="dt">day</span> <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -1244,10 +1242,10 @@ div.csl-indent {
 </div>
 <p>We can also use <code>OR</code>. Here we collect all the flight departing or arriving at CAE on a particular day. Note that we can use parentheses to enforce an order of operations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> carrier, origin, dest, <span class="dt">year</span>, <span class="dt">month</span>, <span class="dt">day</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> (origin <span class="op">=</span> <span class="st">'CAE'</span> <span class="kw">OR</span> dest <span class="op">=</span> <span class="st">'CAE'</span>) <span class="kw">AND</span> <span class="dt">year</span> <span class="op">=</span> <span class="ot">"2013"</span> <span class="kw">AND</span> <span class="dt">month</span> <span class="op">=</span> <span class="dv">1</span> <span class="kw">AND</span> <span class="dt">day</span> <span class="op">=</span> <span class="dv">15</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> carrier, origin, dest, <span class="dt">year</span>, <span class="dt">month</span>, <span class="dt">day</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> (origin <span class="op">=</span> <span class="st">'CAE'</span> <span class="kw">OR</span> dest <span class="op">=</span> <span class="st">'CAE'</span>) <span class="kw">AND</span> <span class="dt">year</span> <span class="op">=</span> <span class="ot">"2013"</span> <span class="kw">AND</span> <span class="dt">month</span> <span class="op">=</span> <span class="dv">1</span> <span class="kw">AND</span> <span class="dt">day</span> <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -1348,10 +1346,10 @@ div.csl-indent {
 </div>
 <p>We can convert the year, month, and day information to an actual date using the <code>STR_TO_DATE</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> carrier, origin, dest, dep_time, STR_TO_DATE(<span class="fu">CONCAT</span>(<span class="dt">year</span>,<span class="st">'/'</span>, <span class="dt">month</span>,<span class="st">'/'</span>, <span class="dt">day</span>),<span class="ot">"%Y/%m/%d"</span>) <span class="kw">AS</span> theDate</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">year</span> <span class="op">=</span> <span class="dv">2013</span> <span class="kw">AND</span> <span class="dt">day</span> <span class="op">=</span> <span class="dv">15</span> <span class="kw">AND</span> <span class="dt">month</span> <span class="op">=</span> <span class="dv">1</span> <span class="kw">AND</span> origin <span class="op">=</span> <span class="st">'DFW'</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> carrier, origin, dest, dep_time, STR_TO_DATE(<span class="fu">CONCAT</span>(<span class="dt">year</span>,<span class="st">'/'</span>, <span class="dt">month</span>,<span class="st">'/'</span>, <span class="dt">day</span>),<span class="ot">"%Y/%m/%d"</span>) <span class="kw">AS</span> theDate</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">year</span> <span class="op">=</span> <span class="dv">2013</span> <span class="kw">AND</span> <span class="dt">day</span> <span class="op">=</span> <span class="dv">15</span> <span class="kw">AND</span> <span class="dt">month</span> <span class="op">=</span> <span class="dv">1</span> <span class="kw">AND</span> origin <span class="op">=</span> <span class="st">'DFW'</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -1441,10 +1439,10 @@ div.csl-indent {
 </div>
 <p>Get a list of airports at high altitude:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> faa, name, alt</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> airports</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> alt <span class="op">&gt;=</span> <span class="dv">5280</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> faa, name, alt</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> airports</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> alt <span class="op">&gt;=</span> <span class="dv">5280</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -1515,9 +1513,9 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="operators-between-distinct-and-in">Operators BETWEEN, DISTINCT, and IN</h3>
 <p>The BETWEEN operator lets us specify a range of values:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> faa, name</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> airports</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> lon <span class="kw">BETWEEN</span> <span class="op">-</span><span class="dv">90</span> <span class="kw">AND</span> <span class="op">-</span><span class="dv">80</span> <span class="kw">AND</span> lat <span class="kw">BETWEEN</span> <span class="dv">40</span> <span class="kw">AND</span> <span class="dv">50</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> faa, name</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> airports</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> lon <span class="kw">BETWEEN</span> <span class="op">-</span><span class="dv">90</span> <span class="kw">AND</span> <span class="op">-</span><span class="dv">80</span> <span class="kw">AND</span> lat <span class="kw">BETWEEN</span> <span class="dv">40</span> <span class="kw">AND</span> <span class="dv">50</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -1575,8 +1573,8 @@ div.csl-indent {
 <p>Note that we do not have to SELECT the fields used in the WHERE statement.</p>
 <p>The DISTINCT operator selects only the unique values of a field. We can use DISTINCT to see that all the airports in the airports table are within the United States.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> country</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> airports</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> country</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> airports</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>1 records</caption>
@@ -1595,9 +1593,9 @@ div.csl-indent {
 </div>
 <p>Here are all the distinct destinations flown to from the Columbia Metropolitan Airport (CAE) in the year 2013:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> dest <span class="kw">AS</span> Destination</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> origin <span class="op">=</span> <span class="st">'CAE'</span> <span class="kw">AND</span> <span class="dt">year</span> <span class="op">=</span> <span class="dv">2015</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> dest <span class="kw">AS</span> Destination</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> origin <span class="op">=</span> <span class="st">'CAE'</span> <span class="kw">AND</span> <span class="dt">year</span> <span class="op">=</span> <span class="dv">2015</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>6 records</caption>
@@ -1631,11 +1629,11 @@ div.csl-indent {
 </div>
 <p>The IN operator can be used in the WHERE statement in order to keep a record if a field has one of several specified values:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> flight, origin, dest, </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>       STR_TO_DATE(<span class="fu">CONCAT</span>(<span class="dt">year</span>,<span class="st">'/'</span>, <span class="dt">month</span>,<span class="st">'/'</span>, <span class="dt">day</span>),<span class="ot">"%Y/%m/%d"</span>) <span class="kw">AS</span> theDate</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> origin <span class="op">=</span> <span class="st">'CAE'</span> <span class="kw">AND</span> dest <span class="kw">IN</span> (<span class="st">'IAH'</span>,<span class="st">'DFW'</span>) <span class="kw">AND</span> <span class="dt">year</span> <span class="op">=</span> <span class="dv">2014</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> flight, origin, dest, </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>       STR_TO_DATE(<span class="fu">CONCAT</span>(<span class="dt">year</span>,<span class="st">'/'</span>, <span class="dt">month</span>,<span class="st">'/'</span>, <span class="dt">day</span>),<span class="ot">"%Y/%m/%d"</span>) <span class="kw">AS</span> theDate</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> origin <span class="op">=</span> <span class="st">'CAE'</span> <span class="kw">AND</span> dest <span class="kw">IN</span> (<span class="st">'IAH'</span>,<span class="st">'DFW'</span>) <span class="kw">AND</span> <span class="dt">year</span> <span class="op">=</span> <span class="dv">2014</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -1717,11 +1715,11 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="group-by">GROUP BY</h3>
 <p>Number of flights leaving each airport in 2013:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> origin, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> numDepartures</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">year</span> <span class="op">=</span> <span class="dv">2013</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> origin</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> origin, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> numDepartures</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">year</span> <span class="op">=</span> <span class="dv">2013</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> origin</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -1781,12 +1779,12 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="having">HAVING</h3>
 <p>Select carriers with over 500 flights departing 2013 from any of the airports CAE, GSP, and CHS:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> carrier, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> numDepartures</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">year</span> <span class="op">=</span> <span class="dv">2013</span> <span class="kw">AND</span> origin <span class="kw">IN</span> (<span class="st">'CAE'</span>,<span class="st">'GSP'</span>,<span class="st">'CHS'</span>)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> carrier</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="kw">HAVING</span> numDepartures <span class="op">&gt;</span> <span class="dv">500</span> <span class="co">-- HAVING uses new variables you have defined</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> carrier, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> numDepartures</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">year</span> <span class="op">=</span> <span class="dv">2013</span> <span class="kw">AND</span> origin <span class="kw">IN</span> (<span class="st">'CAE'</span>,<span class="st">'GSP'</span>,<span class="st">'CHS'</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> carrier</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="kw">HAVING</span> numDepartures <span class="op">&gt;</span> <span class="dv">500</span> <span class="co">-- HAVING uses new variables you have defined</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>7 records</caption>
@@ -1840,10 +1838,10 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="inner-join">Inner join</h3>
 <p>Below, we make a table with the flights which has additional information about the airports which is not found in the flights data set but in the airports data set—namely the full name of the airport and its altitude. Then we return only flights from airports at altitudes above 1 mile. Note that when we read two tables in at once, we need to refer to fields(columns) in the tables as “table.field”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> flights.origin, flights.dest, flights.carrier, airports.name, airports.alt</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">JOIN</span> airports <span class="kw">ON</span> flights.origin <span class="op">=</span> airports.faa</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> airports.alt <span class="op">&gt;</span> <span class="dv">5280</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> flights.origin, flights.dest, flights.carrier, airports.name, airports.alt</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">JOIN</span> airports <span class="kw">ON</span> flights.origin <span class="op">=</span> airports.faa</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> airports.alt <span class="op">&gt;</span> <span class="dv">5280</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -1933,10 +1931,10 @@ div.csl-indent {
 </div>
 <p>In the FROM line we can designate aliases for the tables:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> f.origin, f.dest, f.carrier, a.name, a.alt <span class="co">-- use table aliases here which are defined in FROM</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> f <span class="kw">JOIN</span> airports <span class="kw">AS</span> a <span class="kw">ON</span> f.origin <span class="op">=</span> a.faa</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> a.alt <span class="op">&gt;</span> <span class="dv">5280</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> f.origin, f.dest, f.carrier, a.name, a.alt <span class="co">-- use table aliases here which are defined in FROM</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> f <span class="kw">JOIN</span> airports <span class="kw">AS</span> a <span class="kw">ON</span> f.origin <span class="op">=</span> a.faa</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> a.alt <span class="op">&gt;</span> <span class="dv">5280</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -2026,12 +2024,12 @@ div.csl-indent {
 </div>
 <p>We can merge more than two data sets. We just keep adding more JOIN commands: Below we bring in the carrier name.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> f.origin, a.name, a.alt, c.name, f.dest</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> f </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> airports <span class="kw">AS</span> a <span class="kw">ON</span> f.origin <span class="op">=</span> a.faa</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> carriers <span class="kw">AS</span> c <span class="kw">ON</span> f.carrier <span class="op">=</span> c.carrier </span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> a.alt <span class="op">&gt;</span> <span class="dv">5280</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> f.origin, a.name, a.alt, c.name, f.dest</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> f </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> airports <span class="kw">AS</span> a <span class="kw">ON</span> f.origin <span class="op">=</span> a.faa</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> carriers <span class="kw">AS</span> c <span class="kw">ON</span> f.carrier <span class="op">=</span> c.carrier </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> a.alt <span class="op">&gt;</span> <span class="dv">5280</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -2131,12 +2129,12 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="left-and-right-joins">Left and right joins</h3>
 <p>An inner join, such as we have performed above, will only include in the output table records for which a match was found. Suppose a flight in the flights table had a carrier which does not appear in the carriers table; in this case, the record would be dropped, or deleted. If we wish to keep all the flights regardless of whether the carrier appears in the carriers table, we can do a left join, which will keep all the records in the left data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> f.origin, a.name <span class="kw">AS</span> airport, a.alt, c.name <span class="kw">AS</span> carrier, f.dest</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> f </span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> airports <span class="kw">AS</span> a <span class="kw">ON</span> f.origin <span class="op">=</span> a.faa</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> carriers <span class="kw">AS</span> c <span class="kw">ON</span> f.carrier <span class="op">=</span> c.carrier </span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> a.alt <span class="op">&gt;</span> <span class="dv">5280</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> f.origin, a.name <span class="kw">AS</span> airport, a.alt, c.name <span class="kw">AS</span> carrier, f.dest</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> f </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> airports <span class="kw">AS</span> a <span class="kw">ON</span> f.origin <span class="op">=</span> a.faa</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> carriers <span class="kw">AS</span> c <span class="kw">ON</span> f.carrier <span class="op">=</span> c.carrier </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> a.alt <span class="op">&gt;</span> <span class="dv">5280</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
