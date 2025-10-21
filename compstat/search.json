@@ -1069,5 +1069,15 @@
       "R",
       "Basic operations"
     ]
+  },
+  {
+    "objectID": "SQL_running.html",
+    "href": "SQL_running.html",
+    "title": "Running SQL",
+    "section": "",
+    "text": "$$\n$$\n\nIn this course we will run SQL in two ways: In code chunks within a .qmd document from Rstudio and in R but not as part of a .qmd document. One can run SQL code in Python, but these notes will not cover this.",
+    "crumbs": [
+      "SQL"
+    ]
   }
 ]
