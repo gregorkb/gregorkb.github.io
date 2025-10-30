@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Karl Gregory">
 
 <title>SQL basics – Computing in Statistics</title>
 <style>
@@ -376,6 +377,12 @@ div.csl-indent {
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Karl Gregory </p>
+          </div>
+  </div>
     
   
     
@@ -400,7 +407,7 @@ div.csl-indent {
 <p>The airlines database contains information on about 18 million flights between US airports taking place during the years 2013–2015.</p>
 <section id="exploring-a-database" class="level2">
 <h2 class="anchored" data-anchor-id="exploring-a-database">Exploring a database</h2>
-<p>Now that we have created a connection to a database, we can submit SQL queries to retrieve data from it. If we are compiling a <code>.qmd</code> document, we can execute SQL in a code chunk. We just need to open the code chunk with <code>{sql connection=&lt;db&gt;}</code>, where <code>&lt;db&gt;</code> is whatever you have named the database connection.</p>
+<p>Now that we have created a connection to a database, we can submit SQL queries to retrieve data from it. If we are compiling a <code>.qmd</code> document in Rstudio, we can execute SQL in a code chunk. We just need to open the code chunk with <code>{sql connection=&lt;db&gt;}</code>, where <code>&lt;db&gt;</code> is whatever you have named the database connection.</p>
 <p>The data sets in a database are called <em>tables</em>. To see a list of the tables, we can submit the following SQL command:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
