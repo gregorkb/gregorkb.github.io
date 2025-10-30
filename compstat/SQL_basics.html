@@ -1001,7 +1001,7 @@ div.csl-indent {
 </table>
 </div>
 </div>
-<p>Note that in the above query we also used <code>AS</code> to rename a field.</p>
+<p>Note that in the above query we also used <code>AS</code> to rename a field. We also used <code>ORDER BY</code> to sort the resulting table.</p>
 <!-- Here is another example: -->
 <!-- ```{sql connection=db} -->
 <!-- SELECT CONCAT(LPAD(hour,2,'0'),':',LPAD(minute,2,'0')) AS departure_time,  -->
@@ -1590,7 +1590,7 @@ div.csl-indent {
 </table>
 </div>
 </div>
-<p>Here are all the distinct destinations flown to from CAE in the year 2013:</p>
+<p>Here are all the distinct destinations flown to from CAE in the year 2015:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> dest <span class="kw">AS</span> Destination</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
@@ -1714,60 +1714,61 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="group-by">GROUP BY</h3>
 <p>We can use GROUP BY to aggregate groups of records sharing the same value of a field. Here we compute the total number of flights leaving each airport in 2013:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> origin, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> numDepartures </span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> origin, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> Departures </span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">year</span> <span class="op">=</span> <span class="dv">2013</span></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> origin</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> Departures <span class="kw">DESC</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">origin</th>
-<th style="text-align: right;">numDepartures</th>
+<th style="text-align: right;">Departures</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">ABE</td>
-<td style="text-align: right;">3100</td>
+<td style="text-align: left;">ATL</td>
+<td style="text-align: right;">398878</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">ABI</td>
-<td style="text-align: right;">2754</td>
+<td style="text-align: left;">ORD</td>
+<td style="text-align: right;">306439</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">ABQ</td>
-<td style="text-align: right;">28552</td>
+<td style="text-align: left;">DFW</td>
+<td style="text-align: right;">286427</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">ABR</td>
-<td style="text-align: right;">745</td>
+<td style="text-align: left;">DEN</td>
+<td style="text-align: right;">226597</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">ABY</td>
-<td style="text-align: right;">1036</td>
+<td style="text-align: left;">LAX</td>
+<td style="text-align: right;">224821</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">ACK</td>
-<td style="text-align: right;">378</td>
+<td style="text-align: left;">IAH</td>
+<td style="text-align: right;">181071</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">ACT</td>
-<td style="text-align: right;">1704</td>
+<td style="text-align: left;">PHX</td>
+<td style="text-align: right;">177027</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">ACV</td>
-<td style="text-align: right;">3281</td>
+<td style="text-align: left;">SFO</td>
+<td style="text-align: right;">168070</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">ADK</td>
-<td style="text-align: right;">104</td>
+<td style="text-align: left;">DTW</td>
+<td style="text-align: right;">163550</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">ADQ</td>
-<td style="text-align: right;">660</td>
+<td style="text-align: left;">CLT</td>
+<td style="text-align: right;">148745</td>
 </tr>
 </tbody>
 </table>
@@ -1896,7 +1897,8 @@ div.csl-indent {
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">year</span> <span class="op">=</span> <span class="dv">2013</span> <span class="kw">AND</span> origin <span class="kw">IN</span> (<span class="st">'CAE'</span>,<span class="st">'GSP'</span>,<span class="st">'CHS'</span>)</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> carrier</span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="kw">HAVING</span> departures <span class="op">&gt;</span> <span class="dv">500</span> <span class="co">-- HAVING uses new variables you have defined</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> departures <span class="kw">DESC</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>7 records</caption>
@@ -1908,32 +1910,32 @@ div.csl-indent {
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;">EV</td>
+<td style="text-align: right;">13105</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DL</td>
+<td style="text-align: right;">5552</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">WN</td>
+<td style="text-align: right;">4612</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MQ</td>
+<td style="text-align: right;">3469</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">9E</td>
 <td style="text-align: right;">2947</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">B6</td>
-<td style="text-align: right;">959</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">DL</td>
-<td style="text-align: right;">5552</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">EV</td>
-<td style="text-align: right;">13105</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">MQ</td>
-<td style="text-align: right;">3469</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">WN</td>
-<td style="text-align: right;">4612</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">YV</td>
 <td style="text-align: right;">2345</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">B6</td>
+<td style="text-align: right;">959</td>
 </tr>
 </tbody>
 </table>
