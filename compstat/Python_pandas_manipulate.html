@@ -371,8 +371,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>We’ll continue using the Pandas package for everything here.</p>
-<p>Let’s read in the finisher data from the Table Rock 50k races in 2023 and 2024. The code below shows how we can do this:</p>
-<div id="5c9e6b64" class="cell" data-execution_count="1">
+<p>Let’s read in the finisher data from the Table Rock 50k races in 2023 and 2024, which can be downloaded from <a href="https://github.com/gregorkb/gregorkb.github.io/tree/master/data">here</a>. The code below shows how we can do this:</p>
+<div id="6f157afe" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dr <span class="op">=</span> <span class="st">'/Users/karlgregory/Library/CloudStorage/OneDrive-UniversityofSouthCarolina/myBooks/compstat/data/'</span></span>
@@ -387,7 +387,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                      names <span class="op">=</span> trcols,</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                      usecols <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="bu">len</span>(trcols)))</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>tr24</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="73">
+<div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 
 
@@ -559,10 +559,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>In R, to read names like O’something, we had to specify that <code>'</code> should not be interpreted as a quoting character. The Pandas <code>read_table</code> function uses <code>"</code> by default, so our Irish names got read in okay this time.</p>
-<div id="10b18f3e" class="cell" data-execution_count="2">
+<div id="6f4fc919" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ir <span class="op">=</span> tr24[<span class="st">'Last'</span>].<span class="bu">str</span>.match(<span class="st">".*['].*"</span>) <span class="co"># any names with an apostrophe?</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>tr24[ir]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="74">
+<div class="cell-output cell-output-display" data-execution_count="20">
 <div>
 
 
@@ -618,14 +618,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="merging-data-sets" class="level2">
 <h2 class="anchored" data-anchor-id="merging-data-sets">Merging data sets</h2>
 <p>Let’s make a new data set containing, for each runner who participated in both the 2023 and 2024 Table Rock 50k races, the finishing times in both years. We use the <code>merge</code> function in the Pandas library.</p>
-<div id="0f089288" class="cell" data-execution_count="3">
+<div id="cf43c84a" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tr_merged0 <span class="op">=</span> pd.merge(tr23, tr24, </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                      on <span class="op">=</span> [<span class="st">'First'</span>, <span class="st">'Last'</span>], </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                      suffixes <span class="op">=</span> [<span class="st">' 2023'</span>,<span class="st">' 2024'</span>])</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                      </span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>tr_merged <span class="op">=</span> tr_merged0[[<span class="st">'First'</span>, <span class="st">'Last'</span>, <span class="st">'Time 2023'</span>, <span class="st">'Time 2024'</span>]]</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>tr_merged</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="75">
+<div class="cell-output cell-output-display" data-execution_count="21">
 <div>
 
 
@@ -811,8 +811,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="concatenating-data-sets" class="level2">
 <h2 class="anchored" data-anchor-id="concatenating-data-sets">Concatenating data sets</h2>
-<p>Let’s read the data in from all the years, 2011 through 2024, using a loop, combining all the data into one large data frame.</p>
-<div id="8b77c986" class="cell" data-execution_count="4">
+<p>Let’s read the data in from all the years, 2011 through 2024, using a loop, combining all the data into one large data frame. These data files can be downloaded from <a href="https://github.com/gregorkb/gregorkb.github.io/tree/master/data">here</a>.</p>
+<div id="de06b4fe" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>li <span class="op">=</span> <span class="bu">list</span>() <span class="co"># make a list of data frames to concatenate into one big one</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">11</span>,<span class="dv">25</span>):</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -829,7 +829,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>tr <span class="op">=</span> pd.concat(li)</span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>tr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="76">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 
 
@@ -1016,7 +1016,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="aggregating-data" class="level2">
 <h2 class="anchored" data-anchor-id="aggregating-data">Aggregating data</h2>
 <p>Let’s work towards getting the average time in each division for each year of the race. First we’ll need to convert the times to seconds, because right now they are just character strings. Below we define a function to make the conversion and then add a new column to the data set containing the columns in seconds.</p>
-<div id="5b23eecd" class="cell" data-execution_count="5">
+<div id="41dd1392" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> secs(ch):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ch2 <span class="op">=</span> ch.replace(<span class="st">"`"</span>,<span class="st">""</span>) <span class="co"># for a tie, the character "`" is added, which we need to remove</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    h, m, s <span class="op">=</span> ch2.split(<span class="st">":"</span>) <span class="co"># split a character into multiple strings based on a splitting character</span></span>
@@ -1024,7 +1024,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>tr[<span class="st">'Seconds'</span>] <span class="op">=</span> tr[<span class="st">'Time'</span>].<span class="bu">map</span>(secs)</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>tr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="77">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <div>
 
 
@@ -1220,21 +1220,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Here we define a function which will convert a number of seconds into a time in the form <em>hh:mm:ss</em>:</p>
-<div id="b5e5dd3d" class="cell" data-execution_count="6">
+<div id="31b6d7c3" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> secs2time(x):</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> time.strftime(<span class="st">"%H:%M:%S"</span>,time.gmtime(x)) <span class="co"># number of seconds from 00:00:00, Jan 1, 1970 GMT, re-express as hh:mm:ss</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we apply the function defined above to the seconds series of the data frame using <code>map</code>:</p>
-<div id="b8628bbb" class="cell" data-execution_count="7">
+<div id="3439b475" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tm <span class="op">=</span> tr.pivot_table( values <span class="op">=</span> <span class="st">'Seconds'</span>, </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                      index <span class="op">=</span> [<span class="st">'Year'</span>,<span class="st">'Division'</span>], </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                      aggfunc <span class="op">=</span> {<span class="st">'Seconds'</span> : <span class="st">'mean'</span>})</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                      </span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>tm[<span class="st">'Ave. Time'</span>] <span class="op">=</span> tm.Seconds.<span class="bu">map</span>(secs2time)  <span class="co"># use .map to apply the function</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>tm.drop(<span class="st">'Seconds'</span>, axis <span class="op">=</span> <span class="dv">1</span>)                   <span class="co"># get rid of the 'Seconds' series</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="79">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <div>
 
 
@@ -1384,12 +1384,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="8540bc41" class="cell" data-execution_count="8">
+<div id="8d8b7798" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> tr.pivot_table( values <span class="op">=</span> <span class="st">'Age'</span>, </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                      index <span class="op">=</span> [<span class="st">'Year'</span>,<span class="st">'Division'</span>], </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                      aggfunc <span class="op">=</span> {<span class="st">'Age'</span> : [<span class="st">'min'</span>,<span class="st">'median'</span>,<span class="st">'max'</span>]}) <span class="co"># min, median, and max are recognized built-in functions</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="80">
+<div class="cell-output cell-output-display" data-execution_count="26">
 <div>
 
 
@@ -1599,7 +1599,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="3bb8926c" class="cell" data-execution_count="9">
+<div id="1df812c5" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> q10(x):</span>
@@ -1611,7 +1611,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                         index <span class="op">=</span> [<span class="st">'Year'</span>,<span class="st">'Division'</span>],</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                         aggfunc <span class="op">=</span> {<span class="st">'Seconds'</span> : [(<span class="st">'95th percentile'</span>,q05), (<span class="st">'90th percentile'</span>,q10),(<span class="st">'Best'</span>,<span class="st">'min'</span>)]})</span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>tr_pctl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="81">
+<div class="cell-output cell-output-display" data-execution_count="27">
 <div>
 
 
@@ -1822,9 +1822,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Note that with pivot tables, Pandas introduces what is called a multi-index, which is just a hierarchical index. In this example we have the division within the year, so to access a row of the above table, we need to give both the year and the division as a tuple:</p>
-<div id="0d50c73f" class="cell" data-execution_count="10">
+<div id="293ae30d" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tr_pctl.loc[(<span class="st">'2011'</span>,<span class="st">'M'</span>),] <span class="co"># access rows of this with a tuple</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="82">
+<div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>90th percentile    18184.0
 95th percentile    17283.4
 Best               15788.0
@@ -1832,11 +1832,11 @@ Name: (2011, M), dtype: float64</code></pre>
 </div>
 </div>
 <p>Let’s plot these quantiles over the years of the Table Rock 50k for each division.</p>
-<div id="c8f89f6e" class="cell" data-execution_count="11">
+<div id="18f11489" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tr_pctl_M <span class="op">=</span> tr_pctl.loc[(<span class="bu">slice</span>(<span class="va">None</span>),<span class="st">'M'</span>),] <span class="co"># keep all rows of the first index </span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>tr_pctl_F <span class="op">=</span> tr_pctl.loc[(<span class="bu">slice</span>(<span class="va">None</span>),<span class="st">'F'</span>),] <span class="co"># keep all rows of the first index </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="7b531dc9" class="cell" data-execution_count="12">
+<div id="dbaf21b2" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tr_pctl_M.plot()</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>tr_pctl_F.plot() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1855,10 +1855,10 @@ Name: (2011, M), dtype: float64</code></pre>
 </div>
 </div>
 <p>If we want to get rid of the multi-indices, we can do so using the <code>resent_index</code> method as below.</p>
-<div id="e3c050ce" class="cell" data-execution_count="13">
+<div id="1ab007c3" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tr_pctl_nomulti <span class="op">=</span> tr_pctl.reset_index(<span class="va">None</span>)   <span class="co"># the pivot_table creates multi-indexes that you can get rid of with .reset_index(None)</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>tr_pctl_nomulti</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="85">
+<div class="cell-output cell-output-display" data-execution_count="31">
 <div>
 
 
@@ -2105,12 +2105,12 @@ Name: (2011, M), dtype: float64</code></pre>
 </div>
 </div>
 <p>Just because, let’s convert the times in this table to durations represented as <em>hh:mm:ss</em>:</p>
-<div id="e62d23fc" class="cell" data-execution_count="14">
+<div id="b614fb8d" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tr_pctl_nomulti[<span class="st">'90%'</span>] <span class="op">=</span> tr_pctl_nomulti[<span class="st">'90th percentile'</span>].<span class="bu">map</span>(secs2time)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>tr_pctl_nomulti[<span class="st">'95%'</span>] <span class="op">=</span> tr_pctl_nomulti[<span class="st">'95th percentile'</span>].<span class="bu">map</span>(secs2time)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>tr_pctl_nomulti[<span class="st">'1st Place'</span>] <span class="op">=</span> tr_pctl_nomulti[<span class="st">'Best'</span>].<span class="bu">map</span>(secs2time)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>tr_pctl_nomulti.drop([<span class="st">'95th percentile'</span>,<span class="st">'90th percentile'</span>,<span class="st">'Best'</span>],axis <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="86">
+<div class="cell-output cell-output-display" data-execution_count="32">
 <div>
 
 
@@ -2362,11 +2362,11 @@ Name: (2011, M), dtype: float64</code></pre>
 <section id="long-to-wide" class="level3">
 <h3 class="anchored" data-anchor-id="long-to-wide">Long to wide</h3>
 <p>We can reshape a data set in “long” format to “wide” format with the <code>pivot</code> method for Pandas data frames. Here we make a data frame showing the finishing times of the first three finishers in the years 2011 to 2024.</p>
-<div id="14b01421" class="cell" data-execution_count="15">
+<div id="3a998992" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pod <span class="op">=</span> tr[<span class="st">'Place'</span>] <span class="op">&lt;=</span> <span class="dv">3</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>tr_pod <span class="op">=</span> tr[pod]</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>tr_pod.pivot(index <span class="op">=</span> <span class="st">'Place'</span>, values <span class="op">=</span> <span class="st">'Time'</span>, columns<span class="op">=</span><span class="st">'Year'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="87">
+<div class="cell-output cell-output-display" data-execution_count="33">
 <div>
 
 
@@ -2466,11 +2466,11 @@ Name: (2011, M), dtype: float64</code></pre>
 </div>
 </div>
 <p>Now let’s look at the top 3 places in each division in each year:</p>
-<div id="b2a1721a" class="cell" data-execution_count="16">
+<div id="cd0227e1" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dpod <span class="op">=</span> tr[<span class="st">'DP'</span>] <span class="op">&lt;=</span> <span class="dv">3</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>tr_dpod <span class="op">=</span> tr[dpod]</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>tr_dpod.pivot(index <span class="op">=</span> [<span class="st">'DP'</span>,<span class="st">'Division'</span>], values <span class="op">=</span> <span class="st">'Time'</span>, columns<span class="op">=</span><span class="st">'Year'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="88">
+<div class="cell-output cell-output-display" data-execution_count="34">
 <div>
 
 
@@ -2629,11 +2629,11 @@ Name: (2011, M), dtype: float64</code></pre>
 <section id="wide-to-long" class="level3">
 <h3 class="anchored" data-anchor-id="wide-to-long">Wide to long</h3>
 <p>The <code>wide_to_long</code> function can be used to convert a data set in “wide” format to “long” format. To illustrate how to do this, let’s convert our wide dataset showing the times of the top three finishers in each division in each year back into long format. In order to do that, we will need to “flatten out” the multi-indices created in the pivot operation.</p>
-<div id="28bb3ffa" class="cell" data-execution_count="17">
+<div id="577744d1" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>wide0 <span class="op">=</span> pd.pivot(tr_dpod,index <span class="op">=</span> [<span class="st">'DP'</span>,<span class="st">'Division'</span>], values <span class="op">=</span> <span class="st">'Time'</span>, columns<span class="op">=</span><span class="st">'Year'</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>wide <span class="op">=</span> wide0.rename_axis(columns<span class="op">=</span><span class="va">None</span>).reset_index() <span class="co"># remove the multi-indices</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="89">
+<div class="cell-output cell-output-display" data-execution_count="35">
 <div>
 
 
@@ -2781,10 +2781,10 @@ Name: (2011, M), dtype: float64</code></pre>
 </div>
 </div>
 <p>Now we will be able to access the column names the way we will need to in order to use the <code>wide_to_long</code> function.</p>
-<div id="e392a761" class="cell" data-execution_count="18">
+<div id="7aec7452" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">long</span> <span class="op">=</span> pd.wide_to_long(wide,stubnames <span class="op">=</span> <span class="st">''</span>, sep <span class="op">=</span> <span class="st">""</span>, i <span class="op">=</span> [<span class="st">'DP'</span>,<span class="st">'Division'</span>], j <span class="op">=</span> <span class="st">'Year'</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">long</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="90">
+<div class="cell-output cell-output-display" data-execution_count="36">
 <div>
 
 
