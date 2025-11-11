@@ -1950,50 +1950,94 @@ div.csl-indent {
 <p>This info goes on the FROM line like this: FROM (left table) (type of join) (right table) ON (conditions for matching records).</p>
 <section id="inner-join" class="level3">
 <h3 class="anchored" data-anchor-id="inner-join">Inner join</h3>
-<p>Suppose we want to pull into the last table the full names of the carriers, which must be retrieved from the carriers table. We can use an inner join to do this. Note that we must now refer to each field relative to its table as “table.field”:</p>
+<p>As a first example, let’s make a table of flights which has additional information about the airports not found in the flights table—namely the full name of the airport and its altitude, which we must pull from the airports table. We return only flights from airports at altitudes above 1 mile. Note that we must now refer to each field relative to its table as “table.field”:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> carriers.name <span class="kw">AS</span> carrier, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> departures</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">JOIN</span> carriers <span class="kw">ON</span> flights.carrier <span class="op">=</span> carriers.carrier</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> flights.<span class="dt">year</span> <span class="op">=</span> <span class="dv">2013</span> <span class="kw">AND</span> flights.origin <span class="kw">IN</span> (<span class="st">'CAE'</span>,<span class="st">'GSP'</span>,<span class="st">'CHS'</span>)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> flights.carrier</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="kw">HAVING</span> departures <span class="op">&gt;</span> <span class="dv">500</span> <span class="co">-- HAVING uses new variables you have defined</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> flights.origin, airports.name, flights.dest, flights.carrier, airports.alt <span class="co">-- use table aliases here which are defined in FROM</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">JOIN</span> airports <span class="kw">ON</span> flights.origin <span class="op">=</span> airports.faa</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> airports.alt <span class="op">&gt;</span> <span class="dv">5280</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
-<caption>7 records</caption>
+<caption>Displaying records 1 - 10</caption>
 <thead>
 <tr class="header">
+<th style="text-align: left;">origin</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">dest</th>
 <th style="text-align: left;">carrier</th>
-<th style="text-align: right;">departures</th>
+<th style="text-align: right;">alt</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Endeavor Air Inc.</td>
-<td style="text-align: right;">2947</td>
+<td style="text-align: left;">DEN</td>
+<td style="text-align: left;">Denver Intl</td>
+<td style="text-align: left;">JFK</td>
+<td style="text-align: left;">B6</td>
+<td style="text-align: right;">5431</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">JetBlue Airways</td>
-<td style="text-align: right;">959</td>
+<td style="text-align: left;">DEN</td>
+<td style="text-align: left;">Denver Intl</td>
+<td style="text-align: left;">CLT</td>
+<td style="text-align: left;">US</td>
+<td style="text-align: right;">5431</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Delta Air Lines Inc.</td>
-<td style="text-align: right;">5552</td>
+<td style="text-align: left;">DEN</td>
+<td style="text-align: left;">Denver Intl</td>
+<td style="text-align: left;">IAH</td>
+<td style="text-align: left;">UA</td>
+<td style="text-align: right;">5431</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">ExpressJet Airlines Inc.</td>
-<td style="text-align: right;">13105</td>
+<td style="text-align: left;">DRO</td>
+<td style="text-align: left;">Durango La Plata Co</td>
+<td style="text-align: left;">DEN</td>
+<td style="text-align: left;">EV</td>
+<td style="text-align: right;">6685</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Envoy Air</td>
-<td style="text-align: right;">3469</td>
+<td style="text-align: left;">COS</td>
+<td style="text-align: left;">City Of Colorado Springs Muni</td>
+<td style="text-align: left;">ORD</td>
+<td style="text-align: left;">OO</td>
+<td style="text-align: right;">6187</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Southwest Airlines Co.</td>
-<td style="text-align: right;">4612</td>
+<td style="text-align: left;">DEN</td>
+<td style="text-align: left;">Denver Intl</td>
+<td style="text-align: left;">PHX</td>
+<td style="text-align: left;">US</td>
+<td style="text-align: right;">5431</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Mesa Airlines Inc.</td>
-<td style="text-align: right;">2345</td>
+<td style="text-align: left;">CPR</td>
+<td style="text-align: left;">Natrona Co Intl</td>
+<td style="text-align: left;">SLC</td>
+<td style="text-align: left;">OO</td>
+<td style="text-align: right;">5347</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DEN</td>
+<td style="text-align: left;">Denver Intl</td>
+<td style="text-align: left;">IAD</td>
+<td style="text-align: left;">UA</td>
+<td style="text-align: right;">5431</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DEN</td>
+<td style="text-align: left;">Denver Intl</td>
+<td style="text-align: left;">PHX</td>
+<td style="text-align: left;">WN</td>
+<td style="text-align: right;">5431</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ABQ</td>
+<td style="text-align: left;">Albuquerque International Sunport</td>
+<td style="text-align: left;">SLC</td>
+<td style="text-align: left;">OO</td>
+<td style="text-align: right;">5355</td>
 </tr>
 </tbody>
 </table>
@@ -2001,229 +2045,10 @@ div.csl-indent {
 </div>
 <p>In the FROM line we can designate aliases for the tables in order to make our code more concise. Here is the same query as above:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> c.name <span class="kw">AS</span> carrier, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> departures</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> f </span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> carriers <span class="kw">AS</span> c <span class="kw">ON</span> f.carrier <span class="op">=</span> c.carrier</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> f.<span class="dt">year</span> <span class="op">=</span> <span class="dv">2013</span> <span class="kw">AND</span> f.origin <span class="kw">IN</span> (<span class="st">'CAE'</span>,<span class="st">'GSP'</span>,<span class="st">'CHS'</span>)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> f.carrier</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="kw">HAVING</span> departures <span class="op">&gt;</span> <span class="dv">500</span> <span class="co">-- HAVING uses new variables you have defined</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> departures <span class="kw">DESC</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>7 records</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">carrier</th>
-<th style="text-align: right;">departures</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">ExpressJet Airlines Inc.</td>
-<td style="text-align: right;">13105</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Delta Air Lines Inc.</td>
-<td style="text-align: right;">5552</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Southwest Airlines Co.</td>
-<td style="text-align: right;">4612</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Envoy Air</td>
-<td style="text-align: right;">3469</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Endeavor Air Inc.</td>
-<td style="text-align: right;">2947</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Mesa Airlines Inc.</td>
-<td style="text-align: right;">2345</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">JetBlue Airways</td>
-<td style="text-align: right;">959</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Returning to the table showing the average departure delay time for each carrier leaving from CAE, we now merge with this the carriers table in order to display the full name of each carrier. We now group the results by the year as well as by the carrier:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> f.origin, f.<span class="dt">year</span>, c.name, <span class="fu">AVG</span>(f.dep_delay) <span class="kw">AS</span> avg_delay</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> f</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> carriers <span class="kw">AS</span> c <span class="kw">ON</span> f.carrier <span class="op">=</span> c.carrier</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> f.origin <span class="op">=</span> <span class="st">'CAE'</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> f.carrier, f.<span class="dt">year</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Displaying records 1 - 10</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">origin</th>
-<th style="text-align: right;">year</th>
-<th style="text-align: left;">name</th>
-<th style="text-align: right;">avg_delay</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">CAE</td>
-<td style="text-align: right;">2013</td>
-<td style="text-align: left;">Endeavor Air Inc.</td>
-<td style="text-align: right;">14.5786</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">CAE</td>
-<td style="text-align: right;">2013</td>
-<td style="text-align: left;">Delta Air Lines Inc.</td>
-<td style="text-align: right;">5.8581</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">CAE</td>
-<td style="text-align: right;">2014</td>
-<td style="text-align: left;">Delta Air Lines Inc.</td>
-<td style="text-align: right;">5.1412</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">CAE</td>
-<td style="text-align: right;">2015</td>
-<td style="text-align: left;">Delta Air Lines Inc.</td>
-<td style="text-align: right;">4.0054</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">CAE</td>
-<td style="text-align: right;">2013</td>
-<td style="text-align: left;">ExpressJet Airlines Inc.</td>
-<td style="text-align: right;">14.1871</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">CAE</td>
-<td style="text-align: right;">2014</td>
-<td style="text-align: left;">ExpressJet Airlines Inc.</td>
-<td style="text-align: right;">13.6217</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">CAE</td>
-<td style="text-align: right;">2015</td>
-<td style="text-align: left;">ExpressJet Airlines Inc.</td>
-<td style="text-align: right;">11.1207</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">CAE</td>
-<td style="text-align: right;">2013</td>
-<td style="text-align: left;">Envoy Air</td>
-<td style="text-align: right;">7.4855</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">CAE</td>
-<td style="text-align: right;">2014</td>
-<td style="text-align: left;">Envoy Air</td>
-<td style="text-align: right;">10.3580</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">CAE</td>
-<td style="text-align: right;">2015</td>
-<td style="text-align: left;">Envoy Air</td>
-<td style="text-align: right;">14.7472</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Here we obtain a summary of the kinds of planes departing CAE by merging the flights table with the planes table:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> p.model, p.manufacturer, p.seats, <span class="fu">COUNT</span>(<span class="op">*</span>) departures</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> f</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> planes <span class="kw">AS</span> p <span class="kw">ON</span> f.tailnum <span class="op">=</span> p.tailnum</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> f.origin <span class="op">=</span> <span class="st">'CAE'</span> <span class="kw">AND</span> f.<span class="dt">year</span> <span class="op">=</span> <span class="st">'2013'</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> p.model</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> departures <span class="kw">DESC</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Displaying records 1 - 10</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">model</th>
-<th style="text-align: left;">manufacturer</th>
-<th style="text-align: right;">seats</th>
-<th style="text-align: right;">departures</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">CL-600-2B19</td>
-<td style="text-align: left;">CANADAIR</td>
-<td style="text-align: right;">55</td>
-<td style="text-align: right;">2455</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">EMB-145LR</td>
-<td style="text-align: left;">EMBRAER</td>
-<td style="text-align: right;">55</td>
-<td style="text-align: right;">537</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">MD-88</td>
-<td style="text-align: left;">MCDONNELL DOUGLAS AIRCRAFT CO</td>
-<td style="text-align: right;">142</td>
-<td style="text-align: right;">325</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">DC-9-51</td>
-<td style="text-align: left;">MCDONNELL DOUGLAS</td>
-<td style="text-align: right;">139</td>
-<td style="text-align: right;">206</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">EMB-145XR</td>
-<td style="text-align: left;">EMBRAER</td>
-<td style="text-align: right;">55</td>
-<td style="text-align: right;">156</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">CL-600-2C10</td>
-<td style="text-align: left;">BOMBARDIER INC</td>
-<td style="text-align: right;">80</td>
-<td style="text-align: right;">118</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">CL-600-2D24</td>
-<td style="text-align: left;">BOMBARDIER INC</td>
-<td style="text-align: right;">95</td>
-<td style="text-align: right;">51</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">A319-114</td>
-<td style="text-align: left;">AIRBUS</td>
-<td style="text-align: right;">145</td>
-<td style="text-align: right;">44</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">A320-211</td>
-<td style="text-align: left;">AIRBUS INDUSTRIE</td>
-<td style="text-align: right;">182</td>
-<td style="text-align: right;">17</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">A320-212</td>
-<td style="text-align: left;">AIRBUS</td>
-<td style="text-align: right;">182</td>
-<td style="text-align: right;">11</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>As another example, we next make a table of flights which has additional information about the airports not found in the flights table—namely the full name of the airport and its altitude, which we must pull from the airports table. We return only flights from airports at altitudes above 1 mile:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> f.origin, a.name, f.dest, f.carrier, a.alt <span class="co">-- use table aliases here which are defined in FROM</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> f <span class="kw">JOIN</span> airports <span class="kw">AS</span> a <span class="kw">ON</span> f.origin <span class="op">=</span> a.faa</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> a.alt <span class="op">&gt;</span> <span class="dv">5280</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> f.origin, a.name, f.dest, f.carrier, a.alt <span class="co">-- use table aliases here which are defined in FROM</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> f <span class="kw">JOIN</span> airports <span class="kw">AS</span> a <span class="kw">ON</span> f.origin <span class="op">=</span> a.faa</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> a.alt <span class="op">&gt;</span> <span class="dv">5280</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -2313,16 +2138,16 @@ div.csl-indent {
 </div>
 <p>We can merge more than two data sets by adding more JOIN commands. Below we list flights departing in January of 2013 from mile-high airports in planes with over 100 seats, along with the full names of the carriers of these flights:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> a.name <span class="kw">AS</span> origin, f.dest,</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>STR_TO_DATE(<span class="fu">CONCAT</span>(f.<span class="dt">year</span>,<span class="st">'/'</span>, f.<span class="dt">month</span>,<span class="st">'/'</span>, f.<span class="dt">day</span>),<span class="ot">"%Y/%m/%d"</span>) <span class="kw">AS</span> <span class="dt">date</span>,</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">CONCAT</span>(<span class="fu">LPAD</span>(f.<span class="kw">hour</span>,<span class="dv">2</span>,<span class="st">'0'</span>),<span class="st">':'</span>,<span class="fu">LPAD</span>(f.<span class="kw">minute</span>,<span class="dv">2</span>,<span class="st">'0'</span>)) <span class="kw">AS</span> sched_dep_time, <span class="co">-- format scheduled departure time as HH:MM</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>c.name <span class="kw">AS</span> carrier, p.model, p.seats</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> f</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> airports <span class="kw">AS</span> a <span class="kw">ON</span> f.origin <span class="op">=</span> a.faa</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> carriers <span class="kw">AS</span> c <span class="kw">ON</span> f.carrier <span class="op">=</span> c.carrier</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> planes <span class="kw">AS</span> p <span class="kw">ON</span> f.tailnum <span class="op">=</span> p.tailnum</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> a.alt <span class="op">&gt;</span> <span class="dv">5280</span> <span class="kw">AND</span> f.<span class="dt">year</span> <span class="op">=</span> <span class="st">'2013'</span> <span class="kw">AND</span> f.<span class="dt">month</span> <span class="op">=</span> <span class="st">'1'</span> <span class="kw">AND</span> p.seats <span class="op">&gt;</span> <span class="dv">100</span></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> a.name <span class="kw">AS</span> origin, f.dest,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>STR_TO_DATE(<span class="fu">CONCAT</span>(f.<span class="dt">year</span>,<span class="st">'/'</span>, f.<span class="dt">month</span>,<span class="st">'/'</span>, f.<span class="dt">day</span>),<span class="ot">"%Y/%m/%d"</span>) <span class="kw">AS</span> <span class="dt">date</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">CONCAT</span>(<span class="fu">LPAD</span>(f.<span class="kw">hour</span>,<span class="dv">2</span>,<span class="st">'0'</span>),<span class="st">':'</span>,<span class="fu">LPAD</span>(f.<span class="kw">minute</span>,<span class="dv">2</span>,<span class="st">'0'</span>)) <span class="kw">AS</span> sched_dep_time, <span class="co">-- format scheduled departure time as HH:MM</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>c.name <span class="kw">AS</span> carrier, p.model, p.seats</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> f</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> airports <span class="kw">AS</span> a <span class="kw">ON</span> f.origin <span class="op">=</span> a.faa</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> carriers <span class="kw">AS</span> c <span class="kw">ON</span> f.carrier <span class="op">=</span> c.carrier</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> planes <span class="kw">AS</span> p <span class="kw">ON</span> f.tailnum <span class="op">=</span> p.tailnum</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> a.alt <span class="op">&gt;</span> <span class="dv">5280</span> <span class="kw">AND</span> f.<span class="dt">year</span> <span class="op">=</span> <span class="st">'2013'</span> <span class="kw">AND</span> f.<span class="dt">month</span> <span class="op">=</span> <span class="st">'1'</span> <span class="kw">AND</span> p.seats <span class="op">&gt;</span> <span class="dv">100</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Displaying records 1 - 10</caption>
@@ -2436,6 +2261,225 @@ div.csl-indent {
 <td style="text-align: left;">United Air Lines Inc.</td>
 <td style="text-align: left;">737-824</td>
 <td style="text-align: right;">149</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Let’s return to our query in which we select carriers with over 500 flights departing 2013 from any of the airports CAE, GSP, and CHS. Suppose we want to pull into this table the full names of the carriers, which must be retrieved from the carriers table. We can use an inner join to do this.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> c.name <span class="kw">AS</span> carrier, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> departures</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> f </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> carriers <span class="kw">AS</span> c <span class="kw">ON</span> f.carrier <span class="op">=</span> c.carrier</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> f.<span class="dt">year</span> <span class="op">=</span> <span class="dv">2013</span> <span class="kw">AND</span> f.origin <span class="kw">IN</span> (<span class="st">'CAE'</span>,<span class="st">'GSP'</span>,<span class="st">'CHS'</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> f.carrier</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="kw">HAVING</span> departures <span class="op">&gt;</span> <span class="dv">500</span> <span class="co">-- HAVING uses new variables you have defined</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> departures <span class="kw">DESC</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>7 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">carrier</th>
+<th style="text-align: right;">departures</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ExpressJet Airlines Inc.</td>
+<td style="text-align: right;">13105</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Delta Air Lines Inc.</td>
+<td style="text-align: right;">5552</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Southwest Airlines Co.</td>
+<td style="text-align: right;">4612</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Envoy Air</td>
+<td style="text-align: right;">3469</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Endeavor Air Inc.</td>
+<td style="text-align: right;">2947</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mesa Airlines Inc.</td>
+<td style="text-align: right;">2345</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">JetBlue Airways</td>
+<td style="text-align: right;">959</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Returning to the table showing the average departure delay time for each carrier leaving from CAE, we now merge with this the carriers table in order to display the full name of each carrier. We now group the results by the year as well as by the carrier:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> f.origin, f.<span class="dt">year</span>, c.name, <span class="fu">AVG</span>(f.dep_delay) <span class="kw">AS</span> avg_delay</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> f</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> carriers <span class="kw">AS</span> c <span class="kw">ON</span> f.carrier <span class="op">=</span> c.carrier</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> f.origin <span class="op">=</span> <span class="st">'CAE'</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> f.carrier, f.<span class="dt">year</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Displaying records 1 - 10</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">origin</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: right;">avg_delay</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">CAE</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: left;">Endeavor Air Inc.</td>
+<td style="text-align: right;">14.5786</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CAE</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: left;">Delta Air Lines Inc.</td>
+<td style="text-align: right;">5.8581</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CAE</td>
+<td style="text-align: right;">2014</td>
+<td style="text-align: left;">Delta Air Lines Inc.</td>
+<td style="text-align: right;">5.1412</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CAE</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">Delta Air Lines Inc.</td>
+<td style="text-align: right;">4.0054</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CAE</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: left;">ExpressJet Airlines Inc.</td>
+<td style="text-align: right;">14.1871</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CAE</td>
+<td style="text-align: right;">2014</td>
+<td style="text-align: left;">ExpressJet Airlines Inc.</td>
+<td style="text-align: right;">13.6217</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CAE</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">ExpressJet Airlines Inc.</td>
+<td style="text-align: right;">11.1207</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CAE</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: left;">Envoy Air</td>
+<td style="text-align: right;">7.4855</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CAE</td>
+<td style="text-align: right;">2014</td>
+<td style="text-align: left;">Envoy Air</td>
+<td style="text-align: right;">10.3580</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CAE</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">Envoy Air</td>
+<td style="text-align: right;">14.7472</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Here we obtain a summary of the kinds of planes departing CAE by merging the flights table with the planes table:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> p.model, p.manufacturer, p.seats, <span class="fu">COUNT</span>(<span class="op">*</span>) departures</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> f</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> planes <span class="kw">AS</span> p <span class="kw">ON</span> f.tailnum <span class="op">=</span> p.tailnum</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> f.origin <span class="op">=</span> <span class="st">'CAE'</span> <span class="kw">AND</span> f.<span class="dt">year</span> <span class="op">=</span> <span class="st">'2013'</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> p.model</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> departures <span class="kw">DESC</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Displaying records 1 - 10</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">model</th>
+<th style="text-align: left;">manufacturer</th>
+<th style="text-align: right;">seats</th>
+<th style="text-align: right;">departures</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">CL-600-2B19</td>
+<td style="text-align: left;">CANADAIR</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">2455</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">EMB-145LR</td>
+<td style="text-align: left;">EMBRAER</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">537</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MD-88</td>
+<td style="text-align: left;">MCDONNELL DOUGLAS AIRCRAFT CO</td>
+<td style="text-align: right;">142</td>
+<td style="text-align: right;">325</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DC-9-51</td>
+<td style="text-align: left;">MCDONNELL DOUGLAS</td>
+<td style="text-align: right;">139</td>
+<td style="text-align: right;">206</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">EMB-145XR</td>
+<td style="text-align: left;">EMBRAER</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">156</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CL-600-2C10</td>
+<td style="text-align: left;">BOMBARDIER INC</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">118</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CL-600-2D24</td>
+<td style="text-align: left;">BOMBARDIER INC</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">51</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A319-114</td>
+<td style="text-align: left;">AIRBUS</td>
+<td style="text-align: right;">145</td>
+<td style="text-align: right;">44</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A320-211</td>
+<td style="text-align: left;">AIRBUS INDUSTRIE</td>
+<td style="text-align: right;">182</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A320-212</td>
+<td style="text-align: left;">AIRBUS</td>
+<td style="text-align: right;">182</td>
+<td style="text-align: right;">11</td>
 </tr>
 </tbody>
 </table>
