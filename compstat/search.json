@@ -1008,7 +1008,7 @@
     "href": "SQL_hw.html#on-time-departures-by-destination",
     "title": "Make SQL queries and use data",
     "section": "2. On-time departures by destination",
-    "text": "2. On-time departures by destination\nGet the percentage of flights which departed on time for these ten destinations and report the results in a table. Your table should look like the table below:\n\n\n\nPercentage of flights departing on time to top ten destinations from GRR\n\n\nDestination\nNumber of flights\nPercent departing on time\n\n\n\n\nDTW\n-83.4\n42.2\n\n\nMSP\n-93.2\n44.9\n\n\nORD\n-87.9\n42.0\n\n\nDFW\n-97.0\n32.9\n\n\nATL\n-84.4\n33.6\n\n\nBWI\n-76.7\n39.2\n\n\nEWR\n-74.2\n40.7\n\n\nCVG\n-84.7\n39.0\n\n\nCLE\n-81.8\n41.4\n\n\nDEN\n-104.7\n39.9",
+    "text": "2. On-time departures by destination\nGet the percentage of flights which departed on time for these ten destinations and report the results in a table. Your table should look like the table below:\n\n\n\nPercentage of flights departing on time to top ten destinations from GRR\n\n\nDestination\nNumber of flights\nPercent departing on time\n\n\n\n\nDTW\n2188\n75.9\n\n\nMSP\n1606\n73.2\n\n\nORD\n1539\n63.5\n\n\nDFW\n1339\n45.7\n\n\nATL\n1055\n68.2\n\n\nBWI\n797\n62.7\n\n\nEWR\n749\n43.4\n\n\nCVG\n561\n89.3\n\n\nCLE\n530\n63.4\n\n\nDEN\n516\n53.9",
     "crumbs": [
       "Homework",
       "Make SQL queries and use data"
@@ -1019,7 +1019,7 @@
     "href": "SQL_hw.html#bar-plot-of-plane-modelsmanufacturers",
     "title": "Make SQL queries and use data",
     "section": "3. Bar plot of plane models/manufacturers",
-    "text": "3. Bar plot of plane models/manufacturers\nMake a plot like the one below summarizing, for your airport, the plane models most commonly departing (you may make an “other” category, as below, for models having small numbers of departures so that the bar plot does not become too huge). Indicate also, as below, the manufacturer of each plane model. Run the appropriate SQL queries to pull the information from the flights table and the planes table.",
+    "text": "3. Bar plot of plane models/manufacturers\nMake a plot like the one below summarizing, for your airport, the plane models most commonly departing (you may make an “other” category, as below, for models having small numbers of departures so that the bar plot does not become too huge. If your bar plot is still too big, you can just make a summary of the top ten plane models). Indicate also, as below, the manufacturer of each plane model. Run the appropriate SQL queries to pull the information from the flights table and the planes table.",
     "crumbs": [
       "Homework",
       "Make SQL queries and use data"
