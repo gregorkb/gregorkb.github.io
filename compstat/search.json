@@ -1008,7 +1008,7 @@
     "href": "SQL_hw.html#on-time-departures-by-destination",
     "title": "Make SQL queries and use data",
     "section": "2. On-time departures by destination",
-    "text": "2. On-time departures by destination\nGet the percentage of flights which departed on time for these ten destinations and report the results in a table. Your table should look like the table below:\n\n\n\nPercentage of flights departing on time to top ten destinations from GRR\n\n\nDestination\nNumber of flights\nPercent departing on time\n\n\n\n\nDTW\n2188\n75.9\n\n\nMSP\n1606\n73.2\n\n\nORD\n1539\n63.5\n\n\nDFW\n1339\n45.7\n\n\nATL\n1055\n68.2\n\n\nBWI\n797\n62.7\n\n\nEWR\n749\n43.4\n\n\nCVG\n561\n89.3\n\n\nCLE\n530\n63.4\n\n\nDEN\n516\n53.9",
+    "text": "2. On-time departures by destination\nGet the percentage of flights which departed on time for these ten destinations and report the results in a table. Your table should look like the table below:\n\n\n\nPercentage of flights departing on time to top ten destinations from GRR\n\n\nDestination\nNumber of flights\nPercent departing on time\n\n\n\n\nDTW\n2188\n79.8\n\n\nMSP\n1606\n76.7\n\n\nORD\n1539\n68.7\n\n\nDFW\n1339\n54.4\n\n\nATL\n1055\n72.4\n\n\nBWI\n797\n69.3\n\n\nEWR\n749\n52.1\n\n\nCVG\n561\n90.9\n\n\nCLE\n530\n68.1\n\n\nDEN\n516\n60.9",
     "crumbs": [
       "Homework",
       "Make SQL queries and use data"
