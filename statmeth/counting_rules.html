@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Karl Gregory">
+
+<title>3&nbsp; Counting rules – Statistical Methods</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./normal_distribution.html" rel="next">
+<link href="./prob_basics.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean",
+  "openSidebar": false
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./counting_rules.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Counting rules</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Statistical Methods</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./set_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics of sets</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prob_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics of probability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./counting_rules.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Counting rules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./normal_distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Normal distribution</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Part II</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./power_ttest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistical power</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RCBD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Randomized complete block design</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RCBsplitplotD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Randomized complete block split plot design</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Part III</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glmintro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Generalized linear models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./logreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./counting_rules.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Counting rules</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-counting_rules" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Counting rules</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Karl Gregory </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
+</div>
+<p>In <a href="set_basics.html" class="quarto-xref"><span>Chapter 1</span></a> we considered several examples of statistical experiments. Some of these had sample spaces with a finite number of outcomes, while others had sample spaces with an infinite number of outcomes. If a sample space has a finite number of outcomes, we will call it a <em>finite</em> sample space.</p>
+<p>For any set <span class="math inline">\(A\)</span>, denote by <span class="math inline">\(|A|\)</span> the <em>cardinality</em> of a set, which is the number of elements it contains. Thus a sample space <span class="math inline">\(S\)</span> is finite if <span class="math inline">\(|S| &lt; \infty\)</span>.</p>
+<p>The following result helps us to compute probabilities of events in experiments in which every possible outcome in a finite sample space is equally likely.</p>
+<div id="prp-countsamplepoints" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 3.1 (Computing probabilities when all outcomes are equally likely)</strong></span> If all outcomes in a finite sample space <span class="math inline">\(S\)</span> are equally likely, then for any event <span class="math inline">\(A \subset S\)</span>, we have <span class="math display">\[
+P(A) = \frac{|A|}{|S|}.
+\]</span></p>
+</div>
+<p>The above follows from the fact that, if each outcome in <span class="math inline">\(S\)</span> is equally likely, each outcome must have probability <span class="math inline">\(1/|S|\)</span>. Since individual outcomes are mutually exclusive, the probability of a set of outcomes <span class="math inline">\(A\)</span> is the sum of the probabilities of the individual outcomes belonging to <span class="math inline">\(A\)</span>, leading to <span class="math inline">\(P(A) = |A| / |S|\)</span>.</p>
+<div id="exm-sumtwodicerolls" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.1 (Sum of rolls of two dice)</strong></span> Consider rolling two dice and let <span class="math inline">\(A\)</span> be the event that the sum of the rolls is <span class="math inline">\(8\)</span>. Referring to <a href="set_basics.html#exm-twodice" class="quarto-xref">Example&nbsp;<span>1.5</span></a> we may write <span class="math display">\[
+A = \{(6,2),(5,3),(4,4),(3,5),(2,6) \},
+\]</span> by which we can see that there are <span class="math inline">\(5\)</span> ways to roll two dice such that the sum is <span class="math inline">\(8\)</span>. There are <span class="math inline">\(|S| = 36\)</span> possible outcomes in the sample space, each occurring with equal probability. Thus we have <span class="math inline">\(P(A) = 5/36\)</span>.</p>
+</div>
+<p>For many experiments it is impractical to write down all the possible outcomes in the sample space <span class="math inline">\(S\)</span> or in an event of interest <span class="math inline">\(A\)</span>. For such cases we can use some rules to help us count numbers of outcomes in an event. All the rules follow from this one fundamental rule:</p>
+<div id="prp-fundamentalcounting" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 3.2 (Fundamental theorem of counting)</strong></span> If a job consists of <span class="math inline">\(K\)</span> tasks such that the tasks may be completed in <span class="math inline">\(n_1,\dots,n_K\)</span> ways, respectively, then there are <span class="math display">\[
+\prod_{k=1}^K n_k = n_1 \times n_2 \times \dots \times n_K
+\]</span> ways to do the job.</p>
+</div>
+<div id="exm-avatar" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.11 (Video game avatars)</strong></span> You can customize your video game avatar by selecting from <span class="math inline">\(6\)</span> choices of pants, <span class="math inline">\(4\)</span> choices of shirt, <span class="math inline">\(3\)</span> choices of backpack, <span class="math inline">\(4\)</span> choices of skin tone, and <span class="math inline">\(4\)</span> choices of hairstyle, and by choosing between sunglasses and no sunglasses. What is the number of possible avatars? <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div id="exm-comblock" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.2 (Combination lock)</strong></span> A combination lock opens when four wheels engraved with the digits 0–9 are turned to display a certain sequence of four numbers. How many sequences of four-digit numbers can the lock display?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+</div>
+<p>The next rule is for a <em>permutation</em>:</p>
+<div id="prp-permutation" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 3.3 (Permutation)</strong></span> The number of ways to draw <span class="math inline">\(r\)</span> elements from <span class="math inline">\(N\)</span> elements without replacement and arrange them in some order is <span class="math display">\[
+N(N-1) \cdots  (N - r + 1) = \frac{N!}{(N-r)!}.
+\]</span></p>
+</div>
+<p>To understand the above rule, imagine a bag marbles, in which each marble is unique, and suppose you are going to draw marbles from the bag one at a time, placing the drawn marbles in a row. The phrase “without replacement” means that once you draw a marble, you will not put it back in the bag before drawing the next one. By placing the drawn marbles in a row, we keep track of the order in which they were drawn from the bag.</p>
+<div id="exm-javelin" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.3 (Javelin throwers)</strong></span> Seventeen javelin throwers will compete for gold, silver, and bronze medals such that the thrower throwing the furthest, second furthest, and third furthest will be awarded the gold, silver, and bronze medal, respectively. In how many ways can the medals be awarded?<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+</div>
+<div id="exm-bleacherseating" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.4 (Bleacher seating)</strong></span> You and four friends will next to each other in a single row of the bleachers. In how many ways can you arrange yourselves? <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+</div>
+<p>The next rule is for a <em>partition</em>. It is presented in the language of probabilists of old, who spent lots of time putting balls into urns.</p>
+<div id="prp-partition" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 3.4 (Partition)</strong></span> The number of ways to place <span class="math inline">\(N\)</span> balls into <span class="math inline">\(K\)</span> urns such that the <span class="math inline">\(K\)</span> urns receive <span class="math inline">\(n_1,\dots,n_K\)</span> balls, where <span class="math inline">\(N = n_1 + \dots + n_K\)</span>, is <span class="math display">\[
+\frac{N!}{n_1!n_2!\cdots n_K!}.
+\]</span></p>
+</div>
+<div id="exm-teams" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.5 (Making teams)</strong></span> Suppose you have nineteen people and you want to split them into two teams of six and one team of seven. In how many ways can you do this?<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+</div>
+<p>Next rule is for a <em>combination</em>, which is just a partition with only two “urns”.</p>
+<div id="prp-combination" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 3.5 (Combination)</strong></span> The number of ways to draw <span class="math inline">\(r\)</span> elements from <span class="math inline">\(N\)</span> without replacement and without regard to their order is <span class="math display">\[
+\left. N \choose r \right. = \frac{N!}{r!(N-r)!}.
+\]</span></p>
+<p>To understand the combination, imagine again a bag of marbles, in which each marble is unique. Suppose you draw marbles one at a time from the bag and place the drawn marbles in a new bag. In the end you have two bags of marbles, and you are interested in which marbles were drawn and placed in the new bag—but you are not interested in the order in which the marbles were drawn (you have not placed the drawn marbles in a row, as in the case of a permutation).</p>
+<div id="exm-visit" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.6 (Weekend visits)</strong></span> Your parents insist you come home on three weekends during the semester, of which there are sixteen weekends to choose from. In how many ways can you choose the three weekends during which you will visit your parents?<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+</div>
+<div id="exm-pokerhand" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.7 (Poker hand)</strong></span> Suppose you are dealt a five-card hand from a standard fifty-two-card deck. How many five-card hands are possible? <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+</div>
+<p>Having learned some counting rules, we now consider applying them to compute some probabilities of the form <span class="math inline">\(P(A) = |A| / |S|\)</span> given in <a href="#prp-countsamplepoints" class="quarto-xref">Proposition&nbsp;<span>3.1</span></a>.</p>
+<div id="exm-queenspadespoker" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.10 (Queen of Spades in 5-card hand)</strong></span> Suppose you are dealt a five-card hand from a standard fifty-two-card deck. What is the probability your hand has the Queen of Spades? To answer this let <span class="math inline">\(A\)</span> be the event that your hand has the queen of spades. Then the probability will be given by <span class="math inline">\(P(A) = |A| / |S|\)</span>, where the number of possible five-card hands <span class="math inline">\(|S|\)</span> was found in <a href="#exm-pokerhand" class="quarto-xref">Example&nbsp;<span>3.7</span></a>. To find <span class="math inline">\(|A|\)</span>, we must think a little. All counting problems can be broken down into a sequence of tasks so that the fundamental theorem of counting can be used. To count the number of five-card hands with the Queen of Spades, consider the tasks needed in the construction of such a hand. The first task is to put into the hand the Queen of Spades; this can be done in only one way, as there is only one Queen of Spades. Then next task is to choose the other four cards which will make up the hand. This entails selecting four cards from the fifty-one cards remaining in the deck after the removal of the Queen of Spades. This can be done in <span class="math inline">\({51 \choose 4}\)</span> ways. So we have <span class="math inline">\(|A| = 1 \times {51 \choose 4}\)</span> from the fundamental theorem of counting. Putting this together with <span class="math inline">\(|S| = {52 \choose 5}\)</span>, we obtain <span class="math display">\[
+P(A) = \frac{{51 \choose 4}}{52 \choose 5} = \frac{5}{52} = 0.0961538.
+\]</span></p>
+<div id="exm-flushpoker" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.8 (All cards of one suit in 5-card hand)</strong></span> Suppose you are dealt a five-card hand from a standard fifty-two-card deck. What is the probability you are dealt cards of only one suit? Let <span class="math inline">\(A\)</span> be the number of five-card hands with cards of only one suit. To find <span class="math inline">\(|A|\)</span>, we break down the construction of a single-suited hand into tasks. The first task is to choose a suit: there are four choices. After choosing a suit, we must draw five cards from that suit. There are thirteen cards of each suit, so for each suit there are <span class="math inline">\({13 \choose 5}\)</span> five-card hands having all cards of that suit. Putting the tasks in sequence, the fundamental theorem of counting gives <span class="math inline">\(|A| = 4\times {13 \choose 5}\)</span>. Putting this together with <span class="math inline">\(|S| = {52 \choose 5 }\)</span> gives <span class="math display">\[
+P(A) = \frac{4\times {13 \choose 5}}{52 \choose 5 } = 0.0019808.
+\]</span></p>
+</div>
+<div id="exm-acepoker" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.9 (At least one ace)</strong></span> Suppose you are dealt a five-card hand from a standard fifty-two-card deck. What is the probability you are dealt at least one ace?<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+</div>
+
+
+</div>
+</div>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>According to the fundamental theorem of counting, the total number of possible avatars is <span class="math inline">\(6 \times 4\times 3\times 4\times 4\times 2 = 2304\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>According to the fundemental theorem of counting, the number of possible sequences is <span class="math inline">\(10\times 10 \times 10 \times 10 = 10000\)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>This is a permutation. The answer is <span class="math inline">\(17 \times 16 \times 15 = 4080\)</span>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>This is a permutation. It can be done in <span class="math inline">\(5 \times 4 \times 3 \times 2 \times 1 = 120\)</span> ways.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>This is a partition. It can be done in <span class="math inline">\(\frac{19!}{6!6!7!}=46558512\)</span> ways<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>This is a combination (or really a partition with two urns—put weekends into a “go-home” bin and a “do-not-go-home” bin). There are <span class="math inline">\(\frac{16!}{3!(16-3)!} = \frac{16 \times 15 \times 14}{ 3 \times 2} = 16 \times 5 \times 7 = 80 \times 7 = 560\)</span> ways.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>This is a combination. There are <span class="math inline">\({52 \choose 5} = \frac{52!}{5!47!} = \frac{52 \times 51 \times 50\times 49\times 48}{5\times  4\times  3\times  2 \times  1} = 2.59896\times 10^{6}\)</span> possible hands.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Whenever we see the words “at least”, we should instinctively think of the complement event, which in this case would be getting dealt a hand with <em>no</em> aces. If we compute this we can subtract the result from one to get the answer. The other route is computing the probability of getting exactly one ace, exactly two aces, exactly three, and so on, which would require much more work. So, let <span class="math inline">\(A\)</span> be the event that your are dealt a five-card hand with <em>no</em> aces. In how many ways can we construct such a hand? Well, four of the fifty-two cards are aces, so we just need to choose five cards from the forty-eight cards which are <em>not</em> aces. This can be done in <span class="math inline">\(48 \choose 5\)</span> ways. So we have <span class="math inline">\(P(A) = \frac{48 \choose 5}{52 \choose 5}\)</span>. The event of interest is <span class="math inline">\(A^c\)</span>, for which <span class="math inline">\(P(A^c) = 1 - \frac{48 \choose 5}{52 \choose 5} = 0.341158\)</span>.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./prob_basics.html" class="pagination-link" aria-label="Basics of probability">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics of probability</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./normal_distribution.html" class="pagination-link" aria-label="The Normal distribution">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Normal distribution</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
