@@ -183,8 +183,32 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./conditional_prob.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./independence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bayes_rule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayes’ rule</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./normal_distribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Normal distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Normal distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -201,19 +225,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./RCBD.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Randomized complete block design</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./RCBsplitplotD.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Randomized complete block split plot design</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -230,13 +242,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./glmintro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Generalized linear models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Generalized linear models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -382,11 +394,12 @@ H^c =\{\text{heads}, \text{tails}\}\setminus \{\text{heads}\} = \{\text{tails}\}
 \]</span> So the sample space <span class="math inline">\(S\)</span> of the experiment will represent the entire universe of possibilities.</p>
 <p>Two set operations that we use very often to make new sets are the <em>union</em> and the <em>intersection</em>.</p>
 <div id="def-unionintersection" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1.7 (Union and intersection of sets)</strong></span> For any sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>:</p>
+<p><span class="theorem-title"><strong>Definition 1.6 (Union and intersection of sets)</strong></span> For any sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>:</p>
 <ul>
 <li>The <em>union</em> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, denoted by <span class="math inline">\(A \cup B\)</span>, is the set of points in <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> or in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</li>
 <li>The <em>intersection</em> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, denoted by <span class="math inline">\(A \cap B\)</span>, is the set of points in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</li>
 </ul>
+</div>
 <p>It can be helpful to depict set operations with Venn diagrams.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -418,9 +431,10 @@ O \cap E &amp;= \left\{ \begin{array}{cccccc} &amp; (1,2) &amp;  &amp; (1,4) &am
 \]</span></p>
 <p>We next define <em>mutual exclusivity</em> as well as a set called the <em>empty set</em>.</p>
 <div id="def-mutualexclusivity" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1.6 (Mutual exclusivity and the empty set)</strong></span> Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are called <em>mutually exclusive</em> or <em>disjoint</em> if <span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 1.7 (Mutual exclusivity and the empty set)</strong></span> Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are called <em>mutually exclusive</em> or <em>disjoint</em> if <span class="math display">\[
 A \cap B = \emptyset,
 \]</span> where <span class="math inline">\(\emptyset\)</span> is called the <em>empty set</em>, which is the set having no points.</p>
+</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="gifs/ABdisj.gif" class="img-fluid figure-img" style="width:50.0%"></p>
@@ -441,11 +455,24 @@ A \cap B = \emptyset,
 <li><span class="math inline">\((C \cup I)^c\)</span></li>
 </ol>
 <p>In the above the sample space, that is the entire universe of possibilities, is not explicitly stated. The experiment is apparently seeing what desserts are served at a birthday party, and the sample space is something like <span class="math inline">\(S = \{\text{all possible desserts}\}\)</span>.</p>
+</div>
+<p>Before finishing up our introduction to sets, will define a <em>partition</em>, which is a collection of non-overlapping sets such that the union of all the sets is equal to the entire sample space.</p>
+<div id="def-partition" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 1.8 (Partition)</strong></span> &nbsp;</p>
+<ul>
+<li>Events <span class="math inline">\(A_1,A_2,\dots\)</span> are called <em>pairwise disjoint</em> if <span class="math inline">\(A_i \cap A_j = \emptyset\)</span> for all <span class="math inline">\(i \neq j\)</span>.</li>
+<li>If <span class="math inline">\(A_1,A_2,\dots\)</span> are pairwise disjoint events in <span class="math inline">\(S\)</span> and <span class="math inline">\(A_1 \cup A_2 \cup \dots = S\)</span> then the collection <span class="math inline">\(A_1,A_2,\dots\)</span> is called a <em>partition</em> of <span class="math inline">\(S\)</span>.</li>
+</ul>
+</div>
+<p>Note that the two events <span class="math inline">\(A\)</span> and <span class="math inline">\(A^c\)</span> make up a partition of <span class="math inline">\(S\)</span>. For a collection of sets, the terms “pairwise disjoint” and “mutually exclusive” can be used interchangeably.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="gifs/Apartition.gif" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Illustration of a partition made of sets <span class="math inline">\(A_1,\dots,A_7\)</span>.</figcaption>
+</figure>
+</div>
 
 
-</div>
-</div>
-</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Karl Gregory">
 
-<title>11&nbsp; Logistic regression – Statistical Methods</title>
+<title>5&nbsp; Independence – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./glmintro.html" rel="prev">
+<link href="./bayes_rule.html" rel="next">
+<link href="./conditional_prob.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,6 +82,35 @@ ul.task-list li input[type="checkbox"] {
   });
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -93,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./glmintro.html">Part III</a></li><li class="breadcrumb-item"><a href="./logreg.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Logistic regression</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./independence.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -126,13 +156,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Part I</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./set_basics.html" class="sidebar-item-text sidebar-link">
@@ -159,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./independence.html" class="sidebar-item-text sidebar-link">
+  <a href="./independence.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></span></a>
   </div>
 </li>
@@ -202,13 +232,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Part III</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./glmintro.html" class="sidebar-item-text sidebar-link">
@@ -217,7 +247,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./logreg.html" class="sidebar-item-text sidebar-link active">
+  <a href="./logreg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
@@ -240,15 +270,21 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./glmintro.html">Part III</a></li><li class="breadcrumb-item"><a href="./logreg.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Logistic regression</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./independence.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-logreg" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></h1>
+<h1 class="title"><span id="sec-independence" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Karl Gregory </p>
+          </div>
+  </div>
     
   
     
@@ -262,6 +298,61 @@ ul.task-list li input[type="checkbox"] {
 <div class="hidden">
 <p>$$</p>
 <p>$$</p>
+</div>
+<p>Two events which have nothing to do with other are said to be <em>independent</em>. More precisely, if two events are independent, the occurrence of one does not affect the probability of the other. Formally:</p>
+<div id="def-independence" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5.1 (Independence of two events)</strong></span> Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <em>independent</em> if <span class="math inline">\(P(A \cap B ) = P(A)P(B)\)</span>.</p>
+</div>
+<p>Note that the three equations below are equivalent, meaning that any one of them implies the other two:</p>
+<ol type="i">
+<li><span class="math inline">\(P(A \cap B ) = P(A)P(B)\)</span></li>
+<li><span class="math inline">\(P(A|B) = P(A)\)</span></li>
+<li><span class="math inline">\(P(B|A) = P(B)\)</span></li>
+</ol>
+<p>Because of this, we can check whether <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent by checking if any one of these equalities holds (or fails to hold).</p>
+<div id="exm-twocoinflips" class="theorem example">
+<p><span class="theorem-title"><strong>Example 5.1 (Flip a coin twice)</strong></span> Flip a coin twice and record the flips. Let <span class="math inline">\(A_1\)</span> be the event that flip one is heads and <span class="math inline">\(A_2\)</span> be the event that flip two is heads. Our intuition tells us that the two flips should be independent; the outcome of the first flip has no bearing on the second flip, so we should have <span class="math inline">\(P(A_2 | A_1) = P(A_2) = 1/2\)</span>. So, what is the probability that both flips are heads? We have <span class="math display">\[
+P(A_1 \cap A_2) = P(A_1) P(A_2) = 1/2 \times 1/2 = 1/4.
+\]</span></p>
+</div>
+<div id="exm-biketire" class="theorem example">
+<p><span class="theorem-title"><strong>Example 5.2 (Flat tire on bike)</strong></span> Let <span class="math inline">\(A\)</span> be the event that your bike gets a flat tire on a given day and let <span class="math inline">\(B\)</span> be the event that you have forgotten to bring a spare tube. Suppose <span class="math inline">\(P(A) = 0.02\)</span> and <span class="math inline">\(P(B)=0.10\)</span> and <span class="math inline">\(P(A \cap B) = 0.002.\)</span> Then the events are independent, since <span class="math inline">\(P(A\cap B) = P(A)P(B)\)</span>.</p>
+</div>
+<p>Our definition of independence concerns only two events. The way we define independence among a collection of more than two events is a little different. We call it <em>mutual independence</em>.</p>
+<div id="def-mutualindependence" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5.2 (Mutual independence among a collection of events)</strong></span> Events <span class="math inline">\(A_1,A_2,\dots\)</span> are <em>mutually independent</em> if for any subcollection <span class="math inline">\(A_{i_1},\dots,A_{i_K}\)</span>, we have <span class="math display">\[
+P\left(\bigcap_{j=1}^K A_{i_j}\right) = \prod_{j=1}^K P(A_{i_j})
+\]</span></p>
+</div>
+<p>It looks like we are getting a little crazy with the indices in this definition. Basically the definition says that if I take any number of the events from among <span class="math inline">\(A_1,A_2,\dots\)</span>, the probability of their intersection must be equal to the product of their individual probabilities. If there are only two events <span class="math inline">\(A_1\)</span> and <span class="math inline">\(A_2\)</span>, mutual independence of these is the same as ordinary independence between any two events.</p>
+<p>In the next example we use the definition of mutual independence.</p>
+<div id="exm-survey" class="theorem example">
+<p><span class="theorem-title"><strong>Example 5.3 (Survey responses)</strong></span> Suppose you send out a survey to <span class="math inline">\(10\)</span> randomly selected people and suppose that each person will complete the survey with probability <span class="math inline">\(0.20\)</span>. Define the events <span class="math display">\[
+\begin{array}{cc}
+R_1 \text{:} &amp; \text{1st person responds} \\
+\vdots&amp; \vdots\\
+R_{10}\text{:} &amp; \text{10th person responds}
+\end{array}
+\]</span></p>
+<p>Assume <span class="math inline">\(R_1,\dots,R_{10}\)</span> are mutually independent events.</p>
+<ol type="1">
+<li>What is the probability that everyone completes the survey? <span class="math display">\[
+    \begin{align*}
+    P(\text{everyone completes survey}) &amp; = P(R_1 \cap R_2\cap \cdots \cap R_{10}) \\
+    &amp; = P(R_1) \times P(R_2) \times \cdots \times P(R_{10}) \\
+    &amp; = 0.20^{10} \\
+    &amp; = 0.0000001024 = 1.024\times 10^{-7}
+    \end{align*}
+    \]</span></li>
+<li>What is the probability that no one completes the survey? <span class="math display">\[
+    \begin{align*}
+    P(\text{no one completes survey}) &amp; = P(R_1^c \cap R_2^c\cap \cdots \cap R_{10}^c) \\
+    &amp; = P(R_1^c) \times P(R_2^c) \times \cdots \times P(R_{10}^c) \\
+    &amp; = 0.80^{10} \\
+    &amp; = 0.1074
+    \end{align*}
+  \]</span></li>
+</ol>
 </div>
 
 
@@ -689,13 +780,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./glmintro.html" class="pagination-link" aria-label="Generalized linear models">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Generalized linear models</span></span>
+      <a href="./conditional_prob.html" class="pagination-link" aria-label="Conditional probability">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./bayes_rule.html" class="pagination-link" aria-label="Bayes' rule">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayes’ rule</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
