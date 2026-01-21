@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>6&nbsp; Bayes’ rule – Statistical Methods</title>
+<title>9&nbsp; Bernoulli and binomial distributions – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./random_variables.html" rel="next">
-<link href="./independence.html" rel="prev">
+<link href="./simple_linear_regression.html" rel="next">
+<link href="./discrete_rvs.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,9 +81,6 @@ ul.task-list li input[type="checkbox"] {
     document.body.classList.add('hypothesis-enabled');
   });
 </script>
-<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -126,7 +123,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./bayes_rule.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayes’ rule</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./bernoulli_binomial.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bernoulli and binomial distributions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -198,20 +195,32 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bayes_rule.html" class="sidebar-item-text sidebar-link active">
+  <a href="./bayes_rule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayes’ rule</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./random_variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">random_variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Random variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./discrete_rvs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Discrete random variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bernoulli_binomial.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bernoulli and binomial distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -228,7 +237,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -245,7 +254,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -267,9 +276,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./bayes_rule.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayes’ rule</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./bernoulli_binomial.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bernoulli and binomial distributions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-bayes_rule" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayes’ rule</span></span></h1>
+<h1 class="title"><span id="sec-bernoulli_binomial" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bernoulli and binomial distributions</span></span></h1>
 </div>
 
 
@@ -296,193 +305,11 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p><em>Bayes’ rule</em> is a useful re-expression of the definition of conditional probability. Before stating Bayes’ rule, note that for any events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, we have <span class="math display">\[
-P(A) = P(A \cap B) + P(A \cap B^c).
-\]</span> Draw a Venn Diagram to convince yourself! We can also write <span class="math display">\[
-P(A) = P(A | B)P(B) + P(A |B^c)P(B^c)
-\]</span> using the definition of conditional probability. This allows us to write</p>
-<p><span id="eq-bayesrulesimple"><span class="math display">\[
-P(B|A) = \frac{P(A \cap B)}{P(A)} = \frac{P(A | B)P(B)}{ P(A | B)P(B) + P(A |B^c)P(B^c) },
-\tag{6.1}\]</span></span></p>
-<p>which is an instance of Bayes’ rule. More generally, Bayes’ rule is the following:</p>
-<div id="prp-bayesrule" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 6.1 (Bayes’ rule)</strong></span> For an event <span class="math inline">\(A\)</span> in a sample space <span class="math inline">\(S\)</span> and a set of events <span class="math inline">\(B_1,\dots,B_K\)</span> forming a partition of <span class="math inline">\(S\)</span>, we have <span class="math display">\[
-P(B_k|A) = \frac{P(A|B_k)P(B_k)}{P(A|B_1)P(B_1) + \dots + P(A|B_K)P(B_K)}
-\]</span> for each <span class="math inline">\(k = 1,\dots,K\)</span>.</p>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Derivation of Bayes’ rule
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>By the definition of conditional probability we have <span class="math display">\[
-P(B_k |A) = \frac{P(B_k \cap A)}{P(A)}.
-\]</span> From here the result follows by writing <span class="math inline">\(P(B_k \cap A) = P(A|B_k)P(B_k)\)</span> and <span class="math display">\[
-\begin{align*}
-P(A) &amp;= P(A \cap B_1) + \dots + P(A \cap B_K) \\
-     &amp;= P(A|B_1)P(B_1) + \dots + P(A|B_K)P(B_k)
-\end{align*}
-\]</span> by the law of total probability and by using again the definition of conditional probability to write intersection probabilities as conditional times marginal probabilities.</p>
-</div>
-</div>
-</div>
-<p>We get the instance of Bayes’ rule in <a href="#eq-bayesrulesimple" class="quarto-xref">Equation&nbsp;<span>6.1</span></a> by noting that <span class="math inline">\(B\)</span> and <span class="math inline">\(B^c\)</span> form a partition of the sample space.</p>
-<p>Following are a few examples in</p>
-<div id="exm-sensspec" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.1 (Positive given a positive test)</strong></span> The National Cancer Institute estimates that <span class="math inline">\(3.65\%\)</span> of women in their sixties develop breast cancer. Suppose that if a woman has breast cancer, a mammogram will detect it <span class="math inline">\(85\%\)</span> of the time and if a woman does not have breast cancer, the mammogram still results in a positive test for breast cancer <span class="math inline">\(5\%\)</span> of the time.</p>
-<ol type="1">
-<li><p>Suppose we want to find the probability that a woman has breast cancer given that her mammogram is positive. If <span class="math inline">\(M\)</span> is the event that a woman’s mammogram is positive for breast cancer and <span class="math inline">\(C\)</span> is the event that she truly has breast cancer, we wish to find th conditional probablity <span class="math inline">\(P(C| M)\)</span>. We know from Bayes’ rule that <span class="math display">\[
-\begin{align*}
-P(C | M ) &amp; = \frac{P(  M| C)P(C)}{ P( M| C)P(C) + P(M| C^c)P(C^c)  } \\
-&amp; = \frac{ 0.85 \times 0.0365}{ 0.85 \times 0.0365 + 0.05 \times (1-0.0365)} \\
-&amp; = 0.319
-\end{align*}
-\]</span></p></li>
-<li><p>Suppose we wish to find the probability that a randomly selected woman tests positive for breast cancer. We have computed this probability already; it is <span class="math display">\[
-\begin{align*}
-P(M) &amp;= P(M\cap C) + P(M\cap C^c)\\
-           &amp;=P(M|C)P(C) + P(M|C^c)P(C^c)\\
-           &amp;= 0.85 \times 0.0365 + 0.05 \times (1-0.0365) \\
-           &amp;= 0.0792.
-\end{align*}
-\]</span></p></li>
-</ol>
-</div>
-<div id="exr-craigslist" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 6.1 (Scam or no scam)</strong></span> Suppose <span class="math inline">\(1.0\%\)</span> of all Craigslist advertisements for housing sublets are posted by scammers. In addition, suppose <span class="math inline">\(90\%\)</span> of scammers request that payment be sent to a P.O. box instead of a residential address, and only <span class="math inline">\(20\%\)</span> of non-scammers, that is legitimate advertisers, request that payment be sent to a P.O. box instead of a residential address.</p>
-<ol type="1">
-<li><p>What is the probability that a randomly selected Craigslist advertiser for a housing sublet will request that payment be sent to a P.O. box? <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
-<li><p>If you make an inquiry into a housing sublet post and the advertiser requests that payment be sent to a P.O. box, what is the probability that it is a scam? <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p></li>
-</ol>
-</div>
-<div id="exm-baggame" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.2 (Game with bags)</strong></span> Consider the following game involving three bags, each containing four bills as follows: <span class="math display">\[
-\begin{align*}
-         \text{First bag: }&amp; \text{$3$ five dollar bills and $1$ twenty dollar bill}  \\
-         \text{Second bag: }&amp; \text{$2$ five dollar bills and $2$ twenty dollar bills}  \\
-         \text{Third bag: }&amp; \text{$1$ five dollar bill and $3$ twenty dollar bills}
-\end{align*}
-\]</span> The player rolls a die and draws a bill from the first bag if the roll is <span class="math inline">\(1\)</span>,<span class="math inline">\(2\)</span>, or <span class="math inline">\(3\)</span>, from the second bag if the roll is <span class="math inline">\(3\)</span> or <span class="math inline">\(4\)</span>, and from the third bag if the roll is <span class="math inline">\(6\)</span>.</p>
-<ol type="1">
-<li>Suppose we want to know the probability of winning <span class="math inline">\(\$20\)</span> from the game. Letting <span class="math inline">\(B_1\)</span>, <span class="math inline">\(B_2\)</span>, and <span class="math inline">\(B_3\)</span> represent the event of drawing from the first, second, and third bag, respectively, and letting <span class="math inline">\(W\)</span> be the event of winning <span class="math inline">\(\$20\)</span> from the game, we can use the law of total probability to obtain <span class="math display">\[
-\begin{align*}
-    P(W) &amp;= P(W \cap B_1) + P(W \cap B_2) + P(W \cap B_3)\\
-       &amp;= P(W | B_1)P(B_1) + P(W | B_2)P(B_2) + P(W | B_3)P(B_3)\\
-       &amp;= (1/4)(3/6) + (2/4)(2/6) + (3/4)(1/6)\\
-       &amp;= 5/12.
-\end{align*}
-\]</span><br>
-This is an example in which it can be useful to draw <em>tree diagram</em> like the one below:</li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-  %% root
-  Root[" "]
-
-  %% bags
-  Bag1["Bag 1"]
-  Bag2["Bag 2"]
-  Bag3["Bag 3"]
-  
-  %% root -&gt; bags (edge labels)
-  Root --&gt;|3/6| Bag1
-  Root --&gt;|2/6| Bag2
-  Root --&gt;|1/6| Bag3
-  
-  %% Bag 3 leaves
-  Bag3_20["$20"]
-  Bag3_5["$5"]
-  Bag3 --&gt;|1/4| Bag3_5
-  Bag3 --&gt;|3/4| Bag3_20
-
-  %% Bag 2 leaves
-  Bag2_20["$20"]
-  Bag2_5["$5"]
-  Bag2 --&gt;|2/4| Bag2_5
-  Bag2 --&gt;|2/4| Bag2_20
-
-  %% Bag 1 leaves
-  Bag1_20["$20"]
-  Bag1_5["$5"]
-  Bag1 --&gt;|3/4| Bag1_5
-  Bag1 --&gt;|1/4| Bag1_20
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<!-- I cannot get a tikzpicture to work, unfortunately -->
-<!-- ```{tikz} -->
-<!-- \tikzstyle{level 1}=[level distance=3.5cm, sibling distance=3.5cm] -->
-<!-- \tikzstyle{level 2}=[level distance=3.5cm, sibling distance=2cm] -->
-<!-- \begin{tikzpicture}[grow=right,sloped] -->
-<!--   \node [dummy] {} -->
-<!--     child {node  [dummy] {Bag 3}  -->
-<!--         child {node [dummy] {\$20} [above] edge from parent node {3/4}} -->
-<!--         child {node [dummy] {\$5} [above] edge from parent node {1/4}} -->
-<!--     [above] edge from parent node {1/6} -->
-<!--     } -->
-<!--     child {node  [dummy] {Bag 2}  -->
-<!--         child {node [dummy] {\$20} [above] edge from parent node {2/4}} -->
-<!--         child {node [dummy] {\$5} [above] edge from parent node {2/4}} -->
-<!--     [above] edge from parent node {2/6} -->
-<!--     } -->
-<!--         child {node  [dummy] {Bag 1}  -->
-<!--         child {node [dummy] {\$20} [above] edge from parent node {1/4}} -->
-<!--         child {node [dummy] {\$5} [above] edge from parent node {3/4}} -->
-<!--     [above] edge from parent node {3/6} -->
-<!--     } -->
-<!--     ; -->
-<!-- \end{tikzpicture} -->
-<!-- ``` -->
-<p>This diagram nicely summarizes all the information we are given. To find the probability of an outcome, we trace the tree diagram starting from the beginning until we reach that outcome, and multiplying the probabilities we pass along the way. For example, <span class="math inline">\(P(W \cap B_1) = 3/6 \times 1/4\)</span>.</p>
-<ol start="2" type="1">
-<li>Given that a player got twenty dollars, what is the probability that the player drew from the first bag? We can answer this question using Bayes’ rule: <span class="math display">\[
-\begin{align*}
-   P(B_1| W) &amp;= \frac{P(W | B_1)P(B_1)}{P(W | B_1)P(B_1) + P(W | B_2)P(B_2) + P(W | B_3)P(B_3)}\\
-                   &amp; = \frac{(1/4)(3/6)}{5/12} \\
-                   &amp;=3/10.
-\end{align*}
-\]</span></li>
-</ol>
+<div id="def-bernoullitrial" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 9.1 (Bernoulli trial)</strong></span> A Bernoulli trial is a statistical experiment for which there are two possible outcomes. We often give the outcomes the names “success” and “failure” and denote by <span class="math inline">\(p\)</span> the probability of a “success.”</p>
 </div>
 
 
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p> Letting <span class="math inline">\(O\)</span> be the event that the advertizer requests payment to a P.O. box and <span class="math inline">\(S\)</span> the event that the advertizement is a scam (ignoring the fact that we usually use <span class="math inline">\(S\)</span> to represent the sample space), we have <span class="math display">\[
-\begin{align*}
-P(O) &amp;= P(O \cap S) +  P(O \cap S^c) \\
-           &amp;=P(O | S)P(S) +  P(O | S^c)P(S^c) \\
-           &amp; = 0.90 \times 0.01 + 0.20 \times (1 - 0.01)\\
-           &amp; = 0.207.
-\end{align*}
-\]</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>We have <span class="math display">\[
-\begin{align*}
-P(S|O) &amp;= \frac{P(S\cap O)}{P(O)} \\
-&amp;= \frac{P(O|S)P(S)}{P(O)} \\
-&amp;= \frac{0.90 \times 0.01}{0.207} \\
-&amp;= 0.0435,
-\end{align*}
-\]</span> where we have used Bayes’ formula: <span class="math display">\[
-P(S|O) =\frac{P(O|S)P(S)}{P(O | S)P(S) +  P(O | S^c)P(S^c)}.
-\]</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -907,13 +734,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./independence.html" class="pagination-link" aria-label="Independence">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></span>
+      <a href="./discrete_rvs.html" class="pagination-link" aria-label="Discrete random variables">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Discrete random variables</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./random_variables.html" class="pagination-link" aria-label="random_variables">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">random_variables</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./simple_linear_regression.html" class="pagination-link" aria-label="Simple linear regression">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

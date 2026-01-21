@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>6&nbsp; Bayes’ rule – Statistical Methods</title>
+<title>8&nbsp; Discrete random variables – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./random_variables.html" rel="next">
-<link href="./independence.html" rel="prev">
+<link href="./bernoulli_binomial.html" rel="next">
+<link href="./random_variables.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,9 +81,6 @@ ul.task-list li input[type="checkbox"] {
     document.body.classList.add('hypothesis-enabled');
   });
 </script>
-<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -126,7 +123,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./bayes_rule.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayes’ rule</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./discrete_rvs.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Discrete random variables</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -198,20 +195,32 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bayes_rule.html" class="sidebar-item-text sidebar-link active">
+  <a href="./bayes_rule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayes’ rule</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./random_variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">random_variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Random variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./discrete_rvs.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Discrete random variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bernoulli_binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bernoulli and binomial distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -228,7 +237,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -245,7 +254,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -261,15 +270,25 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#probability-distribution" id="toc-probability-distribution" class="nav-link active" data-scroll-target="#probability-distribution"><span class="header-section-number">8.1</span> Probability distribution</a></li>
+  <li><a href="#expected-value" id="toc-expected-value" class="nav-link" data-scroll-target="#expected-value"><span class="header-section-number">8.2</span> Expected value</a></li>
+  <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance"><span class="header-section-number">8.3</span> Variance</a></li>
+  <li><a href="#cumulative-probabilities" id="toc-cumulative-probabilities" class="nav-link" data-scroll-target="#cumulative-probabilities"><span class="header-section-number">8.4</span> Cumulative probabilities</a></li>
+  <li><a href="#probability-mass-function" id="toc-probability-mass-function" class="nav-link" data-scroll-target="#probability-mass-function"><span class="header-section-number">8.5</span> Probability mass function</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./bayes_rule.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayes’ rule</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./discrete_rvs.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Discrete random variables</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-bayes_rule" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayes’ rule</span></span></h1>
+<h1 class="title"><span id="sec-discrete_rvs" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Discrete random variables</span></span></h1>
 </div>
 
 
@@ -296,191 +315,179 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p><em>Bayes’ rule</em> is a useful re-expression of the definition of conditional probability. Before stating Bayes’ rule, note that for any events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, we have <span class="math display">\[
-P(A) = P(A \cap B) + P(A \cap B^c).
-\]</span> Draw a Venn Diagram to convince yourself! We can also write <span class="math display">\[
-P(A) = P(A | B)P(B) + P(A |B^c)P(B^c)
-\]</span> using the definition of conditional probability. This allows us to write</p>
-<p><span id="eq-bayesrulesimple"><span class="math display">\[
-P(B|A) = \frac{P(A \cap B)}{P(A)} = \frac{P(A | B)P(B)}{ P(A | B)P(B) + P(A |B^c)P(B^c) },
-\tag{6.1}\]</span></span></p>
-<p>which is an instance of Bayes’ rule. More generally, Bayes’ rule is the following:</p>
-<div id="prp-bayesrule" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 6.1 (Bayes’ rule)</strong></span> For an event <span class="math inline">\(A\)</span> in a sample space <span class="math inline">\(S\)</span> and a set of events <span class="math inline">\(B_1,\dots,B_K\)</span> forming a partition of <span class="math inline">\(S\)</span>, we have <span class="math display">\[
-P(B_k|A) = \frac{P(A|B_k)P(B_k)}{P(A|B_1)P(B_1) + \dots + P(A|B_K)P(B_K)}
-\]</span> for each <span class="math inline">\(k = 1,\dots,K\)</span>.</p>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Derivation of Bayes’ rule
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>By the definition of conditional probability we have <span class="math display">\[
-P(B_k |A) = \frac{P(B_k \cap A)}{P(A)}.
-\]</span> From here the result follows by writing <span class="math inline">\(P(B_k \cap A) = P(A|B_k)P(B_k)\)</span> and <span class="math display">\[
-\begin{align*}
-P(A) &amp;= P(A \cap B_1) + \dots + P(A \cap B_K) \\
-     &amp;= P(A|B_1)P(B_1) + \dots + P(A|B_K)P(B_k)
-\end{align*}
-\]</span> by the law of total probability and by using again the definition of conditional probability to write intersection probabilities as conditional times marginal probabilities.</p>
-</div>
-</div>
-</div>
-<p>We get the instance of Bayes’ rule in <a href="#eq-bayesrulesimple" class="quarto-xref">Equation&nbsp;<span>6.1</span></a> by noting that <span class="math inline">\(B\)</span> and <span class="math inline">\(B^c\)</span> form a partition of the sample space.</p>
-<p>Following are a few examples in</p>
-<div id="exm-sensspec" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.1 (Positive given a positive test)</strong></span> The National Cancer Institute estimates that <span class="math inline">\(3.65\%\)</span> of women in their sixties develop breast cancer. Suppose that if a woman has breast cancer, a mammogram will detect it <span class="math inline">\(85\%\)</span> of the time and if a woman does not have breast cancer, the mammogram still results in a positive test for breast cancer <span class="math inline">\(5\%\)</span> of the time.</p>
+<section id="probability-distribution" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="probability-distribution"><span class="header-section-number">8.1</span> Probability distribution</h2>
+<p>The probability distribution of a discrete random variable is an assignment of probabilities to the possible values the random variable can take. Next is a formal definition.</p>
+<div id="def-probdist_discrete" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8.1 (Probability distribution of a discrete random variable)</strong></span> A <em>probability distribution</em> for a discrete random variable <span class="math inline">\(X\)</span> with support <span class="math inline">\(\mathcal{X}= \{x_1,x_2,\dots \}\)</span> is an assignment of probabilities <span class="math inline">\(p_1,p_2,\dots\)</span>, to the values <span class="math inline">\(x_1,x_2,\dots\)</span> such that</p>
 <ol type="1">
-<li><p>Suppose we want to find the probability that a woman has breast cancer given that her mammogram is positive. If <span class="math inline">\(M\)</span> is the event that a woman’s mammogram is positive for breast cancer and <span class="math inline">\(C\)</span> is the event that she truly has breast cancer, we wish to find th conditional probablity <span class="math inline">\(P(C| M)\)</span>. We know from Bayes’ rule that <span class="math display">\[
-\begin{align*}
-P(C | M ) &amp; = \frac{P(  M| C)P(C)}{ P( M| C)P(C) + P(M| C^c)P(C^c)  } \\
-&amp; = \frac{ 0.85 \times 0.0365}{ 0.85 \times 0.0365 + 0.05 \times (1-0.0365)} \\
-&amp; = 0.319
-\end{align*}
-\]</span></p></li>
-<li><p>Suppose we wish to find the probability that a randomly selected woman tests positive for breast cancer. We have computed this probability already; it is <span class="math display">\[
-\begin{align*}
-P(M) &amp;= P(M\cap C) + P(M\cap C^c)\\
-           &amp;=P(M|C)P(C) + P(M|C^c)P(C^c)\\
-           &amp;= 0.85 \times 0.0365 + 0.05 \times (1-0.0365) \\
-           &amp;= 0.0792.
-\end{align*}
-\]</span></p></li>
+<li><span class="math inline">\(0 \leq p_i \leq 1\)</span> for each <span class="math inline">\(i=1,2,\dots\)</span>, and</li>
+<li><span class="math inline">\(p_1+p_2 + \dots = 1\)</span>.</li>
 </ol>
 </div>
-<div id="exr-craigslist" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 6.1 (Scam or no scam)</strong></span> Suppose <span class="math inline">\(1.0\%\)</span> of all Craigslist advertisements for housing sublets are posted by scammers. In addition, suppose <span class="math inline">\(90\%\)</span> of scammers request that payment be sent to a P.O. box instead of a residential address, and only <span class="math inline">\(20\%\)</span> of non-scammers, that is legitimate advertisers, request that payment be sent to a P.O. box instead of a residential address.</p>
+<p>So each probability <span class="math inline">\(p_i\)</span> must be between zero and one and these must sum to one. If the support <span class="math inline">\(\mathcal{X}\)</span> of <span class="math inline">\(X\)</span> is finite (has a finite number of elements), then we can tabulate the probability distribution of <span class="math inline">\(X\)</span> as in the following examples.</p>
+<div id="exm-twocoinsflipprobdist" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.1 (Flipping two coins)</strong></span> Flip two coins and define <span class="math inline">\(X\)</span> as the number of heads. The experiment has sample space <span class="math inline">\(S = \{HH,HT,TH,TT\}\)</span> and <span class="math inline">\(X\)</span> has support <span class="math inline">\(\mathcal{X}= \{0,1,2\}\)</span>. Denoting by <span class="math inline">\(x_1 = 0\)</span>, <span class="math inline">\(x_2 = 1\)</span>, and <span class="math inline">\(x_3 = 2\)</span> the values in the support <span class="math inline">\(\mathcal{X}\)</span>, the assignment of the probabilities <span class="math inline">\(p_1 = 1/4\)</span>, <span class="math inline">\(p_2=1/2\)</span>, and <span class="math inline">\(p_3 = 1/4\)</span> to <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, and <span class="math inline">\(x_3\)</span>, respectively, defines a probability distribution for <span class="math inline">\(X\)</span>. We may tabulate the probability distribution as <span class="math display">\[
+\begin{array}{c|cccc}
+    x          &amp; 0 &amp; 1 &amp; 2   \\ \hline
+     P(X = x)   &amp; 1/4 &amp; 1/2 &amp; 1/4
+\end{array}.
+\]</span></p>
+</div>
+<p>We often use a lower case <span class="math inline">\(x\)</span> to denote a specific realized value of the random variable <span class="math inline">\(X\)</span>. So the capital <span class="math inline">\(X\)</span> represents the as-yet-unobserved random variable, and <span class="math inline">\(x\)</span> simply represents a number. The table above tells us, for each possible value <span class="math inline">\(x\)</span> of <span class="math inline">\(X\)</span>, the probability that <span class="math inline">\(X\)</span> will assume that value. Note that the probabilities in the table sum to one.</p>
+<div id="exm-instate" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.2 (In-state or out-of-state)</strong></span> Select a USC undergraduate student at random and let <span class="math inline">\(X\)</span> equal <span class="math inline">\(1\)</span> or <span class="math inline">\(0\)</span> according to whether he or she comes from South Carolina or not. If the proportion of the undergraduate students at USC coming from South Carolina is <span class="math inline">\(0.60\)</span>, then the probability distribution of <span class="math inline">\(X\)</span> is <span class="math display">\[
+\begin{array}{c|cccc}
+     x          &amp; 0 \text{ (out-of-state)} &amp; 1 \text{ (in-state)} \\ \hline
+     P(X = x)   &amp; 0.40 &amp; 0.60
+\end{array}.
+\]</span> So <span class="math inline">\(X\)</span> takes the values <span class="math inline">\(x_1 = 0\)</span> and <span class="math inline">\(x_2 = 1\)</span> with the probabilities <span class="math inline">\(p_1=0.40\)</span> and <span class="math inline">\(p_2=0.60\)</span>, respectively. Note that <span class="math inline">\(p_1 + p_2 = 1\)</span>.</p>
+</div>
+<p>We find that we cannot tabulate the probability distribution of a continuous random variable, as we cannot list, or begin to list the values a continuous random variable may take. We will discuss how to define probability distributions of continuous random variables later on.</p>
+<p>We can use the probability distribution of a random variable <span class="math inline">\(X\)</span> to obtain probabilities of the form <span class="math inline">\(P(X \in A)\)</span>, where <span class="math inline">\(A\)</span> is a set of real numbers.</p>
+<div id="exr-twodiceXprob" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.1 (Sum of two dice rolls)</strong></span> Roll two dice and let <span class="math inline">\(X\)</span> be the sum of the rolls.</p>
 <ol type="1">
-<li><p>What is the probability that a randomly selected Craigslist advertiser for a housing sublet will request that payment be sent to a P.O. box? <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
-<li><p>If you make an inquiry into a housing sublet post and the advertiser requests that payment be sent to a P.O. box, what is the probability that it is a scam? <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p></li>
+<li>Tabulate the probability distribution of <span class="math inline">\(X\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li>Give <span class="math inline">\(P(X \leq 7)\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+<li>Give <span class="math inline">\(P(X &gt; 10)\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
 </ol>
 </div>
-<div id="exm-baggame" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.2 (Game with bags)</strong></span> Consider the following game involving three bags, each containing four bills as follows: <span class="math display">\[
+<p>Next we define a quantity called the expected value of a random variable. This value can be thought of as the mean value of a random variable, or the average one would expect if one observed many values of the random variable.</p>
+</section>
+<section id="expected-value" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="expected-value"><span class="header-section-number">8.2</span> Expected value</h2>
+<p>To understand what is meant by the <em>expected value</em> of a random variable, we need to imagine repeating our statistical experiment over and over again. Imagine repeating a statistical experiment over and over again and then taking the mean of all the <span class="math inline">\(X\)</span> values we have observed. The expected value of <span class="math inline">\(X\)</span> is the value which we believe the mean of all the outcomes will approach as we repeat the experiment more and more times.</p>
+<p>For example, suppose we flip a coin and let <span class="math inline">\(X=1\)</span> if heads comes up and <span class="math inline">\(X=0\)</span> if tails comes up. Then we would expect the sequence of <span class="math inline">\(X\)</span> values to look something like <span class="math display">\[
+0 1 0 0 1 1 0 1 1 1 1 0 0 1 0 0 1 1 1 0 1 1 0 1 0 1 1 1 1 1 0 0 1 0 1 1 0 0 1 0 \dots
+\]</span></p>
+<p>Now, if we took the mean of all the <span class="math inline">\(X\)</span> values so far observed, we would get something close to <span class="math inline">\(0.5\)</span>. The mean of the above sequence is <span class="math inline">\(23/40 = 0.575\)</span>. If we were to continue flipping the coin indefinitely, we <em>expect</em> that the mean of the ones and zeroes would eventually “converge” to <span class="math inline">\(0.5\)</span>, that is, it would continue getting closer and closer to <span class="math inline">\(0.5\)</span>. So we say that the <em>expected value</em> of the random variable <span class="math inline">\(X\)</span> is <span class="math inline">\(0.5\)</span>.</p>
+<p>One may object, saying that the “expected value” of <span class="math inline">\(X\)</span> cannot be equal to <span class="math inline">\(0.5\)</span>, because <span class="math inline">\(X\)</span> can only be equal to <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>, but when we say <em>expected value</em>, we are referring to a mean value, which may lie outside the support of <span class="math inline">\(X\)</span>.</p>
+<div id="def-expectedvaluediscrete" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8.2 (Expected value of a discrete random variable)</strong></span> The <em>expected value</em> of a discrete random variable <span class="math inline">\(X\)</span> with support <span class="math inline">\(\mathcal{X}= \{x_1,x_2,\dots\}\)</span> and probability distribution assigning <span class="math inline">\(p_1,p_2,\dots\)</span> to <span class="math inline">\(x_1,x_2,\dots\)</span>, respectively, is given by <span class="math display">\[
+\mathbb{E}X = x_1 p_1 + x_2 p_2 + \dots
+\]</span></p>
+</div>
+<p>We often use the Greek letter <span class="math inline">\(\mu\)</span> to denote the expected value of a random variable and often refer to the expected value of a random variable as its mean.</p>
+<div id="exm-coinflipexpectedvalue" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.3 (Expected value of coin flip random variable)</strong></span> Suppose we flip a coin and let <span class="math inline">\(X=1\)</span> if heads comes up and <span class="math inline">\(X=0\)</span> if tails comes up. Then <span class="math inline">\(X\)</span> has expected value <span class="math display">\[
+\mu = \mathbb{E}(X) = 0 (1/2) + 1 (1/2) = 1/2.
+\]</span></p>
+</div>
+<div id="exm-dierollexpectedvalue" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.4 (Expected value of die roll)</strong></span> Suppose we roll a die and let <span class="math inline">\(X\)</span> be the roll. Then <span class="math inline">\(X\)</span> has expected value <span class="math display">\[
+\mu = 1(1/6) + 2(1/6) + 3(1/6) + 4(1/6) + 5(1/6) + 6(1/6) = 21/6 = 3.5.
+\]</span></p>
+</div>
+<p>We may think of the expected value of a random variable <span class="math inline">\(X\)</span> as the balancing point of all possible values of <span class="math inline">\(X\)</span> when they are weighted by their probabilities of occurrence. If they were sitting on a seesaw, where would the fulcrum need to be placed in order to balance them?</p>
+<div id="exr-makebasketexpectedvalue" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.2 (Shoot a freethrow)</strong></span> Shoot a freethrow and let <span class="math inline">\(X=1\)</span> if you make a basket and <span class="math inline">\(X=0\)</span> if you miss. If your probability of making a basket is <span class="math inline">\(0.7\)</span>, what is the expected value of <span class="math inline">\(X\)</span>? <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+</div>
+<p>We next introduce the <em>variance</em> of a random variable. This describes how spread out realizations of the random variable are expected to be. If a random variable tends to take values very close to its expected value, it will have small variance; if it tends to take values far away from its expected value, it will have a large variance.</p>
+</section>
+<section id="variance" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="variance"><span class="header-section-number">8.3</span> Variance</h2>
+<p>The <em>variance</em> of a random variable <span class="math inline">\(X\)</span> with mean <span class="math inline">\(\mu\)</span> is the expected squared distance of <span class="math inline">\(X\)</span> from <span class="math inline">\(\mu\)</span>.</p>
+<div id="def-variance" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8.3 (Variance of a random variable)</strong></span> The <em>variance</em> of a random variable <span class="math inline">\(X\)</span> with mean <span class="math inline">\(\mu\)</span> is defined as <span class="math display">\[
+\operatorname{Var}X = \mathbb{E}(X - \mu)^2.
+\]</span></p>
+</div>
+<p>We often use the notation <span class="math inline">\(\sigma^2\)</span> to denote the variance of a random variable. We will find that this definition of the variance is the same for both discrete and continuous random variables.</p>
+<p>Next we describe how to compute the variance of a discrete random variable.</p>
+<div id="prp-variancediscrete" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 8.1 (Variance of a discrete random variable)</strong></span> The variance of a discrete random variable <span class="math inline">\(X\)</span> with mean <span class="math inline">\(\mu\)</span> and support <span class="math inline">\(\mathcal{X}= \{x_1,x_2,\dots\}\)</span> and probability distribution assigning <span class="math inline">\(p_1,p_2,\dots\)</span> to <span class="math inline">\(x_1,x_2,\dots\)</span>, is given by <span class="math display">\[
+\operatorname{Var}X = p_1 (x_1 - \mu)^2 + p_2(x_2 - \mu)^2 + p_3 (x_3 - \mu)^2 + \dots
+\]</span></p>
+</div>
+<p>Here are two examples of computing the variance:</p>
+<div id="exm-coinflipvariance" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.5 (Coin flip random variable)</strong></span> Suppose we flip a coin and set <span class="math inline">\(X=1\)</span> if heads comes up and <span class="math inline">\(X=0\)</span> if tails comes up. Then <span class="math display">\[
 \begin{align*}
-         \text{First bag: }&amp; \text{$3$ five dollar bills and $1$ twenty dollar bill}  \\
-         \text{Second bag: }&amp; \text{$2$ five dollar bills and $2$ twenty dollar bills}  \\
-         \text{Third bag: }&amp; \text{$1$ five dollar bill and $3$ twenty dollar bills}
+\operatorname{Var}X  &amp;= (1/2)(0 - 1/2)^2 + (1/2)(1-1/2)^2 \\
+            &amp;= (1/2)(1/4) + (1/2)(1/4) \\
+            &amp;= 1/4.
 \end{align*}
-\]</span> The player rolls a die and draws a bill from the first bag if the roll is <span class="math inline">\(1\)</span>,<span class="math inline">\(2\)</span>, or <span class="math inline">\(3\)</span>, from the second bag if the roll is <span class="math inline">\(3\)</span> or <span class="math inline">\(4\)</span>, and from the third bag if the roll is <span class="math inline">\(6\)</span>.</p>
-<ol type="1">
-<li>Suppose we want to know the probability of winning <span class="math inline">\(\$20\)</span> from the game. Letting <span class="math inline">\(B_1\)</span>, <span class="math inline">\(B_2\)</span>, and <span class="math inline">\(B_3\)</span> represent the event of drawing from the first, second, and third bag, respectively, and letting <span class="math inline">\(W\)</span> be the event of winning <span class="math inline">\(\$20\)</span> from the game, we can use the law of total probability to obtain <span class="math display">\[
-\begin{align*}
-    P(W) &amp;= P(W \cap B_1) + P(W \cap B_2) + P(W \cap B_3)\\
-       &amp;= P(W | B_1)P(B_1) + P(W | B_2)P(B_2) + P(W | B_3)P(B_3)\\
-       &amp;= (1/4)(3/6) + (2/4)(2/6) + (3/4)(1/6)\\
-       &amp;= 5/12.
-\end{align*}
-\]</span><br>
-This is an example in which it can be useful to draw <em>tree diagram</em> like the one below:</li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-  %% root
-  Root[" "]
-
-  %% bags
-  Bag1["Bag 1"]
-  Bag2["Bag 2"]
-  Bag3["Bag 3"]
-  
-  %% root -&gt; bags (edge labels)
-  Root --&gt;|3/6| Bag1
-  Root --&gt;|2/6| Bag2
-  Root --&gt;|1/6| Bag3
-  
-  %% Bag 3 leaves
-  Bag3_20["$20"]
-  Bag3_5["$5"]
-  Bag3 --&gt;|1/4| Bag3_5
-  Bag3 --&gt;|3/4| Bag3_20
-
-  %% Bag 2 leaves
-  Bag2_20["$20"]
-  Bag2_5["$5"]
-  Bag2 --&gt;|2/4| Bag2_5
-  Bag2 --&gt;|2/4| Bag2_20
-
-  %% Bag 1 leaves
-  Bag1_20["$20"]
-  Bag1_5["$5"]
-  Bag1 --&gt;|3/4| Bag1_5
-  Bag1 --&gt;|1/4| Bag1_20
-</pre>
+\]</span></p>
 </div>
-<p></p></figure><p></p>
+<div id="exr-rolladievariance" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.3 (Variance of die roll)</strong></span> Suppose we roll a die and let <span class="math inline">\(X\)</span> be the number rolled. Give <span class="math inline">\(\operatorname{Var}X\)</span>. <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 </div>
+</section>
+<section id="cumulative-probabilities" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="cumulative-probabilities"><span class="header-section-number">8.4</span> Cumulative probabilities</h2>
+<p>We are sometimes interested in tabulating the distribution of a random variable <span class="math inline">\(X\)</span> in terms of the values of <span class="math inline">\(P(X \leq x)\)</span> instead of (or in addition to) <span class="math inline">\(P(X = x)\)</span> for all the values <span class="math inline">\(x\)</span> in <span class="math inline">\(\mathcal{X}\)</span>. The probabilities <span class="math inline">\(P(X \leq x)\)</span> are called <em>cumulative probabilities</em>. Consider the following two examples:</p>
+<div id="exm-rolldiecumprob" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.6 (Roll a die)</strong></span> Roll one die and let <span class="math inline">\(X\)</span> be the number rolled. Then we can tabulate the distribution of <span class="math inline">\(X\)</span> as <span class="math display">\[
+\begin{array}{c|cccccc}
+     x          &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\ \hline
+     P(X = x)   &amp; 1/6 &amp; 1/6 &amp; 1/6 &amp; 1/6 &amp; 1/6 &amp; 1/6 \\
+     P(X \leq x)   &amp; 1/6 &amp; 2/6 &amp; 3/6 &amp; 4/6 &amp; 5/6 &amp; 6/6
+\end{array}.
+\]</span> The probabilities <span class="math inline">\(P(X \leq x)\)</span> for <span class="math inline">\(x = 1,\dots,6\)</span> are the cumulative probabilities. Note that we can compute either row of the table using the other row; we can get the probabilities <span class="math inline">\(P(X = x)\)</span>, <span class="math inline">\(x = 1,\dots,6\)</span> from the cumulative probabilities by taking differences; for example, we have <span class="math display">\[
+P(X = 4) = P(X \leq 4) - P(X \leq 3) = 4/6 - 3/6 = 1/6.
+\]</span> To get the cumulative probabilities, we just sum up the probabilities <span class="math inline">\(P(X = x)\)</span>.</p>
 </div>
+<div id="exm-cumprobtwocoins" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.7 (Two coin flips)</strong></span> Flip a coin twice and let <span class="math inline">\(X\)</span> be the number of heads observed. We can write <span class="math display">\[
+\begin{array}{c|cccc}
+    x          &amp; 0 &amp; 1 &amp; 2   \\ \hline
+     P(X = x)   &amp; 1/4 &amp; 1/2 &amp; 1/4 \\
+     P(X \leq x) &amp; 1/4 &amp; 3/4 &amp; 4/4
+\end{array}
+\]</span> We see that the cumulative probabilities are computed by summing up the probabilities of each value of <span class="math inline">\(x = 0,1,2\)</span>.</p>
 </div>
-<!-- I cannot get a tikzpicture to work, unfortunately -->
-<!-- ```{tikz} -->
-<!-- \tikzstyle{level 1}=[level distance=3.5cm, sibling distance=3.5cm] -->
-<!-- \tikzstyle{level 2}=[level distance=3.5cm, sibling distance=2cm] -->
-<!-- \begin{tikzpicture}[grow=right,sloped] -->
-<!--   \node [dummy] {} -->
-<!--     child {node  [dummy] {Bag 3}  -->
-<!--         child {node [dummy] {\$20} [above] edge from parent node {3/4}} -->
-<!--         child {node [dummy] {\$5} [above] edge from parent node {1/4}} -->
-<!--     [above] edge from parent node {1/6} -->
-<!--     } -->
-<!--     child {node  [dummy] {Bag 2}  -->
-<!--         child {node [dummy] {\$20} [above] edge from parent node {2/4}} -->
-<!--         child {node [dummy] {\$5} [above] edge from parent node {2/4}} -->
-<!--     [above] edge from parent node {2/6} -->
-<!--     } -->
-<!--         child {node  [dummy] {Bag 1}  -->
-<!--         child {node [dummy] {\$20} [above] edge from parent node {1/4}} -->
-<!--         child {node [dummy] {\$5} [above] edge from parent node {3/4}} -->
-<!--     [above] edge from parent node {3/6} -->
-<!--     } -->
-<!--     ; -->
-<!-- \end{tikzpicture} -->
-<!-- ``` -->
-<p>This diagram nicely summarizes all the information we are given. To find the probability of an outcome, we trace the tree diagram starting from the beginning until we reach that outcome, and multiplying the probabilities we pass along the way. For example, <span class="math inline">\(P(W \cap B_1) = 3/6 \times 1/4\)</span>.</p>
-<ol start="2" type="1">
-<li>Given that a player got twenty dollars, what is the probability that the player drew from the first bag? We can answer this question using Bayes’ rule: <span class="math display">\[
-\begin{align*}
-   P(B_1| W) &amp;= \frac{P(W | B_1)P(B_1)}{P(W | B_1)P(B_1) + P(W | B_2)P(B_2) + P(W | B_3)P(B_3)}\\
-                   &amp; = \frac{(1/4)(3/6)}{5/12} \\
-                   &amp;=3/10.
-\end{align*}
-\]</span></li>
-</ol>
+</section>
+<section id="probability-mass-function" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="probability-mass-function"><span class="header-section-number">8.5</span> Probability mass function</h2>
+<p>In many cases it is inconvenient to fully tabulate the probability distribution of a random variable. In the following example the support of the random variable is not a finite set of numbers, so one cannot list all the values the random variable can take.</p>
+<div id="exm-birdfeeder" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.8 (Number of bird landings at a feeder)</strong></span> Count the number of bird landings on a bird feeder on a given day and let this be <span class="math inline">\(X\)</span>. We might use some kind of mathematical model to begin tabulating the probability distribution as <span class="math display">\[
+\begin{array}{c|ccccc}
+     x          &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; \cdots  \\ \hline
+     P(X = x)   &amp; 0.02 &amp; 0.07 &amp; 0.15 &amp; 0.20 &amp; \cdots
+\end{array},
+\]</span> but the table may go on and on so that it is impractical or impossible to write the whole table. In this situation we can truncate the table as below, using the fact that the probabilities must sum to one: <span class="math display">\[
+\begin{array}{c|ccccc}
+     x          &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; \geq 4   \\ \hline
+     P(X = x)   &amp; 0.02 &amp; 0.07 &amp; 0.15 &amp; 0.20 &amp; 0.56
+\end{array}.
+\]</span></p>
 </div>
+<p>One might well ask where the probabilities in the bird landings example came from. Recall that a probability distribution for a discrete random variable <span class="math inline">\(X\)</span> assigns probabilities <span class="math inline">\(p_1,p_2,\dots\)</span> to the values <span class="math inline">\(x_1,x_2,\dots\)</span> in the support of <span class="math inline">\(X\)</span>. In the bird landing example, the support of <span class="math inline">\(X\)</span> is the set <span class="math inline">\(\mathcal{X}= \{0,1,2,\dots\}\)</span>. Depending on the statistical experiment, it may be reasonable to define the probabilities <span class="math inline">\(p_1,p_2,\dots\)</span> according to a function. In fact, the numbers in the table were obtained by setting <span class="math inline">\(p_i = p(x_i)\)</span>, where <span class="math inline">\(p(x)\)</span> is the function given by <span class="math display">\[
+p(x) = \frac{2^{x}e^{-2}}{x!} \quad x = 0,1,2,\dots
+\]</span> If you plug in the values <span class="math inline">\(0,1,2,\dots\)</span> for <span class="math inline">\(x\)</span>, you obtain the values in the table (after rounding to the hundredths place). Such a function according to which the probability distribution of a discrete random variable is defined is called a <em>probability mass function</em>. Formally:</p>
+<div id="def-pmf" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8.4 (Probability mass function)</strong></span> The <em>probability mass function</em> (pmf) of a discrete random variable <span class="math inline">\(X\)</span> with support <span class="math inline">\(\mathcal{X}\)</span> is the function <span class="math inline">\(p\)</span> which satisfies <span class="math display">\[
+P(X = x) = p(x)
+\]</span> for all <span class="math inline">\(x \in \mathcal{X}\)</span>.</p>
+</div>
+<p>We will encounter several examples of probability mass functions in coming pages.</p>
 
 
+</section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p> Letting <span class="math inline">\(O\)</span> be the event that the advertizer requests payment to a P.O. box and <span class="math inline">\(S\)</span> the event that the advertizement is a scam (ignoring the fact that we usually use <span class="math inline">\(S\)</span> to represent the sample space), we have <span class="math display">\[
-\begin{align*}
-P(O) &amp;= P(O \cap S) +  P(O \cap S^c) \\
-           &amp;=P(O | S)P(S) +  P(O | S^c)P(S^c) \\
-           &amp; = 0.90 \times 0.01 + 0.20 \times (1 - 0.01)\\
-           &amp; = 0.207.
-\end{align*}
+<li id="fn1"><p>The sample space is given in <a href="set_basics.html#exm-twodice" class="quarto-xref">Example&nbsp;<span>1.5</span></a>. Noting that each outcome is equally likely, we may write <span class="math display">\[
+  \begin{array}{c|ccccccccccc}
+x          &amp; 2 &amp; 3 &amp; 4&amp;5&amp;6&amp;7&amp;8&amp;9&amp;10&amp;11&amp;12   \\ \hline
+P(X = x)   &amp; 1/36 &amp; 2/36&amp;3/36 &amp;4/36&amp;5/36&amp;6/36&amp;5/36&amp;4/36&amp;3/36&amp;2/36&amp;1/36
+\end{array}.
 \]</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>We have <span class="math display">\[
+<li id="fn2"><p>From the probability distribution of <span class="math inline">\(X\)</span> we obtain <span class="math inline">\(21/36\)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>From the probability distribution of <span class="math inline">\(X\)</span> we obtain <span class="math inline">\(3/36\)</span>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>The expected value of <span class="math inline">\(X\)</span> is <span class="math display">\[
+\mu = 0 (0.3) + 1(0.7) =0.7.
+\]</span><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>We have already obtained <span class="math inline">\(\mathbb{E}X = 21/6\)</span>, so the variance is given by <span class="math display">\[
 \begin{align*}
-P(S|O) &amp;= \frac{P(S\cap O)}{P(O)} \\
-&amp;= \frac{P(O|S)P(S)}{P(O)} \\
-&amp;= \frac{0.90 \times 0.01}{0.207} \\
-&amp;= 0.0435,
+\operatorname{Var}X &amp;= (1/6)(1-21/6)^2 + (1/6)(2-21/6)^2 + (1/6)(3-21/6)^2  \\
+            &amp; \quad + (1/6)(4-21/6)^2 + (1/6)(5-21/6)^2 + (1/6)(6-21/6)^2 \\
+            &amp; = 35/12 \\
+            &amp; = 2.916667.
 \end{align*}
-\]</span> where we have used Bayes’ formula: <span class="math display">\[
-P(S|O) =\frac{P(O|S)P(S)}{P(O | S)P(S) +  P(O | S^c)P(S^c)}.
-\]</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+\]</span><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -907,13 +914,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./independence.html" class="pagination-link" aria-label="Independence">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></span>
+      <a href="./random_variables.html" class="pagination-link" aria-label="Random variables">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Random variables</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./random_variables.html" class="pagination-link" aria-label="random_variables">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">random_variables</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./bernoulli_binomial.html" class="pagination-link" aria-label="Bernoulli and binomial distributions">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bernoulli and binomial distributions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

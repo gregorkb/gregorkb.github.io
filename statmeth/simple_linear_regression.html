@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>8&nbsp; Simple linear regression – Statistical Methods</title>
+<title>10&nbsp; Simple linear regression – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -86,7 +86,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./power_ztest.html" rel="next">
-<link href="./normal_distribution.html" rel="prev">
+<link href="./bernoulli_binomial.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -177,7 +177,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./simple_linear_regression.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simple linear regression</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./simple_linear_regression.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simple linear regression</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -255,14 +255,26 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./normal_distribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Normal distribution</span></span></a>
+  <a href="./random_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Random variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./discrete_rvs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Discrete random variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bernoulli_binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bernoulli and binomial distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -279,7 +291,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -295,14 +307,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./glmintro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Generalized linear models</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -323,18 +329,24 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#pearsons-correlation-coefficient" id="toc-pearsons-correlation-coefficient" class="nav-link active" data-scroll-target="#pearsons-correlation-coefficient"><span class="header-section-number">8.1</span> Pearson’s correlation coefficient</a></li>
-  <li><a href="#the-simple-linear-regression-model" id="toc-the-simple-linear-regression-model" class="nav-link" data-scroll-target="#the-simple-linear-regression-model"><span class="header-section-number">8.2</span> The simple linear regression model</a></li>
-  <li><a href="#inference-in-simple-linear-regression" id="toc-inference-in-simple-linear-regression" class="nav-link" data-scroll-target="#inference-in-simple-linear-regression"><span class="header-section-number">8.3</span> Inference in simple linear regression</a></li>
+  <li><a href="#pearsons-correlation-coefficient" id="toc-pearsons-correlation-coefficient" class="nav-link active" data-scroll-target="#pearsons-correlation-coefficient"><span class="header-section-number">10.1</span> Pearson’s correlation coefficient</a></li>
+  <li><a href="#the-simple-linear-regression-model" id="toc-the-simple-linear-regression-model" class="nav-link" data-scroll-target="#the-simple-linear-regression-model"><span class="header-section-number">10.2</span> The simple linear regression model</a></li>
+  <li><a href="#inference-in-simple-linear-regression" id="toc-inference-in-simple-linear-regression" class="nav-link" data-scroll-target="#inference-in-simple-linear-regression"><span class="header-section-number">10.3</span> Inference in simple linear regression</a>
+  <ul class="collapse">
+  <li><a href="#confidence-interval-for-the-slope-parameter" id="toc-confidence-interval-for-the-slope-parameter" class="nav-link" data-scroll-target="#confidence-interval-for-the-slope-parameter"><span class="header-section-number">10.3.1</span> Confidence interval for the slope parameter</a></li>
+  <li><a href="#testing-hypotheses-about-the-slope-parameter" id="toc-testing-hypotheses-about-the-slope-parameter" class="nav-link" data-scroll-target="#testing-hypotheses-about-the-slope-parameter"><span class="header-section-number">10.3.2</span> Testing hypotheses about the slope parameter</a></li>
+  <li><a href="#confidence-interval-for-the-height-of-the-line" id="toc-confidence-interval-for-the-height-of-the-line" class="nav-link" data-scroll-target="#confidence-interval-for-the-height-of-the-line"><span class="header-section-number">10.3.3</span> Confidence interval for the height of the line</a></li>
+  <li><a href="#prediction-interval-for-a-new-response-value" id="toc-prediction-interval-for-a-new-response-value" class="nav-link" data-scroll-target="#prediction-interval-for-a-new-response-value"><span class="header-section-number">10.3.4</span> Prediction interval for a new response value</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./simple_linear_regression.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simple linear regression</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./simple_linear_regression.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simple linear regression</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-simple_linear_regression" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></h1>
+<h1 class="title"><span id="sec-simple_linear_regression" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></h1>
 </div>
 
 
@@ -363,17 +375,14 @@ window.Quarto = {
 </div>
 <p>You have likely seen many plots like the one below, in which the values of one variable are plotted against the values of another. This is called a scatterplot. The data to make the plot are pairs of numbers <span class="math inline">\((x_1,Y_1),\dots,(x_n,Y_n)\)</span>. Below is an example.</p>
 <div id="exm-beryllium" class="theorem example">
-<p><span class="theorem-title"><strong>Example 8.1 (Beryllium data)</strong></span> These data are taken from <span class="citation" data-cites="santos2004beryllium">Santos et al. (<a href="references.html#ref-santos2004beryllium" role="doc-biblioref">2004</a>)</span> and can be downloaded in a <code>.Rdata</code> file from <a href="https://github.com/gregorkb/gregorkb.github.io/tree/master/data">here</a>. The <span class="math inline">\(x\)</span> values in te scatterplot are temperatures of stars and the <span class="math inline">\(Y\)</span> values are the natural log of the beryllium abundances in the corresponding stars.</p>
+<p><span class="theorem-title"><strong>Example 10.1 (Beryllium data)</strong></span> These data are taken from <span class="citation" data-cites="santos2004beryllium">Santos et al. (<a href="references.html#ref-santos2004beryllium" role="doc-biblioref">2004</a>)</span> and can be downloaded in a <code>.Rdata</code> file from <a href="https://github.com/gregorkb/gregorkb.github.io/tree/master/data">here</a>. The <span class="math inline">\(x\)</span> values in te scatterplot are temperatures of stars and the <span class="math inline">\(Y\)</span> values are the natural log of the beryllium abundances in the corresponding stars.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/beryllium.Rdata"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> beryllium<span class="sc">$</span>Teff</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> beryllium<span class="sc">$</span>logN_Be</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Y <span class="sc">~</span> x , <span class="at">xlab=</span><span class="st">"Teff"</span>,<span class="at">ylab =</span> <span class="st">"logBe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div id="fig-beryllium" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -381,7 +390,7 @@ window.Quarto = {
 <img src="simple_linear_regression_files/figure-html/fig-beryllium-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-beryllium-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.1: Log of beryllium abundance against the temperature of stars.
+Figure&nbsp;10.1: Log of beryllium abundance against the temperature of stars.
 </figcaption>
 </figure>
 </div>
@@ -390,20 +399,20 @@ Figure&nbsp;8.1: Log of beryllium abundance against the temperature of stars.
 </div>
 <p>Plots like these can be helpful for depicting the relationship between two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. In addition, they can help researchers make predictions; for example, there is no star in the data set with temperature exactly <span class="math inline">\(5200\)</span>, but based if one were to draw a straight line through the points in the scatterplot, one could use the height of the line at <span class="math inline">\(x = 5200\)</span> to make a reasonable guess about the log of beryllium abundance in such a star.</p>
 <p>We first introduce what is called the correlation coefficient, which describes the strength and direction of a linear relationship between random variables, and then introduce simple linear regression analysis. The latter is a way to draw “the best” straight line through the data and to make statistical inferences—conclusions to which we can attach levels of confidence—about the linear relationship between the variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
-<section id="pearsons-correlation-coefficient" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="pearsons-correlation-coefficient"><span class="header-section-number">8.1</span> Pearson’s correlation coefficient</h2>
+<section id="pearsons-correlation-coefficient" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="pearsons-correlation-coefficient"><span class="header-section-number">10.1</span> Pearson’s correlation coefficient</h2>
 <p>When we suspect that two variables might be linearly related (related in such a way that one could draw a straight line through a scatterplot of their values), we often compute what is called <em>Pearson’s correlation coefficient</em>, which we will denote by <span class="math inline">\(r_{xY}\)</span>. This is a measure describing the strength and direction of a linear relationship between two variables.</p>
 <div id="def-pearsoncorr" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 8.1 (Pearson’s correlation coefficient)</strong></span> For data pairs <span class="math inline">\((x_1,Y_1),\dots,(x_n,Y_n)\)</span>, <em>Pearson’s correlation coefficient</em> is defined as <span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 10.1 (Pearson’s correlation coefficient)</strong></span> For data pairs <span class="math inline">\((x_1,Y_1),\dots,(x_n,Y_n)\)</span>, <em>Pearson’s correlation coefficient</em> is defined as <span class="math display">\[
 r_{xY} = \frac{\sum_{i=1}^n (x_i - \bar x_n)(Y_i-\bar Y_n)}{\sqrt{\sum_{i=1}^n(x_i - \bar x_n)^2 \sum_{i=1}^n(Y_i - \bar Y_n)^2}} .
 \]</span></p>
 </div>
 <p>It may not be clear from the formula for <span class="math inline">\(r_{xY}\)</span> what this quantity is supposed to tell us. One fact about this value, however, which is also not immediately clear from the formula, is that <span class="math inline">\(r_{xY}\)</span> cannot take a value outside the interval <span class="math inline">\([-1,1]\)</span>. Let’s put this fact in a big box:</p>
 <div id="prp-pearsoncorrbounds" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 8.1 (Possible values for Pearson’s correlation coefficient)</strong></span> Pearson’s correlation coefficient <span class="math inline">\(r_{xY}\)</span> must take a value in <span class="math inline">\([-1,1]\)</span>.</p>
+<p><span class="theorem-title"><strong>Proposition 10.1 (Possible values for Pearson’s correlation coefficient)</strong></span> Pearson’s correlation coefficient <span class="math inline">\(r_{xY}\)</span> must take a value in <span class="math inline">\([-1,1]\)</span>.</p>
 </div>
 <p>Back to looking at the formula: If we look for a moment at the numerator of <span class="math inline">\(r_{xY}\)</span>, we see that if <span class="math inline">\(x_i\)</span> and <span class="math inline">\(Y_i\)</span> tend at the same time to exceed their respective means <span class="math inline">\(\bar x_n\)</span> and <span class="math inline">\(\bar Y_n\)</span> and tend at the same time to fall below their respective means, the correlation coefficient should take a positive value. However, if <span class="math inline">\(x_i\)</span> tends to be below its mean while <span class="math inline">\(Y_i\)</span> is above its mean and above its mean when <span class="math inline">\(Y_i\)</span> is below its mean, then <span class="math inline">\(r_{xY}\)</span> will probably take a negative value. If <span class="math inline">\(x_i\)</span> and <span class="math inline">\(Y_i\)</span> tend to fall above and below their respective means without regard to one another, then <span class="math inline">\(r_{xY}\)</span> does not know whether to be positive or negative and so takes a value close to zero.</p>
-<p><a href="#fig-pearsons" class="quarto-xref">Figure&nbsp;<span>8.2</span></a> below shows a few scatterplots along with the value of Pearson’s correlation coefficient computed on the data.</p>
+<p><a href="#fig-pearsons" class="quarto-xref">Figure&nbsp;<span>10.2</span></a> below shows a few scatterplots along with the value of Pearson’s correlation coefficient computed on the data.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -433,7 +442,7 @@ r_{xY} = \frac{\sum_{i=1}^n (x_i - \bar x_n)(Y_i-\bar Y_n)}{\sqrt{\sum_{i=1}^n(x
 <img src="simple_linear_regression_files/figure-html/fig-pearsons-1.png" class="img-fluid figure-img" alt="Five scatterplots with Pearson's correlation shown." width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pearsons-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.2: Pearson’s correlation coefficient computed on synthetic data sets.
+Figure&nbsp;10.2: Pearson’s correlation coefficient computed on synthetic data sets.
 </figcaption>
 </figure>
 </div>
@@ -450,11 +459,11 @@ Figure&nbsp;8.2: Pearson’s correlation coefficient computed on synthetic data 
 <p>As a summary, we may say that Pearson’s correlation coefficient describes the strength and direction of <em>linear</em> relationships. Very strong non-linear relationships, like the ones in the two rightmost panels of the plot, do not correspond to large values of Pearson’s correlation coefficient. Therefore, the quantity <span class="math inline">\(r_{xY}\)</span> is only appropriate for describing linear relationships. If a scatterplot suggests a non-linear relationship—if you cannot draw a straight line through the data points—then it is not appropriate to use Pearson’s correlation coefficient to describe the relationship.</p>
 <p>In statistics, the word “correlation” almost always means Pearson’s correlation, so a statistician would never say something like “what you are saying is correlated with what so and so is saying.” A statistician will not use the word “correlated” unless it is to describe the strength and direction of the linear relationship between two variables.</p>
 </section>
-<section id="the-simple-linear-regression-model" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="the-simple-linear-regression-model"><span class="header-section-number">8.2</span> The simple linear regression model</h2>
+<section id="the-simple-linear-regression-model" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="the-simple-linear-regression-model"><span class="header-section-number">10.2</span> The simple linear regression model</h2>
 <p>The simple linear regression model is a mathematical description of how the <span class="math inline">\(Y_i\)</span> are related to the <span class="math inline">\(x_i\)</span>.</p>
 <div id="def-slr_model" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 8.2 (Simple linear regression model)</strong></span> For data <span class="math inline">\((x_1,Y_1),\dots,(x_n,Y_n)\)</span> the <em>simple linear regression model</em> assumes <span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 10.2 (Simple linear regression model)</strong></span> For data <span class="math inline">\((x_1,Y_1),\dots,(x_n,Y_n)\)</span> the <em>simple linear regression model</em> assumes <span class="math display">\[
 Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i
 \]</span> for <span class="math inline">\(i =1,\dots,n\)</span>, where</p>
 <ul>
@@ -472,28 +481,25 @@ Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i
 Q(b_0,b) = \sum_{i=1}^n(Y_i - (b_0 + b_1 x_i))^2
 \]</span> of squared vertical distances of the <span class="math inline">\(Y_i\)</span> to the height of the line <span class="math inline">\(y = b_0 + b_1x\)</span>. It is possible to use calculus methods to find the slope <span class="math inline">\(b_1\)</span> and intercept <span class="math inline">\(b_0\)</span> which minimize this criterion:</p>
 <div id="prp-slrlse" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 8.2 (Least squares estimators in simple linear regression)</strong></span> The least squares criterion <span class="math inline">\(Q(b_0,b_1)\)</span> is uniquely minimized at <span class="math display">\[
+<p><span class="theorem-title"><strong>Proposition 10.2 (Least squares estimators in simple linear regression)</strong></span> The least squares criterion <span class="math inline">\(Q(b_0,b_1)\)</span> is uniquely minimized at <span class="math display">\[
 \begin{align*}
     \hat \beta_0 &amp;= \bar Y_n - \hat \beta_1 \bar x_n \\
     \hat \beta_1 &amp;= \frac{\sum_{i=1}^n (x_i - \bar x_n)(Y_i-\bar Y_n) }{\sum_{i=1}^n(x_i - \bar x_n)^2} = r_{xY}\frac{s_Y}{s_x},
 \end{align*}
-\]</span> where <span class="math inline">\(s_Y^2 = (n-1)^{-1}\sum_{i=1}^n(Y_i - \bar Y_n)^2\)</span> and <span class="math inline">\(s_x^2 = (n-1)^{-1}\sum_{i=1}^n(x_i - \bar x_n)^2\)</span>, provided <span id="eq-nonsingslr"><span class="math display">\[
+\]</span> where <span class="math inline">\(s_Y^2 = (n-1)^{-1}\sum_{i=1}^n(Y_i - \bar Y_n)^2\)</span> and <span class="math inline">\(s_x^2 = (n-1)^{-1}\sum_{i=1}^n(x_i - \bar x_n)^2\)</span> with <span class="math inline">\(\bar x_n = n^{-1}\sum_{i=1}^n x_i\)</span>, provided <span id="eq-nonsingslr"><span class="math display">\[
 \sum_{i=1}^n (x_i - \bar x_n)^2 &gt; 0
-\tag{8.1}\]</span></span></p>
+\tag{10.1}\]</span></span></p>
 </div>
 <p>So, to compute the least-squares estimators of the regression coefficients <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>, one first obtains the slope as <span class="math inline">\(\hat \beta_1 = r_{xY}s_Y/s_x\)</span> and then the intercept as <span class="math inline">\(\hat \beta_0 = \bar Y_n - \hat \beta_1 \bar x_n\)</span>.</p>
-<p>The condition in <a href="#eq-nonsingslr" class="quarto-xref">Equation&nbsp;<span>8.1</span></a> is necessary, because we in the computation of <span class="math inline">\(\hat \beta_1\)</span> we must divide by this sum of squares. Note, however, that <span class="math inline">\(\sum_{i=1}^n (x_i - \bar X_n)^2 =0\)</span> if and only if all the <span class="math inline">\(x_i\)</span> are equal to the same value. In this case it would be absurd to try to predict the <span class="math inline">\(Y_i\)</span> using the values of the <span class="math inline">\(x_i\)</span>, so we do not need to fret about this condition.</p>
-<p><a href="#fig-beryllium_ls" class="quarto-xref">Figure&nbsp;<span>8.3</span></a> shows the scatterplot of the beryllium data with the least-squares line overlaid.</p>
+<p>The condition in <a href="#eq-nonsingslr" class="quarto-xref">Equation&nbsp;<span>10.1</span></a> is necessary, because we in the computation of <span class="math inline">\(\hat \beta_1\)</span> we must divide by this sum of squares. Note, however, that <span class="math inline">\(\sum_{i=1}^n (x_i - \bar X_n)^2 =0\)</span> if and only if all the <span class="math inline">\(x_i\)</span> are equal to the same value. In this case it would be absurd to try to predict the <span class="math inline">\(Y_i\)</span> using the values of the <span class="math inline">\(x_i\)</span>, so we do not need to fret about this condition.</p>
+<p>The code below computes the least squares estimators of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> on the beryllium data and makes a scatterplot with the least-squares line overlaid.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x_bar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="fu">cor</span>(x,Y) <span class="sc">*</span> <span class="fu">sd</span>(Y) <span class="sc">/</span> <span class="fu">sd</span>(x)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(Y) <span class="sc">-</span> b1<span class="sc">*</span>x_bar</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Y <span class="sc">~</span> x , <span class="at">xlab=</span><span class="st">"Teff"</span>,<span class="at">ylab =</span> <span class="st">"logBe"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Y <span class="sc">~</span> x, <span class="at">xlab =</span> <span class="st">"Teff"</span>, <span class="at">ylab =</span> <span class="st">"logBe"</span>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(b0,b1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div id="fig-beryllium_ls" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -501,18 +507,15 @@ Q(b_0,b) = \sum_{i=1}^n(Y_i - (b_0 + b_1 x_i))^2
 <img src="simple_linear_regression_files/figure-html/fig-beryllium_ls-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-beryllium_ls-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.3: Log of beryllium abundance against the temperature of stars with least-squares line overlaid.
+Figure&nbsp;10.3: Log of beryllium abundance against the temperature of stars with least-squares line overlaid.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>One obtains <span class="math inline">\(\hat \beta_0 = -2.3333252\)</span> and <span class="math inline">\(\hat \beta_1 = 5.9260046\times 10^{-4}\)</span>. One can compute these as in the preceding code, or more simply using the <code>lm()</code> function, as in the code below:</p>
+<p>One obtains <span class="math inline">\(\hat \beta_0 = -2.3333252\)</span> and <span class="math inline">\(\hat \beta_1 = 5.9260046\times 10^{-4}\)</span>. One can compute these as in the preceding code, or more simply using:</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y<span class="sc">~</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -531,21 +534,94 @@ Coefficients:
 <p>Having defined the residuals, we now define an estimator of <span class="math inline">\(\sigma^2\)</span> as <span class="math display">\[
 \hat \sigma^2 = \frac{1}{n-2}\sum_{i=1}^n\hat \varepsilon_i^2.
 \]</span></p>
+<p>Here we compute the estimator of the error term variance on the beryllium data:</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Y_hat <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> x</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>e_hat <span class="ot">&lt;-</span> Y <span class="sc">-</span> Y_hat</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(Y)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>sigma_hat <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(e_hat<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(n<span class="dv">-2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>sigma_hat <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(e_hat<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(n<span class="dv">-2</span>)) <span class="co"># standard deviation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In the beryllium data example we obtain <span class="math inline">\(\hat \sigma^2 = 0.0077834\)</span>. One can use the preceding code to obtain this or one can run <code>summary(lm(Y~x))</code>.</p>
+<p>We obtain <span class="math inline">\(\hat \sigma^2 = 0.0077834\)</span>.</p>
+<p>Here is a nice result about the estimator <span class="math inline">\(\hat \sigma^2\)</span>:</p>
+<div id="prp-sighatunbiased_slr" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 10.3 (Unbiasedness of variance estimator in simple linear regression)</strong></span> Under the conditions of the simple linear regression model, we have <span class="math inline">\(\mathbb{E}\hat \sigma^2 = \sigma^2\)</span>.</p>
+</div>
+<p>The above result states that the estimator <span class="math inline">\(\hat \sigma^2\)</span> is an unbiased estimator of <span class="math inline">\(\sigma^2\)</span>. “Unbiased” means that the sampling distribution of the estimator <span class="math inline">\(\hat \sigma^2\)</span> is centered correctly around the value it is trying to estimate; if we were to observe many realizations of the estimator <span class="math inline">\(\hat \sigma^2\)</span>, these would have an average very close to the estimation target <span class="math inline">\(\sigma^2\)</span>.</p>
+</section>
+<section id="inference-in-simple-linear-regression" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="inference-in-simple-linear-regression"><span class="header-section-number">10.3</span> Inference in simple linear regression</h2>
+<p>It is nice to be able to draw the best line through a scatterplot of points. We know that the least-squares line is, of any line we could possibly draw, the one that minimizes the sum of the squared vertical distances between the points and itself.</p>
+<p>Remember the whole idea behind statistics, though? If we were to collect another data set studying the same phenomenon, we would get different data; so what can we learn from this one single data set? The line we drew through the scatterplot is really a “guess” at where the true line would be. If we could go on collecting data on all the stars in the universe, we could then draw the “true” or “population” level line. But we only have the data in our sample.</p>
+<p>So what can we learn from it?</p>
+<p>As we have done before with population means and variances and proportions, we will formulate some hypotheses about the true best line underneath the data and use the least-squares line to test those hypotheses. Fundamentally, we are interested in knowing whether there exists a linear relation between the <span class="math inline">\(Y_i\)</span> and the <span class="math inline">\(x_i\)</span>. The true line is specified by the unknown values of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>. Of these parameters, it is <span class="math inline">\(\beta_1\)</span> which carries information about the relationship between the <span class="math inline">\(Y_i\)</span> and the <span class="math inline">\(x_i\)</span>. We therefore concentrate on making statistical inferences about <span class="math inline">\(\beta_1\)</span>; that is, we try to learn what we can about <span class="math inline">\(\beta_1\)</span> from the data.</p>
+<p>What we can learn about <span class="math inline">\(\beta_1\)</span> from the data depends on the behavior of out estimator <span class="math inline">\(\hat \beta_1\)</span>—specifically how far away from the true <span class="math inline">\(\beta_1\)</span> we should expect it to be. This information is contained in the sampling distribution of <span class="math inline">\(\hat \beta_1\)</span>.</p>
+<div id="prp-slrslopedist" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 10.4 (Sampling distribution of slope estimator)</strong></span> Under the assumptions of the simple linear regression model we have <span class="math display">\[
+\hat \beta_1 \sim \mathcal{N}(\beta_1,\sigma^2/S_{xx})
+\]</span> as well as <span class="math inline">\((n-2)\hat \sigma^2/\sigma^2 \sim \chi_{n-2}^2\)</span> with <span class="math inline">\(\hat \sigma^2\)</span> and <span class="math inline">\(\hat \beta_1\)</span> independent, so that <span id="eq-slrslopepivot"><span class="math display">\[
+\frac{\hat \beta_1 - \beta_1}{\hat \sigma/\sqrt{S_{xx}}} \sim t_{n-2}.
+\tag{10.2}\]</span></span></p>
+</div>
+<section id="confidence-interval-for-the-slope-parameter" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="confidence-interval-for-the-slope-parameter"><span class="header-section-number">10.3.1</span> Confidence interval for the slope parameter</h3>
+<p>The result in <a href="#eq-slrslopepivot" class="quarto-xref">Equation&nbsp;<span>10.2</span></a> implies that under the assumptions of the simple linear regression model a <span class="math inline">\((1-\alpha)\times 100\%\)</span> confidence interval for <span class="math inline">\(\beta_1\)</span> may be constructed as <span class="math display">\[
+\hat \beta_1 \pm t_{n-2,\alpha/2} \hat \sigma / \sqrt{S_{xx}}.
+\]</span></p>
+<p>We can compute this interval on the beryllium data with the R code:</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(Y<span class="sc">~</span>x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Sxx <span class="ot">&lt;-</span> <span class="fu">sum</span>((x <span class="sc">-</span> x_bar)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ta2 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>,n<span class="dv">-2</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>lo <span class="ot">&lt;-</span> b1 <span class="sc">-</span> ta2 <span class="sc">*</span> sigma_hat <span class="sc">/</span> <span class="fu">sqrt</span>(Sxx)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>up <span class="ot">&lt;-</span> b1 <span class="sc">+</span> ta2 <span class="sc">*</span> sigma_hat <span class="sc">/</span> <span class="fu">sqrt</span>(Sxx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This interval with <span class="math inline">\(\alpha = 0.05\)</span> (so a <span class="math inline">\(95\%\)</span> confidence interval) for <span class="math inline">\(\beta_1\)</span> in the beryllium data example is given by <span class="math inline">\((0.00047,0.00071)\)</span>. One can use the preceding code to compute the bounds of the confidence interval or one can use:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(<span class="fu">lm</span>(Y<span class="sc">~</span>x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                    2.5 %        97.5 %
+(Intercept) -2.9983088165 -1.6683415095
+x            0.0004749841  0.0007102168</code></pre>
+</div>
+</div>
+<p>This gives confidence intervals for both the intercept <span class="math inline">\(\beta_0\)</span> and the slope parameter <span class="math inline">\(\beta_1\)</span>.</p>
+</section>
+<section id="testing-hypotheses-about-the-slope-parameter" class="level3" data-number="10.3.2">
+<h3 data-number="10.3.2" class="anchored" data-anchor-id="testing-hypotheses-about-the-slope-parameter"><span class="header-section-number">10.3.2</span> Testing hypotheses about the slope parameter</h3>
+<p>Beyond constructing a confidence interval for <span class="math inline">\(\beta_1\)</span>, we may also be interested in testing hypotheses about the slope parameter. We consider testing hypotheses of the form <span class="math display">\[
+\begin{array}{lclcl}
+H_0\text{: } \beta_1 \geq 0 &amp;\text{ or } &amp; H_0\text{: } \beta_1 = 0 &amp;\text{ or } &amp; H_0\text{: } \beta_1 \leq 0\\
+H_1\text{: } \beta_1 &lt; 0 &amp;&amp; H_1\text{: } \beta_1 \neq 0 &amp;&amp; H_1\text{: } \beta_1 &gt; 0.
+\end{array}
+\]</span> In light of the result in <a href="#prp-slrslopedist" class="quarto-xref">Proposition&nbsp;<span>10.4</span></a>, we can test the above sets of hypotheses at significance level <span class="math inline">\(\alpha\)</span> by computing the test statistic <span class="math display">\[
+T_{\text{test}} = \frac{\hat \beta_1}{\hat \sigma /\sqrt{S_{xx}}}
+\]</span> and rejecting <span class="math inline">\(H_0\)</span> if <span class="math display">\[
+\begin{array}{lclcl}
+T_{\operatorname{stat}} &lt; -t_{n-2,\alpha} &amp;\text{ or } &amp; |T_{\operatorname{stat}}| &gt; t_{n-2,\alpha/2}&amp;\text{ or } &amp; T_{\operatorname{stat}} &gt; t_{n-2,\alpha}.
+\end{array}.
+\]</span> The corresponding p-values are given by the probabilities <span class="math display">\[
+\begin{array}{lclcl}
+P(T &lt; T_{\operatorname{test}}) &amp;\text{ or } &amp; 2 \times P(T &gt; |T_{\operatorname{test}}|) &amp; \text{ or } &amp; P(T &gt; T_{\operatorname{test}}),
+\end{array}
+\]</span> where <span class="math inline">\(T\sim t_{n-2}\)</span> and <span class="math inline">\(T_{\operatorname{test}}\)</span> represents the observed value of the test statistic.</p>
+<p>Here we compute the value of the test statistic <span class="math inline">\(T_{\operatorname{test}}\)</span> on the beryllium data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Ttest <span class="ot">&lt;-</span> b1<span class="sc">/</span>(sigma_hat<span class="sc">/</span><span class="fu">sqrt</span>(Sxx))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We obtain <span class="math inline">\(T_{\operatorname{test}} = 10.2183856\)</span>. To test <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 = 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 \neq 0\)</span> at significance level <span class="math inline">\(\alpha = 0.05\)</span>, we compare this value to <span class="math inline">\(t_{n-1,\alpha/2} = t_{38-2,0.025} = 2.028094\)</span>. We see that we reject <span class="math inline">\(H_0\)</span>. Now we compute the p-value for the two-sided test:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pval <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(Ttest), <span class="at">df =</span> n <span class="sc">-</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We obtain a p-value of <span class="math inline">\(3.4772185\times 10^{-12}\)</span>.</p>
+<p>To test <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 \leq 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 &gt; 0\)</span> at significance level <span class="math inline">\(\alpha = 0.05\)</span>, we compare this value to <span class="math inline">\(t_{n-1,\alpha} = t_{38-2,0.05} = 1.6882977\)</span>. Again we see that we reject <span class="math inline">\(H_0\)</span>. Now we compute the p-value for the one-sided test:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pval <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(Ttest), <span class="at">df =</span> n <span class="sc">-</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The p-value is <span class="math inline">\(1.7386093\times 10^{-12}\)</span>.</p>
+<p>We can easily obtain a p-value for the two-sided test (which is most often the test of interest) as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(Y<span class="sc">~</span>x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -567,55 +643,149 @@ Multiple R-squared:  0.7436,    Adjusted R-squared:  0.7365
 F-statistic: 104.4 on 1 and 36 DF,  p-value: 3.477e-12</code></pre>
 </div>
 </div>
-<p>The quantity given as residual standard error <span class="math inline">\(\hat \sigma\)</span>.</p>
-<p>Here is a nice result about the estimator <span class="math inline">\(\hat \sigma^2\)</span>:</p>
-<div id="prp-sighatunbiased_slr" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 8.3 (Unbiasedness of variance estimator in simple linear regression)</strong></span> Under the conditions of the simple linear regression model, we have <span class="math inline">\(\mathbb{E}\hat \sigma^2 = \sigma^2\)</span>.</p>
-</div>
-<p>The above result states that the estimator <span class="math inline">\(\hat \sigma^2\)</span> is an unbiased estimator of <span class="math inline">\(\sigma^2\)</span>. “Unbiased” means that the sampling distribution of the estimator <span class="math inline">\(\hat \sigma^2\)</span> is centered correctly around the value it is trying to estimate; if we were to observe many realizations of the estimator <span class="math inline">\(\hat \sigma^2\)</span>, these would have an average very close to the estimation target <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>The p-value is given in the final column of the “Coefficients” table under <code>Pr(&gt;|t|)</code> in the output above. Note that the table reports the p-value for testing <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_0 = 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_0 \neq 0\)</span> as well as that for testing <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 = 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 \neq 0\)</span>. It is typically only the latter which is of interest to us.</p>
+<p>Note also that the above output shows the value of <span class="math inline">\(\hat \sigma\)</span>, which is given as the “residual standard error”.</p>
 </section>
-<section id="inference-in-simple-linear-regression" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="inference-in-simple-linear-regression"><span class="header-section-number">8.3</span> Inference in simple linear regression</h2>
-<p>It is nice to be able to draw the best line through a scatterplot of points. We know that the least-squares line is, of any line we could possibly draw, the one that minimizes the sum of the squared vertical distances between the points and itself.</p>
-<p>Remember the whole idea behind statistics, though? If we were to collect another data set studying the same phenomenon, we would get different data; so what can we learn from this one single data set? The line we drew through the scatterplot is really a “guess” at where the true line would be. If we could go on collecting data on all the stars in the universe, we could then draw the “true” or “population” level line. But we only have the data in our sample.</p>
-<p>So what can we learn from it?</p>
-<p>As we have done before with population means and variances and proportions, we will formulate some hypotheses about the true best line underneath the data and use the least-squares line to test those hypotheses. Fundamentally, we are interested in knowing whether there exists a linear relation between the <span class="math inline">\(Y_i\)</span> and the <span class="math inline">\(x_i\)</span>. The true line is specified by the unknown values of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>. Of these parameters, it is <span class="math inline">\(\beta_1\)</span> which carries information about the relationship between the <span class="math inline">\(Y_i\)</span> and the <span class="math inline">\(x_i\)</span>. We therefore concentrate on making statistical inferences about <span class="math inline">\(\beta_1\)</span>; that is, we try to learn what we can about <span class="math inline">\(\beta_1\)</span> from the data.</p>
-<p>What we can learn about <span class="math inline">\(\beta_1\)</span> from the data depends on the behavior of out estimator <span class="math inline">\(\hat \beta_1\)</span>—specifically how far away from the true <span class="math inline">\(\beta_1\)</span> we should expect it to be. This information is contained in the sampling distribution of <span class="math inline">\(\hat \beta_1\)</span>.</p>
-<div id="prp-slrslopedist" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 8.4 (Sampling distribution of slope estimator)</strong></span> Under the assumptions of the simple linear regression model we have <span class="math display">\[
-\hat \beta_1 \sim \mathcal{N}(\beta_1,\sigma^2/S_{xx})
-\]</span> as well as <span class="math inline">\((n-2)\hat \sigma^2/\sigma^2 \sim \chi_{n-2}^2\)</span> with <span class="math inline">\(\hat \sigma^2\)</span> and <span class="math inline">\(\hat \beta_1\)</span> independent, so that <span id="eq-slrslopepivot"><span class="math display">\[
-\frac{\hat \beta_1 - \beta_1}{\hat \sigma/\sqrt{S_{xx}}} \sim t_{n-2}.
-\tag{8.2}\]</span></span></p>
-</div>
-<p>The result in <a href="#eq-slrslopepivot" class="quarto-xref">Equation&nbsp;<span>8.2</span></a> implies that under the assumptions of the simple linear regression model a <span class="math inline">\((1-\alpha)\times 100\%\)</span> confidence interval for <span class="math inline">\(\beta_1\)</span> may be constructed as <span class="math display">\[
-\hat \beta_1 \pm t_{n-2,\alpha/2} \hat \sigma / \sqrt{S_{xx}}.
+<section id="confidence-interval-for-the-height-of-the-line" class="level3" data-number="10.3.3">
+<h3 data-number="10.3.3" class="anchored" data-anchor-id="confidence-interval-for-the-height-of-the-line"><span class="header-section-number">10.3.3</span> Confidence interval for the height of the line</h3>
+<p>Beyond making inferences on the slope (via the construction of confidence intervals or testing hypotheses, as we have done), we are also interested in using the fitted (estimated) simple linear regression model to estimate the expected value of the response <span class="math inline">\(Y_i\)</span> given that the covariate <span class="math inline">\(x_i\)</span> is equal to some value. Let <span class="math inline">\(x_{\operatorname{new}}\)</span> represent a covariate value, possible never observed in the data at hand. Then we would like to know what response values we can expect, on average, when the covariate takes the value <span class="math inline">\(x_{\operatorname{new}}\)</span>. That is, we would like to estimate the height of the true regression line <span class="math inline">\(\beta_0 + \beta_1x_{\operatorname{new}}\)</span> at the covariate value <span class="math inline">\(x_{\operatorname{new}}\)</span>. We will use as our estimator of this quantity the height of the least-squares line <span class="math inline">\(\hat \beta_0 + \hat \beta_1 x_{\operatorname{new}}\)</span> at this value of the covariate. The following result will show us how to construct a confidence interval for the height of the true regression line based on the height of the least-squares line at covariate value <span class="math inline">\(x_{\operatorname{new}}\)</span>.</p>
+<div id="prp-heightlsline" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 10.5 (Sampling distribution of height of least-squares line)</strong></span> Under the assumptions of the simple linear regresion model we have <span class="math display">\[
+\hat \beta_0 + \hat \beta_1 x_{\operatorname{new}} \sim \text{Normal}\left(\beta_0 + \beta_1 x_{\operatorname{new}},\sigma^2\left[\frac{1}{n} + \frac{(x_{\operatorname{new}} - \bar x_n)^2}{S_{xx}}\right]\right),
+\]</span> where this is independent of <span class="math inline">\(\hat \sigma\)</span>, so that <span class="math display">\[
+\frac{\hat \beta_0 + \hat \beta_1 x_{\operatorname{new}} - (\beta_0 + \beta_1 x_{\operatorname{new}})}{\hat \sigma \sqrt{ \dfrac{1}{n} + \dfrac{(x_{\operatorname{new}} - \bar x_n)^2}{S_{xx}}}}  \sim t_{n-2}.
 \]</span></p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Sxx <span class="ot">&lt;-</span> <span class="fu">sum</span>((x <span class="sc">-</span> x_bar)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ta2 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>,n<span class="dv">-2</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>lo <span class="ot">&lt;-</span> b1 <span class="sc">-</span> ta2 <span class="sc">*</span> sigma_hat <span class="sc">/</span> <span class="fu">sqrt</span>(Sxx)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>up <span class="ot">&lt;-</span> b1 <span class="sc">+</span> ta2 <span class="sc">*</span> sigma_hat <span class="sc">/</span> <span class="fu">sqrt</span>(Sxx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
-<p>This interval with <span class="math inline">\(\alpha = 0.05\)</span> (so a <span class="math inline">\(95\%\)</span> confidence interval) for <span class="math inline">\(\beta_1\)</span> in the beryllium data example is given by <span class="math inline">\((0.00047,0.00071)\)</span>. One can use the preceding code to compute the bounds of the confidence interval or one can use <code>confint(lm(Y~x))</code>:</p>
+<p>It follows from <a href="#prp-heightlsline" class="quarto-xref">Proposition&nbsp;<span>10.5</span></a> that a <span class="math inline">\((1-\alpha)100\%\)</span> confidence interval can be constructed for <span class="math inline">\(\beta_0 +\beta_1 x_{\operatorname{new}}\)</span> as <span id="eq-slrconfint"><span class="math display">\[
+\hat \beta_0 + \hat \beta_1 x_{\operatorname{new}} \pm t_{n-2,\alpha/2}\hat \sigma \sqrt{ \frac{1}{n} + \frac{(x_{\operatorname{new}} - \bar x_n)^2}{S_{xx}}}.
+\tag{10.3}\]</span></span></p>
+<p>In the beryllium data example, suppose we are interested in the expected beryllium level of stars with temperature <span class="math inline">\(x_{\operatorname{new}}= 5700\)</span>, we may compute this as follows:</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(<span class="fu">lm</span>(Y<span class="sc">~</span>x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>xnew <span class="ot">&lt;-</span> <span class="dv">5700</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>ta2 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,n<span class="dv">-2</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> sigma_hat<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">/</span>n <span class="sc">+</span> (xnew <span class="sc">-</span> xbar)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>Sxx)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>lo <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xnew <span class="sc">-</span> ta2 <span class="sc">*</span> se</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>up <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xnew <span class="sc">+</span> ta2 <span class="sc">*</span> se</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The estimated average log-beryllium level for stars with temperature <span class="math inline">\(5700\)</span> is estimated to be <span class="math inline">\(1.0444975\)</span> with 95% confidence interval <span class="math inline">\((1.0148454,1.0741496)\)</span>. It is also possible to obtain this using the code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>lm_out <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y<span class="sc">~</span>x) <span class="co"># store output of lm() function in object lm_out</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(lm_out,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">5700</span>),</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">interval =</span> <span class="st">"confidence"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                    2.5 %        97.5 %
-(Intercept) -2.9983088165 -1.6683415095
-x            0.0004749841  0.0007102168</code></pre>
+<pre><code>       fit      lwr     upr
+1 1.044497 1.014845 1.07415</code></pre>
 </div>
 </div>
-<p>This gives confidence intervals for both the intercept <span class="math inline">\(\beta_0\)</span> and the slope parameter <span class="math inline">\(\beta_1\)</span>.</p>
-<p>Beyond constructing a confidence interval for <span class="math inline">\(\beta_1\)</span>, we may also be interested in testing hypotheses about the slope parameter. We consider testing hypotheses of the form</p>
+<p><a href="#fig-slrconfint" class="quarto-xref">Figure&nbsp;<span>10.4</span></a> depicts for the beryllium data the confidence interval in <a href="#eq-slrconfint" class="quarto-xref">Equation&nbsp;<span>10.3</span></a> computed at each value <span class="math inline">\(x_{\operatorname{new}}\)</span> over the entire range of observed covariate values. The vertical line is positioned at <span class="math inline">\(x_{\operatorname{new}}= 5700\)</span>. Note that the confidence intervals for the height of the true regression function get wider the further <span class="math inline">\(x_{\operatorname{new}}\)</span> lies from the mean of the covariate values <span class="math inline">\(\bar x_n\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Y <span class="sc">~</span> x , <span class="at">xlab=</span><span class="st">"Teff"</span>,<span class="at">ylab =</span> <span class="st">"logBe"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">5700</span>, <span class="at">col =</span> <span class="st">"gray"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(b0,b1)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>ta2 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,n<span class="dv">-2</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>xseq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x),<span class="fu">max</span>(x),<span class="at">length=</span><span class="dv">99</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>se_conf <span class="ot">&lt;-</span> sigma_hat <span class="sc">*</span> <span class="fu">sqrt</span>( <span class="dv">1</span><span class="sc">/</span>n <span class="sc">+</span> (xseq <span class="sc">-</span> xbar)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>Sxx)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>lo_conf <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">-</span> ta2 <span class="sc">*</span> se_conf</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>up_conf <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">+</span> ta2 <span class="sc">*</span> se_conf</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(lo_conf<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(up_conf<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-slrconfint" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A scatterplot with a line going through it and two curves as well as a vertical line.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-slrconfint-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="simple_linear_regression_files/figure-html/fig-slrconfint-1.png" class="img-fluid figure-img" alt="A scatterplot with a line going through it and two curves as well as a vertical line." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-slrconfint-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.4: Confidence intervals for the height of the true regression line over the entire range of observed covariate values.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="prediction-interval-for-a-new-response-value" class="level3" data-number="10.3.4">
+<h3 data-number="10.3.4" class="anchored" data-anchor-id="prediction-interval-for-a-new-response-value"><span class="header-section-number">10.3.4</span> Prediction interval for a new response value</h3>
+<p>Consider trying to guess the value of a response <span class="math inline">\(Y_{\operatorname{new}}\)</span> associated with a new observation <span class="math inline">\((x_{\operatorname{new}},Y_{\operatorname{new}})\)</span>. In the beryllium data example, you might try to guess the log-beryllium level in a star with temperature, say <span class="math inline">\(x_{\operatorname{new}}= 5700\)</span>. Using the fitted simple linear regression model, a natural guess is the fitted value <span class="math inline">\(\hat Y_{\operatorname{new}}= \hat \beta_0 + \hat \beta_1 x_{\operatorname{new}}\)</span>, which is the height of the least-squares line at the covariate value <span class="math inline">\(x_{\operatorname{new}}\)</span>. Since <span class="math inline">\(Y_{\operatorname{new}}\)</span> is a random variable, we know that we cannot really predict its value in advance, so we should not put much trust in our guess. Just as we construct confidence intervals for unknown parameter values based on estimators computed on sample data, we should include with our guess a margin of error; that is, we should guess with an interval rather than with a single number. Since we are trying to guess the value of a random variable rather than trying to estimate the value of a parameter, we will call our interval guess a <em>prediction interval</em> rather than a confidence interval. We will aim to construct a prediction interval within which the value of <span class="math inline">\(Y_{\operatorname{new}}\)</span>, whenever it is eventually observed, will fall with some probability, say <span class="math inline">\(1 - \alpha\)</span>. We will make use of the following result to construct such an interval:</p>
+<div id="prp-slr_predint" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 10.6</strong></span> In the simple linear regression model, given a new covariate value <span class="math inline">\(x_{\operatorname{new}}\)</span>, we have <span class="math display">\[
+Y_{\operatorname{new}}- \hat \beta_0 + \hat \beta_1 x_{\operatorname{new}}\sim \mathcal{N}\Big(0,\sigma^2\Big[1 + \frac{1}{n} + \frac{(x_{\operatorname{new}}- \bar x_n)^2}{S_{xx}}\Big]\Big)
+\]</span> independently of <span class="math inline">\((n-2)\hat \sigma^2/\sigma^2 \sim \chi_{n-2}^2\)</span>, so that <span class="math display">\[
+\frac{Y_{\operatorname{new}}- \hat \beta_0 + \hat \beta_1 x_{\operatorname{new}}}{\hat \sigma \sqrt{ 1 + \dfrac{1}{n} + \dfrac{(x_{\operatorname{new}}- \bar x_n)^2}{S_{xx}}}}  \sim t_{n-2}.
+\]</span></p>
+</div>
+<p>The above result gives us an idea of how far away <span class="math inline">\(Y_{\operatorname{new}}\)</span> is likely to be from the height <span class="math inline">\(\hat Y_{\operatorname{new}}\)</span> of the fitted line at covariate value <span class="math inline">\(x_{\operatorname{new}}\)</span>. We can use the result to define our <span class="math inline">\((1-\alpha)100\%\)</span> prediction interval as <span id="eq-slrpredint"><span class="math display">\[
+\hat \beta_0 + \hat \beta_1 x_{\operatorname{new}}\pm t_{n-2,\alpha/2}\hat \sigma \sqrt{1 +  \frac{1}{n} + \frac{( x_{\operatorname{new}}- \bar x_n)^2}{S_{xx}}}.
+\tag{10.4}\]</span></span></p>
+<p>Comparing this interval with the confidence interval in <a href="#eq-slrconfint" class="quarto-xref">Equation&nbsp;<span>10.3</span></a> for the height of the regression line, we see that the prediction interval is wider. Here we compute the prediction interval for <span class="math inline">\(Y_{\operatorname{new}}\)</span> corresponding to the covariate value <span class="math inline">\(x_{\operatorname{new}}= 5700\)</span> on the beryllium data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>xnew <span class="ot">&lt;-</span> <span class="dv">5700</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>ta2 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,n<span class="dv">-2</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> sigma_hat<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>n <span class="sc">+</span> (xnew <span class="sc">-</span> xbar)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>Sxx) <span class="co"># this part changed</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>lo <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xnew <span class="sc">-</span> ta2 <span class="sc">*</span> se</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>up <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xnew <span class="sc">+</span> ta2 <span class="sc">*</span> se</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We predict that the log-beryllium level for a star with temperature <span class="math inline">\(5700\)</span> would lie in the interval <span class="math inline">\((0.8631315,1.2258635)\)</span> with <span class="math inline">\(95\%\)</span> probability. Note that this is a wider interval than the one we computed for the true height of the regression line at <span class="math inline">\(x_{\operatorname{new}}= 5700\)</span>. One can understand why the interval is wider by considering that, even if we knew the height of the true regression function, that is if we knew the value of <span class="math inline">\(\beta_0 + \beta_1 x_{\operatorname{new}}\)</span>, we still could not predict with certainty the value of <span class="math inline">\(Y_{\operatorname{new}}\)</span>, as the height of the regression line is equal only to the <em>expected value</em> of the response when the covariate value is equal to <span class="math inline">\(x_{\operatorname{new}}\)</span>. If we want to make a guess of a single value of <span class="math inline">\(Y_{\operatorname{new}}\)</span>, we must widen the interval, as in <a href="#eq-slrpredint" class="quarto-xref">Equation&nbsp;<span>10.4</span></a>.</p>
+<p>The same prediction interval can be alternatively computed with this code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>lm_out <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y<span class="sc">~</span>x) <span class="co"># store output of lm() function in object lm_out</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(lm_out,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">5700</span>),</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">interval =</span> <span class="st">"prediction"</span>,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       fit       lwr      upr
+1 1.044497 0.8631315 1.225863</code></pre>
+</div>
+</div>
+<p><a href="#fig-slrpredint" class="quarto-xref">Figure&nbsp;<span>10.5</span></a> plots the prediction interval in <a href="#eq-slrpredint" class="quarto-xref">Equation&nbsp;<span>10.4</span></a> as well as the confidence interval in eq-slrconfint for values of <span class="math inline">\(x_{\operatorname{new}}\)</span> across the entire range of observed covariate values in the beryllium data. Here we see that the prediction interval are much wider than the confidence intervals—again, because these are attempting to capture individual observations, whereas the confidence intervals are only trying to capture the height of the true regression line.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Y <span class="sc">~</span> x , <span class="at">xlab=</span><span class="st">"Teff"</span>,<span class="at">ylab =</span> <span class="st">"logBe"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">5700</span>, <span class="at">col =</span> <span class="st">"gray"</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(b0,b1)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>ta2 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,n<span class="dv">-2</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>xseq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x),<span class="fu">max</span>(x),<span class="at">length=</span><span class="dv">99</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>se_conf <span class="ot">&lt;-</span> sigma_hat <span class="sc">*</span> <span class="fu">sqrt</span>( <span class="dv">1</span><span class="sc">/</span>n <span class="sc">+</span> (xseq <span class="sc">-</span> xbar)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>Sxx)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>lo_conf <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">-</span> ta2 <span class="sc">*</span> se_conf</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>up_conf <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">+</span> ta2 <span class="sc">*</span> se_conf</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(lo_conf<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(up_conf<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>se_pred <span class="ot">&lt;-</span> sigma_hat <span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>n <span class="sc">+</span> (xseq <span class="sc">-</span> xbar)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>Sxx)</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>lo_pred <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">-</span> ta2 <span class="sc">*</span> se_pred</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>up_pred <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">+</span> ta2 <span class="sc">*</span> se_pred</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(lo_pred<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">3</span>)</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(up_pred<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-slrpredint" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A scatterplot with a line going through it and two sets of curves as well as a vertical line.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-slrpredint-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="simple_linear_regression_files/figure-html/fig-slrpredint-1.png" class="img-fluid figure-img" alt="A scatterplot with a line going through it and two sets of curves as well as a vertical line." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-slrpredint-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.5: Prediction intervals for a new observation and confidence intervals for the height of the true regression line over the entire range of observed covariate values.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -623,6 +793,7 @@ x            0.0004749841  0.0007102168</code></pre>
 Santos, Nuno C, G Israelian, RJ Garcı́a López, M Mayor, R Rebolo, S Randich, A Ecuvillon, and C Domı́nguez Cerdeña. 2004. <span>“Are Beryllium Abundances Anomalous in Stars with Giant Planets?”</span> <em>Astronomy &amp; Astrophysics</em> 427 (3): 1085–96.
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1048,13 +1219,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./normal_distribution.html" class="pagination-link" aria-label="The Normal distribution">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Normal distribution</span></span>
+      <a href="./bernoulli_binomial.html" class="pagination-link" aria-label="Bernoulli and binomial distributions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bernoulli and binomial distributions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./power_ztest.html" class="pagination-link" aria-label="Statistical power of one-sample tests">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
