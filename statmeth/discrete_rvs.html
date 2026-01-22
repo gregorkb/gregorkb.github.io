@@ -240,6 +240,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Multiple linear regression</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -254,7 +260,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -458,11 +464,20 @@ P(X = 4) = P(X \leq 4) - P(X \leq 3) = 4/6 - 3/6 = 1/6.
 p(x) = \frac{2^{x}e^{-2}}{x!} \quad x = 0,1,2,\dots
 \]</span> If you plug in the values <span class="math inline">\(0,1,2,\dots\)</span> for <span class="math inline">\(x\)</span>, you obtain the values in the table (after rounding to the hundredths place). Such a function according to which the probability distribution of a discrete random variable is defined is called a <em>probability mass function</em>. Formally:</p>
 <div id="def-pmf" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 8.4 (Probability mass function)</strong></span> The <em>probability mass function</em> (pmf) of a discrete random variable <span class="math inline">\(X\)</span> with support <span class="math inline">\(\mathcal{X}\)</span> is the function <span class="math inline">\(p\)</span> which satisfies <span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 8.4 (Probability mass function)</strong></span> The <em>probability mass function</em> (PMF) of a discrete random variable <span class="math inline">\(X\)</span> with support <span class="math inline">\(\mathcal{X}\)</span> is the function <span class="math inline">\(p\)</span> which satisfies <span class="math display">\[
 P(X = x) = p(x)
 \]</span> for all <span class="math inline">\(x \in \mathcal{X}\)</span>.</p>
 </div>
 <p>We will encounter several examples of probability mass functions in coming pages.</p>
+<p>We will note lastly that if <span class="math inline">\(X\)</span> has PMF <span class="math inline">\(p(\cdot)\)</span> with support on <span class="math inline">\(\mathcal{X}\)</span>, then, following <a href="#def-expectedvaluediscrete" class="quarto-xref">Definition&nbsp;<span>8.2</span></a> and <a href="#def-variance" class="quarto-xref">Definition&nbsp;<span>8.3</span></a>, we can use the PMF to compute the mean and variance of the random variable as stated next:</p>
+<div id="prp-meanvarpmf" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 8.2 (Mean and variance from probability mass function)</strong></span> If <span class="math inline">\(X\)</span> is a discrete random variable with probability mass function <span class="math inline">\(p(\cdot)\)</span> and support <span class="math inline">\(\mathcal{X}\)</span>, then <span class="math display">\[
+\begin{align*}
+\mathbb{E}X &amp;= \sum_{x \in \mathcal{X}} xp(x) \\
+\operatorname{Var}X &amp;= \sum_{x \in \mathcal{X}} (x - \mathbb{E}X)^2p(x).
+\end{align*}
+\]</span></p>
+</div>
 
 
 </section>

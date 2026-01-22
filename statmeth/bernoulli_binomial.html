@@ -240,6 +240,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Multiple linear regression</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -254,7 +260,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -270,8 +276,16 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#the-bernoulli-trial" id="toc-the-bernoulli-trial" class="nav-link active" data-scroll-target="#the-bernoulli-trial"><span class="header-section-number">9.1</span> The Bernoulli trial</a></li>
+  <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution"><span class="header-section-number">9.2</span> Binomial distribution</a></li>
+  <li><a href="#mean-and-variance-of-a-binomial-random-variable" id="toc-mean-and-variance-of-a-binomial-random-variable" class="nav-link" data-scroll-target="#mean-and-variance-of-a-binomial-random-variable"><span class="header-section-number">9.3</span> Mean and variance of a Binomial random variable</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -305,11 +319,124 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
+<p>Here we introduce a very simple statistical experiment (maybe the simplest one imaginable) called a <em>Bernoulli trial</em>, after the man Jakob Bernoulli (1655–1705), soft “J”. We can use this simple experiment to build more interesting experiments, one of which will give rise to a probability distribution called the <em>Binomial distribution</em>.</p>
+<section id="the-bernoulli-trial" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="the-bernoulli-trial"><span class="header-section-number">9.1</span> The Bernoulli trial</h2>
 <div id="def-bernoullitrial" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 9.1 (Bernoulli trial)</strong></span> A Bernoulli trial is a statistical experiment for which there are two possible outcomes. We often give the outcomes the names “success” and “failure” and denote by <span class="math inline">\(p\)</span> the probability of a “success.”</p>
+<p><span class="theorem-title"><strong>Definition 9.1 (Bernoulli trial)</strong></span> A <em>Bernoulli trial</em> is a statistical experiment for which there are two possible outcomes. We often give the outcomes the names “success” and “failure” and denote by <span class="math inline">\(p\)</span> the probability of a “success.”</p>
 </div>
+<p>It is quite easy to think of examples.</p>
+<div id="exm-freethrow" class="theorem example">
+<p><span class="theorem-title"><strong>Example 9.1 (Freethrow)</strong></span> Shoot a freethrow and call making a basket a “success”, missing a “failure”. What is your probability of success <span class="math inline">\(p\)</span>?</p>
+</div>
+<div id="exm-coinflipbernoulli" class="theorem example">
+<p><span class="theorem-title"><strong>Example 9.2 (Flip a coin)</strong></span> Flip a coin and call heads a success, tails a failure. If the coin is fair then <span class="math inline">\(p = 1/2\)</span>.</p>
+</div>
+<p>We often encode the outcome of a Bernoulli trial in a random variable equal to <span class="math inline">\(1\)</span> for a success and <span class="math inline">\(0\)</span> for a failure. The probability distribution of a random variable defined in this way is called the <em>Bernoulli distribution</em>.</p>
+<div id="def-bernoullidist" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 9.2 (Bernoulli Distribution)</strong></span> Let <span class="math inline">\(X\)</span> be a random variable with support <span class="math inline">\(\mathcal{X}= \{0,1\}\)</span>, taking the value <span class="math inline">\(1\)</span> with probability <span class="math inline">\(p\)</span> and the value <span class="math inline">\(0\)</span> with probability <span class="math inline">\(1-p\)</span>. Then we say <span class="math inline">\(X\)</span> has the <em>Bernolli distribution</em> with success probability <span class="math inline">\(p\)</span>.</p>
+</div>
+<p>We have just met our first probability distribution with a name—the Bernoulli distribution. If a random variable has a distribution with a name, statisticians like to express it writing “<span class="math inline">\(X \sim\)</span>” followed by either a shorthand notation or a symbol for the distribution. If <span class="math inline">\(X\)</span> has the Bernoulli distribution with success probability <span class="math inline">\(p\)</span>, we will express this by writing <span class="math display">\[
+X \sim \text{Bernoulli}(p).
+\]</span> Note that we may also refer to <span class="math inline">\(X\)</span> as a <em>Bernoulli random variable</em>.</p>
+<p>Recall that the probability mass function (PMF) of a discrete random variable is the function <span class="math inline">\(p(\cdot)\)</span> such that <span class="math inline">\(P(X = x) = p(x)\)</span> for all <span class="math inline">\(x \in \mathcal{X}\)</span>. That is, <span class="math inline">\(p(x)\)</span> returns the probability that the random variable <span class="math inline">\(X\)</span> takes the value <span class="math inline">\(x\)</span> when observed. Note that we can write the PMF of a random variable <span class="math inline">\(X\)</span> with the <span class="math inline">\(\text{Bernoulli}(p)\)</span> distribution as <span id="eq-bernpmf"><span class="math display">\[
+p(x) = p^x(1-p)^{1-x}.
+\tag{9.1}\]</span></span></p>
+<div id="exm-alarmfail" class="theorem example">
+<p><span class="theorem-title"><strong>Example 9.3 (Alarm fail)</strong></span> Suppose you wake up on time with probability <span class="math inline">\(0.90\)</span> and fail to wake up on time with probability <span class="math inline">\(0.10\)</span>. Letting <span class="math inline">\(X = 1\)</span> if you wake up on time and <span class="math inline">\(X=0\)</span> otherwise, we may write <span class="math inline">\(X \sim \text{Bernoulli}(0.90)\)</span>. Moreover <span class="math inline">\(X\)</span> has pmf <span class="math inline">\(p(x) = (0.90)^x(1 - 0.90)^{1-x}\)</span>, for which <span class="math inline">\(p(1) = 0.90\)</span> and <span class="math inline">\(p(0) = 0.10\)</span>.</p>
+</div>
+<p>We next consider the experiment consisting of a certain number of independent Bernoulli trials.</p>
+</section>
+<section id="binomial-distribution" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="binomial-distribution"><span class="header-section-number">9.2</span> Binomial distribution</h2>
+<p>We are often interested in the number of successes we observe in a certain number independent Bernoulli trials.</p>
+<div id="exm-fourcoinflips" class="theorem example">
+<p><span class="theorem-title"><strong>Example 9.4 (Four coin flips)</strong></span> Flip a coin four times and let <span class="math inline">\(X\)</span> be the number of heads, i.e.&nbsp;“successes” observed. It will help us write down the probability distribution of <span class="math inline">\(X\)</span> if we list the possible sequences of successes and failures (that is the sample space of the experiment):</p>
+<p><span class="math display">\[
+S = \left\{ \begin{array}{ccccc}  HHHH,&amp;HHHT,&amp;THHT,&amp;&amp;\\
+                    &amp;HHTH,&amp;THTH,&amp; &amp;&amp; \\
+                    &amp;HTHH,&amp; TTHH,&amp; TTTH,&amp; \\
+                    &amp;THHH,&amp;HHTT,&amp;TTHT,&amp;\\
+                    &amp;&amp;HTHT,&amp;THTT,&amp;\\
+                    &amp;&amp;THHT,&amp;HTTT,&amp;TTTT
+\end{array}\right\}.
+\]</span> Since each sequence of successes and failures is equally likely, we can summarize the probability distribution of <span class="math inline">\(X\)</span> with a table: <span class="math display">\[
+\begin{array}{c|cccccc}
+    x          &amp; 0 &amp; 1 &amp; 2 &amp;3 &amp;4  \\ \hline
+     P(X = x)   &amp; 1/16 &amp; 4/16 &amp; 6/16 &amp; 4 / 16 &amp; 1/16 \\
+     P(X \leq x)   &amp; 1/16 &amp; 5/16 &amp; 11/16 &amp; 15 / 16 &amp; 16/16
+\end{array}
+\]</span></p>
+</div>
+<p>Suppose now that we were to flip a coin twelve times and we wanted to know the probabilities of getting zero, one, two, or three heads, and so on. As the number of coin tosses increases, it quickly becomes very burdensome to list all the possible sequences of coin flips. In fact, if we count the number of possible sequences of outcomes from twelve coin flips, we find there are <span class="math inline">\(2^{12} = 4096\)</span> sequences. It is impractical to list every one of them.</p>
+<p>Moreover, in the example of flipping a (fair) coin, all sequences of flips in the sample space occur with the same probability, but this would not be the case if, say, heads were more likely than tails or the other way around. In general, we would like to be able write down the probability distribution of a random variable <span class="math inline">\(X\)</span> when this is defined as the total number of successes in a certain number of independent Bernoulli trials, each with the same success probability <span class="math inline">\(p\)</span>, where <span class="math inline">\(p\)</span> can be any number in the interval <span class="math inline">\((0,1)\)</span>.</p>
+<div id="prp-binomialdist" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 9.1 (Binomial distribution)</strong></span> If <span class="math inline">\(X\)</span> is defined as the number of successes in <span class="math inline">\(n\)</span> independent Bernoulli trials, each with success probability <span class="math inline">\(p\)</span> then <span class="math inline">\(X\)</span> has probability mass function given by <span id="eq-binompmf"><span class="math display">\[
+p(x) = {n \choose x} p^x(1-p)^{n-x}, \quad x \in \{0,1,\dots,n\}
+\tag{9.2}\]</span></span></p>
+</div>
+<p>The probability distribution having the PMF in <a href="#eq-binompmf" class="quarto-xref">Equation&nbsp;<span>9.2</span></a> is called the <em>Binomial distribution</em> with number of trials <span class="math inline">\(n\)</span> and success probability <span class="math inline">\(p\)</span>. If a random variable <span class="math inline">\(X\)</span> has this distribution we write <span class="math display">\[
+X \sim \text{Binomial}(n,p).
+\]</span></p>
+<p>Let’s consider for a moment the PMF given in <a href="#eq-binompmf" class="quarto-xref">Equation&nbsp;<span>9.2</span></a>. The quantity <span class="math inline">\({n \choose x}\)</span> is the number of ways we can choose <span class="math inline">\(x\)</span> of the <span class="math inline">\(n\)</span> trials to be the successes. That is, it is the number of length-<span class="math inline">\(n\)</span> success-failure sequences containing exactly <span class="math inline">\(x\)</span> successes. Recall now that for independent events, the probability of their intersection is equal to the product of their probabilities. Due to the fact that the Bernoulli trials are independent, the probability of each sequence of successes and failures containing can be computed as a product of probabilities. In particular, the probability of observing a sequence containing exactly <span class="math inline">\(x\)</span> successes and <span class="math inline">\(n-x\)</span> failures is given bythe product <span class="math inline">\(p^x(1-p)^{n-x}\)</span>, which is <span class="math inline">\(p\)</span> raised to the number of successes times <span class="math inline">\((1-p)\)</span> raised to the number of failures. So the sum of the probabilities of all sequences having exactly <span class="math inline">\(x\)</span> successes and <span class="math inline">\(n - x\)</span> failures is given by <span class="math inline">\({n \choose x} p^x(1-p)^{n-x}\)</span>.</p>
+<p>If <span class="math inline">\(X\)</span> has the <span class="math inline">\(\text{Binomial}(n,p)\)</span> distribution, we can get compute the cumulative probabilities <span class="math inline">\(P(X \leq x)\)</span> for <span class="math inline">\(x = 0,1,\dots,n\)</span> as <span class="math display">\[
+P(X \leq x) = \sum_{i=0}^x{n \choose i} p^i(1-p)^{n-i}.
+\]</span></p>
+<div id="exr-freethrows" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 9.1 (Shoot ten freethrows)</strong></span> Suppose you will shoot <span class="math inline">\(10\)</span> freethrows and let <span class="math inline">\(X\)</span> be the number of freethrows you make. Suppose you make freethrows with probability <span class="math inline">\(0.3\)</span> and that all your shots are independent.</p>
+<ol type="1">
+<li>With what probability will you make exactly <span class="math inline">\(3\)</span> out of the <span class="math inline">\(10\)</span> freethrows?<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li>With what probability will you make <span class="math inline">\(6\)</span> or more freethrows?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+</ol>
+</div>
+<p>One might call into question the assumption of independence in the example of shooting ten freethrows. One may “get on a roll” if one begins to make freethrows, by which we mean that making a freethrow in one trial increases the probability of making a freethrow in the next trial. We have not considered any such phenomena. Nor have we considered that one’s arms may grow tired from shooting freethrows, such that the probability of success <span class="math inline">\(p\)</span> does not remain constant across the trials.</p>
+<p>Note that when the number of Bernoulli trials <span class="math inline">\(n\)</span> is equal to one, the Binomial distribution becomes simply a Bernoulli distribution. That is <span class="math display">\[
+\text{Binomial}(1,p) = \text{Bernoulli}(p),
+\]</span> by which we mean that these two distributions have the same PMF.</p>
+</section>
+<section id="mean-and-variance-of-a-binomial-random-variable" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="mean-and-variance-of-a-binomial-random-variable"><span class="header-section-number">9.3</span> Mean and variance of a Binomial random variable</h2>
+<p>It will be useful for use to have expressions for the mean and the variance of a random variable <span class="math inline">\(X\)</span> having the <span class="math inline">\(\text{Binomial}(n,p)\)</span> distribution.</p>
+<div id="prp-binommeanvariance" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 9.2</strong></span> If <span class="math inline">\(X \sim \text{Binomial}(n,p)\)</span>, then <span class="math display">\[
+\begin{align*}
+\mathbb{E}X &amp;= np \\
+\operatorname{Var}X &amp;= np(1-p).
+\end{align*}
+\]</span> These expressions can be obtained by simplifying the two expressions <span class="math display">\[
+\begin{align*}
+\mathbb{E}X  &amp;= \sum_{x=0}^n x {n \choose x} p^x(1-p)^{n-x} \\
+\operatorname{Var}X  &amp;= \sum_{x=0}^n (x - \mathbb{E}X)^2 {n \choose x} p^x(1-p)^{n-x},
+\end{align*}
+\]</span> which takes a bit of work.</p>
+<p>Since the Bernoulli distribution is simply the Binomial distribution with <span class="math inline">\(n =1\)</span>, the above expressions also give us the mean and variance of Bernoulli random variables. If <span class="math inline">\(X \sim \text{Bernoulli}(p)\)</span>, then we have <span class="math display">\[
+\begin{align*}
+\mathbb{E}X &amp;= p \\
+\operatorname{Var}X &amp;= p(1-p).
+\end{align*}
+\]</span> These facts will be very useful to us later on.</p>
 
 
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>The <span class="math inline">\(10\)</span> freethrows are <span class="math inline">\(10\)</span> independent Bernoulli trials, so we can use the binomial distribution, calling a basket a success: <span class="math display">\[
+\begin{align*}
+P(X = 3)    &amp; = {10 \choose 3} (0.3)^3(1-0.3)^{10 - 3} \\
+       &amp; = 0.267.
+\end{align*}
+\]</span> We can tell R to compute this with the command <code>dbinom(x=3,size=10,prob=.3)</code>, which gives <span class="math inline">\(0.2668279\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p> We can compute this as <span class="math display">\[
+\begin{align*}
+P(X\geq 6) &amp;= 1- P(X \leq 5) \\
+&amp;= 1 - \sum_{i=0}^5 {10 \choose i} (0.3)^i(1-0.3)^{n-i} \\
+&amp;= 0.0473.
+\end{align*}
+\]</span> The reason we change <span class="math inline">\(P(X\geq 6)\)</span> to <span class="math inline">\(1- P(X \leq 5)\)</span> is that R has a function <code>pbinom()</code> to compute the cumulative probabilities of binomial random variables. We can compute the above with <code>1 - pbinom(q = 5,size=10,prob=.3)</code>, which gives <span class="math inline">\(0.047349\)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

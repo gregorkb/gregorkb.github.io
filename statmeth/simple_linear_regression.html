@@ -294,6 +294,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Multiple linear regression</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -308,7 +314,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -338,6 +344,8 @@ window.Quarto = {
   <li><a href="#confidence-interval-for-the-height-of-the-line" id="toc-confidence-interval-for-the-height-of-the-line" class="nav-link" data-scroll-target="#confidence-interval-for-the-height-of-the-line"><span class="header-section-number">10.3.3</span> Confidence interval for the height of the line</a></li>
   <li><a href="#prediction-interval-for-a-new-response-value" id="toc-prediction-interval-for-a-new-response-value" class="nav-link" data-scroll-target="#prediction-interval-for-a-new-response-value"><span class="header-section-number">10.3.4</span> Prediction interval for a new response value</a></li>
   </ul></li>
+  <li><a href="#sums-of-squares-and-anova" id="toc-sums-of-squares-and-anova" class="nav-link" data-scroll-target="#sums-of-squares-and-anova"><span class="header-section-number">10.4</span> Sums of squares and ANOVA</a></li>
+  <li><a href="#checking-model-assumptions" id="toc-checking-model-assumptions" class="nav-link" data-scroll-target="#checking-model-assumptions"><span class="header-section-number">10.5</span> Checking model assumptions</a></li>
   </ul>
 </nav>
     </div>
@@ -786,6 +794,24 @@ Figure&nbsp;10.5: Prediction intervals for a new observation and confidence inte
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="sums-of-squares-and-anova" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="sums-of-squares-and-anova"><span class="header-section-number">10.4</span> Sums of squares and ANOVA</h2>
+<p>It is important to be familiar with some other quantities which are typically included in simple linear regression output. In simple linear regression, as well as in other linear models, one is often interested in summarizing how much the model was able to “explain”. Specifically, one might wonder how much is gained by considering the covariate values <span class="math inline">\(x_1,\dots,x_n\)</span> as predictors of the values of the responses <span class="math inline">\(Y_1,\dots,Y_n\)</span>. To answer this question, we define the following quantities called <em>sums of squares</em>.</p>
+<ul>
+<li><p>The <em>total sum of squares</em>: <span class="math inline">\(\quad \displaystyle \operatorname{SS}_{\operatorname{Tot}}= \sum_{i=1}^n(Y_i - \bar Y_n)^2\)</span></p></li>
+<li><p>The <em>regression sum of squares</em>: <span class="math inline">\(\quad \displaystyle \operatorname{SS}_{\operatorname{Reg}}=  \sum_{i=1}^n(\hat Y_i - \bar Y_n)^2\)</span></p></li>
+<li><p>The <em>error sum of squares</em>: <span class="math inline">\(\quad \displaystyle \operatorname{SS}_{\operatorname{Error}}=  \sum_{i=1}^n(Y_i - \hat Y_i)^2\)</span></p></li>
+</ul>
+<p>In addition, we define a quantity called the <em>coeffcient of determination</em> as <span class="math display">\[
+R^2 = \frac{\operatorname{SS}_{\operatorname{Reg}}}{\operatorname{SS}_{\operatorname{Tot}}}.
+\]</span> The above definitions allow us to decompose the total sum of squares as <span class="math display">\[
+\operatorname{SS}_{\operatorname{Tot}}= \operatorname{SS}_{\operatorname{Reg}}+ \operatorname{SS}_{\operatorname{Error}}.
+\]</span> Note that this fact tells us we will always have <span class="math inline">\(R^2 \in [0,1]\)</span>. Moreover we can interpret <span class="math inline">\(R^2\)</span> as the proportion of variation in <span class="math inline">\(Y_1,\dots,Y_n\)</span> accounted for—or “explained”—by our simple linear regression model. We will define these quantities in exactly the same way in <a href="multiple_linear_regression.html" class="quarto-xref"><span>Chapter 12</span></a> in the case of multiple linear regression.</p>
+</section>
+<section id="checking-model-assumptions" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="checking-model-assumptions"><span class="header-section-number">10.5</span> Checking model assumptions</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -793,7 +819,6 @@ Figure&nbsp;10.5: Prediction intervals for a new observation and confidence inte
 Santos, Nuno C, G Israelian, RJ Garcı́a López, M Mayor, R Rebolo, S Randich, A Ecuvillon, and C Domı́nguez Cerdeña. 2004. <span>“Are Beryllium Abundances Anomalous in Stars with Giant Planets?”</span> <em>Astronomy &amp; Astrophysics</em> 427 (3): 1085–96.
 </div>
 </div>
-</section>
 </section>
 
 </main> <!-- /main -->
