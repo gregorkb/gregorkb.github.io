@@ -313,7 +313,7 @@ window.Quarto = {
 </div>
 <p>Two events can be related to one another such that the occurrence of one event makes the occurrence of the other event more or less likely.\</p>
 <div id="def-condprob" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.1 (Conditional probability)</strong></span> For events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, the <em>conditional probability</em> of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span> is the probability that the <span class="math inline">\(A\)</span> occurs given <span class="math inline">\(B\)</span> occurs. This probability is defined as <span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 4.1 (Conditional probability)</strong></span> For events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> with <span class="math inline">\(P(B)&gt;0\)</span>, the <em>conditional probability</em> of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span> is the probability that the <span class="math inline">\(A\)</span> occurs given <span class="math inline">\(B\)</span> occurs. This probability is defined as <span class="math display">\[
 P(A|B) = \frac{P(A\cap B)}{P(B)}.
 \]</span></p>
 </div>
@@ -417,6 +417,17 @@ P(A\cap B) = P(B|A)P(A).
 <li><span class="math inline">\(P(G\cap W\cap C) = 0.01\)</span></li>
 </ul>
 <p>Fill in all the spaces on a Venn diagram (all possible disjoint events). <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p>Here we note that the complement rule <span class="math inline">\(P(A^c) = 1 - P(A)\)</span> works for conditional probabilities too:</p>
+<div id="prp-complementcond" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 4.2 (Complement rule for conditional probabilities)</strong></span> For events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> with <span class="math inline">\(P(B) &gt; 0\)</span> we have <span class="math inline">\(P(A^c|B) = 1 - P(A|B)\)</span>.</p>
+</div>
+<p>The above comes from <span class="math display">\[
+\begin{align*}
+P(A^c|B) &amp;= \frac{P(A^c \cap B)}{P(B)} \\
+&amp;=\frac{P(B) - P(A \cap B)}{P(B)}\\
+&amp; = 1 - P(A|B).
+\end{align*}
+\]</span></p>
 
 
 </div>
