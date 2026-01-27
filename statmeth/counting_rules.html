@@ -219,8 +219,8 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+  <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -236,8 +236,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+  <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -332,9 +332,10 @@ A = \{(6,2),(5,3),(4,4),(3,5),(2,6) \},
 \]</span> ways to do the job.</p>
 </div>
 <div id="exm-avatar" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.11 (Video game avatars)</strong></span> You can customize your video game avatar by selecting from <span class="math inline">\(6\)</span> choices of pants, <span class="math inline">\(4\)</span> choices of shirt, <span class="math inline">\(3\)</span> choices of backpack, <span class="math inline">\(4\)</span> choices of skin tone, and <span class="math inline">\(4\)</span> choices of hairstyle, and by choosing between sunglasses and no sunglasses. What is the number of possible avatars? <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><span class="theorem-title"><strong>Example 3.2 (Video game avatars)</strong></span> You can customize your video game avatar by selecting from <span class="math inline">\(6\)</span> choices of pants, <span class="math inline">\(4\)</span> choices of shirt, <span class="math inline">\(3\)</span> choices of backpack, <span class="math inline">\(4\)</span> choices of skin tone, and <span class="math inline">\(4\)</span> choices of hairstyle, and by choosing between sunglasses and no sunglasses. What is the number of possible avatars? <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</div>
 <div id="exm-comblock" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.2 (Combination lock)</strong></span> A combination lock opens when four wheels engraved with the digits 0–9 are turned to display a certain sequence of four numbers. How many sequences of four-digit numbers can the lock display?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><span class="theorem-title"><strong>Example 3.3 (Combination lock)</strong></span> A combination lock opens when four wheels engraved with the digits 0–9 are turned to display a certain sequence of four numbers. How many sequences of four-digit numbers can the lock display?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 </div>
 <p>The next rule is for a <em>permutation</em>:</p>
 <div id="prp-permutation" class="theorem proposition">
@@ -344,10 +345,10 @@ N(N-1) \cdots  (N - r + 1) = \frac{N!}{(N-r)!}.
 </div>
 <p>To understand the above rule, imagine a bag marbles, in which each marble is unique, and suppose you are going to draw marbles from the bag one at a time, placing the drawn marbles in a row. The phrase “without replacement” means that once you draw a marble, you will not put it back in the bag before drawing the next one. By placing the drawn marbles in a row, we keep track of the order in which they were drawn from the bag.</p>
 <div id="exm-javelin" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.3 (Javelin throwers)</strong></span> Seventeen javelin throwers will compete for gold, silver, and bronze medals such that the thrower throwing the furthest, second furthest, and third furthest will be awarded the gold, silver, and bronze medal, respectively. In how many ways can the medals be awarded?<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p><span class="theorem-title"><strong>Example 3.4 (Javelin throwers)</strong></span> Seventeen javelin throwers will compete for gold, silver, and bronze medals such that the thrower throwing the furthest, second furthest, and third furthest will be awarded the gold, silver, and bronze medal, respectively. In how many ways can the medals be awarded?<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 </div>
 <div id="exm-bleacherseating" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.4 (Bleacher seating)</strong></span> You and four friends will next to each other in a single row of the bleachers. In how many ways can you arrange yourselves? <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p><span class="theorem-title"><strong>Example 3.5 (Bleacher seating)</strong></span> You and four friends will next to each other in a single row of the bleachers. In how many ways can you arrange yourselves? <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 </div>
 <p>The next rule is for a <em>partition</em>. It is presented in the language of probabilists of old, who spent lots of time putting balls into urns.</p>
 <div id="prp-partition" class="theorem proposition">
@@ -356,38 +357,37 @@ N(N-1) \cdots  (N - r + 1) = \frac{N!}{(N-r)!}.
 \]</span></p>
 </div>
 <div id="exm-teams" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.5 (Making teams)</strong></span> Suppose you have nineteen people and you want to split them into two teams of six and one team of seven. In how many ways can you do this?<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p><span class="theorem-title"><strong>Example 3.6 (Making teams)</strong></span> Suppose you have nineteen people and you want to split them into two teams of six and one team of seven. In how many ways can you do this?<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 </div>
 <p>Next rule is for a <em>combination</em>, which is just a partition with only two “urns”.</p>
 <div id="prp-combination" class="theorem proposition">
 <p><span class="theorem-title"><strong>Proposition 3.5 (Combination)</strong></span> The number of ways to draw <span class="math inline">\(r\)</span> elements from <span class="math inline">\(N\)</span> without replacement and without regard to their order is <span class="math display">\[
 \left. N \choose r \right. = \frac{N!}{r!(N-r)!}.
 \]</span></p>
+</div>
 <p>To understand the combination, imagine again a bag of marbles, in which each marble is unique. Suppose you draw marbles one at a time from the bag and place the drawn marbles in a new bag. In the end you have two bags of marbles, and you are interested in which marbles were drawn and placed in the new bag—but you are not interested in the order in which the marbles were drawn (you have not placed the drawn marbles in a row, as in the case of a permutation).</p>
 <div id="exm-visit" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.6 (Weekend visits)</strong></span> Your parents insist you come home on three weekends during the semester, of which there are sixteen weekends to choose from. In how many ways can you choose the three weekends during which you will visit your parents?<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<p><span class="theorem-title"><strong>Example 3.7 (Weekend visits)</strong></span> Your parents insist you come home on three weekends during the semester, of which there are sixteen weekends to choose from. In how many ways can you choose the three weekends during which you will visit your parents?<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
 </div>
 <div id="exm-pokerhand" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.7 (Poker hand)</strong></span> Suppose you are dealt a five-card hand from a standard fifty-two-card deck. How many five-card hands are possible? <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p><span class="theorem-title"><strong>Example 3.8 (Poker hand)</strong></span> Suppose you are dealt a five-card hand from a standard fifty-two-card deck. How many five-card hands are possible? <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
 </div>
 <p>Having learned some counting rules, we now consider applying them to compute some probabilities of the form <span class="math inline">\(P(A) = |A| / |S|\)</span> given in <a href="#prp-countsamplepoints" class="quarto-xref">Proposition&nbsp;<span>3.1</span></a>.</p>
 <div id="exm-queenspadespoker" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.10 (Queen of Spades in 5-card hand)</strong></span> Suppose you are dealt a five-card hand from a standard fifty-two-card deck. What is the probability your hand has the Queen of Spades? To answer this let <span class="math inline">\(A\)</span> be the event that your hand has the queen of spades. Then the probability will be given by <span class="math inline">\(P(A) = |A| / |S|\)</span>, where the number of possible five-card hands <span class="math inline">\(|S|\)</span> was found in <a href="#exm-pokerhand" class="quarto-xref">Example&nbsp;<span>3.7</span></a>. To find <span class="math inline">\(|A|\)</span>, we must think a little. All counting problems can be broken down into a sequence of tasks so that the fundamental theorem of counting can be used. To count the number of five-card hands with the Queen of Spades, consider the tasks needed in the construction of such a hand. The first task is to put into the hand the Queen of Spades; this can be done in only one way, as there is only one Queen of Spades. Then next task is to choose the other four cards which will make up the hand. This entails selecting four cards from the fifty-one cards remaining in the deck after the removal of the Queen of Spades. This can be done in <span class="math inline">\({51 \choose 4}\)</span> ways. So we have <span class="math inline">\(|A| = 1 \times {51 \choose 4}\)</span> from the fundamental theorem of counting. Putting this together with <span class="math inline">\(|S| = {52 \choose 5}\)</span>, we obtain <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 3.9 (Queen of Spades in 5-card hand)</strong></span> Suppose you are dealt a five-card hand from a standard fifty-two-card deck. What is the probability your hand has the Queen of Spades? To answer this let <span class="math inline">\(A\)</span> be the event that your hand has the queen of spades. Then the probability will be given by <span class="math inline">\(P(A) = |A| / |S|\)</span>, where the number of possible five-card hands <span class="math inline">\(|S|\)</span> was found in <a href="#exm-pokerhand" class="quarto-xref">Example&nbsp;<span>3.8</span></a>. To find <span class="math inline">\(|A|\)</span>, we must think a little. All counting problems can be broken down into a sequence of tasks so that the fundamental theorem of counting can be used. To count the number of five-card hands with the Queen of Spades, consider the tasks needed in the construction of such a hand. The first task is to put into the hand the Queen of Spades; this can be done in only one way, as there is only one Queen of Spades. Then next task is to choose the other four cards which will make up the hand. This entails selecting four cards from the fifty-one cards remaining in the deck after the removal of the Queen of Spades. This can be done in <span class="math inline">\({51 \choose 4}\)</span> ways. So we have <span class="math inline">\(|A| = 1 \times {51 \choose 4}\)</span> from the fundamental theorem of counting. Putting this together with <span class="math inline">\(|S| = {52 \choose 5}\)</span>, we obtain <span class="math display">\[
 P(A) = \frac{{51 \choose 4}}{52 \choose 5} = \frac{5}{52} = 0.0961538.
 \]</span></p>
+</div>
 <div id="exm-flushpoker" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.8 (All cards of one suit in 5-card hand)</strong></span> Suppose you are dealt a five-card hand from a standard fifty-two-card deck. What is the probability you are dealt cards of only one suit? Let <span class="math inline">\(A\)</span> be the number of five-card hands with cards of only one suit. To find <span class="math inline">\(|A|\)</span>, we break down the construction of a single-suited hand into tasks. The first task is to choose a suit: there are four choices. After choosing a suit, we must draw five cards from that suit. There are thirteen cards of each suit, so for each suit there are <span class="math inline">\({13 \choose 5}\)</span> five-card hands having all cards of that suit. Putting the tasks in sequence, the fundamental theorem of counting gives <span class="math inline">\(|A| = 4\times {13 \choose 5}\)</span>. Putting this together with <span class="math inline">\(|S| = {52 \choose 5 }\)</span> gives <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 3.10 (All cards of one suit in 5-card hand)</strong></span> Suppose you are dealt a five-card hand from a standard fifty-two-card deck. What is the probability you are dealt cards of only one suit? Let <span class="math inline">\(A\)</span> be the number of five-card hands with cards of only one suit. To find <span class="math inline">\(|A|\)</span>, we break down the construction of a single-suited hand into tasks. The first task is to choose a suit: there are four choices. After choosing a suit, we must draw five cards from that suit. There are thirteen cards of each suit, so for each suit there are <span class="math inline">\({13 \choose 5}\)</span> five-card hands having all cards of that suit. Putting the tasks in sequence, the fundamental theorem of counting gives <span class="math inline">\(|A| = 4\times {13 \choose 5}\)</span>. Putting this together with <span class="math inline">\(|S| = {52 \choose 5 }\)</span> gives <span class="math display">\[
 P(A) = \frac{4\times {13 \choose 5}}{52 \choose 5 } = 0.0019808.
 \]</span></p>
 </div>
 <div id="exm-acepoker" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.9 (At least one ace)</strong></span> Suppose you are dealt a five-card hand from a standard fifty-two-card deck. What is the probability you are dealt at least one ace?<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<p><span class="theorem-title"><strong>Example 3.11 (At least one ace)</strong></span> Suppose you are dealt a five-card hand from a standard fifty-two-card deck. What is the probability you are dealt at least one ace?<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
 </div>
 
 
-</div>
-</div>
-</div>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>

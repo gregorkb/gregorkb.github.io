@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./simple_linear_regression.html" rel="next">
+<link href="./power_ztest.html" rel="next">
 <link href="./discrete_rvs.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -219,8 +219,8 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+  <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -236,8 +236,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+  <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -403,7 +403,9 @@ P(X \leq x) = \sum_{i=0}^x{n \choose i} p^i(1-p)^{n-i}.
 \mathbb{E}X &amp;= np \\
 \operatorname{Var}X &amp;= np(1-p).
 \end{align*}
-\]</span> These expressions can be obtained by simplifying the two expressions <span class="math display">\[
+\]</span></p>
+</div>
+<p>These expressions can be obtained by simplifying the two expressions <span class="math display">\[
 \begin{align*}
 \mathbb{E}X  &amp;= \sum_{x=0}^n x {n \choose x} p^x(1-p)^{n-x} \\
 \operatorname{Var}X  &amp;= \sum_{x=0}^n (x - \mathbb{E}X)^2 {n \choose x} p^x(1-p)^{n-x},
@@ -417,7 +419,6 @@ P(X \leq x) = \sum_{i=0}^x{n \choose i} p^i(1-p)^{n-i}.
 \]</span> These facts will be very useful to us later on.</p>
 
 
-</div>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
@@ -866,8 +867,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./simple_linear_regression.html" class="pagination-link" aria-label="Simple linear regression">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./power_ztest.html" class="pagination-link" aria-label="Statistical power of one-sample tests">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
