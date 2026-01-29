@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./power_ztest.html" rel="next">
+<link href="./hypergeometric_distribution.html" rel="next">
 <link href="./discrete_rvs.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -219,8 +219,20 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./hypergeometric_distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypergeometric distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_with_without_replacement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sampling with versus without replacement</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -237,13 +249,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Multiple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multiple linear regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -260,7 +272,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -334,7 +346,7 @@ window.Quarto = {
 </div>
 <p>We often encode the outcome of a Bernoulli trial in a random variable equal to <span class="math inline">\(1\)</span> for a success and <span class="math inline">\(0\)</span> for a failure. The probability distribution of a random variable defined in this way is called the <em>Bernoulli distribution</em>.</p>
 <div id="def-bernoullidist" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 9.2 (Bernoulli Distribution)</strong></span> Let <span class="math inline">\(X\)</span> be a random variable with support <span class="math inline">\(\mathcal{X}= \{0,1\}\)</span>, taking the value <span class="math inline">\(1\)</span> with probability <span class="math inline">\(p\)</span> and the value <span class="math inline">\(0\)</span> with probability <span class="math inline">\(1-p\)</span>. Then we say <span class="math inline">\(X\)</span> has the <em>Bernoulli distribution</em> with success probability <span class="math inline">\(p\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 9.2 (Bernoulli distribution)</strong></span> Let <span class="math inline">\(X\)</span> be a random variable with support <span class="math inline">\(\mathcal{X}= \{0,1\}\)</span>, taking the value <span class="math inline">\(1\)</span> with probability <span class="math inline">\(p\)</span> and the value <span class="math inline">\(0\)</span> with probability <span class="math inline">\(1-p\)</span>. Then we say <span class="math inline">\(X\)</span> has the <em>Bernoulli distribution</em> with success probability <span class="math inline">\(p\)</span>.</p>
 </div>
 <p>We have just met our first probability distribution with a name—the Bernoulli distribution. If a random variable has a distribution with a name, statisticians like to express it writing “<span class="math inline">\(X \sim\)</span>” followed by either a shorthand notation or a symbol for the distribution. If <span class="math inline">\(X\)</span> has the Bernoulli distribution with success probability <span class="math inline">\(p\)</span>, we will express this by writing <span class="math display">\[
 X \sim \text{Bernoulli}(p).
@@ -370,8 +382,8 @@ S = \left\{ \begin{array}{ccccc}  HHHH,&amp;HHHT,&amp;THHT,&amp;&amp;\\
 </div>
 <p>Suppose now that we were to flip a coin twelve times and we wanted to know the probabilities of getting zero, one, two, or three heads, and so on. As the number of coin tosses increases, it quickly becomes very burdensome to list all the possible sequences of coin flips. In fact, if we count the number of possible sequences of outcomes from twelve coin flips, we find there are <span class="math inline">\(2^{12} = 4096\)</span> sequences. It is impractical to list every one of them.</p>
 <p>Moreover, in the example of flipping a (fair) coin, all sequences of flips in the sample space occur with the same probability, but this would not be the case if, say, heads were more likely than tails or the other way around. In general, we would like to be able write down the probability distribution of a random variable <span class="math inline">\(X\)</span> when this is defined as the total number of successes in a certain number of independent Bernoulli trials, each with the same success probability <span class="math inline">\(p\)</span>, where <span class="math inline">\(p\)</span> can be any number in the interval <span class="math inline">\((0,1)\)</span>.</p>
-<div id="prp-binomialdist" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 9.1 (Binomial distribution)</strong></span> If <span class="math inline">\(X\)</span> is defined as the number of successes in <span class="math inline">\(n\)</span> independent Bernoulli trials, each with success probability <span class="math inline">\(p\)</span> then <span class="math inline">\(X\)</span> has probability mass function given by <span id="eq-binompmf"><span class="math display">\[
+<div id="prp-binomialpmf" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 9.1 (Binomial probability mass function)</strong></span> If <span class="math inline">\(X\)</span> is defined as the number of successes in <span class="math inline">\(n\)</span> independent Bernoulli trials, each with success probability <span class="math inline">\(p\)</span> then <span class="math inline">\(X\)</span> has probability mass function given by <span id="eq-binompmf"><span class="math display">\[
 p(x) = {n \choose x} p^x(1-p)^{n-x}, \quad x \in \{0,1,\dots,n\}
 \tag{9.2}\]</span></span></p>
 </div>
@@ -867,8 +879,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./power_ztest.html" class="pagination-link" aria-label="Statistical power of one-sample tests">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./hypergeometric_distribution.html" class="pagination-link" aria-label="Hypergeometric distribution">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypergeometric distribution</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>5&nbsp; Independence – Statistical Methods</title>
+<title>10&nbsp; Hypergeometric distribution – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,8 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./bayes_rule.html" rel="next">
-<link href="./conditional_prob.html" rel="prev">
+<link href="./sampling_with_without_replacement.html" rel="next">
+<link href="./bernoulli_binomial.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -123,7 +157,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./independence.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./hypergeometric_distribution.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypergeometric distribution</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -189,7 +223,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./independence.html" class="sidebar-item-text sidebar-link active">
+  <a href="./independence.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></span></a>
   </div>
 </li>
@@ -219,7 +253,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypergeometric_distribution.html" class="sidebar-item-text sidebar-link">
+  <a href="./hypergeometric_distribution.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypergeometric distribution</span></span></a>
   </div>
 </li>
@@ -294,9 +328,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./independence.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./hypergeometric_distribution.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypergeometric distribution</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-independence" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></span></h1>
+<h1 class="title"><span id="sec-hypergeometric_distribution" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypergeometric distribution</span></span></h1>
 </div>
 
 
@@ -323,63 +357,68 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>Two events which have nothing to do with other are said to be <em>independent</em>. More precisely, if two events are independent, the occurrence of one does not affect the probability of the other. Formally:</p>
-<div id="def-independence" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.1 (Independence of two events)</strong></span> Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <em>independent</em> if <span class="math inline">\(P(A \cap B ) = P(A)P(B)\)</span>.</p>
-</div>
-<p>Note that the three equations below are equivalent, meaning that any one of them implies the other two:</p>
-<ol type="i">
-<li><span class="math inline">\(P(A \cap B ) = P(A)P(B)\)</span></li>
-<li><span class="math inline">\(P(A|B) = P(A)\)</span></li>
-<li><span class="math inline">\(P(B|A) = P(B)\)</span></li>
-</ol>
-<p>Because of this, we can check whether <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent by checking if any one of these equalities holds (or fails to hold).</p>
-<div id="exm-twocoinflips" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.1 (Flip a coin twice)</strong></span> Flip a coin twice and record the flips. Let <span class="math inline">\(A_1\)</span> be the event that flip one is heads and <span class="math inline">\(A_2\)</span> be the event that flip two is heads. Our intuition tells us that the two flips should be independent; the outcome of the first flip has no bearing on the second flip, so we should have <span class="math inline">\(P(A_2 | A_1) = P(A_2) = 1/2\)</span>. So, what is the probability that both flips are heads? We have <span class="math display">\[
-P(A_1 \cap A_2) = P(A_1) P(A_2) = 1/2 \times 1/2 = 1/4.
-\]</span></p>
-</div>
-<div id="exm-biketire" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.2 (Flat tire on bike)</strong></span> Let <span class="math inline">\(A\)</span> be the event that your bike gets a flat tire on a given day and let <span class="math inline">\(B\)</span> be the event that you have forgotten to bring a spare tube. Suppose <span class="math inline">\(P(A) = 0.02\)</span> and <span class="math inline">\(P(B)=0.10\)</span> and <span class="math inline">\(P(A \cap B) = 0.002.\)</span> Then the events are independent, since <span class="math inline">\(P(A\cap B) = P(A)P(B)\)</span>.</p>
-</div>
-<p>Our definition of independence concerns only two events. The way we define independence among a collection of more than two events is a little different. We call it <em>mutual independence</em>.</p>
-<div id="def-mutualindependence" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 5.2 (Mutual independence among a collection of events)</strong></span> Events <span class="math inline">\(A_1,A_2,\dots\)</span> are <em>mutually independent</em> if for any subcollection <span class="math inline">\(A_{i_1},\dots,A_{i_K}\)</span>, we have <span class="math display">\[
-P\left(\bigcap_{j=1}^K A_{i_j}\right) = \prod_{j=1}^K P(A_{i_j})
-\]</span></p>
-</div>
-<p>It looks like we are getting a little crazy with the indices in this definition. Basically the definition says that if I take any number of the events from among <span class="math inline">\(A_1,A_2,\dots\)</span>, the probability of their intersection must be equal to the product of their individual probabilities. If there are only two events <span class="math inline">\(A_1\)</span> and <span class="math inline">\(A_2\)</span>, mutual independence of these is the same as ordinary independence between any two events.</p>
-<p>In the next example we use the definition of mutual independence.</p>
-<div id="exm-survey" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.3 (Survey responses)</strong></span> Suppose you send out a survey to <span class="math inline">\(10\)</span> randomly selected people and suppose that each person will complete the survey with probability <span class="math inline">\(0.20\)</span>. Define the events <span class="math display">\[
-\begin{array}{cc}
-R_1 \text{:} &amp; \text{1st person responds} \\
-\vdots&amp; \vdots\\
-R_{10}\text{:} &amp; \text{10th person responds}
+<p>Here we consider another distribution called the <em>hypergeometic distribution</em>, which arises when we consider drawing a random sample from a population of finite size (Recall that one of the main goals of statistics is to study what we can learn about a population based on the values in a random sample). Let us suppose that we have a population with <span class="math inline">\(N\)</span> elements (people, critters, financial transactions, experimental units, etc.), and we draw a sample of size <span class="math inline">\(n\)</span>. Further, consider the particular case in which we are only interested in a binary (taking two values) trait of the members of the population, so that each member may be labeled as a “successes” or a “failure.” Then, when we draw our sample of size <span class="math inline">\(n\)</span>, some number of these will be successes, and the rest will be failures. If the goal is to learn the proportion of successes in the population we will need to understand how the number of successes in our sample will behave. More precisely, letting <span class="math inline">\(X\)</span> be the number of successes in our sample of size <span class="math inline">\(n\)</span> drawn from a population of size <span class="math inline">\(N\)</span>, and supposing there are <span class="math inline">\(M\)</span> successes in the population, we would like to know the probability distribution of <span class="math inline">\(X\)</span>.</p>
+<p>Here is an example.</p>
+<div id="exr-sample_from_finite_pop" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 10.1 (Finite population of smokers and non-smokers)</strong></span> Suppose we draw a sample of size <span class="math inline">\(5\)</span> from a population with <span class="math inline">\(100\)</span> people of whom <span class="math inline">\(10\)</span> are smokers, letting <span class="math inline">\(X\)</span> be the number of smokers in the sample. We can tabulate the probability distribution of <span class="math inline">\(X\)</span> by noting that for each <span class="math inline">\(x \in \mathcal{X}= \{0,1,\dots,5\}\)</span> we have the expression <span class="math display">\[
+P(X = x) = \frac{{ 10 \choose x}{100 - 10 \choose 5 - x}}{{100 \choose 5}}.
+\]</span> We obtain the above as follows: The denominator is equal to the total number of ways we can draw <span class="math inline">\(5\)</span> people without replacement from the population of size <span class="math inline">\(100\)</span>. The numerator is equal to the number of ways we can draw <span class="math inline">\(x\)</span> people from among the <span class="math inline">\(10\)</span> smokers and <span class="math inline">\(5-x\)</span> people from among the <span class="math inline">\(100 - 10\)</span> non-smokers. Evaluating the expression for all <span class="math inline">\(x\)</span> in the support results in the table <span class="math display">\[
+\begin{array}{c|cccccc}
+    x          &amp; 0 &amp; 1 &amp; 2 &amp;3 &amp;4  &amp; 5\\ \hline
+     P(X = x)   &amp; 0.5838&amp; 0.3394 &amp; 0.0702 &amp; 0.0064 &amp; 0.0003 &amp; 0.0000\\
+     P(X \leq x)   &amp;0.5838 &amp;  0.9231&amp; 0.9934 &amp; 0.9997 &amp; 1.0000 &amp; 1.0000
 \end{array}
-\]</span></p>
-<p>Assume <span class="math inline">\(R_1,\dots,R_{10}\)</span> are mutually independent events.</p>
-<ol type="1">
-<li>What is the probability that everyone completes the survey? <span class="math display">\[
-    \begin{align*}
-    P(\text{everyone completes survey}) &amp; = P(R_1 \cap R_2\cap \cdots \cap R_{10}) \\
-    &amp; = P(R_1) \times P(R_2) \times \cdots \times P(R_{10}) \\
-    &amp; = 0.20^{10} \\
-    &amp; = 0.0000001024 = 1.024\times 10^{-7}
-    \end{align*}
-    \]</span></li>
-<li>What is the probability that no one completes the survey? <span class="math display">\[
-    \begin{align*}
-    P(\text{no one completes survey}) &amp; = P(R_1^c \cap R_2^c\cap \cdots \cap R_{10}^c) \\
-    &amp; = P(R_1^c) \times P(R_2^c) \times \cdots \times P(R_{10}^c) \\
-    &amp; = 0.80^{10} \\
-    &amp; = 0.1074
-    \end{align*}
-  \]</span></li>
-</ol>
+\]</span> after rounding to four decimal places. We can obtain the values in the table above with the following R code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>px <span class="ot">&lt;-</span> <span class="fu">choose</span>(M,x)<span class="sc">*</span><span class="fu">choose</span>(N <span class="sc">-</span> M,n <span class="sc">-</span> x)<span class="sc">/</span><span class="fu">choose</span>(N,n) <span class="co"># probabilities</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>Px <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(px) <span class="co"># cumulative probabilities</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div>
+<p>We now generalize the smokers and non-smokers example with the introduction of the <em>hypergeometric distribution</em>.</p>
+<div id="prp-hypergeometricpmf" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 10.1 (Hypergeometric probability mass function)</strong></span> Suppose we draw <span class="math inline">\(n\)</span> marbles from a bag of <span class="math inline">\(N\)</span> marbles, <span class="math inline">\(M\)</span> of which are red, and let <span class="math inline">\(X\)</span> be the number of red marbles drawn. Then <span class="math inline">\(X\)</span> has probability mass function given by <span id="eq-hypergeometricpmf"><span class="math display">\[
+p(x) = \frac{ {M \choose x}{ N - M \choose n - x }}{ {N \choose n}}
+\tag{10.1}\]</span></span> for <span class="math inline">\(x \in \mathcal{X}= \{ \max\{n -(N-M),0\},\dots,\min\{M,n\} \}\)</span>.</p>
+</div>
+<p>A random variable have the PMF in <a href="#eq-hypergeometricpmf" class="quarto-xref">Equation&nbsp;<span>10.1</span></a> is said to have the <em>hypergeometric distribution</em>, and we write <span class="math display">\[
+X \sim \text{Hypergeometric}(N,M,n).
+\]</span></p>
+<p>One may have expected the support of a hypergeometric random variable to be <span class="math inline">\(\{0,1,\dots,n\}\)</span>, since we are drawing <span class="math inline">\(n\)</span> marbles. The reason that the support has maximum value equal to <span class="math inline">\(\min\{M,n\}\)</span> is to accommodate the case in which there are fewer than <span class="math inline">\(K\)</span> red marbles in the bag (in which case one cannot draw <span class="math inline">\(n\)</span> red marbles, but can draw only as many as <span class="math inline">\(M\)</span> red marbles). Likewise, the reason the support has minimum value equal to <span class="math inline">\(\max\{n - (N-M),0\}\)</span> is that there may be fewer than <span class="math inline">\(n\)</span> non-red marbles in the bag (in which case one can draw at most <span class="math inline">\(N-M\)</span> non-red marbles or, equivalently, at least <span class="math inline">\(n - (N - M)\)</span> red marbles).</p>
+<div id="prp-hypergeometricmeanvar" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 10.2 (Hypergeometric mean and variance)</strong></span> For a random variable <span class="math inline">\(X\)</span> having the <span class="math inline">\(\text{Hypergeometric}(N,M,n)\)</span> distribution we have <span class="math display">\[
+\begin{align*}
+    \mathbb{E}X &amp;= n\frac{M}{N} \\
+    \operatorname{Var}X &amp;= n\frac{M}{N}\Big(1 - \frac{M}{N}\Big)\frac{N-n}{N-1}.
+\end{align*}
+\]</span></p>
+</div>
+<p>The above expressions for <span class="math inline">\(\mathbb{E}X\)</span> and <span class="math inline">\(\operatorname{Var}X\)</span> come from applying <a href="discrete_rvs.html#prp-meanvarpmf" class="quarto-xref">Proposition&nbsp;<span>8.2</span></a> with the hypergeometric PMF.</p>
+<div id="exr-teeth" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 10.2 (Twenty-eight teeth)</strong></span> Suppose that in a class of <span class="math inline">\(20\)</span> students, <span class="math inline">\(12\)</span> of the students have <span class="math inline">\(28\)</span> teeth. Consider drawing a sample of <span class="math inline">\(6\)</span> students and letting <span class="math inline">\(X\)</span> be the number of students among the <span class="math inline">\(6\)</span> who have <span class="math inline">\(28\)</span> teeth.</p>
+<ol type="1">
+<li><p>Tabulate the probability distribution of <span class="math inline">\(X\)</span>. Include cumulative probabilities.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
+<li><p>Give the expected value and standard deviation of <span class="math inline">\(X\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p></li>
+</ol>
 
 
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p> We can modify the code from the smokers/non-smokers example to obtain <span class="math display">\[
+\begin{array}{c|ccccccc}
+    x          &amp; 0 &amp; 1 &amp; 2 &amp;3 &amp;4 &amp; 5 &amp;6\\ \hline
+P(X = x)   &amp; 0.001 &amp;0.017 &amp;0.119&amp; 0.318&amp; 0.358 &amp;0.163 &amp; 0.024\\
+P(X \leq x) &amp; 0.001 &amp;0.018 &amp;0.137 &amp;0.455 &amp;0.813 &amp;0.976 &amp;1.000\\
+\end{array}
+\]</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p> We obtain <span class="math inline">\(\mathbb{E}X = 3.6\)</span> and <span class="math inline">\(\sqrt{\operatorname{Var}X} = 1.0300741\)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -804,13 +843,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./conditional_prob.html" class="pagination-link" aria-label="Conditional probability">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></span>
+      <a href="./bernoulli_binomial.html" class="pagination-link" aria-label="Bernoulli and binomial distributions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bernoulli and binomial distributions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./bayes_rule.html" class="pagination-link" aria-label="Bayes' rule">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayes’ rule</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./sampling_with_without_replacement.html" class="pagination-link" aria-label="Sampling with versus without replacement">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sampling with versus without replacement</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
