@@ -476,15 +476,27 @@ This is an example in which it can be useful to draw <em>tree diagram</em> like 
 <!--     ; -->
 <!-- \end{tikzpicture} -->
 <!-- ``` -->
-<p>This diagram nicely summarizes all the information we are given. To find the probability of an outcome, we trace the tree diagram starting from the beginning until we reach that outcome, and multiplying the probabilities we pass along the way. For example, <span class="math inline">\(P(W \cap B_1) = 3/6 \times 1/4\)</span>.</p>
+<p>This diagram nicely summarizes all the information we are given. To find the probability of an outcome, we trace the tree diagram starting from the beginning until we reach that outcome, and multiplying the probabilities we pass along the way. For example, <span class="math inline">\(P(W \cap B_1) = (3/6)(1/4)\)</span>.</p>
 <ol start="2" type="1">
-<li>Given that a player got twenty dollars, what is the probability that the player drew from the first bag? We can answer this question using Bayes’ rule: <span class="math display">\[
+<li>Suppose your friend plays the game and wins <span class="math inline">\(\$20\)</span>. He will give you the <span class="math inline">\(\$20\)</span> if you guess correctly which bag he drew from. Which bag should you guess? We can answer this question with the help of our tree diagram. We find <span class="math display">\[
 \begin{align*}
-   P(B_1| W) &amp;= \frac{P(W | B_1)P(B_1)}{P(W | B_1)P(B_1) + P(W | B_2)P(B_2) + P(W | B_3)P(B_3)}\\
-                   &amp; = \frac{(1/4)(3/6)}{5/12} \\
+   P(B_1| W) &amp;= \frac{P(W \cap B_1)}{P(W)}\\
+                   &amp; = \frac{(3/6)(1/4)}{5/12} \\
+                   &amp;=3/10
+\end{align*}
+\]</span> as well as <span class="math display">\[
+\begin{align*}
+   P(B_2| W) &amp;= \frac{P(W \cap B_2)}{P(W)} \\
+             &amp; = \frac{(2/6)(2/4)}{5/12} \\
+             &amp; = 4/10
+\end{align*}
+\]</span> and <span class="math display">\[
+\begin{align*}
+   P(B_3| W) &amp;= \frac{P(W \cap B_3)}{P(W)}\\
+                   &amp; = \frac{(1/6)(3/4)}{5/12} \\
                    &amp;=3/10.
 \end{align*}
-\]</span></li>
+\]</span> So we should guess that he drew from the second bag.</li>
 </ol>
 </div>
 
