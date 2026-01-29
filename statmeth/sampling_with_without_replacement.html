@@ -367,6 +367,68 @@ window.Quarto = {
 </div>
 <p>So, if the population size <span class="math inline">\(N\)</span> is too large, we will not be able to compute hypergeometric probabilities.</p>
 <p>In order to make a guess of how these un-computable hypergeometric probabilities will behave when the population size <span class="math inline">\(N\)</span> is large, we can think about whether our draws from the population are dependent or independent. The outcomes of the draws are, in fact, dependent, because if we draw a “success”, then on the next draw (since we are sampling without replacement—not allowing ourselves to draw the sample population member twice), there will be one less “success” in the population we are drawing from. So each draw changes the composition of the population, inducing a dependence among the draws. However, if the population size <span class="math inline">\(N\)</span> is large enough relative to the sample size <span class="math inline">\(n\)</span>, we find that the change in the composition of the population due to drawing out <span class="math inline">\(n\)</span> members is negligible, so that it is safe to regard the draws as independent. The next example illustrates this.</p>
+<div id="exm-shirtorhat" class="theorem example">
+<p><span class="theorem-title"><strong>Example 11.1 (Shirt or hat)</strong></span> The merch department of a sports franchise will mass produce a new shirt or a new hat. To decide which they will randomly sample some fans during the next match and offer to each one the shirt or the hat for free, taking note of which is more often chosen.</p>
+<p>Suppose <span class="math inline">\(24830\)</span> fans are attend the next match, among whom <span class="math inline">\(9932\)</span> would choose the shirt. Now, let <span class="math inline">\(S_1\)</span> be the event that the first fan sampled chooses the shirt and <span class="math inline">\(S_2\)</span> be the event that the second fan sampled chooses the shirt. We know the events are dependent, because when the second fan is sampled, the first-sample fan has been removed from consideration. However, let’s investigate the strength of the dependence between these two events.</p>
+<p>First, we have <span class="math display">\[
+P(S_1) = \frac{9932}{24830} = 0.40.
+\]</span> To obtain <span class="math inline">\(P(S_2)\)</span> we write <span class="math display">\[
+\begin{align*}
+P(S_2) &amp;= P(S_2 \cap S_1) + P(S_2 \cap S_1^c) \\
+      &amp;= P(S_2 |S_1)P(S_1) + P(S_2 | S_1^c)P(S_1^c) \\
+      &amp;= \frac{9931}{24829}\frac{9932}{24830} + \frac{9932}{24829}\Big(1 - \frac{9932}{24830}\Big) \\
+      &amp;=0.1599903 + 0.2400097 \\
+      &amp;= 0.40.
+\end{align*}
+\]</span> In the above we have used already <span class="math display">\[
+P(S_2 \cap S_1) = P(S_2 |S_1)P(S_1) =  0.1599903.
+\]</span> Now we compare this to <span class="math display">\[
+P(S_1)P(S_2) = 0.40 \times 0.40 = 0.16.
+\]</span> From the above it appears that the events <span class="math inline">\(S_1\)</span> and <span class="math inline">\(S_2\)</span> are <em>very nearly</em> independent.</p>
+</div>
+<p>In the shirt or hat example, imagine a sampling scheme in which we draw a fan, write down whether he or she chooses a shirt, and then place him or her back in the population, so that he or she could potentially be chosen again. Suppose we repeat this <span class="math inline">\(n\)</span> times. This is called <em>sampling with replacement</em>. Under sampling with replacement, each draw can be regarded as a Bernoulli trial, and all the draws/trials are independent. Under <em>sampling without replacement</em>, which is what we actually do in practice, each draw can still be regarded as a Bernoulli trial, but our entire sample represents a sequence of <em>dependent</em> Bernoulli trials. However, if the population has a large number of successes and failures in it, the draws when sampling without replacement will be very nearly independent, as illustrated in the shirt or hat example, so that the draws can safely be regarded as independent Bernoulli trials even though they are not truly independent!</p>
+<p>The advantage to regarding the draws under samplin without replacement as independent Bernoulli trials is that is allows one to compute probabilities using the binomial distribution PMF instead of the hypergeometric PMF, so that our calculations will be able to handle large population sizes. The next example shows that the probability distribution of the number of successes drawn in the sample is very nearly the same under sampling with and without replacement, provided the numbers of successes <span class="math inline">\(M\)</span> and non-successes <span class="math inline">\(N - M\)</span> in the population are large.</p>
+<div id="exm-exm-shirtorhatcont" class="theorem example">
+<p><span class="theorem-title"><strong>Example 11.2 (Shirt or hat continued)</strong></span> Suppose the merch department samples <span class="math inline">\(6\)</span> fans at the next match <em>without replacement</em>, and suppose, as before that there are <span class="math inline">\(24830\)</span> fans at the match among whom <span class="math inline">\(9932\)</span> would choose the shirt. Defining <span class="math inline">\(X\)</span> as the number of fans in the sample who choose the shirt, we have <span class="math display">\[
+X \sim \text{Hypergeometric}(N = 24830, M = 9932, n = 6).
+\]</span> We can tabulate this probability distribution using the hypergeometric PMF (see <a href="hypergeometric_distribution.html#eq-hypergeometricpmf" class="quarto-xref">Equation&nbsp;<span>10.1</span></a>) as <span class="math display">\[
+\begin{array}{c|ccccccc}
+    x          &amp; 0 &amp; 1 &amp; 2 &amp;3 &amp;4 &amp; 5 &amp;6\\ \hline
+     P(X = x)   &amp;0.0466 &amp; 0.1866 &amp; 0.3111 &amp; 0.2765 &amp; 0.1382 &amp; 0.0368 &amp; 0.0041  \\
+     P(X \leq x) &amp; 0.0466 &amp;0.2332&amp; 0.5443 &amp;0.8208 &amp;0.9591 &amp;0.9959 &amp;1.0000
+\end{array}
+\]</span> using the code</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">24830</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="dv">9932</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>px <span class="ot">&lt;-</span> <span class="fu">choose</span>(M,x)<span class="sc">*</span><span class="fu">choose</span>(N<span class="sc">-</span>M,n<span class="sc">-</span>x)<span class="sc">/</span><span class="fu">choose</span>(N,n)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>Px <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(px)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(px,<span class="dv">4</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(Px,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now suppose the merch department samples <span class="math inline">\(n = 6\)</span> fans <em>with replacement</em> and let <span class="math inline">\(X\)</span> be the number that choose the shirt (so the same fan may be selected more than once). Then <span class="math inline">\(X\)</span> is equal to the number of successes in <span class="math inline">\(n\)</span> independent Bernoulli trials, each with success <span class="math inline">\(p = 9932/24830 = 0.40\)</span>, so that <span class="math display">\[
+X \sim \text{Binomial}(n= 6, p = 0.40).
+\]</span> This probability distribution can be tabulated using the Binomial PMF (see <a href="bernoulli_binomial.html#eq-binompmf" class="quarto-xref">Equation&nbsp;<span>9.2</span></a>) as <span class="math display">\[
+\begin{array}{c|ccccccc}
+    x          &amp; 0 &amp; 1 &amp; 2 &amp;3 &amp;4 &amp; 5 &amp;6\\ \hline
+     P(X = x)   &amp; 0.0467 &amp;0.1866&amp; 0.3110 &amp;0.2765&amp; 0.1382 &amp;0.0369&amp; 0.0041\\
+     P(X \leq x) &amp; 0.0467 &amp; 0.2333&amp; 0.5443 &amp;0.8208 &amp;0.9590&amp; 0.9959&amp; 1.0000
+\end{array}
+\]</span> using the code</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.4</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>px <span class="ot">&lt;-</span> <span class="fu">choose</span>(n,x)<span class="sc">*</span>p<span class="sc">**</span>x<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> p)<span class="sc">**</span>(n<span class="sc">-</span>x)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>Px <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(px)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(px,<span class="dv">4</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(Px,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We see that the two probability distributions are almost exactly the same.</p>
+</div>
+<p>In light of the above discussions, when we are sampling “successes” and “failures” from a population, we will typically assume that <span class="math inline">\(X\)</span>, the number of “successes” in our sample, has the <span class="math inline">\(\text{Binomial}(n,p)\)</span> distribution, where <span class="math inline">\(p\)</span> is the proportion of “successes” in the population; it is safe to do this when we are sampling from a large population, which is very often the case.</p>
 
 
 
