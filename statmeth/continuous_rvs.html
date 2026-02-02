@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>4&nbsp; Conditional probability – Statistical Methods</title>
+<title>12&nbsp; Continuous random variables – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,8 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./independence.html" rel="next">
-<link href="./counting_rules.html" rel="prev">
+<link href="./power_ztest.html" rel="next">
+<link href="./sampling_with_without_replacement.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -123,7 +157,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./conditional_prob.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./continuous_rvs.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Continuous random variables</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -183,7 +217,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./conditional_prob.html" class="sidebar-item-text sidebar-link active">
+  <a href="./conditional_prob.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></span></a>
   </div>
 </li>
@@ -231,7 +265,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./continuous_rvs.html" class="sidebar-item-text sidebar-link">
+  <a href="./continuous_rvs.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Continuous random variables</span></span></a>
   </div>
 </li>
@@ -300,9 +334,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./conditional_prob.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./continuous_rvs.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Continuous random variables</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-conditional_prob" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></span></h1>
+<h1 class="title"><span id="sec-continuous_rvs" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Continuous random variables</span></span></h1>
 </div>
 
 
@@ -329,146 +363,144 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>Two events can be related to one another such that the occurrence of one event makes the occurrence of the other event more or less likely.\</p>
-<div id="def-condprob" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.1 (Conditional probability)</strong></span> For events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> with <span class="math inline">\(P(B)&gt;0\)</span>, the <em>conditional probability</em> of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span> is the probability that the <span class="math inline">\(A\)</span> occurs given <span class="math inline">\(B\)</span> occurs. This probability is defined as <span class="math display">\[
-P(A|B) = \frac{P(A\cap B)}{P(B)}.
-\]</span></p>
+<p>A continuous random variable <span class="math inline">\(X\)</span> is a random variable whose support (the set of values it can take) is an interval or a union of intervals. The idea is that we cannot list, or even begin listing all of the values <span class="math inline">\(X\)</span> can take.</p>
+<div id="exm-hourlyshuttle" class="theorem example">
+<p><span class="theorem-title"><strong>Example 12.1 (Hourly departing shuttle)</strong></span> Suppose you will land at an airport and ride to a hotel in an hourly departing ground shuttle. Defining <span class="math inline">\(X\)</span> as the time you must wait for the shuttle (in hours), the support of <span class="math inline">\(X\)</span> is <span class="math inline">\(\mathcal{X}= [0,1]\)</span>.</p>
 </div>
-<div id="exm-hwexam" class="theorem example">
-<p><span class="theorem-title"><strong>Example 4.1 (Exam pass and homework completion)</strong></span> On the day of an exam, select a student at random and let <span class="math inline">\(A\)</span> be the event that he or she passes the exam.</p>
-<ul>
-<li>Now consider only students who completed the last homework assignment. One would expect the probability of the event <span class="math inline">\(A\)</span> to be higher when sampling a student from this group than when sampling from the whole class.</li>
-<li>On the other hand, consider only students who <em>did not</em> complete the last homework assignment. One would expect the probability of the event <span class="math inline">\(A\)</span> to be <em>lower</em> when sampling a student from this group than when sampling from the whole class.</li>
-</ul>
-<p>Consider selecting a student at random from the whole class and letting <span class="math inline">\(B\)</span> be the event that the selected student completed the last homework assignment. Then:</p>
-<ul>
-<li>The conditional probability <span class="math inline">\(P(A|B)\)</span> is the probability that a student selected at random from the group of students who completed the last homework assignment will pass the exam We expect this to be higher than <span class="math inline">\(P(A)\)</span>, which is the probability that a student drawn at random from the entire class will pass the exam.</li>
-<li>The conditional probability <span class="math inline">\(P(A|B^c)\)</span> is the probability that a student selected at random from the group of students who <em>did not</em> complete the last homework assignment will pass the exam. We expect this to be lower than <span class="math inline">\(P(A)\)</span>, which is the probability that a student drawn from the whole class will pass the exam.</li>
-</ul>
-<p>Suppose that two-thirds of the students in the class completed the last homework assignment and that one half of the class completed the last homework assignment <em>and</em> passed the exam. Then we would write <span class="math display">\[
-P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{1/2}{2/3} = 0.75.
-\]</span></p>
+<p>Recall that the <em>probability distribution</em> of a random variable <span class="math inline">\(X\)</span> tells us which values <span class="math inline">\(X\)</span> can take and assigns probabilities to the values. Since a continuous random variable <span class="math inline">\(X\)</span> takes values on an interval, we cannot tabulate its probability distribution as we could for a discrete random variable; we therefore have different ways of writing down probability distributions for continuous random variables. Before coming to these, however, we must have a philosophical discussion</p>
+<p>Probability distributions of continuous random variables assign nonzero probabilities only to intervals, not to single values. In the example of the hourly departing shuttle, if <span class="math inline">\(X\)</span> is the wait time in hours, we might have <span class="math display">\[
+\begin{align*}
+P( 1/4 &lt; X &lt; 1/2) &amp;=1/4 \\
+P(X &gt; 1/2) &amp;= 1/2 \\
+P(X = 1/3) &amp;= 0,
+\end{align*}
+\]</span> having the interpretations <span class="math display">\[
+\begin{align*}
+P( \text{wait between 15 and 30 minutes }) &amp;=1/4 \\
+P(\text{wait more than 30 minutes}) &amp;= 1/2 \\
+P(\text{wait exactly 20 minutes}) &amp;= 0,
+\end{align*}
+\]</span> respectively.</p>
+<p>Why have we said that the last probability should be equal to zero? To understand this, note that <span class="math inline">\(20\)</span> minutes means <span class="math inline">\(20.000000000\)</span> minutes, with zeroes going on forever. Now, suppose we experience a wait time of <span class="math inline">\(20.15983145677\)</span> minutes. How can we say that <span class="math inline">\(P(X = 20.15983145677) = 0\)</span> when we have just experienced it? To understand this, we must imagine repeating our statistical experiment over and over again. If we wait for the shuttle on <span class="math inline">\(9\)</span> more occasions, we will not likely experience a wait time of <span class="math inline">\(20.15983145677\)</span> minutes a second time. If we wait for the bus a total of <span class="math inline">\(1000\)</span> times, chances are still very small that we will experience the wait time of <span class="math inline">\(20.15983145677\)</span> minutes again. Even if we wait for the bus a million times, the chances that we will observe the wait time of <span class="math inline">\(20.15983145677\)</span> minutes again are very very small. So, if we were to wait for the bus again and again and again and again on into eternity, we may interpret <span class="math inline">\(P(X = 20.15983145677)\)</span> as the proportion of all of our waiting times which we expect to be equal to <span class="math inline">\(20.15983145677\)</span> minutes. This proportion approaches zero as we repeat our experiment over and over again. For this reason we have the following proposition:</p>
+<div id="prp-zeropointprobs" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 12.1 (Zero point probabilities for continuous random variables)</strong></span> If <span class="math inline">\(X\)</span> is a continuous random variable, then <span class="math inline">\(P(X = x) = 0\)</span> for all <span class="math inline">\(x\)</span>.</p>
 </div>
-<div id="exm-friendsparty2" class="theorem example">
-<p><span class="theorem-title"><strong>Example 4.2 (Meeting friends at a party)</strong></span> Consider the statistical experiment of going to a party and noting which of your friends you meet there. Let <span class="math inline">\(A\)</span> be the event that you meet Adrian at the party and <span class="math inline">\(B\)</span> be the event that you meet Beverly. Suppose <span class="math inline">\(P(A) = 0.4\)</span>, <span class="math inline">\(P(B) = 0.6\)</span>, and <span class="math inline">\(P(A \cap B) = 0.35\)</span>. Then:</p>
+<p>Note how different this is from the case of discrete random variables. For discrete random variables, the probability distribution consists of an assignment of a probability to each distinct value the random variable can take. That is, if <span class="math inline">\(X\)</span> is discrete with support <span class="math inline">\(\mathcal{X}=\{x_1,x_2,\dots\}\)</span>, then we have <span class="math inline">\(P(X = x_i) = p_i\)</span>, with <span class="math inline">\(p_i \in [0,1]\)</span> for <span class="math inline">\(i=1,2,\dots\)</span> (see <a href="discrete_rvs.html#def-probdist_discrete" class="quarto-xref">Definition&nbsp;<span>8.1</span></a>).</p>
+<p>Since a continuous random variable may take any value in an interval, we cannot list or begin to list the distinct values in may take; we therefore cannot assign a probability to each one. So, in the case of continuous random variables, we assign probabilities to intervals of values rather than to distinct individual values. This is often done with the aid of what is called a <em>probability density function</em>.</p>
+<div id="def-pdf" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 12.1</strong></span> The <em>probability density function</em> (PDF) of a continuous random variable <span class="math inline">\(X\)</span> is the function <span class="math inline">\(f\)</span> satisfying <span class="math display">\[
+P(a \leq X \leq b) = \int_a^bf(x)dx
+\]</span> for all <span class="math inline">\(a \leq b\)</span>.</p>
+</div>
+<p>Now, for those who have not taken calculus, the notation on the right hand side of the above is read “the integral of <span class="math inline">\(f\)</span> from <span class="math inline">\(a\)</span> to <span class="math inline">\(b\)</span>”, and it is equal to the area between the function <span class="math inline">\(f\)</span> and the horizontal axis over the interval <span class="math inline">\([a,b]\)</span>. That is, <span class="math display">\[
+\int_a^bf(x)dx = \text{Area between $f$ and the horizontal axis on the interval $[a,b]$}.
+\]</span></p>
+<div id="exm-hourlyshuttlecont" class="theorem example">
+<p><span class="theorem-title"><strong>Example 12.2 (Hourly shuttle continued)</strong></span> In the hourly departing shuttle example, the PDF of the random variable <span class="math inline">\(X\)</span> might be the function <span class="math display">\[
+f(x) = \left\{\begin{array}{cc}
+1,&amp;  0 \leq x \leq 1\\
+0,&amp; \text{ otherwise,}
+\end{array}\right.
+\]</span> which is plotted in <a href="#fig-uniform" class="quarto-xref">Figure&nbsp;<span>12.1</span></a>. The distribution with this PDF is called the uniform distribution on <span class="math inline">\([0,1]\)</span>.</p>
+<div id="cell-fig-uniform" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'text.usetex'</span>] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="fl">2.5</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>,<span class="dv">1</span>],[<span class="dv">1</span>,<span class="dv">1</span>],color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">1</span>,<span class="dv">3</span><span class="op">/</span><span class="dv">2</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">0</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'white'</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">0</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">1</span>,<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">1</span>,<span class="dv">1</span>,<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">1</span>,<span class="dv">0</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'white'</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">1</span>,<span class="dv">0</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>ax.set_ylim((<span class="op">-</span><span class="fl">.1</span>,<span class="fl">1.3</span>))</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f(x)$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-uniform" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-uniform-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="continuous_rvs_files/figure-html/fig-uniform-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-uniform-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.1: Probability density function of the uniform distribution on <span class="math inline">\([0,1]\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>In order to compute the probability, say <span class="math inline">\(P(1/4 \leq X\leq 1/2)\)</span> based on this PDF, we would compute the area under it between the values <span class="math inline">\(1/4\)</span> and <span class="math inline">\(1/2\)</span>. This is depicted in <a href="#fig-uniformprob" class="quarto-xref">Figure&nbsp;<span>12.2</span></a> and is equal to <span class="math inline">\(1/4\)</span>, since the height of the PDF over the interval <span class="math inline">\([1/4,1/2]\)</span> is equal to one.</p>
+<div id="cell-fig-uniformprob" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'text.usetex'</span>] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="fl">2.5</span>))</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>,<span class="dv">1</span>],[<span class="dv">1</span>,<span class="dv">1</span>],color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">1</span>,<span class="dv">3</span><span class="op">/</span><span class="dv">2</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">0</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'white'</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">0</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">1</span>,<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">1</span>,<span class="dv">1</span>,<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">1</span>,<span class="dv">0</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'white'</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">1</span>,<span class="dv">0</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>ax.fill([<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>],[<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>],color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># ax.text(1/2,1/2,'$P(1/6 \leq X \leq 1/3) = \int_{1/6}^{1/3} f(x)dx = 1/6$')</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="dv">3</span><span class="op">/</span><span class="dv">4</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>,<span class="st">'$ </span><span class="ch">\\</span><span class="st">int_{1/4}^{1/2} f(x)dx = 1/4$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>ax.set_ylim((<span class="op">-</span><span class="fl">.1</span>,<span class="fl">1.3</span>))</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f(x)$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-uniformprob" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-uniformprob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="continuous_rvs_files/figure-html/fig-uniformprob-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-uniformprob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.2: Computing <span class="math inline">\(P(1/4 \leq X \leq 1/2 ) = 1/4\)</span> as an area under the PDF <span class="math inline">\(f(x)\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>We next give two properties possessed by every PDF.</p>
+<div id="prp-pdf" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 12.2 (Probability density function properties)</strong></span> If <span class="math inline">\(f\)</span> is the PDF of a random variable <span class="math inline">\(X\)</span>, then</p>
 <ol type="1">
-<li>The probability that you meet Adrian given that you meet Beverly is <span class="math display">\[
-\begin{align*}
-P(A|B) &amp; = \frac{P(A \cap B)}{P(B)} \\
-   &amp; = \frac{0.35}{0.6} \\
-   &amp; = 0.5833333.
-\end{align*}
-\]</span></li>
-<li>The probability that you meet Adrian given that you do <em>not</em> meet Beverly is <span class="math display">\[
-\begin{align*}
-P(A|B^c) &amp; = \frac{P(A \cap B^c)}{P(B^c)} \\
-   &amp; = \frac{P(A) - P(A \cap B)}{1 - P(B)} \\
-   &amp; = \frac{0.4 - 0.35}{1 - 0.6} \\
-   &amp; = 0.125
-\end{align*}
-\]</span></li>
+<li><span class="math inline">\(f(x) \geq 0\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>.</li>
+<li><span class="math inline">\(\int_{-\infty}^\infty f(x)dx = 1\)</span>, that is, the total area between <span class="math inline">\(f\)</span> and the horizontal axis is equal to <span class="math inline">\(1\)</span>.<br>
+</li>
 </ol>
-<p>An interpretation of the above is that if you meet Beverly, you are then more likely to meet Adrian; if you do not meet Beverly, you are less likely to meet Adrian.</p>
 </div>
-<div id="exr-USCvTAMU" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.1 (Gamecocks versus Aggies)</strong></span> Suppose <span class="math inline">\(80250\)</span> spectators are in attendance at the next Gamecocks versus Aggies football game, and one lucky winner will be selected at random to receive free “big gulps” for life from the concession stand. Suppose <span class="math inline">\(20000\)</span> of the spectators are students and that there are <span class="math inline">\(10000\)</span> Aggies present, <span class="math inline">\(200\)</span> of which are students. Let <span class="math inline">\(G\)</span> be the event that a Gamecock is chosen and let <span class="math inline">\(S\)</span> be the event that a student is chosen. Find:</p>
-<ol type="1">
-<li><span class="math inline">\(P(G)\)</span>, the probability that a Gamecock is chosen.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
-<li><span class="math inline">\(P(S)\)</span>, the probability that a student is chosen.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
-<li><span class="math inline">\(P(G^c)\)</span>, the probability that an Aggie is chosen.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
-<li><span class="math inline">\(P(G^c \cap S)\)</span>, the probability that an Aggie student is chosen.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
-<li><span class="math inline">\(P(G|S)\)</span>, the probability a Gamecock is chosen, given that a student is chosen.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
-<li><span class="math inline">\(P(S|G^c)\)</span>, the probability a student is chosen, given an Aggie is chosen.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></li>
-</ol>
-<p>We can begin making a table of the spectators based on the provided information as follows:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: right;"></th>
-<th style="text-align: right;">Gamecock</th>
-<th style="text-align: right;">Aggie</th>
-<th style="text-align: right;">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;"><strong>Student</strong></td>
-<td style="text-align: right;">19800</td>
-<td style="text-align: right;">200</td>
-<td style="text-align: right;">20000</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"><strong>Non-student</strong></td>
-<td style="text-align: right;">50450</td>
-<td style="text-align: right;">9800</td>
-<td style="text-align: right;">60250</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;"><strong>Total</strong></td>
-<td style="text-align: right;">70250</td>
-<td style="text-align: right;">10000</td>
-<td style="text-align: right;">80250</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Note that when we “condition” on an event, we may regard the sample points identified with the conditioning event as the new sample space.</p>
-<p>A direct consequence of the definition of the conditional probability is the following result, which states that we can always compute an intersection probability as a conditional probability times an un-conditional probability.</p>
-<div id="prp-multrule" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 4.1 (Multiplicative rule of probablity)</strong></span> For any two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> we have <span class="math display">\[
-P(A\cap B) = P(A|B)P(B)
-\]</span> or equivalently <span class="math display">\[
-P(A\cap B) = P(B|A)P(A).
-\]</span></p>
-</div>
-<p>A probability which is not a conditional probability is sometimes called a <em>marginal</em> probability. So, <a href="#prp-multrule" class="quarto-xref">Proposition&nbsp;<span>4.1</span></a> states that an intersection probability can always be written as a conditional probability times a marginal probability.</p>
-<div id="exr-safari" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.2 (Safari)</strong></span> Suppose you go on a safari in South Africa and make a list of the animals you see. Let <span class="math inline">\(G\)</span> be the event that you see a giraffe, <span class="math inline">\(W\)</span> the event that you see a Wildebeest, and <span class="math inline">\(C\)</span> the event that you see a crocodile. Assume</p>
-<ul>
-<li><span class="math inline">\(P(W) = 0.40\)</span></li>
-<li><span class="math inline">\(P(C) = 0.60\)</span></li>
-<li><span class="math inline">\(P(G) = 0.20\)</span></li>
-<li><span class="math inline">\(P(C|W) = 0.775\)</span></li>
-<li><span class="math inline">\(P(C|G) = 0.65\)</span></li>
-<li><span class="math inline">\(P(G\cap W) = 0.06\)</span></li>
-<li><span class="math inline">\(P(G\cap W\cap C) = 0.01\)</span></li>
-</ul>
-<p>Fill in all the spaces on a Venn diagram (all possible disjoint events). <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
-</div>
-<p>Here we note that the complement rule <span class="math inline">\(P(A^c) = 1 - P(A)\)</span> works for conditional probabilities too:</p>
-<div id="prp-complementcond" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 4.2 (Complement rule for conditional probabilities)</strong></span> For events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> with <span class="math inline">\(P(B) &gt; 0\)</span> we have <span class="math inline">\(P(A^c|B) = 1 - P(A|B)\)</span>.</p>
-</div>
-<p>The above comes from <span class="math display">\[
-\begin{align*}
-P(A^c|B) &amp;= \frac{P(A^c \cap B)}{P(B)} \\
-&amp;=\frac{P(B) - P(A \cap B)}{P(B)}\\
-&amp; = 1 - P(A|B).
-\end{align*}
-\]</span></p>
+<p>The first property come from the fact that if a function <span class="math inline">\(f\)</span> were less than <span class="math inline">\(0\)</span> over some interval, one could obtain a negative value for a probability of the form <span class="math inline">\(P(a \leq X \leq b)\)</span>. Since probabilities cannot (according to one of the Kolmogorov axioms) be negative, a function cannot be a PDF if it takes negative values over any interval. The second comes from observing that we should have <span class="math inline">\(P( - \infty &lt; X &lt; \infty) = 1\)</span>.</p>
 
 
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p><span class="math inline">\(P(G) = 70250/80250 = 0.8754\)</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p><span class="math inline">\(P(S) = 20000/80250 = 0.2492\)</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p><span class="math inline">\(P(G^c) = 1- P(G) = 0.1246\)</span><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p><span class="math inline">\(P(G^c \cap S) = 200/80250 = 0.0025\)</span><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>The answer is <span class="math display">\[
-    P(G|S) = \frac{P(G \cap S)}{P(S)},
-  \]</span> so we need <span class="math inline">\(P(G \cap S) = 19800/80250\)</span> as well as <span class="math inline">\(P(S) = 20000/80250\)</span>. The answer is thus <span class="math display">\[
-    P(G|S) = P(G \cap S) \times \frac{1}{P(S)} = \frac{19800}{80250} \times \frac{80250}{20000} = \frac{19800}{20000} = 0.99.
-    \]</span> <a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p><span class="math inline">\(P(S|G^c) = \dfrac{P(G^c \cap S)}{P(G^c)} = \dfrac{200}{10000} = 0.02.\)</span><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>We will need the probability <span class="math display">\[
-P(W \cap C) = P(C|W)P(W) = 0.775 \times 0.40 = 0.31
-\]</span> as well as <span class="math display">\[
-P(G \cap C) = P(C|G)P(G) = 0.65 \times 0.20 = 0.13.
-\]</span><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -893,13 +925,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./counting_rules.html" class="pagination-link" aria-label="Counting rules">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Counting rules</span></span>
+      <a href="./sampling_with_without_replacement.html" class="pagination-link" aria-label="Sampling with versus without replacement">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sampling with versus without replacement</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./independence.html" class="pagination-link" aria-label="Independence">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./power_ztest.html" class="pagination-link" aria-label="Statistical power of one-sample tests">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
