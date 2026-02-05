@@ -359,9 +359,10 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#normal-distribution-probability-density-function" id="toc-normal-distribution-probability-density-function" class="nav-link active" data-scroll-target="#normal-distribution-probability-density-function"><span class="header-section-number">13.1</span> Normal distribution probability density function</a></li>
-  <li><a href="#the-standard-normal-distribution" id="toc-the-standard-normal-distribution" class="nav-link" data-scroll-target="#the-standard-normal-distribution"><span class="header-section-number">13.2</span> The standard normal distribution</a></li>
-  <li><a href="#using-the-z-table" id="toc-using-the-z-table" class="nav-link" data-scroll-target="#using-the-z-table"><span class="header-section-number">13.3</span> Using the <span class="math inline">\(Z\)</span> table</a></li>
+  <li><a href="#probability-density-function" id="toc-probability-density-function" class="nav-link active" data-scroll-target="#probability-density-function"><span class="header-section-number">13.1</span> Probability density function</a></li>
+  <li><a href="#mean-and-variance" id="toc-mean-and-variance" class="nav-link" data-scroll-target="#mean-and-variance"><span class="header-section-number">13.2</span> Mean and variance</a></li>
+  <li><a href="#the-standard-normal-distribution" id="toc-the-standard-normal-distribution" class="nav-link" data-scroll-target="#the-standard-normal-distribution"><span class="header-section-number">13.3</span> The standard normal distribution</a></li>
+  <li><a href="#finding-probabilities-and-quantiles" id="toc-finding-probabilities-and-quantiles" class="nav-link" data-scroll-target="#finding-probabilities-and-quantiles"><span class="header-section-number">13.4</span> Finding probabilities and quantiles</a></li>
   </ul>
 </nav>
     </div>
@@ -398,8 +399,8 @@ window.Quarto = {
 <p>$$</p>
 </div>
 <p>Here we introduce the most famous of all probability distributions for a continuous random variable: The normal distribution, also known as the Gaussian distribution for having been introduced by Carl Friedrich Gauß (1777–1855). This distribution is recognized by its bell-shaped probability density function (PDF).</p>
-<section id="normal-distribution-probability-density-function" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="normal-distribution-probability-density-function"><span class="header-section-number">13.1</span> Normal distribution probability density function</h2>
+<section id="probability-density-function" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="probability-density-function"><span class="header-section-number">13.1</span> Probability density function</h2>
 <div id="def-normalpdf" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 13.1 (Normal distribution probability density function)</strong></span> The normal distribution with location parameter <span class="math inline">\(\mu \in \mathbb{R}\)</span> and scale parameter <span class="math inline">\(\sigma &gt; 0\)</span> has probability density function <span class="math display">\[
 f(x) = \frac{1}{\sqrt{2\pi} \sigma} \exp\Big[-\frac{1}{2}\Big(\frac{x - \mu}{\sigma}\Big)^2\Big]
@@ -457,6 +458,10 @@ Figure&nbsp;13.1: Probability density function of the <span class="math inline">
 </div>
 </div>
 </div>
+<p>We next consider the mean and variance of the normal distribution.</p>
+</section>
+<section id="mean-and-variance" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="mean-and-variance"><span class="header-section-number">13.2</span> Mean and variance</h2>
 <p>We find that the parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> give the expected value and standard deviation of the distribution.</p>
 <div id="prp-meanvarnormal" class="theorem proposition">
 <p><span class="theorem-title"><strong>Proposition 13.1 (Mean and variance of the normal distribution)</strong></span> If <span class="math inline">\(X \sim \mathcal{N}(\mu,\sigma^2)\)</span> then <span class="math inline">\(\mathbb{E}X = \mu\)</span> and <span class="math inline">\(\operatorname{Var}X = \sigma^2\)</span>.</p>
@@ -556,40 +561,77 @@ Figure&nbsp;13.3: Areas under the normal PDF within one, two, and three standard
 </div>
 <p>In these simple exercises, the desired probabilities can be obtained from the areas under the curve given in <a href="#fig-normal6895997" class="quarto-xref">Figure&nbsp;<span>13.3</span></a>. We next consider how to compute probabilities for normally distributed random variables more generally.</p>
 </section>
-<section id="the-standard-normal-distribution" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="the-standard-normal-distribution"><span class="header-section-number">13.2</span> The standard normal distribution</h2>
+<section id="the-standard-normal-distribution" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="the-standard-normal-distribution"><span class="header-section-number">13.3</span> The standard normal distribution</h2>
 <p>By <a href="continuous_rvs.html#def-pdf" class="quarto-xref">Definition&nbsp;<span>12.1</span></a>, we see that if <span class="math inline">\(X \sim \mathcal{N}(\mu,\sigma^2)\)</span>, we have <span class="math display">\[
 P(a \leq X \leq b) = \int_a^b \frac{1}{\sqrt{2\pi} \sigma} \exp\Big[-\frac{1}{2}\Big(\frac{x - \mu}{\sigma}\Big)^2\Big] dx
 \]</span> for any <span class="math inline">\(a &lt; b\)</span>. Now, no amount of calculus knowledge will allow you to evaluated this integral by hand exactly. We find that the value must be approximated, and the calculations for doing so are tedious. Fancy calculators and software like R or Python can compute (that is they can calculate very close approximations to) these integrals, but people have been using the normal distribution since before these tools were available. How did they compute areas under the normal PDF?</p>
 <p>In early days, the idea was to consider a <em>standard normal</em> random variable having mean <span class="math inline">\(0\)</span> and standard deviation <span class="math inline">\(1\)</span> and to publish a table containing many already-computed highly accurate approximations to integrals of the function <span class="math display">\[
 f(z) = \frac{1}{\sqrt{2 \pi}} \exp\Big[ -\frac{z^2}{2}\Big],
-\]</span> which is the normal PDF with <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma = 1\)</span>. Then practitioners could shift and scale their random variable <span class="math inline">\(X\)</span> to give it a mean of <span class="math inline">\(0\)</span> and a standard deviation of <span class="math inline">\(1\)</span> and consult the table to get their probabilities of interest. This is what we will learn how to do.</p>
-<p>We find that if we subtract from <span class="math inline">\(X\)</span> the mean <span class="math inline">\(\mu\)</span> and then divide by the standard deviation <span class="math inline">\(\sigma\)</span>, the result is a random variable, call it <span class="math inline">\(Z\)</span>, which has the <em>standard normal</em> distribution—that is, the Normal distribution with mean <span class="math inline">\(0\)</span> and standard deviation <span class="math inline">\(1\)</span>. Note that the transformation <span class="math display">\[
+\]</span> which is the normal PDF with <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma = 1\)</span>. Then practitioners could shift and scale their random variable <span class="math inline">\(X\)</span> to give it a mean of <span class="math inline">\(0\)</span> and a standard deviation of <span class="math inline">\(1\)</span> and consult the table to get their probabilities of interest. Such a table is found in <a href="z_table.html" class="quarto-xref"><span>Chapter 18</span></a>.</p>
+<p>We find that if we subtract from <span class="math inline">\(X\)</span> the mean <span class="math inline">\(\mu\)</span> and then divide by the standard deviation <span class="math inline">\(\sigma\)</span>, the result is a random variable, call it <span class="math inline">\(Z\)</span>, which has the <em>standard normal</em> distribution—that is, the Normal distribution with mean <span class="math inline">\(0\)</span> and standard deviation <span class="math inline">\(1\)</span>. Note that the transformation <span id="eq-zworld"><span class="math display">\[
 Z = \frac{X - \mu}{\sigma}
-\]</span> gives the difference between <span class="math inline">\(X\)</span> and <span class="math inline">\(\mu\)</span> as a number of standard deviations, positive if <span class="math inline">\(X\)</span> is above <span class="math inline">\(\mu\)</span> and negative if <span class="math inline">\(X\)</span> is below <span class="math inline">\(\mu\)</span>. We may refer to this transformation as <em>transformation into the <span class="math inline">\(Z\)</span> world</em> or <em>transformation into the number-of-standard-deviations</em> world. We next state formally that the result of the transformation of <span class="math inline">\(X\)</span> into the number-of-standard-deviations world is that the result of the transformation is a standard normal random variable.</p>
+\tag{13.1}\]</span></span> gives the difference between <span class="math inline">\(X\)</span> and <span class="math inline">\(\mu\)</span> as a number of standard deviations, positive if <span class="math inline">\(X\)</span> is above <span class="math inline">\(\mu\)</span> and negative if <span class="math inline">\(X\)</span> is below <span class="math inline">\(\mu\)</span>. We may refer to this transformation as <em>transformation into the <span class="math inline">\(Z\)</span> world</em> or <em>transformation into the number-of-standard-deviations</em> world. We next state formally that the result of the transformation of <span class="math inline">\(X\)</span> into the number-of-standard-deviations world is that the result of the transformation is a standard normal random variable.</p>
 <div id="prp-zworld" class="theorem proposition">
 <p><span class="theorem-title"><strong>Proposition 13.2 (Z transformation)</strong></span> If <span class="math inline">\(X \sim \mathcal{N}(\mu,\sigma^2)\)</span> then <span class="math inline">\(Z = (X - \mu) /\sigma \sim \mathcal{N}(0,1)\)</span>.</p>
 </div>
-<p>A probability concerning <span class="math inline">\(X\)</span> can thus be obtained by looking up the corresponding probability concerning <span class="math inline">\(Z = (X - \mu)/\sigma\)</span> in a table of integrals of the standard Normal probability density function. Note that if we want to move from the number-of-standard-deviations or <span class="math inline">\(Z\)</span> world back into the original <span class="math inline">\(X\)</span> world, we do the inverse transformation <span class="math display">\[
+<p>A probability concerning <span class="math inline">\(X\)</span> can thus be obtained by looking up the corresponding probability concerning <span class="math inline">\(Z = (X - \mu)/\sigma\)</span> in a table of integrals of the standard Normal probability density function. Note that if we want to move from the number-of-standard-deviations or <span class="math inline">\(Z\)</span> world back into the original <span class="math inline">\(X\)</span> world, we do the inverse transformation <span id="eq-xworld"><span class="math display">\[
 X = \mu + \sigma Z.
-\]</span></p>
-<p>A <span class="math inline">\(Z\)</span> table is provided in <a href="z_table.html" class="quarto-xref"><span>Chapter 18</span></a>.</p>
+\tag{13.2}\]</span></span></p>
+<p>Sometimes it is of interest to obtain a certain quantile of <span class="math inline">\(X\)</span>. For example if <span class="math inline">\(X\)</span> is the growth of a Loblolly pine from age three to age five, one might want to know the <span class="math inline">\(0.75\)</span> quantile of growths. This would be the amount of growth such that <span class="math inline">\(75\%\)</span> of Loblolly pine trees grow by this much or less from age three to age five. One can use the assumption that the growths are normally distributed to obtain this quantile. Again, however, this will be tricky if we do not standardize <span class="math inline">\(x\)</span>. If <span class="math inline">\(q\)</span> represents the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(X\)</span>, then we have <span class="math inline">\(P(X\leq q) = p\)</span>. In order to find the value of <span class="math inline">\(q\)</span> for any given <span class="math inline">\(p\)</span>, we must solve the equation <span class="math display">\[
+\int_{-\infty}^q \frac{1}{\sqrt{2\pi} \sigma} \exp\Big[-\frac{1}{2}\Big(\frac{x - \mu}{\sigma}\Big)^2\Big] dx = p
+\]</span> for <span class="math inline">\(q\)</span>, which does not admit a solution that can be written down in a nice way. Our strategy will be to first find the corresponding quantile for a standard normal random variable, that is the <span class="math inline">\(Z\)</span> world quantile, and then transform this back to the <span class="math inline">\(X\)</span> world. We describe this next.</p>
 </section>
-<section id="using-the-z-table" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="using-the-z-table"><span class="header-section-number">13.3</span> Using the <span class="math inline">\(Z\)</span> table</h2>
-<p>If <span class="math inline">\(X\)</span> has the Normal distribution with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>, we may find <span class="math inline">\(P(a \leq X \leq b)\)</span> as follows:</p>
+<section id="finding-probabilities-and-quantiles" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="finding-probabilities-and-quantiles"><span class="header-section-number">13.4</span> Finding probabilities and quantiles</h2>
+<p>If <span class="math inline">\(X\sim \mathcal{N}(\mu,\sigma^2)\)</span>, we may find <span class="math inline">\(P(a \leq X \leq b)\)</span> as follows:</p>
 <ol type="1">
 <li>Transform <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> from the <span class="math inline">\(X\)</span> world to the <span class="math inline">\(Z\)</span> world (the number-of-standard-deviations world) by <span class="math display">\[
     a \mapsto \frac{a-\mu}{\sigma} \quad \text{ and } \quad b \mapsto \frac{b-\mu}{\sigma}.
 \]</span></li>
-<li>Use the <span class="math inline">\(Z\)</span> table to look up <span class="math inline">\(\displaystyle P\Big( \frac{a-\mu}{\sigma} \leq Z \leq \frac{b-\mu}{\sigma} \Big)\)</span>, where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>.</li>
+<li>Use the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 18</span></a>) to look up <span class="math inline">\(\displaystyle P\Big( \frac{a-\mu}{\sigma} \leq Z \leq \frac{b-\mu}{\sigma} \Big)\)</span>, where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>.</li>
 </ol>
-<p>Note that if <span class="math inline">\(a = \pm \infty\)</span> then <span class="math inline">\((a-\mu)/\sigma = \pm\infty\)</span> and if <span class="math inline">\(b = \pm\infty\)</span> then <span class="math inline">\((b-\mu)/\sigma = \pm\infty\)</span>. The above works because <span class="math display">\[
-    \begin{align*}
-    P\left( a \leq X \leq b \right) &amp;=  P\left( \frac{a-\mu}{\sigma} \leq \frac{X - \mu}{\sigma} \leq \frac{b-\mu}{\sigma} \right) \\
-    &amp;=P\left( \frac{a-\mu}{\sigma} \leq Z \leq \frac{b-\mu}{\sigma} \right).
-    \end{align*}
-\]</span></p>
+<p>If <span class="math inline">\(X\sim \mathcal{N}(\mu,\sigma^2)\)</span> and <span class="math inline">\(q\)</span> represents the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(X\)</span>, we may find <span class="math inline">\(q\)</span> as follows:</p>
+<ol type="1">
+<li><p>Obtain the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(Z\sim \mathcal{N}(0,1)\)</span> and denote this by <span class="math inline">\(q_Z\)</span>.</p></li>
+<li><p>Then back-transform <span class="math inline">\(q_Z\)</span> to <span class="math inline">\(q\)</span> with the formula <span class="math inline">\(q = \mu + \sigma q_Z\)</span>.</p></li>
+</ol>
+<p>The above strategy works for finding probabilities because <span class="math display">\[
+\begin{align*}
+P\left( a \leq X \leq b \right) &amp;=  P\left( \frac{a-\mu}{\sigma} \leq \frac{X - \mu}{\sigma} \leq \frac{b-\mu}{\sigma} \right) \\
+&amp;=P\left( \frac{a-\mu}{\sigma} \leq Z \leq \frac{b-\mu}{\sigma} \right),
+\end{align*}
+\]</span> where we have used <a href="#eq-zworld" class="quarto-xref">Equation&nbsp;<span>13.1</span></a>. The above strategy for finding quantiles works because <span class="math display">\[
+\begin{align*}
+p &amp;=P(Z \leq q_Z) \\
+&amp;= P(\mu + \sigma Z \leq \mu + \sigma q_Z) \\
+              &amp;=P(X \leq \mu + \sigma q_Z),
+\end{align*}
+\]</span> where we have used <a href="#eq-xworld" class="quarto-xref">Equation&nbsp;<span>13.2</span></a>.</p>
+<p>These strategies are needed to solve the following exercises.</p>
+<div id="exr-mpgcont" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 13.3 (Miles per gallon continued)</strong></span> Suppose your miles per gallon <span class="math inline">\(X\)</span> on a tank follows the normal distribution with mean <span class="math inline">\(28\)</span> and standard deviation <span class="math inline">\(2\)</span>.</p>
+<ol type="1">
+<li><p>With what probability will you the mileage on your next tank be less than <span class="math inline">\(26.5\)</span>?<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p></li>
+<li><p>What is the <span class="math inline">\(0.90\)</span> quantile of your miles per gallon? <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p></li>
+</ol>
+</div>
+<div id="exr-womenheights" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 13.4 (Heights of women)</strong></span> Suppose the heights of American females who are over <span class="math inline">\(20\)</span> years old follow a Normal distribution with mean <span class="math inline">\(64\)</span> inches and standard deviation <span class="math inline">\(2.6\)</span> inches.</p>
+<ol type="1">
+<li><p>Find an interval within which <span class="math inline">\(50\%\)</span> of the heights lie.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p></li>
+<li><p>Find an interval centered at the mean within which <span class="math inline">\(50\%\)</span> of the heights lie.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p></li>
+<li><p>Let <span class="math inline">\(X\)</span> be the height of a randomly selected American female over the age of <span class="math inline">\(20\)</span>. Find <span class="math inline">\(P(X &lt; 60 \text{ or } X &gt; 66)\)</span>.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p></li>
+</ol>
+</div>
+<div id="exr-babyfood" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 13.5 (Baby food jars)</strong></span> You sell jars of baby food labeled as weighing <span class="math inline">\(113\text{g}\)</span>. Suppose your process results in jar weights with the <span class="math inline">\(\mathcal{N}(120,4^2)\)</span> distribution and that you will be fined if more than <span class="math inline">\(2\%\)</span> of your jars weigh less than <span class="math inline">\(113\text{g}\)</span>.</p>
+<ol type="1">
+<li><p>What proportion of your jars weigh less than <span class="math inline">\(113\text{g}\)</span>? <a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p></li>
+<li><p>To what must you increase <span class="math inline">\(\mu\)</span> to avoid being fined? <a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p></li>
+<li><p>Keeping <span class="math inline">\(\mu = 120\text{g}\)</span>, to what must you reduce <span class="math inline">\(\sigma\)</span> to avoid being fined? <a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p></li>
+</ol>
+</div>
 
 
 </section>
@@ -599,6 +641,38 @@ X = \mu + \sigma Z.
 <li id="fn1"><p> A growth of <span class="math inline">\(5.5\)</span> feet is <span class="math inline">\(1\)</span> standard deviation below the mean and <span class="math inline">\(6.5\)</span> is one standard deviation above the mean. Since the growth in height of Loblolly pines from age three to age five is Normally distributed, we can say <span class="math inline">\(P(5.5 \leq X \leq 6.5) = 0.683\)</span>. <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p> Since the growth in height of Loblolly pines from age three to five has mean <span class="math inline">\(6\)</span> and standard deviation <span class="math inline">\(0.5\)</span>, <span class="math inline">\(7\)</span> feet is <span class="math inline">\(2\)</span> standard deviations above the mean. Since the growth in height of Loblolly pines from age three to five is Normally distributed, the proportion of Loblolly pines whose growth in height from age three to five is at least <span class="math inline">\(2\)</span> standard deviations <em>away</em> from the mean is <span class="math inline">\(1 - 0.954 = 0.046\)</span>. However, we are only interested in the proportion whose whose growth in height from age three to five is at least <span class="math inline">\(2\)</span> standard deviations <em>above</em> the mean. Since the Normal probability density function is symmetric, it places the same “probability mass” to the right of <span class="math inline">\(2\)</span> standard deviations above the mean as it places to the left of <span class="math inline">\(2\)</span> standard deviations below the mean (refer to <a href="#fig-normal6895997" class="quarto-xref">Figure&nbsp;<span>13.3</span></a>). Therefore, we must divide the proportion <span class="math inline">\(0.046\)</span> by <span class="math inline">\(2\)</span>, getting <span class="math inline">\(P(X &gt;7) = 0.023\)</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p> If the mpg is Normal, then it should lie within <span class="math inline">\(2\)</span> standard deviations of its mean about <span class="math inline">\(95\%\)</span> of the time. Therefore, the mpg should lie in the interval <span class="math inline">\((24,32)\)</span> about <span class="math inline">\(95\%\)</span> of the time.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>We have <span class="math inline">\(P(X \leq 26) = P(Z \leq (26.5-28)/2) = P(Z \leq -0.75) = 0.2266.\)</span><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>The <span class="math inline">\(0.90\)</span> quantile of the standard normal distribution is <span class="math inline">\(q_Z = 1.282\)</span>, which tells us that the <span class="math inline">\(0.90\)</span> quantile of the miles per gallon is <span class="math inline">\(1.282\)</span> standard deviations above the its mean. This is <span class="math inline">\(28 + 1.282(2) = 30.564\)</span>. We expect the miles per gallon to be less than or equal to <span class="math inline">\(30.654\)</span> ninety percent of the time.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p> We can find such an interval immediately by noting that <span class="math inline">\(50\%\)</span> of the heights lie above the mean, since the Normal distribution is symmetric. So <span class="math inline">\(50\%\)</span> of the heights lie in the interval <span class="math inline">\((64,\infty)\)</span>. <a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p> The corresponding interval for the standard Normal distribution can be found by looking at the <span class="math inline">\(Z\)</span> table. We find that <span class="math inline">\(50\%\)</span> of the area under the standard normal PDF lies over the interval <span class="math inline">\([-.674,0.674]\)</span>. Transforming this interval back according to <a href="#eq-xworld" class="quarto-xref">Equation&nbsp;<span>13.2</span></a> gives <span class="math display">\[
+a = 64 + 2.6(-0.674) = 62.2476 \quad \text{ and } \quad b = 64 + 2.6(0.674) = 65.7524.
+\]</span> So the interval is <span class="math inline">\((62.2476,65.7524)\)</span>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>To obtain the probability we transform into the <span class="math inline">\(Z\)</span> world by <span class="math display">\[
+-1.54 = (60 - 64)/2.6 \quad \text{ and } \quad 0.77 = (66-64)/2.6.
+\]</span> Then the probability is given by <span class="math display">\[
+\begin{align*}
+P(Z &lt; -1.54 \text{ or } Z &gt; 0.77) &amp;= P(Z &lt; -1.54) + P(Z &gt; 0.77) \\
+&amp;= 0.0618 + 0.2206 \\
+&amp;= 0.2824.
+\end{align*}
+\]</span><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Letting <span class="math inline">\(X \sim \mathcal{N}(120,4^2)\)</span>, we want to find <span class="math inline">\(P(X &lt; 113)\)</span>. We have <span class="math display">\[
+    P(X &lt; 113) = P((X - 120)/4 &lt;(113-120)/4) = P(Z &lt; -1.75) = 0.0401,
+    \]</span> so the <span class="math inline">\(0.0401\)</span> is the proportion of jars that weigh less than <span class="math inline">\(113\)</span> grams. If a jar is selected at random, its weight will be less than <span class="math inline">\(113\)</span> with probability <span class="math inline">\(0.0401\)</span>.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Now let <span class="math inline">\(X \sim \mathcal{N}(\mu, 4^2)\)</span>, where we do not yet specify a value for <span class="math inline">\(\mu\)</span>. We want to have <span class="math inline">\(P(X &lt; 113) \leq 0.02\)</span>. So we write <span class="math display">\[
+   P(X &lt; 113) = P((X - \mu) / 4 &lt; (113 - \mu)/4) = P(Z &lt; (113- \mu)/4) \leq 0.02.
+    \]</span> Denote by <span class="math inline">\(q_Z\)</span> the <span class="math inline">\(0.02\)</span> quantile of <span class="math inline">\(Z\sim \mathcal{N}(0,1)\)</span>. Then by drawing a picture, we can see that the above implies <span class="math display">\[
+    (113 - \mu) /4 \leq q_Z \iff \mu \geq 113 - 4 q_Z.
+    \]</span> Plugging in <span class="math inline">\(q_Z = -2.053749\)</span>, we obtain <span class="math display">\[
+    \mu \geq 113 - 4 (-2.053749) = 121.215.
+    \]</span> So, in order that the proportion of jars with weights less than <span class="math inline">\(113\text{g}\)</span> does not exceed <span class="math inline">\(0.02\)</span>, we need to increase <span class="math inline">\(\mu\)</span> to at least <span class="math inline">\(121.215\)</span>.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Now we let <span class="math inline">\(X \sim \mathcal{N}(120, \sigma^2)\)</span>, where we do not yet specify a value for <span class="math inline">\(\sigma\)</span>. We want to have <span class="math inline">\(P(X &lt; 113) \leq 0.02\)</span>. So we write <span class="math display">\[
+    P(X &lt; 113) = P((X - 120) / \sigma &lt; (113 - 120)/\sigma) = P(Z &lt; -7/\sigma) \leq 0.02.
+    \]</span> Again, letting <span class="math inline">\(q_Z\)</span> denote the <span class="math inline">\(0.02\)</span> quantile of <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>, drawing a picture shows <span class="math display">\[
+    -7/\sigma \leq q_Z \iff \sigma \leq -7/q_Z.
+    \]</span> Note that the inequality changes direction when we divide both sides by <span class="math inline">\(q_Z\)</span>, as this is a negative number. Plugging in <span class="math inline">\(q_Z = -2.053749\)</span>, we obtain <span class="math display">\[
+    \sigma \leq -7/(-2.053749) = 3.408401.
+    \]</span> So, in order that the proportion of jar weights less than <span class="math inline">\(113\)</span> grams be no greater than <span class="math inline">\(0.02\)</span>, we can allow a value of <span class="math inline">\(\sigma\)</span> of at most <span class="math inline">\(3.408401\)</span>.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
