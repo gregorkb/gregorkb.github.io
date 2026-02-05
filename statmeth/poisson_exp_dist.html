@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>3&nbsp; Counting rules – Statistical Methods</title>
+<title>14&nbsp; Poisson and exponential distributions – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,8 +66,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./conditional_prob.html" rel="next">
-<link href="./prob_basics.html" rel="prev">
+<link href="./power_ztest.html" rel="next">
+<link href="./normal_distribution.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -125,7 +160,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./counting_rules.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Counting rules</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./poisson_exp_dist.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Poisson and exponential distributions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -179,7 +214,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./counting_rules.html" class="sidebar-item-text sidebar-link active">
+  <a href="./counting_rules.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Counting rules</span></span></a>
   </div>
 </li>
@@ -245,7 +280,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./poisson_exp_dist.html" class="sidebar-item-text sidebar-link">
+  <a href="./poisson_exp_dist.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Poisson and exponential distributions</span></span></a>
   </div>
 </li>
@@ -325,15 +360,21 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#poisson-distribution" id="toc-poisson-distribution" class="nav-link active" data-scroll-target="#poisson-distribution"><span class="header-section-number">14.1</span> Poisson distribution</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./counting_rules.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Counting rules</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./poisson_exp_dist.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Poisson and exponential distributions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-counting_rules" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Counting rules</span></span></h1>
+<h1 class="title"><span id="sec-poisson_exp_dist" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Poisson and exponential distributions</span></span></h1>
 </div>
 
 
@@ -360,94 +401,109 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>In <a href="set_basics.html" class="quarto-xref"><span>Chapter 1</span></a> we considered several examples of statistical experiments. Some of these had sample spaces with a finite number of outcomes, while others had sample spaces with an infinite number of outcomes. If a sample space has a finite number of outcomes, we will call it a <em>finite</em> sample space.</p>
-<p>For any set <span class="math inline">\(A\)</span>, denote by <span class="math inline">\(|A|\)</span> the <em>cardinality</em> of a set, which is the number of elements it contains. Thus a sample space <span class="math inline">\(S\)</span> is finite if <span class="math inline">\(|S| &lt; \infty\)</span>.</p>
-<p>The following result helps us to compute probabilities of events in experiments in which every possible outcome in a finite sample space is equally likely.</p>
-<div id="prp-countsamplepoints" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 3.1 (Computing probabilities when all outcomes are equally likely)</strong></span> If all outcomes in a finite sample space <span class="math inline">\(S\)</span> are equally likely, then for any event <span class="math inline">\(A \subset S\)</span>, we have <span class="math display">\[
-P(A) = \frac{|A|}{|S|}.
+<p>Here we introduce a discrete and a continuous probability distribution which go hand in hand: The Poisson and exponential distributions. The Poisson distribution was conceived as a probability distribution for random variables which are counts, taking the values <span class="math inline">\(0,1,\dots\)</span> such that there is no known maximum value the count can take. That is, it is a probability distribution for discrete random variables with support <span class="math inline">\(\mathcal{X}= \{0,1,2,\dots\}\)</span>. An example would be the number of washed up jellyfish you find walking the shore for a mile:</p>
+<div id="exm-jellyfish" class="theorem example">
+<p><span class="theorem-title"><strong>Example 14.1 (Jellyfish along the shore)</strong></span> Suppose you walk along the shore counting the number of jellyfish washed up on the sand. Let <span class="math inline">\(X\)</span> be the number of jellyfish you find along one mile of shoreline.</p>
+</div>
+<p>The exponential distribution is a probability distribution for a continuous random variable having support on the non-negative real numbers <span class="math inline">\([0,\infty)\)</span>. It is often proposed as a distribution for the time elapsed between events. Or, in the jellyfish example, if we define the random variable <span class="math inline">\(Y\)</span> as the distance we walk between any washed up jellyfish and the next one, we might propose the exponential distribution for <span class="math inline">\(Y\)</span>.</p>
+<p>We will consider the Poisson distribution first.</p>
+<section id="poisson-distribution" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="poisson-distribution"><span class="header-section-number">14.1</span> Poisson distribution</h2>
+<p>The Poisson distribution arises from the idea of <em>Poisson process</em>. We can think of a Poisson process as an experiment of which the outcome is a set of points positioned over an interval or over a region representing occurrences or instances of some event. Moreover, the occurrences of the events are i) independent of each other and ii) occur randomly but at a constant rate of the entire interval or region. There is a more mathematical definition of a Poisson process, but the description we have given here will suffice for our purposes.</p>
+<p>In the jellyfish example, the “occurrences” are the appearances of jellyfish which have washed up on the shore and the “interval” is a given length of shoreline. If the washing up of jellyfish on a shoreline takes place according to a Poisson process, then the number of jellyfish encountered along each stretch of shoreline of a given length will have the Poisson probability distribution. We will define this distribution by giving its probability mass function (PMF).</p>
+<div id="def-poissonpmf" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 14.1 (Poisson distribution)</strong></span> A random variable has the <em>Poisson distribution</em> with rate parameter <span class="math inline">\(\lambda &gt; 0\)</span> if it has PMF given by <span class="math display">\[
+p(x) = \frac{\lambda^xe^{-\lambda}}{x!}.
 \]</span></p>
 </div>
-<p>The above follows from the fact that, if each outcome in <span class="math inline">\(S\)</span> is equally likely, each outcome must have probability <span class="math inline">\(1/|S|\)</span>. Since individual outcomes are mutually exclusive, the probability of a set of outcomes <span class="math inline">\(A\)</span> is the sum of the probabilities of the individual outcomes belonging to <span class="math inline">\(A\)</span>, leading to <span class="math inline">\(P(A) = |A| / |S|\)</span>.</p>
-<div id="exm-sumtwodicerolls" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.1 (Sum of rolls of two dice)</strong></span> Consider rolling two dice and let <span class="math inline">\(A\)</span> be the event that the sum of the rolls is <span class="math inline">\(8\)</span>. Referring to <a href="set_basics.html#exm-twodice" class="quarto-xref">Example&nbsp;<span>1.5</span></a> we may write <span class="math display">\[
-A = \{(6,2),(5,3),(4,4),(3,5),(2,6) \},
-\]</span> by which we can see that there are <span class="math inline">\(5\)</span> ways to roll two dice such that the sum is <span class="math inline">\(8\)</span>. There are <span class="math inline">\(|S| = 36\)</span> possible outcomes in the sample space, each occurring with equal probability. Thus we have <span class="math inline">\(P(A) = 5/36\)</span>.</p>
+<p>The Poisson PMF can be evaluated with the R function <code>dpois()</code>.</p>
+<p>If <span class="math inline">\(X\)</span> has the Poisson distribution with rate parameter <span class="math inline">\(\lambda&gt;0\)</span>, we will write <span class="math display">\[
+X \sim \text{Poisson}(\lambda).
+\]</span> The rate parameter <span class="math inline">\(\lambda\)</span> must be a positive number. This rate governs the abundance of “occurrences” of the event in a given interval of time or space. <a href="#fig-pmfpoiss" class="quarto-xref">Figure&nbsp;<span>14.1</span></a> shows plots of the <span class="math inline">\(\text{Poisson}(\lambda)\)</span> PMF for two different values of <span class="math inline">\(\lambda\)</span>. We see that larger values of <span class="math inline">\(\lambda\)</span> result in the assignment of greater probabilities to greater values in the support <span class="math inline">\(\mathcal{X}= \{0,1,2,\dots\}\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.dpi'</span>] <span class="op">=</span> <span class="dv">128</span>       </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'savefig.dpi'</span>] <span class="op">=</span> <span class="dv">128</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> (<span class="dv">4</span>, <span class="dv">2</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'text.usetex'</span>] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>col <span class="op">=</span> <span class="st">'black'</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>lam <span class="op">=</span> [<span class="dv">2</span>,<span class="dv">5</span>]</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>maxx <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(maxx<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>):</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  px <span class="op">=</span> stats.poisson.pmf(x,lam[i])</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  axs[i].vlines(x,np.zeros(maxx<span class="op">+</span><span class="dv">1</span>),px,color<span class="op">=</span>col)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  axs[i].plot(x,px,<span class="st">'o'</span>,color<span class="op">=</span>col)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  axs[i].spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  axs[i].spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  axs[i].set_xticks(np.arange(maxx<span class="op">+</span><span class="dv">1</span>))</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  axs[i].set_ylabel(<span class="st">'$p(x)$'</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  axs[i].set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span>col)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  axs[i].set_title(<span class="vs">r'</span><span class="dv">$</span><span class="er">\</span><span class="vs">lambda = '</span><span class="op">+</span><span class="bu">str</span>(lam[i])<span class="op">+</span><span class="st">'$'</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-pmfpoiss" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pmfpoiss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="poisson_exp_dist_files/figure-html/fig-pmfpoiss-1.png" class="img-fluid figure-img" width="768">
 </div>
-<p>For many experiments it is impractical to write down all the possible outcomes in the sample space <span class="math inline">\(S\)</span> or in an event of interest <span class="math inline">\(A\)</span>. For such cases we can use some rules to help us count numbers of outcomes in an event. All the rules follow from this one fundamental rule:</p>
-<div id="prp-fundamentalcounting" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 3.2 (Fundamental theorem of counting)</strong></span> If a job consists of <span class="math inline">\(K\)</span> tasks such that the tasks may be completed in <span class="math inline">\(n_1,\dots,n_K\)</span> ways, respectively, then there are <span class="math display">\[
-\prod_{k=1}^K n_k = n_1 \times n_2 \times \dots \times n_K
-\]</span> ways to do the job.</p>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pmfpoiss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.1: <span class="math inline">\(\text{Poisson}(\lambda)\)</span> probabilities for two values of <span class="math inline">\(\lambda\)</span>.
+</figcaption>
+</figure>
 </div>
-<div id="exm-avatar" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.2 (Video game avatars)</strong></span> You can customize your video game avatar by selecting from <span class="math inline">\(6\)</span> choices of pants, <span class="math inline">\(4\)</span> choices of shirt, <span class="math inline">\(3\)</span> choices of backpack, <span class="math inline">\(4\)</span> choices of skin tone, and <span class="math inline">\(4\)</span> choices of hairstyle, and by choosing between sunglasses and no sunglasses. What is the number of possible avatars? <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </div>
-<div id="exm-comblock" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.3 (Combination lock)</strong></span> A combination lock opens when four wheels engraved with the digits 0–9 are turned to display a certain sequence of four numbers. How many sequences of four-digit numbers can the lock display?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 </div>
-<p>The next rule is for a <em>permutation</em>:</p>
-<div id="prp-permutation" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 3.3 (Permutation)</strong></span> The number of ways to draw <span class="math inline">\(r\)</span> elements from <span class="math inline">\(N\)</span> elements without replacement and arrange them in some order is <span class="math display">\[
-N(N-1) \cdots  (N - r + 1) = \frac{N!}{(N-r)!}.
-\]</span></p>
+<p>We can give further interpretation to the value of the rate parameter <span class="math inline">\(\lambda\)</span> from the following result:</p>
+<div id="prp-poissonmeanvar" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 14.1 (Mean and variance of Poisson)</strong></span> If <span class="math inline">\(X \sim \text{Poisson}(\lambda)\)</span> then <span class="math inline">\(\mathbb{E}X= \lambda\)</span> and <span class="math inline">\(\operatorname{Var}X = \lambda\)</span>.</p>
 </div>
-<p>To understand the above rule, imagine a bag marbles, in which each marble is unique, and suppose you are going to draw marbles from the bag one at a time, placing the drawn marbles in a row. The phrase “without replacement” means that once you draw a marble, you will not put it back in the bag before drawing the next one. By placing the drawn marbles in a row, we keep track of the order in which they were drawn from the bag.</p>
-<div id="exm-javelin" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.4 (Javelin throwers)</strong></span> Seventeen javelin throwers will compete for gold, silver, and bronze medals such that the thrower throwing the furthest, second furthest, and third furthest will be awarded the gold, silver, and bronze medal, respectively. In how many ways can the medals be awarded?<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
-</div>
-<div id="exm-bleacherseating" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.5 (Bleacher seating)</strong></span> You and four friends will next to each other in a single row of the bleachers. In how many ways can you arrange yourselves? <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
-</div>
-<p>The next rule is for a <em>partition</em>. It is presented in the language of probabilists of old, who spent lots of time putting balls into urns.</p>
-<div id="prp-partition" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 3.4 (Partition)</strong></span> The number of ways to place <span class="math inline">\(N\)</span> balls into <span class="math inline">\(K\)</span> urns such that the <span class="math inline">\(K\)</span> urns receive <span class="math inline">\(n_1,\dots,n_K\)</span> balls, where <span class="math inline">\(N = n_1 + \dots + n_K\)</span>, is <span class="math display">\[
-\frac{N!}{n_1!n_2!\cdots n_K!}.
-\]</span></p>
-</div>
-<div id="exm-teams" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.6 (Making teams)</strong></span> Suppose you have nineteen people and you want to split them into two teams of six and one team of seven. In how many ways can you do this?<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
-</div>
-<p>Next rule is for a <em>combination</em>, which is just a partition with only two “urns”.</p>
-<div id="prp-combination" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 3.5 (Combination)</strong></span> The number of ways to draw <span class="math inline">\(r\)</span> elements from <span class="math inline">\(N\)</span> without replacement and without regard to their order is <span class="math display">\[
-\left. N \choose r \right. = \frac{N!}{r!(N-r)!}.
-\]</span></p>
-</div>
-<p>To understand the combination, imagine again a bag of marbles, in which each marble is unique. Suppose you draw marbles one at a time from the bag and place the drawn marbles in a new bag. In the end you have two bags of marbles, and you are interested in which marbles were drawn and placed in the new bag—but you are not interested in the order in which the marbles were drawn (you have not placed the drawn marbles in a row, as in the case of a permutation).</p>
-<div id="exm-visit" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.7 (Weekend visits)</strong></span> Your parents insist you come home on three weekends during the semester, of which there are sixteen weekends to choose from. In how many ways can you choose the three weekends during which you will visit your parents?<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
-</div>
-<div id="exm-pokerhand" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.8 (Poker hand)</strong></span> Suppose you are dealt a five-card hand from a standard fifty-two-card deck. How many five-card hands are possible? <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
-</div>
-<p>Having learned some counting rules, we now consider applying them to compute some probabilities of the form <span class="math inline">\(P(A) = |A| / |S|\)</span> given in <a href="#prp-countsamplepoints" class="quarto-xref">Proposition&nbsp;<span>3.1</span></a>.</p>
-<div id="exm-queenspadespoker" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.9 (Queen of Spades in 5-card hand)</strong></span> Suppose you are dealt a five-card hand from a standard fifty-two-card deck. What is the probability your hand has the Queen of Spades? To answer this let <span class="math inline">\(A\)</span> be the event that your hand has the queen of spades. Then the probability will be given by <span class="math inline">\(P(A) = |A| / |S|\)</span>, where the number of possible five-card hands <span class="math inline">\(|S|\)</span> was found in <a href="#exm-pokerhand" class="quarto-xref">Example&nbsp;<span>3.8</span></a>. To find <span class="math inline">\(|A|\)</span>, we must think a little. All counting problems can be broken down into a sequence of tasks so that the fundamental theorem of counting can be used. To count the number of five-card hands with the Queen of Spades, consider the tasks needed in the construction of such a hand. The first task is to put into the hand the Queen of Spades; this can be done in only one way, as there is only one Queen of Spades. Then next task is to choose the other four cards which will make up the hand. This entails selecting four cards from the fifty-one cards remaining in the deck after the removal of the Queen of Spades. This can be done in <span class="math inline">\({51 \choose 4}\)</span> ways. So we have <span class="math inline">\(|A| = 1 \times {51 \choose 4}\)</span> from the fundamental theorem of counting. Putting this together with <span class="math inline">\(|S| = {52 \choose 5}\)</span>, we obtain <span class="math display">\[
-P(A) = \frac{{51 \choose 4}}{52 \choose 5} = \frac{5}{52} = 0.0961538.
-\]</span></p>
-</div>
-<div id="exm-flushpoker" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.10 (All cards of one suit in 5-card hand)</strong></span> Suppose you are dealt a five-card hand from a standard fifty-two-card deck. What is the probability you are dealt cards of only one suit? Let <span class="math inline">\(A\)</span> be the number of five-card hands with cards of only one suit. To find <span class="math inline">\(|A|\)</span>, we break down the construction of a single-suited hand into tasks. The first task is to choose a suit: there are four choices. After choosing a suit, we must draw five cards from that suit. There are thirteen cards of each suit, so for each suit there are <span class="math inline">\({13 \choose 5}\)</span> five-card hands having all cards of that suit. Putting the tasks in sequence, the fundamental theorem of counting gives <span class="math inline">\(|A| = 4\times {13 \choose 5}\)</span>. Putting this together with <span class="math inline">\(|S| = {52 \choose 5 }\)</span> gives <span class="math display">\[
-P(A) = \frac{4\times {13 \choose 5}}{52 \choose 5 } = 0.0019808.
-\]</span></p>
-</div>
-<div id="exm-acepoker" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.11 (At least one ace)</strong></span> Suppose you are dealt a five-card hand from a standard fifty-two-card deck. What is the probability you are dealt at least one ace?<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<p>The above result tells us that <span class="math inline">\(\lambda\)</span> is the expected value of <span class="math inline">\(X\)</span>. In <a href="#fig-pmfpoiss" class="quarto-xref">Figure&nbsp;<span>14.1</span></a>, therefore, <span class="math inline">\(\lambda\)</span> gives the position at which a fulcrum would need to be placed in order to balance the PMF on a seesaw if the vertical bars in the plot were made of solid mass. The above result also tells us that <span class="math inline">\(\lambda\)</span> is the variance of <span class="math inline">\(X\)</span>, characterizing the spread in the distribution. In fact, the Poisson distribution is famous for the fact that its mean is the same as its variance.</p>
+<p>Cumulative Poisson probabilities are obtained as <span class="math display">\[
+P(X \leq x) = \sum_{i=0}^x \frac{\lambda^i e^{-\lambda}}{i!}.
+\]</span> The probabilities can be obtained with the R function <code>ppois()</code>.</p>
+<div id="exm-caraccidents" class="theorem example">
+<p><span class="theorem-title"><strong>Example 14.2 (Car accidents)</strong></span> Suppose the number of car accidents on any given day in a mid-sized city follows a Poisson distribution with a mean of <span class="math inline">\(20\)</span> accidents per day.</p>
+<ol type="1">
+<li>Find the probability that there are exactly <span class="math inline">\(10\)</span> accidents on a given day. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li>Find the probability that there are <span class="math inline">\(12\)</span> or more accidents on a given day.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+</ol>
 </div>
 
 
+</section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>According to the fundamental theorem of counting, the total number of possible avatars is <span class="math inline">\(6 \times 4\times 3\times 4\times 4\times 2 = 2304\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>According to the fundemental theorem of counting, the number of possible sequences is <span class="math inline">\(10\times 10 \times 10 \times 10 = 10000\)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>This is a permutation. The answer is <span class="math inline">\(17 \times 16 \times 15 = 4080\)</span>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>This is a permutation. It can be done in <span class="math inline">\(5 \times 4 \times 3 \times 2 \times 1 = 120\)</span> ways.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>This is a partition. It can be done in <span class="math inline">\(\frac{19!}{6!6!7!}=46558512\)</span> ways<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>This is a combination (or really a partition with two urns—put weekends into a “go-home” bin and a “do-not-go-home” bin). There are <span class="math inline">\(\frac{16!}{3!(16-3)!} = \frac{16 \times 15 \times 14}{ 3 \times 2} = 16 \times 5 \times 7 = 80 \times 7 = 560\)</span> ways.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>This is a combination. There are <span class="math inline">\({52 \choose 5} = \frac{52!}{5!47!} = \frac{52 \times 51 \times 50\times 49\times 48}{5\times  4\times  3\times  2 \times  1} = 2.59896\times 10^{6}\)</span> possible hands.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>Whenever we see the words “at least”, we should instinctively think of the complement event, which in this case would be getting dealt a hand with <em>no</em> aces. If we compute this we can subtract the result from one to get the answer. The other route is computing the probability of getting exactly one ace, exactly two aces, exactly three, and so on, which would require much more work. So, let <span class="math inline">\(A\)</span> be the event that your are dealt a five-card hand with <em>no</em> aces. In how many ways can we construct such a hand? Well, four of the fifty-two cards are aces, so we just need to choose five cards from the forty-eight cards which are <em>not</em> aces. This can be done in <span class="math inline">\(48 \choose 5\)</span> ways. So we have <span class="math inline">\(P(A) = \frac{48 \choose 5}{52 \choose 5}\)</span>. The event of interest is <span class="math inline">\(A^c\)</span>, for which <span class="math inline">\(P(A^c) = 1 - \frac{48 \choose 5}{52 \choose 5} = 0.341158\)</span>.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p> Letting <span class="math inline">\(X\)</span> be the number of accidents on a given day, we have <span class="math inline">\(X \sim \text{Poisson}(20)\)</span>. So the probability that there are exactly <span class="math inline">\(10\)</span> accidents on a given day is <span class="math display">\[
+    P(X = 10) = \frac{(20)^{10}e^{-{20}}}{10!} = 0.005816307.
+    \]</span> One can obtain the answer with the R code <code>dpois(10,20)</code>. <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p> We have <span class="math display">\[
+    \begin{align*}
+    P(X \geq 12) &amp;= 1 - P(X \leq 11) \\
+           &amp;= 1 - [P(X = 0) + P(X=1) + \dots + P(X = 11)] \\
+           &amp;= 1 - \sum_{x=0}^{11} \frac{(20)^{x}e^{-{20}}}{x!} \\
+           &amp;= 0.9786132.
+    \end{align*}
+  \]</span> Where we can obtain the final answer with <code>1 - ppois(11,20)</code>. <a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -854,13 +910,13 @@ P(A) = \frac{4\times {13 \choose 5}}{52 \choose 5 } = 0.0019808.
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./prob_basics.html" class="pagination-link" aria-label="Basics of probability">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics of probability</span></span>
+      <a href="./normal_distribution.html" class="pagination-link" aria-label="The Normal distribution">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Normal distribution</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./conditional_prob.html" class="pagination-link" aria-label="Conditional probability">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./power_ztest.html" class="pagination-link" aria-label="Statistical power of one-sample tests">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

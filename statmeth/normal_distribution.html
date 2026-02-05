@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./power_ztest.html" rel="next">
+<link href="./poisson_exp_dist.html" rel="next">
 <link href="./continuous_rvs.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -280,8 +280,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./poisson_exp_dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Poisson and exponential distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -298,13 +304,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Multiple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Multiple linear regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -321,7 +327,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -338,7 +344,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
   </div>
 </li>
       </ul>
@@ -568,7 +574,7 @@ P(a \leq X \leq b) = \int_a^b \frac{1}{\sqrt{2\pi} \sigma} \exp\Big[-\frac{1}{2}
 \]</span> for any <span class="math inline">\(a &lt; b\)</span>. Now, no amount of calculus knowledge will allow you to evaluated this integral by hand exactly. We find that the value must be approximated, and the calculations for doing so are tedious. Fancy calculators and software like R or Python can compute (that is they can calculate very close approximations to) these integrals, but people have been using the normal distribution since before these tools were available. How did they compute areas under the normal PDF?</p>
 <p>In early days, the idea was to consider a <em>standard normal</em> random variable having mean <span class="math inline">\(0\)</span> and standard deviation <span class="math inline">\(1\)</span> and to publish a table containing many already-computed highly accurate approximations to integrals of the function <span class="math display">\[
 f(z) = \frac{1}{\sqrt{2 \pi}} \exp\Big[ -\frac{z^2}{2}\Big],
-\]</span> which is the normal PDF with <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma = 1\)</span>. Then practitioners could shift and scale their random variable <span class="math inline">\(X\)</span> to give it a mean of <span class="math inline">\(0\)</span> and a standard deviation of <span class="math inline">\(1\)</span> and consult the table to get their probabilities of interest. Such a table is found in <a href="z_table.html" class="quarto-xref"><span>Chapter 18</span></a>.</p>
+\]</span> which is the normal PDF with <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma = 1\)</span>. Then practitioners could shift and scale their random variable <span class="math inline">\(X\)</span> to give it a mean of <span class="math inline">\(0\)</span> and a standard deviation of <span class="math inline">\(1\)</span> and consult the table to get their probabilities of interest. Such a table is found in <a href="z_table.html" class="quarto-xref"><span>Chapter 19</span></a>.</p>
 <p>We find that if we subtract from <span class="math inline">\(X\)</span> the mean <span class="math inline">\(\mu\)</span> and then divide by the standard deviation <span class="math inline">\(\sigma\)</span>, the result is a random variable, call it <span class="math inline">\(Z\)</span>, which has the <em>standard normal</em> distribution—that is, the Normal distribution with mean <span class="math inline">\(0\)</span> and standard deviation <span class="math inline">\(1\)</span>. Note that the transformation <span id="eq-zworld"><span class="math display">\[
 Z = \frac{X - \mu}{\sigma}
 \tag{13.1}\]</span></span> gives the difference between <span class="math inline">\(X\)</span> and <span class="math inline">\(\mu\)</span> as a number of standard deviations, positive if <span class="math inline">\(X\)</span> is above <span class="math inline">\(\mu\)</span> and negative if <span class="math inline">\(X\)</span> is below <span class="math inline">\(\mu\)</span>. We may refer to this transformation as <em>transformation into the <span class="math inline">\(Z\)</span> world</em> or <em>transformation into the number-of-standard-deviations</em> world. We next state formally that the result of the transformation of <span class="math inline">\(X\)</span> into the number-of-standard-deviations world is that the result of the transformation is a standard normal random variable.</p>
@@ -587,11 +593,11 @@ X = \mu + \sigma Z.
 <p>If <span class="math inline">\(X\sim \mathcal{N}(\mu,\sigma^2)\)</span>, we may find <span class="math inline">\(P(a \leq X \leq b)\)</span> as follows:</p>
 <ol type="1">
 <li><p>Transform <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> from the <span class="math inline">\(X\)</span> world to the <span class="math inline">\(Z\)</span> world (the number-of-standard-deviations world) by <span class="math inline">\(a \mapsto (a - \mu)/\sigma\)</span> and <span class="math inline">\(b \mapsto (b - \mu)/\sigma\)</span>.</p></li>
-<li><p>Use the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 18</span></a>) to look up <span class="math inline">\(\displaystyle P\Big( \frac{a-\mu}{\sigma} \leq Z \leq \frac{b-\mu}{\sigma} \Big)\)</span>, where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>.</p></li>
+<li><p>Use the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 19</span></a>) to look up <span class="math inline">\(\displaystyle P\Big( \frac{a-\mu}{\sigma} \leq Z \leq \frac{b-\mu}{\sigma} \Big)\)</span>, where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>.</p></li>
 </ol>
 <p>If <span class="math inline">\(X\sim \mathcal{N}(\mu,\sigma^2)\)</span> and <span class="math inline">\(q\)</span> represents the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(X\)</span>, we may find <span class="math inline">\(q\)</span> as follows:</p>
 <ol type="1">
-<li><p>Obtain the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(Z\sim \mathcal{N}(0,1)\)</span> from the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 18</span></a>) and denote this by <span class="math inline">\(q_Z\)</span>.</p></li>
+<li><p>Obtain the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(Z\sim \mathcal{N}(0,1)\)</span> from the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 19</span></a>) and denote this by <span class="math inline">\(q_Z\)</span>.</p></li>
 <li><p>Then back-transform <span class="math inline">\(q_Z\)</span> to <span class="math inline">\(q\)</span> with the formula <span class="math inline">\(q = \mu + \sigma q_Z\)</span>.</p></li>
 </ol>
 <p>The above strategy works for finding probabilities because <span class="math display">\[
@@ -1082,8 +1088,8 @@ P(Z &lt; -1.54 \text{ or } Z &gt; 0.77) &amp;= P(Z &lt; -1.54) + P(Z &gt; 0.77) 
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./power_ztest.html" class="pagination-link" aria-label="Statistical power of one-sample tests">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./poisson_exp_dist.html" class="pagination-link" aria-label="Poisson and exponential distributions">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Poisson and exponential distributions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
