@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./power_ztest.html" rel="next">
+<link href="./normal_distribution.html" rel="next">
 <link href="./sampling_with_without_replacement.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -274,8 +274,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./normal_distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Normal distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -292,13 +298,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Multiple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Multiple linear regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -315,7 +321,24 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./z_table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
   </div>
 </li>
       </ul>
@@ -393,7 +416,7 @@ P(\text{wait exactly 20 minutes}) &amp;= 0,
 <div id="def-pdf" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 12.1</strong></span> The <em>probability density function</em> (PDF) of a continuous random variable <span class="math inline">\(X\)</span> is the function <span class="math inline">\(f\)</span> satisfying <span class="math display">\[
 P(a \leq X \leq b) = \int_a^bf(x)dx
-\]</span> for all <span class="math inline">\(a \leq b\)</span>.</p>
+\]</span> for all <span class="math inline">\(a &lt; b\)</span>.</p>
 </div>
 <p>Now, for those who have not taken calculus, the notation on the right hand side of the above is read “the integral of <span class="math inline">\(f\)</span> from <span class="math inline">\(a\)</span> to <span class="math inline">\(b\)</span>”, and it is equal to the area between the function <span class="math inline">\(f\)</span> and the horizontal axis over the interval <span class="math inline">\([a,b]\)</span>. That is, <span class="math display">\[
 \int_a^bf(x)dx = \text{Area between $f$ and the horizontal axis on the interval $[a,b]$}.
@@ -414,33 +437,35 @@ f(x) = \left\{\begin{array}{cc}
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.dpi'</span>] <span class="op">=</span> <span class="dv">128</span>       </span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'savefig.dpi'</span>] <span class="op">=</span> <span class="dv">128</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> (<span class="dv">4</span>, <span class="dv">3</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> (<span class="dv">4</span>, <span class="dv">2</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'text.usetex'</span>] <span class="op">=</span> <span class="va">True</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>,<span class="dv">1</span>],[<span class="dv">1</span>,<span class="dv">1</span>],color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">1</span>,<span class="dv">3</span><span class="op">/</span><span class="dv">2</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">0</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'white'</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">0</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">1</span>,<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">1</span>,<span class="dv">1</span>,<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">1</span>,<span class="dv">0</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'white'</span>)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">1</span>,<span class="dv">0</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f(x)$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>col <span class="op">=</span> <span class="st">'black'</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span>col)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>,<span class="dv">1</span>],[<span class="dv">1</span>,<span class="dv">1</span>],color<span class="op">=</span>col)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">1</span>,<span class="dv">3</span><span class="op">/</span><span class="dv">2</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span>col)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">0</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'white'</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">0</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span>col)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">1</span>,<span class="st">'o'</span>,color<span class="op">=</span>col)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">1</span>,<span class="dv">1</span>,<span class="st">'o'</span>,color<span class="op">=</span>col)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">1</span>,<span class="dv">0</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'white'</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">1</span>,<span class="dv">0</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span>col)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f(x)$'</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span>col)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-uniform" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-uniform-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="continuous_rvs_files/figure-html/fig-uniform-output-1.png" width="482" height="372" class="figure-img">
+<img src="continuous_rvs_files/figure-html/fig-uniform-output-1.png" width="491" height="273" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-uniform-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12.1: Probability density function of the uniform distribution on <span class="math inline">\([0,1]\)</span>.
@@ -455,32 +480,32 @@ Figure&nbsp;12.1: Probability density function of the uniform distribution on <s
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>,<span class="dv">1</span>],[<span class="dv">1</span>,<span class="dv">1</span>],color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">1</span>,<span class="dv">3</span><span class="op">/</span><span class="dv">2</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span>col)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>,<span class="dv">1</span>],[<span class="dv">1</span>,<span class="dv">1</span>],color<span class="op">=</span>col)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">1</span>,<span class="dv">3</span><span class="op">/</span><span class="dv">2</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span>col)</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">0</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'white'</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">0</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">1</span>,<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">1</span>,<span class="dv">1</span>,<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">0</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span>col)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">1</span>,<span class="st">'o'</span>,color<span class="op">=</span>col)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">1</span>,<span class="dv">1</span>,<span class="st">'o'</span>,color<span class="op">=</span>col)</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">1</span>,<span class="dv">0</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'white'</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">1</span>,<span class="dv">0</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">1</span>,<span class="dv">0</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span>col)</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>ax.fill([<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>],[<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>],color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>ax.fill([<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>],[<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>],color<span class="op">=</span>col)</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># ax.text(3/4,1/2,'$ \\int_{1/4}^{1/2} f(x)dx = 1/4$',color='blue')</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># ax.text(3/4,1/2,'$ \\int_{1/4}^{1/2} f(x)dx = 1/4$',color=col)</span></span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f(x)$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f(x)$'</span>,color<span class="op">=</span>col)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span>col)</span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-uniformprob" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-uniformprob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="continuous_rvs_files/figure-html/fig-uniformprob-output-1.png" width="482" height="372" class="figure-img">
+<img src="continuous_rvs_files/figure-html/fig-uniformprob-output-1.png" width="491" height="273" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-uniformprob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12.2: Computing <span class="math inline">\(P(1/4 \leq X \leq 1/2 ) = 1/4\)</span> as an area under the PDF <span class="math inline">\(f(x)\)</span>.
@@ -517,24 +542,24 @@ Figure&nbsp;12.2: Computing <span class="math inline">\(P(1/4 \leq X \leq 1/2 ) 
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">15</span>,<span class="dv">201</span>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>fx <span class="op">=</span> np.exp(<span class="op">-</span>x<span class="op">/</span><span class="dv">3</span>)<span class="op">*</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>,<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="op">-</span><span class="dv">2</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx,color<span class="op">=</span>col)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>,<span class="st">'o'</span>,color<span class="op">=</span>col)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="op">-</span><span class="dv">2</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span>col)</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">0</span>,<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'white'</span>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">0</span>,<span class="st">'o'</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">0</span>,<span class="st">'o'</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,color<span class="op">=</span>col)</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f(x)$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f(x)$'</span>,color<span class="op">=</span>col)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span>col)</span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-pdfspinatop" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pdfspinatop-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="continuous_rvs_files/figure-html/fig-pdfspinatop-output-1.png" width="491" height="378" class="figure-img">
+<img src="continuous_rvs_files/figure-html/fig-pdfspinatop-output-1.png" width="482" height="273" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pdfspinatop-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12.3: Probability density function with support on <span class="math inline">\([0,\infty)\)</span>.
@@ -557,30 +582,30 @@ Figure&nbsp;12.3: Probability density function with support on <span class="math
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">15</span>,<span class="dv">201</span>)</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>fx <span class="op">=</span> np.exp(<span class="op">-</span>x<span class="op">/</span><span class="dv">3</span>)<span class="op">*</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>,<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="op">-</span><span class="dv">2</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx,color<span class="op">=</span>col)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>,<span class="st">'o'</span>,color<span class="op">=</span>col)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="op">-</span><span class="dv">2</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span>col)</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">0</span>,<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'white'</span>)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">0</span>,<span class="st">'o'</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="dv">0</span>,<span class="dv">0</span>,<span class="st">'o'</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,color<span class="op">=</span>col)</span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">2.5</span></span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>xa <span class="op">=</span> np.linspace(a,<span class="dv">15</span>,<span class="dv">201</span>)</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>fxa <span class="op">=</span> np.exp(<span class="op">-</span>xa<span class="op">/</span><span class="dv">3</span>)<span class="op">*</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>ax.fill(np.append(np.append(a,xa),xa[<span class="op">-</span><span class="dv">1</span>]),</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        np.append(np.append(<span class="dv">0</span>,fxa),<span class="dv">0</span>),color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        np.append(np.append(<span class="dv">0</span>,fxa),<span class="dv">0</span>),color<span class="op">=</span>col)</span>
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
 <span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
 <span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f(x)$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f(x)$'</span>,color<span class="op">=</span>col)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span>col)</span>
 <span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-pdfspinatop_shaded" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pdfspinatop_shaded-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="continuous_rvs_files/figure-html/fig-pdfspinatop_shaded-output-1.png" width="491" height="378" class="figure-img">
+<img src="continuous_rvs_files/figure-html/fig-pdfspinatop_shaded-output-1.png" width="482" height="273" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pdfspinatop_shaded-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12.4: Probability density function with support on <span class="math inline">\([0,\infty)\)</span> with probability <span class="math inline">\(P(X &gt; 2.5)\)</span> shown as area under the curve.
@@ -603,20 +628,20 @@ Figure&nbsp;12.4: Probability density function with support on <span class="math
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">201</span>)</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>fx <span class="op">=</span> stats.norm.pdf(x,<span class="dv">0</span>,<span class="dv">2</span>)</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx,color<span class="op">=</span>col)</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f(x)$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f(x)$'</span>,color<span class="op">=</span>col)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span>col)</span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-tempdiffpdf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tempdiffpdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="continuous_rvs_files/figure-html/fig-tempdiffpdf-output-1.png" width="491" height="372" class="figure-img">
+<img src="continuous_rvs_files/figure-html/fig-tempdiffpdf-output-1.png" width="491" height="273" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tempdiffpdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12.5: Probability density function with support on <span class="math inline">\((-\infty,\infty)\)</span>.
@@ -629,33 +654,31 @@ Figure&nbsp;12.5: Probability density function with support on <span class="math
 <div id="cell-fig-tempdiffpdf_shaded" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'text.usetex'</span>] <span class="op">=</span> <span class="va">True</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">201</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>fx <span class="op">=</span> stats.norm.pdf(x,<span class="dv">0</span>,<span class="dv">2</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">201</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>fx <span class="op">=</span> stats.norm.pdf(x,<span class="dv">0</span>,<span class="dv">2</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx,color<span class="op">=</span>col)</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="op">-</span><span class="dv">2</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>xa <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">8</span>,a,<span class="dv">201</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>fxa <span class="op">=</span> stats.norm.pdf(xa,<span class="dv">0</span>,<span class="dv">2</span>)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>ax.fill(np.append(np.append(xa,a),xa[<span class="dv">0</span>]),</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        np.append(np.append(fxa,<span class="dv">0</span>),<span class="dv">0</span>),color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f(x)$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="op">-</span><span class="dv">2</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>xa <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">8</span>,a,<span class="dv">201</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>fxa <span class="op">=</span> stats.norm.pdf(xa,<span class="dv">0</span>,<span class="dv">2</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>ax.fill(np.append(np.append(xa,a),xa[<span class="dv">0</span>]),</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        np.append(np.append(fxa,<span class="dv">0</span>),<span class="dv">0</span>),color<span class="op">=</span>col)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f(x)$'</span>,color<span class="op">=</span>col)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span>col)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-tempdiffpdf_shaded" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tempdiffpdf_shaded-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="continuous_rvs_files/figure-html/fig-tempdiffpdf_shaded-output-1.png" width="491" height="372" class="figure-img">
+<img src="continuous_rvs_files/figure-html/fig-tempdiffpdf_shaded-output-1.png" width="491" height="273" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tempdiffpdf_shaded-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12.6: Probability density function with support on <span class="math inline">\((-\infty,\infty)\)</span> with probability <span class="math inline">\(P(X &lt; -2)\)</span> depicted.
@@ -665,68 +688,58 @@ Figure&nbsp;12.6: Probability density function with support on <span class="math
 </div>
 </div>
 </div>
-<p>In conclusion to this introduction to continuous random variables, we introduce what is called the <em>cumulative distribution function</em> (CDF) of a random variable. In fact, all random variables, continuous as well as discrete, possess CDFs, but it is computed differently for each type of variable, as we shall see.</p>
-<div id="def-cdf" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 12.2 (Cumulative distribution function)</strong></span> The <em>cumulative distribution function</em> of a random variable <span class="math inline">\(X\)</span> is the function <span class="math inline">\(F\)</span> such that <span class="math display">\[
-P(X \leq x) = F(x)
-\]</span> for all <span class="math inline">\(x\)</span>.</p>
+<p>Recall the definition of the <em>cumulative distribution function</em> given in <a href="discrete_rvs.html#def-cdf" class="quarto-xref">Definition&nbsp;<span>8.5</span></a>. For discrete random variables, the CDF <span class="math inline">\(F(x)\)</span> is computed by summing probabilities over all values in the support less than or equal to <span class="math inline">\(x\)</span>; for continuous random variables with a PDF, the CDF <span class="math inline">\(F(x)\)</span> is computed as the area under the PDF to the left of the value <span class="math inline">\(x\)</span>. That is:</p>
+<div id="prp-cdf_cont" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 12.3 (CDF for continuous random variables)</strong></span> Let <span class="math inline">\(X\)</span> be a continuous random variable with PDF <span class="math inline">\(f\)</span>. Then the CDF of <span class="math inline">\(X\)</span> is given by <span id="eq-cdf_cont"><span class="math display">\[
+F(x) = \int_{-\infty}^x f(t)dt
+\tag{12.1}\]</span></span> for all <span class="math inline">\(x\)</span>.</p>
 </div>
-<p>For discrete random variables, the CDF <span class="math inline">\(F(x)\)</span> is computed by summing probabilities over all values in the support less than or equal to <span class="math inline">\(x\)</span>; for continuous random variables with a PDF, the CDF <span class="math inline">\(F(x)\)</span> is computed as the area under the PDF to the left of the value <span class="math inline">\(x\)</span>. That is:</p>
-<div id="prp-cdf_discrete_cont" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 12.3 (CDF for discrete and continuous random variables)</strong></span> Let <span class="math inline">\(X\)</span> be a random variable with support <span class="math inline">\(\mathcal{X}\)</span>. Then the CDF of <span class="math inline">\(X\)</span> is given by <span class="math display">\[
-F(x) = \left\{\begin{array}{ll}
-\sum_{ \{t \in \mathcal{X}: ~ t \leq x\}} p(t)&amp; \text{if $X$ is discrete with PMF $p(x)$}\\
-\int_{-\infty}^x f(t)dt&amp; \text{if $X$ is continuous with PDF $f(x)$}
-\end{array}\right.
-\]</span> for all <span class="math inline">\(x\)</span>.</p>
-</div>
+<p>The integral in <a href="#eq-cdf_cont" class="quarto-xref">Equation&nbsp;<span>12.1</span></a> gives the area under the PDF to the left of the value <span class="math inline">\(x\)</span>.</p>
 <p>For CDF of the probability distribution of today’s temperature minus yesterday’s temperature is pictured in the right panel of <a href="#fig-tempdiffpdfcdf_shaded" class="quarto-xref">Figure&nbsp;<span>12.7</span></a>. The left panel shows the PDF, with the region under the curve to the left of <span class="math inline">\(x = -2\)</span> shaded. The height of the CDF at <span class="math inline">\(x=-2\)</span> is equal to the area of this shaded region. That is, <span class="math inline">\(F(-2) = P(X \leq -2)\)</span>.</p>
 <div id="cell-fig-tempdiffpdfcdf_shaded" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'text.usetex'</span>] <span class="op">=</span> <span class="va">True</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">2</span>))</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">3</span>))</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">201</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>fx <span class="op">=</span> stats.norm.pdf(x,<span class="dv">0</span>,<span class="dv">2</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">201</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>fx <span class="op">=</span> stats.norm.pdf(x,<span class="dv">0</span>,<span class="dv">2</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].plot(x,fx,color<span class="op">=</span>col)</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].plot(x,fx,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="op">-</span><span class="dv">2</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>xa <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">8</span>,a,<span class="dv">201</span>)</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>fxa <span class="op">=</span> stats.norm.pdf(xa,<span class="dv">0</span>,<span class="dv">2</span>)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].fill(np.append(np.append(xa,a),xa[<span class="dv">0</span>]),</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        np.append(np.append(fxa,<span class="dv">0</span>),<span class="dv">0</span>),color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_ylabel(<span class="st">'$f(x)$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_ylabel(<span class="st">'$f(x)$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>Fx <span class="op">=</span> stats.norm.cdf(x<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].plot(x,Fx,color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> stats.norm.cdf(a<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].plot([x[<span class="dv">0</span>],a],[b,b],color<span class="op">=</span><span class="st">'blue'</span>,linestyle<span class="op">=</span><span class="st">'--'</span>,linewidth<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].plot([a,a],[b,<span class="dv">0</span>],color<span class="op">=</span><span class="st">'blue'</span>,linestyle<span class="op">=</span><span class="st">'--'</span>,linewidth<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="op">-</span><span class="dv">2</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>xa <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">8</span>,a,<span class="dv">201</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>fxa <span class="op">=</span> stats.norm.pdf(xa,<span class="dv">0</span>,<span class="dv">2</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].fill(np.append(np.append(xa,a),xa[<span class="dv">0</span>]),</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        np.append(np.append(fxa,<span class="dv">0</span>),<span class="dv">0</span>),color<span class="op">=</span>col)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_ylabel(<span class="st">'$f(x)$'</span>,color<span class="op">=</span>col)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span>col)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_ylabel(<span class="st">'$f(x)$'</span>,color<span class="op">=</span>col)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span>col)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>Fx <span class="op">=</span> stats.norm.cdf(x<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].plot(x,Fx,color<span class="op">=</span>col)</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> stats.norm.cdf(a<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].plot([x[<span class="dv">0</span>],a],[b,b],color<span class="op">=</span>col,linestyle<span class="op">=</span><span class="st">'--'</span>,linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].plot([a,a],[b,<span class="dv">0</span>],color<span class="op">=</span>col,linestyle<span class="op">=</span><span class="st">'--'</span>,linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-tempdiffpdfcdf_shaded" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tempdiffpdfcdf_shaded-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="continuous_rvs_files/figure-html/fig-tempdiffpdfcdf_shaded-output-1.png" width="689" height="372" class="figure-img">
+<img src="continuous_rvs_files/figure-html/fig-tempdiffpdfcdf_shaded-output-1.png" width="689" height="273" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tempdiffpdfcdf_shaded-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12.7: Probability density function along with cumulative distribution function, each showing <span class="math inline">\(P(X \leq -2)\)</span>.
@@ -735,6 +748,29 @@ Figure&nbsp;12.7: Probability density function along with cumulative distributio
 </div>
 </div>
 </div>
+<p>Along with the CDF of a random variable, we are often interested in a function called the <em>quantile function</em>. The quantile function returns <em>quantiles</em> of a random variable, where a quantile is the same as a percentile, but corresponds to a proportion rather than a percentage. For example, if you are at the <span class="math inline">\(90\)</span>th percentile in height, then <span class="math inline">\(90\%\)</span> of people have a height less than or equal to your height; if you are at the <span class="math inline">\(0.90\)</span> quantile of height, than the proportion <span class="math inline">\(0.90\)</span> of people have a height less than or equal to yours height, which means the same thing.</p>
+<div id="def-quantile" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 12.2 (Quantiles of a random variable)</strong></span> For <span class="math inline">\(p \in (0,1)\)</span> the <span class="math inline">\(p\)</span> quantile of a random variable <span class="math inline">\(X\)</span> is the smallest number <span class="math inline">\(q\)</span> such that <span class="math display">\[
+P(X \leq q) \geq p.
+\]</span></p>
+</div>
+<p>The above definition may seem a little complicated. The reason the definition is somewhat awkward is that it accommodates both discrete and continuous random variables. If we have a continuous random variable with a “nice” distribution in the sense that <span class="math inline">\(P(X \leq x)\)</span> is a strictly increasing function of <span class="math inline">\(x\)</span>, we can more simply define the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(X\)</span> as the value <span class="math inline">\(q\)</span> such that <span class="math inline">\(P(X \leq q) = p\)</span>. For discrete random variables, depending on the value of <span class="math inline">\(p\)</span>, we cannot always find a value <span class="math inline">\(q\)</span> such that <span class="math inline">\(P(X \leq q) = p\)</span>. To see why, study the CDF depicted in <a href="discrete_rvs.html#fig-twocoinflips" class="quarto-xref">Figure&nbsp;<span>8.1</span></a>, which is the CDF of the number of heads in two coin flips. If we set <span class="math inline">\(p = 1/2\)</span>, we cannot find a value <span class="math inline">\(q\)</span> such that <span class="math inline">\(P(X \leq q) = 1/2\)</span>. By <a href="#def-quantile" class="quarto-xref">Definition&nbsp;<span>12.2</span></a>, however, we would say that the <span class="math inline">\(p=1/2\)</span> quantile is <span class="math inline">\(q = 2\)</span>, which is the smallest value of <span class="math inline">\(q\)</span> such that <span class="math inline">\(P(X \leq q)\)</span> is greater than or equal to <span class="math inline">\(1/2\)</span>.</p>
+<p>For a continuous random variable with a strictly increasing CDF, like that depicted in <a href="#fig-tempdiffpdfcdf_shaded" class="quarto-xref">Figure&nbsp;<span>12.7</span></a>, the <span class="math inline">\(p\)</span> quantile can be found by drawing a horizontal line at height <span class="math inline">\(p\)</span> and noting where the CDF crosses this line; dropping a vertical line down to the horizontal axis from this point gives the quantile. Thus in this situation, quantile can be computed from the inverse <span class="math inline">\(F^{-1}\)</span> of the CDF <span class="math inline">\(F\)</span>, which leads us to the definition of the <em>quantile function</em> given next:</p>
+<div id="def-quantilefunction" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 12.3 (Quantile function for a continuous random variable)</strong></span> If <span class="math inline">\(X\)</span> is a continuous random variable with support <span class="math inline">\(\mathcal{X}\)</span> and with CDF <span class="math inline">\(F\)</span> which is strictly increasing over <span class="math inline">\(\mathcal{X}\)</span>, then its quantile function is defined as <span class="math display">\[
+Q(p) = F^{-1}(p)
+\]</span> for <span class="math inline">\(p \in (0,1)\)</span>, where is the inverse function of <span class="math inline">\(F\)</span>.</p>
+</div>
+<p>Once we have the quantile function <span class="math inline">\(Q(p)\)</span> of a random variable, we can compute the <span class="math inline">\(p\)</span> quantile as <span class="math inline">\(q = Q(p)\)</span>.</p>
+<p>Lastly we discuss how to obtain the mean and the variance of continuous random variables.</p>
+<div id="prp-meanvarcont" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 12.4 (Mean and variance of continuous random variables)</strong></span> If <span class="math inline">\(X\)</span> is a continuous random variable with PDF <span class="math inline">\(f\)</span>, then the expected value and variance of <span class="math inline">\(X\)</span> are obtained as</p>
+<ul>
+<li><span class="math inline">\(\mathbb{E}X = \int_{-\infty}^\infty x f(x)dx\)</span></li>
+<li><span class="math inline">\(\operatorname{Var}X = \int_{-\infty}^\infty (x - \mu)^2 f(x)\)</span>, where <span class="math inline">\(\mu = \mathbb{E}X\)</span>.</li>
+</ul>
+</div>
+<p>Just as with discrete random variables, the expected value of a continuous random variable is the “balancing point” of the distribution—the location on the horizontal axis such that if a fulcrum were placed there, the PDF (if made of solid mass), would balance. Moreover, if many realizations of the random variable were obtained, the average of these realizations should be close to the expected value. The variance, just as with discrete random variables, is a measure of how spread out realizations of the random variable are likely to be.</p>
 
 
 
@@ -1146,8 +1182,8 @@ Figure&nbsp;12.7: Probability density function along with cumulative distributio
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./power_ztest.html" class="pagination-link" aria-label="Statistical power of one-sample tests">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./normal_distribution.html" class="pagination-link" aria-label="The Normal distribution">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Normal distribution</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
