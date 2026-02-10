@@ -366,6 +366,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#poisson-distribution" id="toc-poisson-distribution" class="nav-link active" data-scroll-target="#poisson-distribution"><span class="header-section-number">14.1</span> Poisson distribution</a></li>
+  <li><a href="#exponential-distribution" id="toc-exponential-distribution" class="nav-link" data-scroll-target="#exponential-distribution"><span class="header-section-number">14.2</span> Exponential distribution</a></li>
   </ul>
 </nav>
     </div>
@@ -416,7 +417,6 @@ window.Quarto = {
 p(x) = \frac{\lambda^xe^{-\lambda}}{x!}.
 \]</span></p>
 </div>
-<p>The Poisson PMF can be evaluated with the R function <code>dpois()</code>.</p>
 <p>If <span class="math inline">\(X\)</span> has the Poisson distribution with rate parameter <span class="math inline">\(\lambda&gt;0\)</span>, we will write <span class="math display">\[
 X \sim \text{Poisson}(\lambda).
 \]</span> The rate parameter <span class="math inline">\(\lambda\)</span> must be a positive number. This rate governs the abundance of “occurrences” of the event in a given interval of time or space. <a href="#fig-pmfpoiss" class="quarto-xref">Figure&nbsp;<span>14.1</span></a> shows plots of the <span class="math inline">\(\text{Poisson}(\lambda)\)</span> PMF for two different values of <span class="math inline">\(\lambda\)</span>. We see that larger values of <span class="math inline">\(\lambda\)</span> result in the assignment of greater probabilities to greater values in the support <span class="math inline">\(\mathcal{X}= \{0,1,2,\dots\}\)</span>.</p>
@@ -479,12 +479,201 @@ Figure&nbsp;14.1: <span class="math inline">\(\text{Poisson}(\lambda)\)</span> p
 <p>The above result tells us that <span class="math inline">\(\lambda\)</span> is the expected value of <span class="math inline">\(X\)</span>. In <a href="#fig-pmfpoiss" class="quarto-xref">Figure&nbsp;<span>14.1</span></a>, therefore, <span class="math inline">\(\lambda\)</span> gives the position at which a fulcrum would need to be placed in order to balance the PMF on a seesaw if the vertical bars in the plot were made of solid mass. The above result also tells us that <span class="math inline">\(\lambda\)</span> is the variance of <span class="math inline">\(X\)</span>, characterizing the spread in the distribution. In fact, the Poisson distribution is famous for the fact that its mean is the same as its variance.</p>
 <p>Cumulative Poisson probabilities are obtained as <span class="math display">\[
 P(X \leq x) = \sum_{i=0}^x \frac{\lambda^i e^{-\lambda}}{i!}.
-\]</span> The probabilities can be obtained with the R function <code>ppois()</code>.</p>
+\]</span></p>
+<p>The Poisson PMF and the cumulative Poisson probabilities can be obtained with the R functions <code>dpois()</code> and <code>ppois()</code>, respectively. See the function documentation for details.</p>
 <div id="exm-caraccidents" class="theorem example">
 <p><span class="theorem-title"><strong>Example 14.2 (Car accidents)</strong></span> Suppose the number of car accidents on any given day in a mid-sized city follows a Poisson distribution with a mean of <span class="math inline">\(20\)</span> accidents per day.</p>
 <ol type="1">
 <li>Find the probability that there are exactly <span class="math inline">\(10\)</span> accidents on a given day. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
 <li>Find the probability that there are <span class="math inline">\(12\)</span> or more accidents on a given day.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+</ol>
+</div>
+<p>Keeping in mind that our random variable <span class="math inline">\(X\)</span> represents a count per unit time or space, we may suppose that if we make our counts over larger units of time or space, the counts will tend to be greater. A hallmark of Poisson processes is that the distribution of the counts within a unit of time or space scales with the size of the unit. That is, we have the following:</p>
+<div id="prp-poissscale" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 14.2 (Scaling the Poisson time/space interval)</strong></span> Suppose <span class="math inline">\(X \sim \text{Poisson}(\lambda)\)</span> comes from a Poisson process such that <span class="math inline">\(X\)</span> is the number of occurrences per unit of time or space of an event. Then if <span class="math inline">\(X_t\)</span> is the number of occurrences of the event per <span class="math inline">\(t\)</span> units of time or space, we have <span class="math inline">\(X_t \sim \text{Poisson}(t\lambda)\)</span>.</p>
+</div>
+<div id="exm-caraccidents_cont" class="theorem example">
+<p><span class="theorem-title"><strong>Example 14.3 (Car accidents continued)</strong></span> Suppose the number of car accidents on any given day in a mid-sized city follows a Poisson distribution with a mean of <span class="math inline">\(20\)</span> accidents per day.</p>
+<ol type="1">
+<li><p>Find the probability that there are no more than <span class="math inline">\(130\)</span> car accidents in a given week.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p></li>
+<li><p>Give the expected number of accidents per week. <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p></li>
+</ol>
+</div>
+</section>
+<section id="exponential-distribution" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="exponential-distribution"><span class="header-section-number">14.2</span> Exponential distribution</h2>
+<p>Suppose <span class="math inline">\(X\)</span> comes from a Poisson process where the expected number of occurrences per unit of time or space is given by the parameter <span class="math inline">\(\lambda &gt; 0\)</span>. Now define another random variable <span class="math inline">\(Y\)</span> as the time (or space) until the first occurrence of the event. Note that while <span class="math inline">\(X\)</span> is a discrete random variable, <span class="math inline">\(Y\)</span> is a continuous random variable. So, if we want to describe the probability distribution of <span class="math inline">\(Y\)</span>, we should try to obtain its probability density function (PDF). To obtain the PDF of <span class="math inline">\(Y\)</span>, we will first derive its cumulative distribution function CDF, which gives cumulative probabilities <span class="math inline">\(P(Y \leq y)\)</span> for all <span class="math inline">\(y\)</span>. In order to find an expression for the CDF, let <span class="math inline">\(y\)</span> represent a duration of time and let <span class="math inline">\(X_y\)</span> be the number of occurrences observed in the Poisson process before the amount of time <span class="math inline">\(y\)</span> has elapsed. Since we can scale the time interval of a Poisson process, we have <span class="math inline">\(X_y \sim \text{Poisson}(y\lambda)\)</span>. From here, for any <span class="math inline">\(y \geq 0\)</span> we may write <span class="math display">\[
+\begin{align*}
+P(Y \leq y)&amp;= 1- P(Y &gt; y)  \\
+          &amp;=1 -  P( \text{``no occurrences before time $y$"}) \\
+          &amp;=1 -  P(X_y = 0) \\
+          &amp;=1 -  \frac{(y\lambda)^0e^{-y\lambda}}{0!} \\
+          &amp;= 1 - e^{-y \lambda},
+\end{align*}
+\]</span> which gives us an expression for the CDF of <span class="math inline">\(Y\)</span>. Though we have defined <span class="math inline">\(Y\)</span> as the time (or space) until the first occurrence, we can also, because of the nature of Poisson processes, define <span class="math inline">\(Y\)</span> as the time (or space) between any two consecutive occurrences of the event.</p>
+<p>The PDF of <span class="math inline">\(Y\)</span> is the function <span class="math inline">\(f\)</span> such that <span class="math display">\[
+P(Y \leq y) = \int_{-\infty}^y f(t)dt,
+\]</span> which can be found by taking the derivative of <span class="math inline">\(1 - e^{-y\lambda}\)</span> with respect to <span class="math inline">\(y\)</span>. One obtains <span class="math display">\[
+\frac{d}{dy}(1 - e^{-y\lambda}) = \lambda e^{-y\lambda}.
+\]</span> The CDF and PDF of <span class="math inline">\(y\)</span> are formally presented in the next definition.</p>
+<div id="def-exponentialdist" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 14.2 (Exponential distribution)</strong></span> A continuous random variable <span class="math inline">\(Y\)</span> with PDF and CDF given by <span class="math display">\[
+\begin{align*}
+f(y) &amp;= \left\{\begin{array}{ll}
+0,&amp; y &lt; 0\\
+\lambda e^{-y\lambda},&amp; y \geq 0
+\end{array}\right.\\
+F(y) &amp;=\left\{ \begin{array}{ll}
+0,&amp; y &lt; 0\\
+1 - e^{-y\lambda},&amp;y \geq 0\end{array}\right.
+\end{align*}
+\]</span> is said to have the <em>exponential distribution</em> with <em>rate parameter</em> <span class="math inline">\(\lambda\)</span>.</p>
+</div>
+<p>For a random variable <span class="math inline">\(Y\)</span> having the exponential distribution with rate parameter <span class="math inline">\(\lambda\)</span> we will write <span class="math display">\[
+Y \sim \text{Exponential}(\lambda).
+\]</span> We can evaluate the PDF and CDF of the <span class="math inline">\(\text{Exponential}(\lambda)\)</span> distribution with the R functions <code>dexp()</code> and <code>pexp()</code>, respectively. See the function documentation for details.</p>
+<p><a href="#fig-exppdfcdf" class="quarto-xref">Figure&nbsp;<span>14.2</span></a> shows plots of the PDF and CDF of the <span class="math inline">\(\text{Exponential}(\lambda)\)</span> distribution.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.dpi'</span>] <span class="op">=</span> <span class="dv">96</span>       </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'savefig.dpi'</span>] <span class="op">=</span> <span class="dv">96</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> (<span class="dv">4</span>, <span class="dv">2</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'text.usetex'</span>] <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>col <span class="op">=</span> <span class="st">'black'</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>lam <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> <span class="fl">0.99</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="op">-</span>np.log(<span class="dv">1</span><span class="op">-</span>u)<span class="op">/</span>lam,<span class="dv">201</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>fx <span class="op">=</span> stats.expon.pdf(x,<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span>lam)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>Fx <span class="op">=</span> stats.expon.cdf(x,<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span>lam)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].plot([<span class="op">-</span><span class="dv">2</span><span class="op">*</span>lam,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span>col)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].plot(x,fx,color<span class="op">=</span>col)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].plot(<span class="dv">0</span>,<span class="dv">0</span>,<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'white'</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].plot(<span class="dv">0</span>,<span class="dv">0</span>,<span class="st">'o'</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,color<span class="op">=</span>col)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].plot(<span class="dv">0</span>,lam,<span class="st">'o'</span>,color<span class="op">=</span>col)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_ylabel(<span class="st">'f(y)'</span>,color<span class="op">=</span>col)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_xlabel(<span class="st">'y'</span>,color<span class="op">=</span>col)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].plot([<span class="op">-</span><span class="dv">2</span><span class="op">*</span>lam,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span>col)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].plot(x,Fx,color<span class="op">=</span>col)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_ylabel(<span class="st">'F(y)'</span>,color<span class="op">=</span>col)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_xlabel(<span class="st">'y'</span>,color<span class="op">=</span>col)</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-exppdfcdf" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-exppdfcdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="poisson_exp_dist_files/figure-html/fig-exppdfcdf-3.png" class="img-fluid figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exppdfcdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.2: PDF and CDF of the <span class="math inline">\(\text{Exponential}(\lambda)\)</span> distribution with <span class="math inline">\(\lambda = 2\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-exppdfcdf_shaded" class="quarto-xref">Figure&nbsp;<span>14.3</span></a> illustrates the relationship between the PDF and CDF. The height of the CDF (right panel) gives the area of the region shaded under the PDF (left panel).</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.dpi'</span>] <span class="op">=</span> <span class="dv">96</span>       </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'savefig.dpi'</span>] <span class="op">=</span> <span class="dv">96</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> (<span class="dv">4</span>, <span class="dv">2</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'text.usetex'</span>] <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>col <span class="op">=</span> <span class="st">'black'</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>lam <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> <span class="fl">0.99</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="op">-</span>np.log(<span class="dv">1</span><span class="op">-</span>u)<span class="op">/</span>lam,<span class="dv">201</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>fx <span class="op">=</span> stats.expon.pdf(x,<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span>lam)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>Fx <span class="op">=</span> stats.expon.cdf(x,<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span>lam)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].plot([<span class="op">-</span><span class="dv">2</span><span class="op">*</span>lam,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span>col)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].plot(x,fx,color<span class="op">=</span>col)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].plot(<span class="dv">0</span>,<span class="dv">0</span>,<span class="st">'o'</span>,color<span class="op">=</span><span class="st">'white'</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].plot(<span class="dv">0</span>,<span class="dv">0</span>,<span class="st">'o'</span>,fillstyle<span class="op">=</span><span class="st">'none'</span>,color<span class="op">=</span>col)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].plot(<span class="dv">0</span>,lam,<span class="st">'o'</span>,color<span class="op">=</span>col)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_ylabel(<span class="st">'f(y)'</span>,color<span class="op">=</span>col)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_xlabel(<span class="st">'y'</span>,color<span class="op">=</span>col)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>xa <span class="op">=</span> np.linspace(<span class="dv">0</span>,a,<span class="dv">101</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>fxa <span class="op">=</span> stats.expon.pdf(xa,<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span>lam)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>xfill <span class="op">=</span> np.append(np.append(<span class="dv">0</span>,xa),a)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>yfill <span class="op">=</span> np.append(np.append(<span class="dv">0</span>,fxa),<span class="dv">0</span>)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].fill(xfill,yfill,color<span class="op">=</span>col)</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].plot([<span class="op">-</span><span class="dv">2</span><span class="op">*</span>lam,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>],color<span class="op">=</span>col)</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].plot(x,Fx,color<span class="op">=</span>col)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_ylabel(<span class="st">'F(y)'</span>,color<span class="op">=</span>col)</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_xlabel(<span class="st">'y'</span>,color<span class="op">=</span>col)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>Fa <span class="op">=</span> stats.expon.cdf(a,<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span>lam)</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].plot([<span class="op">-</span><span class="dv">2</span><span class="op">*</span>lam,a],[Fa,Fa],linestyle<span class="op">=</span><span class="st">'--'</span>,color<span class="op">=</span>col,linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].plot([a,a],[<span class="dv">0</span>,Fa],linestyle<span class="op">=</span><span class="st">'--'</span>,color<span class="op">=</span>col,linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-exppdfcdf_shaded" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-exppdfcdf_shaded-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="poisson_exp_dist_files/figure-html/fig-exppdfcdf_shaded-5.png" class="img-fluid figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exppdfcdf_shaded-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.3: Depiction of <span class="math inline">\(P(Y \leq 4)\)</span>, where <span class="math inline">\(Y \sim \text{Exponential}(\lambda)\)</span>, with <span class="math inline">\(\lambda = 2\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>We now give a result about the mean and variance of a random variable having the exponential distribution.</p>
+<div id="prp-expmeanvar" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 14.3 (Mean and variance of exponential distribution)</strong></span> If <span class="math inline">\(Y \sim \text{Exponential}(\lambda)\)</span> then <span class="math inline">\(\displaystyle \mathbb{E}Y = \frac{1}{\lambda}\)</span> and <span class="math inline">\(\displaystyle \operatorname{Var}Y = \frac{1}{\lambda^2}\)</span>.</p>
+</div>
+<p>The following exercise illustrates how the Poisson and exponential distributions go hand in hand.</p>
+<div id="exr-tires" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 14.1 (Tires on the freeway)</strong></span> Suppose the occurrence of blown-out tires lying along the freeway can be regarded as a Poisson process such that for every mile, the expected number of blown-out tires is <span class="math inline">\(1/3\)</span>.</p>
+<ol type="1">
+<li>Let <span class="math inline">\(X\)</span> be the number of tires we see in the next mile.
+<ol type="i">
+<li>Find <span class="math inline">\(P(X = 2)\)</span>.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
+<li>Find <span class="math inline">\(P(X \geq 1)\)</span>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></li>
+</ol></li>
+<li>Let <span class="math inline">\(W\)</span> be the number of tires we see in the next <span class="math inline">\(12\)</span> miles.
+<ol type="i">
+<li>Find <span class="math inline">\(P(W = 2)\)</span>.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></li>
+<li>Find <span class="math inline">\(P(W \geq 1)\)</span>.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></li>
+</ol></li>
+<li>Let <span class="math inline">\(Y\)</span> be the distance traveled before the first blown-out tire is seen.
+<ol type="i">
+<li>What is the distribution of <span class="math inline">\(Y\)</span>?<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></li>
+<li>Find <span class="math inline">\(P(Y = 5)\)</span>.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></li>
+<li>Find <span class="math inline">\(P(Y\leq 5)\)</span>.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></li>
+<li>Find <span class="math inline">\(P(Y &gt; 10)\)</span>.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></li>
+</ol></li>
 </ol>
 </div>
 
@@ -504,6 +693,32 @@ P(X \leq x) = \sum_{i=0}^x \frac{\lambda^i e^{-\lambda}}{i!}.
            &amp;= 0.9786132.
     \end{align*}
   \]</span> Where we can obtain the final answer with <code>1 - ppois(11,20)</code>. <a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p> Let <span class="math inline">\(X_7\)</span> represent the number of car accidents taking place in a week (7 days). Then <span class="math inline">\(X_7 \sim \text{Poisson}(140)\)</span>, where <span class="math inline">\(140 = 7(20)\)</span>. So we have <span class="math display">\[
+  \begin{align*}
+  P(X_7 \leq 130) = \sum_{i=0}^{130} \frac{140^ie^{-140}}{i!} = 0.2124409,
+  \end{align*}
+  \]</span> where we can evaluate the sum with <code>ppois(130,140)</code>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>We have <span class="math inline">\(\mathbb{E}X_7 = 7(20) = 140\)</span>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>We have <span class="math inline">\(X\sim\text{Poisson}(1/3)\)</span>, so <span class="math display">\[
+  P(X = 2) = \frac{(1/3)^2e^{-(1/3)}}{2!} = 0.0398,
+  \]</span> where we can use <code>dpois(2,1/3)</code> to evaluate the Poisson PMF. <a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p> We have <span class="math display">\[
+P(X \geq 1) = 1 - P(X = 0) = 1 - \frac{(1/3)^0e^{-(1/3)}}{0!} = 0.283,
+\]</span> where we can use <code>1 - dpois(0,1/3)</code> to evaluate the result.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p> We have <span class="math inline">\(W \sim \text{Poisson}(4)\)</span>, so <span class="math display">\[
+  P(W = 2) = \frac{4^2e^{-4}}{2!} = 0.1465,
+  \]</span> using <code>dpois(2,4)</code>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p> We have <span class="math display">\[
+P(W \geq 1) = 1- P(W =0) = 1 - \frac{4^0e^{-4}}{0!} = 1 - e^{-4} = 0.982,
+\]</span> where we can use <code>1 - dpois(0,4)</code>.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p> Since the occurrences of blown-out tires lying on the freeway is a Poisson process such that the expected number of blown-out tires in any one-mile segment is <span class="math inline">\(1/3\)</span>, the distances between blown-out tires would follow an exponential distribution with mean <span class="math inline">\(3\)</span>. That is <span class="math inline">\(Y\sim\text{Exponential}(1/3)\)</span>.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Since <span class="math inline">\(Y\)</span> is a continuous random variable, we have <span class="math inline">\(P(Y = 5) = 0\)</span>.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p> We can use the cdf of the <span class="math inline">\(\text{Exponential}(1/3)\)</span> distribution given in <span class="quarto-unresolved-ref">?def-distribution</span>. We obtain <span class="math display">\[
+   P(Y \leq 5) = 1 - e^{-(1/3)(5)} =0.811,
+   \]</span> where we can evaluate the expression using <code>pexp(5,1/3)</code>.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p> We can again use the cdf of the <span class="math inline">\(\text{Exponential}(1/3)\)</span> distribution. <span class="math display">\[
+P(Y &gt; 10) = 1- P(Y \leq 10) = 1 - [  1 - e^{-(1/3)(10)} ] =0.036,
+\]</span> using <code>1-pexp(10,1/3)</code>.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
