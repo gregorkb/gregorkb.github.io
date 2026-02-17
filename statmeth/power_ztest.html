@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>15&nbsp; Statistical power of one-sample tests – Statistical Methods</title>
+<title>18&nbsp; Statistical power of one-sample tests – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./simple_linear_regression.html" rel="next">
-<link href="./poisson_exp_dist.html" rel="prev">
+<link href="./clt_for_proportion.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -160,7 +160,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./power_ztest.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./power_ztest.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -286,8 +286,26 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./mean_of_rs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The mean of a random sample</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./central_limit_theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./clt_for_proportion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The sample proportion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -304,13 +322,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Multiple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Multiple linear regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -327,7 +345,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -344,7 +362,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
   </div>
 </li>
       </ul>
@@ -365,21 +383,21 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#right-sided-test" id="toc-right-sided-test" class="nav-link active" data-scroll-target="#right-sided-test"><span class="header-section-number">15.1</span> Right-sided test</a></li>
-  <li><a href="#left-sided-test" id="toc-left-sided-test" class="nav-link" data-scroll-target="#left-sided-test"><span class="header-section-number">15.2</span> Left-sided test</a></li>
-  <li><a href="#two-sided-test" id="toc-two-sided-test" class="nav-link" data-scroll-target="#two-sided-test"><span class="header-section-number">15.3</span> Two-sided test</a></li>
-  <li><a href="#sample-size-based-on-desired-power" id="toc-sample-size-based-on-desired-power" class="nav-link" data-scroll-target="#sample-size-based-on-desired-power"><span class="header-section-number">15.4</span> Sample size based on desired power</a></li>
-  <li><a href="#power-when-the-variance-is-unknown" id="toc-power-when-the-variance-is-unknown" class="nav-link" data-scroll-target="#power-when-the-variance-is-unknown"><span class="header-section-number">15.5</span> Power when the variance is unknown</a></li>
-  <li><a href="#power-for-other-kinds-of-tests" id="toc-power-for-other-kinds-of-tests" class="nav-link" data-scroll-target="#power-for-other-kinds-of-tests"><span class="header-section-number">15.6</span> Power for other kinds of tests</a></li>
+  <li><a href="#right-sided-test" id="toc-right-sided-test" class="nav-link active" data-scroll-target="#right-sided-test"><span class="header-section-number">18.1</span> Right-sided test</a></li>
+  <li><a href="#left-sided-test" id="toc-left-sided-test" class="nav-link" data-scroll-target="#left-sided-test"><span class="header-section-number">18.2</span> Left-sided test</a></li>
+  <li><a href="#two-sided-test" id="toc-two-sided-test" class="nav-link" data-scroll-target="#two-sided-test"><span class="header-section-number">18.3</span> Two-sided test</a></li>
+  <li><a href="#sample-size-based-on-desired-power" id="toc-sample-size-based-on-desired-power" class="nav-link" data-scroll-target="#sample-size-based-on-desired-power"><span class="header-section-number">18.4</span> Sample size based on desired power</a></li>
+  <li><a href="#power-when-the-variance-is-unknown" id="toc-power-when-the-variance-is-unknown" class="nav-link" data-scroll-target="#power-when-the-variance-is-unknown"><span class="header-section-number">18.5</span> Power when the variance is unknown</a></li>
+  <li><a href="#power-for-other-kinds-of-tests" id="toc-power-for-other-kinds-of-tests" class="nav-link" data-scroll-target="#power-for-other-kinds-of-tests"><span class="header-section-number">18.6</span> Power for other kinds of tests</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./power_ztest.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./power_ztest.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-power_ztest" class="quarto-section-identifier"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></h1>
+<h1 class="title"><span id="sec-power_ztest" class="quarto-section-identifier"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></h1>
 </div>
 
 
@@ -422,7 +440,7 @@ Z_{\operatorname{stat}} &lt; -z_\alpha &amp;\text{ or } &amp; |Z_{\operatorname{
 \]</span> respectively.</p>
 <p>In order to keep us from getting lost in the math, let’s look at an example of when we might want to test one of the sets of hypotheses above.</p>
 <div id="exm-goldenratio" class="theorem example">
-<p><span class="theorem-title"><strong>Example 15.1 (Golden ratio data)</strong></span> Each in a class of twenty-seven students was asked to measure the distances <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> depicted below on his or her left hand and then to compute the ratio <span class="math inline">\(B/A\)</span> of the distances.</p>
+<p><span class="theorem-title"><strong>Example 18.1 (Golden ratio data)</strong></span> Each in a class of twenty-seven students was asked to measure the distances <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> depicted below on his or her left hand and then to compute the ratio <span class="math inline">\(B/A\)</span> of the distances.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/gr_diagram.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="300"></p>
@@ -447,14 +465,14 @@ Z_{\operatorname{stat}} &lt; -z_\alpha &amp;\text{ or } &amp; |Z_{\operatorname{
 </div>
 <p>Referring to the golden ratio example, we might suppose that if the mean of the ratio <span class="math inline">\(B/A\)</span> were dramatically different from <span class="math inline">\(1.618\)</span>, we should be able to detect the difference quite easily; however, if the mean were only slightly different from <span class="math inline">\(1.618\)</span>, the difference may not show up clearly in the data. Power refers to how likely we are to observe data which will lead us to reject our null hypothesis. Here is a definition:</p>
 <div id="def-power" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 15.1 (Statistical power of a test)</strong></span> The power of a test is the probability it will reject the null hypothesis.</p>
+<p><span class="theorem-title"><strong>Definition 18.1 (Statistical power of a test)</strong></span> The power of a test is the probability it will reject the null hypothesis.</p>
 </div>
 <p>We will find that in the case of testing hypotheses about the mean of a <span class="math inline">\(\mathcal{N}(\mu,\sigma^2)\)</span> population, the power depends on the sample size <span class="math inline">\(n\)</span>, on the variance <span class="math inline">\(\sigma^2\)</span>, and on how far away (and in what direction) the true value of <span class="math inline">\(\mu\)</span> is from the null value <span class="math inline">\(\mu_0\)</span>. To study how the power of the test is related to these quantities, we define what is called the <em>power function</em>. The power function gives the probability that a test will reject the null hypothesis as a function of the true parameter value. We will use the letter <span class="math inline">\(\gamma(\cdot)\)</span> to denote a power function. Let <span class="math display">\[
 \gamma(\mu) = P(\text{Test rejects $H_0$ when true mean is $\mu$}) = P_\mu(\text{Test rejects $H_0$}),
 \]</span> where we use <span class="math inline">\(P_\mu(\cdot)\)</span> to denote probability when <span class="math inline">\(\mu\)</span> is the true value of the parameter.</p>
 <p>Let’s consider the power functions the right- and left-sided tests, and then the two-sided test. Note that we may also refer to power functions as “power curves”.</p>
-<section id="right-sided-test" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="right-sided-test"><span class="header-section-number">15.1</span> Right-sided test</h2>
+<section id="right-sided-test" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="right-sided-test"><span class="header-section-number">18.1</span> Right-sided test</h2>
 <p>Suppose we are testing the right-sided set of hypotheses <span class="math display">\[
 \text{$H_0$: $\mu \leq \mu_0$ versus $H_1$: $\mu &gt; \mu_0$},
 \]</span> where we will reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(Z_\text{test} &gt; z_{\alpha}\)</span>, that is, if <span class="math inline">\(\bar X_n\)</span> lies a sufficient number of standard deviations above the null mean <span class="math inline">\(\mu_0\)</span>. Then we can write the power function as <span class="math display">\[
@@ -467,7 +485,7 @@ Z_{\operatorname{stat}} &lt; -z_\alpha &amp;\text{ or } &amp; |Z_{\operatorname{
 \end{align*}
 \]</span> where <span class="math inline">\(\Phi(\cdot)\)</span> denotes the cumulative distribution function (cdf) of the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution.</p>
 <p>The first question to ask about the power function <span class="math inline">\(\gamma(\mu)\)</span> is whether it is increasing or decreasing as a function of <span class="math inline">\(\mu\)</span>. We would hope that values of <span class="math inline">\(\mu\)</span> further above the null value <span class="math inline">\(\mu_0\)</span> would make it more likely to observe data leading us to reject <span class="math inline">\(H_0\)</span>. If we look carefully, we see that this is indeed the case: As <span class="math inline">\(\mu\)</span> increases, the argument inside the <span class="math inline">\(\Phi(\cdot)\)</span> function decreases, making <span class="math inline">\(\Phi(\cdot)\)</span> smaller, and as <span class="math inline">\(\Phi(\cdot)\)</span> decreases, the power increases. The second thing to notice is that if <span class="math inline">\(\mu = \mu_0\)</span>, the power function reduces to <span class="math inline">\(1 - \Phi(z_\alpha)\)</span>, which evaluates to <span class="math inline">\(\alpha\)</span>. So when <span class="math inline">\(\mu = \mu_0\)</span> the power is equal to the size of the test!. Thirdly, we see that whenever <span class="math inline">\(\mu &gt; \mu_0\)</span>, smaller values of <span class="math inline">\(\sigma\)</span> as well as larger values of <span class="math inline">\(n\)</span> lead to greater power; smaller variation in the data and more data lead to a greater probability of rejecting the null hypothesis.</p>
-<p>If we choose some values for <span class="math inline">\(\mu_0\)</span>, <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(n\)</span> we can make a plot of the power function. In the golden ratio example, we have <span class="math inline">\(\mu_0 = 1.618\)</span> and <span class="math inline">\(n = 27\)</span>, and we are free to choose any significance level we wish for carrying out the test; suppose we choose <span class="math inline">\(\alpha = 0.05\)</span>. The tricky part is that we do not know the variance <span class="math inline">\(\sigma\)</span> in the case of the golden ratio data (indeed, in practice we will seldom, if ever, know the true value of <span class="math inline">\(\sigma\)</span>). We will therefore use the sample standard deviation <span class="math inline">\(S_n\)</span> as a guess for <span class="math inline">\(\sigma\)</span>. For the golden ratio data we obtain <span class="math inline">\(S_n = 0.148\)</span>. Plugging this in for <span class="math inline">\(\sigma\)</span>, we can make a plot of the power curve for the right-sided test as in <a href="#fig-rightsidedpower" class="quarto-xref">Figure&nbsp;<span>15.1</span></a>.</p>
+<p>If we choose some values for <span class="math inline">\(\mu_0\)</span>, <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(n\)</span> we can make a plot of the power function. In the golden ratio example, we have <span class="math inline">\(\mu_0 = 1.618\)</span> and <span class="math inline">\(n = 27\)</span>, and we are free to choose any significance level we wish for carrying out the test; suppose we choose <span class="math inline">\(\alpha = 0.05\)</span>. The tricky part is that we do not know the variance <span class="math inline">\(\sigma\)</span> in the case of the golden ratio data (indeed, in practice we will seldom, if ever, know the true value of <span class="math inline">\(\sigma\)</span>). We will therefore use the sample standard deviation <span class="math inline">\(S_n\)</span> as a guess for <span class="math inline">\(\sigma\)</span>. For the golden ratio data we obtain <span class="math inline">\(S_n = 0.148\)</span>. Plugging this in for <span class="math inline">\(\sigma\)</span>, we can make a plot of the power curve for the right-sided test as in <a href="#fig-rightsidedpower" class="quarto-xref">Figure&nbsp;<span>18.1</span></a>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -495,14 +513,14 @@ Z_{\operatorname{stat}} &lt; -z_\alpha &amp;\text{ or } &amp; |Z_{\operatorname{
 <img src="power_ztest_files/figure-html/fig-rightsidedpower-1.png" class="img-fluid figure-img" alt="Plot with upward sloping curve" width="1400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rightsidedpower-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.1: Power curve of right-sided test
+Figure&nbsp;18.1: Power curve of right-sided test
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Note that when the true value of <span class="math inline">\(\mu\)</span> is equal to the null value <span class="math inline">\(\mu_0 = 1.618\)</span> (indicated by the vertical dotted line), the power of the test is exactly equal to the significance level <span class="math inline">\(\alpha\)</span> (indicated by the horizontal dotted line). As the true value of <span class="math inline">\(\mu\)</span> increases, the power, that is the probability of rejecting the null hypothesis, increases. For large enough <span class="math inline">\(\mu\)</span>, it becomes nearly a certainty that the data in a sample of size <span class="math inline">\(n = 27\)</span> will lead to a rejection of <span class="math inline">\(H_0\)</span>. On the other hand, if the true value of <span class="math inline">\(\mu\)</span> is less than <span class="math inline">\(\mu_0\)</span>, the probability of rejecting the null hypothesis falls below the significance level; as <span class="math inline">\(\mu\)</span> decreases, it becomes increasingly unlikely that one would observe data leading to the rejection of <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \leq \mu_0\)</span>.</p>
-<p>In order to understand the effect of the sample size <span class="math inline">\(n\)</span> on the power, we can study the expression for the power and see that a larger <span class="math inline">\(n\)</span> will increase the value of <span class="math inline">\(\gamma(\mu)\)</span> when <span class="math inline">\(\mu &gt; \mu_0\)</span> and that it will decrease the value of <span class="math inline">\(\gamma(\mu)\)</span> when <span class="math inline">\(\mu &lt; \mu_0\)</span>. When <span class="math inline">\(\mu = \mu_0\)</span>, changing the sample size will have no effect on the power, since test is calibrated, for all sample sizes, to have size equal to <span class="math inline">\(\alpha\)</span>. <a href="#fig-rightsidedpowern" class="quarto-xref">Figure&nbsp;<span>15.2</span></a> shows a plot of the power curve for the golden ratio example under several sample sizes.</p>
+<p>In order to understand the effect of the sample size <span class="math inline">\(n\)</span> on the power, we can study the expression for the power and see that a larger <span class="math inline">\(n\)</span> will increase the value of <span class="math inline">\(\gamma(\mu)\)</span> when <span class="math inline">\(\mu &gt; \mu_0\)</span> and that it will decrease the value of <span class="math inline">\(\gamma(\mu)\)</span> when <span class="math inline">\(\mu &lt; \mu_0\)</span>. When <span class="math inline">\(\mu = \mu_0\)</span>, changing the sample size will have no effect on the power, since test is calibrated, for all sample sizes, to have size equal to <span class="math inline">\(\alpha\)</span>. <a href="#fig-rightsidedpowern" class="quarto-xref">Figure&nbsp;<span>18.2</span></a> shows a plot of the power curve for the golden ratio example under several sample sizes.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -532,7 +550,7 @@ Figure&nbsp;15.1: Power curve of right-sided test
 <img src="power_ztest_files/figure-html/fig-rightsidedpowern-1.png" class="img-fluid figure-img" alt="Plot with upward sloping curves" width="1400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rightsidedpowern-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.2: Power curve of right-sided test for several sample sizes
+Figure&nbsp;18.2: Power curve of right-sided test for several sample sizes
 </figcaption>
 </figure>
 </div>
@@ -541,8 +559,8 @@ Figure&nbsp;15.2: Power curve of right-sided test for several sample sizes
 <p>We see that for larger sample sizes, the power curve increases more quickly as a function of <span class="math inline">\(\mu\)</span>. Suppose <span class="math inline">\(\mu=1.7\)</span>. Then with a sample size of <span class="math inline">\(n = 50\)</span>, one is almost certain to reject the null hypothesis; however, if one draws a sample only of size <span class="math inline">\(n = 10\)</span>, there is only about a <span class="math inline">\(60\%\)</span> chance the data will lead to the rejection of <span class="math inline">\(H_0\)</span>.</p>
 <p>The power function for the left-sided test is very similar.</p>
 </section>
-<section id="left-sided-test" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="left-sided-test"><span class="header-section-number">15.2</span> Left-sided test</h2>
+<section id="left-sided-test" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="left-sided-test"><span class="header-section-number">18.2</span> Left-sided test</h2>
 <p>Suppose we are testing the left-sided set of hypotheses <span class="math display">\[
 \text{$H_0$: $\mu \geq \mu_0$ versus $H_1$: $\mu &lt; \mu_0$},
 \]</span> where we will reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(Z_\text{test} &lt; -z_{\alpha}\)</span>, that is, if <span class="math inline">\(\bar X_n\)</span> lies a sufficient number of standard deviations <em>below</em> the null mean <span class="math inline">\(\mu_0\)</span>. Then we can write the power function as <span class="math display">\[
@@ -578,7 +596,7 @@ Figure&nbsp;15.2: Power curve of right-sided test for several sample sizes
 <img src="power_ztest_files/figure-html/fig-leftsidedpower-1.png" class="img-fluid figure-img" alt="Plot with downward sloping curve" width="1400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-leftsidedpower-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.3: Power curve of left-sided test
+Figure&nbsp;18.3: Power curve of left-sided test
 </figcaption>
 </figure>
 </div>
@@ -586,8 +604,8 @@ Figure&nbsp;15.3: Power curve of left-sided test
 </div>
 <p>The power curve of the two-sided test looks quite different from those of the one-sided tests.</p>
 </section>
-<section id="two-sided-test" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="two-sided-test"><span class="header-section-number">15.3</span> Two-sided test</h2>
+<section id="two-sided-test" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="two-sided-test"><span class="header-section-number">18.3</span> Two-sided test</h2>
 <p>Now suppose we are testing the two-sided set of hypotheses <span class="math display">\[
 \text{$H_0$: $\mu = \mu_0$ versus $H_1$: $\mu \neq \mu_0$},
 \]</span> where we will reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(Z_\text{test} &gt; |z_{\alpha/2}|\)</span>, that is, if <span class="math inline">\(\bar X_n\)</span> lies a sufficient number of standard deviations <em>above or below</em> the null mean <span class="math inline">\(\mu_0\)</span>. The power function becomes <span class="math display">\[
@@ -602,7 +620,7 @@ Figure&nbsp;15.3: Power curve of left-sided test
             &amp;= \Phi( - z_{\alpha/2} - \frac{\mu - \mu_0}{\sigma/\sqrt{n}}) + 1 - \Phi(z_{\alpha/2} - \frac{\mu - \mu_0}{\sigma/\sqrt{n}}).
 \end{align*}
 \]</span> This power function is a little more complicated, but if we look carefully, we see that it is just the sum of the two one-sided power curves with <span class="math inline">\(\alpha\)</span> replaced with <span class="math inline">\(\alpha/2\)</span>.</p>
-<p><a href="#fig-twosidedpower" class="quarto-xref">Figure&nbsp;<span>15.4</span></a> shows a plot of the power curve of the two-sided test under <span class="math inline">\(\mu_0 = 1.618\)</span>, <span class="math inline">\(n = 27\)</span>, <span class="math inline">\(\alpha = 0.05\)</span>, and <span class="math inline">\(\sigma = 0.148\)</span>.</p>
+<p><a href="#fig-twosidedpower" class="quarto-xref">Figure&nbsp;<span>18.4</span></a> shows a plot of the power curve of the two-sided test under <span class="math inline">\(\mu_0 = 1.618\)</span>, <span class="math inline">\(n = 27\)</span>, <span class="math inline">\(\alpha = 0.05\)</span>, and <span class="math inline">\(\sigma = 0.148\)</span>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -627,13 +645,13 @@ Figure&nbsp;15.3: Power curve of left-sided test
 <img src="power_ztest_files/figure-html/fig-twosidedpower-1.png" class="img-fluid figure-img" alt="Plot with U-shaped curve" width="1400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-twosidedpower-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.4: Power curve of two-sided test
+Figure&nbsp;18.4: Power curve of two-sided test
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>We see that in the case of the two-sided test, the probability of rejecting the null <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu = \mu_0\)</span> increases as <span class="math inline">\(\mu\)</span> lies further above or below the null value <span class="math inline">\(\mu_0\)</span>. <a href="#fig-twosidedpowern" class="quarto-xref">Figure&nbsp;<span>15.5</span></a> shows a plot of the power function of the two-sided test under <span class="math inline">\(\mu_0=1.618\)</span>, <span class="math inline">\(\alpha= 0.05\)</span>, and <span class="math inline">\(\sigma = 0.148\)</span> under several sample sizes.</p>
+<p>We see that in the case of the two-sided test, the probability of rejecting the null <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu = \mu_0\)</span> increases as <span class="math inline">\(\mu\)</span> lies further above or below the null value <span class="math inline">\(\mu_0\)</span>. <a href="#fig-twosidedpowern" class="quarto-xref">Figure&nbsp;<span>18.5</span></a> shows a plot of the power function of the two-sided test under <span class="math inline">\(\mu_0=1.618\)</span>, <span class="math inline">\(\alpha= 0.05\)</span>, and <span class="math inline">\(\sigma = 0.148\)</span> under several sample sizes.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -662,7 +680,7 @@ Figure&nbsp;15.4: Power curve of two-sided test
 <img src="power_ztest_files/figure-html/fig-twosidedpowern-1.png" class="img-fluid figure-img" alt="Plot with several U-shaped curves" width="1400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-twosidedpowern-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.5: Power curves of two-sided test for several sample sizes
+Figure&nbsp;18.5: Power curves of two-sided test for several sample sizes
 </figcaption>
 </figure>
 </div>
@@ -670,9 +688,9 @@ Figure&nbsp;15.5: Power curves of two-sided test for several sample sizes
 </div>
 <p>We see that larger sample sizes cause the power to increase more quickly as <span class="math inline">\(\mu\)</span> moves from <span class="math inline">\(\mu_0\)</span> in either direction.</p>
 </section>
-<section id="sample-size-based-on-desired-power" class="level2" data-number="15.4">
-<h2 data-number="15.4" class="anchored" data-anchor-id="sample-size-based-on-desired-power"><span class="header-section-number">15.4</span> Sample size based on desired power</h2>
-<p><a href="#fig-rightsidedpowern" class="quarto-xref">Figure&nbsp;<span>15.2</span></a> and <a href="#fig-twosidedpowern" class="quarto-xref">Figure&nbsp;<span>15.5</span></a> suggest that studying the power curve of a statistical test may help determine the size of the sample one should draw. We have seen that, given a null value <span class="math inline">\(\mu_0\)</span> and a size <span class="math inline">\(\alpha\)</span>, one can plot the power function for many choices of the sample size <span class="math inline">\(n\)</span>, provided one has a guess for the value of the standard deviation <span class="math inline">\(\sigma\)</span>. If a guess for the value of <span class="math inline">\(\sigma\)</span> is available, one can go about choosing a sample size as follows:</p>
+<section id="sample-size-based-on-desired-power" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="sample-size-based-on-desired-power"><span class="header-section-number">18.4</span> Sample size based on desired power</h2>
+<p><a href="#fig-rightsidedpowern" class="quarto-xref">Figure&nbsp;<span>18.2</span></a> and <a href="#fig-twosidedpowern" class="quarto-xref">Figure&nbsp;<span>18.5</span></a> suggest that studying the power curve of a statistical test may help determine the size of the sample one should draw. We have seen that, given a null value <span class="math inline">\(\mu_0\)</span> and a size <span class="math inline">\(\alpha\)</span>, one can plot the power function for many choices of the sample size <span class="math inline">\(n\)</span>, provided one has a guess for the value of the standard deviation <span class="math inline">\(\sigma\)</span>. If a guess for the value of <span class="math inline">\(\sigma\)</span> is available, one can go about choosing a sample size as follows:</p>
 <p>First, one must fix an alternative value <span class="math inline">\(\mu^*\)</span> that satisfies the alternative hypothesis and is meaningfully distinct from the null value <span class="math inline">\(\mu_0\)</span>. By “meaningfully distinct” we mean that the difference between <span class="math inline">\(\mu^*\)</span> and <span class="math inline">\(\mu\)</span> is large enough so that the investigator would regard it as an interesting finding to conclude that <span class="math inline">\(\mu\)</span> is equal to <span class="math inline">\(\mu^*\)</span> instead of equal to <span class="math inline">\(\mu_0\)</span>. Having identified such a <span class="math inline">\(\mu^*\)</span>, one next specifies a desired power <span class="math inline">\(\gamma^*\)</span>. This is the smallest probability with which one wishes to reject the null hypothesis when <span class="math inline">\(\mu\)</span> is equal to the value <span class="math inline">\(\mu^*\)</span>. With <span class="math inline">\(\mu^*\)</span> and <span class="math inline">\(\gamma^*\)</span> chosen, one then finds the smallest sample size <span class="math inline">\(n\)</span> such that <span class="math inline">\(\gamma(\mu^*) \geq \gamma^*\)</span> holds (this can be found by setting up the equation <span class="math inline">\(\gamma(\mu^*) = \gamma^*\)</span>, solving for <span class="math inline">\(n\)</span>, and rounding up to the nearest whole number.</p>
 <p>In summary:</p>
 <ol type="1">
@@ -681,14 +699,14 @@ Figure&nbsp;15.5: Power curves of two-sided test for several sample sizes
 </ol>
 <p>For either of the one-sided tests we discussed, we obtain the expression <span id="eq-onesidedn"><span class="math display">\[
 n = \bigg\lceil \sigma^2 \Big(\frac{z_\alpha + z_{\beta^*} }{\mu^* - \mu_0}\Big)^2\bigg\rceil,
-\tag{15.1}\]</span></span> where <span class="math inline">\(\beta^* = 1 - \gamma^*\)</span>.</p>
+\tag{18.1}\]</span></span> where <span class="math inline">\(\beta^* = 1 - \gamma^*\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Derivation of <a href="#eq-onesidedn" class="quarto-xref">Equation&nbsp;<span>15.1</span></a>
+<span class="screen-reader-only">Note</span>Derivation of <a href="#eq-onesidedn" class="quarto-xref">Equation&nbsp;<span>18.1</span></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -709,20 +727,20 @@ n = \bigg\lceil \sigma^2 \Big(\frac{z_\alpha + z_{\beta^*} }{\mu^* - \mu_0}\Big)
 &amp; \iff \sqrt{n} = \sigma \frac{z_\alpha-z_{\gamma^*}}{\mu^* - \mu},
 \end{align*}
 \]</span> using the fact that <span class="math inline">\(z_{1-\gamma^*} = -z_{\gamma^*}\)</span> (draw pictures to see this).</p>
-<p>From here, note that <span class="math inline">\(z_{\gamma^*} = - z_{\beta^*}\)</span> by the fact that <span class="math inline">\(\beta^* = 1- \gamma^*\)</span> (draw pictures again!). This leads to <a href="#eq-onesidedn" class="quarto-xref">Equation&nbsp;<span>15.1</span></a> in both cases.</p>
+<p>From here, note that <span class="math inline">\(z_{\gamma^*} = - z_{\beta^*}\)</span> by the fact that <span class="math inline">\(\beta^* = 1- \gamma^*\)</span> (draw pictures again!). This leads to <a href="#eq-onesidedn" class="quarto-xref">Equation&nbsp;<span>18.1</span></a> in both cases.</p>
 </div>
 </div>
 </div>
 <p>For the two-sided test, we obtain approximately <span id="eq-twosidedn"><span class="math display">\[
 n = \bigg\lceil \sigma^2 \Big(\frac{z_{\alpha/2} + z_{\beta^*} }{\mu^* - \mu_0}\Big)^2\bigg\rceil.
-\tag{15.2}\]</span></span></p>
+\tag{18.2}\]</span></span></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Derivation of <a href="#eq-twosidedn" class="quarto-xref">Equation&nbsp;<span>15.2</span></a>
+<span class="screen-reader-only">Note</span>Derivation of <a href="#eq-twosidedn" class="quarto-xref">Equation&nbsp;<span>18.2</span></a>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -735,7 +753,7 @@ n = \bigg\lceil \sigma^2 \Big(\frac{z_{\alpha/2} + z_{\beta^*} }{\mu^* - \mu_0}\
 </div>
 </div>
 <div id="exm-gr" class="theorem example">
-<p><span class="theorem-title"><strong>Example 15.2 (Golden ratio sample size determination:)</strong></span> Suppose we are testing <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \leq 1.618\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &gt; 1.618\)</span> and that we wish to reject <span class="math inline">\(H_0\)</span> with probability at least <span class="math inline">\(0.80\)</span> if the true mean of the ratio <span class="math inline">\(B/A\)</span> were equal to <span class="math inline">\(1.65\)</span>. Then using <span class="math inline">\(S_n = 0.148\)</span> as a guess of <span class="math inline">\(\sigma\)</span>, we would use <a href="#eq-onesidedn" class="quarto-xref">Equation&nbsp;<span>15.1</span></a> to choose the sample size.</p>
+<p><span class="theorem-title"><strong>Example 18.2 (Golden ratio sample size determination:)</strong></span> Suppose we are testing <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \leq 1.618\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &gt; 1.618\)</span> and that we wish to reject <span class="math inline">\(H_0\)</span> with probability at least <span class="math inline">\(0.80\)</span> if the true mean of the ratio <span class="math inline">\(B/A\)</span> were equal to <span class="math inline">\(1.65\)</span>. Then using <span class="math inline">\(S_n = 0.148\)</span> as a guess of <span class="math inline">\(\sigma\)</span>, we would use <a href="#eq-onesidedn" class="quarto-xref">Equation&nbsp;<span>18.1</span></a> to choose the sample size.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -783,14 +801,14 @@ n = \bigg\lceil \sigma^2 \Big(\frac{z_{\alpha/2} + z_{\beta^*} }{\mu^* - \mu_0}\
 <p>We see that this sample size is just sufficient to give the test the desired power of <span class="math inline">\(\gamma^* = 0.80\)</span> when the true mean is equal to <span class="math inline">\(\mu^*= 1.65\)</span>.</p>
 </div>
 </section>
-<section id="power-when-the-variance-is-unknown" class="level2" data-number="15.5">
-<h2 data-number="15.5" class="anchored" data-anchor-id="power-when-the-variance-is-unknown"><span class="header-section-number">15.5</span> Power when the variance is unknown</h2>
+<section id="power-when-the-variance-is-unknown" class="level2" data-number="18.5">
+<h2 data-number="18.5" class="anchored" data-anchor-id="power-when-the-variance-is-unknown"><span class="header-section-number">18.5</span> Power when the variance is unknown</h2>
 <p>Lastly: We have assumed throughout that <span class="math inline">\(\sigma^2\)</span> was known. It is possible to derive the power function of the t test which one would use if <span class="math inline">\(\sigma^2\)</span> were unknown and replaced with <span class="math inline">\(S_n^2\)</span>, leading to the test statistic <span class="math display">\[
 T_{\text{test}} = \frac{\bar X_n - \mu_0}{S_n/\sqrt{n}},
 \]</span> however, these investigations involve versions of the t distributions called <em>non-central</em> t-distributions, which are beyond the scope of an introductory statistics course. However, of large sample sizes it will not make much difference whether one uses the calculation derived here or exact calculations based on non-central t distributions, so the omission of the latter from our discussion is not so costly in the end.</p>
 </section>
-<section id="power-for-other-kinds-of-tests" class="level2" data-number="15.6">
-<h2 data-number="15.6" class="anchored" data-anchor-id="power-for-other-kinds-of-tests"><span class="header-section-number">15.6</span> Power for other kinds of tests</h2>
+<section id="power-for-other-kinds-of-tests" class="level2" data-number="18.6">
+<h2 data-number="18.6" class="anchored" data-anchor-id="power-for-other-kinds-of-tests"><span class="header-section-number">18.6</span> Power for other kinds of tests</h2>
 <p>We have restricted our discussion of power to one-sample tests concerning the mean of a Normal population. However, every statistical test has a power function! The examples we covered here are merely a good starting point for understanding statistical power.</p>
 <!-- Now, using the golden ratio example, let's hone in on the idea of statistical power, by focusing on the left-sided set of hypotheses $H_0$: $\mu \geq \mu_0$ versus $H_1$: $\mu < \mu_0$. These are the hypotheses the instructor would test if he (the instructor was in fact myself) suspected that the mean of the ratio $B/A$ were actually less than the golden ratio $1.618$, and wanted to measure evidence against the claim that it was greater than or equal to $1.618$. Assuming that $\sigma = 0.16$ is known, the instructor (or better yet the students, who would be capable of carrying out the analysis themselves), would proceed by computing the statistic  -->
 <!-- $$ -->
@@ -1204,13 +1222,13 @@ T_{\text{test}} = \frac{\bar X_n - \mu_0}{S_n/\sqrt{n}},
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./poisson_exp_dist.html" class="pagination-link" aria-label="Poisson and exponential distributions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Poisson and exponential distributions</span></span>
+      <a href="./clt_for_proportion.html" class="pagination-link" aria-label="The sample proportion">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The sample proportion</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./simple_linear_regression.html" class="pagination-link" aria-label="Simple linear regression">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

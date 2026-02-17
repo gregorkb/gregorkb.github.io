@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>9&nbsp; Bernoulli and binomial distributions – Statistical Methods</title>
+<title>15&nbsp; The mean of a random sample – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,8 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./hypergeometric_distribution.html" rel="next">
-<link href="./discrete_rvs.html" rel="prev">
+<link href="./normal_qq_plot.html" rel="next">
+<link href="./poisson_exp_dist.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -160,7 +160,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./bernoulli_binomial.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bernoulli and binomial distributions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./mean_of_rs.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The mean of a random sample</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -250,7 +250,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bernoulli_binomial.html" class="sidebar-item-text sidebar-link active">
+  <a href="./bernoulli_binomial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bernoulli and binomial distributions</span></span></a>
   </div>
 </li>
@@ -286,26 +286,32 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mean_of_rs.html" class="sidebar-item-text sidebar-link">
+  <a href="./mean_of_rs.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The mean of a random sample</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./normal_qq_plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./central_limit_theorem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./clt_for_proportion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The sample proportion</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">The sample proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -322,13 +328,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Multiple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
   </div>
 </li>
       </ul>
@@ -345,7 +351,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -362,7 +368,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
   </div>
 </li>
       </ul>
@@ -383,18 +389,18 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-bernoulli-trial" id="toc-the-bernoulli-trial" class="nav-link active" data-scroll-target="#the-bernoulli-trial"><span class="header-section-number">9.1</span> The Bernoulli trial</a></li>
-  <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution"><span class="header-section-number">9.2</span> Binomial distribution</a></li>
-  <li><a href="#mean-and-variance-of-a-binomial-random-variable" id="toc-mean-and-variance-of-a-binomial-random-variable" class="nav-link" data-scroll-target="#mean-and-variance-of-a-binomial-random-variable"><span class="header-section-number">9.3</span> Mean and variance of a Binomial random variable</a></li>
+  <li><a href="#random-sample" id="toc-random-sample" class="nav-link active" data-scroll-target="#random-sample"><span class="header-section-number">15.1</span> Random sample</a></li>
+  <li><a href="#the-sample-mean" id="toc-the-sample-mean" class="nav-link" data-scroll-target="#the-sample-mean"><span class="header-section-number">15.2</span> The sample mean</a></li>
+  <li><a href="#normal-population-case" id="toc-normal-population-case" class="nav-link" data-scroll-target="#normal-population-case"><span class="header-section-number">15.3</span> Normal population case</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./bernoulli_binomial.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bernoulli and binomial distributions</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./mean_of_rs.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The mean of a random sample</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-bernoulli_binomial" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bernoulli and binomial distributions</span></span></h1>
+<h1 class="title"><span id="sec-mean_of_rs" class="quarto-section-identifier"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The mean of a random sample</span></span></h1>
 </div>
 
 
@@ -421,192 +427,165 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>Here we introduce a very simple statistical experiment (maybe the simplest one imaginable) called a <em>Bernoulli trial</em>, after the man Jakob Bernoulli (1655–1705), soft “J”. We can use this simple experiment to build more interesting experiments, one of which will give rise to a probability distribution called the <em>Binomial distribution</em>.</p>
-<section id="the-bernoulli-trial" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="the-bernoulli-trial"><span class="header-section-number">9.1</span> The Bernoulli trial</h2>
-<div id="def-bernoullitrial" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 9.1 (Bernoulli trial)</strong></span> A <em>Bernoulli trial</em> is a statistical experiment for which there are two possible outcomes. We often give the outcomes the names “success” and “failure” and denote by <span class="math inline">\(p\)</span> the probability of a “success.”</p>
+<p>What we have been building up to so far is how to learn from data about the process which generated the data or about the population from which the data were drawn. However, we have not really encountered “data” yet. Our first (carefully controlled) encounter with data will be a study of what statisticians call a <em>random sample</em>. Imagine reaching into a population and selecting some of its members at random and measuring something about them or subjecting them to some experimental conditions and then measuring something about them. What results is a set of measurements such that each measurement i) can take more than one possible value, ii) must take a value belonging to a known set of values, and iii) takes a value which cannot be known in advance. In short, what results is a collection of random variables.</p>
+<p>Here we will give a formal definition of a random sample and then consider the probability distribution of the mean of the values in a random sample.</p>
+<section id="random-sample" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="random-sample"><span class="header-section-number">15.1</span> Random sample</h2>
+<p>A random sample can be thought of as a set of values resulting from selecting some members of a population and taking measurements on them, possibly after subjecting them to some experimental conditions. Throughout, we will let <span class="math inline">\(n\)</span> denote the number of values in the random sample, which we will refer to as the <em>sample size</em>. Formally, we define a random sample as follows:</p>
+<div id="def-randomsample" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 15.1 (Random sample)</strong></span> A set of independent identically distributed random variables <span class="math inline">\(X_1,\dots,X_n\)</span> is called a <em>random sample</em> of size <span class="math inline">\(n\)</span>.</p>
 </div>
-<p>It is quite easy to think of examples.</p>
-<div id="exm-freethrow" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.1 (Freethrow)</strong></span> Shoot a freethrow and call making a basket a “success”, missing a “failure”. What is your probability of success <span class="math inline">\(p\)</span>?</p>
+<p>We must admit that in the above definition we have used some terms that have not been defined yet. The first is <em>independent</em>. Even though we <em>did</em> define independence for two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, where we said <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if <span class="math inline">\(P(A \cap B) = P(A)P(B)\)</span>, and beyond this, we defined what it means for a collection of events to be mutually independent, we have not stated what we mean when we say that two random variables, or a set of more than two random variables, are independent. So, what is meant by the word “independence” in the above definition? Essentially, we say that two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent if the value of one does not effect the value of the other. To connect this to our definition of independence between two events, we can say that if random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then we will have <span class="math display">\[
+P( X \in A \cap Y \in B) = P(X \in A) P(Y \in B)
+\]</span> for all pairs of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> which are subsets of the real numbers <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p>The other new term appearing in <a href="#def-randomsample" class="quarto-xref">Definition&nbsp;<span>15.1</span></a> is the phrase <em>identically distributed</em>. We say that two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are identically distributed if they have the same probability distribution. One way of expressing this is to say that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have the same cumulative distribution function (CDF).</p>
+<p>So, a random sample of size <span class="math inline">\(n\)</span> is a set of random variables <span class="math inline">\(X_1,\dots,X_n\)</span> such that i) the value of any one of them does not affect the value of any other one and ii) they all have the same probability distribution. This definition of a random sample is motivated by the oft-run experiment of drawing from a large population a certain number of members and measuring something on them; if the population is large enough, the draws can be considered independent (see the discussion on sampling with versus without replacement in <a href="sampling_with_without_replacement.html" class="quarto-xref"><span>Chapter 11</span></a>). Moreover, since all the draws come from the same population, we can assume that all the measurements are realizations from a common distribution. Hereafter we will sometimes refer to the distribution shared by all the random variables in a random sample as the <em>population distribution</em>.</p>
+<p>We may think of the random sample <span class="math inline">\(X_1,\dots,X_n\)</span> as the values in a very simple data set. Here is an example:</p>
+<div id="exm-pinewood" class="theorem example">
+<p><span class="theorem-title"><strong>Example 15.1 (Pinewood derby times)</strong></span> Several girls assembled and decorated pinewood derby cars and raced them, letting the cars roll down a ramp from a fixed starting point and timing (with a pretty sophisticated electronic timing system) how long it took them to cross a finish line. The finishing times are read into R in the code below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pinewood_derby.png" class="img-fluid figure-img" width="200"></p>
+<figcaption>Pinewood derby car exemplar (by my daughter at age 10).</figcaption>
+</figure>
 </div>
-<div id="exm-coinflipbernoulli" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.2 (Flip a coin)</strong></span> Flip a coin and call heads a success, tails a failure. If the coin is fair then <span class="math inline">\(p = 1/2\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ft <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.5692</span>,<span class="fl">2.5936</span>,<span class="fl">2.6190</span>,<span class="fl">2.6320</span>,<span class="fl">2.6345</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.6602</span>,<span class="fl">2.6708</span>,<span class="fl">2.6804</span>,<span class="fl">2.6850</span>,<span class="fl">2.7049</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.7111</span>,<span class="fl">2.8034</span>,<span class="fl">2.8300</span>,<span class="fl">3.0639</span>,<span class="fl">3.1489</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">3.2411</span>,<span class="fl">3.5701</span>,<span class="fl">3.9686</span>,<span class="fl">4.1220</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ft_avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(ft)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>We often encode the outcome of a Bernoulli trial in a random variable equal to <span class="math inline">\(1\)</span> for a success and <span class="math inline">\(0\)</span> for a failure. The probability distribution of a random variable defined in this way is called the <em>Bernoulli distribution</em>.</p>
-<div id="def-bernoullidist" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 9.2 (Bernoulli distribution)</strong></span> Let <span class="math inline">\(X\)</span> be a random variable with support <span class="math inline">\(\mathcal{X}= \{0,1\}\)</span>, taking the value <span class="math inline">\(1\)</span> with probability <span class="math inline">\(p\)</span> and the value <span class="math inline">\(0\)</span> with probability <span class="math inline">\(1-p\)</span>. Then we say <span class="math inline">\(X\)</span> has the <em>Bernoulli distribution</em> with success probability <span class="math inline">\(p\)</span>.</p>
 </div>
-<p>We have just met our first probability distribution with a name—the Bernoulli distribution. If a random variable has a distribution with a name, statisticians like to express it writing “<span class="math inline">\(X \sim\)</span>” followed by either a shorthand notation or a symbol for the distribution. If <span class="math inline">\(X\)</span> has the Bernoulli distribution with success probability <span class="math inline">\(p\)</span>, we will express this by writing <span class="math display">\[
-X \sim \text{Bernoulli}(p).
-\]</span> Note that we may also refer to <span class="math inline">\(X\)</span> as a <em>Bernoulli random variable</em>.</p>
-<p>Recall that the probability mass function (PMF) of a discrete random variable is the function <span class="math inline">\(p(\cdot)\)</span> such that <span class="math inline">\(P(X = x) = p(x)\)</span> for all <span class="math inline">\(x \in \mathcal{X}\)</span>. That is, <span class="math inline">\(p(x)\)</span> returns the probability that the random variable <span class="math inline">\(X\)</span> takes the value <span class="math inline">\(x\)</span> when observed. Note that we can write the PMF of a random variable <span class="math inline">\(X\)</span> with the <span class="math inline">\(\text{Bernoulli}(p)\)</span> distribution as <span id="eq-bernpmf"><span class="math display">\[
-p(x) = p^x(1-p)^{1-x}.
-\tag{9.1}\]</span></span></p>
-<div id="exm-alarmfail" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.3 (Alarm fail)</strong></span> Suppose you wake up on time with probability <span class="math inline">\(0.90\)</span> and fail to wake up on time with probability <span class="math inline">\(0.10\)</span>. Letting <span class="math inline">\(X = 1\)</span> if you wake up on time and <span class="math inline">\(X=0\)</span> otherwise, we may write <span class="math inline">\(X \sim \text{Bernoulli}(0.90)\)</span>. Moreover <span class="math inline">\(X\)</span> has pmf <span class="math inline">\(p(x) = (0.90)^x(1 - 0.90)^{1-x}\)</span>, for which <span class="math inline">\(p(1) = 0.90\)</span> and <span class="math inline">\(p(0) = 0.10\)</span>.</p>
-</div>
-<p>We next consider the experiment consisting of a certain number of independent Bernoulli trials.</p>
+<p>In the pinewood derby car example, an experiment is run: tell some young girls to assemble and decorate pinewood derby cars and race them, recording the finishing times. Now, do these measurements constitute a random sample? Perhaps they do, and perhaps they do not. Let’s consider whether the finishing times are independent. I know for a fact (being the father of two participants) that there was at least one pair of sisters in the competition, who more than likely (in fact) worked simultaneously and in close proximity to each other while assembling and decorating their cars. There may have been discussion between them, or a tip they both recieved from mom or dad, which could have lead them to use similar strategies of assembly and weighting, which may in the end have caused the finishing times of their cars to be similar. Yet it may be that the dependence induced in their finishing times by all of this may be slight enough to be negligible. As for whether the finishing times represent realizations of identically distributed random variables, it seems reasonable by the following: Even though each girl may have a unique decoration style and assembly strategy, if a girl is selected at random and the finishing time of her pinewood derby car is recorded, we can regard this finishing time as a draw from <em>some</em> distribution; and the collection of finishing times is a collection of draws from this same distribution. So, in spite of some possibility of non-independence, we will hereafter treat the pinewood derby car finishing times as a random sample.</p>
+<p>We may hereafter write <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}F\)</span> to express that <span class="math inline">\(X_1,\dots,X_n\)</span> are a random sample from a population with distribution <span class="math inline">\(F\)</span>. Often there are features of <span class="math inline">\(F\)</span> that are unknown to us, and the goal of drawing the random sample <span class="math inline">\(X_1,\dots,X_n\)</span> is to learn about these unknown features of <span class="math inline">\(F\)</span>. Here we will begin by supposing that what is of interest is the mean or expected value of the distribution <span class="math inline">\(F\)</span>. That is, if <span class="math inline">\(X_1,\dots,X_n\)</span> is a random sample, then all of these random variables have the same expected value, say <span class="math inline">\(\mu\)</span>, which is the expected value of the distribution from which each value was drawn, that is the expected value of the population distribution. We will suppose that the value <span class="math inline">\(\mu\)</span> is unknown to us, and that we wish to learn about the value of <span class="math inline">\(\mu\)</span> by computing the average of the values in the random sample.</p>
 </section>
-<section id="binomial-distribution" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="binomial-distribution"><span class="header-section-number">9.2</span> Binomial distribution</h2>
-<p>We are often interested in the number of successes we observe in a certain number independent Bernoulli trials.</p>
-<div id="exm-fourcoinflips" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.4 (Four coin flips)</strong></span> Flip a coin four times and let <span class="math inline">\(X\)</span> be the number of heads, i.e.&nbsp;“successes” observed. It will help us write down the probability distribution of <span class="math inline">\(X\)</span> if we list the possible sequences of successes and failures (that is the sample space of the experiment):</p>
-<p><span class="math display">\[
-S = \left\{ \begin{array}{ccccc}  HHHH,&amp;HHHT,&amp;THHT,&amp;&amp;\\
-                    &amp;HHTH,&amp;THTH,&amp; &amp;&amp; \\
-                    &amp;HTHH,&amp; TTHH,&amp; TTTH,&amp; \\
-                    &amp;THHH,&amp;HHTT,&amp;TTHT,&amp;\\
-                    &amp;&amp;HTHT,&amp;THTT,&amp;\\
-                    &amp;&amp;THHT,&amp;HTTT,&amp;TTTT
-\end{array}\right\}.
-\]</span> Since each sequence of successes and failures is equally likely, we can summarize the probability distribution of <span class="math inline">\(X\)</span> with a table: <span class="math display">\[
-\begin{array}{c|cccccc}
-    x          &amp; 0 &amp; 1 &amp; 2 &amp;3 &amp;4  \\ \hline
-     P(X = x)   &amp; 1/16 &amp; 4/16 &amp; 6/16 &amp; 4 / 16 &amp; 1/16 \\
-     P(X \leq x)   &amp; 1/16 &amp; 5/16 &amp; 11/16 &amp; 15 / 16 &amp; 16/16
-\end{array}
+<section id="the-sample-mean" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="the-sample-mean"><span class="header-section-number">15.2</span> The sample mean</h2>
+<p>We first give the definition of the sample mean.</p>
+<div id="def-samplemean" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 15.2 (Sample mean)</strong></span> Given a random sample <span class="math inline">\(X_1,\dots,X_n\)</span>, the <em>sample mean</em> is defined as <span class="math display">\[
+\bar X_n = \frac{1}{n}\sum_{i=1}^n X_i.
 \]</span></p>
 </div>
-<p>Suppose now that we were to flip a coin twelve times and we wanted to know the probabilities of getting zero, one, two, or three heads, and so on. As the number of coin tosses increases, it quickly becomes very burdensome to list all the possible sequences of coin flips. In fact, if we count the number of possible sequences of outcomes from twelve coin flips, we find there are <span class="math inline">\(2^{12} = 4096\)</span> sequences. It is impractical to list every one of them.</p>
-<p>Moreover, in the example of flipping a (fair) coin, all sequences of flips in the sample space occur with the same probability, but this would not be the case if, say, heads were more likely than tails or the other way around. In general, we would like to be able write down the probability distribution of a random variable <span class="math inline">\(X\)</span> when this is defined as the total number of successes in a certain number of independent Bernoulli trials, each with the same success probability <span class="math inline">\(p\)</span>, where <span class="math inline">\(p\)</span> can be any number in the interval <span class="math inline">\((0,1)\)</span>.</p>
-<div id="prp-binomialpmf" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 9.1 (Binomial probability mass function)</strong></span> If <span class="math inline">\(X\)</span> is defined as the number of successes in <span class="math inline">\(n\)</span> independent Bernoulli trials, each with success probability <span class="math inline">\(p\)</span> then <span class="math inline">\(X\)</span> has probability mass function given by <span id="eq-binompmf"><span class="math display">\[
-p(x) = {n \choose x} p^x(1-p)^{n-x}, \quad x \in \{0,1,\dots,n\}
-\tag{9.2}\]</span></span></p>
-</div>
-<p>The probability distribution having the PMF in <a href="#eq-binompmf" class="quarto-xref">Equation&nbsp;<span>9.2</span></a> is called the <em>Binomial distribution</em> with number of trials <span class="math inline">\(n\)</span> and success probability <span class="math inline">\(p\)</span>. If a random variable <span class="math inline">\(X\)</span> has this distribution we write <span class="math display">\[
-X \sim \text{Binomial}(n,p).
-\]</span></p>
-<p>Let’s consider for a moment the PMF given in <a href="#eq-binompmf" class="quarto-xref">Equation&nbsp;<span>9.2</span></a>. The quantity <span class="math inline">\({n \choose x}\)</span> is the number of ways we can choose <span class="math inline">\(x\)</span> of the <span class="math inline">\(n\)</span> trials to be the successes. That is, it is the number of length-<span class="math inline">\(n\)</span> success-failure sequences containing exactly <span class="math inline">\(x\)</span> successes. Recall now that for independent events, the probability of their intersection is equal to the product of their probabilities. Due to the fact that the Bernoulli trials are independent, the probability of each sequence of successes and failures containing can be computed as a product of probabilities. In particular, the probability of observing a sequence containing exactly <span class="math inline">\(x\)</span> successes and <span class="math inline">\(n-x\)</span> failures is given bythe product <span class="math inline">\(p^x(1-p)^{n-x}\)</span>, which is <span class="math inline">\(p\)</span> raised to the number of successes times <span class="math inline">\((1-p)\)</span> raised to the number of failures. So the sum of the probabilities of all sequences having exactly <span class="math inline">\(x\)</span> successes and <span class="math inline">\(n - x\)</span> failures is given by <span class="math inline">\({n \choose x} p^x(1-p)^{n-x}\)</span>.</p>
-<p>If <span class="math inline">\(X\)</span> has the <span class="math inline">\(\text{Binomial}(n,p)\)</span> distribution, we can get compute the cumulative probabilities <span class="math inline">\(P(X \leq x)\)</span> for <span class="math inline">\(x = 0,1,\dots,n\)</span> as <span class="math display">\[
-P(X \leq x) = \sum_{i=0}^x{n \choose i} p^i(1-p)^{n-i}.
-\]</span> The above allows us to evaluate the cdf <span class="math inline">\(F(x) = P(X\leq x)\)</span> for <span class="math inline">\(X\)</span>. The PMF and CDF of a <span class="math inline">\(\text{Binomial}(n,p)\)</span> random variable are shown in</p>
+<p>One interpretation of the sample mean is that it is the balancing point of the random sample. That is, if weights were placed on a number line at the positions of the values in the random sample, the sample mean <span class="math inline">\(\bar X_n\)</span> gives the position at which a fulcrum would need to be placed in order to balance the number line. One can also imagine a probability mass function (PMF) which places probability <span class="math inline">\(1/n\)</span> on each of the <span class="math inline">\(n\)</span> data points, like the one depicted in <a href="#fig-samplemean" class="quarto-xref">Figure&nbsp;<span>15.1</span></a> for the pinewood derby finishing times. Then the sample mean is the expected value according to this PMF. Again, it can be viewed as the balancing point of the values.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.dpi'</span>] <span class="op">=</span> <span class="dv">128</span>       </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'savefig.dpi'</span>] <span class="op">=</span> <span class="dv">128</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> (<span class="dv">4</span>, <span class="dv">2</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'text.usetex'</span>] <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">7</span>,<span class="dv">4</span>))</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>col <span class="op">=</span> <span class="st">'black'</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.4</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(n<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>px <span class="op">=</span> stats.binom.pmf(x,n,p)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Px <span class="op">=</span> stats.binom.cdf(x,n,p)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].vlines(x,np.zeros(n<span class="op">+</span><span class="dv">1</span>),px,color<span class="op">=</span>col)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].plot(x,px,<span class="st">'o'</span>,color<span class="op">=</span>col)</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_xticks(np.arange(n<span class="op">+</span><span class="dv">1</span>))</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_ylabel(<span class="st">'$p(x)$'</span>)</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span>col)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>xx <span class="op">=</span> np.append(np.append(<span class="op">-</span><span class="dv">1</span>,x),n<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>Pxx <span class="op">=</span> np.append(<span class="dv">0</span>,Px)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n<span class="op">+</span><span class="dv">2</span>):</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  axs[<span class="dv">1</span>].plot([xx[i],xx[i<span class="op">+</span><span class="dv">1</span>]],[Pxx[i],Pxx[i]],color<span class="op">=</span>col)</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n<span class="op">+</span><span class="dv">1</span>):</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  axs[<span class="dv">1</span>].plot(xx[i<span class="op">+</span><span class="dv">1</span>],Pxx[i],marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'white'</span>)</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  axs[<span class="dv">1</span>].plot(xx[i<span class="op">+</span><span class="dv">1</span>],Pxx[i],fillstyle<span class="op">=</span><span class="st">'none'</span>,marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span>col)</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  axs[<span class="dv">1</span>].plot(xx[i<span class="op">+</span><span class="dv">1</span>],Pxx[i<span class="op">+</span><span class="dv">1</span>],<span class="st">'o'</span>,color<span class="op">=</span>col)</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_xticks(np.arange(n<span class="op">+</span><span class="dv">1</span>))</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_ylabel(<span class="st">'$F(x)$'</span>)</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_xlabel(<span class="st">'$x$'</span>,color<span class="op">=</span>col)</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(ft)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">4.1</span>,<span class="fl">4.1</span>,.<span class="dv">1</span>,<span class="fl">2.1</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ft,<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span>n,n),<span class="at">type=</span><span class="st">'h'</span>,<span class="at">yaxt=</span><span class="st">'n'</span>,<span class="at">ylab=</span><span class="st">'p(x)'</span>,<span class="at">xlab=</span><span class="st">'x'</span>,<span class="at">xaxt=</span><span class="st">'n'</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="fl">2.5</span>,<span class="fl">4.5</span>),<span class="at">bty=</span><span class="st">"l"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(ft,<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span>n,n),<span class="at">pch=</span><span class="dv">19</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>,<span class="at">at=</span><span class="dv">1</span><span class="sc">/</span>n,<span class="at">labels=</span><span class="st">"1/n"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,<span class="at">at=</span><span class="fu">seq</span>(<span class="fl">1.5</span>,<span class="fl">4.5</span>,<span class="at">by=</span><span class="fl">0.25</span>))</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> ft_avg,<span class="at">col=</span><span class="st">"red"</span>,<span class="at">lty=</span><span class="dv">3</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="fig-pmfcdfbinom" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-samplemean" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pmfcdfbinom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="bernoulli_binomial_files/figure-html/fig-pmfcdfbinom-1.png" class="img-fluid figure-img" width="672">
+<div aria-describedby="fig-samplemean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="mean_of_rs_files/figure-html/fig-samplemean-1.png" class="img-fluid figure-img" width="1400">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pmfcdfbinom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.1: PMF and CDF of <span class="math inline">\(\text{Binomial}(n,p)\)</span> distribution with <span class="math inline">\(n = 5\)</span> and <span class="math inline">\(p = 0.4\)</span>.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-samplemean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.1: PMF giving probability mass <span class="math inline">\(1/n\)</span> to each value in the sample of pinewood derby finishing times. The position of the sample mean <span class="math inline">\(\bar X_n\)</span> is indicated by the vertical dotted line.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div id="exr-freethrows" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.1 (Shoot ten freethrows)</strong></span> Suppose you will shoot <span class="math inline">\(10\)</span> freethrows and let <span class="math inline">\(X\)</span> be the number of freethrows you make. Suppose you make freethrows with probability <span class="math inline">\(0.3\)</span> and that all your shots are independent.</p>
+<p>The sample mean <span class="math inline">\(\bar X_n\)</span> will function as our best guess of the <em>population mean</em>, by which we refer to the mean of the <em>population distribution</em>, the distribution from which the random sample was drawn. We will denote the population mean by <span class="math inline">\(\mu\)</span>, noting that, since all of the random variables <span class="math inline">\(X_1,\dots,X_n\)</span> have the same distribution, we have <span class="math inline">\(\mathbb{E}X_i = \mu\)</span> for all <span class="math inline">\(i=1,\dots,n\)</span>.</p>
+<p>So, we will use the value of <span class="math inline">\(\bar X_n\)</span> to <em>learn</em> about the value of <span class="math inline">\(\mu\)</span>, which is unknown to us. In order to learn anything from the value of <span class="math inline">\(\bar X_n\)</span>, we must acknowledge that <span class="math inline">\(\bar X_n\)</span> is itself a random variable; that is, it can take more than one possible value, and, while the range of possible values it can take is known, we cannot know in advance which value it will take. So if we were, for example, to attend another pinewood derby rally featuring cars decorated by similarly-aged girls and record the finishing times, we would observe a value of <span class="math inline">\(\bar X_n\)</span> distinct from the value computed on the data at hand. Indeed, if we were to attend a thousand such pinewood derby car rallies, we likely never observe the same average finishing time twice; we would instead have 1000 distinct values of <span class="math inline">\(\bar X_n\)</span>. How then, one may wonder, can we possibly learn about the population mean <span class="math inline">\(\mu\)</span> when the value of <span class="math inline">\(\bar X_n\)</span> is different for every random sample we observe?</p>
+<p>To answer this question, we run a thought experiment. We imagine attending, say, 1000 pinewood derby rallies and computing from each one a sample mean. Then we imagine that we make a histogram of these 1000 sample means, which would show us an estimate of the probability density function (PDF) of <span class="math inline">\(\bar X_n\)</span>. Now we ask ourselves: What will this distribution look like? Firstly, around what value is this distribution centered? Secondly, how spread out are the values in this distribution? Thirdly, we might also ask what the shape of this distribution would be.</p>
+<p>In answer to the first and second inquiries—where the distribution of <span class="math inline">\(\bar X_n\)</span> is centered and how spread out it is—we have the following result:</p>
+<div id="prp-meanvarxbar" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 15.1 (Mean and variance of the sample mean)</strong></span> Let <span class="math inline">\(X_1,\dots,X_n\)</span> be a random sample from a distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Then we have <span class="math inline">\(\mathbb{E}\bar X_n = \mu\)</span> and <span class="math inline">\(\operatorname{Var}\bar X_n = \sigma^2/n\)</span>.</p>
+</div>
+<p>The result tells us that the distribution of <span class="math inline">\(\bar X_n\)</span> is centered at the population mean <span class="math inline">\(\mu\)</span> and that its spread is governed by the variance <span class="math inline">\(\sigma^2\)</span> of the population distribution as well as the size of the sample. We see that a larger sample size <span class="math inline">\(n\)</span> leads to a smaller variance in <span class="math inline">\(\bar X_n\)</span>. Recalling that the variance is the expected squared distance from the mean, we can interpret the result as saying that we can expect the sample mean of a large sample to be closer to the population mean <span class="math inline">\(\mu\)</span> than that of a small sample. In short, more data gives more accuracy.</p>
+<!-- Add some simulation results here--from the abalone data set perhaps -->
+<p><a href="#tbl-xbardists" class="quarto-xref">Table&nbsp;<span>15.1</span></a> gives the mean and the variance of the sample mean <span class="math inline">\(\bar X_n\)</span> under a few different population distributions.</p>
+<div id="tbl-xbardists" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-xbardists-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;15.1: Expected value and variance of the sample mean for different population distributions.
+</figcaption>
+<div aria-describedby="tbl-xbardists-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(\mathbb{E}\bar X_n\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(\operatorname{Var}\bar X_n\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\mathcal{N}(\mu,\sigma^2)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mu\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\sigma^2/n\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\text{Bernoulli}(p)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(p\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(p(1-p)/n\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\text{Poisson}(\lambda)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\lambda\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\lambda/n\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\text{Exponential}(\lambda)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(1/\lambda\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(1/(\lambda^2n)\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>We next consider the <em>shape</em> of the distribution of the sample mean <span class="math inline">\(\bar X_n\)</span>.</p>
+</section>
+<section id="normal-population-case" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="normal-population-case"><span class="header-section-number">15.3</span> Normal population case</h2>
+<p>In the special situation when <span class="math inline">\(X_1,\dots,X_n\)</span> is a random sample such that the population distribution is a normal distribution, we find that the sample mean <span class="math inline">\(\bar X_n\)</span> will also have a normal distribution. In particular, we have the result:</p>
+<div id="prp-xbarnormalpop" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 15.2 (Distribution of sample mean when the population is normal)</strong></span> If <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}\mathcal{N}(\mu,\sigma^2)\)</span> then <span class="math inline">\(\bar X_n \sim \mathcal{N}(\mu,\sigma^2/n)\)</span>.</p>
+</div>
+<p>The above result agrees with the previous result, which states that if <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}\mathcal{N}(\mu,\sigma^2)\)</span> we will have <span class="math inline">\(\mathbb{E}\bar X_n = \mu\)</span> and <span class="math inline">\(\operatorname{Var}\bar X_n = \sigma^2/n\)</span>. But it says more: This result says that if we were to collect, say, 1000 random samples and compute <span class="math inline">\(\bar X_n\)</span> on each of these random samples, the histogram of these 1000 realizations of <span class="math inline">\(\bar X_n\)</span> would have the bell shape characteristic of the normal distribution, centered at mean <span class="math inline">\(\mu\)</span> and with spread governed by the variance <span class="math inline">\(\sigma^2/n\)</span>.</p>
+<p>In the case of a normal population distribution, the above result tells us that we can find probabilities concerning <span class="math inline">\(\bar X_n \sim \mathcal{N}(\mu,\sigma^2/n)\)</span> as follows: We may find <span class="math inline">\(P(a \leq \bar X_n \leq b)\)</span> by</p>
 <ol type="1">
-<li>With what probability will you make exactly <span class="math inline">\(3\)</span> out of the <span class="math inline">\(10\)</span> freethrows?<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
-<li>With what probability will you make <span class="math inline">\(6\)</span> or more freethrows?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+<li><p>Transforming <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> from the <span class="math inline">\(X\)</span> world to the <span class="math inline">\(Z\)</span> world (the number-of-standard-deviations world) by <span class="math inline">\(a \mapsto (a - \mu)/(\sigma/\sqrt{n})\)</span> and <span class="math inline">\(b \mapsto (b - \mu)/(\sigma/\sqrt{n})\)</span>.</p></li>
+<li><p>Using the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 22</span></a>) to look up <span class="math inline">\(\displaystyle P\Big( \frac{a-\mu}{\sigma/\sqrt{n}} \leq Z \leq \frac{b-\mu}{\sigma/\sqrt{n}} \Big)\)</span>, where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>.</p></li>
+</ol>
+<p>And if <span class="math inline">\(q\)</span> represents the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(\bar X_n\)</span>, we may find <span class="math inline">\(q\)</span> as follows:</p>
+<ol type="1">
+<li><p>Obtain the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(Z\sim \mathcal{N}(0,1)\)</span> from the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 22</span></a>) and denote this by <span class="math inline">\(q_Z\)</span>.</p></li>
+<li><p>Then back-transform <span class="math inline">\(q_Z\)</span> to <span class="math inline">\(q\)</span> with the formula <span class="math inline">\(\displaystyle q = \mu + \frac{\sigma}{\sqrt{n}} q_Z\)</span>.</p></li>
+</ol>
+<div id="exr-cellphone" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 15.1 (Cell phone talk time)</strong></span> Let <span class="math inline">\(X\)</span> be the number of minutes of cell-phone talk time in the last month of a randomly selected USC undergraduate. Suppose that the cell phone talk times of USC undergraduates are Normally distributed with mean <span class="math inline">\(\mu = 300\)</span> and variance <span class="math inline">\(\sigma^2 = 50^2\)</span>.</p>
+<ol type="1">
+<li>Find <span class="math inline">\(P(|X - 300| &gt; 50)\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li>Suppose you sampled <span class="math inline">\(4\)</span> USC undergraduates and took the average of their cell phone talk times. Let the average of the four talk times be <span class="math inline">\(\bar X\)</span>. What is <span class="math inline">\(P(|\bar X - 300| &gt; 50)\)</span>?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+<li>Sample <span class="math inline">\(9\)</span> USC undergraduates and let <span class="math inline">\(\bar X\)</span> be the mean of their cell phone talk times. What is <span class="math inline">\(P(|\bar X - 300| &gt; 50)\)</span>?<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
 </ol>
 </div>
-<p>One might call into question the assumption of independence in the example of shooting ten freethrows. One may “get on a roll” if one begins to make freethrows, by which we mean that making a freethrow in one trial increases the probability of making a freethrow in the next trial. We have not considered any such phenomena. Nor have we considered that one’s arms may grow tired from shooting freethrows, such that the probability of success <span class="math inline">\(p\)</span> does not remain constant across the trials.</p>
-<p>Note that when the number of Bernoulli trials <span class="math inline">\(n\)</span> is equal to one, the Binomial distribution becomes simply a Bernoulli distribution. That is <span class="math display">\[
-\text{Binomial}(1,p) = \text{Bernoulli}(p),
-\]</span> by which we mean that these two distributions have the same PMF.</p>
-</section>
-<section id="mean-and-variance-of-a-binomial-random-variable" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="mean-and-variance-of-a-binomial-random-variable"><span class="header-section-number">9.3</span> Mean and variance of a Binomial random variable</h2>
-<p>It will be useful for use to have expressions for the mean and the variance of a random variable <span class="math inline">\(X\)</span> having the <span class="math inline">\(\text{Binomial}(n,p)\)</span> distribution.</p>
-<div id="prp-binommeanvariance" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 9.2</strong></span> If <span class="math inline">\(X \sim \text{Binomial}(n,p)\)</span>, then <span class="math display">\[
-\begin{align*}
-\mathbb{E}X &amp;= np \\
-\operatorname{Var}X &amp;= np(1-p).
-\end{align*}
-\]</span></p>
-</div>
-<p>These expressions can be obtained by simplifying the two expressions <span class="math display">\[
-\begin{align*}
-\mathbb{E}X  &amp;= \sum_{x=0}^n x {n \choose x} p^x(1-p)^{n-x} \\
-\operatorname{Var}X  &amp;= \sum_{x=0}^n (x - \mathbb{E}X)^2 {n \choose x} p^x(1-p)^{n-x},
-\end{align*}
-\]</span> which takes a bit of work.</p>
-<p>Since the Bernoulli distribution is simply the Binomial distribution with <span class="math inline">\(n =1\)</span>, the above expressions also give us the mean and variance of Bernoulli random variables. If <span class="math inline">\(X \sim \text{Bernoulli}(p)\)</span>, then we have <span class="math display">\[
-\begin{align*}
-\mathbb{E}X &amp;= p \\
-\operatorname{Var}X &amp;= p(1-p).
-\end{align*}
-\]</span> These facts will be very useful to us later on.</p>
 
 
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>The <span class="math inline">\(10\)</span> freethrows are <span class="math inline">\(10\)</span> independent Bernoulli trials, so we can use the binomial distribution, calling a basket a success: <span class="math display">\[
-\begin{align*}
-P(X = 3)    &amp; = {10 \choose 3} (0.3)^3(1-0.3)^{10 - 3} \\
-       &amp; = 0.267.
-\end{align*}
-\]</span> We can tell R to compute this with the command <code>dbinom(x=3,size=10,prob=.3)</code>, which gives <span class="math inline">\(0.2668279\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p> We can compute this as <span class="math display">\[
-\begin{align*}
-P(X\geq 6) &amp;= 1- P(X \leq 5) \\
-&amp;= 1 - \sum_{i=0}^5 {10 \choose i} (0.3)^i(1-0.3)^{n-i} \\
-&amp;= 0.0473.
-\end{align*}
-\]</span> The reason we change <span class="math inline">\(P(X\geq 6)\)</span> to <span class="math inline">\(1- P(X \leq 5)\)</span> is that R has a function <code>pbinom()</code> to compute the cumulative probabilities of binomial random variables. We can compute the above with <code>1 - pbinom(q = 5,size=10,prob=.3)</code>, which gives <span class="math inline">\(0.047349\)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>First, let’s figure out what <span class="math inline">\(|X - 300| &gt; 50\)</span> means: it means that <span class="math inline">\(X\)</span> is more than <span class="math inline">\(50\)</span> away from the mean <span class="math inline">\(300\)</span>, so we want <span class="math inline">\(P(X &lt; 250 \text{ or }X &gt; 350)\)</span>. For the values <span class="math inline">\(250\)</span> and <span class="math inline">\(350\)</span> we compute <span class="math inline">\(Z\)</span>, the number of standard deviations from the mean: <span class="math display">\[
+    Z = \frac{X - \mu}{\sigma} \quad \text{ gives }\quad  \frac{250 - 300}{50} = - 1 \quad \text{ and } \quad \frac{350 - 300}{50} = 1.
+    \]</span> We get from the <span class="math inline">\(Z\)</span> table that <span class="math inline">\(P(Z &lt; -1) = (Z &gt; 1) = 0.1587\)</span>, so the answer is <span class="math inline">\(2(0.1587) = 0.3174\)</span>. <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p> Like before, we interpret this as <span class="math inline">\(P(\bar X &lt;  250 \text{ or } \bar X &gt; 350 )\)</span>. We again compute the number of standard deviations of <span class="math inline">\(250\)</span> and <span class="math inline">\(350\)</span> from the mean, but this time the standard deviation of our random variable is <span class="math inline">\(\sigma/\sqrt{n}\)</span>. The variance of <span class="math inline">\(\bar X\)</span> is <span class="math inline">\(\sigma^2/n\)</span>, so our <span class="math inline">\(Z\)</span> is going to be different: <span class="math display">\[
+    Z = \frac{\bar X - \mu}{\sigma/\sqrt{n}} \quad \text{ gives }\quad \frac{250 - 300}{50/2} = -2 \quad \text{ and } \quad \frac{350 - 300}{50/2} = 2.
+    \]</span> We get from the <span class="math inline">\(Z\)</span> table that <span class="math inline">\(P(Z &lt; -2) = P( Z &gt; 2 ) = 0.0228\)</span>, so the answer is <span class="math inline">\(2(0.0228) = 0.0456\)</span>. <a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p> With a sample size of <span class="math inline">\(n=9\)</span>, the standard deviation of the mean <span class="math inline">\(\bar X\)</span> is smaller—its variability around the true mean decreases as the sample size grows. Now <span class="math display">\[
+    Z = \frac{\bar X - \mu}{\sigma/\sqrt{n}} \quad \text{ gives }\quad \frac{250 - 300}{50/3} = -3 \quad \text{ and } \quad \frac{350 - 300}{50/3} = 3.
+  \]</span> We get from the <span class="math inline">\(Z\)</span> table that <span class="math inline">\(P(Z &lt; -3) = P( Z &gt; 3 ) = 0.0013\)</span>, so the answer is <span class="math inline">\(2(0.0013) = 0.0026\)</span>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -1013,13 +992,13 @@ P(X\geq 6) &amp;= 1- P(X \leq 5) \\
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./discrete_rvs.html" class="pagination-link" aria-label="Discrete random variables">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Discrete random variables</span></span>
+      <a href="./poisson_exp_dist.html" class="pagination-link" aria-label="Poisson and exponential distributions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Poisson and exponential distributions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./hypergeometric_distribution.html" class="pagination-link" aria-label="Hypergeometric distribution">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypergeometric distribution</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./normal_qq_plot.html" class="pagination-link" aria-label="Normal quantile-quantile plot">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>17&nbsp; Multiple linear regression – Statistical Methods</title>
+<title>20&nbsp; Multiple linear regression I – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -125,7 +125,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./simple_linear_regression.html">Part II</a></li><li class="breadcrumb-item"><a href="./multiple_linear_regression.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Multiple linear regression</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./simple_linear_regression.html">Part II</a></li><li class="breadcrumb-item"><a href="./multiple_linear_regression.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -251,8 +251,26 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./mean_of_rs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The mean of a random sample</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./central_limit_theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./clt_for_proportion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The sample proportion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -269,13 +287,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Multiple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
   </div>
 </li>
       </ul>
@@ -292,7 +310,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -309,7 +327,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
   </div>
 </li>
       </ul>
@@ -331,9 +349,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./simple_linear_regression.html">Part II</a></li><li class="breadcrumb-item"><a href="./multiple_linear_regression.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Multiple linear regression</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./simple_linear_regression.html">Part II</a></li><li class="breadcrumb-item"><a href="./multiple_linear_regression.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-multiple_linear_regression" class="quarto-section-identifier"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Multiple linear regression</span></span></h1>
+<h1 class="title"><span id="sec-multiple_linear_regression" class="quarto-section-identifier"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></h1>
 </div>
 
 
@@ -360,7 +378,29 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>Coming soon!</p>
+<p>The simple linear regression model provided a way to study the relationship between a response <span class="math inline">\(Y\)</span> and a covariate <span class="math inline">\(x\)</span>, when the relationship was linear. Here we extend the simple linear regression model to a model which can include more than just a single covariate. We call it the <em>multiple linear regression model</em>.</p>
+<p>Before introducing the model, it will be helpful to spend a moment on <em>vectors</em>. We can think of a <em>vector</em> as a list of numbers, arranged in a column. We will denote vectors with bold-faced lower-case letters, like <span class="math inline">\(\mathbf{x}\)</span>, and we denote the entries of a vector in regular type-face with subscripts. For example, if <span class="math inline">\(\mathbf{x}\)</span> is a column vector with <span class="math inline">\(p\)</span> entries, we can write <span class="math display">\[
+\mathbf{x}= \left(\begin{array}{c}
+x_1\\
+x_2\\
+\vdots\\
+x_p\end{array}\right).
+\]</span> If <span class="math inline">\(\mathbf{x}\)</span> has <span class="math inline">\(p\)</span> real-numbered entries in it, we write <span class="math inline">\(\mathbf{x}\in \mathbb{R}^p\)</span>. Here the entries of <span class="math inline">\(\mathbf{x}\)</span> serve as coordinates in <span class="math inline">\(p\)</span>-dimensional Euclidean space. <em>Transposing</em> a vector turns the column into a row; we denote the transpose of the vector <span class="math inline">\(\mathbf{x}\)</span> as <span class="math inline">\(\mathbf{x}^\top\)</span>. Thus <span class="math display">\[
+\mathbf{x}^\top = (x_1,x_2, \dots,x_p).
+\]</span> And if we transpose a row it becomes a column, so <span class="math inline">\(\mathbf{x}= (x_1,x_2,\dots,x_p)^\top\)</span>.</p>
+<p>In the multiple linear regression model, we no longer have a single covariate <span class="math inline">\(x\)</span> but a vector <span class="math inline">\(\mathbf{x}\)</span> containing the values of several covariates</p>
+<div id="def-mlr" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 20.1 (Multiple linear regression model)</strong></span> For data pairs <span class="math inline">\((\mathbf{x}_1,Y_1),\dots,(\mathbf{x}_n,Y_n)\)</span> where <span class="math inline">\(\mathbf{x}_i = (x_{i1},\dots,x_{ip})^\top\)</span>, the multiple linear regression model assumes <span class="math display">\[
+Y_i = \beta_0 + x_{i1}\beta_1 + \dots + x_{ip}\beta_p + \varepsilon_i
+\]</span> for <span class="math inline">\(i=1,\dots,n\)</span>, where</p>
+<ul>
+<li><span class="math inline">\(\mathbf{x}_1,\dots,\mathbf{x}_n\)</span> are vectors in <span class="math inline">\(\mathbb{R}^p\)</span> of <em>covariate</em> or <em>predictor</em> values.</li>
+<li><span class="math inline">\(Y_1,\dots,Y_n\)</span> are the <em>response</em> values</li>
+<li><span class="math inline">\(\beta_0, \beta_1, \dots, \beta_p\)</span> are the <em>regression coefficients</em>.</li>
+<li><span class="math inline">\(\varepsilon_1,\dots,\varepsilon_n\)</span> are iid <span class="math inline">\(\text{Normal}(0,\sigma^2)\)</span> <em>error terms</em>.</li>
+<li><span class="math inline">\(\sigma^2\)</span> is the <em>error term variance</em>.</li>
+</ul>
+</div>
 
 
 
@@ -768,12 +808,12 @@ window.Quarto = {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./simple_linear_regression.html" class="pagination-link" aria-label="Simple linear regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./logreg.html" class="pagination-link" aria-label="Logistic regression">
-        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Logistic regression</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Logistic regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
