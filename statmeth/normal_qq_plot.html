@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>16&nbsp; Normal quantile-quantile plot – Statistical Methods</title>
+<title>17&nbsp; Normal quantile-quantile plot – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +67,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./central_limit_theorem.html" rel="next">
-<link href="./mean_of_rs.html" rel="prev">
+<link href="./variance_of_rs.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -125,7 +160,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./normal_qq_plot.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./normal_qq_plot.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -257,26 +292,32 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./variance_of_rs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The sample variance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./normal_qq_plot.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./central_limit_theorem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./clt_for_proportion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">The sample proportion</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The sample proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -293,13 +334,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
   </div>
 </li>
       </ul>
@@ -316,7 +357,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -333,7 +374,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
   </div>
 </li>
       </ul>
@@ -355,9 +396,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./normal_qq_plot.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./normal_qq_plot.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-normal_qq_plot" class="quarto-section-identifier"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></span></h1>
+<h1 class="title"><span id="sec-normal_qq_plot" class="quarto-section-identifier"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></span></h1>
 </div>
 
 
@@ -384,7 +425,67 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>Coming soon.</p>
+<p>Here we continue working with the <em>random sample</em> of <a href="mean_of_rs.html#def-randomsample" class="quarto-xref">Definition&nbsp;<span>15.1</span></a>. That is, we consider a set of random variables <span class="math inline">\(X_1,\dots,X_n\)</span> all drawn (independently) from the same distribution, say <span class="math inline">\(F\)</span>. In <a href="mean_of_rs.html" class="quarto-xref"><span>Chapter 15</span></a> we paid special attention to the behavior of the mean <span class="math inline">\(\bar X_n\)</span> of a random sample, where this is the average of the values. <a href="mean_of_rs.html#prp-xbarnormalpop" class="quarto-xref">Proposition&nbsp;<span>15.2</span></a> stated that if the random sample is drawn from a normal distribution, then the sample mean will also be normally distributed.</p>
+<p>It will turn out to be very important for us to know whether the sample mean in a given situation will behave like a normally distributed random variable. Here, we will learn about a tool for assessing whether the random sample may have been drawn from a normal distribution. If, according to this assessment, the sample <em>does</em> appear to have come from a normal population, then we can treat the sample mean as having a normal distribution; if not, then we might not be able to do so.</p>
+<p>The tool referred to is called a quantile-quantile plot. A quantile-quantile plot can be used to check whether a random sample may have been drawn from a particular distribution one has in mind. Of interest to us will be whether the random sample may have been drawn from a normal population, so we will use a <em>normal quantile-quantile</em> plot—normal QQ plot for short.</p>
+<p>The basic idea is to compare quantiles of the data distribution with the corresponding quantiles of a normal distribution to see if they are close. By the data distribution, we mean the probability distribution which puts probability <span class="math inline">\(1/n\)</span> on each of the values <span class="math inline">\(X_1,\dots,X_n\)</span>. Now, to which normal distribution do we compare quantiles of the data distribution? We will use the normal distribution having mean equal to the sample mean <span class="math inline">\(\bar X_n\)</span> and standard deviation equal to the sample standard deviation <span class="math inline">\(S_n\)</span>, as this is the normal distribution which is “closest” in some sense to the data distribution. Next, which quantiles will we compare? We could, for example, compare the median and the 25th and 75th percentiles of the data distribution and the <span class="math inline">\(\mathcal{N}(\bar X_n,S_n^2)\)</span> distribution to see if they are close—really we can choose any set of quantiles we want. It is a convention, however, to use a number of quantiles equal to the sample size.</p>
+<p>Specifically, for the data, we consider the quantiles <span class="math inline">\(1/n,\dots,(n-1)/n,1\)</span>, which correspond to the values <span class="math inline">\(X_1,\dots,X_n\)</span> when these are sorted in increasing order. We denote the ordered sample values as <span class="math inline">\(X_{(1)} \leq \dots \leq X_{(n)}\)</span> (these are called the <em>order statistics</em> of the random sample). The idea is to compare the values of <span class="math inline">\(X_{(1)} \leq \dots \leq X_{(n)}\)</span>, which are the quantiles <span class="math inline">\(1/n,\dots,(n-1)/n,1\)</span> of the data distribution, respectively, with the corresponding quantiles of the <span class="math inline">\(\mathcal{N}(\bar X_n,S_n^2)\)</span> distribution. However, since the latter distribution is a continuous distribution, the largest quantile—the 100th percentile—is equal to infinity. As an ad-hoc way to comparing the <span class="math inline">\(100\%\)</span> data percentile <span class="math inline">\(X_{(n)}\)</span> with the <span class="math inline">\(100\%\)</span> population percentile, which is positive infinity, we compare the values of <span class="math inline">\(X_{(1)} \leq \dots \leq X_{(n)}\)</span> to adjusted quantiles <span class="math inline">\((1 - 0.5)/n,\dots (n - 0.5)/n\)</span> of the <span class="math inline">\(\mathcal{N}(\bar X_n,S_n^2)\)</span> distribution, where the subtraction of <span class="math inline">\(0.5\)</span> can be seen as a kind of “continuity correction”.</p>
+<p>The normal quantile-quantile plot is a visual comparison of these quantiles. Letting <span class="math inline">\(z_{(i)}\)</span> denote the <span class="math inline">\((i-0.5)/n\)</span> quantile of the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution for <span class="math inline">\(i=1,\dots,n\)</span>, we construct the normal quantile-quantile plot by making a scatterplot of the points <span id="eq-qqnormpoints"><span class="math display">\[
+(X_{(i)},\bar X_n + S_n z_{(i)}), \quad i=1,\dots,n.
+\tag{17.1}\]</span></span></p>
+<p>If the sample was drawn from a normal distribution, these points should fall close to the line <span class="math inline">\(y = x\)</span>. That is, the quantiles of the data distribution should closely match the corresponding quantiles of the normal distribution with mean and standard deviation equal to the sample mean and sample standard deviation.</p>
+<p><a href="#fig-qqpinewood" class="quarto-xref">Figure&nbsp;<span>17.1</span></a> shows a normal quantile-quantile plots for the pinewood derby finishing times from <a href="mean_of_rs.html#exm-pinewood" class="quarto-xref">Example&nbsp;<span>15.1</span></a>. The left panel plots the point in <a href="#eq-qqnormpoints" class="quarto-xref">Equation&nbsp;<span>17.1</span></a>, whereas the right panel shows as scatterplot of the points <span id="eq-qqnormpointsdefault"><span class="math display">\[
+(X_{(i)},z_{(i)}), \quad i=1,\dots,n,
+\tag{17.2}\]</span></span> which is the plot produced by the <code>qqnorm()</code> function in R. This version of the normal quantile-quantile plot plots the data quantiles against the corresponding quantiles of the <em>standard</em> normal distribution, that is the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution. Here, we simply look to see if the points lie along a straight line (though it is no longer the <span class="math inline">\(y=x\)</span> line).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ft <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.5692</span>,<span class="fl">2.5936</span>,<span class="fl">2.6190</span>,<span class="fl">2.6320</span>,<span class="fl">2.6345</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.6602</span>,<span class="fl">2.6708</span>,<span class="fl">2.6804</span>,<span class="fl">2.6850</span>,<span class="fl">2.7049</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.7111</span>,<span class="fl">2.8034</span>,<span class="fl">2.8300</span>,<span class="fl">3.0639</span>,<span class="fl">3.1489</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">3.2411</span>,<span class="fl">3.5701</span>,<span class="fl">3.9686</span>,<span class="fl">4.1220</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(ft) </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sn <span class="ot">&lt;-</span> <span class="fu">sd</span>(ft)     </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(ft)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> (<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>) <span class="sc">/</span> n</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(u)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xbar <span class="sc">+</span> sn<span class="sc">*</span>z,<span class="fu">sort</span>(ft))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># default normal quantile-quantile plot in R</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(ft)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-qqpinewood" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-qqpinewood-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="normal_qq_plot_files/figure-html/fig-qqpinewood-1.png" class="img-fluid figure-img" width="1400">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qqpinewood-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17.1: Normal quantile-quantile plots for the pinewood derby finishing times.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>From the normal quantile-quantile plots, it is apparent that the quantiles of the pinewood derby finishing times are not close to what they would be if the sample had been drawn from a normal distribution, as the points do not lie along a straight line. The lower quantiles of the data distribution are lie above the line, indicating that they are greater than they would be if the sample had been drawn from a normal distribution, and the upper quantiles of the data are again greater. This is indicative of right-skewness. We see this right-skewness appear also in the histogram of the pinewood derby finishing times in <a href="#fig-histpinewood" class="quarto-xref">Figure&nbsp;<span>17.2</span></a> .</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ft)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-histpinewood" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-histpinewood-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="normal_qq_plot_files/figure-html/fig-histpinewood-1.png" class="img-fluid figure-img" width="1400">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-histpinewood-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17.2: Histogram of pinewood derby finishing times.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 
 
 
@@ -791,13 +892,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./mean_of_rs.html" class="pagination-link" aria-label="The mean of a random sample">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The mean of a random sample</span></span>
+      <a href="./variance_of_rs.html" class="pagination-link" aria-label="The sample variance">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The sample variance</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./central_limit_theorem.html" class="pagination-link" aria-label="The central limit theorem">
-        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

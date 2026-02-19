@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Karl Gregory">
 
-<title>References – Statistical Methods</title>
+<title>16&nbsp; The sample variance – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +21,42 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,7 +66,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./z_table.html" rel="prev">
+<link href="./normal_qq_plot.html" rel="next">
+<link href="./mean_of_rs.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -142,7 +160,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./variance_of_rs.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The sample variance</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -175,13 +193,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Part I</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./set_basics.html" class="sidebar-item-text sidebar-link">
@@ -274,7 +292,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./variance_of_rs.html" class="sidebar-item-text sidebar-link">
+  <a href="./variance_of_rs.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The sample variance</span></span></a>
   </div>
 </li>
@@ -363,7 +381,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -378,15 +396,21 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./variance_of_rs.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The sample variance</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span id="sec-variance_of_rs" class="quarto-section-identifier"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The sample variance</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Karl Gregory </p>
+          </div>
+  </div>
     
   
     
@@ -397,18 +421,42 @@ window.Quarto = {
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-abalone" class="csl-entry" role="listitem">
-Nash, Sellers, Warwick, and Wes Ford. 1994.
-<span>“<span>Abalone</span>.”</span> UCI Machine Learning Repository.
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
 </div>
-<div id="ref-santos2004beryllium" class="csl-entry" role="listitem">
-Santos, Nuno C, G Israelian, RJ Garcı́a López, M Mayor, R Rebolo, S
-Randich, A Ecuvillon, and C Domı́nguez Cerdeña. 2004. <span>“Are
-Beryllium Abundances Anomalous in Stars with Giant Planets?”</span>
-<em>Astronomy &amp; Astrophysics</em> 427 (3): 1085–96.
+<p>Apart from the mean <span class="math inline">\(\bar X_n\)</span> of a random sample, another quantity statisticians often compute is the <em>sample variance</em>, which is a description of how spread out the values are.</p>
+<div id="def-samplevariance" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 16.1 (Sample variance)</strong></span> For a random sample <span class="math inline">\(X_1,\dots,X_n\)</span> the <em>sample variance</em> is defined as <span class="math display">\[
+S^2_n = \frac{1}{n-1}\sum_{i=1}^n(X_i - \bar X_n)^2.
+\]</span> Moreover <span class="math inline">\(S_n = \sqrt{S_n^2}\)</span> is called the <em>sample standard deviation</em>.</p>
 </div>
+<p>We can think of the sample variance as the average squared deviation of the values in the sample around the sample mean. One sees that <span class="math inline">\(S_n^2\)</span> is not a proper average, though, because of division by <span class="math inline">\(n-1\)</span> instead of <span class="math inline">\(n\)</span>. We will later on give reasons for why the sample variance is defined in this way.</p>
+<p>Recall the pinewood derby car data in <a href="mean_of_rs.html#exm-pinewood" class="quarto-xref">Example&nbsp;<span>15.1</span></a>. The code below reads in the data and computes the sample mean <span class="math inline">\(\bar X_n\)</span>, the sample variance <span class="math inline">\(S_n^2\)</span>, and the sample standard deviation <span class="math inline">\(S_n\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ft <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.5692</span>,<span class="fl">2.5936</span>,<span class="fl">2.6190</span>,<span class="fl">2.6320</span>,<span class="fl">2.6345</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.6602</span>,<span class="fl">2.6708</span>,<span class="fl">2.6804</span>,<span class="fl">2.6850</span>,<span class="fl">2.7049</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.7111</span>,<span class="fl">2.8034</span>,<span class="fl">2.8300</span>,<span class="fl">3.0639</span>,<span class="fl">3.1489</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">3.2411</span>,<span class="fl">3.5701</span>,<span class="fl">3.9686</span>,<span class="fl">4.1220</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(ft) <span class="co"># sample mean</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sn2 <span class="ot">&lt;-</span> <span class="fu">var</span>(ft)   <span class="co"># sample variance</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>sn <span class="ot">&lt;-</span> <span class="fu">sd</span>(ft)     <span class="co"># sample standard deviation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>We obtain <span class="math inline">\(\bar X_n = 2.9425632\)</span>, <span class="math inline">\(S_n^2 = 0.2206676\)</span>, and <span class="math inline">\(S_n = 0.4697527\)</span>. To report these numbers properly, one really should attach units to them. The values <span class="math inline">\(X_1,\dots,X_n\)</span> in the random sample are measured in seconds. The sample mean <span class="math inline">\(\bar X_n\)</span> is therefore also in seconds; however the sample variance, since it is an average of squared deviations from the mean, should be reported as “seconds squared”. The sample standard deviation, since it is the square root of the sample variance, can be reported in the original units. So the sample standard deviation for the pinewood derby car finishing times is <span class="math inline">\(0.4697527\)</span> seconds.</p>
+<p>Now, the sample variance and sample standard deviation are themselves random variables, as they are computed on the set of random variables <span class="math inline">\(X_1,\dots,X_n\)</span> comprising the random sample. They therefore have probability distributions of their own. We first consider the expected value the sample variance <span class="math inline">\(S_n^2\)</span>.</p>
+<div id="prp-meansamplevariance" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 16.1 (Expected value of the sample variance)</strong></span> If <span class="math inline">\(X_1,\dots,X_n\)</span> is a random sample from a distribution with variance <span class="math inline">\(\sigma^2\)</span>, then <span class="math inline">\(\mathbb{E}S_n^2 = \sigma^2\)</span>.</p>
+</div>
+<p>We can interpret the above result as saying that if we were to collect a large number, say 1000, of random samples from the same distribution and compute on each one of them the sample variance <span class="math inline">\(S^2_n\)</span>, then the average of all 1000 of these sample variance values should be close to <span class="math inline">\(\sigma^2\)</span>. That is, the <em>sampling distribution</em> of <span class="math inline">\(S_n^2\)</span> is centered at the population variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>It turns out that the division by <span class="math inline">\(n-1\)</span> instead of <span class="math inline">\(n\)</span> in the definition of the sample variance is necessary for the sampling distribution of <span class="math inline">\(S_n^2\)</span> to be centered at <span class="math inline">\(\sigma^2\)</span>. If we divide by <span class="math inline">\(n\)</span> instead of <span class="math inline">\(n-1\)</span>, our the sampling distribution of <span class="math inline">\(S_n^2\)</span> will have a mean somewhat lower than the population variance <span class="math inline">\(\sigma^2\)</span>. Given that <span class="math inline">\(S_n^2\)</span> is defined such that <span class="math inline">\(\mathbb{E}S_n^2 = \sigma^2\)</span>, it will be natural to take the value of <span class="math inline">\(S_n^2\)</span> as a guess for the value of <span class="math inline">\(\sigma^2\)</span> when the latter is unknown. That is, we will use <span class="math inline">\(S_n^2\)</span> as an <em>estimator</em> for <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>It may be interesting to compute the proportion of the pinewood derby finishing times within one, two, and three sample standard deviations of the sample mean, which may tell us something about whether these data arose from a normal distribution.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">mean</span>((ft <span class="sc">&gt;=</span> xbar <span class="sc">-</span> sn) <span class="sc">&amp;</span> (ft <span class="sc">&lt;=</span> xbar <span class="sc">+</span> sn))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">mean</span>((ft <span class="sc">&gt;=</span> xbar <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>sn) <span class="sc">&amp;</span> (ft <span class="sc">&lt;=</span> xbar <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>sn))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">mean</span>((ft <span class="sc">&gt;=</span> xbar <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>sn) <span class="sc">&amp;</span> (ft <span class="sc">&lt;=</span> xbar <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>sn))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>We find <span class="math inline">\(84.2105263\%\)</span> of the finishing times lie within one sample standard deviations of <span class="math inline">\(\bar X_n\)</span>, <span class="math inline">\(89.4736842\%\)</span> lie withing two sample standard deviations of <span class="math inline">\(\bar X_n\)</span>, and <span class="math inline">\(100\%\)</span> lie within three sample standard deviations of <span class="math inline">\(\bar X_n\)</span>.</p>
+<p>We will have more to say about the distribution of the sample variance <span class="math inline">\(S_n^2\)</span> later on. Specifically, we will learn that if we scale it as <span class="math inline">\((n-1)S_n^2/\sigma^2\)</span>, this will have a distribution called a <em>chi-squared distribution</em>.</p>
 
 
 
@@ -815,11 +863,14 @@ Beryllium Abundances Anomalous in Stars with Giant Planets?”</span>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./z_table.html" class="pagination-link" aria-label="$Z$-table">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span>
+      <a href="./mean_of_rs.html" class="pagination-link" aria-label="The mean of a random sample">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The mean of a random sample</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./normal_qq_plot.html" class="pagination-link" aria-label="Normal quantile-quantile plot">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

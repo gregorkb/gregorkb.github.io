@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./normal_qq_plot.html" rel="next">
+<link href="./variance_of_rs.html" rel="next">
 <link href="./poisson_exp_dist.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -292,26 +292,32 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./variance_of_rs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The sample variance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./normal_qq_plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./central_limit_theorem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./clt_for_proportion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">The sample proportion</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The sample proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -328,13 +334,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
   </div>
 </li>
       </ul>
@@ -351,7 +357,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -368,7 +374,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
   </div>
 </li>
       </ul>
@@ -496,12 +502,12 @@ Figure&nbsp;15.1: PMF giving probability mass <span class="math inline">\(1/n\)<
 </div>
 <p>The sample mean <span class="math inline">\(\bar X_n\)</span> will function as our best guess of the <em>population mean</em>, by which we refer to the mean of the <em>population distribution</em>, the distribution from which the random sample was drawn. We will denote the population mean by <span class="math inline">\(\mu\)</span>, noting that, since all of the random variables <span class="math inline">\(X_1,\dots,X_n\)</span> have the same distribution, we have <span class="math inline">\(\mathbb{E}X_i = \mu\)</span> for all <span class="math inline">\(i=1,\dots,n\)</span>.</p>
 <p>So, we will use the value of <span class="math inline">\(\bar X_n\)</span> to <em>learn</em> about the value of <span class="math inline">\(\mu\)</span>, which is unknown to us. In order to learn anything from the value of <span class="math inline">\(\bar X_n\)</span>, we must acknowledge that <span class="math inline">\(\bar X_n\)</span> is itself a random variable; that is, it can take more than one possible value, and, while the range of possible values it can take is known, we cannot know in advance which value it will take. So if we were, for example, to attend another pinewood derby rally featuring cars decorated by similarly-aged girls and record the finishing times, we would observe a value of <span class="math inline">\(\bar X_n\)</span> distinct from the value computed on the data at hand. Indeed, if we were to attend a thousand such pinewood derby car rallies, we likely never observe the same average finishing time twice; we would instead have 1000 distinct values of <span class="math inline">\(\bar X_n\)</span>. How then, one may wonder, can we possibly learn about the population mean <span class="math inline">\(\mu\)</span> when the value of <span class="math inline">\(\bar X_n\)</span> is different for every random sample we observe?</p>
-<p>To answer this question, we run a thought experiment. We imagine attending, say, 1000 pinewood derby rallies and computing from each one a sample mean. Then we imagine that we make a histogram of these 1000 sample means, which would show us an estimate of the probability density function (PDF) of <span class="math inline">\(\bar X_n\)</span>. Now we ask ourselves: What will this distribution look like? Firstly, around what value is this distribution centered? Secondly, how spread out are the values in this distribution? Thirdly, we might also ask what the shape of this distribution would be.</p>
+<p>To answer this question, we run a thought experiment. We imagine attending, say, 1000 pinewood derby rallies and computing from each one a sample mean. Then we imagine that we make a histogram of these 1000 sample means, which would show us an estimate of the probability density function (PDF) of <span class="math inline">\(\bar X_n\)</span>. We refer to this imaginary distribution of <span class="math inline">\(\bar X_n\)</span> over repeated random sampling as the <em>sampling distribution</em> of <span class="math inline">\(\bar X_n\)</span>. Now we ask ourselves: What will this distribution look like? Firstly, around what value is this distribution centered? Secondly, how spread out are the values in this distribution? Thirdly, we might also ask what the shape of this distribution would be.</p>
 <p>In answer to the first and second inquiries—where the distribution of <span class="math inline">\(\bar X_n\)</span> is centered and how spread out it is—we have the following result:</p>
 <div id="prp-meanvarxbar" class="theorem proposition">
 <p><span class="theorem-title"><strong>Proposition 15.1 (Mean and variance of the sample mean)</strong></span> Let <span class="math inline">\(X_1,\dots,X_n\)</span> be a random sample from a distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Then we have <span class="math inline">\(\mathbb{E}\bar X_n = \mu\)</span> and <span class="math inline">\(\operatorname{Var}\bar X_n = \sigma^2/n\)</span>.</p>
 </div>
-<p>The result tells us that the distribution of <span class="math inline">\(\bar X_n\)</span> is centered at the population mean <span class="math inline">\(\mu\)</span> and that its spread is governed by the variance <span class="math inline">\(\sigma^2\)</span> of the population distribution as well as the size of the sample. We see that a larger sample size <span class="math inline">\(n\)</span> leads to a smaller variance in <span class="math inline">\(\bar X_n\)</span>. Recalling that the variance is the expected squared distance from the mean, we can interpret the result as saying that we can expect the sample mean of a large sample to be closer to the population mean <span class="math inline">\(\mu\)</span> than that of a small sample. In short, more data gives more accuracy.</p>
+<p>The result tells us that the sampling distribution of <span class="math inline">\(\bar X_n\)</span> is centered at the population mean <span class="math inline">\(\mu\)</span> and that its spread is governed by the variance <span class="math inline">\(\sigma^2\)</span> of the population distribution as well as the size of the sample. We see that a larger sample size <span class="math inline">\(n\)</span> leads to a smaller variance in <span class="math inline">\(\bar X_n\)</span>. Recalling that the variance is the expected squared distance from the mean, we can interpret the result as saying that we can expect the sample mean of a large sample to be closer to the population mean <span class="math inline">\(\mu\)</span> than that of a small sample. In short, more data gives more accuracy.</p>
 <!-- Add some simulation results here--from the abalone data set perhaps -->
 <p><a href="#tbl-xbardists" class="quarto-xref">Table&nbsp;<span>15.1</span></a> gives the mean and the variance of the sample mean <span class="math inline">\(\bar X_n\)</span> under a few different population distributions.</p>
 <div id="tbl-xbardists" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -556,11 +562,11 @@ Table&nbsp;15.1: Expected value and variance of the sample mean for different po
 <p>In the case of a normal population distribution, the above result tells us that we can find probabilities concerning <span class="math inline">\(\bar X_n \sim \mathcal{N}(\mu,\sigma^2/n)\)</span> as follows: We may find <span class="math inline">\(P(a \leq \bar X_n \leq b)\)</span> by</p>
 <ol type="1">
 <li><p>Transforming <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> from the <span class="math inline">\(X\)</span> world to the <span class="math inline">\(Z\)</span> world (the number-of-standard-deviations world) by <span class="math inline">\(a \mapsto (a - \mu)/(\sigma/\sqrt{n})\)</span> and <span class="math inline">\(b \mapsto (b - \mu)/(\sigma/\sqrt{n})\)</span>.</p></li>
-<li><p>Using the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 23</span></a>) to look up <span class="math inline">\(\displaystyle P\Big( \frac{a-\mu}{\sigma/\sqrt{n}} \leq Z \leq \frac{b-\mu}{\sigma/\sqrt{n}} \Big)\)</span>, where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>.</p></li>
+<li><p>Using the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 24</span></a>) to look up <span class="math inline">\(\displaystyle P\Big( \frac{a-\mu}{\sigma/\sqrt{n}} \leq Z \leq \frac{b-\mu}{\sigma/\sqrt{n}} \Big)\)</span>, where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>.</p></li>
 </ol>
 <p>And if <span class="math inline">\(q\)</span> represents the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(\bar X_n\)</span>, we may find <span class="math inline">\(q\)</span> as follows:</p>
 <ol type="1">
-<li><p>Obtain the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(Z\sim \mathcal{N}(0,1)\)</span> from the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 23</span></a>) and denote this by <span class="math inline">\(q_Z\)</span>.</p></li>
+<li><p>Obtain the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(Z\sim \mathcal{N}(0,1)\)</span> from the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 24</span></a>) and denote this by <span class="math inline">\(q_Z\)</span>.</p></li>
 <li><p>Then back-transform <span class="math inline">\(q_Z\)</span> to <span class="math inline">\(q\)</span> with the formula <span class="math inline">\(\displaystyle q = \mu + \frac{\sigma}{\sqrt{n}} q_Z\)</span>.</p></li>
 </ol>
 <div id="exr-cellphone" class="theorem exercise">
@@ -997,8 +1003,8 @@ Table&nbsp;15.1: Expected value and variance of the sample mean for different po
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./normal_qq_plot.html" class="pagination-link" aria-label="Normal quantile-quantile plot">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./variance_of_rs.html" class="pagination-link" aria-label="The sample variance">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The sample variance</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
