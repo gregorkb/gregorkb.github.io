@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>25&nbsp; Z-table – Statistical Methods</title>
+<title>17&nbsp; Histogram and boxplot – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,8 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./logreg.html" rel="prev">
+<link href="./normal_qq_plot.html" rel="next">
+<link href="./variance_of_rs.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -160,7 +160,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./z_table.html">Appendices</a></li><li class="breadcrumb-item"><a href="./z_table.html"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./hist_box.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Histogram and boxplot</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -193,13 +193,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Part I</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./set_basics.html" class="sidebar-item-text sidebar-link">
@@ -298,8 +298,8 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hist.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Histogram</span></span></a>
+  <a href="./hist_box.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Histogram and boxplot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -370,16 +370,16 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./z_table.html" class="sidebar-item-text sidebar-link active">
+  <a href="./z_table.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
   </div>
 </li>
@@ -402,9 +402,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./z_table.html">Appendices</a></li><li class="breadcrumb-item"><a href="./z_table.html"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./hist_box.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Histogram and boxplot</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-z_table" class="quarto-section-identifier"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></h1>
+<h1 class="title"><span id="sec-hist_box" class="quarto-section-identifier"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Histogram and boxplot</span></span></h1>
 </div>
 
 
@@ -431,28 +431,82 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>In the table below, add the row and column label together to obtain <span class="math inline">\(z\)</span>. Then the table gives <span class="math inline">\(P(0 \leq Z \leq z)\)</span> where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>. For example, we obtain <span class="math inline">\(P(0 \leq Z \leq 1.26) = 0.3962\)</span> from the table, which is depicted in <a href="#fig-ztable_illus" class="quarto-xref">Figure&nbsp;<span>25.1</span></a>.</p>
+<p>Now is a good time to introduce a couple of plots which are often used to visualize the distribution of the values in a random sample, in particular when the sample consists of continuous random variables. By “distribution”, we can think of the probability distribution which puts probability <span class="math inline">\(1/n\)</span> on each of the values <span class="math inline">\(X_1,\dots,X_n\)</span> in a random sample. Concerning this distribution, we have already discussed the sample mean <span class="math inline">\(\bar X_n\)</span> and the sample variance <span class="math inline">\(S_n^2\)</span> as descriptors, respectively, of its center and spread. We now wish to describe the shape of the distribution, but visually rather than by reporting the values of sample statistics. When we say we want to describe the “shape” of the distribution, what we mean is that we would like to get from the data an idea of what the probability density function (PDF) of the population distribution looks like.</p>
+<p>Recalling the pinewood derby finishing times of <a href="mean_of_rs.html#exm-pinewood" class="quarto-xref">Example&nbsp;<span>15.1</span></a>, we have already seen one visualization of the distribution of the values in the sample. This was in <a href="mean_of_rs.html#fig-samplemean" class="quarto-xref">Figure&nbsp;<span>15.1</span></a>, which depicts the probability mass function (PMF) that assigns probability <span class="math inline">\(1/n\)</span> to each value <span class="math inline">\(X_1,\dots,X_n\)</span> in the sample. This visualization is helpful to an extent, but if we have a large data set, such a plot will become so crowded with points that one cannot get a clear idea from it about the shape of the distribution. A plot called a <em>histogram</em> provides an estimate of the probability density function (PDF) belonging to the population distribution. The histogram is a function constructed from the values <span class="math inline">\(X_1,\dots,X_n\)</span> by i) partitioning the range of the sample values into several intervals and ii) computing the proportion of sample values lying in each interval. Here is a technical definition:</p>
+<div id="def-histogram" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 17.1 (Histogram)</strong></span> Given a random sample <span class="math inline">\(X_1,\dots,X_n\)</span> and a grid of points <span class="math inline">\(x_0 &lt; x_1 &lt; \dots &lt; x_K\)</span>, where <span class="math inline">\(x_0 = \min_{1 \leq i \leq n} X_i\)</span> and <span class="math inline">\(x_K = \max_{1\leq i \leq n} X_i\)</span>, define the intervals <span class="math inline">\(I_k = [x_{k-1},x_k)\)</span> for <span class="math inline">\(k=1,\dots,K-1\)</span> and <span class="math inline">\(I_K = [x_{K-1},x_K]\)</span>. Then the histogram based on <span class="math inline">\(I_1,\dots,I_K\)</span> is the function given by <span class="math display">\[
+\hat h_n(x) = \frac{1}{n}\sum_{i=1}^n \mathbb{I}( X_i \in I_k)
+\]</span> for <span class="math inline">\(x \in I_k\)</span>, and <span class="math inline">\(\hat h_n(x) = 0\)</span> for <span class="math inline">\(x\notin [x_0,x_K]\)</span>.</p>
+</div>
+<p>The grid of points <span class="math inline">\(x_0 &lt; x_1 &lt; \dots &lt; x_K\)</span> are usually equally spaced, and one can play with the choice of the number <span class="math inline">\(K\)</span> of intervals into which to partition the range of <span class="math inline">\(X_1,\dots,X_n\)</span>. The code below defines a Python function for plotting a histogram and runs the function on the pinewood derby finishing times.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">3.5</span>,<span class="fl">3.5</span>,<span class="at">length=</span><span class="dv">501</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>fz <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(z)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(z,fz,<span class="at">type=</span><span class="st">"l"</span>,<span class="at">xlab=</span><span class="st">"z"</span>,<span class="at">ylab=</span><span class="st">"f(z)"</span>,<span class="at">bty=</span><span class="st">"l"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fl">1.26</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>xpoly0 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,a,<span class="at">length=</span><span class="dv">201</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>xpoly <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,xpoly0,xpoly0[<span class="dv">201</span>])</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ypoly <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">dnorm</span>(xpoly0),<span class="dv">0</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(xpoly,ypoly,<span class="at">col=</span><span class="st">"black"</span>,<span class="at">border=</span><span class="cn">NA</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.dpi'</span>] <span class="op">=</span> <span class="dv">128</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'savefig.dpi'</span>] <span class="op">=</span> <span class="dv">128</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> (<span class="dv">4</span>, <span class="dv">2</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> myhist(X,K,col,title):</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> np.linspace(np.<span class="bu">min</span>(X),np.<span class="bu">max</span>(X),K<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  h <span class="op">=</span> np.zeros(K)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,K):</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    h[k] <span class="op">=</span> np.mean( (X <span class="op">&gt;=</span> x[k<span class="op">-</span><span class="dv">1</span>])<span class="op">*</span>(X <span class="op">&lt;</span> x[k]))</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  h[K<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> np.mean( (X <span class="op">&gt;=</span> x[K<span class="op">-</span><span class="dv">1</span>])<span class="op">*</span>(X <span class="op">&lt;=</span> x[K]))</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>,<span class="dv">4</span>))</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  ax.set_xlabel(<span class="st">'x'</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  ax.set_ylabel(<span class="st">'h(x)'</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  ax.set_title(title)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(K):</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ax.plot([x[k],x[k+1]],[h[k],h[k]],color=col)</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    ax.fill([x[k],x[k],x[k<span class="op">+</span><span class="dv">1</span>],x[k<span class="op">+</span><span class="dv">1</span>]],[<span class="dv">0</span>,h[k],h[k],<span class="dv">0</span>],color<span class="op">=</span>col)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  plt.show()</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co"># pinewood derby data</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([<span class="fl">2.5692</span>,<span class="fl">2.5936</span>,<span class="fl">2.6190</span>,<span class="fl">2.6320</span>,<span class="fl">2.6345</span>,<span class="fl">2.6602</span>,</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>              <span class="fl">2.6708</span>,<span class="fl">2.6804</span>,<span class="fl">2.6850</span>,<span class="fl">2.7049</span>,<span class="fl">2.7111</span>,<span class="fl">2.8034</span>,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>              <span class="fl">2.8300</span>,<span class="fl">3.0639</span>,<span class="fl">3.1489</span>,<span class="fl">3.2411</span>,<span class="fl">3.5701</span>,<span class="fl">3.9686</span>,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>              <span class="fl">4.1220</span>])</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>col <span class="op">=</span> <span class="st">'red'</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>myhist(X,K,col,title<span class="op">=</span><span class="st">'Pinewood derby finishing times'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="fig-ztable_illus" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-pinewoodhistpython" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-ztable_illus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="z_table_files/figure-html/fig-ztable_illus-1.png" class="img-fluid figure-img" width="1400">
+<div aria-describedby="fig-pinewoodhistpython-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="hist_box_files/figure-html/fig-pinewoodhistpython-1.png" class="img-fluid figure-img" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ztable_illus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;25.1: Illustration of the probabilities given in the <span class="math inline">\(Z\)</span> table.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pinewoodhistpython-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17.1: Histogram of pinewood derby finishing times with number of equal-width intervals <span class="math inline">\(K = 10\)</span>.
 </figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Changing the number of intervals or “bins” can have a dramatic effect on the appearance of the histogram.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>myhist(X,<span class="dv">5</span>,col,title<span class="op">=</span><span class="st">'Pinewood derby finishing times (K = 5)'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="hist_box_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -460,46 +514,27 @@ Figure&nbsp;25.1: Illustration of the probabilities given in the <span class="ma
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">3.09</span>,<span class="at">by =</span> .<span class="dv">01</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>val <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(z) <span class="sc">-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">round</span>(val,<span class="dv">4</span>),<span class="dv">31</span>,<span class="dv">10</span>,<span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(table) <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">3</span>,<span class="at">by=</span>.<span class="dv">1</span>),<span class="at">fmt=</span><span class="st">"%.1f"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(table) <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="fu">seq</span>(<span class="dv">0</span>,.<span class="dv">09</span>,<span class="at">by=</span>.<span class="dv">01</span>),<span class="at">fmt=</span><span class="st">"%.2f"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>myhist(X,<span class="dv">20</span>,col,title<span class="op">=</span><span class="st">'Pinewood derby finishing times (K = 20)'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>      0.00   0.01   0.02   0.03   0.04   0.05   0.06   0.07   0.08   0.09
-0.0 0.0000 0.0040 0.0080 0.0120 0.0160 0.0199 0.0239 0.0279 0.0319 0.0359
-0.1 0.0398 0.0438 0.0478 0.0517 0.0557 0.0596 0.0636 0.0675 0.0714 0.0753
-0.2 0.0793 0.0832 0.0871 0.0910 0.0948 0.0987 0.1026 0.1064 0.1103 0.1141
-0.3 0.1179 0.1217 0.1255 0.1293 0.1331 0.1368 0.1406 0.1443 0.1480 0.1517
-0.4 0.1554 0.1591 0.1628 0.1664 0.1700 0.1736 0.1772 0.1808 0.1844 0.1879
-0.5 0.1915 0.1950 0.1985 0.2019 0.2054 0.2088 0.2123 0.2157 0.2190 0.2224
-0.6 0.2257 0.2291 0.2324 0.2357 0.2389 0.2422 0.2454 0.2486 0.2517 0.2549
-0.7 0.2580 0.2611 0.2642 0.2673 0.2704 0.2734 0.2764 0.2794 0.2823 0.2852
-0.8 0.2881 0.2910 0.2939 0.2967 0.2995 0.3023 0.3051 0.3078 0.3106 0.3133
-0.9 0.3159 0.3186 0.3212 0.3238 0.3264 0.3289 0.3315 0.3340 0.3365 0.3389
-1.0 0.3413 0.3438 0.3461 0.3485 0.3508 0.3531 0.3554 0.3577 0.3599 0.3621
-1.1 0.3643 0.3665 0.3686 0.3708 0.3729 0.3749 0.3770 0.3790 0.3810 0.3830
-1.2 0.3849 0.3869 0.3888 0.3907 0.3925 0.3944 0.3962 0.3980 0.3997 0.4015
-1.3 0.4032 0.4049 0.4066 0.4082 0.4099 0.4115 0.4131 0.4147 0.4162 0.4177
-1.4 0.4192 0.4207 0.4222 0.4236 0.4251 0.4265 0.4279 0.4292 0.4306 0.4319
-1.5 0.4332 0.4345 0.4357 0.4370 0.4382 0.4394 0.4406 0.4418 0.4429 0.4441
-1.6 0.4452 0.4463 0.4474 0.4484 0.4495 0.4505 0.4515 0.4525 0.4535 0.4545
-1.7 0.4554 0.4564 0.4573 0.4582 0.4591 0.4599 0.4608 0.4616 0.4625 0.4633
-1.8 0.4641 0.4649 0.4656 0.4664 0.4671 0.4678 0.4686 0.4693 0.4699 0.4706
-1.9 0.4713 0.4719 0.4726 0.4732 0.4738 0.4744 0.4750 0.4756 0.4761 0.4767
-2.0 0.4772 0.4778 0.4783 0.4788 0.4793 0.4798 0.4803 0.4808 0.4812 0.4817
-2.1 0.4821 0.4826 0.4830 0.4834 0.4838 0.4842 0.4846 0.4850 0.4854 0.4857
-2.2 0.4861 0.4864 0.4868 0.4871 0.4875 0.4878 0.4881 0.4884 0.4887 0.4890
-2.3 0.4893 0.4896 0.4898 0.4901 0.4904 0.4906 0.4909 0.4911 0.4913 0.4916
-2.4 0.4918 0.4920 0.4922 0.4925 0.4927 0.4929 0.4931 0.4932 0.4934 0.4936
-2.5 0.4938 0.4940 0.4941 0.4943 0.4945 0.4946 0.4948 0.4949 0.4951 0.4952
-2.6 0.4953 0.4955 0.4956 0.4957 0.4959 0.4960 0.4961 0.4962 0.4963 0.4964
-2.7 0.4965 0.4966 0.4967 0.4968 0.4969 0.4970 0.4971 0.4972 0.4973 0.4974
-2.8 0.4974 0.4975 0.4976 0.4977 0.4977 0.4978 0.4979 0.4979 0.4980 0.4981
-2.9 0.4981 0.4982 0.4982 0.4983 0.4984 0.4984 0.4985 0.4985 0.4986 0.4986
-3.0 0.4987 0.4987 0.4987 0.4988 0.4988 0.4989 0.4989 0.4989 0.4990 0.4990</code></pre>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="hist_box_files/figure-html/unnamed-chunk-2-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>myhist(X,<span class="dv">40</span>,col,title<span class="op">=</span><span class="st">'Pinewood derby finishing times (K = 40)'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="hist_box_files/figure-html/unnamed-chunk-3-7.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -908,13 +943,13 @@ Figure&nbsp;25.1: Illustration of the probabilities given in the <span class="ma
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./logreg.html" class="pagination-link" aria-label="Logistic regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Logistic regression</span></span>
+      <a href="./variance_of_rs.html" class="pagination-link" aria-label="The sample variance">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The sample variance</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./normal_qq_plot.html" class="pagination-link" aria-label="Normal quantile-quantile plot">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
