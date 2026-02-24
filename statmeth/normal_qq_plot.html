@@ -444,7 +444,7 @@ window.Quarto = {
 (X_{(i)},z_{(i)}), \quad i=1,\dots,n,
 \tag{18.2}\]</span></span> which is the plot produced by the <code>qqnorm()</code> function in R. This version of the normal QQ plot plots the data quantiles against the corresponding quantiles of the <em>standard</em> normal distribution, that is the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution. Here, we simply look to see if the points lie along a straight line (though it is no longer the <span class="math inline">\(y=x\)</span> line).</p>
 <p>One can also plot the points <span class="math display">\[
-\Big(\frac{X_{(i)} - \bar X_n}{S_n},z_{(i)}), \quad i = 1,\dots,n
+\Big(\frac{X_{(i)} - \bar X_n}{S_n},z_{(i)}\Big), \quad i = 1,\dots,n
 \]</span> and look to see if they fall close to the <span class="math inline">\(y=x\)</span> line. This plot appears in the lower left panel of <a href="#fig-qqpinewood" class="quarto-xref">Figure&nbsp;<span>18.1</span></a>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ft <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.5692</span>,<span class="fl">2.5936</span>,<span class="fl">2.6190</span>,<span class="fl">2.6320</span>,<span class="fl">2.6345</span>,</span>
