@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>2&nbsp; Basics of probability – Statistical Methods</title>
+<title>21&nbsp; Normal approximation to the binomial – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,8 +66,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./counting_rules.html" rel="next">
-<link href="./set_basics.html" rel="prev">
+<link href="./power_ztest.html" rel="next">
+<link href="./sample_proportion.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -125,7 +160,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./prob_basics.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics of probability</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mean_of_rs.html">Part II</a></li><li class="breadcrumb-item"><a href="./normal_approx_binomial.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Normal approximation to the binomial</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -158,13 +193,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Part I</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./set_basics.html" class="sidebar-item-text sidebar-link">
@@ -173,7 +208,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prob_basics.html" class="sidebar-item-text sidebar-link active">
+  <a href="./prob_basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics of probability</span></span></a>
   </div>
 </li>
@@ -253,13 +288,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Part II</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mean_of_rs.html" class="sidebar-item-text sidebar-link">
@@ -298,7 +333,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./normal_approx_binomial.html" class="sidebar-item-text sidebar-link">
+  <a href="./normal_approx_binomial.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Normal approximation to the binomial</span></span></a>
   </div>
 </li>
@@ -395,9 +430,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./prob_basics.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics of probability</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mean_of_rs.html">Part II</a></li><li class="breadcrumb-item"><a href="./normal_approx_binomial.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Normal approximation to the binomial</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-prob_basics" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics of probability</span></span></h1>
+<h1 class="title"><span id="sec-normal_approx_binomial" class="quarto-section-identifier"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Normal approximation to the binomial</span></span></h1>
 </div>
 
 
@@ -424,101 +459,105 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>In the context of a statistical experiment (<a href="set_basics.html#def-statisticalexperiment" class="quarto-xref">Definition&nbsp;<span>1.1</span></a>), we are interested in assigning probabilities to events. For an event <span class="math inline">\(A\)</span> we denote by <span class="math inline">\(P(A)\)</span> the probability that the event <span class="math inline">\(A\)</span> occurs, that is the probability that the experiment generates an outcome in the set <span class="math inline">\(A\)</span>.</p>
-<p>Some ground rules for how probabilities should be assigned to events are attributed to <a href="https://en.wikipedia.org/wiki/Andrey_Kolmogorov">Andrey Kolmogorov</a>. We call these the Kolmogorov axioms. An axiom is an assumed truth. One does not set about to prove an axiom, but regards it as self-evident. To the mind of Andrey Nikolaevich Kolmogorov the following ground rules according to which probabilities can be assigned to events were self-evident (perhaps they will seem so to our minds as well!):</p>
-<div id="def-probabilityaxioms" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 2.1 (Probability axioms)</strong></span> Consider a statistical experiment with sample space <span class="math inline">\(S\)</span> and let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be events in <span class="math inline">\(S\)</span>. Three axioms of probability are</p>
-<ol type="1">
-<li><span class="math inline">\(P(A) \geq 0\)</span>.</li>
-<li><span class="math inline">\(P(S) = 1\)</span>.</li>
-<li>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are mutually exclusive, then <span class="math inline">\(P(A \cup B) = P(A) + P(B)\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
-</ol>
+<p>One additional consequence of applying the central limit theorem to the sample proportion is the so-called <em>normal approximation to the binomial</em>, which we develop here.</p>
+<!-- :::{#prp-normalapproxbinom} -->
+<!-- ## Normal approximation to the binomial -->
+<!-- If $Y \sim \text{Binomial}(n,p)$ and $n$ is large, we have -->
+<!-- $$ -->
+<!-- P( Y \leq y) \approx \Phi\Big(\frac{y + 1/2 - np}{\sqrt{np(1-p)}}\Big), -->
+<!-- $$ -->
+<!-- where $\Phi(\cdot)$ is the CDF of the $\calN(0,1)$ distribution.   -->
+<!-- ::: -->
+<!-- The proposition comes from setting $Y = n\hat p_n \sim \text{Binomial}(n,p)$ and noting that the central limit theorem gives $Y \approxdist \calN(np,np(1-p))$ for large $n$. The $1/2$ is a "continuity correction" which improves the quality of the approximation. -->
+<p>For large <span class="math inline">\(n\)</span>, the central limit theorem applied to the mean of a random sample of Bernoulli random variables with success probability <span class="math inline">\(p\)</span> can be used to claim <span class="math display">\[
+n \hat p_n \overset{\operatorname{approx}}{\sim}\mathcal{N}(np,np(1-p)),
+\]</span> where the approximation improves for larger and larger <span class="math inline">\(n\)</span>. We obtain this by multiplying <span class="math inline">\(\hat p_n\)</span> by <span class="math inline">\(n\)</span> in <a href="sample_proportion.html#eq-phatapproxdist" class="quarto-xref">Equation&nbsp;<span>20.1</span></a>. Now, since <span class="math inline">\(n \hat p_n \sim \text{Binomial}(n,p)\)</span>, it seems that for a Binomial random variable <span class="math display">\[
+X \sim \text{Binomial}(n,p),
+\]</span> we should be able to approximate the probabilities <span class="math inline">\(P(X = x)\)</span> using the <span class="math inline">\(\mathcal{N}(np,p(1-p)/n)\)</span> distribution. We can do this, but since the Normal distribution is for a continuous random variable, it will assign probability zero to any single value <span class="math inline">\(x\)</span>. To get around this, we note that for the binomial random variable <span class="math inline">\(X\)</span>, which is discrete, we have <span class="math display">\[
+P(X = x) = P( x - 1/2 &lt; X &lt; x + 1/2)
+\]</span> for every integer-valued <span class="math inline">\(x\)</span>, so we will approximate the probability <span class="math inline">\(P(X = x)\)</span> with the probability assigned by the <span class="math inline">\(\mathcal{N}(np,np(1-p))\)</span> distribution to the interval <span class="math inline">\((x - 1/2,x+1/2)\)</span>. That is, we will use the approximation <span class="math display">\[
+P(X = x) \approx \left\{\begin{array}{ll}\Phi\Big(\frac{x + 1/2 - np}{\sqrt{np(1-p)}}\Big),&amp; x = 0\\
+\Phi\Big(\frac{x + 1/2 - np}{\sqrt{np(1-p)}}\Big) - \Phi\Big(\frac{x - 1/2 - np}{\sqrt{np(1-p)}}\Big),&amp;  x &gt; 0, \end{array}\right.
+\]</span> where <span class="math inline">\(\Phi\)</span> denotes the CDF of the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution. Likewise, we will approximate the cumulative distribution function of the <span class="math inline">\(\text{Binomial}(n,p)\)</span> distribution as <span class="math display">\[
+P(X \leq x)  \approx \Phi\Big(\frac{x + 1/2 - np}{\sqrt{np(1-p)}}\Big)
+\]</span> These approximations improve with larger and larger <span class="math inline">\(n\)</span>. <a href="#fig-normapproxtobinomial" class="quarto-xref">Figure&nbsp;<span>21.1</span></a> depicts the probabilities <span class="math inline">\(P(X = x)\)</span> and <span class="math inline">\(P(X \leq x)\)</span> and their approximations via this method when <span class="math inline">\(X \sim \text{Binomial}(n,p)\)</span> for the sample sizes <span class="math inline">\(n = 10,20,40\)</span> with <span class="math inline">\(p = 0.20\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">5</span> <span class="co"># success probability</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>nn <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">40</span>) <span class="co"># select a few sample sizes</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set up plotting so the the plots will appear in a 3 by 2 grid</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mar=</span><span class="fu">c</span>(<span class="fl">4.1</span>,<span class="fl">4.1</span>,<span class="fl">1.1</span>,<span class="fl">1.1</span>), <span class="co"># adjust the margin of each plot so the plots don't get squished</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">oma =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>)) <span class="co"># make a top outer margin in which to place a legend</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># loop through the three sample sizes in nn</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># set sample size for this step in the loop</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> nn[i] </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>n</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># obtain normal approximations to cdf and pmf</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  x_correct <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>n <span class="sc">+</span> <span class="fl">0.5</span> <span class="co"># use the continuity correction</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  pn <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(x_correct,n<span class="sc">*</span>p,<span class="at">sd =</span> <span class="fu">sqrt</span>(n<span class="sc">*</span>p<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p))) <span class="co"># cdf</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  dn <span class="ot">&lt;-</span> <span class="fu">c</span>(pn[<span class="dv">1</span>],<span class="fu">diff</span>(pn)) <span class="co"># pmf by differencing. Check ?diff</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># make plots</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="fu">dbinom</span>(x,n,p)<span class="sc">~</span>x,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">"l"</span>,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"x"</span>,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">"pmf"</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(dn<span class="sc">~</span>x, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,.<span class="dv">4</span>), <span class="at">type =</span> <span class="st">"h"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  xpos <span class="ot">&lt;-</span> <span class="fu">grconvertX</span>(.<span class="dv">7</span>,<span class="at">from=</span><span class="st">"nfc"</span>,<span class="at">to=</span><span class="st">"user"</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  ypos <span class="ot">&lt;-</span> <span class="fu">grconvertY</span>(.<span class="dv">7</span>,<span class="at">from=</span><span class="st">"nfc"</span>,<span class="at">to=</span><span class="st">"user"</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">text</span>(<span class="at">x =</span> xpos, </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> ypos,</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">labels =</span> <span class="fu">paste</span>(<span class="st">"n = "</span>,n,<span class="st">", p = "</span>,p,<span class="at">sep=</span><span class="st">""</span>))</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="fu">pbinom</span>(x,n,p)<span class="sc">~</span>x,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">"l"</span>,</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"x"</span>,</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">"cdf"</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>       )</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(pn<span class="sc">~</span>x, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,.<span class="dv">4</span>), <span class="at">type =</span> <span class="st">"h"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>xpos <span class="ot">&lt;-</span> <span class="fu">grconvertX</span>(.<span class="dv">1</span>,<span class="at">from=</span><span class="st">"ndc"</span>,<span class="at">to=</span><span class="st">"user"</span>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>ypos <span class="ot">&lt;-</span> <span class="fu">grconvertY</span>(<span class="dv">1</span>,<span class="at">from=</span><span class="st">"ndc"</span>,<span class="at">to=</span><span class="st">"user"</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> xpos, </span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> ypos,</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>       <span class="at">horiz =</span> T, <span class="co"># give legend a horizontal orientation</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="cn">NA</span>),</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="cn">NA</span>,<span class="dv">1</span>),</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="fu">c</span>(<span class="cn">NA</span>,<span class="dv">2</span>),</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"black"</span>,<span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,.<span class="dv">4</span>)),</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Binomial probability"</span>,</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"Normal approximation"</span>),</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">"n"</span>,</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>       <span class="at">xpd =</span> <span class="cn">NA</span>) <span class="co"># xpd = NA is sometimes need to make something appear in the outer margin</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-normapproxtobinomial" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normapproxtobinomial-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="normal_approx_binomial_files/figure-html/fig-normapproxtobinomial-1.png" class="img-fluid figure-img" width="1400">
 </div>
-<p>According to these axioms, probabilities cannot be negative, the probability of the sample space is equal to 1 (this is the probability that the experiment generates any outcome belonging to the sample space), and the probability of the occurrence of one or the other of two mutually exclusive events is the sum of their probabilities. Self-evident, right? Perhaps they bear meditating on. Think on them.</p>
-<div id="exm-twocoins" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.1 (Flipping two coins)</strong></span> Flipping two coins is a statistical experiment with sample space <span class="math display">\[
-S = \{\text{HH}, \text{HT}, \text{TH}, \text{TT}\},
-\]</span> where <span class="math inline">\(\text{H}\)</span> denotes “heads” and <span class="math inline">\(\text{T}\)</span> denotes “tails”.</p>
-</div>
-<p>In the experiment of flipping two coins, we should have, for any subset of <span class="math inline">\(S\)</span>, that the probability is not negative. Moreover, we must have <span class="math inline">\(P(\{\text{HH}, \text{HT}, \text{TH}, \text{TT}\}) = 1\)</span>; that is, one <em>has</em> to observe one of these outcomes. Lastly, if we define mutually exclusive events <span class="math inline">\(A = \{\text{HH}\}\)</span> and <span class="math inline">\(B = \{\text{HT}, \text{TH}\}\)</span>, we have <span class="math display">\[
-P(A \cup B) = P(A) + P(B) = 1/4 + 2/4 = 3/4.
-\]</span></p>
-<p>We now present some consequences of the Kolmogorov axioms which will be useful to us.</p>
-<div id="prp-firstconsequences" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 2.1 (First consequences of probability axioms)</strong></span> Let <span class="math inline">\(A\)</span> be an event in a sample space <span class="math inline">\(S\)</span>. We have</p>
-<ol type="1">
-<li><span class="math inline">\(P(\emptyset) = 0\)</span>.</li>
-<li><span class="math inline">\(P(A) \leq 1\)</span>.</li>
-<li><span class="math inline">\(P(A^c) = 1 - P(A)\)</span>.</li>
-</ol>
-</div>
-<p>This claims in this proposition may seem axiomatic to us. Indeed, what is the probability of observing no outcome whatsoever? It ought to be zero! Also, it seems obvious that a probability should not be allowed to exceed <span class="math inline">\(1\)</span>. It also seems logical that the probability that an event <em>does not</em> occur should be one minus the probability that it <em>does</em> occur. These claims are implications of the Kolmogorov axioms.</p>
-<p>In the experiment of flipping two coins, let <span class="math inline">\(A = \{\text{HH}\}\)</span>, which is the event of getting two “heads”; our intuition tells us <span class="math inline">\(P(A) = 1/4\)</span>. Now, the complement event is <span class="math inline">\(A^c = \{\text{HT}, \text{TH}, \text{TT}\}\)</span>, of which our intuition tells us <span class="math inline">\(P(A^c) = 3/4\)</span>. This accords with the third claim above.</p>
-<div id="prp-moreconsequences" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 2.2 (More consequences of probability axioms)</strong></span> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be events in a sample space <span class="math inline">\(S\)</span>. We have</p>
-<ol type="1">
-<li><span class="math inline">\(P(B \cap A^c) = P(B) - P(A \cap B)\)</span>.</li>
-<li><span class="math inline">\(P(A \cup B) = P(A) + P(B) - P(A \cap B)\)</span>.</li>
-<li>If <span class="math inline">\(A \subset B\)</span>, then <span class="math inline">\(P(A) \leq P(B)\)</span>.</li>
-</ol>
-</div>
-<p>These claims can all be shown to follow from the Kolmogorov axioms. Drawing Venn diagrams is a nice way to visualize them!</p>
-<div id="exm-friendsparty" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.2 (Meeting friends at a party)</strong></span> Consider the statistical experiment of going to a party and noting which of your friends you meet there. Let <span class="math inline">\(A\)</span> be the event that you meet Adam at the party and let <span class="math inline">\(B\)</span> be the event that you meet Bruce. Suppose <span class="math inline">\(P(A) = 0.4\)</span>, <span class="math inline">\(P(B) = 0.5\)</span> and <span class="math inline">\(P(A \cap B) = 0.01\)</span>. We can use the above probability rules to compute the probabilities of various events:</p>
-<ol type="1">
-<li>You meet Adam but not Bruce. <span class="math display">\[
-    \begin{align*}
-    P(A \cap B^c) &amp;= P(A) - P(A \cap B) \\
-             &amp;= 0.40 - 0.01 \\
-             &amp;= 0.39.
-    \end{align*}
-    \]</span></li>
-<li>You meet one or the other or both of these friends. <span class="math display">\[
-    \begin{align*}
-    P(A \cup B) &amp;= P(A) + P(B) - P(A \cap B) \\
-             &amp;= 0.40 + 0.50 - 0.01 \\
-             &amp;= 0.89.
-    \end{align*}
-    \]</span></li>
-<li>You meet either Adam or Bruce, but not both of them. <span class="math display">\[
-    \begin{align*}
-    P((A \cap B^c) \cup (A^c \cap B)) &amp;= (A \cap B^c) + (A^c \cap B) \\
-             &amp;= P(A) - P(A \cap B) + P(B) - P(A \cap B) \\
-             &amp;= 0.40 - 0.01 + 0.50 - 0.01 \\
-             &amp;= 0.88.
-    \end{align*}
-    \]</span></li>
-<li>You do not meet either of these friends. <span class="math display">\[
-    \begin{align*}
-    P(A^c \cap B^c) &amp;= P( (A \cup B)^c ) \\
-             &amp;= 1 -P(A \cup B) \\
-             &amp;= 1 - 0.89\\
-             &amp; = 0.11
-    \end{align*}
-    \]</span></li>
-</ol>
-</div>
-<p>Another important consequence of the Kolmogorov axioms of probability is the law of total probability.</p>
-<div id="prp-totprob" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 2.3 (Law of total probability)</strong></span> Let <span class="math inline">\(A\)</span> be an event in <span class="math inline">\(S\)</span> and let <span class="math inline">\(C_1,C_2,\dots\)</span> be a partition of <span class="math inline">\(S\)</span>. Then <span class="math display">\[
-P(A) = P(A \cap C_1) + P(A \cap C_2) + \dots
-\]</span></p>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="gifs/Atotprob.gif" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Illustration of the law of total probability.</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normapproxtobinomial-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;21.1: Illustration of the normal approximation to the binomial distribution.
+</figcaption>
 </figure>
 </div>
-<p>The idea of the law of total probability is that, with the help of a parition, we can write <span class="math inline">\(A\)</span> as the union of several disjoint sets, so that <span class="math inline">\(P(A)\)</span> can be written as a sum of probabilities.</p>
+</div>
+</div>
 
 
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>This is actually a simplified version of the third Kolmogorov axiom. The actual third Kolmogorov axiom is referred to as the <em>axiom of countable additivity</em>. It extends what is stated here to certain collections of mutually exclusive sets.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -923,13 +962,13 @@ P(A) = P(A \cap C_1) + P(A \cap C_2) + \dots
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./set_basics.html" class="pagination-link" aria-label="Basics of sets">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics of sets</span></span>
+      <a href="./sample_proportion.html" class="pagination-link" aria-label="Sample proportion">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Sample proportion</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./counting_rules.html" class="pagination-link" aria-label="Counting rules">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Counting rules</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./power_ztest.html" class="pagination-link" aria-label="Statistical power of one-sample tests">
+        <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

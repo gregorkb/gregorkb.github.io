@@ -327,8 +327,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./clt_for_proportion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The sample proportion</span></span></a>
+  <a href="./sample_proportion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Sample proportion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./normal_approx_binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Normal approximation to the binomial</span></span></a>
   </div>
 </li>
       </ul>
@@ -345,7 +351,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -362,13 +368,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
   </div>
 </li>
       </ul>
@@ -385,7 +391,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -402,7 +408,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
   </div>
 </li>
       </ul>
@@ -423,9 +429,8 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-bernoulli-trial" id="toc-the-bernoulli-trial" class="nav-link active" data-scroll-target="#the-bernoulli-trial"><span class="header-section-number">9.1</span> The Bernoulli trial</a></li>
+  <li><a href="#the-bernoulli-distribution" id="toc-the-bernoulli-distribution" class="nav-link active" data-scroll-target="#the-bernoulli-distribution"><span class="header-section-number">9.1</span> The Bernoulli distribution</a></li>
   <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution"><span class="header-section-number">9.2</span> Binomial distribution</a></li>
-  <li><a href="#mean-and-variance-of-a-binomial-random-variable" id="toc-mean-and-variance-of-a-binomial-random-variable" class="nav-link" data-scroll-target="#mean-and-variance-of-a-binomial-random-variable"><span class="header-section-number">9.3</span> Mean and variance of a Binomial random variable</a></li>
   </ul>
 </nav>
     </div>
@@ -462,8 +467,9 @@ window.Quarto = {
 <p>$$</p>
 </div>
 <p>Here we introduce a very simple statistical experiment (maybe the simplest one imaginable) called a <em>Bernoulli trial</em>, after the man Jakob Bernoulli (1655–1705), soft “J”. We can use this simple experiment to build more interesting experiments, one of which will give rise to a probability distribution called the <em>Binomial distribution</em>.</p>
-<section id="the-bernoulli-trial" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="the-bernoulli-trial"><span class="header-section-number">9.1</span> The Bernoulli trial</h2>
+<section id="the-bernoulli-distribution" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="the-bernoulli-distribution"><span class="header-section-number">9.1</span> The Bernoulli distribution</h2>
+<p>The Bernoulli distribution arises from the <em>Bernoulli trial</em>:</p>
 <div id="def-bernoullitrial" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 9.1 (Bernoulli trial)</strong></span> A <em>Bernoulli trial</em> is a statistical experiment for which there are two possible outcomes. We often give the outcomes the names “success” and “failure” and denote by <span class="math inline">\(p\)</span> the probability of a “success.”</p>
 </div>
@@ -486,6 +492,15 @@ p(x) = p^x(1-p)^{1-x}.
 \tag{9.1}\]</span></span></p>
 <div id="exm-alarmfail" class="theorem example">
 <p><span class="theorem-title"><strong>Example 9.3 (Alarm fail)</strong></span> Suppose you wake up on time with probability <span class="math inline">\(0.90\)</span> and fail to wake up on time with probability <span class="math inline">\(0.10\)</span>. Letting <span class="math inline">\(X = 1\)</span> if you wake up on time and <span class="math inline">\(X=0\)</span> otherwise, we may write <span class="math inline">\(X \sim \text{Bernoulli}(0.90)\)</span>. Moreover <span class="math inline">\(X\)</span> has pmf <span class="math inline">\(p(x) = (0.90)^x(1 - 0.90)^{1-x}\)</span>, for which <span class="math inline">\(p(1) = 0.90\)</span> and <span class="math inline">\(p(0) = 0.10\)</span>.</p>
+</div>
+<p>Next we give expressions for the mean and the variance of a Bernoulli random variable, which can be derived quite simply following <a href="discrete_rvs.html" class="quarto-xref"><span>Chapter 8</span></a>.</p>
+<div id="prp-meanvarbernoulli" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 9.1 (Mean and variance of a Bernoulli random variable)</strong></span> If <span class="math inline">\(X \sim \text{Bernoulli}(p)\)</span>, then we have <span class="math display">\[
+\begin{align*}
+\mathbb{E}X &amp;= p \\
+\operatorname{Var}X &amp;= p(1-p).
+\end{align*}
+\]</span></p>
 </div>
 <p>We next consider the experiment consisting of a certain number of independent Bernoulli trials.</p>
 </section>
@@ -513,7 +528,7 @@ S = \left\{ \begin{array}{ccccc}  HHHH,&amp;HHHT,&amp;THHT,&amp;&amp;\\
 <p>Suppose now that we were to flip a coin twelve times and we wanted to know the probabilities of getting zero, one, two, or three heads, and so on. As the number of coin tosses increases, it quickly becomes very burdensome to list all the possible sequences of coin flips. In fact, if we count the number of possible sequences of outcomes from twelve coin flips, we find there are <span class="math inline">\(2^{12} = 4096\)</span> sequences. It is impractical to list every one of them.</p>
 <p>Moreover, in the example of flipping a (fair) coin, all sequences of flips in the sample space occur with the same probability, but this would not be the case if, say, heads were more likely than tails or the other way around. In general, we would like to be able write down the probability distribution of a random variable <span class="math inline">\(X\)</span> when this is defined as the total number of successes in a certain number of independent Bernoulli trials, each with the same success probability <span class="math inline">\(p\)</span>, where <span class="math inline">\(p\)</span> can be any number in the interval <span class="math inline">\((0,1)\)</span>.</p>
 <div id="prp-binomialpmf" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 9.1 (Binomial probability mass function)</strong></span> If <span class="math inline">\(X\)</span> is defined as the number of successes in <span class="math inline">\(n\)</span> independent Bernoulli trials, each with success probability <span class="math inline">\(p\)</span> then <span class="math inline">\(X\)</span> has probability mass function given by <span id="eq-binompmf"><span class="math display">\[
+<p><span class="theorem-title"><strong>Proposition 9.2 (Binomial probability mass function)</strong></span> If <span class="math inline">\(X\)</span> is defined as the number of successes in <span class="math inline">\(n\)</span> independent Bernoulli trials, each with success probability <span class="math inline">\(p\)</span> then <span class="math inline">\(X\)</span> has probability mass function given by <span id="eq-binompmf"><span class="math display">\[
 p(x) = {n \choose x} p^x(1-p)^{n-x}, \quad x \in \{0,1,\dots,n\}
 \tag{9.2}\]</span></span></p>
 </div>
@@ -604,12 +619,9 @@ Figure&nbsp;9.1: PMF and CDF of <span class="math inline">\(\text{Binomial}(n,p)
 <p>Note that when the number of Bernoulli trials <span class="math inline">\(n\)</span> is equal to one, the Binomial distribution becomes simply a Bernoulli distribution. That is <span class="math display">\[
 \text{Binomial}(1,p) = \text{Bernoulli}(p),
 \]</span> by which we mean that these two distributions have the same PMF.</p>
-</section>
-<section id="mean-and-variance-of-a-binomial-random-variable" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="mean-and-variance-of-a-binomial-random-variable"><span class="header-section-number">9.3</span> Mean and variance of a Binomial random variable</h2>
 <p>It will be useful for use to have expressions for the mean and the variance of a random variable <span class="math inline">\(X\)</span> having the <span class="math inline">\(\text{Binomial}(n,p)\)</span> distribution.</p>
 <div id="prp-binommeanvariance" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 9.2</strong></span> If <span class="math inline">\(X \sim \text{Binomial}(n,p)\)</span>, then <span class="math display">\[
+<p><span class="theorem-title"><strong>Proposition 9.3 (Mean and variance of a Binomial random variable)</strong></span> If <span class="math inline">\(X \sim \text{Binomial}(n,p)\)</span>, then <span class="math display">\[
 \begin{align*}
 \mathbb{E}X &amp;= np \\
 \operatorname{Var}X &amp;= np(1-p).
@@ -622,12 +634,6 @@ Figure&nbsp;9.1: PMF and CDF of <span class="math inline">\(\text{Binomial}(n,p)
 \operatorname{Var}X  &amp;= \sum_{x=0}^n (x - \mathbb{E}X)^2 {n \choose x} p^x(1-p)^{n-x},
 \end{align*}
 \]</span> which takes a bit of work.</p>
-<p>Since the Bernoulli distribution is simply the Binomial distribution with <span class="math inline">\(n =1\)</span>, the above expressions also give us the mean and variance of Bernoulli random variables. If <span class="math inline">\(X \sim \text{Bernoulli}(p)\)</span>, then we have <span class="math display">\[
-\begin{align*}
-\mathbb{E}X &amp;= p \\
-\operatorname{Var}X &amp;= p(1-p).
-\end{align*}
-\]</span> These facts will be very useful to us later on.</p>
 
 
 </section>
