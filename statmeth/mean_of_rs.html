@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>15&nbsp; The mean of a random sample – Statistical Methods</title>
+<title>16&nbsp; Mean of a random sample – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./variance_of_rs.html" rel="next">
-<link href="./poisson_exp_dist.html" rel="prev">
+<link href="./random_sample.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -160,7 +160,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mean_of_rs.html">Part II</a></li><li class="breadcrumb-item"><a href="./mean_of_rs.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The mean of a random sample</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./random_sample.html">Part II</a></li><li class="breadcrumb-item"><a href="./mean_of_rs.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Mean of a random sample</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -297,44 +297,50 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./random_sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The random sample</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./mean_of_rs.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The mean of a random sample</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Mean of a random sample</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./variance_of_rs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The sample variance</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The sample variance</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./hist.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Histogram</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Histogram</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./normal_qq_plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./central_limit_theorem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sample_proportion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Sample proportion</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Sample proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./normal_approx_binomial.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Normal approximation to the binomial</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Normal approximation to the binomial</span></span></a>
   </div>
 </li>
       </ul>
@@ -351,7 +357,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -368,13 +374,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
   </div>
 </li>
       </ul>
@@ -391,7 +397,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -408,7 +414,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
   </div>
 </li>
       </ul>
@@ -424,23 +430,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#random-sample" id="toc-random-sample" class="nav-link active" data-scroll-target="#random-sample"><span class="header-section-number">15.1</span> Random sample</a></li>
-  <li><a href="#the-sample-mean" id="toc-the-sample-mean" class="nav-link" data-scroll-target="#the-sample-mean"><span class="header-section-number">15.2</span> The sample mean</a></li>
-  <li><a href="#normal-population-case" id="toc-normal-population-case" class="nav-link" data-scroll-target="#normal-population-case"><span class="header-section-number">15.3</span> Normal population case</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mean_of_rs.html">Part II</a></li><li class="breadcrumb-item"><a href="./mean_of_rs.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The mean of a random sample</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./random_sample.html">Part II</a></li><li class="breadcrumb-item"><a href="./mean_of_rs.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Mean of a random sample</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-mean_of_rs" class="quarto-section-identifier"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The mean of a random sample</span></span></h1>
+<h1 class="title"><span id="sec-mean_of_rs" class="quarto-section-identifier"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Mean of a random sample</span></span></h1>
 </div>
 
 
@@ -467,59 +465,31 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>What we have been building up to so far is how to learn from data about the process which generated the data or about the population from which the data were drawn. However, we have not really encountered “data” yet. Our first (carefully controlled) encounter with data will be a study of what statisticians call a <em>random sample</em>. Imagine reaching into a population and selecting some of its members at random and measuring something about them or subjecting them to some experimental conditions and then measuring something about them. What results is a set of measurements such that each measurement i) can take more than one possible value, ii) must take a value belonging to a known set of values, and iii) takes a value which cannot be known in advance. In short, what results is a collection of random variables.</p>
-<p>Here we will give a formal definition of a random sample and then consider the probability distribution of the mean of the values in a random sample.</p>
-<section id="random-sample" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="random-sample"><span class="header-section-number">15.1</span> Random sample</h2>
-<p>A random sample can be thought of as a set of values resulting from selecting some members of a population and taking measurements on them, possibly after subjecting them to some experimental conditions. Throughout, we will let <span class="math inline">\(n\)</span> denote the number of values in the random sample, which we will refer to as the <em>sample size</em>. Formally, we define a random sample as follows:</p>
-<div id="def-randomsample" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 15.1 (Random sample)</strong></span> A set of independent identically distributed random variables <span class="math inline">\(X_1,\dots,X_n\)</span> is called a <em>random sample</em> of size <span class="math inline">\(n\)</span>.</p>
+<p>Given a random sample <span class="math inline">\(X_1,\dots,X_n\)</span> drawn from some population distribution <span class="math inline">\(F\)</span>, we will consider how to learn from the values in the sample about the mean of the distribution <span class="math inline">\(F\)</span>. That is, if <span class="math inline">\(X_1,\dots,X_n\)</span> is a random sample, then all of these random variables have the same expected value, say <span class="math inline">\(\mu\)</span>, which is the expected value of the distribution from which each value was drawn, that is the expected value of the population distribution. We will suppose that the value <span class="math inline">\(\mu\)</span> is unknown to us, and that we wish to learn about the value of <span class="math inline">\(\mu\)</span> by computing the average of the values in the random sample, i.e.&nbsp;the <em>sample mean</em>.</p>
+<p>We first give the definition of the sample mean.</p>
+<div id="def-samplemean" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 16.1 (Sample mean)</strong></span> Given a random sample <span class="math inline">\(X_1,\dots,X_n\)</span>, the <em>sample mean</em> is defined as <span class="math display">\[
+\bar X_n = \frac{1}{n}(X_1 + \dots + X_n)
+\]</span></p>
 </div>
-<p>We must admit that in the above definition we have used some terms that have not been defined yet. The first is <em>independent</em>. Even though we <em>did</em> define independence for two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, where we said <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if <span class="math inline">\(P(A \cap B) = P(A)P(B)\)</span>, and beyond this, we defined what it means for a collection of events to be mutually independent, we have not stated what we mean when we say that two random variables, or a set of more than two random variables, are independent. So, what is meant by the word “independence” in the above definition? Essentially, we say that two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent if the value of one does not effect the value of the other. To connect this to our definition of independence between two events, we can say that if random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then we will have <span class="math display">\[
-P( X \in A \cap Y \in B) = P(X \in A) P(Y \in B)
-\]</span> for all pairs of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> which are subsets of the real numbers <span class="math inline">\(\mathbb{R}\)</span>.</p>
-<p>The other new term appearing in <a href="#def-randomsample" class="quarto-xref">Definition&nbsp;<span>15.1</span></a> is the phrase <em>identically distributed</em>. We say that two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are identically distributed if they have the same probability distribution. One way of expressing this is to say that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have the same cumulative distribution function (CDF).</p>
-<p>So, a random sample of size <span class="math inline">\(n\)</span> is a set of random variables <span class="math inline">\(X_1,\dots,X_n\)</span> such that i) the value of any one of them does not affect the value of any other one and ii) they all have the same probability distribution. This definition of a random sample is motivated by the oft-run experiment of drawing from a large population a certain number of members and measuring something on them; if the population is large enough, the draws can be considered independent (see the discussion on sampling with versus without replacement in <span class="quarto-unresolved-ref">?sec-sampling_with_without_replacement</span>). Moreover, since all the draws come from the same population, we can assume that all the measurements are realizations from a common distribution. Hereafter we will sometimes refer to the distribution shared by all the random variables in a random sample as the <em>population distribution</em>.</p>
-<p>We may think of the random sample <span class="math inline">\(X_1,\dots,X_n\)</span> as the values in a very simple data set. Here is an example:</p>
-<div id="exm-pinewood" class="theorem example">
-<p><span class="theorem-title"><strong>Example 15.1 (Pinewood derby times)</strong></span> Several girls assembled and decorated pinewood derby cars and raced them, letting the cars roll down a ramp from a fixed starting point and timing (with a pretty sophisticated electronic timing system) how long it took them to cross a finish line. The finishing times are read into R in the code below.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/pinewood_derby.png" class="img-fluid figure-img" width="200"></p>
-<figcaption>Pinewood derby car exemplar (by my daughter at age 10).</figcaption>
-</figure>
-</div>
+<p>One interpretation of the sample mean is that it is the balancing point of the random sample. That is, if weights were placed on a number line at the positions of the values in the random sample, the sample mean <span class="math inline">\(\bar X_n\)</span> gives the position at which a fulcrum would need to be placed in order to balance the number line. One can also imagine a probability mass function (PMF) which places probability <span class="math inline">\(1/n\)</span> on each of the <span class="math inline">\(n\)</span> data points, like the one depicted in <a href="#fig-samplemean" class="quarto-xref">Figure&nbsp;<span>16.1</span></a> for the pinewood derby finishing times from <a href="random_sample.html#exm-pinewood" class="quarto-xref">Example&nbsp;<span>15.1</span></a>. Then the sample mean is the expected value according to this PMF. Again, it can be viewed as the balancing point of the values.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ft <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.5692</span>,<span class="fl">2.5936</span>,<span class="fl">2.6190</span>,<span class="fl">2.6320</span>,<span class="fl">2.6345</span>,</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.6602</span>,<span class="fl">2.6708</span>,<span class="fl">2.6804</span>,<span class="fl">2.6850</span>,<span class="fl">2.7049</span>,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.7111</span>,<span class="fl">2.8034</span>,<span class="fl">2.8300</span>,<span class="fl">3.0639</span>,<span class="fl">3.1489</span>,</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">3.2411</span>,<span class="fl">3.5701</span>,<span class="fl">3.9686</span>,<span class="fl">4.1220</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ft_avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(ft)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<p>In the pinewood derby car example, an experiment is run: tell some young girls to assemble and decorate pinewood derby cars and race them, recording the finishing times. Now, do these measurements constitute a random sample? Perhaps they do, and perhaps they do not. Let’s consider whether the finishing times are independent. I know for a fact (being the father of two participants) that there was at least one pair of sisters in the competition, who more than likely (in fact) worked simultaneously and in close proximity to each other while assembling and decorating their cars. There may have been discussion between them, or a tip they both recieved from mom or dad, which could have lead them to use similar strategies of assembly and weighting, which may in the end have caused the finishing times of their cars to be similar. Yet it may be that the dependence induced in their finishing times by all of this may be slight enough to be negligible. As for whether the finishing times represent realizations of identically distributed random variables, it seems reasonable by the following: Even though each girl may have a unique decoration style and assembly strategy, if a girl is selected at random and the finishing time of her pinewood derby car is recorded, we can regard this finishing time as a draw from <em>some</em> distribution; and the collection of finishing times is a collection of draws from this same distribution. So, in spite of some possibility of non-independence, we will hereafter treat the pinewood derby car finishing times as a random sample.</p>
-<p>We may hereafter write <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}F\)</span> to express that <span class="math inline">\(X_1,\dots,X_n\)</span> are a random sample from a population with distribution <span class="math inline">\(F\)</span>. Often there are features of <span class="math inline">\(F\)</span> that are unknown to us, and the goal of drawing the random sample <span class="math inline">\(X_1,\dots,X_n\)</span> is to learn about these unknown features of <span class="math inline">\(F\)</span>. Here we will begin by supposing that what is of interest is the mean or expected value of the distribution <span class="math inline">\(F\)</span>. That is, if <span class="math inline">\(X_1,\dots,X_n\)</span> is a random sample, then all of these random variables have the same expected value, say <span class="math inline">\(\mu\)</span>, which is the expected value of the distribution from which each value was drawn, that is the expected value of the population distribution. We will suppose that the value <span class="math inline">\(\mu\)</span> is unknown to us, and that we wish to learn about the value of <span class="math inline">\(\mu\)</span> by computing the average of the values in the random sample.</p>
-</section>
-<section id="the-sample-mean" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="the-sample-mean"><span class="header-section-number">15.2</span> The sample mean</h2>
-<p>We first give the definition of the sample mean.</p>
-<div id="def-samplemean" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 15.2 (Sample mean)</strong></span> Given a random sample <span class="math inline">\(X_1,\dots,X_n\)</span>, the <em>sample mean</em> is defined as <span class="math display">\[
-\bar X_n = \frac{1}{n}\sum_{i=1}^n X_i.
-\]</span></p>
-</div>
-<p>One interpretation of the sample mean is that it is the balancing point of the random sample. That is, if weights were placed on a number line at the positions of the values in the random sample, the sample mean <span class="math inline">\(\bar X_n\)</span> gives the position at which a fulcrum would need to be placed in order to balance the number line. One can also imagine a probability mass function (PMF) which places probability <span class="math inline">\(1/n\)</span> on each of the <span class="math inline">\(n\)</span> data points, like the one depicted in <a href="#fig-samplemean" class="quarto-xref">Figure&nbsp;<span>15.1</span></a> for the pinewood derby finishing times. Then the sample mean is the expected value according to this PMF. Again, it can be viewed as the balancing point of the values.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(ft)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">4.1</span>,<span class="fl">4.1</span>,.<span class="dv">1</span>,<span class="fl">2.1</span>))</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ft,<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span>n,n),<span class="at">type=</span><span class="st">'h'</span>,<span class="at">yaxt=</span><span class="st">'n'</span>,<span class="at">ylab=</span><span class="st">'p(x)'</span>,<span class="at">xlab=</span><span class="st">'x'</span>,<span class="at">xaxt=</span><span class="st">'n'</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="fl">2.5</span>,<span class="fl">4.5</span>),<span class="at">bty=</span><span class="st">"l"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(ft,<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span>n,n),<span class="at">pch=</span><span class="dv">19</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>,<span class="at">at=</span><span class="dv">1</span><span class="sc">/</span>n,<span class="at">labels=</span><span class="st">"1/n"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,<span class="at">at=</span><span class="fu">seq</span>(<span class="fl">1.5</span>,<span class="fl">4.5</span>,<span class="at">by=</span><span class="fl">0.25</span>))</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> ft_avg,<span class="at">col=</span><span class="st">"red"</span>,<span class="at">lty=</span><span class="dv">3</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ft_avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(ft)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(ft)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">4.1</span>,<span class="fl">4.1</span>,.<span class="dv">1</span>,<span class="fl">2.1</span>))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ft,<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span>n,n),<span class="at">type=</span><span class="st">'h'</span>,<span class="at">yaxt=</span><span class="st">'n'</span>,<span class="at">ylab=</span><span class="st">'p(x)'</span>,<span class="at">xlab=</span><span class="st">'x'</span>,<span class="at">xaxt=</span><span class="st">'n'</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="fl">2.5</span>,<span class="fl">4.5</span>),<span class="at">bty=</span><span class="st">"l"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(ft,<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span>n,n),<span class="at">pch=</span><span class="dv">19</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>,<span class="at">at=</span><span class="dv">1</span><span class="sc">/</span>n,<span class="at">labels=</span><span class="st">"1/n"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,<span class="at">at=</span><span class="fu">seq</span>(<span class="fl">1.5</span>,<span class="fl">4.5</span>,<span class="at">by=</span><span class="fl">0.25</span>))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> ft_avg,<span class="at">col=</span><span class="st">"red"</span>,<span class="at">lty=</span><span class="dv">3</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-samplemean" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -528,7 +498,7 @@ P( X \in A \cap Y \in B) = P(X \in A) P(Y \in B)
 <img src="mean_of_rs_files/figure-html/fig-samplemean-1.png" class="img-fluid figure-img" width="1400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-samplemean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.1: PMF giving probability mass <span class="math inline">\(1/n\)</span> to each value in the sample of pinewood derby finishing times. The position of the sample mean <span class="math inline">\(\bar X_n\)</span> is indicated by the vertical dotted line.
+Figure&nbsp;16.1: PMF giving probability mass <span class="math inline">\(1/n\)</span> to each value in the sample of pinewood derby finishing times. The position of the sample mean <span class="math inline">\(\bar X_n\)</span> is indicated by the vertical dotted line.
 </figcaption>
 </figure>
 </div>
@@ -539,15 +509,15 @@ Figure&nbsp;15.1: PMF giving probability mass <span class="math inline">\(1/n\)<
 <p>To answer this question, we run a thought experiment. We imagine attending, say, 1000 pinewood derby rallies and computing from each one a sample mean. Then we imagine that we make a histogram of these 1000 sample means, which would show us an estimate of the probability density function (PDF) of <span class="math inline">\(\bar X_n\)</span>. We refer to this imaginary distribution of <span class="math inline">\(\bar X_n\)</span> over repeated random sampling as the <em>sampling distribution</em> of <span class="math inline">\(\bar X_n\)</span>. Now we ask ourselves: What will this distribution look like? Firstly, around what value is this distribution centered? Secondly, how spread out are the values in this distribution? Thirdly, we might also ask what the shape of this distribution would be.</p>
 <p>In answer to the first and second inquiries—where the distribution of <span class="math inline">\(\bar X_n\)</span> is centered and how spread out it is—we have the following result:</p>
 <div id="prp-meanvarxbar" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 15.1 (Mean and variance of the sample mean)</strong></span> Let <span class="math inline">\(X_1,\dots,X_n\)</span> be a random sample from a distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Then we have <span class="math inline">\(\mathbb{E}\bar X_n = \mu\)</span> and <span class="math inline">\(\operatorname{Var}\bar X_n = \sigma^2/n\)</span>.</p>
+<p><span class="theorem-title"><strong>Proposition 16.1 (Mean and variance of the sample mean)</strong></span> Let <span class="math inline">\(X_1,\dots,X_n\)</span> be a random sample from a distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Then we have <span class="math inline">\(\mathbb{E}\bar X_n = \mu\)</span> and <span class="math inline">\(\operatorname{Var}\bar X_n = \sigma^2/n\)</span>.</p>
 </div>
 <p>The result tells us that the sampling distribution of <span class="math inline">\(\bar X_n\)</span> is centered at the population mean <span class="math inline">\(\mu\)</span> and that its spread is governed by the variance <span class="math inline">\(\sigma^2\)</span> of the population distribution as well as the size of the sample. We see that a larger sample size <span class="math inline">\(n\)</span> leads to a smaller variance in <span class="math inline">\(\bar X_n\)</span>. Recalling that the variance is the expected squared distance from the mean, we can interpret the result as saying that we can expect the sample mean of a large sample to be closer to the population mean <span class="math inline">\(\mu\)</span> than that of a small sample. In short, more data gives more accuracy.</p>
 <!-- Add some simulation results here--from the abalone data set perhaps -->
-<p><a href="#tbl-xbardists" class="quarto-xref">Table&nbsp;<span>15.1</span></a> gives the mean and the variance of the sample mean <span class="math inline">\(\bar X_n\)</span> under a few different population distributions.</p>
+<p><a href="#tbl-xbardists" class="quarto-xref">Table&nbsp;<span>16.1</span></a> gives the mean and the variance of the sample mean <span class="math inline">\(\bar X_n\)</span> under a few different population distributions.</p>
 <div id="tbl-xbardists" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-xbardists-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;15.1: Expected value and variance of the sample mean for different population distributions.
+Table&nbsp;16.1: Expected value and variance of the sample mean for different population distributions.
 </figcaption>
 <div aria-describedby="tbl-xbardists-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -586,30 +556,27 @@ Table&nbsp;15.1: Expected value and variance of the sample mean for different po
 </div>
 <p>In the sample mean <span class="math inline">\(\bar X_n\)</span> we have encountered our first <em>sample statistic</em> or <em>statistic</em> for short:</p>
 <div id="def-statistic" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 15.3 (Sample statistic)</strong></span> A <em>sample statistic</em> or <em>statistic</em> is any quantity computed as a function of the values in a random sample <span class="math inline">\(X_1,\dots,X_n\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 16.2 (Sample statistic)</strong></span> A <em>sample statistic</em> or <em>statistic</em> is any quantity computed as a function of the values in a random sample <span class="math inline">\(X_1,\dots,X_n\)</span>.</p>
 </div>
 <p>So now we have (upper-case S) <em>Statistics</em>—the study of what can be learned from noisy sample data about the process which generated the data—and (lower-case s)<em>statistics</em>—quantities computed on the values in a random sample.</p>
 <p>Continuing to focus on the sample mean, we next consider the <em>shape</em> of its distribution.</p>
-</section>
-<section id="normal-population-case" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="normal-population-case"><span class="header-section-number">15.3</span> Normal population case</h2>
 <p>In the special situation when <span class="math inline">\(X_1,\dots,X_n\)</span> is a random sample such that the population distribution is a normal distribution, we find that the sample mean <span class="math inline">\(\bar X_n\)</span> will also have a normal distribution. In particular, we have the result:</p>
 <div id="prp-xbarnormalpop" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 15.2 (Distribution of sample mean when the population is normal)</strong></span> If <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}\mathcal{N}(\mu,\sigma^2)\)</span> then <span class="math inline">\(\bar X_n \sim \mathcal{N}(\mu,\sigma^2/n)\)</span>.</p>
+<p><span class="theorem-title"><strong>Proposition 16.2 (Distribution of sample mean when the population is normal)</strong></span> If <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}\mathcal{N}(\mu,\sigma^2)\)</span> then <span class="math inline">\(\bar X_n \sim \mathcal{N}(\mu,\sigma^2/n)\)</span>.</p>
 </div>
 <p>The above result agrees with the previous result, which states that if <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}\mathcal{N}(\mu,\sigma^2)\)</span> we will have <span class="math inline">\(\mathbb{E}\bar X_n = \mu\)</span> and <span class="math inline">\(\operatorname{Var}\bar X_n = \sigma^2/n\)</span>. But it says more: This result says that if we were to collect, say, 1000 random samples and compute <span class="math inline">\(\bar X_n\)</span> on each of these random samples, the histogram of these 1000 realizations of <span class="math inline">\(\bar X_n\)</span> would have the bell shape characteristic of the normal distribution, centered at mean <span class="math inline">\(\mu\)</span> and with spread governed by the variance <span class="math inline">\(\sigma^2/n\)</span>.</p>
 <p>In the case of a normal population distribution, the above result tells us that we can find probabilities concerning <span class="math inline">\(\bar X_n \sim \mathcal{N}(\mu,\sigma^2/n)\)</span> as follows: We may find <span class="math inline">\(P(a \leq \bar X_n \leq b)\)</span> by</p>
 <ol type="1">
 <li><p>Transforming <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> from the <span class="math inline">\(X\)</span> world to the <span class="math inline">\(Z\)</span> world (the number-of-standard-deviations world) by <span class="math inline">\(a \mapsto (a - \mu)/(\sigma/\sqrt{n})\)</span> and <span class="math inline">\(b \mapsto (b - \mu)/(\sigma/\sqrt{n})\)</span>.</p></li>
-<li><p>Using the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 26</span></a>) to look up <span class="math inline">\(\displaystyle P\Big( \frac{a-\mu}{\sigma/\sqrt{n}} \leq Z \leq \frac{b-\mu}{\sigma/\sqrt{n}} \Big)\)</span>, where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>.</p></li>
+<li><p>Using the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 27</span></a>) to look up <span class="math inline">\(\displaystyle P\Big( \frac{a-\mu}{\sigma/\sqrt{n}} \leq Z \leq \frac{b-\mu}{\sigma/\sqrt{n}} \Big)\)</span>, where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>.</p></li>
 </ol>
 <p>And if <span class="math inline">\(q\)</span> represents the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(\bar X_n\)</span>, we may find <span class="math inline">\(q\)</span> as follows:</p>
 <ol type="1">
-<li><p>Obtain the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(Z\sim \mathcal{N}(0,1)\)</span> from the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 26</span></a>) and denote this by <span class="math inline">\(q_Z\)</span>.</p></li>
+<li><p>Obtain the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(Z\sim \mathcal{N}(0,1)\)</span> from the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 27</span></a>) and denote this by <span class="math inline">\(q_Z\)</span>.</p></li>
 <li><p>Then back-transform <span class="math inline">\(q_Z\)</span> to <span class="math inline">\(q\)</span> with the formula <span class="math inline">\(\displaystyle q = \mu + \frac{\sigma}{\sqrt{n}} q_Z\)</span>.</p></li>
 </ol>
 <div id="exr-cellphone" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 15.1 (Cell phone talk time)</strong></span> Let <span class="math inline">\(X\)</span> be the number of minutes of cell-phone talk time in the last month of a randomly selected USC undergraduate. Suppose that the cell phone talk times of USC undergraduates are Normally distributed with mean <span class="math inline">\(\mu = 300\)</span> and variance <span class="math inline">\(\sigma^2 = 50^2\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 16.1 (Cell phone talk time)</strong></span> Let <span class="math inline">\(X\)</span> be the number of minutes of cell-phone talk time in the last month of a randomly selected USC undergraduate. Suppose that the cell phone talk times of USC undergraduates are Normally distributed with mean <span class="math inline">\(\mu = 300\)</span> and variance <span class="math inline">\(\sigma^2 = 50^2\)</span>.</p>
 <ol type="1">
 <li>Find <span class="math inline">\(P(|X - 300| &gt; 50)\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
 <li>Suppose you sampled <span class="math inline">\(4\)</span> USC undergraduates and took the average of their cell phone talk times. Let the average of the four talk times be <span class="math inline">\(\bar X\)</span>. What is <span class="math inline">\(P(|\bar X_n - 300| &gt; 50)\)</span>?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
@@ -618,7 +585,6 @@ Table&nbsp;15.1: Expected value and variance of the sample mean for different po
 </div>
 
 
-</section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
@@ -1037,13 +1003,13 @@ Table&nbsp;15.1: Expected value and variance of the sample mean for different po
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./poisson_exp_dist.html" class="pagination-link" aria-label="Poisson and exponential distributions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Poisson and exponential distributions</span></span>
+      <a href="./random_sample.html" class="pagination-link" aria-label="The random sample">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The random sample</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./variance_of_rs.html" class="pagination-link" aria-label="The sample variance">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The sample variance</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The sample variance</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
