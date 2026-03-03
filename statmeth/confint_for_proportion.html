@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>4&nbsp; Conditional probability – Statistical Methods</title>
+<title>28&nbsp; Confidence interval for a proportion – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./independence.html" rel="next">
-<link href="./counting_rules.html" rel="prev">
+<link href="./power_ztest.html" rel="next">
+<link href="./large_sample_confint_for_mean.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -125,7 +125,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./conditional_prob.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">Part III</a></li><li class="breadcrumb-item"><a href="./confint_for_proportion.html"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Confidence interval for a proportion</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -158,13 +158,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Part I</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./set_basics.html" class="sidebar-item-text sidebar-link">
@@ -185,7 +185,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./conditional_prob.html" class="sidebar-item-text sidebar-link active">
+  <a href="./conditional_prob.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></span></a>
   </div>
 </li>
@@ -312,13 +312,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Part III</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statistical_inference.html" class="sidebar-item-text sidebar-link">
@@ -351,7 +351,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./confint_for_proportion.html" class="sidebar-item-text sidebar-link">
+  <a href="./confint_for_proportion.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Confidence interval for a proportion</span></span></a>
   </div>
 </li>
@@ -443,9 +443,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./conditional_prob.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">Part III</a></li><li class="breadcrumb-item"><a href="./confint_for_proportion.html"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Confidence interval for a proportion</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-conditional_prob" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></span></h1>
+<h1 class="title"><span id="sec-confint_for_proportion" class="quarto-section-identifier"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Confidence interval for a proportion</span></span></h1>
 </div>
 
 
@@ -472,146 +472,8 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>Two events can be related to one another such that the occurrence of one event makes the occurrence of the other event more or less likely.\</p>
-<div id="def-condprob" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.1 (Conditional probability)</strong></span> For events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> with <span class="math inline">\(P(B)&gt;0\)</span>, the <em>conditional probability</em> of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span> is the probability that the <span class="math inline">\(A\)</span> occurs given <span class="math inline">\(B\)</span> occurs. This probability is defined as <span class="math display">\[
-P(A|B) = \frac{P(A\cap B)}{P(B)}.
-\]</span></p>
-</div>
-<div id="exm-hwexam" class="theorem example">
-<p><span class="theorem-title"><strong>Example 4.1 (Exam pass and homework completion)</strong></span> On the day of an exam, select a student at random and let <span class="math inline">\(A\)</span> be the event that he or she passes the exam.</p>
-<ul>
-<li>Now consider only students who completed the last homework assignment. One would expect the probability of the event <span class="math inline">\(A\)</span> to be higher when sampling a student from this group than when sampling from the whole class.</li>
-<li>On the other hand, consider only students who <em>did not</em> complete the last homework assignment. One would expect the probability of the event <span class="math inline">\(A\)</span> to be <em>lower</em> when sampling a student from this group than when sampling from the whole class.</li>
-</ul>
-<p>Consider selecting a student at random from the whole class and letting <span class="math inline">\(B\)</span> be the event that the selected student completed the last homework assignment. Then:</p>
-<ul>
-<li>The conditional probability <span class="math inline">\(P(A|B)\)</span> is the probability that a student selected at random from the group of students who completed the last homework assignment will pass the exam We expect this to be higher than <span class="math inline">\(P(A)\)</span>, which is the probability that a student drawn at random from the entire class will pass the exam.</li>
-<li>The conditional probability <span class="math inline">\(P(A|B^c)\)</span> is the probability that a student selected at random from the group of students who <em>did not</em> complete the last homework assignment will pass the exam. We expect this to be lower than <span class="math inline">\(P(A)\)</span>, which is the probability that a student drawn from the whole class will pass the exam.</li>
-</ul>
-<p>Suppose that two-thirds of the students in the class completed the last homework assignment and that one half of the class completed the last homework assignment <em>and</em> passed the exam. Then we would write <span class="math display">\[
-P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{1/2}{2/3} = 0.75.
-\]</span></p>
-</div>
-<div id="exm-friendsparty2" class="theorem example">
-<p><span class="theorem-title"><strong>Example 4.2 (Meeting friends at a party)</strong></span> Consider the statistical experiment of going to a party and noting which of your friends you meet there. Let <span class="math inline">\(A\)</span> be the event that you meet Adrian at the party and <span class="math inline">\(B\)</span> be the event that you meet Beverly. Suppose <span class="math inline">\(P(A) = 0.4\)</span>, <span class="math inline">\(P(B) = 0.6\)</span>, and <span class="math inline">\(P(A \cap B) = 0.35\)</span>. Then:</p>
-<ol type="1">
-<li>The probability that you meet Adrian given that you meet Beverly is <span class="math display">\[
-\begin{align*}
-P(A|B) &amp; = \frac{P(A \cap B)}{P(B)} \\
-   &amp; = \frac{0.35}{0.6} \\
-   &amp; = 0.5833333.
-\end{align*}
-\]</span></li>
-<li>The probability that you meet Adrian given that you do <em>not</em> meet Beverly is <span class="math display">\[
-\begin{align*}
-P(A|B^c) &amp; = \frac{P(A \cap B^c)}{P(B^c)} \\
-   &amp; = \frac{P(A) - P(A \cap B)}{1 - P(B)} \\
-   &amp; = \frac{0.4 - 0.35}{1 - 0.6} \\
-   &amp; = 0.125
-\end{align*}
-\]</span></li>
-</ol>
-<p>An interpretation of the above is that if you meet Beverly, you are then more likely to meet Adrian; if you do not meet Beverly, you are less likely to meet Adrian.</p>
-</div>
-<div id="exr-USCvTAMU" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.1 (Gamecocks versus Aggies)</strong></span> Suppose <span class="math inline">\(80250\)</span> spectators are in attendance at the next Gamecocks versus Aggies football game, and one lucky winner will be selected at random to receive free “big gulps” for life from the concession stand. Suppose <span class="math inline">\(20000\)</span> of the spectators are students and that there are <span class="math inline">\(10000\)</span> Aggies present, <span class="math inline">\(200\)</span> of which are students. Let <span class="math inline">\(G\)</span> be the event that a Gamecock is chosen and let <span class="math inline">\(S\)</span> be the event that a student is chosen. Find:</p>
-<ol type="1">
-<li><span class="math inline">\(P(G)\)</span>, the probability that a Gamecock is chosen.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
-<li><span class="math inline">\(P(S)\)</span>, the probability that a student is chosen.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
-<li><span class="math inline">\(P(G^c)\)</span>, the probability that an Aggie is chosen.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
-<li><span class="math inline">\(P(G^c \cap S)\)</span>, the probability that an Aggie student is chosen.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
-<li><span class="math inline">\(P(G|S)\)</span>, the probability a Gamecock is chosen, given that a student is chosen.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
-<li><span class="math inline">\(P(S|G^c)\)</span>, the probability a student is chosen, given an Aggie is chosen.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></li>
-</ol>
-<p>We can begin making a table of the spectators based on the provided information as follows:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: right;"></th>
-<th style="text-align: right;">Gamecock</th>
-<th style="text-align: right;">Aggie</th>
-<th style="text-align: right;">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;"><strong>Student</strong></td>
-<td style="text-align: right;">19800</td>
-<td style="text-align: right;">200</td>
-<td style="text-align: right;">20000</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"><strong>Non-student</strong></td>
-<td style="text-align: right;">50450</td>
-<td style="text-align: right;">9800</td>
-<td style="text-align: right;">60250</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;"><strong>Total</strong></td>
-<td style="text-align: right;">70250</td>
-<td style="text-align: right;">10000</td>
-<td style="text-align: right;">80250</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Note that when we “condition” on an event, we may regard the sample points identified with the conditioning event as the new sample space.</p>
-<p>A direct consequence of the definition of the conditional probability is the following result, which states that we can always compute an intersection probability as a conditional probability times an un-conditional probability.</p>
-<div id="prp-multrule" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 4.1 (Multiplicative rule of probablity)</strong></span> For any two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> we have <span class="math display">\[
-P(A\cap B) = P(A|B)P(B)
-\]</span> or equivalently <span class="math display">\[
-P(A\cap B) = P(B|A)P(A).
-\]</span></p>
-</div>
-<p>A probability which is not a conditional probability is sometimes called a <em>marginal</em> probability. So, <a href="#prp-multrule" class="quarto-xref">Proposition&nbsp;<span>4.1</span></a> states that an intersection probability can always be written as a conditional probability times a marginal probability.</p>
-<div id="exr-safari" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.2 (Safari)</strong></span> Suppose you go on a safari in South Africa and make a list of the animals you see. Let <span class="math inline">\(G\)</span> be the event that you see a giraffe, <span class="math inline">\(W\)</span> the event that you see a Wildebeest, and <span class="math inline">\(C\)</span> the event that you see a crocodile. Assume</p>
-<ul>
-<li><span class="math inline">\(P(W) = 0.40\)</span></li>
-<li><span class="math inline">\(P(C) = 0.60\)</span></li>
-<li><span class="math inline">\(P(G) = 0.20\)</span></li>
-<li><span class="math inline">\(P(C|W) = 0.775\)</span></li>
-<li><span class="math inline">\(P(C|G) = 0.65\)</span></li>
-<li><span class="math inline">\(P(G\cap W) = 0.06\)</span></li>
-<li><span class="math inline">\(P(G\cap W\cap C) = 0.01\)</span></li>
-</ul>
-<p>Fill in all the spaces on a Venn diagram (all possible disjoint events). <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
-</div>
-<p>Here we note that the complement rule <span class="math inline">\(P(A^c) = 1 - P(A)\)</span> works for conditional probabilities too:</p>
-<div id="prp-complementcond" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 4.2 (Complement rule for conditional probabilities)</strong></span> For events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> with <span class="math inline">\(P(B) &gt; 0\)</span> we have <span class="math inline">\(P(A^c|B) = 1 - P(A|B)\)</span>.</p>
-</div>
-<p>The above comes from <span class="math display">\[
-\begin{align*}
-P(A^c|B) &amp;= \frac{P(A^c \cap B)}{P(B)} \\
-&amp;=\frac{P(B) - P(A \cap B)}{P(B)}\\
-&amp; = 1 - P(A|B).
-\end{align*}
-\]</span></p>
 
 
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p><span class="math inline">\(P(G) = 70250/80250 = 0.8754\)</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p><span class="math inline">\(P(S) = 20000/80250 = 0.2492\)</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p><span class="math inline">\(P(G^c) = 1- P(G) = 0.1246\)</span><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p><span class="math inline">\(P(G^c \cap S) = 200/80250 = 0.0025\)</span><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>The answer is <span class="math display">\[
-    P(G|S) = \frac{P(G \cap S)}{P(S)},
-  \]</span> so we need <span class="math inline">\(P(G \cap S) = 19800/80250\)</span> as well as <span class="math inline">\(P(S) = 20000/80250\)</span>. The answer is thus <span class="math display">\[
-    P(G|S) = P(G \cap S) \times \frac{1}{P(S)} = \frac{19800}{80250} \times \frac{80250}{20000} = \frac{19800}{20000} = 0.99.
-    \]</span> <a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p><span class="math inline">\(P(S|G^c) = \dfrac{P(G^c \cap S)}{P(G^c)} = \dfrac{200}{10000} = 0.02.\)</span><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>We will need the probability <span class="math display">\[
-P(W \cap C) = P(C|W)P(W) = 0.775 \times 0.40 = 0.31
-\]</span> as well as <span class="math display">\[
-P(G \cap C) = P(C|G)P(G) = 0.65 \times 0.20 = 0.13.
-\]</span><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1016,13 +878,13 @@ P(G \cap C) = P(C|G)P(G) = 0.65 \times 0.20 = 0.13.
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./counting_rules.html" class="pagination-link" aria-label="Counting rules">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Counting rules</span></span>
+      <a href="./large_sample_confint_for_mean.html" class="pagination-link" aria-label="Large-sample confidence interval for a mean">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Large-sample confidence interval for a mean</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./independence.html" class="pagination-link" aria-label="Independence">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./power_ztest.html" class="pagination-link" aria-label="Statistical power of one-sample tests">
+        <span class="nav-page-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

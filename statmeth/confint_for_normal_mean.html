@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>4&nbsp; Conditional probability – Statistical Methods</title>
+<title>24&nbsp; First confidence interval for a normal mean – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,8 +66,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./independence.html" rel="next">
-<link href="./counting_rules.html" rel="prev">
+<link href="./confint_for_normal_variance.html" rel="next">
+<link href="./statistical_inference.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -125,7 +160,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./conditional_prob.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">Part III</a></li><li class="breadcrumb-item"><a href="./confint_for_normal_mean.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">First confidence interval for a normal mean</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -158,13 +193,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Part I</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./set_basics.html" class="sidebar-item-text sidebar-link">
@@ -185,7 +220,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./conditional_prob.html" class="sidebar-item-text sidebar-link active">
+  <a href="./conditional_prob.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></span></a>
   </div>
 </li>
@@ -312,13 +347,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Part III</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statistical_inference.html" class="sidebar-item-text sidebar-link">
@@ -327,7 +362,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="./confint_for_normal_mean.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">First confidence interval for a normal mean</span></span></a>
   </div>
 </li>
@@ -443,9 +478,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./set_basics.html">Part I</a></li><li class="breadcrumb-item"><a href="./conditional_prob.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">Part III</a></li><li class="breadcrumb-item"><a href="./confint_for_normal_mean.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">First confidence interval for a normal mean</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-conditional_prob" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></span></h1>
+<h1 class="title"><span id="sec-confint_for_normal_mean" class="quarto-section-identifier"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">First confidence interval for a normal mean</span></span></h1>
 </div>
 
 
@@ -472,144 +507,79 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>Two events can be related to one another such that the occurrence of one event makes the occurrence of the other event more or less likely.\</p>
-<div id="def-condprob" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.1 (Conditional probability)</strong></span> For events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> with <span class="math inline">\(P(B)&gt;0\)</span>, the <em>conditional probability</em> of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span> is the probability that the <span class="math inline">\(A\)</span> occurs given <span class="math inline">\(B\)</span> occurs. This probability is defined as <span class="math display">\[
-P(A|B) = \frac{P(A\cap B)}{P(B)}.
-\]</span></p>
-</div>
-<div id="exm-hwexam" class="theorem example">
-<p><span class="theorem-title"><strong>Example 4.1 (Exam pass and homework completion)</strong></span> On the day of an exam, select a student at random and let <span class="math inline">\(A\)</span> be the event that he or she passes the exam.</p>
-<ul>
-<li>Now consider only students who completed the last homework assignment. One would expect the probability of the event <span class="math inline">\(A\)</span> to be higher when sampling a student from this group than when sampling from the whole class.</li>
-<li>On the other hand, consider only students who <em>did not</em> complete the last homework assignment. One would expect the probability of the event <span class="math inline">\(A\)</span> to be <em>lower</em> when sampling a student from this group than when sampling from the whole class.</li>
-</ul>
-<p>Consider selecting a student at random from the whole class and letting <span class="math inline">\(B\)</span> be the event that the selected student completed the last homework assignment. Then:</p>
-<ul>
-<li>The conditional probability <span class="math inline">\(P(A|B)\)</span> is the probability that a student selected at random from the group of students who completed the last homework assignment will pass the exam We expect this to be higher than <span class="math inline">\(P(A)\)</span>, which is the probability that a student drawn at random from the entire class will pass the exam.</li>
-<li>The conditional probability <span class="math inline">\(P(A|B^c)\)</span> is the probability that a student selected at random from the group of students who <em>did not</em> complete the last homework assignment will pass the exam. We expect this to be lower than <span class="math inline">\(P(A)\)</span>, which is the probability that a student drawn from the whole class will pass the exam.</li>
-</ul>
-<p>Suppose that two-thirds of the students in the class completed the last homework assignment and that one half of the class completed the last homework assignment <em>and</em> passed the exam. Then we would write <span class="math display">\[
-P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{1/2}{2/3} = 0.75.
-\]</span></p>
-</div>
-<div id="exm-friendsparty2" class="theorem example">
-<p><span class="theorem-title"><strong>Example 4.2 (Meeting friends at a party)</strong></span> Consider the statistical experiment of going to a party and noting which of your friends you meet there. Let <span class="math inline">\(A\)</span> be the event that you meet Adrian at the party and <span class="math inline">\(B\)</span> be the event that you meet Beverly. Suppose <span class="math inline">\(P(A) = 0.4\)</span>, <span class="math inline">\(P(B) = 0.6\)</span>, and <span class="math inline">\(P(A \cap B) = 0.35\)</span>. Then:</p>
+<p>Suppose we draw a random sample <span class="math inline">\(X_1,\dots,X_n\)</span> from the <span class="math inline">\(\mathcal{N}(\mu,\sigma^2)\)</span> distribution, where the value of <span class="math inline">\(\mu\)</span> is unknown, but the value of <span class="math inline">\(\sigma^2\)</span> is known (later on we will drop the assumption that <span class="math inline">\(\sigma^2\)</span> is known, as it is actually quite unrealistic in practice). We would like to construct an interval <span class="math inline">\([L,U]\)</span>, where <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span> are computed from the sample, such that <span class="math inline">\(P(L \leq \mu \leq U )\)</span> is large. That is, we would like our interval <span class="math inline">\([U,L]\)</span> to contain the value of <span class="math inline">\(\mu\)</span> with some guaranteed probability.</p>
+<p>To start off, let’s say we want an interval which contains <span class="math inline">\(\mu\)</span> with probability <span class="math inline">\(0.95\)</span>. We may arrive at such an interval in two steps:</p>
 <ol type="1">
-<li>The probability that you meet Adrian given that you meet Beverly is <span class="math display">\[
-\begin{align*}
-P(A|B) &amp; = \frac{P(A \cap B)}{P(B)} \\
-   &amp; = \frac{0.35}{0.6} \\
-   &amp; = 0.5833333.
-\end{align*}
-\]</span></li>
-<li>The probability that you meet Adrian given that you do <em>not</em> meet Beverly is <span class="math display">\[
-\begin{align*}
-P(A|B^c) &amp; = \frac{P(A \cap B^c)}{P(B^c)} \\
-   &amp; = \frac{P(A) - P(A \cap B)}{1 - P(B)} \\
-   &amp; = \frac{0.4 - 0.35}{1 - 0.6} \\
-   &amp; = 0.125
-\end{align*}
-\]</span></li>
+<li><p>Since <span class="math inline">\(\bar X_n \sim \mathcal{N}(\mu,\sigma^2/n)\)</span> we may write <span class="math display">\[
+P\Big(-1.96 \leq \frac{\bar X_n - \mu}{ \sigma/\sqrt{n}} \leq 1.96\Big) = 0.95.
+\]</span> See <a href="mean_of_rs.html#prp-xbarnormalpop" class="quarto-xref">Proposition&nbsp;<span>16.2</span></a> and <a href="normal_distribution.html#fig-normal909599" class="quarto-xref">Figure&nbsp;<span>13.4</span></a>.</p></li>
+<li><p>Rearrange the above expression to get <span class="math display">\[
+  P\left(\bar X_n -1.96 \frac{\sigma}{\sqrt{n}} \leq \mu \leq \bar X_n +  1.96\frac{\sigma}     {\sqrt{n}} \right) = 0.95,
+  \]</span> which suggests the interval with endpoints <span class="math display">\[
+  \bar X_n \pm 1.96\frac{\sigma}{\sqrt{n}}.
+  \]</span></p></li>
 </ol>
-<p>An interpretation of the above is that if you meet Beverly, you are then more likely to meet Adrian; if you do not meet Beverly, you are less likely to meet Adrian.</p>
+<p>We call this a <span class="math inline">\(95\%\)</span> confidence interval for <span class="math inline">\(\mu\)</span>.</p>
+<p>More generally, for any <span class="math inline">\(\alpha \in (0,1)\)</span>, we consider the construction of <span class="math inline">\((1-\alpha)100\%\)</span> confidence intervals, where the value <span class="math inline">\(\alpha\)</span> is the probability that our confidence interval will <em>not</em> contain <span class="math inline">\(\mu\)</span>. For a <span class="math inline">\(95\%\)</span> confidence interval, the corresponding value of <span class="math inline">\(\alpha\)</span> is <span class="math inline">\(0.05\)</span>. We refer to <span class="math inline">\(1-\alpha\)</span> as the <em>confidence level</em> of the confidence interval. To give a general expression for a <span class="math inline">\((1-\alpha)100\%\)</span> confidence interval, let <span class="math inline">\(z_{\alpha/2}\)</span> denote the value such that <span class="math inline">\(P(Z &gt; z_{\alpha/2}) = \alpha/2\)</span>, where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>, as depicted here:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/z_alpha2.png" class="img-fluid figure-img"></p>
+<figcaption>Depiction of <span class="math inline">\(z_{\alpha/2}\)</span></figcaption>
+</figure>
 </div>
-<div id="exr-USCvTAMU" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.1 (Gamecocks versus Aggies)</strong></span> Suppose <span class="math inline">\(80250\)</span> spectators are in attendance at the next Gamecocks versus Aggies football game, and one lucky winner will be selected at random to receive free “big gulps” for life from the concession stand. Suppose <span class="math inline">\(20000\)</span> of the spectators are students and that there are <span class="math inline">\(10000\)</span> Aggies present, <span class="math inline">\(200\)</span> of which are students. Let <span class="math inline">\(G\)</span> be the event that a Gamecock is chosen and let <span class="math inline">\(S\)</span> be the event that a student is chosen. Find:</p>
+<p>The above is a depiction of what is called <em>upper quantile notation</em>. We call <span class="math inline">\(z_{\alpha/2}\)</span> the <em>upper</em> <span class="math inline">\(\alpha/2\)</span> quantile of the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution because there is area <span class="math inline">\(\alpha/2\)</span> to <em>the right</em> of this value under the <span class="math inline">\(\mathcal{N}(0,1)\)</span> PDF. Because the normal distributions are symmetric, the ordinary <span class="math inline">\(\alpha/2\)</span> quantile is equal to <span class="math inline">\(-z_{\alpha/2}\)</span>, that is, it is the reflection of the upper <span class="math inline">\(\alpha/2\)</span> quantile across the origin.</p>
+<p>Then we have the following result:</p>
+<div id="prp-confintmean" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 24.1 (Confidence interval for normal mean)</strong></span> For a random sample <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}\mathcal{N}(\mu,\sigma^2)\)</span> with <span class="math inline">\(\sigma\)</span> known, for any <span class="math inline">\(\alpha \in (0,1)\)</span> the interval with endpoints <span class="math display">\[
+\bar X_n \pm z_{\alpha/2} \frac{\sigma}{\sqrt{n}}
+\]</span> will contain <span class="math inline">\(\mu\)</span> with probability <span class="math inline">\(1-\alpha\)</span>.</p>
+</div>
+<p>We are very often interested in building confidence intervals at the <span class="math inline">\(0.90\)</span>, <span class="math inline">\(0.95\)</span>, or <span class="math inline">\(0.99\)</span> confidence levels, for which <a href="normal_distribution.html#fig-normal909599" class="quarto-xref">Figure&nbsp;<span>13.4</span></a> depicts the necessary quantiles, <span class="math inline">\(z_{0.05} = 1.645\)</span>, <span class="math inline">\(z_{0.025} = 1.96\)</span>, and <span class="math inline">\(z_{0.005} = 2.576\)</span>, respectively, of the standard Normal distribution.</p>
+<p>Consider building a confidence interval for the <span class="math inline">\(\mu\)</span> in the following example:</p>
+<div id="exm-goldenratio" class="theorem example">
+<p><span class="theorem-title"><strong>Example 24.1 (Golden ratio data)</strong></span> Each in a class of twenty-seven students was asked to measure the distances <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> depicted below on his or her left hand and then to compute the ratio <span class="math inline">\(B/A\)</span> of the distances.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/gr_diagram.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="300"></p>
+</figure>
+</div>
+<p>Below are the values which were obtained.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>gr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.66</span>, <span class="fl">1.61</span>, <span class="fl">1.62</span>, <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.43</span>, <span class="fl">1.66</span>, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.20</span>, <span class="fl">1.52</span>, <span class="fl">1.60</span>, <span class="fl">1.55</span>, <span class="fl">1.67</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.77</span>, <span class="fl">1.50</span>, <span class="fl">1.64</span>, <span class="fl">1.54</span>, <span class="fl">1.40</span>, <span class="fl">1.36</span>, <span class="fl">1.50</span>, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.40</span>, <span class="fl">1.35</span>, <span class="fl">1.48</span>, <span class="fl">1.64</span>, <span class="fl">1.91</span>, <span class="fl">1.70</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(gr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The instructor of the twenty-seven students was keenly interested in testing whether the average value of the ratio <span class="math inline">\(B/A\)</span> was equal to the fabled golden ratio, given by <span class="math inline">\((1 + \sqrt{5})/2\)</span>, which is <span class="math inline">\(1.618\)</span> after rounding. The mean of the observed values was <span class="math inline">\(1.56\)</span>.</p>
+</div>
+<div id="exr-goldenratio" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 24.1 (Confidence interval for the mean in golden ratio example)</strong></span> Regarding the values in the golden ratio data set as a random sample from a normal distribution with unknown mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma = 0.15\)</span>, construct a confidence interval for <span class="math inline">\(\mu\)</span> at these confidence levels:</p>
 <ol type="1">
-<li><span class="math inline">\(P(G)\)</span>, the probability that a Gamecock is chosen.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
-<li><span class="math inline">\(P(S)\)</span>, the probability that a student is chosen.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
-<li><span class="math inline">\(P(G^c)\)</span>, the probability that an Aggie is chosen.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
-<li><span class="math inline">\(P(G^c \cap S)\)</span>, the probability that an Aggie student is chosen.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
-<li><span class="math inline">\(P(G|S)\)</span>, the probability a Gamecock is chosen, given that a student is chosen.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
-<li><span class="math inline">\(P(S|G^c)\)</span>, the probability a student is chosen, given an Aggie is chosen.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></li>
+<li><span class="math inline">\(90\%\)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li><span class="math inline">\(95\%\)</span><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+<li><span class="math inline">\(99\%\)</span><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+<li><span class="math inline">\(98\%\)</span><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
 </ol>
-<p>We can begin making a table of the spectators based on the provided information as follows:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: right;"></th>
-<th style="text-align: right;">Gamecock</th>
-<th style="text-align: right;">Aggie</th>
-<th style="text-align: right;">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;"><strong>Student</strong></td>
-<td style="text-align: right;">19800</td>
-<td style="text-align: right;">200</td>
-<td style="text-align: right;">20000</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"><strong>Non-student</strong></td>
-<td style="text-align: right;">50450</td>
-<td style="text-align: right;">9800</td>
-<td style="text-align: right;">60250</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;"><strong>Total</strong></td>
-<td style="text-align: right;">70250</td>
-<td style="text-align: right;">10000</td>
-<td style="text-align: right;">80250</td>
-</tr>
-</tbody>
-</table>
 </div>
-<p>Note that when we “condition” on an event, we may regard the sample points identified with the conditioning event as the new sample space.</p>
-<p>A direct consequence of the definition of the conditional probability is the following result, which states that we can always compute an intersection probability as a conditional probability times an un-conditional probability.</p>
-<div id="prp-multrule" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 4.1 (Multiplicative rule of probablity)</strong></span> For any two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> we have <span class="math display">\[
-P(A\cap B) = P(A|B)P(B)
-\]</span> or equivalently <span class="math display">\[
-P(A\cap B) = P(B|A)P(A).
-\]</span></p>
-</div>
-<p>A probability which is not a conditional probability is sometimes called a <em>marginal</em> probability. So, <a href="#prp-multrule" class="quarto-xref">Proposition&nbsp;<span>4.1</span></a> states that an intersection probability can always be written as a conditional probability times a marginal probability.</p>
-<div id="exr-safari" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.2 (Safari)</strong></span> Suppose you go on a safari in South Africa and make a list of the animals you see. Let <span class="math inline">\(G\)</span> be the event that you see a giraffe, <span class="math inline">\(W\)</span> the event that you see a Wildebeest, and <span class="math inline">\(C\)</span> the event that you see a crocodile. Assume</p>
-<ul>
-<li><span class="math inline">\(P(W) = 0.40\)</span></li>
-<li><span class="math inline">\(P(C) = 0.60\)</span></li>
-<li><span class="math inline">\(P(G) = 0.20\)</span></li>
-<li><span class="math inline">\(P(C|W) = 0.775\)</span></li>
-<li><span class="math inline">\(P(C|G) = 0.65\)</span></li>
-<li><span class="math inline">\(P(G\cap W) = 0.06\)</span></li>
-<li><span class="math inline">\(P(G\cap W\cap C) = 0.01\)</span></li>
-</ul>
-<p>Fill in all the spaces on a Venn diagram (all possible disjoint events). <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
-</div>
-<p>Here we note that the complement rule <span class="math inline">\(P(A^c) = 1 - P(A)\)</span> works for conditional probabilities too:</p>
-<div id="prp-complementcond" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 4.2 (Complement rule for conditional probabilities)</strong></span> For events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> with <span class="math inline">\(P(B) &gt; 0\)</span> we have <span class="math inline">\(P(A^c|B) = 1 - P(A|B)\)</span>.</p>
-</div>
-<p>The above comes from <span class="math display">\[
-\begin{align*}
-P(A^c|B) &amp;= \frac{P(A^c \cap B)}{P(B)} \\
-&amp;=\frac{P(B) - P(A \cap B)}{P(B)}\\
-&amp; = 1 - P(A|B).
-\end{align*}
-\]</span></p>
+<p>Note that <a href="confint_for_normal_variance.html#exr-goldenratio" class="quarto-xref">Exercise&nbsp;<span>25.1</span></a> depended on knowledge of the population standard deviation <span class="math inline">\(\sigma\)</span>. Later on we will learn how to construct a confidence interval for <span class="math inline">\(\mu\)</span> when <span class="math inline">\(\sigma\)</span> is replaced by its sample counterpart <span class="math inline">\(S_n\)</span>.</p>
 
 
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p><span class="math inline">\(P(G) = 70250/80250 = 0.8754\)</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p><span class="math inline">\(P(S) = 20000/80250 = 0.2492\)</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p><span class="math inline">\(P(G^c) = 1- P(G) = 0.1246\)</span><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p><span class="math inline">\(P(G^c \cap S) = 200/80250 = 0.0025\)</span><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>The answer is <span class="math display">\[
-    P(G|S) = \frac{P(G \cap S)}{P(S)},
-  \]</span> so we need <span class="math inline">\(P(G \cap S) = 19800/80250\)</span> as well as <span class="math inline">\(P(S) = 20000/80250\)</span>. The answer is thus <span class="math display">\[
-    P(G|S) = P(G \cap S) \times \frac{1}{P(S)} = \frac{19800}{80250} \times \frac{80250}{20000} = \frac{19800}{20000} = 0.99.
-    \]</span> <a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p><span class="math inline">\(P(S|G^c) = \dfrac{P(G^c \cap S)}{P(G^c)} = \dfrac{200}{10000} = 0.02.\)</span><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>We will need the probability <span class="math display">\[
-P(W \cap C) = P(C|W)P(W) = 0.775 \times 0.40 = 0.31
-\]</span> as well as <span class="math display">\[
-P(G \cap C) = P(C|G)P(G) = 0.65 \times 0.20 = 0.13.
-\]</span><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>The <span class="math inline">\(90\%\)</span> confidence interval is given by <span class="math display">\[
+  \bar X_n \pm 1.645 \frac{\sigma}{\sqrt{n}} = 1.56 \pm 1.645 \frac{0.15}{\sqrt{27}} = [1.513,1.607]
+  \]</span> <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The <span class="math inline">\(95\%\)</span> confidence interval is given by <span class="math display">\[
+  \bar X_n \pm 1.96 \frac{\sigma}{\sqrt{n}} = 1.56 \pm 1.96 \frac{0.15}{\sqrt{27}} = [1.503,1.617]
+  \]</span> <a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>The <span class="math inline">\(99\%\)</span> confidence interval is given by <span class="math display">\[
+  \bar X_n \pm 2.576 \frac{\sigma}{\sqrt{n}} = 1.56 \pm 2.576 \frac{0.15}{\sqrt{27}} = [1.486,1.634]
+  \]</span> <a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>This corresponds to <span class="math inline">\(\alpha = 0.02\)</span>, so that <span class="math inline">\(z_{\alpha/2} = z_{0.01} = 2.33\)</span> (See the <span class="math inline">\(Z\)</span> table in <a href="z_table.html" class="quarto-xref"><span>Chapter 33</span></a>). <span class="math display">\[
+  \bar X_n \pm 2.33 \frac{\sigma}{\sqrt{n}} = 1.56 \pm 2.33 \frac{0.15}{\sqrt{27}} = [1.493,1.627]
+  \]</span> <a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -1016,13 +986,13 @@ P(G \cap C) = P(C|G)P(G) = 0.65 \times 0.20 = 0.13.
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./counting_rules.html" class="pagination-link" aria-label="Counting rules">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Counting rules</span></span>
+      <a href="./statistical_inference.html" class="pagination-link" aria-label="Statistical inference">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Statistical inference</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./independence.html" class="pagination-link" aria-label="Independence">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./confint_for_normal_variance.html" class="pagination-link" aria-label="Confidence interval for a normal variance">
+        <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Confidence interval for a normal variance</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

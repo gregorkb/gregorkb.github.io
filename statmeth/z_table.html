@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>27&nbsp; Z-table – Statistical Methods</title>
+<title>33&nbsp; Z-table – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./chi_squared_table.html" rel="next">
 <link href="./logreg.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -160,7 +160,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./z_table.html">Appendices</a></li><li class="breadcrumb-item"><a href="./z_table.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./z_table.html">Appendices</a></li><li class="breadcrumb-item"><a href="./z_table.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -309,14 +309,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./variance_of_rs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The sample variance</span></span></a>
+  <a href="./hist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Histogram</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hist.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Histogram</span></span></a>
+  <a href="./variance_of_rs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">The sample variance</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -356,8 +356,44 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./statistical_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Statistical inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">First confidence interval for a normal mean</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confint_for_normal_variance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Confidence interval for a normal variance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./t_confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Realistic confidence interval for a normal mean</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./large_sample_confint_for_mean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Large-sample confidence interval for a mean</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confint_for_proportion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Confidence interval for a proportion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -374,13 +410,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
   </div>
 </li>
       </ul>
@@ -397,7 +433,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -414,7 +450,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chi_squared_table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
   </div>
 </li>
       </ul>
@@ -436,9 +478,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./z_table.html">Appendices</a></li><li class="breadcrumb-item"><a href="./z_table.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./z_table.html">Appendices</a></li><li class="breadcrumb-item"><a href="./z_table.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-z_table" class="quarto-section-identifier"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></h1>
+<h1 class="title"><span id="sec-z_table" class="quarto-section-identifier"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></h1>
 </div>
 
 
@@ -465,7 +507,7 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>In the table below, add the row and column label together to obtain <span class="math inline">\(z\)</span>. Then the table gives <span class="math inline">\(P(0 \leq Z \leq z)\)</span> where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>. For example, we obtain <span class="math inline">\(P(0 \leq Z \leq 1.26) = 0.3962\)</span> from the table, which is depicted in <a href="#fig-ztable_illus" class="quarto-xref">Figure&nbsp;<span>27.1</span></a>.</p>
+<p>In the table below, add the row and column label together to obtain <span class="math inline">\(z\)</span>. Then the table gives <span class="math inline">\(P(0 \leq Z \leq z)\)</span> where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>. For example, we obtain <span class="math inline">\(P(0 \leq Z \leq 1.26) = 0.3962\)</span> from the table, which is depicted in <a href="chi_squared_table.html#fig-ztable_illus" class="quarto-xref">Figure&nbsp;<span>34.1</span></a>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -485,7 +527,7 @@ window.Quarto = {
 <img src="z_table_files/figure-html/fig-ztable_illus-1.png" class="img-fluid figure-img" width="1400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ztable_illus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;27.1: Illustration of the probabilities given in the <span class="math inline">\(Z\)</span> table.
+Figure&nbsp;33.1: Illustration of the probabilities given in the <span class="math inline">\(Z\)</span> table.
 </figcaption>
 </figure>
 </div>
@@ -943,12 +985,12 @@ Figure&nbsp;27.1: Illustration of the probabilities given in the <span class="ma
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./logreg.html" class="pagination-link" aria-label="Logistic regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Logistic regression</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Logistic regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chi_squared_table.html" class="pagination-link" aria-label="Chi-squared table">
+        <span class="nav-page-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
