@@ -21,41 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -160,7 +125,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">Part III</a></li><li class="breadcrumb-item"><a href="./confint_for_normal_mean.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">First confidence interval for a normal mean</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">III: Inference from random samples</a></li><li class="breadcrumb-item"><a href="./confint_for_normal_mean.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">First confidence interval for a normal mean</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -194,7 +159,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">Part I</span></a>
+ <span class="menu-text">I: Sets, probability, and random variables</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -289,7 +254,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Part II</span></a>
+ <span class="menu-text">II: Random samples</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -348,7 +313,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III</span></a>
+ <span class="menu-text">III: Inference from random samples</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -375,7 +340,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./t_confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Realistic confidence interval for a normal mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Revised confidence interval for a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -401,7 +366,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">Part IV</span></a>
+ <span class="menu-text">IV: Linear models</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -424,7 +389,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
- <span class="menu-text">Part V</span></a>
+ <span class="menu-text">V: Generalized linear and nonlinear models</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -484,7 +449,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">Part III</a></li><li class="breadcrumb-item"><a href="./confint_for_normal_mean.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">First confidence interval for a normal mean</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">III: Inference from random samples</a></li><li class="breadcrumb-item"><a href="./confint_for_normal_mean.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">First confidence interval for a normal mean</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-confint_for_normal_mean" class="quarto-section-identifier"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">First confidence interval for a normal mean</span></span></h1>
 </div>
@@ -518,7 +483,7 @@ window.Quarto = {
 <ol type="1">
 <li><p>Since <span class="math inline">\(\bar X_n \sim \mathcal{N}(\mu,\sigma^2/n)\)</span> we may write <span class="math display">\[
 P\Big(-1.96 \leq \frac{\bar X_n - \mu}{ \sigma/\sqrt{n}} \leq 1.96\Big) = 0.95.
-\]</span> See <a href="mean_of_rs.html#prp-xbarnormalpop" class="quarto-xref">Proposition&nbsp;<span>16.2</span></a> and <a href="normal_distribution.html#fig-normal909599" class="quarto-xref">Figure&nbsp;<span>13.4</span></a>.</p></li>
+\]</span> See <a href="mean_of_rs.html#prp-xbarnormalpop" class="quarto-xref">Proposition&nbsp;<span>16.2</span></a> and <span class="quarto-unresolved-ref">?fig-normal909599</span>.</p></li>
 <li><p>Rearrange the above expression to get <span class="math display">\[
   P\left(\bar X_n -1.96 \frac{\sigma}{\sqrt{n}} \leq \mu \leq \bar X_n +  1.96\frac{\sigma}     {\sqrt{n}} \right) = 0.95,
   \]</span> which suggests the interval with endpoints <span class="math display">\[
@@ -527,10 +492,14 @@ P\Big(-1.96 \leq \frac{\bar X_n - \mu}{ \sigma/\sqrt{n}} \leq 1.96\Big) = 0.95.
 </ol>
 <p>We call this a <span class="math inline">\(95\%\)</span> confidence interval for <span class="math inline">\(\mu\)</span>.</p>
 <p>More generally, for any <span class="math inline">\(\alpha \in (0,1)\)</span>, we consider the construction of <span class="math inline">\((1-\alpha)100\%\)</span> confidence intervals, where the value <span class="math inline">\(\alpha\)</span> is the probability that our confidence interval will <em>not</em> contain <span class="math inline">\(\mu\)</span>. For a <span class="math inline">\(95\%\)</span> confidence interval, the corresponding value of <span class="math inline">\(\alpha\)</span> is <span class="math inline">\(0.05\)</span>. We refer to <span class="math inline">\(1-\alpha\)</span> as the <em>confidence level</em> of the confidence interval. To give a general expression for a <span class="math inline">\((1-\alpha)100\%\)</span> confidence interval, let <span class="math inline">\(z_{\alpha/2}\)</span> denote the value such that <span class="math inline">\(P(Z &gt; z_{\alpha/2}) = \alpha/2\)</span>, where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>, as depicted here:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/z_alpha2.png" class="img-fluid figure-img"></p>
-<figcaption>Depiction of <span class="math inline">\(z_{\alpha/2}\)</span></figcaption>
+<div id="fig-z_alpha2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-z_alpha2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/z_alpha2.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-z_alpha2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;24.1: Depiction of upper quantile <span class="math inline">\(z_{\alpha/2}\)</span>.
+</figcaption>
 </figure>
 </div>
 <p>The above is a depiction of what is called <em>upper quantile notation</em>. We call <span class="math inline">\(z_{\alpha/2}\)</span> the <em>upper</em> <span class="math inline">\(\alpha/2\)</span> quantile of the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution because there is area <span class="math inline">\(\alpha/2\)</span> to <em>the right</em> of this value under the <span class="math inline">\(\mathcal{N}(0,1)\)</span> PDF. Because the normal distributions are symmetric, the ordinary <span class="math inline">\(\alpha/2\)</span> quantile is equal to <span class="math inline">\(-z_{\alpha/2}\)</span>, that is, it is the reflection of the upper <span class="math inline">\(\alpha/2\)</span> quantile across the origin.</p>
@@ -540,25 +509,8 @@ P\Big(-1.96 \leq \frac{\bar X_n - \mu}{ \sigma/\sqrt{n}} \leq 1.96\Big) = 0.95.
 \bar X_n \pm z_{\alpha/2} \frac{\sigma}{\sqrt{n}}
 \]</span> will contain <span class="math inline">\(\mu\)</span> with probability <span class="math inline">\(1-\alpha\)</span>.</p>
 </div>
-<p>We are very often interested in building confidence intervals at the <span class="math inline">\(0.90\)</span>, <span class="math inline">\(0.95\)</span>, or <span class="math inline">\(0.99\)</span> confidence levels, for which <a href="normal_distribution.html#fig-normal909599" class="quarto-xref">Figure&nbsp;<span>13.4</span></a> depicts the necessary quantiles, <span class="math inline">\(z_{0.05} = 1.645\)</span>, <span class="math inline">\(z_{0.025} = 1.96\)</span>, and <span class="math inline">\(z_{0.005} = 2.576\)</span>, respectively, of the standard Normal distribution.</p>
-<p>Consider building a confidence interval for the <span class="math inline">\(\mu\)</span> in the following example:</p>
-<div id="exm-goldenratio" class="theorem example">
-<p><span class="theorem-title"><strong>Example 24.1 (Golden ratio data)</strong></span> Each in a class of twenty-seven students was asked to measure the distances <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> depicted below on his or her left hand and then to compute the ratio <span class="math inline">\(B/A\)</span> of the distances.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/gr_diagram.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="300"></p>
-</figure>
-</div>
-<p>Below are the values which were obtained.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>gr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.66</span>, <span class="fl">1.61</span>, <span class="fl">1.62</span>, <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.43</span>, <span class="fl">1.66</span>, </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.20</span>, <span class="fl">1.52</span>, <span class="fl">1.60</span>, <span class="fl">1.55</span>, <span class="fl">1.67</span>, </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.77</span>, <span class="fl">1.50</span>, <span class="fl">1.64</span>, <span class="fl">1.54</span>, <span class="fl">1.40</span>, <span class="fl">1.36</span>, <span class="fl">1.50</span>, </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.40</span>, <span class="fl">1.35</span>, <span class="fl">1.48</span>, <span class="fl">1.64</span>, <span class="fl">1.91</span>, <span class="fl">1.70</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(gr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>The instructor of the twenty-seven students was keenly interested in testing whether the average value of the ratio <span class="math inline">\(B/A\)</span> was equal to the fabled golden ratio, given by <span class="math inline">\((1 + \sqrt{5})/2\)</span>, which is <span class="math inline">\(1.618\)</span> after rounding. The mean of the observed values was <span class="math inline">\(1.56\)</span>.</p>
-</div>
+<p>We are very often interested in building confidence intervals at the <span class="math inline">\(0.90\)</span>, <span class="math inline">\(0.95\)</span>, or <span class="math inline">\(0.99\)</span> confidence levels, for which <span class="quarto-unresolved-ref">?fig-normal909599</span> depicts the necessary quantiles, <span class="math inline">\(z_{0.05} = 1.645\)</span>, <span class="math inline">\(z_{0.025} = 1.96\)</span>, and <span class="math inline">\(z_{0.005} = 2.576\)</span>, respectively, of the standard Normal distribution.</p>
+<p>Consider building a confidence interval for <span class="math inline">\(\mu\)</span> in the golden ratio example, <a href="random_sample.html#exm-goldenratio" class="quarto-xref">Example&nbsp;<span>15.2</span></a>. From fig-goldenrationormalqq, it seems reasonable to assume that the sample was drawn from a normal distribution. The variance <span class="math inline">\(\sigma^2\)</span> of the population distribution is unknown, but the following exercise assumes <span class="math inline">\(\sigma = 0.15\)</span>.</p>
 <div id="exr-goldenratio" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 24.1 (Confidence interval for the mean in golden ratio example)</strong></span> Regarding the values in the golden ratio data set as a random sample from a normal distribution with unknown mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma = 0.15\)</span>, construct a confidence interval for <span class="math inline">\(\mu\)</span> at these confidence levels:</p>
 <ol type="1">

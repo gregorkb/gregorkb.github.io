@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>26&nbsp; Realistic confidence interval for a normal mean – Statistical Methods</title>
+<title>26&nbsp; Revised confidence interval for a normal mean – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -125,7 +160,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">Part III</a></li><li class="breadcrumb-item"><a href="./t_confint_for_normal_mean.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Realistic confidence interval for a normal mean</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">III: Inference from random samples</a></li><li class="breadcrumb-item"><a href="./t_confint_for_normal_mean.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Revised confidence interval for a normal mean</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -159,7 +194,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">Part I</span></a>
+ <span class="menu-text">I: Sets, probability, and random variables</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -254,7 +289,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Part II</span></a>
+ <span class="menu-text">II: Random samples</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -313,7 +348,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III</span></a>
+ <span class="menu-text">III: Inference from random samples</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -340,7 +375,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./t_confint_for_normal_mean.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Realistic confidence interval for a normal mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Revised confidence interval for a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -366,7 +401,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">Part IV</span></a>
+ <span class="menu-text">IV: Linear models</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -389,7 +424,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
- <span class="menu-text">Part V</span></a>
+ <span class="menu-text">V: Generalized linear and nonlinear models</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -449,9 +484,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">Part III</a></li><li class="breadcrumb-item"><a href="./t_confint_for_normal_mean.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Realistic confidence interval for a normal mean</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">III: Inference from random samples</a></li><li class="breadcrumb-item"><a href="./t_confint_for_normal_mean.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Revised confidence interval for a normal mean</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-t_confint_for_normal_mean" class="quarto-section-identifier"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Realistic confidence interval for a normal mean</span></span></h1>
+<h1 class="title"><span id="sec-t_confint_for_normal_mean" class="quarto-section-identifier"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Revised confidence interval for a normal mean</span></span></h1>
 </div>
 
 
@@ -495,12 +530,17 @@ f(x;k) = \frac{\Gamma((k+1)/2)}{\sqrt{k\pi}\Gamma(k/2)}\Big(1 + \frac{x^2}{k}\Bi
 </div>
 <p>We will write <span class="math inline">\(T \sim t_k\)</span> to express that <span class="math inline">\(T\)</span> is a random variable having the <span class="math inline">\(t\)</span> distribution with degrees of freedom <span class="math inline">\(k\)</span>.</p>
 <p>We will not need to use the formula for the PDF other than for making plots of it. We find that as the degrees of freedom parameter <span class="math inline">\(k\)</span> increases, the PDF of the <span class="math inline">\(t_k\)</span> distribution approaches that of the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution. This is illustrated below:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="tikz/t_versus_standardnormal.png" class="img-fluid figure-img"></p>
-<figcaption>Convergence of <span class="math inline">\(t_k\)</span> distribution to <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution as <span class="math inline">\(k \to \infty\)</span>.</figcaption>
+<div id="fig-t_versus_standardnormal" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-t_versus_standardnormal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="tikz/t_versus_standardnormal.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-t_versus_standardnormal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;26.1: Convergence of <span class="math inline">\(t_k\)</span> distribution to <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution as <span class="math inline">\(k \to \infty\)</span>.
+</figcaption>
 </figure>
 </div>
+<p>Note that the <span class="math inline">\(t\)</span> distributions are symmetric around zero and “bell shaped”, just like the standard normal distribution; however, the <span class="math inline">\(t\)</span> distributions have “heavier tails” than the standard normal distribution. This means that a random variable having a <span class="math inline">\(t\)</span> distribution is more likely to take values a greater distance from zero. For small values of the degrees of freedom parameter, the <span class="math inline">\(t\)</span> distributions gives considerable weight to values lying quite far from zero–even extremely far from zero if <span class="math inline">\(k=1\)</span> or <span class="math inline">\(k=2\)</span>.</p>
 <p>We now state the main result found by <em>Student</em>, which will enable use to construct a confidence interval for <span class="math inline">\(\mu\)</span> based on <span class="math inline">\(\bar X_n\)</span> and the sample standard deviation <span class="math inline">\(S_n\)</span> (in place of the unknown population standard deviation <span class="math inline">\(\sigma\)</span>).</p>
 <div id="prp-tpivot" class="theorem proposition">
 <p><span class="theorem-title"><strong>Proposition 26.1 (Distribution of T score)</strong></span> If <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}\mathcal{N}(\mu,\sigma^2)\)</span>, then <span class="math display">\[
@@ -508,10 +548,14 @@ T = \frac{\bar X_n - \mu}{S_n /\sqrt{n}} \sim t_{n-1}.
 \]</span></p>
 </div>
 <p>The transformation of <span class="math inline">\(\bar X_n\)</span> by the subtraction of <span class="math inline">\(\mu\)</span> and division by <span class="math inline">\(S_n/\sqrt{n}\)</span> can be referred to as “sending <span class="math inline">\(\bar X_n\)</span> into the <span class="math inline">\(T\)</span> world,”, where this is in contrast to sending <span class="math inline">\(\bar X_n\)</span> into the <span class="math inline">\(Z\)</span> world, which requires knowledge of <span class="math inline">\(\sigma\)</span>. In order to make use of the above result in constructing confidence intervals, it will be convenient to define notation for upper quantiles of the <span class="math inline">\(t_{n-1}\)</span> distribution, similarly to how we have defined upper quantiles for the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution. For any <span class="math inline">\(\alpha \in (0,1)\)</span>, let <span class="math inline">\(t_{n-1,\alpha/2}\)</span> denote the value such that <span class="math inline">\(P(T &gt; t_{n-1,\alpha/2}) = \alpha/2\)</span>, as depicted below:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="tikz/t_upper_quantiles.png" class="img-fluid figure-img"></p>
-<figcaption>Definition of upper <span class="math inline">\(\alpha/2\)</span> quantile <span class="math inline">\(t_{n-1,\alpha/2}\)</span>.</figcaption>
+<div id="fig-t_upper_quantiles" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-t_upper_quantiles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="tikz/t_upper_quantiles.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-t_upper_quantiles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;26.2: Definition of upper <span class="math inline">\(\alpha/2\)</span> quantile <span class="math inline">\(t_{n-1,\alpha/2}\)</span>.
+</figcaption>
 </figure>
 </div>
 <p>Certain upper quantiles for several <span class="math inline">\(t\)</span> distributions can be looked up in the <span class="math inline">\(t\)</span> table in <a href="t_table.html" class="quarto-xref"><span>Chapter 35</span></a>.</p>
@@ -530,8 +574,39 @@ T = \frac{\bar X_n - \mu}{S_n /\sqrt{n}} \sim t_{n-1}.
 \bar X_n \pm t_{n-1,\alpha/2}\frac{S_n}{\sqrt{n}}
 \]</span> will contain the value of <span class="math inline">\(\mu\)</span> with probability <span class="math inline">\(1-\alpha\)</span>.</p>
 </div>
+<p>Due to the heavy-tailedness of the <span class="math inline">\(t\)</span> distributions, as depicted in <a href="#fig-t_versus_standardnormal" class="quarto-xref">Figure&nbsp;<span>26.1</span></a>, we find that for <em>all</em> sample sizes <span class="math inline">\(n\)</span>, we have <span class="math inline">\(t_{n-1,\alpha/2} &gt; z_{\alpha/2}\)</span>, so that the margin of error <span class="math inline">\(t_{n-1,\alpha/2}S_n/\sqrt{n}\)</span> will always be greater than <span class="math inline">\(z_{\alpha/2}S_n / \sqrt{n}\)</span>. The extra width this gives to the confidence interval is the appropriate penalty for our having to estimate <span class="math inline">\(\sigma\)</span> when we do not know its true value.</p>
+<div id="exr-grconfint" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 26.1 (Confidence interval for the mean in golden ratio study)</strong></span> Refer to the golden ratio data in <a href="random_sample.html#exm-goldenratio" class="quarto-xref">Example&nbsp;<span>15.2</span></a>. From <a href="normal_qq_plot.html#fig-goldenrationormalqq" class="quarto-xref">Figure&nbsp;<span>19.3</span></a>, we have determined that is likely safe to assume that the sample was drawn from a normal population.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>gr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.66</span>, <span class="fl">1.61</span>, <span class="fl">1.62</span>, <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.43</span>, <span class="fl">1.66</span>, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.20</span>, <span class="fl">1.52</span>, <span class="fl">1.60</span>, <span class="fl">1.55</span>, <span class="fl">1.67</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.77</span>, <span class="fl">1.50</span>, <span class="fl">1.64</span>, <span class="fl">1.54</span>, <span class="fl">1.40</span>, <span class="fl">1.36</span>, <span class="fl">1.50</span>, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.40</span>, <span class="fl">1.35</span>, <span class="fl">1.48</span>, <span class="fl">1.64</span>, <span class="fl">1.91</span>, <span class="fl">1.70</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(gr)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>Sn <span class="ot">&lt;-</span> <span class="fu">sd</span>(gr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Using <span class="math inline">\(\bar X_n = 1.565\)</span> and <span class="math inline">\(S_n = 0.148\)</span> construct confidence intervals for <span class="math inline">\(\mu\)</span> at these confidence levels:</p>
+<ol type="1">
+<li><span class="math inline">\(95\%\)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li><span class="math inline">\(99\%\)</span><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+</ol>
+</div>
 
 
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>With <span class="math inline">\(\alpha = 0.05\)</span> and <span class="math inline">\(n = 27\)</span> we have <span class="math inline">\(t_{n-1,\alpha/2} = t_{27-1,0.05/2} = 2.0555\)</span>. So we obtain <span class="math display">\[
+  1.565 \pm 2.0555 \frac{0.148}{\sqrt{27}} = [1.506,1.623].
+  \]</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>With <span class="math inline">\(\alpha = 0.01\)</span> and <span class="math inline">\(n = 27\)</span> we have <span class="math inline">\(t_{n-1,\alpha/2} = t_{27-1,0.01/2} = 2.7787\)</span>. So we obtain <span class="math display">\[
+  1.565 \pm 2.7787 \frac{0.148}{\sqrt{27}} = [1.486,1.644].
+  \]</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
