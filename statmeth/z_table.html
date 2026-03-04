@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>33&nbsp; Z-table – Statistical Methods</title>
+<title>33&nbsp; z table – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -160,7 +160,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./z_table.html">Appendices</a></li><li class="breadcrumb-item"><a href="./z_table.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./z_table.html">Appendices</a></li><li class="breadcrumb-item"><a href="./z_table.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -450,13 +450,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chi_squared_table.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./t_table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
   </div>
 </li>
       </ul>
@@ -478,9 +484,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./z_table.html">Appendices</a></li><li class="breadcrumb-item"><a href="./z_table.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./z_table.html">Appendices</a></li><li class="breadcrumb-item"><a href="./z_table.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-z_table" class="quarto-section-identifier"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></h1>
+<h1 class="title"><span id="sec-z_table" class="quarto-section-identifier"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></h1>
 </div>
 
 
@@ -507,41 +513,17 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>In the table below, add the row and column label together to obtain <span class="math inline">\(z\)</span>. Then the table gives <span class="math inline">\(P(0 \leq Z \leq z)\)</span> where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>. For example, we obtain <span class="math inline">\(P(0 \leq Z \leq 1.26) = 0.3962\)</span> from the table, which is depicted in <a href="chi_squared_table.html#fig-ztable_illus" class="quarto-xref">Figure&nbsp;<span>34.1</span></a>.</p>
+<p>In the table below, add the row and column label together to obtain <span class="math inline">\(z\)</span>. Then the table gives <span class="math inline">\(P(0 \leq Z \leq z)\)</span> where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>. For example, we obtain <span class="math inline">\(P(0 \leq Z \leq 1.26) = 0.3962\)</span>.</p>
+<p><img src="tikz/z_table_picture.png" class="img-fluid"></p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">3.5</span>,<span class="fl">3.5</span>,<span class="at">length=</span><span class="dv">501</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>fz <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(z)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(z,fz,<span class="at">type=</span><span class="st">"l"</span>,<span class="at">xlab=</span><span class="st">"z"</span>,<span class="at">ylab=</span><span class="st">"f(z)"</span>,<span class="at">bty=</span><span class="st">"l"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fl">1.26</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>xpoly0 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,a,<span class="at">length=</span><span class="dv">201</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>xpoly <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,xpoly0,xpoly0[<span class="dv">201</span>])</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ypoly <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">dnorm</span>(xpoly0),<span class="dv">0</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(xpoly,ypoly,<span class="at">col=</span><span class="st">"black"</span>,<span class="at">border=</span><span class="cn">NA</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div id="fig-ztable_illus" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-ztable_illus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="z_table_files/figure-html/fig-ztable_illus-1.png" class="img-fluid figure-img" width="1400">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ztable_illus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;33.1: Illustration of the probabilities given in the <span class="math inline">\(Z\)</span> table.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">3.09</span>,<span class="at">by =</span> .<span class="dv">01</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>val <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(z) <span class="sc">-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">round</span>(val,<span class="dv">4</span>),<span class="dv">31</span>,<span class="dv">10</span>,<span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(table) <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">3</span>,<span class="at">by=</span>.<span class="dv">1</span>),<span class="at">fmt=</span><span class="st">"%.1f"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(table) <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="fu">seq</span>(<span class="dv">0</span>,.<span class="dv">09</span>,<span class="at">by=</span>.<span class="dv">01</span>),<span class="at">fmt=</span><span class="st">"%.2f"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">3.09</span>,<span class="at">by =</span> .<span class="dv">01</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>val <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(z) <span class="sc">-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">round</span>(val,<span class="dv">4</span>),<span class="dv">31</span>,<span class="dv">10</span>,<span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(table) <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">3</span>,<span class="at">by=</span>.<span class="dv">1</span>),<span class="at">fmt=</span><span class="st">"%.1f"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(table) <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="fu">seq</span>(<span class="dv">0</span>,.<span class="dv">09</span>,<span class="at">by=</span>.<span class="dv">01</span>),<span class="at">fmt=</span><span class="st">"%.2f"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>      0.00   0.01   0.02   0.03   0.04   0.05   0.06   0.07   0.08   0.09

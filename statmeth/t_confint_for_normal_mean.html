@@ -415,13 +415,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chi_squared_table.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./t_table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
   </div>
 </li>
       </ul>
@@ -471,6 +477,58 @@ window.Quarto = {
 <div class="hidden">
 <p>$$</p>
 <p>$$</p>
+</div>
+<p>In <a href="confint_for_normal_mean.html" class="quarto-xref"><span>Chapter 24</span></a> we considered how to construct a confidence interval for <span class="math inline">\(\mu\)</span> based on a random sample <span class="math inline">\(X_1,\dots,X_n\)</span> drawn from the <span class="math inline">\(\mathcal{N}(\mu,\sigma^2)\)</span> distribution where <span class="math inline">\(\mu\)</span> was unknown but the variance <span class="math inline">\(\sigma^2\)</span> <em>was</em> known. In practice, one cannot assume knowledge of the value of <span class="math inline">\(\sigma^2\)</span>, so one has to estimate its value using the sample variance <span class="math inline">\(S_n^2\)</span>. Recall our <span class="math inline">\((1-\alpha)\times 100\%\)</span> confidence interval for <span class="math inline">\(\mu\)</span> which depended on knowledge of <span class="math inline">\(\sigma^2\)</span> was given by <span class="math display">\[
+\bar X_n \pm z_{\alpha/2}\frac{\sigma}{\sqrt{n}}.
+\]</span> Now, one may be tempted to simply replace <span class="math inline">\(\sigma\)</span> in the above expression with the sample standard deviation <span class="math inline">\(S_n\)</span>. We find however, that this will cause the confidence interval to perform poorly (not cover its target <span class="math inline">\(\mu\)</span> with the desired probability) when the sample size is small. If the sample size is large, we will find that we indeed <em>can</em> simply substitute <span class="math inline">\(S_n\)</span> for <span class="math inline">\(\sigma\)</span>, but let us consider first the case of a small sample.</p>
+<p>When the sample size <span class="math inline">\(n\)</span> is small, we can expect our estimate <span class="math inline">\(S_n\)</span> of <span class="math inline">\(\sigma\)</span> to be somewhat poor, in the sense that, from sample to sample, it will have a large amount of variability. As a consequence of the limited accuracy with which we can estimate <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(S_n\)</span>, we find that we must make the interval a bit wider if we wish to ensure that it will contain <span class="math inline">\(\mu\)</span> with the advertized probability <span class="math inline">\(1-\alpha\)</span>. The precise way in which we should widen the interval to penalized ourselves for having had to estimate <span class="math inline">\(\sigma\)</span> was discovered by William Sealy Gosset, who published his results under the pseudonym <em>Student</em>. Starting from the fact that <span class="math display">\[
+Z = \frac{\bar X_n -\mu}{\sigma /\sqrt{n}} \sim \mathcal{N}(0,1)
+\]</span> provided the random sample is drawn from the <span class="math inline">\(\mathcal{N}(\mu,\sigma^2)\)</span> distribution, <em>Student</em> began to investigate the distribution of <span class="math display">\[
+T = \frac{\bar X_n - \mu}{S_n /\sqrt{n}}.
+\]</span> His investigations led him to the discovery of a set of probability distributions called the <span class="math inline">\(t\)</span> distributions. These distributions, like the chi-squared distributions, are indexed by a parameter called the <em>degrees of freedom</em> parameter. The reason for this is that a random variable having one of <em>Student’s</em> <span class="math inline">\(t\)</span> distributions can be constructed as <span class="math display">\[
+T = \frac{Z}{\sqrt{W / k}},
+\]</span> where <span class="math inline">\(Z\)</span> and <span class="math inline">\(W\)</span> are indepedent random variables such that <span class="math inline">\(Z\sim \mathcal{N}(0,1)\)</span> and <span class="math inline">\(W \sim \chi^2_k\)</span>. The random variable <span class="math inline">\(T\)</span> constructed in this way will have the <span class="math inline">\(t\)</span> distribution with degrees of freedom <span class="math inline">\(k\)</span>. We next give the probability density function (PDF) of the <span class="math inline">\(t\)</span> distributions.</p>
+<div id="def-tdistpdf" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 26.1 (The <span class="math inline">\(t\)</span> distributions)</strong></span> For each <span class="math inline">\(k&gt;0\)</span>, the probability distribution with PDF given by <span class="math display">\[
+f(x;k) = \frac{\Gamma((k+1)/2)}{\sqrt{k\pi}\Gamma(k/2)}\Big(1 + \frac{x^2}{k}\Big)^{-(k+1)/2}
+\]</span> is called the <span class="math inline">\(t\)</span> distribution with degrees of freedom <span class="math inline">\(k\)</span>, where <span class="math inline">\(\Gamma(a)=\int_0^\infty u^{a-1}e^{-u}du\)</span> for <span class="math inline">\(a&gt;0\)</span> is the <em>gamma function</em>.</p>
+</div>
+<p>We will write <span class="math inline">\(T \sim t_k\)</span> to express that <span class="math inline">\(T\)</span> is a random variable having the <span class="math inline">\(t\)</span> distribution with degrees of freedom <span class="math inline">\(k\)</span>.</p>
+<p>We will not need to use the formula for the PDF other than for making plots of it. We find that as the degrees of freedom parameter <span class="math inline">\(k\)</span> increases, the PDF of the <span class="math inline">\(t_k\)</span> distribution approaches that of the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution. This is illustrated below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="tikz/t_versus_standardnormal.png" class="img-fluid figure-img"></p>
+<figcaption>Convergence of <span class="math inline">\(t_k\)</span> distribution to <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution as <span class="math inline">\(k \to \infty\)</span>.</figcaption>
+</figure>
+</div>
+<p>We now state the main result found by <em>Student</em>, which will enable use to construct a confidence interval for <span class="math inline">\(\mu\)</span> based on <span class="math inline">\(\bar X_n\)</span> and the sample standard deviation <span class="math inline">\(S_n\)</span> (in place of the unknown population standard deviation <span class="math inline">\(\sigma\)</span>).</p>
+<div id="prp-tpivot" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 26.1 (Distribution of T score)</strong></span> If <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}\mathcal{N}(\mu,\sigma^2)\)</span>, then <span class="math display">\[
+T = \frac{\bar X_n - \mu}{S_n /\sqrt{n}} \sim t_{n-1}.
+\]</span></p>
+</div>
+<p>The transformation of <span class="math inline">\(\bar X_n\)</span> by the subtraction of <span class="math inline">\(\mu\)</span> and division by <span class="math inline">\(S_n/\sqrt{n}\)</span> can be referred to as “sending <span class="math inline">\(\bar X_n\)</span> into the <span class="math inline">\(T\)</span> world,”, where this is in contrast to sending <span class="math inline">\(\bar X_n\)</span> into the <span class="math inline">\(Z\)</span> world, which requires knowledge of <span class="math inline">\(\sigma\)</span>. In order to make use of the above result in constructing confidence intervals, it will be convenient to define notation for upper quantiles of the <span class="math inline">\(t_{n-1}\)</span> distribution, similarly to how we have defined upper quantiles for the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution. For any <span class="math inline">\(\alpha \in (0,1)\)</span>, let <span class="math inline">\(t_{n-1,\alpha/2}\)</span> denote the value such that <span class="math inline">\(P(T &gt; t_{n-1,\alpha/2}) = \alpha/2\)</span>, as depicted below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="tikz/t_upper_quantiles.png" class="img-fluid figure-img"></p>
+<figcaption>Definition of upper <span class="math inline">\(\alpha/2\)</span> quantile <span class="math inline">\(t_{n-1,\alpha/2}\)</span>.</figcaption>
+</figure>
+</div>
+<p>Certain upper quantiles for several <span class="math inline">\(t\)</span> distributions can be looked up in the <span class="math inline">\(t\)</span> table in MAKE.</p>
+<p>Equipped with this notation for the upper <span class="math inline">\(\alpha/2\)</span> quantile, we can derive a <span class="math inline">\((1-\alpha)\times 100\%\)</span> confidence interval for <span class="math inline">\(\mu\)</span> based on <span class="math inline">\(\bar X_n\)</span> and <span class="math inline">\(S_n\)</span> as follows:</p>
+<ol type="1">
+<li>Write <span class="math display">\[
+  P\Big(-t_{n-1,\alpha/2} \leq \frac{\bar X_n - \mu}{S_n /\sqrt{n}}\leq t_{n-1,\alpha/2}\Big) = 1 - \alpha.
+  \]</span></li>
+<li>Rearrange the above to obtain <span class="math display">\[
+  P\Big(\bar X_n -t_{n-1,\alpha/2}\frac{S_n}{\sqrt{n}} \leq \mu \leq \bar X_n + t_{n-1,\alpha/2}\frac{S_n }{\sqrt{n}}\Big) = 1 - \alpha.
+  \]</span></li>
+</ol>
+<p>From here we obtain:</p>
+<div id="prp-tconfint" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 26.2 (Confidence interval for normal mean when variance is unknown)</strong></span> If <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}\mathcal{N}(\mu,\sigma^2)\)</span>, then for any <span class="math inline">\(\alpha \in (0,1)\)</span> the interval with endpoints given by <span class="math display">\[
+\bar X_n \pm t_{n-1,\alpha/2}\frac{S_n}{\sqrt{n}}
+\]</span> will contain the value of <span class="math inline">\(\mu\)</span> with probability <span class="math inline">\(1-\alpha\)</span>.</p>
 </div>
 
 

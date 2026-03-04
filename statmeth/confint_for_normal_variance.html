@@ -450,13 +450,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title"><span class="math inline">\(Z\)</span>-table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chi_squared_table.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./t_table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
   </div>
 </li>
       </ul>
@@ -515,7 +521,7 @@ f(x;k) = \left\{\begin{array}{ll}
 \dfrac{1}{\Gamma(2/k)2^{k/2}}x^{k/2-1}e^{-x/2}, &amp; x \geq 0\\
 0, &amp; x &lt; 0,
 \end{array}\right.
-\]</span> where <span class="math inline">\(\Gamma(z)=\int_0^\infty u^{z-1}e^{-z}dz\)</span> for <span class="math inline">\(z&gt;0\)</span> is the <em>gamma function</em>.</p>
+\]</span> where <span class="math inline">\(\Gamma(a)=\int_0^\infty u^{a-1}e^{-u}du\)</span> for <span class="math inline">\(a&gt;0\)</span> is the <em>gamma function</em>.</p>
 </div>
 <p>We will write <span class="math inline">\(X \sim \chi^2_k\)</span> to express that <span class="math inline">\(X\)</span> is a random variable having the chi-squared distribution with degrees of freedom <span class="math inline">\(k\)</span>. <a href="#fig-chisquareddensities" class="quarto-xref">Figure&nbsp;<span>25.1</span></a> plots the PDFs of several chi-squared distributions. We see that these are right-skewed distributions giving positive probability only to positive numbers. Moreover, as the degrees of freedom parameter increases, the “center” of the distribution moves to the right.</p>
 <div class="cell">
@@ -564,16 +570,12 @@ Z_1^2 + \dots + Z_k^2 \sim \chi^2_k.
 \]</span></p>
 </div>
 <p>To see why the above might be so, note that in a few steps one can write <span class="math display">\[
-\begin{align*}
-\frac{(n-1)S_n^2}{\sigma^2} &amp;= \frac{1}{\sigma^2}\sum_{i=1}^n(X_i - \bar X_n)^2 \\
-&amp;= \frac{1}{\sigma^2}\sum_{i=1}^n(X_i - \mu + \mu  - \bar X_n)^2 \\
-&amp;=\sum_{i=1}^n\Big(\frac{X_i - \mu}{\sigma}\Big)^2 - \Big(\frac{\bar X_n - \mu}{\sigma / \sqrt{n}}\Big)^2,\\
-\end{align*}
-\]</span> where the sum on the right hand side is the sum of <span class="math inline">\(n\)</span> standard normal random variables, each squared, and the second term is also a squared standard normal random variable.</p>
+\frac{(n-1)S_n^2}{\sigma^2} =\sum_{i=1}^n\Big(\frac{X_i - \mu}{\sigma}\Big)^2 - \Big(\frac{\bar X_n - \mu}{\sigma / \sqrt{n}}\Big)^2,
+\]</span> where the sum on the right hand side is the sum of <span class="math inline">\(n\)</span> standard normal random variables, each squared, and the second term is also a squared standard normal random variable. The above is not really sufficient to prove the result in <a href="#prp-samplevarchisq" class="quarto-xref">Proposition&nbsp;<span>25.2</span></a>, but it does make it appear plausible.</p>
 <p>We now consider using the result from <a href="#prp-samplevarchisq" class="quarto-xref">Proposition&nbsp;<span>25.2</span></a> to construct a <span class="math inline">\((1-\alpha)\times 100\%\)</span> confidence interval for the variance <span class="math inline">\(\sigma^2\)</span> based on <span class="math inline">\(X_1,\dots,X_n\overset{\text{ind}}{\sim}\mathcal{N}(\mu,\sigma^2)\)</span>. To do so, we first introduce the notation <span class="math inline">\(\chi^2_{n-1,1- \alpha/2}\)</span> and <span class="math inline">\(\chi^2_{n-1,\alpha/2}\)</span> for the values such that <span class="math inline">\(P(W &lt; \chi^2_{n-1,1- \alpha/2}) = \alpha/2\)</span> and <span class="math inline">\(P(W &gt; \chi^2_{n-1,\alpha/2}) = \alpha/2\)</span>, where <span class="math inline">\(W \sim \chi_{n-1}^2\)</span>. These are depicted below:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/chi_squared_alpha2.png" class="img-fluid figure-img"></p>
+<p><img src="tikz/chi_squared_upper_quantiles.png" class="img-fluid figure-img"></p>
 <figcaption>Depiction of <span class="math inline">\(\chi^2_{n-1,1- \alpha/2}\)</span> and <span class="math inline">\(\chi^2_{n-1,\alpha/2}\)</span></figcaption>
 </figure>
 </div>
@@ -593,6 +595,8 @@ P\Big( \frac{(n-1)S_n^2}{\chi_{n-1,\alpha/2}^2}  \leq \sigma^2 \leq    \frac{(n-
 \Big[ \frac{(n-1)S_n^2}{\chi_{n-1,\alpha/2}^2}, \frac{(n-1)S_n^2}{\chi_{n-1,1 - \alpha/2}^2} \Big]
 \]</span> will contain <span class="math inline">\(\sigma^2\)</span> with probability <span class="math inline">\(1-\alpha\)</span>.</p>
 </div>
+<p>Note that the interval is not symmetric around the estimator <span class="math inline">\(S_n^2\)</span>; that is, <span class="math inline">\(S_n^2\)</span> does not lie at the midpoint of the interval, as it is not constructed by adding and subtracting a margin of error. This is because the sampling distribution of <span class="math inline">\(S_n^2\)</span> is not symmetric around <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>Note that one can take the square roots of the endpoints of the interval given in <a href="#prp-sigmasqconfint" class="quarto-xref">Proposition&nbsp;<span>25.3</span></a> to obtain a confidence interval for the standard deviation <span class="math inline">\(\sigma\)</span>.</p>
 <p>We can look up commonly used upper quantiles of chi-squared distributions in the chi-squared table provided in <a href="chi_squared_table.html" class="quarto-xref"><span>Chapter 34</span></a>.</p>
 <div id="exr-goldenratio" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 25.1 (Confidence interval for the variance in golden ratio example)</strong></span> Refer to the golden ratio experiment in <a href="confint_for_normal_mean.html#exm-goldenratio" class="quarto-xref">Example&nbsp;<span>24.1</span></a>:</p>
@@ -603,13 +607,12 @@ P\Big( \frac{(n-1)S_n^2}{\chi_{n-1,\alpha/2}^2}  \leq \sigma^2 \leq    \frac{(n-
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.40</span>, <span class="fl">1.35</span>, <span class="fl">1.48</span>, <span class="fl">1.64</span>, <span class="fl">1.91</span>, <span class="fl">1.70</span>)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>Sn <span class="ot">&lt;-</span> <span class="fu">sd</span>(gr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Regarding the values in the golden ratio data set as a random sample from a normal distribution with unknown mean <span class="math inline">\(\mu\)</span> and unknown variance <span class="math inline">\(\sigma^2\)</span>, construct a confidence interval for <span class="math inline">\(\sigma^2\)</span> at the confidence levels below, using that <span class="math inline">\(S_n^2 = 0.0219336\)</span>:</p>
+<p>Regarding the values in the golden ratio data set as a random sample from a normal distribution with unknown mean <span class="math inline">\(\mu\)</span> and unknown variance <span class="math inline">\(\sigma^2\)</span>, construct a confidence interval for <span class="math inline">\(\sigma^2\)</span> (and also for <span class="math inline">\(\sigma\)</span>) at the confidence levels below, using that <span class="math inline">\(S_n^2 = 0.0219336\)</span>:</p>
 <ol type="1">
 <li><span class="math inline">\(90\%\)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
 <li><span class="math inline">\(95\%\)</span><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
 </ol>
 </div>
-<p>Note that one can take the square roots of the endpoints of the interval given in <a href="#prp-sigmasqconfint" class="quarto-xref">Proposition&nbsp;<span>25.3</span></a> to obtain a confidence interval for the standard deviation <span class="math inline">\(\sigma\)</span>.</p>
 
 
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
@@ -617,10 +620,10 @@ P\Big( \frac{(n-1)S_n^2}{\chi_{n-1,\alpha/2}^2}  \leq \sigma^2 \leq    \frac{(n-
 <ol>
 <li id="fn1"><p>We have <span class="math inline">\(\alpha = 0.10\)</span> and <span class="math inline">\(n = 27\)</span>, so <span class="math inline">\(\chi_{27-1,0.10/2}^2 = 38.885\)</span> and <span class="math inline">\(\chi_{27-1,1 - 0.10/2}^2 = 15.379\)</span>. The <span class="math inline">\(90\%\)</span> confidence interval is therefore given by <span class="math display">\[
   \Big[\frac{(27-1)(0.1481)^2}{\chi_{27-1,0.05}^2}, \frac{(27-1)(0.1481)^2}{\chi_{27-1,0.95}^2} \Big] = [0.0147,0.0371].
-  \]</span> <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>With <span class="math inline">\(\alpha = 0.05\)</span> and <span class="math inline">\(n = 27\)</span> we have <span class="math inline">\(\chi_{27-1,0.05/2}^2 = 41.923\)</span> and <span class="math inline">\(\chi_{27-1,1 - 0.05/2}^2 = 13.844\)</span>. The <span class="math inline">\(90\%\)</span> confidence interval is therefore given by <span class="math display">\[
-  \Big[\frac{(27-1)(0.1481)^2}{\chi_{27-1,0.05}^2}, \frac{(27-1)(0.1481)^2}{\chi_{27-1,0.95}^2} \Big] = [0.0412,0.0136].
-  \]</span> <a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+  \]</span> The corresponding confidence interval for <span class="math inline">\(\sigma\)</span> is <span class="math inline">\([0.1212,0.1926]\)</span>. <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>With <span class="math inline">\(\alpha = 0.05\)</span> and <span class="math inline">\(n = 27\)</span> we have <span class="math inline">\(\chi_{27-1,0.05/2}^2 = 41.923\)</span> and <span class="math inline">\(\chi_{27-1,1 - 0.05/2}^2 = 13.844\)</span>. The <span class="math inline">\(95\%\)</span> confidence interval is therefore given by <span class="math display">\[
+  \Big[\frac{(27-1)(0.1481)^2}{\chi_{27-1,0.05}^2}, \frac{(27-1)(0.1481)^2}{\chi_{27-1,0.95}^2} \Big] = [0.0136,0.0412].
+  \]</span> The corresponding confidence interval for <span class="math inline">\(\sigma\)</span> is <span class="math inline">\([0.116619,0.2030]\)</span>. <a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
