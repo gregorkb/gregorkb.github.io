@@ -527,9 +527,10 @@ window.Quarto = {
 <h2 data-number="13.1" class="anchored" data-anchor-id="probability-density-function"><span class="header-section-number">13.1</span> Probability density function</h2>
 <div id="def-normalpdf" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 13.1 (Normal distribution probability density function)</strong></span> The normal distribution with location parameter <span class="math inline">\(\mu \in \mathbb{R}\)</span> and scale parameter <span class="math inline">\(\sigma &gt; 0\)</span> has probability density function <span class="math display">\[
-f(x) = \frac{1}{\sqrt{2\pi} \sigma} \exp\Big[-\frac{1}{2}\Big(\frac{x - \mu}{\sigma}\Big)^2\Big]
+f(x;\mu,\sigma) = \frac{1}{\sqrt{2\pi} \sigma} \exp\Big[-\frac{1}{2}\Big(\frac{x - \mu}{\sigma}\Big)^2\Big]
 \]</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>.</p>
 </div>
+<p>Since the PDF <span class="math inline">\(f\)</span> is function of <span class="math inline">\(x\)</span> which depends upon the values of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>, the above uses the convention of putting <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> after a semicolon: <span class="math inline">\(f(x;\mu,\sigma)\)</span>.</p>
 <p>We will write <span class="math inline">\(X \sim \mathcal{N}(\mu,\sigma^2)\)</span> to say that <span class="math inline">\(X\)</span> has the normal distribution with location parameter <span class="math inline">\(\mu\)</span> and scale parameter <span class="math inline">\(\sigma\)</span>. <a href="#fig-normal_musigma" class="quarto-xref">Figure&nbsp;<span>13.1</span></a> shows the bell-shaped curve of the normal distribution PDF. From the plot we see that the PDF is centered at <span class="math inline">\(\mu\)</span> and that as we move away from <span class="math inline">\(\mu\)</span> by multiples of <span class="math inline">\(\sigma\)</span> we capture more and more of the probability under the curve.</p>
 <div id="cell-fig-normal_musigma" class="cell" data-execution_count="1">
 <details class="code-fold">
@@ -540,8 +541,8 @@ f(x) = \frac{1}{\sqrt{2\pi} \sigma} \exp\Big[-\frac{1}{2}\Big(\frac{x - \mu}{\si
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.dpi'</span>] <span class="op">=</span> <span class="dv">128</span>       </span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'savefig.dpi'</span>] <span class="op">=</span> <span class="dv">128</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> (<span class="dv">6</span>, <span class="dv">4</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'text.usetex'</span>] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> (<span class="dv">5</span>, <span class="dv">3</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'text.usetex'</span>] <span class="op">=</span> <span class="va">False</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
@@ -565,15 +566,15 @@ f(x) = \frac{1}{\sqrt{2\pi} \sigma} \exp\Big[-\frac{1}{2}\Big(\frac{x - \mu}{\si
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'left'</span>].set_visible(<span class="va">False</span>)</span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f(x)$'</span>)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">f</span><span class="kw">(</span><span class="vs">x;</span><span class="dv">\m</span><span class="vs">u,</span><span class="dv">\s</span><span class="vs">igma</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">x</span><span class="dv">$</span><span class="vs">'</span>)</span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-normal_musigma" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-normal_musigma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="normal_distribution_files/figure-html/fig-normal_musigma-output-1.png" width="645" height="470" class="figure-img">
+<img src="normal_distribution_files/figure-html/fig-normal_musigma-output-1.png" width="547" height="376" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal_musigma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13.1: Probability density function of the <span class="math inline">\(\mathcal{N}(\mu,\sigma^2)\)</span> distribution.
@@ -594,7 +595,7 @@ Figure&nbsp;13.1: Probability density function of the <span class="math inline">
 <div id="cell-fig-normal_severalpdfs" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">5.5</span>,<span class="fl">5.5</span>,<span class="dv">501</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>fx <span class="op">=</span> stats.norm.pdf(x,<span class="dv">0</span>,<span class="dv">1</span>)</span>
@@ -612,8 +613,8 @@ Figure&nbsp;13.1: Probability density function of the <span class="math inline">
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'left'</span>].set_visible(<span class="va">False</span>)</span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f(x)$'</span>)</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">f</span><span class="kw">(</span><span class="vs">x;</span><span class="dv">\m</span><span class="vs">u,</span><span class="dv">\s</span><span class="vs">igma</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">x</span><span class="dv">$</span><span class="vs">'</span>)</span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="st">'upper left'</span>,frameon<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -622,7 +623,7 @@ Figure&nbsp;13.1: Probability density function of the <span class="math inline">
 <div id="fig-normal_severalpdfs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-normal_severalpdfs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="normal_distribution_files/figure-html/fig-normal_severalpdfs-output-1.png" width="647" height="470" class="figure-img">
+<img src="normal_distribution_files/figure-html/fig-normal_severalpdfs-output-1.png" width="650" height="473" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal_severalpdfs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13.2: Probability density functions of several normal distributions.
