@@ -478,8 +478,74 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
+<p>We now consider constructing a confidence interval for the probability (or “proportion”) <span class="math inline">\(p\)</span> based on a random sample <span class="math inline">\(X_1,\dots,X_n\)</span> drawn from the <span class="math inline">\(\text{Bernoulli}(p)\)</span> distribution. There are several ways in which this can be done, but we will first consider constructing a confidence interval based on the central limit result given in <a href="sample_proportion.html#prp-clt_sampleproportion" class="quarto-xref">Proposition&nbsp;<span>21.2</span></a>, which gives <span class="math display">\[
+\frac{\hat p_n - p}{\sqrt{p(1-p)/n}} \overset{\operatorname{approx}}{\sim}\mathcal{N}(0,1)
+\]</span> for large <span class="math inline">\(n\)</span>. Based on the above, one may begin deriving a confidence interval for <span class="math inline">\(p\)</span> in the following steps:</p>
+<ol type="1">
+<li>For any <span class="math inline">\(\alpha \in (0,1)\)</span>, write <span class="math display">\[
+  P\Big(-z_{\alpha/2} \leq \frac{\hat p_n - p}{\sqrt{p(1-p)/n}} \leq z_{\alpha/2}\Big) \approx 1- \alpha
+  \]</span> for large <span class="math inline">\(n\)</span>.</li>
+<li>Rearrange the above to obtain <span class="math display">\[
+  P\Big( \hat p_n - z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}} \leq p \leq \hat p_n + z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}}\Big) \approx 1 - \alpha
+  \]</span> for large <span class="math inline">\(n\)</span>.</li>
+</ol>
+<p>From the above, we see that the interval with endpoints <span class="math display">\[
+\hat p_n \pm z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}}
+\]</span> will contain <span class="math inline">\(p\)</span> with probability approximately <span class="math inline">\(1-\alpha\)</span> when <span class="math inline">\(n\)</span> is large. While this is true, if we stop for a moment we will see that, while we have used the same steps we have previously used to derive confidence intervals, this time it has resulted in a interval of which we cannot compute the endpoints unless we <em>already know</em> the population proportion <span class="math inline">\(p\)</span>. But the reason we are building a confidence interval in the first place is that we do not know the value of <span class="math inline">\(p\)</span>!</p>
+<p>A quick fix, which results in a feasible interval (meaning an interval with endpoints we can compute from our data), is to simply plug <span class="math inline">\(\hat p_n\)</span> into the expression <span class="math inline">\(p(1-p)\)</span> appearing in the margin of error. This results in what we call the <em>Wald-type</em> confidence interval for <span class="math inline">\(p\)</span>:</p>
+<div id="prp-waldciforp" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 28.1 (Wald-type interval for a population proportion)</strong></span> If <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}\text{Bernoulli}(p)\)</span> then for any <span class="math inline">\(\alpha \in (0,1)\)</span> the interval with endpoints <span id="eq-waldciforp"><span class="math display">\[
+\hat p_n \pm z_{\alpha/2} \sqrt{\frac{\hat p_n(1-\hat p_n)}{n}}
+\tag{28.1}\]</span></span> will contain <span class="math inline">\(p\)</span> with probability approximately <span class="math inline">\(1-\alpha\)</span> for large enough <span class="math inline">\(n\)</span>.</p>
+</div>
+<p>It is interesting to note that when <span class="math inline">\(X_1,\dots,X_n\)</span> are zeros and ones, we have <span class="math display">\[
+S_n^2 = \hat p_n(1-\hat p_n) \Big(\frac{n-1}{n}\Big) \approx \hat p_n (1-\hat p_n),
+\]</span> where the approximation “<span class="math inline">\(\approx\)</span>” holds when <span class="math inline">\(n\)</span> is large (so that <span class="math inline">\((n-1)/n \approx 1\)</span>). From this we can see that the interval in <a href="#eq-waldciforp" class="quarto-xref">Equation&nbsp;<span>28.1</span></a> is nearly the same as <span class="math inline">\(\bar X_n \pm z_{\alpha/2}S_n /\sqrt{n}\)</span> (recalling that <span class="math inline">\(\hat p_n = \bar X_n\)</span>), which we considered in <a href="large_sample_confint_for_mean.html#prp-largenciformean" class="quarto-xref">Proposition&nbsp;<span>27.2</span></a>.</p>
+<p>Now, the interval <a href="#eq-waldciforp" class="quarto-xref">Equation&nbsp;<span>28.1</span></a> actually performs notoriously poorly (meaning that the probability with which it will cover its target <span class="math inline">\(p\)</span> is very different from the advertised probability of <span class="math inline">\(1-\alpha\)</span>) if <span class="math inline">\(n\)</span> is too small, so one is cautioned to ensure the condition <span id="eq-waldrot"><span class="math display">\[
+\min\{n \hat p_n ,n(1-\hat p_n)\} \geq  15
+\tag{28.2}\]</span></span> holds as a rule of thumb, before trusting it. To understand this rule of thumb, note that <span class="math inline">\(np\)</span> is the expected number of successes in the sample (the number of successes follows exactly a <span class="math inline">\(\text{Binomial}(n,p)\)</span> distribution, of which the expected value is given by <span class="math inline">\(np\)</span>), and <span class="math inline">\(n(1-p)\)</span> is the expected number of failures (which can be seen by swapping the labels “success” and “failure”). The quantities <span class="math inline">\(n \hat p_n\)</span> and <span class="math inline">\(n(1-\hat p_n)\)</span> are the observed numbers of successes and failures, respectively, in the random sample; so the number of “successes” and the number of “failures” in our sample be at least <span class="math inline">\(15\)</span> before we trust the Wald-type interval.</p>
+<p>An interval which in many situations exhibits superior performance (achieves closer to advertised or <em>nominal</em> coverage probability) to the Wald-type interval is the <em>Agresti-Coull</em> interval. This interval is constructed in what seems a rather curious fashion: One adds to ones data two “successes” and two “failures” and <em>then</em> computes the Wald-type interval on the augmented data:</p>
+<div id="prp-ACciforp" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 28.2 (Wald-type interval for a population proportion)</strong></span> If <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}\text{Bernoulli}(p)\)</span> then for any <span class="math inline">\(\alpha \in (0,1)\)</span> the interval with endpoints <span id="eq-ACciforp"><span class="math display">\[
+\tilde p_n \pm z_{\alpha/2} \sqrt{\frac{\tilde p_n(1-\tilde p_n)}{n + 4}}, \quad \text{ where }\quad  \tilde p_n = \frac{\#\{\text{successes}\} + 2}{n + 4},
+\tag{28.3}\]</span></span> will contain <span class="math inline">\(p\)</span> with probability approximately <span class="math inline">\(1-\alpha\)</span> for large enough <span class="math inline">\(n\)</span>.</p>
+</div>
+<p>For use of this interval it is advised to ensure that the condition <span id="eq-AGrot"><span class="math display">\[
+\min\{n \hat p ,n(1-\hat p)\} \geq 5
+\tag{28.4}\]</span></span> holds, which, when compared to the rule of thumb in <a href="#eq-AGrot" class="quarto-xref">Equation&nbsp;<span>28.4</span></a>, is seen to allow for smaller sample sizes; we only need to have <span class="math inline">\(5\)</span> successes and <span class="math inline">\(5\)</span> failures in the sample in order to trust the Agresti–Coull interval.</p>
+<div id="exr-poll" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 28.1 (Political poll)</strong></span> Suppose you draw a random sample of <span class="math inline">\(1000\)</span> registered voters and <span class="math inline">\(478\)</span> of them say they will vote for candidate A. Using <span class="math inline">\(\alpha = 0.05\)</span> construct for the unknown proportion of registered voters who will vote for candidate A the</p>
+<ol type="1">
+<li><p>Wald-type interval.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
+<li><p>Agresti-Coull interval.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p></li>
+</ol>
+</div>
+<div id="exr-linedry" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 28.2</strong></span> Suppose you randomly sample <span class="math inline">\(50\)</span> USC undergraduates and find that <span class="math inline">\(5\)</span> of them hang-dry their laundry to conserve electricity. Using <span class="math inline">\(\alpha = 0.05\)</span> construct for the unknown proportion of USC undergraduates who hang-dry their laundry the</p>
+<ol type="1">
+<li><p>Wald-type interval.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p></li>
+<li><p>Agresti-Coull interval.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p></li>
+</ol>
+</div>
 
 
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>For a <span class="math inline">\(95\%\)</span> confidence interval, <span class="math inline">\(\alpha=0.05\)</span>, and <span class="math inline">\(z_{0.025}=1.96\)</span>. From here, the Wald interval is obtained as <span class="math display">\[
+\frac{478}{1000} \pm 1.96\sqrt{\frac{(478/1000)(1 - 478/1000)}{1000}} = 0.478 \pm 0.031 = [0.447 , 0.509]
+\]</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The Agresti-Coull interval is given by <span class="math display">\[
+\frac{480}{1004} \pm 1.96\sqrt{\frac{(480/1004)(1 - 480/1004)}{1004}} = 0.478 \pm 0.031 = [0.447 , 0.509].
+\]</span> So the Wald-type and the Agresti-Coull interval in this case have the same endpoints out to the third decimal place.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>For a <span class="math inline">\(95\%\)</span> confidence interval <span class="math inline">\(\alpha = 0.05\)</span>, so we use <span class="math inline">\(z_{0.025} = 1.96\)</span>. So the Wald-type interval is <span class="math display">\[
+\frac{5}{50} \pm 1.96\sqrt{\frac{(5/50)(1 - 5/50)}{50}} = [0.017 , 0.183].
+\]</span> <a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>The Agresti-Coull interval is <span class="math display">\[
+\frac{7}{54} \pm 1.96\sqrt{\frac{(7/54)(1 - 7/54)}{54}} = (0.040 , 0.219)
+\]</span> The Wald and Agresti-Coull intervals in this example are very different. It is better here to use the Agresti-Coull interval because of the smaller sample and the small number of successes.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

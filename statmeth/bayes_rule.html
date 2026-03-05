@@ -570,9 +570,13 @@ This is an example in which it can be useful to draw <em>tree diagram</em> like 
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart LR
+<pre class="mermaid mermaid-js">---
+config:
+  look: handDrawn
+---
+flowchart LR
   %% root
-  Root[" "]
+  Root["Die roll"]
 
   %% bags
   Bag1["Bag 1"]

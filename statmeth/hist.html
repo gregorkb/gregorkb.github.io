@@ -675,22 +675,23 @@ Figure&nbsp;17.1: Histogram of pinewood derby finishing times with number of equ
 <!-- X = rng.normal(loc=0,scale=1,size = n) -->
 <!-- myhist(X,20,'green','Sample size n = 5000, K = 20') -->
 <!-- ``` -->
-<div id="exm-boston09" class="theorem example">
-<p><span class="theorem-title"><strong>Example 17.1 (Boston marathon finishing times)</strong></span> &nbsp;</p>
+<div id="exm-bos09" class="theorem example">
+<p><span class="theorem-title"><strong>Example 17.1 (Boston Marathon finishing times)</strong></span> &nbsp;</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>bos09 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/bos09.csv"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> bos09<span class="sc">$</span>hrs[bos09<span class="sc">$</span>gender<span class="sc">==</span><span class="st">'M'</span>]</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> bos09<span class="sc">$</span>hrs[bos09<span class="sc">$</span>gender<span class="sc">==</span><span class="st">'F'</span>]</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>nm <span class="ot">&lt;-</span> <span class="fu">length</span>(m)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>nw <span class="ot">&lt;-</span> <span class="fu">length</span>(w)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>mu_m <span class="ot">&lt;-</span> <span class="fu">mean</span>(m)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>mu_w <span class="ot">&lt;-</span> <span class="fu">mean</span>(w)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>sigma_m <span class="ot">&lt;-</span> <span class="fu">sd</span>(m)<span class="sc">*</span> <span class="fu">sqrt</span>((nm <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>nm)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>sigma_w <span class="ot">&lt;-</span> <span class="fu">sd</span>(w)<span class="sc">*</span> <span class="fu">sqrt</span>((nw <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>nw)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find the datafile here: https://github.com/gregorkb/gregorkb.github.io/tree/master/data</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>bos09 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/bos09.csv"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> bos09<span class="sc">$</span>hrs[bos09<span class="sc">$</span>gender<span class="sc">==</span><span class="st">'M'</span>]</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> bos09<span class="sc">$</span>hrs[bos09<span class="sc">$</span>gender<span class="sc">==</span><span class="st">'F'</span>]</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>nm <span class="ot">&lt;-</span> <span class="fu">length</span>(m)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>nw <span class="ot">&lt;-</span> <span class="fu">length</span>(w)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>mu_m <span class="ot">&lt;-</span> <span class="fu">mean</span>(m)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>mu_w <span class="ot">&lt;-</span> <span class="fu">mean</span>(w)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>sigma_m <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((m <span class="sc">-</span> mu_m)<span class="sc">**</span><span class="dv">2</span>))</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>sigma_w <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((w <span class="sc">-</span> mu_w)<span class="sc">**</span><span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Below are histograms of mens and womens finishing times of the 2009 Boston marathon. The mean and standard deviation of the finishing times of the <span class="math inline">\(13539\)</span> men who completed the marathon were <span class="math inline">\(3.693\)</span> and <span class="math inline">\(0.6276\)</span>, respectively; those of the <span class="math inline">\(9300\)</span> women were <span class="math inline">\(4.021\)</span> and <span class="math inline">\(0.5561\)</span>, respectively.</p>
@@ -701,8 +702,8 @@ Figure&nbsp;17.1: Histogram of pinewood derby finishing times with number of equ
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(m,</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">30</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt=</span><span class="st">"n"</span>,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">""</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">""</span>,</span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">545</span>,.<span class="dv">25</span>),</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="cn">NA</span>,</span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">""</span>,</span>
