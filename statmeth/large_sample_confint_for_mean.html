@@ -21,41 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -528,21 +493,6 @@ window.Quarto = {
 <p>From the above we see that the interval with endpoints <span id="eq-cisigma"><span class="math display">\[
 \bar X_n \pm z_{\alpha/2}\frac{\sigma}{\sqrt{n}}
 \tag{27.1}\]</span></span> will contain <span class="math inline">\(\mu\)</span> with probability approximately <span class="math inline">\(1-\alpha\)</span> when <span class="math inline">\(n\)</span> is large.</p>
-<p><em>PUT EXAMPLE OF BOSTON MARATHON FINISHING TIMES, WHERE WE KNOW THE TRUE POPULATION VARIANCE. ILLUSTRATE THE COVERAGE.</em></p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://people.stat.sc.edu/gregorkb/data/bos09whrs.Rdata"</span>))</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(bos09whrs, <span class="at">main =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">""</span>, <span class="at">xlab =</span> <span class="st">""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="large_sample_confint_for_mean_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="1400"></p>
-</figure>
-</div>
-</div>
-</div>
 <p>In practice, we will seldom have knowledge of the value of population variance <span class="math inline">\(\sigma^2\)</span>, so we must use the value of <span class="math inline">\(S_n^2\)</span> as an estimate. In the case of sampling from a normal population, we compensated for the substitution of <span class="math inline">\(S_n\)</span> for <span class="math inline">\(\sigma\)</span> by substituting the <span class="math inline">\(t\)</span> distribution quantile <span class="math inline">\(t_{n-1,\alpha}\)</span> for the standard normal quantile <span class="math inline">\(z_{\alpha/2}\)</span>. This made the interval wider by just the right amount to ensure that the interval would still cover <span class="math inline">\(\mu\)</span> with probability <span class="math inline">\(1-\alpha\)</span>. In the case we are considering presently—that of a large sample drawn from a non-normal distribution—there is no principled reason to replace <span class="math inline">\(z_{\alpha/2}\)</span> with <span class="math inline">\(t_{n-1,\alpha/2}\)</span>, as the quantity <span class="math display">\[
 \frac{\bar X_n - \mu}{S_n/\sqrt{n}}
 \]</span> has the <span class="math inline">\(t_{n-1}\)</span> distribution <em>only</em> when the population distribution is normal. What then, should we do? We find that we can rely on the central limit theorem coupled with a result called Slutzky’s theorem to make the following claim:</p>

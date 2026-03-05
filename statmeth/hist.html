@@ -665,25 +665,82 @@ Figure&nbsp;17.1: Histogram of pinewood derby finishing times with number of equ
 </div>
 </div>
 <p>The sample size <span class="math inline">\(n\)</span> is quite small for both the pinewood derby finishing times (<span class="math inline">\(n = 19\)</span>) and the golden ratio (<span class="math inline">\(n = 27\)</span>) data, which makes the appearance of the histogram especially sensitive to the choice of the number of intervals <span class="math inline">\(K\)</span>.</p>
-<p>With a larger sample, the histogram can give a more accurate picture of the PDF of the population distribution. <a href="#fig-histlargenpython" class="quarto-xref">Figure&nbsp;<span>17.2</span></a> shows the histogram of a very large random sample simulated from the standard normal distribution. We see that the shape of the histogram conforms to the bell-shaped curve of the normal PDF.</p>
+<p>With a larger sample, the histogram can give a more accurate picture of the PDF of the population distribution; see the histograms in fig-boston09times of mens and womens finishing times in the 2009 Boston marathon.</p>
+<!-- @fig-histlargenpython shows the histogram of a very large random sample simulated from the standard normal distribution. We see that the shape of the histogram conforms to the bell-shaped curve of the normal PDF. -->
+<!-- ```{python} -->
+<!-- #| label: fig-histlargenpython -->
+<!-- #| fig-cap: Histogram with $K=20$ equal-width intervals for a sample of size $n = 5000$ from the $\calN(0,1)$ distribution. -->
+<!-- rng = np.random.default_rng() -->
+<!-- n = 5000 -->
+<!-- X = rng.normal(loc=0,scale=1,size = n) -->
+<!-- myhist(X,20,'green','Sample size n = 5000, K = 20') -->
+<!-- ``` -->
+<div id="exm-boston09" class="theorem example">
+<p><span class="theorem-title"><strong>Example 17.1 (Boston marathon finishing times)</strong></span> &nbsp;</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng()</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">5000</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> rng.normal(loc<span class="op">=</span><span class="dv">0</span>,scale<span class="op">=</span><span class="dv">1</span>,size <span class="op">=</span> n)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>myhist(X,<span class="dv">20</span>,<span class="st">'green'</span>,<span class="st">'Sample size n = 5000, K = 20'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>boston <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/Users/karlgregory/Library/CloudStorage/OneDrive-UniversityofSouthCarolina/STAT_515/data/BostonMarathon_2009_results.csv"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># I think the wheelchair division is mixed in here.  Could spend more time, but let's not worry for now.</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>mkeep <span class="ot">&lt;-</span> <span class="fu">which</span>(boston<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">"M"</span> <span class="sc">&amp;</span> boston<span class="sc">$</span>official <span class="sc">&gt;</span> <span class="dv">128</span> <span class="sc">&amp;</span> boston<span class="sc">$</span>official <span class="sc">&lt;</span> <span class="dv">420</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>wkeep <span class="ot">&lt;-</span> <span class="fu">which</span>(boston<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">"F"</span> <span class="sc">&amp;</span> boston<span class="sc">$</span>official <span class="sc">&gt;</span> <span class="dv">153</span> <span class="sc">&amp;</span> boston<span class="sc">$</span>official <span class="sc">&lt;</span> <span class="dv">420</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> boston[mkeep,]</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> boston[wkeep,]</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>nm <span class="ot">&lt;-</span> <span class="fu">nrow</span>(m)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>nw <span class="ot">&lt;-</span> <span class="fu">nrow</span>(w)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># export this so it can be used for class:</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>mhrs <span class="ot">&lt;-</span> m<span class="sc">$</span>official<span class="sc">/</span><span class="dv">60</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>whrs <span class="ot">&lt;-</span> w<span class="sc">$</span>official<span class="sc">/</span><span class="dv">60</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>mu_m <span class="ot">&lt;-</span> <span class="fu">mean</span>(mhrs)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>mu_w <span class="ot">&lt;-</span> <span class="fu">mean</span>(whrs)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>sigma_m <span class="ot">&lt;-</span> <span class="fu">sd</span>(mhrs)<span class="sc">*</span> <span class="fu">sqrt</span>((nm <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>nm)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>sigma_w <span class="ot">&lt;-</span> <span class="fu">sd</span>(whrs)<span class="sc">*</span> <span class="fu">sqrt</span>((nw <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>nw)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Below are histograms of mens and womens finishing times of the 2009 Boston marathon. The mean and standard deviation of the finishing times of the <span class="math inline">\(13560\)</span> men who completed the marathon were <span class="math inline">\(3.69\)</span> and <span class="math inline">\(0.6247\)</span>, respectively; those of the <span class="math inline">\(9303\)</span> women were <span class="math inline">\(4.02\)</span> and <span class="math inline">\(0.5549\)</span>, respectively.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mhrs,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">30</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt=</span><span class="st">"n"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">""</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">545</span>,.<span class="dv">25</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="cn">NA</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">""</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Finishing time (hrs)"</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>xpos <span class="ot">&lt;-</span> <span class="fu">grconvertX</span>(.<span class="dv">7</span>, <span class="at">from =</span> <span class="st">"nfc"</span>, <span class="at">to =</span><span class="st">"user"</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>ypos <span class="ot">&lt;-</span> <span class="fu">grconvertY</span>(.<span class="dv">9</span>, <span class="at">from =</span> <span class="st">"nfc"</span>, <span class="at">to =</span><span class="st">"user"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> xpos, </span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> ypos,</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">545</span>,.<span class="dv">25</span>),<span class="fu">rgb</span>(.<span class="dv">545</span>,<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">5</span>)),</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">15</span>),</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Men"</span>,<span class="st">"Women"</span>),</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">"n"</span>,</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex =</span> <span class="dv">1</span>)</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(whrs,</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">30</span>,</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">""</span>,</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">rgb</span>(.<span class="dv">545</span>,<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">5</span>),</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="cn">NA</span>,</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>     <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="fig-histlargenpython" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-histlargenpython-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="hist_files/figure-html/fig-histlargenpython-15.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-histlargenpython-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17.2: Histogram with <span class="math inline">\(K=20\)</span> equal-width intervals for a sample of size <span class="math inline">\(n = 5000\)</span> from the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution.
-</figcaption>
+<div>
+<figure class="figure">
+<p><img src="hist_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
+</div>
 </div>
 </div>
 </div>
