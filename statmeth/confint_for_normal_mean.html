@@ -357,8 +357,26 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./sample_size_determination.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Sample size determination</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./randomized_experiments_v_observational_studies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Randomized experiments versus observational studies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cell_means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -375,13 +393,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
   </div>
 </li>
       </ul>
@@ -398,7 +416,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -415,19 +433,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chi_squared_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./t_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
   </div>
 </li>
       </ul>
@@ -509,7 +527,8 @@ Figure&nbsp;24.1: Depiction of upper quantile <span class="math inline">\(z_{\al
 \bar X_n \pm z_{\alpha/2} \frac{\sigma}{\sqrt{n}}
 \]</span> will contain <span class="math inline">\(\mu\)</span> with probability <span class="math inline">\(1-\alpha\)</span>.</p>
 </div>
-<p>We are very often interested in building confidence intervals at the <span class="math inline">\(0.90\)</span>, <span class="math inline">\(0.95\)</span>, or <span class="math inline">\(0.99\)</span> confidence levels, for which <a href="normal_distribution.html#fig-standard_normal_pdf_diagram_80909599" class="quarto-xref">Figure&nbsp;<span>13.5</span></a> depicts the necessary quantiles, <span class="math inline">\(z_{0.05} = 1.645\)</span>, <span class="math inline">\(z_{0.025} = 1.96\)</span>, and <span class="math inline">\(z_{0.005} = 2.576\)</span>, respectively, of the standard Normal distribution.</p>
+<p>We are very often interested in building confidence intervals at the <span class="math inline">\(0.90\)</span>, <span class="math inline">\(0.95\)</span>, or <span class="math inline">\(0.99\)</span> confidence levels, for which <a href="normal_distribution.html#fig-standard_normal_pdf_diagram_80909599" class="quarto-xref">Figure&nbsp;<span>13.5</span></a> depicts the necessary quantiles, <span class="math inline">\(z_{0.05} = 1.645\)</span>, <span class="math inline">\(z_{0.025} = 1.96\)</span>, and <span class="math inline">\(z_{0.005} = 2.576\)</span>, respectively, of the standard Normal distribution. Note that these quantities govern the width of the confidence interval, such that higher confidence corresponds to greater width.</p>
+<p>Note that the confidence interval with endpoints given in <a href="#prp-confintmean" class="quarto-xref">Proposition&nbsp;<span>24.1</span></a> is constructed by adding and subtracting the same amount <span class="math inline">\(z_{\alpha/2}\sigma/\sqrt{n}\)</span> to and from the sample mean <span class="math inline">\(\bar X_n\)</span>. When a confidence interval is constructed in this way, we will refer to the amount added and subtracted as the <em>margin of error</em>. Thus the width of such a confidence interval is two times the margin of error. Later on, in <a href="sample_size_determination.html" class="quarto-xref"><span>Chapter 29</span></a>, we will consider the problem of selecting a sample size <span class="math inline">\(n\)</span> in order to ensure that a confidence interval has a margin of error no larger than some desired bound.</p>
 <p>Consider building a confidence interval for <span class="math inline">\(\mu\)</span> in the golden ratio example, <a href="random_sample.html#exm-goldenratio" class="quarto-xref">Example&nbsp;<span>15.2</span></a>. From <a href="normal_qq_plot.html#fig-goldenrationormalqq" class="quarto-xref">Figure&nbsp;<span>19.3</span></a>, it seems reasonable to assume that the sample was drawn from a normal distribution. The variance <span class="math inline">\(\sigma^2\)</span> of the population distribution is unknown, but the following exercise assumes <span class="math inline">\(\sigma = 0.15\)</span>.</p>
 <div id="exr-goldenratio" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 24.1 (Confidence interval for the mean in golden ratio example)</strong></span> Regarding the values in the golden ratio data set as a random sample from a normal distribution with unknown mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma = 0.15\)</span>, construct a confidence interval for <span class="math inline">\(\mu\)</span> at these confidence levels:</p>
@@ -535,7 +554,7 @@ Figure&nbsp;24.1: Depiction of upper quantile <span class="math inline">\(z_{\al
 <li id="fn3"><p>The <span class="math inline">\(99\%\)</span> confidence interval is given by <span class="math display">\[
   \bar X_n \pm 2.576 \frac{\sigma}{\sqrt{n}} = 1.56 \pm 2.576 \frac{0.15}{\sqrt{27}} = [1.486,1.634]
   \]</span> <a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>This corresponds to <span class="math inline">\(\alpha = 0.02\)</span>, so that <span class="math inline">\(z_{\alpha/2} = z_{0.01} = 2.33\)</span> (See the <span class="math inline">\(Z\)</span> table in <a href="z_table.html" class="quarto-xref"><span>Chapter 33</span></a>). <span class="math display">\[
+<li id="fn4"><p>This corresponds to <span class="math inline">\(\alpha = 0.02\)</span>, so that <span class="math inline">\(z_{\alpha/2} = z_{0.01} = 2.33\)</span> (See the <span class="math inline">\(Z\)</span> table in <a href="z_table.html" class="quarto-xref"><span>Chapter 36</span></a>). <span class="math display">\[
   \bar X_n \pm 2.33 \frac{\sigma}{\sqrt{n}} = 1.56 \pm 2.33 \frac{0.15}{\sqrt{27}} = [1.493,1.627]
   \]</span> <a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>

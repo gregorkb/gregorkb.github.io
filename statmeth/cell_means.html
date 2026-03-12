@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Karl Gregory">
+
+<title>31&nbsp; One-way ANOVA – Statistical Methods</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./power_ztest.html" rel="next">
+<link href="./randomized_experiments_v_observational_studies.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-2f3f30ce58639c1a39c2cd352d35dfe4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean",
+  "openSidebar": false
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">III: Inference from random samples</a></li><li class="breadcrumb-item"><a href="./cell_means.html"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Statistical Methods</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">I: Sets, probability, and random variables</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./set_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics of sets</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prob_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics of probability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./counting_rules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Counting rules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./conditional_prob.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./independence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bayes_rule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayes’ rule</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./random_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Random variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./discrete_rvs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Discrete random variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bernoulli_binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bernoulli and binomial distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hypergeometric_distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypergeometric distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./drawing_with_without_replacement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Drawing with versus without replacement</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./continuous_rvs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Continuous random variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./normal_distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Normal distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./poisson_exp_dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Poisson and exponential distributions</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">II: Random samples</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./random_sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The random sample</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mean_of_rs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Mean of a random sample</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Histogram</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./variance_of_rs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">The sample variance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./normal_qq_plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./central_limit_theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sample_proportion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Sample proportion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./normal_approx_binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Normal approximation to the binomial</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">III: Inference from random samples</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./statistical_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Statistical inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">First confidence interval for a normal mean</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confint_for_normal_variance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Confidence interval for a normal variance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./t_confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Revised confidence interval for a normal mean</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./large_sample_confint_for_mean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Large-sample confidence interval for a mean</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confint_for_proportion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Confidence interval for a proportion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sample_size_determination.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Sample size determination</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./randomized_experiments_v_observational_studies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Randomized experiments versus observational studies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cell_means.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">IV: Linear models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">V: Generalized linear and nonlinear models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./logreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./z_table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chi_squared_table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./t_table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#the-cell-means-model" id="toc-the-cell-means-model" class="nav-link active" data-scroll-target="#the-cell-means-model"><span class="header-section-number">31.1</span> The cell means model</a></li>
+  <li><a href="#hypothesis-testing-in-the-cell-means-model" id="toc-hypothesis-testing-in-the-cell-means-model" class="nav-link" data-scroll-target="#hypothesis-testing-in-the-cell-means-model"><span class="header-section-number">31.2</span> Hypothesis testing in the cell means model</a></li>
+  <li><a href="#the-f-distributions" id="toc-the-f-distributions" class="nav-link" data-scroll-target="#the-f-distributions"><span class="header-section-number">31.3</span> The <span class="math inline">\(F\)</span> distributions</a></li>
+  <li><a href="#analysis-of-variance-anova" id="toc-analysis-of-variance-anova" class="nav-link" data-scroll-target="#analysis-of-variance-anova"><span class="header-section-number">31.4</span> Analysis of variance (ANOVA)</a></li>
+  <li><a href="#checking-model-assumptions" id="toc-checking-model-assumptions" class="nav-link" data-scroll-target="#checking-model-assumptions"><span class="header-section-number">31.5</span> Checking model assumptions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">III: Inference from random samples</a></li><li class="breadcrumb-item"><a href="./cell_means.html"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-cell_means" class="quarto-section-identifier"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Karl Gregory </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
+</div>
+<p>Here we will consider how to analyze data collected in an experiment in which subjects are randomly assigned to be placed under certain experimental conditions. We will first define some terms:</p>
+<ul>
+<li><em>Treatment</em>: Any condition imposed by the investigator is called a treatment.</li>
+<li><em>Experimental unit (EU)</em>: we generically refer to each subject in the study, whether a person, object, animal, or other entity, as an experimental unit.</li>
+<li><em>Response</em>: The outcome which we measure on each experimental unit after administering the treatment is called the response.</li>
+</ul>
+<div id="exm-steak" class="theorem example">
+<p><span class="theorem-title"><strong>Example 31.1 (Steak packaging)</strong></span> This example is taken from <span class="citation" data-cites="kuehl2000design">Kuehl (<a href="references.html#ref-kuehl2000design" role="doc-biblioref">2000</a>)</span>. Twelve steaks were randomly assigned (three each) to four different packaging conditions (Commercial, Vacuum, Mixed Gas, CO<span class="math inline">\(_2\)</span>). After 9 days at 4<span class="math inline">\(^{\circ}\)</span> C, the number of bacteria per cm<span class="math inline">\(^2\)</span> over the surface of the steak was recorded. Of interest is whether “some form of controlled gas atmosphere would provide a more effective packaging environment (than commercial or vacuum) for meat storage”. The raw data are presented here:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Steak</th>
+<th>Packaging</th>
+<th><span class="math inline">\(\log(\# \text{bact}/\text{cm}^2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Commercial</td>
+<td>7.66</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Commercial</td>
+<td>6.98</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Commercial</td>
+<td>7.80</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>Vacuum</td>
+<td>5.26</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Vacuum</td>
+<td>5.44</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Vacuum</td>
+<td>5.80</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>Mixed Gas</td>
+<td>7.41</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>Mixed Gas</td>
+<td>7.33</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>Mixed Gas</td>
+<td>7.04</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>CO<span class="math inline">\(_2\)</span></td>
+<td>3.51</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>CO<span class="math inline">\(_2\)</span></td>
+<td>2.91</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td>CO<span class="math inline">\(_2\)</span></td>
+<td>3.66</td>
+</tr>
+</tbody>
+</table>
+<p>The experimental units are the steaks, the treatments are the four packaging types, and the response is the natural logarithm of the number of bacteria per cm<span class="math inline">\(^2\)</span> over the surface of each steak.</p>
+<p>It is natural to compute the means of each treatment group and to compare them:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Packaging</th>
+<th>Mean of <span class="math inline">\(\log(\# \text{bact}/\text{cm}^2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Commercial</td>
+<td>7.48</td>
+</tr>
+<tr class="even">
+<td>Vacuum</td>
+<td>5.50</td>
+</tr>
+<tr class="odd">
+<td>Mixed Gas</td>
+<td>7.26</td>
+</tr>
+<tr class="even">
+<td>CO<span class="math inline">\(_2\)</span></td>
+<td>3.36</td>
+</tr>
+</tbody>
+</table>
+<p>From this table, it looks like the packaging with <span class="math inline">\(CO_2\)</span> achieved the least bacterial growth. However, we know by now that need to do a more rigorous analysis than just looking at the sample means. If we were to repeat this experiment with <span class="math inline">\(12\)</span> different steaks, we would get different response values and different treatment means. The question is, to what extent do the treatment means differ because of true differences in the packaging methods and to what extent do they differ because of experimental variability? We address these questions in the following with a view to hypothesis testing.</p>
+</div>
+<section id="the-cell-means-model" class="level2" data-number="31.1">
+<h2 data-number="31.1" class="anchored" data-anchor-id="the-cell-means-model"><span class="header-section-number">31.1</span> The cell means model</h2>
+In statistics we often try to make sense of where our data come from by writing down a mathematical expression for each value. We call this expression a <em>model</em>, and it is supposed to describe the mechanism working in the background to produce the data we observe. Writing down a model for our data helps us to formulate testable hypotheses which match our research questions. For the data in #exm-steak, a model called the <em>cell means model</em> or the <em>one-way ANOVA model</em> is often posited as the mechanism through which the response values come to be.
+<p>Before we can write down the cell means model, we need to define some quantities pertaining to a comparative experiment:</p>
+<ul>
+<li>Let <span class="math inline">\(K\)</span> denote the number of treatments.</li>
+<li>Let <span class="math inline">\(n_1,\dots,n_K\)</span> denote the numbers of EUs assigned to treatments <span class="math inline">\(1,\dots,K\)</span>, respectively.</li>
+<li>Let <span class="math inline">\(N = n_1 + \dots + n_K\)</span> denote the total number of EUs.</li>
+<li>Let <span class="math inline">\(Y_{ij}\)</span> denote the response of the <span class="math inline">\(j\)</span>th experimental unit of the <span class="math inline">\(i\)</span>th treatment group for <span class="math inline">\(j=1,\dots,n_i\)</span> and <span class="math inline">\(i=1,\dots,K\)</span>.</li>
+</ul>
+<p>Now we can define the cell means model.</p>
+<div id="def-cellmeansmodel" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 31.1 (Cell means or one-way ANOVA model)</strong></span> The <em>cell means</em> or <em>one-way ANOVA model</em> assumes <span id="eq-cellmeans"><span class="math display">\[
+Y_{ij} = \mu_i + \varepsilon_{ij}, \quad \varepsilon_{ij} \overset{\text{ind}}{\sim}\mathcal{N}(0,\sigma^2)
+\tag{31.1}\]</span></span> for <span class="math inline">\(j=1,\dots,n_i\)</span> and <span class="math inline">\(i = 1,\dots,K\)</span>, where</p>
+<ul>
+<li><span class="math inline">\(\mu_1,\dots,\mu_K\)</span> are the <em>treatment group means</em>.</li>
+<li><span class="math inline">\(\varepsilon_{ij}\)</span> is called an <em>error term</em> and represents the deviation of the response <span class="math inline">\(Y_{ij}\)</span> from the mean of treatment group <span class="math inline">\(i\)</span>.</li>
+</ul>
+</div>
+<p>By the expression <span class="math inline">\(\varepsilon_{ij} \overset{\text{ind}}{\sim}\mathcal{N}(0,\sigma^2)\)</span> it is meant that all the error terms <span class="math inline">\(\varepsilon_{ij}\)</span> are independent from one another and each one has a Normal distribution centered at zero with variance <span class="math inline">\(\sigma^2\)</span>. The independence of the <span class="math inline">\(\varepsilon_{ij}\)</span> means that the value of one does not affect the value of any other one.</p>
+<p>Under the cell means or one-way ANOVA model, it is typically of interest to estimate the population treatment means <span class="math inline">\(\mu_1,\dots,\mu_K\)</span> and to test hypotheses about them. Natural estimators of <span class="math inline">\(\mu_1,\dots,\mu_K\)</span> are given by <span class="math display">\[
+\bar Y_{i.} = \frac{1}{n_i}\sum_{j=1}^{n_i} Y_{ij}, \quad i=1,\dots,K,
+\]</span> which are the means of the responses in the treatment groups (placing a `<span class="math inline">\(.\)</span>’ in the subscript in the place of an index over which a sum has been taken is a common convention).</p>
+<p>In <a href="#exm-steak" class="quarto-xref">Example&nbsp;<span>31.1</span></a> with the steaks, we have <span class="math inline">\(K=4\)</span> for the four packaging types, <span class="math inline">\(n_1=n_2=n_3=n_4=3\)</span>, since three steaks were assigned to each treatment, and the total number of experimental units is <span class="math inline">\(N = n_1 + n_2 + n_3 + n_4 = 12\)</span>. We then have the responses <span class="math inline">\(Y_{11} = 7.66, Y_{12} = 6.98, \dots, Y_{43} = 3.66\)</span>. The means of the treatment groups are <span class="math inline">\(\bar Y_{1.} = 7.48\)</span>, <span class="math inline">\(\bar Y_{2.} = 5.50\)</span>, <span class="math inline">\(\bar Y_{3.} = 7.26\)</span>, and <span class="math inline">\(\bar Y_{4.} = 3.36\)</span>.</p>
+<p><a href="#fig-cellmeans" class="quarto-xref">Figure&nbsp;<span>31.1</span></a> depicts the cell means model with <span class="math inline">\(K=4\)</span> treatments.</p>
+<div id="fig-cellmeans" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cellmeans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/cellmeans.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cellmeans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31.1: Cell means model in the mind of the investigator.
+</figcaption>
+</figure>
+</div>
+<p>In the cell means model the investigator imagines data coming from <span class="math inline">\(K\)</span> different distributions such that the distributions are centered at the population treatment means <span class="math inline">\(\mu_1,\dots,\mu_K\)</span>. Moreover, each distribution is Normal and all have the same variance, which is the variance <span class="math inline">\(\sigma^2\)</span> of the error term in the cell means model. The sample treatment means <span class="math inline">\(\bar Y_{1.},\dots,\bar Y_{K.}\)</span> are the investigator’s guesses from the observed data at the unknown values of <span class="math inline">\(\mu_1,\dots,\mu_K\)</span>.</p>
+</section>
+<section id="hypothesis-testing-in-the-cell-means-model" class="level2" data-number="31.2">
+<h2 data-number="31.2" class="anchored" data-anchor-id="hypothesis-testing-in-the-cell-means-model"><span class="header-section-number">31.2</span> Hypothesis testing in the cell means model</h2>
+<p>In comparative experiments, the foremost research question is: Do/does any of the treatments affect the response? We can formulate this question in the following null and alternate hypotheses: <span class="math display">\[
+\begin{align*}
+    H_0\text{:} \quad&amp;\mu_1 = \dots= \mu_K \\
+    H_1\text{:} \quad&amp;\mu_i \neq \mu_{i'} \quad \text{ for some } \quad i \neq i',
+\end{align*}
+\]</span> where the interpretation of the alternate hypothesis is that not all the treatment means are equal (there is at least one pair of means which do not have the same value).</p>
+<p>As we have previously done, we will test these hypotheses by computing a test statistic; once we have the test statistic we can compare it to a critical value or get a <span class="math inline">\(p\)</span>-value from it in order to decide whether or not to reject <span class="math inline">\(H_0\)</span>.</p>
+<p>We may gather intuition for constructing a test statistic by picturing the cell means model under the null hypothess <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1=\dots=\mu_K\)</span>. Returning to our example in which <span class="math inline">\(K=4\)</span>, the investigator now imagines all the data coming from a single distribution as in <a href="#fig-cellmeansH0" class="quarto-xref">Figure&nbsp;<span>31.2</span></a>.</p>
+<div id="fig-cellmeansH0" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cellmeansH0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/cellmeansH0.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cellmeansH0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31.2: Cell means model under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1 = \dots = \mu_K\)</span> in the mind of the investigator.
+</figcaption>
+</figure>
+</div>
+<p>A new quantity which we may call the <em>overall mean</em> is introduced in the above picture. If it is assumed that all responses in all the treatment groups really come from a single distribution centered at a common mean <span class="math inline">\(\mu\)</span>, then a sensible estimator of the common mean is the mean of all the responses pooled together, which we write as <span class="math display">\[
+\bar Y_{..} = \frac{1}{N}\sum_{i=1}^K\sum_{j=1}^{n_i} Y_{ij}.
+\]</span> In <a href="#exm-steak" class="quarto-xref">Example&nbsp;<span>31.1</span></a> with the steaks, we have <span class="math display">\[
+\bar Y_{..} = \frac{1}{12}(7.66 + 6.89 + \dots 3.66) = 5.9.
+\]</span> We now wish to construct a test statistic which gauges how much evidence the data carries against the null hypothesis. What would cast doubt on <span class="math inline">\(H_0\)</span>? The more spread out the treatment means <span class="math inline">\(\bar Y_{1.},\dots,\bar Y_{K.}\)</span> the more implausible <span class="math inline">\(H_0\)</span> becomes. So our test statistic should measure the spread of our treatment means <span class="math inline">\(\bar Y_{1.},\dots,\bar Y_{K.}\)</span> and, under the null hypothesis, it should have a known probability distribution which allows us to look up a <span class="math inline">\(p\)</span>-value.</p>
+<p>The following result gives us some direction.</p>
+<div id="prp-chisqANOVA" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 31.1 (Idealized test statistic assuming <span class="math inline">\(\sigma\)</span> known)</strong></span> Under the cell means model in <a href="#def-cellmeansmodel" class="quarto-xref">Definition&nbsp;<span>31.1</span></a> under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1=\dots=\mu_K\)</span>, we have <span id="eq-chisqANOVA"><span class="math display">\[
+W_{\operatorname{test}} = \sum_{i=1}^K\left(\frac{\bar Y_{i.}  - \bar Y_{..}}{\sigma/\sqrt{n_i}}\right)^2 \sim \chi_{K-1}^2.
+\tag{31.2}\]</span></span></p>
+</div>
+<p><br></p>
+<p>Recall that <span class="math inline">\(\chi_{K-1}^2\)</span> in the above denotes the chi-squared distribution with degrees of freedom equal to <span class="math inline">\(K-1\)</span>.</p>
+<p>The quantity in the above result measures how spread out the treatment means are, as it is the sum of squared deviations of the treatment means from the overall mean divided by <span class="math inline">\(\sigma/\sqrt{n}\)</span>. The larger this quantity is, the more implausible is <span class="math inline">\(H_0\)</span>. Moreover, this quantity has a known distribution under <span class="math inline">\(H_0\)</span>, which means we can find <span class="math inline">\(p\)</span>-values; that is, we can find the probability, assuming that <span class="math inline">\(H_0\)</span> is true, of getting a larger value (carrying more evidence against <span class="math inline">\(H_0\)</span>) of this quantity than the value we observed. The problem is that <span class="math inline">\(\sigma^2\)</span> is unknown, so we cannot compute this quantity from the data.</p>
+<p>Define the estimator <span class="math inline">\(\hat \sigma^2\)</span> of <span class="math inline">\(\sigma^2\)</span> as <span class="math display">\[
+\hat \sigma^2 = \frac{1}{N-K}\sum_{i=1}^K\sum_{j=1}^{n_i} \hat \varepsilon_{ij}^2, %\quad \text{ where } \quad \hat \varepsilon_{ij} = Y_{ij} - \bar Y_{i.}, j=1,\dots,n_i, i = 1,\dots,K.
+\]</span> where <span class="math inline">\(\hat \varepsilon_{ij} = Y_{ij} - \bar Y_{i.}\)</span>, <span class="math inline">\(j=1,\dots,n_i\)</span>, <span class="math inline">\(i = 1,\dots,K\)</span> are the deviations of the responses from their treatment means. These deviations are called <em>residuals</em>. The residuals <span class="math inline">\(\hat \varepsilon_{ij}\)</span> are like the sample version of the noise or error terms <span class="math inline">\(\varepsilon_{ij}\)</span>, and the above formula uses them to estimate the variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>For <a href="#exm-steak" class="quarto-xref">Example&nbsp;<span>31.1</span></a> with the steaks, the residuals are shown in the rightmost column of the table below:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 12%">
+<col style="width: 37%">
+<col style="width: 15%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Steak</th>
+<th>Packaging</th>
+<th><span class="math inline">\(\log(\# \text{bact}/\text{cm}^2)\)</span></th>
+<th><span class="math inline">\(\bar{Y}_{i.}\)</span></th>
+<th><span class="math inline">\(\hat{\varepsilon}_{ij}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Commercial</td>
+<td>7.66</td>
+<td>7.48</td>
+<td>0.18</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Commercial</td>
+<td>6.98</td>
+<td>7.48</td>
+<td>-0.50</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Commercial</td>
+<td>7.80</td>
+<td>7.48</td>
+<td>0.32</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>Vacuum</td>
+<td>5.26</td>
+<td>5.50</td>
+<td>-0.24</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Vacuum</td>
+<td>5.44</td>
+<td>5.50</td>
+<td>-0.06</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Vacuum</td>
+<td>5.80</td>
+<td>5.50</td>
+<td>0.30</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>Mixed Gas</td>
+<td>7.41</td>
+<td>7.26</td>
+<td>0.15</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>Mixed Gas</td>
+<td>7.33</td>
+<td>7.26</td>
+<td>0.07</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>Mixed Gas</td>
+<td>7.04</td>
+<td>7.26</td>
+<td>-0.22</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>CO<span class="math inline">\(_2\)</span></td>
+<td>3.51</td>
+<td>3.36</td>
+<td>0.15</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>CO<span class="math inline">\(_2\)</span></td>
+<td>2.91</td>
+<td>3.36</td>
+<td>-0.45</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td>CO<span class="math inline">\(_2\)</span></td>
+<td>3.66</td>
+<td>3.36</td>
+<td>0.30</td>
+</tr>
+</tbody>
+</table>
+<p>Using the residuals in the table, we would compute <span class="math inline">\(\hat \sigma^2\)</span> as <span class="math display">\[
+\hat \sigma^2 = \frac{1}{12 - 4}\left[(0.18)^2 + (-0.50)^2 + \dots + (0.30)^2\right] = 0.11585.
+\]</span> Then we have <span class="math inline">\(\hat \sigma = 0.34037\)</span>.</p>
+<p>We find that when we replace <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(\hat \sigma\)</span> in <a href="#eq-chisqANOVA" class="quarto-xref">Equation&nbsp;<span>31.2</span></a>, the resulting quantity no longer has a chi-squared distribution. Instead, if we rescale the quantity properly, it will have a distribution called an <span class="math inline">\(F\)</span> distribution. Recall that when we previously replaced <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(S_n\)</span> in the standardization of a sample mean the result had a <span class="math inline">\(t\)</span> distribution instead of a standard normal distribution. Here, when we replace <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(\hat \sigma\)</span>, we have a (scaled) <span class="math inline">\(F\)</span> distribution instead of a chi-squared distribution. We next introduce the <span class="math inline">\(F\)</span> distributions.</p>
+</section>
+<section id="the-f-distributions" class="level2" data-number="31.3">
+<h2 data-number="31.3" class="anchored" data-anchor-id="the-f-distributions"><span class="header-section-number">31.3</span> The <span class="math inline">\(F\)</span> distributions</h2>
+<p>The <span class="math inline">\(F\)</span> distributions are right-skewed distributions and are indexed by two parameters called the numerator degrees of freedom and the denominator degrees of freedom. <a href="#fig-fpdfs" class="quarto-xref">Figure&nbsp;<span>31.3</span></a> plots the PDFs of several F distributions.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>k1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">200</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>k2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">8</span>,<span class="dv">16</span>,<span class="dv">32</span>,<span class="dv">50</span>,<span class="dv">50</span>,<span class="dv">50</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">3</span>,<span class="at">length=</span><span class="dv">501</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>,<span class="fu">length</span>(x),<span class="dv">501</span>) </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(k1)) fx[j,] <span class="ot">&lt;-</span> <span class="fu">df</span>(x,<span class="at">df1 =</span> k1[j],<span class="at">df2=</span>k2[j])</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>lab <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"(k1,k2) = ("</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>             <span class="fu">apply</span>(<span class="fu">cbind</span>(k1,k2),<span class="dv">1</span>,paste,<span class="at">collapse =</span> <span class="st">","</span>),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>             <span class="st">")"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">sep=</span><span class="st">""</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="cn">NA</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">range</span>(x),</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.2</span><span class="sc">*</span><span class="fu">max</span>(fx[<span class="sc">-</span><span class="dv">1</span>,])), </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"x"</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"pdf of F distribution"</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty =</span> <span class="st">"l"</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>lty <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">1</span>,<span class="dv">3</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>col <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%x%</span> <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(k1)) <span class="fu">lines</span>(fx[j,]<span class="sc">~</span>x, </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                             <span class="at">col =</span> col[j], </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                             <span class="at">lty =</span> lty[j]) </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> lab,</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> col,</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> lty,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">"n"</span>, </span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex =</span> .<span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-fpdfs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fpdfs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cell_means_files/figure-html/fig-fpdfs-1.png" class="img-fluid figure-img" width="1400">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fpdfs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31.3: PDF of <span class="math inline">\(F\)</span> distribution at several pairs of numerator and denominator degrees of freedom parameter values.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="def-Fdist" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 31.2 (F distributions)</strong></span> For each <span class="math inline">\(k_1 &gt; 0\)</span> and <span class="math inline">\(k_2 &gt; 0\)</span>, the probability distribution with PDF given by <span class="math display">\[
+f(x;k_1,k_2) = \left\{\begin{array}{ll}\frac{\Gamma(\frac{k_1 + k_2}{2})}{\Gamma(\frac{k_1}{2})\Gamma(\frac{k_2}{2})}\Big(\frac{k_1}{k_2}\Big)^{k_1/2}x^{(k_1-2)/2}\Big(1 + \frac{k_1}{k_2}x \Big)^{-(k_1 + k_2)/2}, &amp; x \geq 0 \\
+0,&amp;x &lt; 0\\
+\end{array}\right.
+\]</span> is called the <span class="math inline">\(F\)</span> distribution with numerator degrees of freedom <span class="math inline">\(k_1\)</span> and denominator degrees of freedom <span class="math inline">\(k_2\)</span>, where <span class="math inline">\(\Gamma(a)=\int_0^\infty u^{a-1}e^{-u}du\)</span> for <span class="math inline">\(a&gt;0\)</span> is the <em>gamma function</em>.</p>
+</div>
+<p><br> If a random variable <span class="math inline">\(R\)</span> has the <span class="math inline">\(F\)</span> distribution with numerator degrees of freedom <span class="math inline">\(k_1\)</span> and denominator degrees of freedom <span class="math inline">\(k_2\)</span> we will write <span class="math inline">\(R \sim F_{k_1,k_2}\)</span>. Here the letter “<span class="math inline">\(R\)</span>” was used since an <span class="math inline">\(F\)</span>-distributed random variable arises as a <em>ratio</em> of independent chi-squared random variables, each divided by the value of its degrees of freedom parameter. Formally:</p>
+<div id="prp-Fdist" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 31.2 (<span class="math inline">\(F\)</span> distribution construction)</strong></span> Let <span class="math inline">\(W_1 \sim\chi_{k_1}^2\)</span> and <span class="math inline">\(W_2\sim \chi_{k_2}^2\)</span> be independent chi-squared random variables with degrees of freedom <span class="math inline">\(k_1\)</span> and <span class="math inline">\(k_2\)</span>, respectively. Then <span class="math display">\[
+R = \frac{W_1/k_1}{W_2/k_2}\sim F_{k_1,k_2}.
+\]</span></p>
+</div>
+<p><br></p>
+<p>Just as we have defined upper quantiles for the standard Normal distribution, the <span class="math inline">\(t\)</span> distributions, and the chi-squared distributions, we define, for each <span class="math inline">\(\alpha \in (0,1)\)</span>, the value <span class="math inline">\(F_{k_1,k_2,\alpha}\)</span> as the value such that <span class="math inline">\(P(R &gt; F_{k_1,k_2,\alpha}) = \alpha\)</span>, where <span class="math inline">\(R \sim F_{k_1,k_2}\)</span>. The quantity <span class="math inline">\(F_{k_1,k_2,\alpha}\)</span> thus admits the depiction in <a href="#fig-Fupper" class="quarto-xref">Figure&nbsp;<span>31.4</span></a>.</p>
+<div id="fig-Fupper" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Fupper-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="tikz/F_upper_quantiles.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Fupper-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31.4: Definition of upper <span class="math inline">\(\alpha\)</span> quantile <span class="math inline">\(F_{k_1,k_2,\alpha}\)</span> of the <span class="math inline">\(F_{k_1,k_2}\)</span> distribution.
+</figcaption>
+</figure>
+</div>
+<p>Now the next result presents a feasible test statistic (“feasible” meaning that we can actually compute it from the data) which has a distribution called an <span class="math inline">\(F\)</span> distribution.</p>
+<div id="prp-Ftestcellmeans" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 31.3 (Distribution of F-statistic under null hypothesis)</strong></span> Assuming the cell means model in <a href="#def-cellmeansmodel" class="quarto-xref">Definition&nbsp;<span>31.1</span></a>, under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1=\dots=\mu_K\)</span> we have <span class="math display">\[
+F_{\operatorname{test}}= \frac{1}{K-1}\sum_{i=1}^K\Big(\frac{\bar Y_{i.}  - \bar Y_{..}}{\hat \sigma/\sqrt{n_i}}\Big)^2 \sim F_{K-1,N - k}.
+\]</span></p>
+</div>
+<p><br></p>
+<p>The above result tells us that a size-<span class="math inline">\(\alpha\)</span> test can be defined with the rejection rule: <span class="math display">\[
+\text{Reject $H_0$: $\mu_1 = \dots = \mu_K$ if $F_{\operatorname{test}}&gt; F_{K-1,N-K,\alpha}$}
+\]</span> The <span class="math inline">\(p\)</span> value of this test is given by <span class="math inline">\(P(R &gt; F_{\operatorname{test}})\)</span>, where <span class="math inline">\(R\sim F_{K-1,N-K}\)</span>, that is the area under the PDF of the <span class="math inline">\(F_{K-1,N-K}\)</span> distribution to the right of <span class="math inline">\(F_{\operatorname{test}}\)</span>.</p>
+<p>For <a href="#exm-steak" class="quarto-xref">Example&nbsp;<span>31.1</span></a> with the steaks, we have <span class="math display">\[
+\begin{align*}
+F_{\operatorname{test}}&amp;= \frac{1}{4-1}\Big[  \Big(\frac{7.48 - 5.9}{0.34037/\sqrt{3}}\Big)^2+
+\dots+
+\Big(\frac{3.36 - 5.9}{0.34037/\sqrt{3}}\Big)^2 \Big]\\
+&amp;=94.58296.
+\end{align*}
+\]</span></p>
+<p>Since there are <span class="math inline">\(K=4\)</span> treatments and <span class="math inline">\(N=12\)</span> experimental units, we compare the value of <span class="math inline">\(F_{\operatorname{test}}\)</span> to the upper <span class="math inline">\(\alpha\)</span> quantile of the <span class="math inline">\(F\)</span> distribution with numerator degrees of freedom <span class="math inline">\(4-1=3\)</span> and denominator degrees of freedom <span class="math inline">\(12-4=8\)</span>. For <span class="math inline">\(\alpha = 0.01\)</span> we have <span class="math inline">\(F_{3,8,0.01} = 7.59\)</span>. This number can be obtained with <code>qf(0.99,3,8)</code> in R. Since <span class="math inline">\(F_{\operatorname{test}}=94.58 &gt; F_{3,8,0.01} = 7.59\)</span> we reject the null hypothesis at significance level <span class="math inline">\(0.01\)</span> and conclude that the means are not all equal.</p>
+<p>The <span class="math inline">\(p\)</span>-value is the probability <span class="math inline">\(P(R &gt; 94.58)\)</span> where <span class="math inline">\(R \sim F_{3,8}\)</span>, which we can obtain using <code>1 - pf(94.58,3,8)</code> in R. We obtain <span class="math inline">\(1.375902\times 10^{-6}\)</span> If the assumptions of the cell means model are satisfied for the steaks example, then the small <span class="math inline">\(p\)</span> value indicates very strong evidence against the null hypothesis of equal treatment means. We would conclude at any significance level <span class="math inline">\(\alpha\)</span> greater than <span class="math inline">\(1.376128\times 10^{-6}\)</span> that the packaging makes a difference in the mean number of bacteria that grow on the surface of refrigerated steaks.</p>
+</section>
+<section id="analysis-of-variance-anova" class="level2" data-number="31.4">
+<h2 data-number="31.4" class="anchored" data-anchor-id="analysis-of-variance-anova"><span class="header-section-number">31.4</span> Analysis of variance (ANOVA)</h2>
+<p>The <em>analysis of variance</em> or <em>ANOVA table</em> decomposes the so-called total variation in the responses <span class="math inline">\(Y_{ij}\)</span>, <span class="math inline">\(j=1,\dots,n_i\)</span>, <span class="math inline">\(i=1,\dots,K\)</span> into two parts:</p>
+<ol type="1">
+<li>Between-treatment variation: variability in the responses due to the treatment effects.</li>
+<li>Within-treatment variation: variability in the responses due to differences among the experimental units.</li>
+</ol>
+<p>We will express the total variability in the response values through the quantity <span class="math display">\[
+\operatorname{SS}_{\operatorname{Tot}}= \sum_{i=1}^K\sum_{j=1}^{n_i}(Y_{ij} - \bar Y_{..})^2,
+\]</span> which we will call the <em>total sum of squares</em>. This quantity is the sum of squared deviations of the responses from the overall mean <span class="math inline">\(\bar Y_{..}\)</span>. The ANOVA approach decomposes this quantity into the <em>treatment sum of squares</em> <span class="math display">\[
+\operatorname{SS}_{\operatorname{Trt}}=\sum_{i=1}^K n_i(\bar Y_{i.} - \bar Y_{..})^2
+\]</span> and the <em>error sum of squares</em> <span class="math display">\[
+\operatorname{SS}_{\operatorname{Error}}= \sum_{i=1}^K\sum_{j=1}^{n_i}(Y_{ij} - \bar Y_{i.})^2.
+\]</span> Verily it can be shown that <span class="math display">\[
+\underbrace{\operatorname{SS}_{\operatorname{Tot}}}_{\text{Total}}  = \underbrace{\operatorname{SS}_{\operatorname{Trt}}}_{\text{Between}}  + \underbrace{\operatorname{SS}_{\operatorname{Error}}}_{\text{Within}},
+\]</span> where <span class="math inline">\(\operatorname{SS}_{\operatorname{Trt}}\)</span> represents between-treatment variation and <span class="math inline">\(\operatorname{SS}_{\operatorname{Error}}\)</span> represents within-treatment variation. For these quantities, we have the following result:</p>
+<div id="prp-SSdist" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 31.4 (Chi-squared distributions of scaled sums of squares)</strong></span> Under the cell means model in <a href="#def-cellmeansmodel" class="quarto-xref">Definition&nbsp;<span>31.1</span></a> under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1=\dots=\mu_K\)</span>, we have <span class="math display">\[
+\begin{align*}
+    \operatorname{SS}_{\operatorname{Tot}}/\sigma^2 &amp;\sim  \chi_{N-1}^2 \\
+    \operatorname{SS}_{\operatorname{Trt}}/\sigma^2 &amp;\sim  \chi_{K-1}^2\\
+    \operatorname{SS}_{\operatorname{Error}}/\sigma^2 &amp;\sim  \chi_{N-K}^2.
+\end{align*}
+\]</span> Moreover <span class="math inline">\(\operatorname{SS}_{\operatorname{Trt}}\)</span> and <span class="math inline">\(\operatorname{SS}_{\operatorname{Error}}\)</span> are independent.</p>
+</div>
+<p>We find that we can construct our test statistic <span class="math inline">\(F_\text{test}\)</span> in terms of these quantities; that is we have <span class="math display">\[
+F_{\operatorname{test}}= \frac{1}{K-1}\sum_{i=1}^K\Big(\frac{\bar Y_{i.}  - \bar Y_{..}}{\hat \sigma_\varepsilon/\sqrt{n_i}}\Big)^2 = \frac{\operatorname{SS}_{\operatorname{Trt}}/(K-1)}{\operatorname{SS}_{\operatorname{Error}}/(N-K)},
+\]</span> such that the test statistic <span class="math inline">\(F_{\operatorname{test}}\)</span> is the ratio of between-to-within-treatment variability. Let us give names to the quantities in the numerator and denominator of the last expression; that is, let <span class="math display">\[
+\begin{align*}
+    \operatorname{MS}_{\operatorname{Trt}}&amp;= \operatorname{SS}_{\operatorname{Trt}}/ (K-1)\\
+    \operatorname{MS}_{\operatorname{Error}}&amp;= \operatorname{SS}_{\operatorname{Error}}/ (N-K),
+\end{align*}
+\]</span> and let us call these, respectively, the <em>treatment mean square</em> and the <em>error mean square</em> (or commonly the <em>mean squared error</em>). Then in the end we may write <span class="math display">\[
+F_{\operatorname{test}}= \frac{\operatorname{MS}_{\operatorname{Trt}}}{\operatorname{MS}_{\operatorname{Error}}} \quad \Big(= \frac{\text{Between-treatment variation}}{\text{Within-treatment variation}}\Big).
+\]</span> If the treatment means are very spread out relative to the spread of the responses in each treatment group, the test statistic <span class="math inline">\(F_{\operatorname{test}}\)</span> will be large, and its <span class="math inline">\(p\)</span> value will be small. If the treatment means are close together relative to the spread of the responses in each treatment group, the test statistic <span class="math inline">\(F_{\operatorname{test}}\)</span> will be small, and its <span class="math inline">\(p\)</span> value will be large.</p>
+<div id="exr-MStrt_v_MSerror_plots" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 31.1 (Between versus within treatment variation)</strong></span> Consider the three probability density functions depicted in each panel of the following figure as the distributions of the responses in a cell means or one-way ANOVA model with <span class="math inline">\(K = 3\)</span> treatments.</p>
+<p><img src="images/cellmeans_examquestion.png" class="img-fluid"></p>
+<p>Suppose a randomized experiment is conducted for testing the hypotheses <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1 = \mu_2 = \mu_3\)</span> versus <span class="math inline">\(H_1\)</span>: not all means are equal.</p>
+<ol type="1">
+<li><p>Of the settings depicted in the four panels, from which would we expect the largest value of the test statistic <span class="math inline">\(F\)</span>?<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
+<li><p>Of the settings depicted in the four panels, from which would we expect the smallest value of the test statistic <span class="math inline">\(F_{\operatorname{test}}\)</span>? <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p></li>
+<li><p>Which two settings are likely to result in greater measures of between-treatment variation <span class="math inline">\(\operatorname{MS}_{\operatorname{Trt}}\)</span> than the other two?<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p></li>
+<li><p>Which two settings are likely to result in greater measures of within-treatment variation <span class="math inline">\(\operatorname{MS}_{\operatorname{Error}}\)</span> than the other two?<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p></li>
+</ol>
+</div>
+<p><br></p>
+<p>But what about the <em>table</em>? The <em>ANOVA table</em> is a conventional format in which to present the several quantities introduced in this section. The ANOVA table for the cell means model looks like this:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 25%">
+<col style="width: 15%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Df</th>
+<th>SS</th>
+<th>MS</th>
+<th>F</th>
+<th>p value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Treatment</td>
+<td><span class="math inline">\(K-1\)</span></td>
+<td><span class="math inline">\(\operatorname{SS}_{\operatorname{Trt}}\)</span></td>
+<td><span class="math inline">\(\operatorname{MS}_{\operatorname{Trt}}\)</span></td>
+<td><span class="math inline">\(F_{\operatorname{test}}\)</span></td>
+<td><span class="math inline">\(P(F &gt; F_{\operatorname{test}})\)</span></td>
+</tr>
+<tr class="even">
+<td>Error</td>
+<td><span class="math inline">\(N-K\)</span></td>
+<td><span class="math inline">\(\operatorname{SS}_{\operatorname{Error}}\)</span></td>
+<td><span class="math inline">\(\operatorname{MS}_{\operatorname{Error}}\)</span></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td><span class="math inline">\(N-1\)</span></td>
+<td><span class="math inline">\(\operatorname{SS}_{\operatorname{Tot}}\)</span></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>In the table <span class="math inline">\(P(F &gt; F_{\operatorname{test}})\)</span> is computed under <span class="math inline">\(F \sim F_{K-1,N-k}\)</span>. For the steaks example, the ANOVA table is.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 23%">
+<col style="width: 7%">
+<col style="width: 21%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Df</th>
+<th>SS</th>
+<th>MS</th>
+<th>F</th>
+<th>p value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Treatment</td>
+<td><span class="math inline">\(3\)</span></td>
+<td><span class="math inline">\(32.873\)</span></td>
+<td><span class="math inline">\(10.9576\)</span></td>
+<td><span class="math inline">\(94.584\)</span></td>
+<td><span class="math inline">\(1.375902 \times 10^{-6}\)</span></td>
+</tr>
+<tr class="even">
+<td>Error</td>
+<td><span class="math inline">\(8\)</span></td>
+<td><span class="math inline">\(0.927\)</span></td>
+<td><span class="math inline">\(0.1159\)</span></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td><span class="math inline">\(11\)</span></td>
+<td><span class="math inline">\(33.800\)</span></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>This can be obtained from R as follows:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>bacteria <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">7.66</span>,<span class="fl">6.98</span>,<span class="fl">7.80</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>              <span class="fl">5.26</span>,<span class="fl">5.44</span>,<span class="fl">5.80</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>              <span class="fl">7.41</span>,<span class="fl">7.33</span>,<span class="fl">7.04</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>              <span class="fl">3.51</span>,<span class="fl">2.91</span>,<span class="fl">3.66</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>packaging <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Commercial"</span>,<span class="dv">3</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>               <span class="fu">rep</span>(<span class="st">"Vacuum"</span>,<span class="dv">3</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>               <span class="fu">rep</span>(<span class="st">"Mixed Gas"</span>,<span class="dv">3</span>),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>               <span class="fu">rep</span>(<span class="st">"C02"</span>,<span class="dv">3</span>))</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>packaging <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(packaging)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>lm_out <span class="ot">&lt;-</span> <span class="fu">lm</span>(bacteria <span class="sc">~</span> packaging)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(lm_out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: bacteria
+          Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+packaging  3 32.873 10.9576  94.584 1.376e-06 ***
+Residuals  8  0.927  0.1159                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Note that R arranges the columns in the ANOVA table somewhat differently and does not provide the bottom row. We will see that ANOVA tables appear in other contexts as well; they are not intended solely for the cell-means model.</p>
+</section>
+<section id="checking-model-assumptions" class="level2" data-number="31.5">
+<h2 data-number="31.5" class="anchored" data-anchor-id="checking-model-assumptions"><span class="header-section-number">31.5</span> Checking model assumptions</h2>
+<p>Implicit in the cell means model of <a href="#def-cellmeansmodel" class="quarto-xref">Definition&nbsp;<span>31.1</span></a> are the following assumptions:</p>
+<dl>
+<dt>Assumption 1</dt>
+<dd>
+The responses are normally distributed around the treatment means.
+</dd>
+<dt>Assumption 2</dt>
+<dd>
+The responses have the same variance in all treatment groups.
+</dd>
+<dt>Assumption 3</dt>
+<dd>
+The responses are independent from each other.
+</dd>
+</dl>
+<p>Here we consider how to check each assumption in turn.</p>
+<p>To check <strong>Assumption 1</strong> we typically look at a normal Q-Q plot (see <a href="normal_qq_plot.html" class="quarto-xref"><span>Chapter 19</span></a>) of the residuals <span class="math inline">\(\hat \varepsilon_{ij}\)</span>. The residuals are the deviations of the responses around the sample treatment means, so they are the sample version of the error terms <span class="math inline">\(\varepsilon_{ij}\)</span>, which are assumed in the cell means model to have the <span class="math inline">\(\mathcal{N}(0,\sigma^2)\)</span> distribution. If the responses are normally distributed around the treatment means, the residuals should therefore exhibit normality in the normal Q-Q plot. <a href="#fig-normalQQresidsteak" class="quarto-xref">Figure&nbsp;<span>31.5</span></a> shows a normal Q-Q plot of the residuals for the steak packaging example. As the points lie somewhat close to the straight line, it appears safe to assume that the response values in the steak example are normally distributed around the treatment means.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm_out, <span class="at">which =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-normalQQresidsteak" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normalQQresidsteak-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cell_means_files/figure-html/fig-normalQQresidsteak-1.png" class="img-fluid figure-img" width="1400">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normalQQresidsteak-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31.5: Normal Q-Q plot of the residuals in the steak packaging data.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>To check <strong>Assumption 2</strong> we typically look at a plot called the <em>residuals versus fitted values</em> plot. In this plot, the residuals of the observations in each treatment group are plotted on the vertical axis against the treatment means such that the spread of the residuals across the treatment groups can be compared. If the responses have the same variance in all the treatment groups then the spread of the residuals should be the same across the treatment groups. <a href="#fig-residvfitssteak" class="quarto-xref">Figure&nbsp;<span>31.6</span></a> shows the residuals versus fitted values plot for the steak packaging example. It is difficult to see whether the spread of the residuals is the same in all four treatment groups, as there are only three experimental units in each group, but the spreads are not drastically different, so it appears safe to assume that the assumption holds.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm_out, <span class="at">which =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-residvfitssteak" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-residvfitssteak-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cell_means_files/figure-html/fig-residvfitssteak-1.png" class="img-fluid figure-img" width="1400">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-residvfitssteak-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31.6: Residuals versus fitted values plot for the steak packaging data.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Assumption 3</strong> really cannot be checked from the data; however, the random assignment of the experimental units to the treatment groups and proper control of experimental conditions can ensure that the responses are independent from each other.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-kuehl2000design" class="csl-entry" role="listitem">
+Kuehl, R. O. 2000. <em>Design of <span>Experiments</span>: <span>Statistical</span> <span>Principles</span> of <span>Research</span> <span>Design</span> and <span>Analysis</span></em>. Duxbury/Thomson Learning.
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>The setting in panel (B) exhibits large between-treatment variation and small within-treatment variation, so we would expect from it the largest value of the test statistic <span class="math inline">\(F_{\operatorname{test}}\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The setting in panel (C) exhibits small between-treatment variation and large within-treatment variation, so we would expect it to produce the smallest value of the test statistic <span class="math inline">\(F_{\operatorname{test}}\)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>The settings in panels (B) and (D) exhibit larger between-treatment variation than the other two panels, so we would expect them to produce larger values of <span class="math inline">\(\operatorname{MS}_{\operatorname{Trt}}\)</span>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>The settings in panels (C) and (D) exhibit larger within-treatment variation than the other two panels, so we would expect them to produce larger values of <span class="math inline">\(\operatorname{MS}_{\operatorname{Error}}\)</span>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./randomized_experiments_v_observational_studies.html" class="pagination-link" aria-label="Randomized experiments versus observational studies">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Randomized experiments versus observational studies</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./power_ztest.html" class="pagination-link" aria-label="Statistical power of one-sample tests">
+        <span class="nav-page-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

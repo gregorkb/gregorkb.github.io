@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./power_ztest.html" rel="next">
+<link href="./randomized_experiments_v_observational_studies.html" rel="next">
 <link href="./confint_for_proportion.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -363,8 +363,20 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./randomized_experiments_v_observational_studies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Randomized experiments versus observational studies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cell_means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -381,13 +393,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
   </div>
 </li>
       </ul>
@@ -404,7 +416,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -421,19 +433,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chi_squared_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./t_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
   </div>
 </li>
       </ul>
@@ -464,7 +476,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">III: Inference from random samples</a></li><li class="breadcrumb-item"><a href="./sample_size_determination.html"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Sample size determination</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-sample_size_mean" class="quarto-section-identifier"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Sample size determination</span></span></h1>
+<h1 class="title"><span id="sec-sample_size_determination" class="quarto-section-identifier"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Sample size determination</span></span></h1>
 </div>
 
 
@@ -520,9 +532,9 @@ n  = \Big\lceil \Big(z_{\alpha/2} \frac{\sigma}{M}\Big)^2\Big\rceil
 </section>
 <section id="when-estimating-a-proportion" class="level2" data-number="29.2">
 <h2 data-number="29.2" class="anchored" data-anchor-id="when-estimating-a-proportion"><span class="header-section-number">29.2</span> When estimating a proportion</h2>
-<p>As with the mean <span class="math inline">\(\mu\)</span>, we begin by recalling the form of a <span class="math inline">\((1-\alpha)100\%\)</span> confidence interval for <span class="math inline">\(p\)</span>. We choose to work with the “large-sample” version <span class="math display">\[
+<p>As with the mean <span class="math inline">\(\mu\)</span>, we begin by recalling the form of a <span class="math inline">\((1-\alpha)100\%\)</span> confidence interval for <span class="math inline">\(p\)</span>. We choose to work with the “large-sample” version <span id="eq-waldtypeciprop"><span class="math display">\[
 \hat p_n \pm z_{\alpha/2}\sqrt{\frac{\hat p_n ( 1 - \hat p_n) }{n}},
-\]</span> which is the version we may use when <span class="math inline">\(\min\{n\hat p_n,n(1-\hat p_n)\} \geq 15\)</span>. Suppose now that we want the margin of error of this confidence interval to be less than some researcher-specified value <span class="math inline">\(M\)</span>. Then we may write <span class="math display">\[
+\tag{29.1}\]</span></span> which is the version we may use when <span class="math inline">\(\min\{n\hat p_n,n(1-\hat p_n)\} \geq 15\)</span>. Suppose now that we want the margin of error of this confidence interval to be less than some researcher-specified value <span class="math inline">\(M\)</span>. Then we may write <span class="math display">\[
 z_{\alpha/2}\sqrt{\frac{\hat p_n ( 1 - \hat p_n) }{n}} \leq M,
 \]</span> and rearrange it to get <span class="math display">\[
 n \geq \left(z_{\alpha/2}\frac{\sqrt{\hat p_n (1-\hat p_n)}}{M}\right)^2.
@@ -531,6 +543,15 @@ n \geq \left(z_{\alpha/2}\frac{\sqrt{\hat p_n (1-\hat p_n)}}{M}\right)^2.
 <p><span class="theorem-title"><strong>Proposition 29.2 (Sample size for estimating a proportion)</strong></span> The sample size <span class="math display">\[
 n  = \Big\lceil \Big(z_{\alpha/2} \frac{\sqrt{p(1-p)}}{M}\Big)^2\Big\rceil
 \]</span> ensures that the interval <span class="math inline">\(\displaystyle \hat p_n \pm z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}}\)</span> has margin of error no greater than <span class="math inline">\(M\)</span>.</p>
+</div>
+<p>Now, to use the above formula we need to substitute for <span class="math inline">\(p\)</span></p>
+<ol type="1">
+<li>an estimate <span class="math inline">\(p\)</span> from some previous or pilot study, or</li>
+<li>simply the value <span class="math inline">\(p = 1/2\)</span>.</li>
+</ol>
+<p>If we use a previous or pilot estimate of <span class="math inline">\(p\)</span>, it is not necessarily guaranteed that the interval in <a href="#eq-waldtypeciprop" class="quarto-xref">Equation&nbsp;<span>29.1</span></a> will have a margin of error not exceeding <span class="math inline">\(M\)</span>, since we are likely to obtain in the sample a value of <span class="math inline">\(\hat p_n\)</span> different from the pilot estimate. Nonetheless, if our pilot estimate is fairly close to the true value of <span class="math inline">\(p\)</span>, the margin of error of the interval computed after data collection will be fairly close to <span class="math inline">\(M\)</span>. On the other hand, using the value <span class="math inline">\(p=1/2\)</span> maximizes the value of <span class="math inline">\(p(1-p)\)</span>, leading to the most conservative—that is the largest—choice of <span class="math inline">\(n\)</span>, and will always ensure that the margin of error of the interval in <a href="#eq-waldtypeciprop" class="quarto-xref">Equation&nbsp;<span>29.1</span></a> will be no greater than <span class="math inline">\(M\)</span>. So using <span class="math inline">\(p=1/2\)</span> means erring towards a larger <span class="math inline">\(n\)</span>. This is recommended when no previous studies are available and one does not wish to conduct a pilot study.</p>
+<div id="exr-poll" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 29.2 (Political poll)</strong></span> It is of interest to estimate with <span class="math inline">\(99\%\)</span> confidence the proportion of registered voters who will vote for a particular candidate. A margin of error of <span class="math inline">\(2\)</span> percentage points is desired. How many people should be polled?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 </div>
 
 
@@ -541,6 +562,9 @@ n  = \Big\lceil \Big(z_{\alpha/2} \frac{\sqrt{p(1-p)}}{M}\Big)^2\Big\rceil
 <li id="fn1"><p> The researchers want the margin of error to be less than <span class="math inline">\(M = 0.5\)</span>. We have from previous studies the estimated standard deviation <span class="math inline">\(\hat \sigma^{\text{prev}} = 2\)</span>. Since a <span class="math inline">\(95\%\)</span> confidence interval is to be constructed, we use <span class="math inline">\(z_{0.05/2}=z_{0.025} = 1.96\)</span>. Thus we get <span class="math display">\[
 n \geq \left(z_{\alpha/2}\frac{\hat\sigma^{\text{prev}}}{M} \right)^2 = \left(1.96\frac{2}{0.5} \right)^2 = 61.4656,
 \]</span> leading to the choice of sample size <span class="math inline">\(n = 62\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p> If it is a tight race between two candidates, the true proportion of registered voters favoring one of the candidates will be close to <span class="math inline">\(0.5\)</span>, so we should use <span class="math inline">\(p = 0.5\)</span> in our calculations. At the <span class="math inline">\(99\%\)</span> confidence level <span class="math inline">\(\alpha = 0.01\)</span>, so we need <span class="math inline">\(z_{0.01/2} = z_{0.005} = 2.576\)</span>. The desired margin of error is <span class="math inline">\(M = 0.02\)</span>. We thus get <span class="math display">\[
+n \geq \left(2.576 \frac{\sqrt{1/2(1/2)}}{0.02}\right)^2 = 4147.36.
+\]</span> So we should poll <span class="math inline">\(n = 4148\)</span> people.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -952,8 +976,8 @@ n \geq \left(z_{\alpha/2}\frac{\hat\sigma^{\text{prev}}}{M} \right)^2 = \left(1.
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./power_ztest.html" class="pagination-link" aria-label="Statistical power of one-sample tests">
-        <span class="nav-page-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./randomized_experiments_v_observational_studies.html" class="pagination-link" aria-label="Randomized experiments versus observational studies">
+        <span class="nav-page-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Randomized experiments versus observational studies</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
