@@ -578,6 +578,28 @@ P( X \in A \cap Y \in B) = P(X \in A) P(Y \in B)
 </div>
 <p>The instructor of the twenty-seven students was keenly interested in testing whether the average value of the ratio <span class="math inline">\(B/A\)</span> was equal to the fabled golden ratio <span class="math inline">\((1 + \sqrt{5})/2\)</span>, which is <span class="math inline">\(1.618\)</span> after rounding. The average of the observed values was <span class="math inline">\(1.56\)</span>.</p>
 </div>
+<div id="exm-acorns" class="theorem example">
+<p><span class="theorem-title"><strong>Example 15.3 (Live oak acorns)</strong></span> The lengths and diameters of thirty-two live oak acorns were measured using a pair of calipers.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/acorns.png" class="img-fluid figure-img" width="200"></p>
+<figcaption>Live oak acorns</figcaption>
+</figure>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.375</span>,<span class="fl">0.428</span>,<span class="fl">0.39</span>,<span class="fl">0.388</span>,<span class="fl">0.42</span>,<span class="fl">0.43</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.42</span>,<span class="fl">0.35</span>,<span class="fl">0.44</span>,<span class="fl">0.45</span>,<span class="fl">0.43</span>,<span class="fl">0.50</span>,<span class="fl">0.48</span>,<span class="fl">0.46</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.429</span>,<span class="fl">0.427</span>,<span class="fl">0.424</span>,<span class="fl">0.512</span>,<span class="fl">0.428</span>,<span class="fl">0.426</span>,<span class="fl">0.43</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.4</span>,<span class="fl">0.46</span>,<span class="fl">0.44</span>,<span class="fl">0.40</span>,<span class="fl">0.45</span>,<span class="fl">0.41</span>,<span class="fl">0.398</span>,<span class="fl">0.42</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.453</span>,<span class="fl">0.449</span>,<span class="fl">0.428</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>ln <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.710</span>,<span class="fl">0.75</span>,<span class="fl">0.665</span>,<span class="fl">0.658</span>,<span class="fl">0.651</span>,<span class="fl">0.791</span>,<span class="fl">0.740</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.750</span>,<span class="fl">0.790</span>,<span class="fl">0.810</span>,<span class="fl">0.72</span>,<span class="fl">0.71</span>,<span class="fl">0.79</span>,<span class="fl">0.72</span>,<span class="fl">0.748</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.734</span>,<span class="fl">0.746</span>,<span class="fl">0.735</span>,<span class="fl">0.851</span>,<span class="fl">0.746</span>,<span class="fl">0.73</span>,<span class="fl">0.75</span>,<span class="fl">0.81</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.76</span>,<span class="fl">0.725</span>,<span class="fl">0.735</span>,<span class="fl">0.71</span>,<span class="fl">0.712</span>,<span class="fl">0.755</span>,<span class="fl">0.787</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.776</span>,<span class="fl">0.748</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
 <p>We may hereafter write <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}F\)</span> to express that <span class="math inline">\(X_1,\dots,X_n\)</span> are a random sample from a population with distribution <span class="math inline">\(F\)</span>. Often there are features of <span class="math inline">\(F\)</span> that are unknown to us, and the goal of drawing the random sample <span class="math inline">\(X_1,\dots,X_n\)</span> is to learn about these unknown features of <span class="math inline">\(F\)</span>. In particular, we will next consider how we can learn about the expected value of a random variable with distribution <span class="math inline">\(F\)</span>, which we may refer to as the <em>population mean</em>.</p>
 
 
