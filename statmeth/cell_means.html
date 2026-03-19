@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>31&nbsp; One-way ANOVA – Statistical Methods</title>
+<title>34&nbsp; One-way ANOVA – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,10 +95,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-aa0bfeffdde32bb1c7607de7a91446fc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2f3f30ce58639c1a39c2cd352d35dfe4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e4e68ee68c19e67666d1c1c07e7c4550.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -180,7 +180,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">III: Inference from random samples</a></li><li class="breadcrumb-item"><a href="./cell_means.html"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">III: Inference from random samples</a></li><li class="breadcrumb-item"><a href="./cell_means.html"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -418,20 +418,38 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./hyp_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./first_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">First tests about about a normal mean</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./t_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Revised tests about about a normal mean</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./randomized_experiments_v_observational_studies.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Randomized experiments versus observational studies</span></span></a>
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Randomized experiments versus observational studies</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./cell_means.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span></a>
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -448,13 +466,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
   </div>
 </li>
       </ul>
@@ -471,7 +489,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -488,19 +506,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chi_squared_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./t_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
   </div>
 </li>
       </ul>
@@ -521,20 +539,20 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-cell-means-model" id="toc-the-cell-means-model" class="nav-link active" data-scroll-target="#the-cell-means-model"><span class="header-section-number">31.1</span> The cell means model</a></li>
-  <li><a href="#hypothesis-testing-in-the-cell-means-model" id="toc-hypothesis-testing-in-the-cell-means-model" class="nav-link" data-scroll-target="#hypothesis-testing-in-the-cell-means-model"><span class="header-section-number">31.2</span> Hypothesis testing in the cell means model</a></li>
-  <li><a href="#the-f-distributions" id="toc-the-f-distributions" class="nav-link" data-scroll-target="#the-f-distributions"><span class="header-section-number">31.3</span> The <span class="math inline">\(F\)</span> distributions</a></li>
-  <li><a href="#analysis-of-variance-anova" id="toc-analysis-of-variance-anova" class="nav-link" data-scroll-target="#analysis-of-variance-anova"><span class="header-section-number">31.4</span> Analysis of variance (ANOVA)</a></li>
-  <li><a href="#checking-model-assumptions" id="toc-checking-model-assumptions" class="nav-link" data-scroll-target="#checking-model-assumptions"><span class="header-section-number">31.5</span> Checking model assumptions</a></li>
+  <li><a href="#the-cell-means-model" id="toc-the-cell-means-model" class="nav-link active" data-scroll-target="#the-cell-means-model"><span class="header-section-number">34.1</span> The cell means model</a></li>
+  <li><a href="#hypothesis-testing-in-the-cell-means-model" id="toc-hypothesis-testing-in-the-cell-means-model" class="nav-link" data-scroll-target="#hypothesis-testing-in-the-cell-means-model"><span class="header-section-number">34.2</span> Hypothesis testing in the cell means model</a></li>
+  <li><a href="#the-f-distributions" id="toc-the-f-distributions" class="nav-link" data-scroll-target="#the-f-distributions"><span class="header-section-number">34.3</span> The <span class="math inline">\(F\)</span> distributions</a></li>
+  <li><a href="#analysis-of-variance-anova" id="toc-analysis-of-variance-anova" class="nav-link" data-scroll-target="#analysis-of-variance-anova"><span class="header-section-number">34.4</span> Analysis of variance (ANOVA)</a></li>
+  <li><a href="#checking-model-assumptions" id="toc-checking-model-assumptions" class="nav-link" data-scroll-target="#checking-model-assumptions"><span class="header-section-number">34.5</span> Checking model assumptions</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">III: Inference from random samples</a></li><li class="breadcrumb-item"><a href="./cell_means.html"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">III: Inference from random samples</a></li><li class="breadcrumb-item"><a href="./cell_means.html"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-cell_means" class="quarto-section-identifier"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span></h1>
+<h1 class="title"><span id="sec-cell_means" class="quarto-section-identifier"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span></h1>
 </div>
 
 
@@ -568,7 +586,7 @@ window.Quarto = {
 <li><em>Response</em>: The outcome which we measure on each experimental unit after administering the treatment is called the response.</li>
 </ul>
 <div id="exm-steak" class="theorem example">
-<p><span class="theorem-title"><strong>Example 31.1 (Steak packaging)</strong></span> This example is taken from <span class="citation" data-cites="kuehl2000design">Kuehl (<a href="references.html#ref-kuehl2000design" role="doc-biblioref">2000</a>)</span>. Twelve steaks were randomly assigned (three each) to four different packaging conditions (Commercial, Vacuum, Mixed Gas, CO<span class="math inline">\(_2\)</span>). After 9 days at 4<span class="math inline">\(^{\circ}\)</span> C, the number of bacteria per cm<span class="math inline">\(^2\)</span> over the surface of the steak was recorded. Of interest is whether “some form of controlled gas atmosphere would provide a more effective packaging environment (than commercial or vacuum) for meat storage”. The raw data are presented here:</p>
+<p><span class="theorem-title"><strong>Example 34.1 (Steak packaging)</strong></span> This example is taken from <span class="citation" data-cites="kuehl2000design">Kuehl (<a href="references.html#ref-kuehl2000design" role="doc-biblioref">2000</a>)</span>. Twelve steaks were randomly assigned (three each) to four different packaging conditions (Commercial, Vacuum, Mixed Gas, CO<span class="math inline">\(_2\)</span>). After 9 days at 4<span class="math inline">\(^{\circ}\)</span> C, the number of bacteria per cm<span class="math inline">\(^2\)</span> over the surface of the steak was recorded. Of interest is whether “some form of controlled gas atmosphere would provide a more effective packaging environment (than commercial or vacuum) for meat storage”. The raw data are presented here:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -670,8 +688,8 @@ window.Quarto = {
 </table>
 <p>From this table, it looks like the packaging with <span class="math inline">\(CO_2\)</span> achieved the least bacterial growth. However, we know by now that need to do a more rigorous analysis than just looking at the sample means. If we were to repeat this experiment with <span class="math inline">\(12\)</span> different steaks, we would get different response values and different treatment means. The question is, to what extent do the treatment means differ because of true differences in the packaging methods and to what extent do they differ because of experimental variability? We address these questions in the following with a view to hypothesis testing.</p>
 </div>
-<section id="the-cell-means-model" class="level2" data-number="31.1">
-<h2 data-number="31.1" class="anchored" data-anchor-id="the-cell-means-model"><span class="header-section-number">31.1</span> The cell means model</h2>
+<section id="the-cell-means-model" class="level2" data-number="34.1">
+<h2 data-number="34.1" class="anchored" data-anchor-id="the-cell-means-model"><span class="header-section-number">34.1</span> The cell means model</h2>
 In statistics we often try to make sense of where our data come from by writing down a mathematical expression for each value. We call this expression a <em>model</em>, and it is supposed to describe the mechanism working in the background to produce the data we observe. Writing down a model for our data helps us to formulate testable hypotheses which match our research questions. For the data in #exm-steak, a model called the <em>cell means model</em> or the <em>one-way ANOVA model</em> is often posited as the mechanism through which the response values come to be.
 <p>Before we can write down the cell means model, we need to define some quantities pertaining to a comparative experiment:</p>
 <ul>
@@ -682,9 +700,9 @@ In statistics we often try to make sense of where our data come from by writing 
 </ul>
 <p>Now we can define the cell means model.</p>
 <div id="def-cellmeansmodel" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 31.1 (Cell means or one-way ANOVA model)</strong></span> The <em>cell means</em> or <em>one-way ANOVA model</em> assumes <span id="eq-cellmeans"><span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 34.1 (Cell means or one-way ANOVA model)</strong></span> The <em>cell means</em> or <em>one-way ANOVA model</em> assumes <span id="eq-cellmeans"><span class="math display">\[
 Y_{ij} = \mu_i + \varepsilon_{ij}, \quad \varepsilon_{ij} \overset{\text{ind}}{\sim}\mathcal{N}(0,\sigma^2)
-\tag{31.1}\]</span></span> for <span class="math inline">\(j=1,\dots,n_i\)</span> and <span class="math inline">\(i = 1,\dots,K\)</span>, where</p>
+\tag{34.1}\]</span></span> for <span class="math inline">\(j=1,\dots,n_i\)</span> and <span class="math inline">\(i = 1,\dots,K\)</span>, where</p>
 <ul>
 <li><span class="math inline">\(\mu_1,\dots,\mu_K\)</span> are the <em>treatment group means</em>.</li>
 <li><span class="math inline">\(\varepsilon_{ij}\)</span> is called an <em>error term</em> and represents the deviation of the response <span class="math inline">\(Y_{ij}\)</span> from the mean of treatment group <span class="math inline">\(i\)</span>.</li>
@@ -694,22 +712,22 @@ Y_{ij} = \mu_i + \varepsilon_{ij}, \quad \varepsilon_{ij} \overset{\text{ind}}{\
 <p>Under the cell means or one-way ANOVA model, it is typically of interest to estimate the population treatment means <span class="math inline">\(\mu_1,\dots,\mu_K\)</span> and to test hypotheses about them. Natural estimators of <span class="math inline">\(\mu_1,\dots,\mu_K\)</span> are given by <span class="math display">\[
 \bar Y_{i.} = \frac{1}{n_i}\sum_{j=1}^{n_i} Y_{ij}, \quad i=1,\dots,K,
 \]</span> which are the means of the responses in the treatment groups (placing a `<span class="math inline">\(.\)</span>’ in the subscript in the place of an index over which a sum has been taken is a common convention).</p>
-<p>In <a href="#exm-steak" class="quarto-xref">Example&nbsp;<span>31.1</span></a> with the steaks, we have <span class="math inline">\(K=4\)</span> for the four packaging types, <span class="math inline">\(n_1=n_2=n_3=n_4=3\)</span>, since three steaks were assigned to each treatment, and the total number of experimental units is <span class="math inline">\(N = n_1 + n_2 + n_3 + n_4 = 12\)</span>. We then have the responses <span class="math inline">\(Y_{11} = 7.66, Y_{12} = 6.98, \dots, Y_{43} = 3.66\)</span>. The means of the treatment groups are <span class="math inline">\(\bar Y_{1.} = 7.48\)</span>, <span class="math inline">\(\bar Y_{2.} = 5.50\)</span>, <span class="math inline">\(\bar Y_{3.} = 7.26\)</span>, and <span class="math inline">\(\bar Y_{4.} = 3.36\)</span>.</p>
-<p><a href="#fig-cellmeans" class="quarto-xref">Figure&nbsp;<span>31.1</span></a> depicts the cell means model with <span class="math inline">\(K=4\)</span> treatments.</p>
+<p>In <a href="#exm-steak" class="quarto-xref">Example&nbsp;<span>34.1</span></a> with the steaks, we have <span class="math inline">\(K=4\)</span> for the four packaging types, <span class="math inline">\(n_1=n_2=n_3=n_4=3\)</span>, since three steaks were assigned to each treatment, and the total number of experimental units is <span class="math inline">\(N = n_1 + n_2 + n_3 + n_4 = 12\)</span>. We then have the responses <span class="math inline">\(Y_{11} = 7.66, Y_{12} = 6.98, \dots, Y_{43} = 3.66\)</span>. The means of the treatment groups are <span class="math inline">\(\bar Y_{1.} = 7.48\)</span>, <span class="math inline">\(\bar Y_{2.} = 5.50\)</span>, <span class="math inline">\(\bar Y_{3.} = 7.26\)</span>, and <span class="math inline">\(\bar Y_{4.} = 3.36\)</span>.</p>
+<p><a href="#fig-cellmeans" class="quarto-xref">Figure&nbsp;<span>34.1</span></a> depicts the cell means model with <span class="math inline">\(K=4\)</span> treatments.</p>
 <div id="fig-cellmeans" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cellmeans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/cellmeans.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cellmeans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;31.1: Cell means model in the mind of the investigator.
+Figure&nbsp;34.1: Cell means model in the mind of the investigator.
 </figcaption>
 </figure>
 </div>
 <p>In the cell means model the investigator imagines data coming from <span class="math inline">\(K\)</span> different distributions such that the distributions are centered at the population treatment means <span class="math inline">\(\mu_1,\dots,\mu_K\)</span>. Moreover, each distribution is Normal and all have the same variance, which is the variance <span class="math inline">\(\sigma^2\)</span> of the error term in the cell means model. The sample treatment means <span class="math inline">\(\bar Y_{1.},\dots,\bar Y_{K.}\)</span> are the investigator’s guesses from the observed data at the unknown values of <span class="math inline">\(\mu_1,\dots,\mu_K\)</span>.</p>
 </section>
-<section id="hypothesis-testing-in-the-cell-means-model" class="level2" data-number="31.2">
-<h2 data-number="31.2" class="anchored" data-anchor-id="hypothesis-testing-in-the-cell-means-model"><span class="header-section-number">31.2</span> Hypothesis testing in the cell means model</h2>
+<section id="hypothesis-testing-in-the-cell-means-model" class="level2" data-number="34.2">
+<h2 data-number="34.2" class="anchored" data-anchor-id="hypothesis-testing-in-the-cell-means-model"><span class="header-section-number">34.2</span> Hypothesis testing in the cell means model</h2>
 <p>In comparative experiments, the foremost research question is: Do/does any of the treatments affect the response? We can formulate this question in the following null and alternate hypotheses: <span class="math display">\[
 \begin{align*}
     H_0\text{:} \quad&amp;\mu_1 = \dots= \mu_K \\
@@ -717,27 +735,27 @@ Figure&nbsp;31.1: Cell means model in the mind of the investigator.
 \end{align*}
 \]</span> where the interpretation of the alternate hypothesis is that not all the treatment means are equal (there is at least one pair of means which do not have the same value).</p>
 <p>As we have previously done, we will test these hypotheses by computing a test statistic; once we have the test statistic we can compare it to a critical value or get a <span class="math inline">\(p\)</span>-value from it in order to decide whether or not to reject <span class="math inline">\(H_0\)</span>.</p>
-<p>We may gather intuition for constructing a test statistic by picturing the cell means model under the null hypothess <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1=\dots=\mu_K\)</span>. Returning to our example in which <span class="math inline">\(K=4\)</span>, the investigator now imagines all the data coming from a single distribution as in <a href="#fig-cellmeansH0" class="quarto-xref">Figure&nbsp;<span>31.2</span></a>.</p>
+<p>We may gather intuition for constructing a test statistic by picturing the cell means model under the null hypothess <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1=\dots=\mu_K\)</span>. Returning to our example in which <span class="math inline">\(K=4\)</span>, the investigator now imagines all the data coming from a single distribution as in <a href="#fig-cellmeansH0" class="quarto-xref">Figure&nbsp;<span>34.2</span></a>.</p>
 <div id="fig-cellmeansH0" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cellmeansH0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/cellmeansH0.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cellmeansH0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;31.2: Cell means model under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1 = \dots = \mu_K\)</span> in the mind of the investigator.
+Figure&nbsp;34.2: Cell means model under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1 = \dots = \mu_K\)</span> in the mind of the investigator.
 </figcaption>
 </figure>
 </div>
 <p>A new quantity which we may call the <em>overall mean</em> is introduced in the above picture. If it is assumed that all responses in all the treatment groups really come from a single distribution centered at a common mean <span class="math inline">\(\mu\)</span>, then a sensible estimator of the common mean is the mean of all the responses pooled together, which we write as <span class="math display">\[
 \bar Y_{..} = \frac{1}{N}\sum_{i=1}^K\sum_{j=1}^{n_i} Y_{ij}.
-\]</span> In <a href="#exm-steak" class="quarto-xref">Example&nbsp;<span>31.1</span></a> with the steaks, we have <span class="math display">\[
+\]</span> In <a href="#exm-steak" class="quarto-xref">Example&nbsp;<span>34.1</span></a> with the steaks, we have <span class="math display">\[
 \bar Y_{..} = \frac{1}{12}(7.66 + 6.89 + \dots 3.66) = 5.9.
 \]</span> We now wish to construct a test statistic which gauges how much evidence the data carries against the null hypothesis. What would cast doubt on <span class="math inline">\(H_0\)</span>? The more spread out the treatment means <span class="math inline">\(\bar Y_{1.},\dots,\bar Y_{K.}\)</span> the more implausible <span class="math inline">\(H_0\)</span> becomes. So our test statistic should measure the spread of our treatment means <span class="math inline">\(\bar Y_{1.},\dots,\bar Y_{K.}\)</span> and, under the null hypothesis, it should have a known probability distribution which allows us to look up a <span class="math inline">\(p\)</span>-value.</p>
 <p>The following result gives us some direction.</p>
 <div id="prp-chisqANOVA" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 31.1 (Idealized test statistic assuming <span class="math inline">\(\sigma\)</span> known)</strong></span> Under the cell means model in <a href="#def-cellmeansmodel" class="quarto-xref">Definition&nbsp;<span>31.1</span></a> under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1=\dots=\mu_K\)</span>, we have <span id="eq-chisqANOVA"><span class="math display">\[
+<p><span class="theorem-title"><strong>Proposition 34.1 (Idealized test statistic assuming <span class="math inline">\(\sigma\)</span> known)</strong></span> Under the cell means model in <a href="#def-cellmeansmodel" class="quarto-xref">Definition&nbsp;<span>34.1</span></a> under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1=\dots=\mu_K\)</span>, we have <span id="eq-chisqANOVA"><span class="math display">\[
 W_{\operatorname{test}} = \sum_{i=1}^K\left(\frac{\bar Y_{i.}  - \bar Y_{..}}{\sigma/\sqrt{n_i}}\right)^2 \sim \chi_{K-1}^2.
-\tag{31.2}\]</span></span></p>
+\tag{34.2}\]</span></span></p>
 </div>
 <p><br></p>
 <p>Recall that <span class="math inline">\(\chi_{K-1}^2\)</span> in the above denotes the chi-squared distribution with degrees of freedom equal to <span class="math inline">\(K-1\)</span>.</p>
@@ -745,7 +763,7 @@ W_{\operatorname{test}} = \sum_{i=1}^K\left(\frac{\bar Y_{i.}  - \bar Y_{..}}{\s
 <p>Define the estimator <span class="math inline">\(\hat \sigma^2\)</span> of <span class="math inline">\(\sigma^2\)</span> as <span class="math display">\[
 \hat \sigma^2 = \frac{1}{N-K}\sum_{i=1}^K\sum_{j=1}^{n_i} \hat \varepsilon_{ij}^2, %\quad \text{ where } \quad \hat \varepsilon_{ij} = Y_{ij} - \bar Y_{i.}, j=1,\dots,n_i, i = 1,\dots,K.
 \]</span> where <span class="math inline">\(\hat \varepsilon_{ij} = Y_{ij} - \bar Y_{i.}\)</span>, <span class="math inline">\(j=1,\dots,n_i\)</span>, <span class="math inline">\(i = 1,\dots,K\)</span> are the deviations of the responses from their treatment means. These deviations are called <em>residuals</em>. The residuals <span class="math inline">\(\hat \varepsilon_{ij}\)</span> are like the sample version of the noise or error terms <span class="math inline">\(\varepsilon_{ij}\)</span>, and the above formula uses them to estimate the variance <span class="math inline">\(\sigma^2\)</span>.</p>
-<p>For <a href="#exm-steak" class="quarto-xref">Example&nbsp;<span>31.1</span></a> with the steaks, the residuals are shown in the rightmost column of the table below:</p>
+<p>For <a href="#exm-steak" class="quarto-xref">Example&nbsp;<span>34.1</span></a> with the steaks, the residuals are shown in the rightmost column of the table below:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 7%">
@@ -853,11 +871,11 @@ W_{\operatorname{test}} = \sum_{i=1}^K\left(\frac{\bar Y_{i.}  - \bar Y_{..}}{\s
 <p>Using the residuals in the table, we would compute <span class="math inline">\(\hat \sigma^2\)</span> as <span class="math display">\[
 \hat \sigma^2 = \frac{1}{12 - 4}\left[(0.18)^2 + (-0.50)^2 + \dots + (0.30)^2\right] = 0.11585.
 \]</span> Then we have <span class="math inline">\(\hat \sigma = 0.34037\)</span>.</p>
-<p>We find that when we replace <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(\hat \sigma\)</span> in <a href="#eq-chisqANOVA" class="quarto-xref">Equation&nbsp;<span>31.2</span></a>, the resulting quantity no longer has a chi-squared distribution. Instead, if we rescale the quantity properly, it will have a distribution called an <span class="math inline">\(F\)</span> distribution. Recall that when we previously replaced <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(S_n\)</span> in the standardization of a sample mean the result had a <span class="math inline">\(t\)</span> distribution instead of a standard normal distribution. Here, when we replace <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(\hat \sigma\)</span>, we have a (scaled) <span class="math inline">\(F\)</span> distribution instead of a chi-squared distribution. We next introduce the <span class="math inline">\(F\)</span> distributions.</p>
+<p>We find that when we replace <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(\hat \sigma\)</span> in <a href="#eq-chisqANOVA" class="quarto-xref">Equation&nbsp;<span>34.2</span></a>, the resulting quantity no longer has a chi-squared distribution. Instead, if we rescale the quantity properly, it will have a distribution called an <span class="math inline">\(F\)</span> distribution. Recall that when we previously replaced <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(S_n\)</span> in the standardization of a sample mean the result had a <span class="math inline">\(t\)</span> distribution instead of a standard normal distribution. Here, when we replace <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(\hat \sigma\)</span>, we have a (scaled) <span class="math inline">\(F\)</span> distribution instead of a chi-squared distribution. We next introduce the <span class="math inline">\(F\)</span> distributions.</p>
 </section>
-<section id="the-f-distributions" class="level2" data-number="31.3">
-<h2 data-number="31.3" class="anchored" data-anchor-id="the-f-distributions"><span class="header-section-number">31.3</span> The <span class="math inline">\(F\)</span> distributions</h2>
-<p>The <span class="math inline">\(F\)</span> distributions are right-skewed distributions and are indexed by two parameters called the numerator degrees of freedom and the denominator degrees of freedom. <a href="#fig-fpdfs" class="quarto-xref">Figure&nbsp;<span>31.3</span></a> plots the PDFs of several F distributions.</p>
+<section id="the-f-distributions" class="level2" data-number="34.3">
+<h2 data-number="34.3" class="anchored" data-anchor-id="the-f-distributions"><span class="header-section-number">34.3</span> The <span class="math inline">\(F\)</span> distributions</h2>
+<p>The <span class="math inline">\(F\)</span> distributions are right-skewed distributions and are indexed by two parameters called the numerator degrees of freedom and the denominator degrees of freedom. <a href="#fig-fpdfs" class="quarto-xref">Figure&nbsp;<span>34.3</span></a> plots the PDFs of several F distributions.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -900,14 +918,14 @@ W_{\operatorname{test}} = \sum_{i=1}^K\left(\frac{\bar Y_{i.}  - \bar Y_{..}}{\s
 <img src="cell_means_files/figure-html/fig-fpdfs-1.png" class="img-fluid figure-img" width="1400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fpdfs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;31.3: PDF of <span class="math inline">\(F\)</span> distribution at several pairs of numerator and denominator degrees of freedom parameter values.
+Figure&nbsp;34.3: PDF of <span class="math inline">\(F\)</span> distribution at several pairs of numerator and denominator degrees of freedom parameter values.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div id="def-Fdist" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 31.2 (F distributions)</strong></span> For each <span class="math inline">\(k_1 &gt; 0\)</span> and <span class="math inline">\(k_2 &gt; 0\)</span>, the probability distribution with PDF given by <span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 34.2 (F distributions)</strong></span> For each <span class="math inline">\(k_1 &gt; 0\)</span> and <span class="math inline">\(k_2 &gt; 0\)</span>, the probability distribution with PDF given by <span class="math display">\[
 f(x;k_1,k_2) = \left\{\begin{array}{ll}\frac{\Gamma(\frac{k_1 + k_2}{2})}{\Gamma(\frac{k_1}{2})\Gamma(\frac{k_2}{2})}\Big(\frac{k_1}{k_2}\Big)^{k_1/2}x^{(k_1-2)/2}\Big(1 + \frac{k_1}{k_2}x \Big)^{-(k_1 + k_2)/2}, &amp; x \geq 0 \\
 0,&amp;x &lt; 0\\
 \end{array}\right.
@@ -915,25 +933,25 @@ f(x;k_1,k_2) = \left\{\begin{array}{ll}\frac{\Gamma(\frac{k_1 + k_2}{2})}{\Gamma
 </div>
 <p><br> If a random variable <span class="math inline">\(R\)</span> has the <span class="math inline">\(F\)</span> distribution with numerator degrees of freedom <span class="math inline">\(k_1\)</span> and denominator degrees of freedom <span class="math inline">\(k_2\)</span> we will write <span class="math inline">\(R \sim F_{k_1,k_2}\)</span>. Here the letter “<span class="math inline">\(R\)</span>” was used since an <span class="math inline">\(F\)</span>-distributed random variable arises as a <em>ratio</em> of independent chi-squared random variables, each divided by the value of its degrees of freedom parameter. Formally:</p>
 <div id="prp-Fdist" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 31.2 (<span class="math inline">\(F\)</span> distribution construction)</strong></span> Let <span class="math inline">\(W_1 \sim\chi_{k_1}^2\)</span> and <span class="math inline">\(W_2\sim \chi_{k_2}^2\)</span> be independent chi-squared random variables with degrees of freedom <span class="math inline">\(k_1\)</span> and <span class="math inline">\(k_2\)</span>, respectively. Then <span class="math display">\[
+<p><span class="theorem-title"><strong>Proposition 34.2 (<span class="math inline">\(F\)</span> distribution construction)</strong></span> Let <span class="math inline">\(W_1 \sim\chi_{k_1}^2\)</span> and <span class="math inline">\(W_2\sim \chi_{k_2}^2\)</span> be independent chi-squared random variables with degrees of freedom <span class="math inline">\(k_1\)</span> and <span class="math inline">\(k_2\)</span>, respectively. Then <span class="math display">\[
 R = \frac{W_1/k_1}{W_2/k_2}\sim F_{k_1,k_2}.
 \]</span></p>
 </div>
 <p><br></p>
-<p>Just as we have defined upper quantiles for the standard Normal distribution, the <span class="math inline">\(t\)</span> distributions, and the chi-squared distributions, we define, for each <span class="math inline">\(\alpha \in (0,1)\)</span>, the value <span class="math inline">\(F_{k_1,k_2,\alpha}\)</span> as the value such that <span class="math inline">\(P(R &gt; F_{k_1,k_2,\alpha}) = \alpha\)</span>, where <span class="math inline">\(R \sim F_{k_1,k_2}\)</span>. The quantity <span class="math inline">\(F_{k_1,k_2,\alpha}\)</span> thus admits the depiction in <a href="#fig-Fupper" class="quarto-xref">Figure&nbsp;<span>31.4</span></a>.</p>
+<p>Just as we have defined upper quantiles for the standard Normal distribution, the <span class="math inline">\(t\)</span> distributions, and the chi-squared distributions, we define, for each <span class="math inline">\(\alpha \in (0,1)\)</span>, the value <span class="math inline">\(F_{k_1,k_2,\alpha}\)</span> as the value such that <span class="math inline">\(P(R &gt; F_{k_1,k_2,\alpha}) = \alpha\)</span>, where <span class="math inline">\(R \sim F_{k_1,k_2}\)</span>. The quantity <span class="math inline">\(F_{k_1,k_2,\alpha}\)</span> thus admits the depiction in <a href="#fig-Fupper" class="quarto-xref">Figure&nbsp;<span>34.4</span></a>.</p>
 <div id="fig-Fupper" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-Fupper-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="tikz/F_upper_quantiles.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Fupper-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;31.4: Definition of upper <span class="math inline">\(\alpha\)</span> quantile <span class="math inline">\(F_{k_1,k_2,\alpha}\)</span> of the <span class="math inline">\(F_{k_1,k_2}\)</span> distribution.
+Figure&nbsp;34.4: Definition of upper <span class="math inline">\(\alpha\)</span> quantile <span class="math inline">\(F_{k_1,k_2,\alpha}\)</span> of the <span class="math inline">\(F_{k_1,k_2}\)</span> distribution.
 </figcaption>
 </figure>
 </div>
 <p>Now the next result presents a feasible test statistic (“feasible” meaning that we can actually compute it from the data) which has a distribution called an <span class="math inline">\(F\)</span> distribution.</p>
 <div id="prp-Ftestcellmeans" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 31.3 (Distribution of F-statistic under null hypothesis)</strong></span> Assuming the cell means model in <a href="#def-cellmeansmodel" class="quarto-xref">Definition&nbsp;<span>31.1</span></a>, under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1=\dots=\mu_K\)</span> we have <span class="math display">\[
+<p><span class="theorem-title"><strong>Proposition 34.3 (Distribution of F-statistic under null hypothesis)</strong></span> Assuming the cell means model in <a href="#def-cellmeansmodel" class="quarto-xref">Definition&nbsp;<span>34.1</span></a>, under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1=\dots=\mu_K\)</span> we have <span class="math display">\[
 F_{\operatorname{test}}= \frac{1}{K-1}\sum_{i=1}^K\Big(\frac{\bar Y_{i.}  - \bar Y_{..}}{\hat \sigma/\sqrt{n_i}}\Big)^2 \sim F_{K-1,N - k}.
 \]</span></p>
 </div>
@@ -941,7 +959,7 @@ F_{\operatorname{test}}= \frac{1}{K-1}\sum_{i=1}^K\Big(\frac{\bar Y_{i.}  - \bar
 <p>The above result tells us that a size-<span class="math inline">\(\alpha\)</span> test can be defined with the rejection rule: <span class="math display">\[
 \text{Reject $H_0$: $\mu_1 = \dots = \mu_K$ if $F_{\operatorname{test}}&gt; F_{K-1,N-K,\alpha}$}
 \]</span> The <span class="math inline">\(p\)</span> value of this test is given by <span class="math inline">\(P(R &gt; F_{\operatorname{test}})\)</span>, where <span class="math inline">\(R\sim F_{K-1,N-K}\)</span>, that is the area under the PDF of the <span class="math inline">\(F_{K-1,N-K}\)</span> distribution to the right of <span class="math inline">\(F_{\operatorname{test}}\)</span>.</p>
-<p>For <a href="#exm-steak" class="quarto-xref">Example&nbsp;<span>31.1</span></a> with the steaks, we have <span class="math display">\[
+<p>For <a href="#exm-steak" class="quarto-xref">Example&nbsp;<span>34.1</span></a> with the steaks, we have <span class="math display">\[
 \begin{align*}
 F_{\operatorname{test}}&amp;= \frac{1}{4-1}\Big[  \Big(\frac{7.48 - 5.9}{0.34037/\sqrt{3}}\Big)^2+
 \dots+
@@ -952,8 +970,8 @@ F_{\operatorname{test}}&amp;= \frac{1}{4-1}\Big[  \Big(\frac{7.48 - 5.9}{0.34037
 <p>Since there are <span class="math inline">\(K=4\)</span> treatments and <span class="math inline">\(N=12\)</span> experimental units, we compare the value of <span class="math inline">\(F_{\operatorname{test}}\)</span> to the upper <span class="math inline">\(\alpha\)</span> quantile of the <span class="math inline">\(F\)</span> distribution with numerator degrees of freedom <span class="math inline">\(4-1=3\)</span> and denominator degrees of freedom <span class="math inline">\(12-4=8\)</span>. For <span class="math inline">\(\alpha = 0.01\)</span> we have <span class="math inline">\(F_{3,8,0.01} = 7.59\)</span>. This number can be obtained with <code>qf(0.99,3,8)</code> in R. Since <span class="math inline">\(F_{\operatorname{test}}=94.58 &gt; F_{3,8,0.01} = 7.59\)</span> we reject the null hypothesis at significance level <span class="math inline">\(0.01\)</span> and conclude that the means are not all equal.</p>
 <p>The <span class="math inline">\(p\)</span>-value is the probability <span class="math inline">\(P(R &gt; 94.58)\)</span> where <span class="math inline">\(R \sim F_{3,8}\)</span>, which we can obtain using <code>1 - pf(94.58,3,8)</code> in R. We obtain <span class="math inline">\(1.375902\times 10^{-6}\)</span> If the assumptions of the cell means model are satisfied for the steaks example, then the small <span class="math inline">\(p\)</span> value indicates very strong evidence against the null hypothesis of equal treatment means. We would conclude at any significance level <span class="math inline">\(\alpha\)</span> greater than <span class="math inline">\(1.376128\times 10^{-6}\)</span> that the packaging makes a difference in the mean number of bacteria that grow on the surface of refrigerated steaks.</p>
 </section>
-<section id="analysis-of-variance-anova" class="level2" data-number="31.4">
-<h2 data-number="31.4" class="anchored" data-anchor-id="analysis-of-variance-anova"><span class="header-section-number">31.4</span> Analysis of variance (ANOVA)</h2>
+<section id="analysis-of-variance-anova" class="level2" data-number="34.4">
+<h2 data-number="34.4" class="anchored" data-anchor-id="analysis-of-variance-anova"><span class="header-section-number">34.4</span> Analysis of variance (ANOVA)</h2>
 <p>The <em>analysis of variance</em> or <em>ANOVA table</em> decomposes the so-called total variation in the responses <span class="math inline">\(Y_{ij}\)</span>, <span class="math inline">\(j=1,\dots,n_i\)</span>, <span class="math inline">\(i=1,\dots,K\)</span> into two parts:</p>
 <ol type="1">
 <li>Between-treatment variation: variability in the responses due to the treatment effects.</li>
@@ -969,7 +987,7 @@ F_{\operatorname{test}}&amp;= \frac{1}{4-1}\Big[  \Big(\frac{7.48 - 5.9}{0.34037
 \underbrace{\operatorname{SS}_{\operatorname{Tot}}}_{\text{Total}}  = \underbrace{\operatorname{SS}_{\operatorname{Trt}}}_{\text{Between}}  + \underbrace{\operatorname{SS}_{\operatorname{Error}}}_{\text{Within}},
 \]</span> where <span class="math inline">\(\operatorname{SS}_{\operatorname{Trt}}\)</span> represents between-treatment variation and <span class="math inline">\(\operatorname{SS}_{\operatorname{Error}}\)</span> represents within-treatment variation. For these quantities, we have the following result:</p>
 <div id="prp-SSdist" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 31.4 (Chi-squared distributions of scaled sums of squares)</strong></span> Under the cell means model in <a href="#def-cellmeansmodel" class="quarto-xref">Definition&nbsp;<span>31.1</span></a> under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1=\dots=\mu_K\)</span>, we have <span class="math display">\[
+<p><span class="theorem-title"><strong>Proposition 34.4 (Chi-squared distributions of scaled sums of squares)</strong></span> Under the cell means model in <a href="#def-cellmeansmodel" class="quarto-xref">Definition&nbsp;<span>34.1</span></a> under <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1=\dots=\mu_K\)</span>, we have <span class="math display">\[
 \begin{align*}
     \operatorname{SS}_{\operatorname{Tot}}/\sigma^2 &amp;\sim  \chi_{N-1}^2 \\
     \operatorname{SS}_{\operatorname{Trt}}/\sigma^2 &amp;\sim  \chi_{K-1}^2\\
@@ -988,7 +1006,7 @@ F_{\operatorname{test}}= \frac{1}{K-1}\sum_{i=1}^K\Big(\frac{\bar Y_{i.}  - \bar
 F_{\operatorname{test}}= \frac{\operatorname{MS}_{\operatorname{Trt}}}{\operatorname{MS}_{\operatorname{Error}}} \quad \Big(= \frac{\text{Between-treatment variation}}{\text{Within-treatment variation}}\Big).
 \]</span> If the treatment means are very spread out relative to the spread of the responses in each treatment group, the test statistic <span class="math inline">\(F_{\operatorname{test}}\)</span> will be large, and its <span class="math inline">\(p\)</span> value will be small. If the treatment means are close together relative to the spread of the responses in each treatment group, the test statistic <span class="math inline">\(F_{\operatorname{test}}\)</span> will be small, and its <span class="math inline">\(p\)</span> value will be large.</p>
 <div id="exr-MStrt_v_MSerror_plots" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 31.1 (Between versus within treatment variation)</strong></span> Consider the three probability density functions depicted in each panel of the following figure as the distributions of the responses in a cell means or one-way ANOVA model with <span class="math inline">\(K = 3\)</span> treatments.</p>
+<p><span class="theorem-title"><strong>Exercise 34.1 (Between versus within treatment variation)</strong></span> Consider the three probability density functions depicted in each panel of the following figure as the distributions of the responses in a cell means or one-way ANOVA model with <span class="math inline">\(K = 3\)</span> treatments.</p>
 <p><img src="images/cellmeans_examquestion.png" class="img-fluid"></p>
 <p>Suppose a randomized experiment is conducted for testing the hypotheses <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1 = \mu_2 = \mu_3\)</span> versus <span class="math inline">\(H_1\)</span>: not all means are equal.</p>
 <ol type="1">
@@ -1123,9 +1141,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <p>Note that R arranges the columns in the ANOVA table somewhat differently and does not provide the bottom row. We will see that ANOVA tables appear in other contexts as well; they are not intended solely for the cell-means model.</p>
 </section>
-<section id="checking-model-assumptions" class="level2" data-number="31.5">
-<h2 data-number="31.5" class="anchored" data-anchor-id="checking-model-assumptions"><span class="header-section-number">31.5</span> Checking model assumptions</h2>
-<p>Implicit in the cell means model of <a href="#def-cellmeansmodel" class="quarto-xref">Definition&nbsp;<span>31.1</span></a> are the following assumptions:</p>
+<section id="checking-model-assumptions" class="level2" data-number="34.5">
+<h2 data-number="34.5" class="anchored" data-anchor-id="checking-model-assumptions"><span class="header-section-number">34.5</span> Checking model assumptions</h2>
+<p>Implicit in the cell means model of <a href="#def-cellmeansmodel" class="quarto-xref">Definition&nbsp;<span>34.1</span></a> are the following assumptions:</p>
 <dl>
 <dt>Assumption 1</dt>
 <dd>
@@ -1141,7 +1159,7 @@ The responses are independent from each other.
 </dd>
 </dl>
 <p>Here we consider how to check each assumption in turn.</p>
-<p>To check <strong>Assumption 1</strong> we typically look at a normal Q-Q plot (see <a href="normal_qq_plot.html" class="quarto-xref"><span>Chapter 19</span></a>) of the residuals <span class="math inline">\(\hat \varepsilon_{ij}\)</span>. The residuals are the deviations of the responses around the sample treatment means, so they are the sample version of the error terms <span class="math inline">\(\varepsilon_{ij}\)</span>, which are assumed in the cell means model to have the <span class="math inline">\(\mathcal{N}(0,\sigma^2)\)</span> distribution. If the responses are normally distributed around the treatment means, the residuals should therefore exhibit normality in the normal Q-Q plot. <a href="#fig-normalQQresidsteak" class="quarto-xref">Figure&nbsp;<span>31.5</span></a> shows a normal Q-Q plot of the residuals for the steak packaging example. As the points lie somewhat close to the straight line, it appears safe to assume that the response values in the steak example are normally distributed around the treatment means.</p>
+<p>To check <strong>Assumption 1</strong> we typically look at a normal Q-Q plot (see <a href="normal_qq_plot.html" class="quarto-xref"><span>Chapter 19</span></a>) of the residuals <span class="math inline">\(\hat \varepsilon_{ij}\)</span>. The residuals are the deviations of the responses around the sample treatment means, so they are the sample version of the error terms <span class="math inline">\(\varepsilon_{ij}\)</span>, which are assumed in the cell means model to have the <span class="math inline">\(\mathcal{N}(0,\sigma^2)\)</span> distribution. If the responses are normally distributed around the treatment means, the residuals should therefore exhibit normality in the normal Q-Q plot. <a href="#fig-normalQQresidsteak" class="quarto-xref">Figure&nbsp;<span>34.5</span></a> shows a normal Q-Q plot of the residuals for the steak packaging example. As the points lie somewhat close to the straight line, it appears safe to assume that the response values in the steak example are normally distributed around the treatment means.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm_out, <span class="at">which =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -1151,13 +1169,13 @@ The responses are independent from each other.
 <img src="cell_means_files/figure-html/fig-normalQQresidsteak-1.png" class="img-fluid figure-img" width="1400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normalQQresidsteak-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;31.5: Normal Q-Q plot of the residuals in the steak packaging data.
+Figure&nbsp;34.5: Normal Q-Q plot of the residuals in the steak packaging data.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>To check <strong>Assumption 2</strong> we typically look at a plot called the <em>residuals versus fitted values</em> plot. In this plot, the residuals of the observations in each treatment group are plotted on the vertical axis against the treatment means such that the spread of the residuals across the treatment groups can be compared. If the responses have the same variance in all the treatment groups then the spread of the residuals should be the same across the treatment groups. <a href="#fig-residvfitssteak" class="quarto-xref">Figure&nbsp;<span>31.6</span></a> shows the residuals versus fitted values plot for the steak packaging example. It is difficult to see whether the spread of the residuals is the same in all four treatment groups, as there are only three experimental units in each group, but the spreads are not drastically different, so it appears safe to assume that the assumption holds.</p>
+<p>To check <strong>Assumption 2</strong> we typically look at a plot called the <em>residuals versus fitted values</em> plot. In this plot, the residuals of the observations in each treatment group are plotted on the vertical axis against the treatment means such that the spread of the residuals across the treatment groups can be compared. If the responses have the same variance in all the treatment groups then the spread of the residuals should be the same across the treatment groups. <a href="#fig-residvfitssteak" class="quarto-xref">Figure&nbsp;<span>34.6</span></a> shows the residuals versus fitted values plot for the steak packaging example. It is difficult to see whether the spread of the residuals is the same in all four treatment groups, as there are only three experimental units in each group, but the spreads are not drastically different, so it appears safe to assume that the assumption holds.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm_out, <span class="at">which =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -1167,7 +1185,7 @@ Figure&nbsp;31.5: Normal Q-Q plot of the residuals in the steak packaging data.
 <img src="cell_means_files/figure-html/fig-residvfitssteak-1.png" class="img-fluid figure-img" width="1400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-residvfitssteak-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;31.6: Residuals versus fitted values plot for the steak packaging data.
+Figure&nbsp;34.6: Residuals versus fitted values plot for the steak packaging data.
 </figcaption>
 </figure>
 </div>
@@ -1596,12 +1614,12 @@ Kuehl, R. O. 2000. <em>Design of <span>Experiments</span>: <span>Statistical</sp
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./randomized_experiments_v_observational_studies.html" class="pagination-link" aria-label="Randomized experiments versus observational studies">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Randomized experiments versus observational studies</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Randomized experiments versus observational studies</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./power_ztest.html" class="pagination-link" aria-label="Statistical power of one-sample tests">
-        <span class="nav-page-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
