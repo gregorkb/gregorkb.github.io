@@ -86,7 +86,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./multiple_linear_regression.html" rel="next">
+<link href="./z_table.html" rel="next">
 <link href="./power_ztest.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -443,7 +443,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./hyp_test_proportion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">hyp_test_proportion</span></span></a>
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Tests for a proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -481,18 +481,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
- <span class="menu-text">V: Generalized linear and nonlinear models</span></a>
+ <span class="menu-text">Appendices</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -500,37 +494,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chi_squared_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./t_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
   </div>
 </li>
       </ul>
@@ -1036,7 +1013,7 @@ Figure&nbsp;38.5: Prediction intervals for a new observation and confidence inte
 R^2 = \frac{\operatorname{SS}_{\operatorname{Reg}}}{\operatorname{SS}_{\operatorname{Tot}}}.
 \]</span> The above definitions allow us to decompose the total sum of squares as <span class="math display">\[
 \operatorname{SS}_{\operatorname{Tot}}= \operatorname{SS}_{\operatorname{Reg}}+ \operatorname{SS}_{\operatorname{Error}}.
-\]</span> Note that this fact tells us we will always have <span class="math inline">\(R^2 \in [0,1]\)</span>. Moreover we can interpret <span class="math inline">\(R^2\)</span> as the proportion of variation in <span class="math inline">\(Y_1,\dots,Y_n\)</span> accounted for—or “explained”—by our simple linear regression model. We will define these quantities in exactly the same way in <a href="multiple_linear_regression.html" class="quarto-xref"><span>Chapter 39</span></a> in the case of multiple linear regression.</p>
+\]</span> Note that this fact tells us we will always have <span class="math inline">\(R^2 \in [0,1]\)</span>. Moreover we can interpret <span class="math inline">\(R^2\)</span> as the proportion of variation in <span class="math inline">\(Y_1,\dots,Y_n\)</span> accounted for—or “explained”—by our simple linear regression model. We will define these quantities in exactly the same way in <span class="quarto-unresolved-ref">?sec-multiple_linear_regression</span> in the case of multiple linear regression.</p>
 <p>Note that the value of <span class="math inline">\(R^2\)</span> is printed in the output of <code>summary(lm(Y~x))</code> as <code>Multiple R-squared</code>.</p>
 <p>We find that the sums of squares defined above, when appropriately scaled, have chi-squared distributions. In particular we have</p>
 <ul>
@@ -1102,7 +1079,7 @@ Table&nbsp;38.1: ANOVA table for simple linear regression
 <li><span class="math inline">\(\displaystyle F_{\operatorname{test}}= \frac{\operatorname{MS}_{\operatorname{Reg}}}{\operatorname{MS}_{\operatorname{Error}}}\)</span></li>
 <li><span class="math inline">\(P(F &gt; F_{\operatorname{test}})\)</span>, where this is computed under <span class="math inline">\(F \sim F_{1,n-2}\)</span>.</li>
 </ul>
-<p>These quantities are the test statistic and p-value for a test called the <em>overall F-test</em>. We will give more attention to the overall F-test when we come to multiple linear regression in <a href="multiple_linear_regression.html" class="quarto-xref"><span>Chapter 39</span></a>. In simple linear regression, the overall F-test simply tests <span class="math display">\[
+<p>These quantities are the test statistic and p-value for a test called the <em>overall F-test</em>. We will give more attention to the overall F-test when we come to multiple linear regression in <span class="quarto-unresolved-ref">?sec-multiple_linear_regression</span>. In simple linear regression, the overall F-test simply tests <span class="math display">\[
 \text{$H_0$: $\beta_1 = 0$ versus $H_1$: $\beta_1 \neq 0$}.
 \]</span> In addition, in simple linear regression we have <span class="math inline">\(F_{\operatorname{test}}= T_{\operatorname{test}}^2\)</span>, where <span class="math inline">\(T_{\operatorname{test}}\)</span> is the test statistic defined in <a href="#eq-Ttest" class="quarto-xref">Equation&nbsp;<span>38.2</span></a>; for what it’s worth we also have <span class="math display">\[
 F_{\operatorname{test}}= \frac{(n-2)r_{xY}^2}{1-r_{xY}^2}.
@@ -2106,8 +2083,8 @@ Santos, Nuno C, G Israelian, RJ Garcı́a López, M Mayor, R Rebolo, S Randich, 
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./multiple_linear_regression.html" class="pagination-link" aria-label="Multiple linear regression I">
-        <span class="nav-page-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./z_table.html" class="pagination-link" aria-label="$z$ table">
+        <span class="nav-page-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

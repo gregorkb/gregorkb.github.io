@@ -423,7 +423,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./hyp_test_proportion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">hyp_test_proportion</span></span></a>
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Tests for a proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -461,18 +461,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./multiple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Multiple linear regression I</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
- <span class="menu-text">V: Generalized linear and nonlinear models</span></a>
+ <span class="menu-text">Appendices</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -480,37 +474,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./logreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Logistic regression</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chi_squared_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./t_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
   </div>
 </li>
       </ul>
@@ -733,7 +710,7 @@ P(a \leq X \leq b) = \int_a^b \frac{1}{\sqrt{2\pi} \sigma} \exp\Big[-\frac{1}{2}
 \]</span> for any <span class="math inline">\(a &lt; b\)</span>. Now, no amount of calculus knowledge will allow you to evaluated this integral by hand exactly. We find that the value must be approximated, and the calculations for doing so are tedious. Fancy calculators and software like R or Python can compute (that is they can calculate very close approximations to) these integrals, but people have been using the normal distribution since before these tools were available. How did they compute areas under the normal PDF?</p>
 <p>In early days, the idea was to consider a <em>standard normal</em> random variable having mean <span class="math inline">\(0\)</span> and standard deviation <span class="math inline">\(1\)</span> and to publish a table containing many already-computed highly accurate approximations to integrals of the function <span class="math display">\[
 f(z) = \frac{1}{\sqrt{2 \pi}} \exp\Big[ -\frac{z^2}{2}\Big],
-\]</span> which is the normal PDF with <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma = 1\)</span>. Then practitioners could shift and scale their random variable <span class="math inline">\(X\)</span> to give it a mean of <span class="math inline">\(0\)</span> and a standard deviation of <span class="math inline">\(1\)</span> and consult the table to get their probabilities of interest. Such a table is found in <a href="z_table.html" class="quarto-xref"><span>Chapter 41</span></a>. <a href="#fig-standard_normal_pdf_diagram_6895997" class="quarto-xref">Figure&nbsp;<span>13.4</span></a> gives a diagram showing the area under the standard normal PDF in intervals spanning one, two, and three standard deviations from the mean, and <a href="#fig-standard_normal_pdf_diagram_80909599" class="quarto-xref">Figure&nbsp;<span>13.5</span></a> shows intervals centered at zero to which the standard normal PDF assigns the probabilities <span class="math inline">\(0.80\)</span>, <span class="math inline">\(0.90\)</span>, <span class="math inline">\(0.95\)</span>, and <span class="math inline">\(0.99\)</span>.</p>
+\]</span> which is the normal PDF with <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma = 1\)</span>. Then practitioners could shift and scale their random variable <span class="math inline">\(X\)</span> to give it a mean of <span class="math inline">\(0\)</span> and a standard deviation of <span class="math inline">\(1\)</span> and consult the table to get their probabilities of interest. Such a table is found in <a href="z_table.html" class="quarto-xref"><span>Chapter 39</span></a>. <a href="#fig-standard_normal_pdf_diagram_6895997" class="quarto-xref">Figure&nbsp;<span>13.4</span></a> gives a diagram showing the area under the standard normal PDF in intervals spanning one, two, and three standard deviations from the mean, and <a href="#fig-standard_normal_pdf_diagram_80909599" class="quarto-xref">Figure&nbsp;<span>13.5</span></a> shows intervals centered at zero to which the standard normal PDF assigns the probabilities <span class="math inline">\(0.80\)</span>, <span class="math inline">\(0.90\)</span>, <span class="math inline">\(0.95\)</span>, and <span class="math inline">\(0.99\)</span>.</p>
 <!-- ```{python} -->
 <!-- #| label: fig-normal909599 -->
 <!-- #| fig-cap: Interval centered at zero to which $90\%$, $95\%$, and $99\%$ of the probability is assigned by the standard normal distribution. -->
@@ -796,11 +773,11 @@ X = \mu + \sigma Z.
 <p>If <span class="math inline">\(X\sim \mathcal{N}(\mu,\sigma^2)\)</span>, we may find <span class="math inline">\(P(a \leq X \leq b)\)</span> as follows:</p>
 <ol type="1">
 <li><p>Transform <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> from the <span class="math inline">\(X\)</span> world to the <span class="math inline">\(Z\)</span> world (the number-of-standard-deviations world) by <span class="math inline">\(a \mapsto (a - \mu)/\sigma\)</span> and <span class="math inline">\(b \mapsto (b - \mu)/\sigma\)</span>.</p></li>
-<li><p>Use the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 41</span></a>) to look up <span class="math inline">\(\displaystyle P\Big( \frac{a-\mu}{\sigma} \leq Z \leq \frac{b-\mu}{\sigma} \Big)\)</span>, where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>.</p></li>
+<li><p>Use the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 39</span></a>) to look up <span class="math inline">\(\displaystyle P\Big( \frac{a-\mu}{\sigma} \leq Z \leq \frac{b-\mu}{\sigma} \Big)\)</span>, where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>.</p></li>
 </ol>
 <p>If <span class="math inline">\(X\sim \mathcal{N}(\mu,\sigma^2)\)</span> and <span class="math inline">\(q\)</span> represents the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(X\)</span>, we may find <span class="math inline">\(q\)</span> as follows:</p>
 <ol type="1">
-<li><p>Obtain the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(Z\sim \mathcal{N}(0,1)\)</span> from the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 41</span></a>) and denote this by <span class="math inline">\(q_Z\)</span>.</p></li>
+<li><p>Obtain the <span class="math inline">\(p\)</span> quantile of <span class="math inline">\(Z\sim \mathcal{N}(0,1)\)</span> from the <span class="math inline">\(Z\)</span> table (<a href="z_table.html" class="quarto-xref"><span>Chapter 39</span></a>) and denote this by <span class="math inline">\(q_Z\)</span>.</p></li>
 <li><p>Then back-transform <span class="math inline">\(q_Z\)</span> to <span class="math inline">\(q\)</span> with the formula <span class="math inline">\(q = \mu + \sigma q_Z\)</span>.</p></li>
 </ol>
 <p>The above strategy works for finding probabilities because <span class="math display">\[
