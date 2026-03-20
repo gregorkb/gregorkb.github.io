@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8200568de02510f46fe38e9b0a34de48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5cb8d2b6463994e535adb8da771c5996.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -517,13 +517,13 @@ window.Quarto = {
 <div id="exm-onedie" class="theorem example">
 <p><span class="theorem-title"><strong>Example 1.1 (Rolling a die)</strong></span> Rolling a die is a statistical experiment. The sample space is <span class="math display">\[
 S = \left\{ 1,2,3,4,5,6 \right\}.
-\]</span></p>
+\]</span> <br></p>
 </div>
 <p>A <em>set</em> is a collection of <em>elements</em> or <em>members</em>. If we can list or begin to list the elements of a set, we put them inside curly braces <span class="math inline">\(\{\dots \}\)</span> and separate them with commas, as above.</p>
 <div id="exm-skipstone" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.2 (Skipping a stone)</strong></span> Skipping a stone and counting the number of skips is a statistical experiment with the sample space <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 1.2 (Skipping a stone)</strong></span> Skipping a stone and counting the number of skips is a statistical experiment with sample space <span class="math display">\[
 S = \{0,1,2,3,\dots\}.
-\]</span></p>
+\]</span> <br></p>
 </div>
 <p>In skipping a stone, one might observe zero skips (the stone plunges under at first contact with the water) or a positive whole number of skips. The ellipsis “<span class="math inline">\(\dots\)</span>” indicates that one could observe any whole number of skips. This may seem unrealistic, as one is unlikely to observe numbers of skips exceeding, say, <span class="math inline">\(10\)</span> or so, but setting a finite maximum number of possible skips may be naïve. Thus in experiments in which the outcome is a count with no clear maximum possible count, the sample space <span class="math inline">\(S = \{0,1,2,3,\dots\}\)</span> is often assumed.</p>
 <!-- :::{#exm-milesdriven} -->
@@ -534,16 +534,16 @@ S = \{0,1,2,3,\dots\}.
 <!-- $$ -->
 <!-- ::: -->
 <div id="exm-spintop" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.3 (Spinning a top)</strong></span> Spinning a top and recording how long it spins is a statistical experiment with the sample space <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 1.3 (Spinning a top)</strong></span> Spinning a top and recording how long it spins is a statistical experiment with sample space <span class="math display">\[
 S = [0,\infty).
-\]</span></p>
+\]</span> <br></p>
 </div>
 <p>For this experiment the sample space is not a list or the beginning of a list but rather an interval on the real number line. We cannot list (or begin to list) the possible values, because between any two real numbers another real number may be found. So we express the possible outcomes if this experiment as an interval.</p>
 <p>One may wax philosophical discussing whether or not <span class="math inline">\(0\)</span> should be included in the sample space for spinning a top: if the top falls “right away”, we could regard this as having happened before any time has passed or after the passage of some infinitesimally small amount time. It is not so important. One might also wonder why <span class="math inline">\(\infty\)</span> is given as the upper limit of the sample space, since every top ever spun throughout history has stopped spinning within a finite period of time (or could there be one spinning at this moment that will never stop?); however, it may not be clear what the upper bound should be (are we measuring time in seconds, milliseconds, microseconds?), and if we set a finite upper bound, we may end up observing an experimental result exceeding the bound (the chagrin!). For this reason, in experiments in which the outcome is a time duration, one often assumes that the sample space is <span class="math inline">\(S = [0,\infty)\)</span>.</p>
 <div id="exm-coinflip" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.4 (Flipping a coin)</strong></span> Flipping a coin is a statistical experiment with the sample space <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 1.4 (Flipping a coin)</strong></span> Flipping a coin is a statistical experiment with sample space <span class="math display">\[
 S = \{\text{heads}, \text{tails}\}.
-\]</span></p>
+\]</span> <br></p>
 </div>
 <p>Have we said that the sample space must consist of numbers? Indeed, no! The elements in a sample space are simply the possible outcomes of a statistical experiment, which may not be numbers.</p>
 <div id="exm-twodice" class="theorem example">
@@ -554,7 +554,7 @@ S = \left\{ \begin{array}{cccccc} (1,1), &amp; (1,2), &amp; (1,3), &amp; (1,4), 
   (4,1), &amp; (4,2), &amp; (4,3), &amp; (4,4), &amp; (4,5), &amp; (4,6),     \\
    (5,1), &amp; (5,2), &amp; (5,3), &amp; (5,4), &amp; (5,5), &amp; (5,6),     \\
     (6,1), &amp; (6,2), &amp; (6,3), &amp; (6,4), &amp; (6,5), &amp; (6,6)  \end{array}  \right\}.
-\]</span></p>
+\]</span> <br></p>
 </div>
 <p>We would like to be able to discuss the relative likelihoods of different outcomes of a statistical experiment—some outcomes being more likely than others, or some collections of outcomes being more likely than other collections of outcomes. To this end we define an <em>event</em>:</p>
 <div id="def-event" class="theorem definition">
