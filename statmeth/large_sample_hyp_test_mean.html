@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -83,6 +118,9 @@ ul.task-list li input[type="checkbox"] {
     document.body.classList.add('hypothesis-enabled');
   });
 </script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -125,7 +163,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">III: Inference from random samples</a></li><li class="breadcrumb-item"><a href="./large_sample_hyp_test_mean.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Large-sample tests about about a mean</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hyp_test.html">V: Hypothesis testing</a></li><li class="breadcrumb-item"><a href="./large_sample_hyp_test_mean.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Large-sample tests about about a mean</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -159,7 +197,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">I: Sets, probability, and random variables</span></a>
+ <span class="menu-text">I: Sets and probability</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -201,6 +239,17 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayes’ rule</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">II: Random variables</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./random_variables.html" class="sidebar-item-text sidebar-link">
@@ -253,13 +302,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">II: Random samples</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">III: Random samples</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./random_sample.html" class="sidebar-item-text sidebar-link">
@@ -312,13 +361,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">III: Inference from random samples</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">IV: Confidence intervals</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statistical_inference.html" class="sidebar-item-text sidebar-link">
@@ -361,6 +410,17 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Sample size determination</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">V: Hypothesis testing</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./hyp_test.html" class="sidebar-item-text sidebar-link">
@@ -393,66 +453,83 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./randomized_experiments_v_observational_studies.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Randomized experiments versus observational studies</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./cell_means.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span></a>
+  <a href="./p_values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">P values</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">IV: Linear models</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">VI: Multiple random samples</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./randomized_experiments_v_observational_studies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Randomized experiments versus observational studies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cell_means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">VII: Linear models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chi_squared_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./t_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
   </div>
 </li>
       </ul>
@@ -474,7 +551,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">III: Inference from random samples</a></li><li class="breadcrumb-item"><a href="./large_sample_hyp_test_mean.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Large-sample tests about about a mean</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hyp_test.html">V: Hypothesis testing</a></li><li class="breadcrumb-item"><a href="./large_sample_hyp_test_mean.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Large-sample tests about about a mean</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-large_sample_hyp_test_mean" class="quarto-section-identifier"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Large-sample tests about about a mean</span></span></h1>
 </div>
@@ -503,8 +580,131 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
+<p>We now understand how to test hypotheses about the mean <span class="math inline">\(\mu\)</span> when this is the mean of a normal population from which we have drawn a random sample. If the population standard deviation <span class="math inline">\(\sigma\)</span> is known, we compute <span class="math inline">\(Z_{\operatorname{test}}\)</span> as in <a href="first_hyp_test_mean.html#eq-ztest" class="quarto-xref">Equation&nbsp;<span>31.1</span></a>, and compare the value of this test statistic to a critical value as in <a href="first_hyp_test_mean.html#prp-ztestmean" class="quarto-xref">Proposition&nbsp;<span>31.1</span></a>; if <span class="math inline">\(\sigma\)</span> is unknown, we replace it with the sample standard deviation <span class="math inline">\(S_n\)</span> and compute <span class="math inline">\(T_{\operatorname{test}}\)</span> as in <a href="t_hyp_test_mean.html#eq-ttest" class="quarto-xref">Equation&nbsp;<span>32.1</span></a>, and compare its value to a critical value as in <a href="t_hyp_test_mean.html#prp-ttestmean" class="quarto-xref">Proposition&nbsp;<span>32.1</span></a>.</p>
+<p>However, we have not yet discussed how to test hypotheses about a mean <span class="math inline">\(\mu\)</span> when this is not the mean of a normally distributed population but of a population with some non-normal distribution. As in the case of constructing confidence intervals, the Central Limit Theorem in <a href="central_limit_theorem.html#prp-clt" class="quarto-xref">Proposition&nbsp;<span>20.1</span></a> allows us to base inferences on the assumption that the sample mean is approximately normally distributed.</p>
+<p>Suppose <span class="math inline">\(X_1,\dots,X_n\)</span> is a random sample from some distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>, and, letting <span class="math inline">\(\mu_0\)</span> denote some <em>null value</em> for <span class="math inline">\(\mu\)</span>, consider testing one of the sets of hypotheses:</p>
+<ol type="1">
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \leq \mu_0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &gt; \mu_0\)</span></li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \geq \mu_0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &lt; \mu_0\)</span></li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu = \mu_0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu \neq \mu_0\)</span></li>
+</ol>
+<p>We will dismiss the <span class="math inline">\(\sigma\)</span>-known case, as one rarely encounters it in practice. Since <span class="math inline">\(S_n\)</span> is an estimator which can be counted upon to take values closer and closer to <span class="math inline">\(\sigma\)</span> for larger and larger <span class="math inline">\(n\)</span>, we have <span class="math display">\[
+\frac{\bar X_n - \mu}{S_n /\sqrt{n}} \overset{\operatorname{approx}}{\sim}\mathcal{N}(0,1),
+\]</span> for large enough <span class="math inline">\(n\)</span>, as stated in <a href="large_sample_confint_for_mean.html#prp-cltslutzkys" class="quarto-xref">Proposition&nbsp;<span>27.1</span></a>. In consequence, even when the population distribution is not a normal distribution, one can test the above sets of hypotheses as described here:</p>
+<div id="prp-ttestmeanlargen" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 33.1 (Large-sample tests of hypotheses for a mean)</strong></span> Let <span class="math inline">\(X_1,\dots,X_n\)</span> be a random sample from a distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2 &lt; \infty\)</span>. Then the following tests have size closer and closer to <span class="math inline">\(\alpha\)</span> for larger and larger <span class="math inline">\(n\)</span>:</p>
+<ol type="1">
+<li>For <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \leq \mu_0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &gt; \mu_0\)</span>, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(T_{\operatorname{test}}&gt; z_\alpha\)</span>.</li>
+<li>For <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \geq \mu_0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &lt; \mu_0\)</span>, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(T_{\operatorname{test}}&lt; -z_\alpha\)</span>.</li>
+<li>For <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu = \mu_0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu \neq \mu_0\)</span>, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|T_{\operatorname{test}}| &gt; z_{\alpha/2}\)</span>.</li>
+</ol>
+</div>
+<p>Note that one could replace <span class="math inline">\(z_{\alpha}\)</span> and <span class="math inline">\(z_{\alpha/2}\)</span> in the above with <span class="math inline">\(t_{n-1,\alpha}\)</span> and <span class="math inline">\(t_{n-1,\alpha/2}\)</span> so that the large-sample tests have exactly the rejection rules prescribed in <a href="t_hyp_test_mean.html#prp-ttestmean" class="quarto-xref">Proposition&nbsp;<span>32.1</span></a>, and the statement of the proposition would be equally true, because as <span class="math inline">\(n\)</span> increases, the <span class="math inline">\(t_{n-1}\)</span> distribution becomes more and more like the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution. For <span class="math inline">\(n \geq 30\)</span>, however, it does not make a very large difference; for example, with <span class="math inline">\(n = 30\)</span> and <span class="math inline">\(\alpha = 0.05\)</span>, we have <span class="math inline">\(t_{30-1,0.05} = 1.699127\)</span>, while <span class="math inline">\(z_{0.05} = 1.6448536\)</span>, and <span class="math inline">\(t_{30-1,0.025} = 2.0452296\)</span>, while <span class="math inline">\(z_{0.025} = 1.959964\)</span>. One can look at the last few rows of the <span class="math inline">\(t\)</span> table in <a href="t_table.html" class="quarto-xref"><span>Chapter 42</span></a> to compare more upper quantiles of the standard normal and <span class="math inline">\(t\)</span> distributions. The reason we have preferred to use critical values <span class="math inline">\(z_\alpha\)</span> and <span class="math inline">\(z_{\alpha/2}\)</span> in the large-sample case, even when <span class="math inline">\(\sigma\)</span> is unknown, is that the <span class="math inline">\(t\)</span> distribution only truly arises when one’s random sample is drawn from a normal distribution. If the sample is not drawn from a normal distribution, then it is somewhat arbitrary to use <span class="math inline">\(t\)</span> distribution quantiles as critical values.</p>
+<div id="exr-bostonmenmean" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 33.1 (2009 Boston Marathon mens finishing times)</strong></span> Refer to the data in <a href="hist.html#exm-bos09" class="quarto-xref">Example&nbsp;<span>17.1</span></a> and regard the mens finishing times as a population of values</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>bos09 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/bos09.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> bos09<span class="sc">$</span>hrs[bos09<span class="sc">$</span>gender<span class="sc">==</span><span class="st">"M"</span>]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(m),<span class="dv">3</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">sqrt</span>(<span class="fu">mean</span>((m <span class="sc">-</span> mu)<span class="sc">**</span><span class="dv">2</span>)),<span class="dv">3</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(m,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">30</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">545</span>,.<span class="dv">25</span>),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="cn">NA</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">""</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Finishing time (hrs)"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">freq=</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="large_sample_hyp_test_mean_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="1400"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">sample</span>(m,n)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Xbar <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(X),<span class="dv">3</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Sn <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">sd</span>(X),<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The population has mean <span class="math inline">\(\mu = 3.693\)</span> and standard deviation <span class="math inline">\(\sigma = 0.628\)</span>, but suppose we don’t know these values, and we draw a random sample of size <span class="math inline">\(n = 50\)</span>, obtaining <span class="math inline">\(\bar X_n = 3.683\)</span> and <span class="math inline">\(S_n = 0.602\)</span>. Test the following sets of hypotheses at significance level <span class="math inline">\(\alpha = 0.01\)</span>, stating whether your conclusion is a Type I error, a Type II error, or a correct decision:</p>
+<ol type="1">
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \leq 3.75\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &gt; 3.75\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \geq 3.75\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &lt; 3.75\)</span>. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu = 3.75\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu \neq 3.75\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+</ol>
+</div>
+<p><a href="#fig-hyptestmeanchart" class="quarto-xref">Figure&nbsp;<span>33.1</span></a> summarizes when to use which test statistic, <span class="math inline">\(Z_{\operatorname{test}}\)</span> or <span class="math inline">\(T_{\operatorname{test}}\)</span>, and to which critical value, <span class="math inline">\(z_{\alpha}\)</span> or <span class="math inline">\(t_{n-1,\alpha}\)</span>, to compare it when testing <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \leq \mu_0\)</span> versus <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu &gt; \mu_0\)</span>. Appropriate rejection rules when testing the left-sided and two-sided sets of hypotheses are similarly summarized.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-hyptestmeanchart" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hyptestmeanchart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-hyptestmeanchart">---
+config:
+  look: handDrawn
+---
+flowchart LR
+  %% root
+  Root["Population distribution"]
+
+  %% bags
+  normal["$$\sigma^2$$"]
+  nonnormal["$$n$$"]
+  
+  %% root -&gt; bags (edge labels)
+  Root --&gt;|normal|normal
+  Root --&gt;|not normal|nonnormal
+  
+  %% normal leaves
+  normal_known["$$Z_{\text{test}} &gt; z_\alpha$$"]
+  normal_unknown["$$T_{\text{test}} &gt; t_{n-1,\alpha}$$"]
+  normal --&gt;|known| normal_known
+  normal --&gt;|unknown| normal_unknown
+
+  %% nonnormal leaves
+  nonnormal_geq30["$$\sigma^2$$"]
+  
+  nonnormal --&gt; |at least 30|nonnormal_geq30
+  nonnormal --&gt; |less than 30|nonnormal_lt30
+
+  nonnormal_geq30_known["$$Z_{\text{test}} &gt; z_\alpha$$"]
+  nonnormal_geq30_unknown["$$T_{\text{test}} &gt; z_{\alpha}$$"]
+  
+  nonnormal_lt30["Can do nothing so far"]
+
+  nonnormal_geq30 --&gt;|known| nonnormal_geq30_known
+  nonnormal_geq30 --&gt;|unknown| nonnormal_geq30_unknown
+
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hyptestmeanchart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;33.1: Rejection rules for testing the right-sided set of hypotheses about a mean.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 
 
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>The null hypothesis is true, so a correct decision is <em>not</em> to reject it. We begin by computing the test statistic <span class="math display">\[
+  T_{\operatorname{test}}= \frac{3.683 - 3.75}{0.602/\sqrt{50}} = -0.890.
+  \]</span> The sample mean <span class="math inline">\(\bar X_n &lt; 3.75\)</span> carries evidence in favor of <span class="math inline">\(H_0\)</span>, so we have no grounds to reject it. This is reflected in the negative value of the test statistic. <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The null hypothesis is false, so the correct decision is to reject it. We will reject <span class="math inline">\(H_0\)</span> if the test statistic lies below the critical value <span class="math inline">\(-z_{0.01} = -2.326\)</span>. This is not the case, so we fail to reject <span class="math inline">\(H_0\)</span>, making a Type II error.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Again, the null hypothesis is false, so the correct decision is to reject it. We will reject <span class="math inline">\(H_0\)</span> if the test statistic exceeds in magnitude the critical value <span class="math inline">\(z_{0.01/2} = 2.576\)</span>. This is not the case, so we fail to reject <span class="math inline">\(H_0\)</span>, again making a Type II error.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

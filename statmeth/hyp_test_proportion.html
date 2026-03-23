@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./randomized_experiments_v_observational_studies.html" rel="next">
+<link href="./p_values.html" rel="next">
 <link href="./large_sample_hyp_test_mean.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -125,7 +125,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">III: Inference from random samples</a></li><li class="breadcrumb-item"><a href="./hyp_test_proportion.html"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Tests for a proportion</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hyp_test.html">V: Hypothesis testing</a></li><li class="breadcrumb-item"><a href="./hyp_test_proportion.html"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Tests for a proportion</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -159,7 +159,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">I: Sets, probability, and random variables</span></a>
+ <span class="menu-text">I: Sets and probability</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -201,6 +201,17 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayes’ rule</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">II: Random variables</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./random_variables.html" class="sidebar-item-text sidebar-link">
@@ -253,13 +264,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">II: Random samples</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">III: Random samples</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./random_sample.html" class="sidebar-item-text sidebar-link">
@@ -312,13 +323,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">III: Inference from random samples</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">IV: Confidence intervals</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statistical_inference.html" class="sidebar-item-text sidebar-link">
@@ -361,6 +372,17 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Sample size determination</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">V: Hypothesis testing</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./hyp_test.html" class="sidebar-item-text sidebar-link">
@@ -393,66 +415,83 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./randomized_experiments_v_observational_studies.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Randomized experiments versus observational studies</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./cell_means.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span></a>
+  <a href="./p_values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">P values</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">IV: Linear models</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">VI: Multiple random samples</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./randomized_experiments_v_observational_studies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Randomized experiments versus observational studies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cell_means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">VII: Linear models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chi_squared_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./t_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
   </div>
 </li>
       </ul>
@@ -474,7 +513,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./statistical_inference.html">III: Inference from random samples</a></li><li class="breadcrumb-item"><a href="./hyp_test_proportion.html"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Tests for a proportion</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hyp_test.html">V: Hypothesis testing</a></li><li class="breadcrumb-item"><a href="./hyp_test_proportion.html"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Tests for a proportion</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-hyp_test_proportion" class="quarto-section-identifier"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Tests for a proportion</span></span></h1>
 </div>
@@ -503,9 +542,48 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>Coming soon.</p>
+<p>We now consider testing hypotheses about an unknown proportion <span class="math inline">\(p\)</span> based on a random sample <span class="math inline">\(X_1,\dots,X_n\)</span> of Bernoulli<span class="math inline">\((p)\)</span> random variables. Specifically, given a <em>null value</em> <span class="math inline">\(p_0\)</span>, we will consider testing sets of hypotheses in these forms:</p>
+<ol type="1">
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(p \leq p_0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p &gt; p_0\)</span>.</li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(p \geq p_0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p &lt; p_0\)</span>.</li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(p = p_0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p \neq p_0\)</span>.</li>
+</ol>
+<p>To test any of these hypotheses, we will consider how far away the sample proportion <span class="math inline">\(\hat p\)</span> is from <span class="math inline">\(p_0\)</span> in the direction specified by the alternate hypothesis. We will reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\hat p_n\)</span> is far enough away from the null value <span class="math inline">\(p_0\)</span> in that direction. In order to determine how far is far enough, we will use the fact that if the true population proportion <span class="math inline">\(p\)</span> is equal to <span class="math inline">\(p_0\)</span>, then we will have <span class="math display">\[
+\frac{\hat p - p_0}{\sqrt{\dfrac{p_0(1-p_0)}{n}}} \overset{\operatorname{approx}}{\sim}\mathcal{N}(0,1)
+\]</span> for large enough <span class="math inline">\(n\)</span>, owing to the Central Limit Theorem as interpreted for the sample proportion in <a href="sample_proportion.html#prp-clt_sampleproportion" class="quarto-xref">Proposition&nbsp;<span>21.2</span></a>.</p>
+<p>We will therefore define as our <em>test statistic</em> the quantity <span id="eq-ztestprop"><span class="math display">\[
+Z_{\operatorname{test}}= \frac{\hat p_n - p_0}{\sqrt{\dfrac{p_0(1-p_0)}{n}}},
+\tag{34.1}\]</span></span> which can be interpreted as the number of standard deviations <span class="math inline">\(\hat p_n\)</span> lies away from <span class="math inline">\(p\)</span>, signed such that it is negative with <span class="math inline">\(\hat p_n &lt; p_0\)</span> and positive when <span class="math inline">\(\hat p_n &gt; p_0\)</span>. The Central Limit Theorem allows us to define rejection rules as summarized here:</p>
+<div id="prp-ztestprop" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 34.1 (Large-sample test for a proportion)</strong></span> Let <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}\text{Bernoulli}(p)\)</span>. Then the following tests have size closer and closer to <span class="math inline">\(\alpha\)</span> for larger and larger <span class="math inline">\(n\)</span>:</p>
+<ol type="1">
+<li>For <span class="math inline">\(H_0\)</span>: <span class="math inline">\(p \leq p_0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p &gt; p_0\)</span>, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(Z_{\operatorname{test}}&gt; z_\alpha\)</span>.</li>
+<li>For <span class="math inline">\(H_0\)</span>: <span class="math inline">\(p \geq p_0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p &lt; p_0\)</span>, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(Z_{\operatorname{test}}&lt; -z_\alpha\)</span>.</li>
+<li>For <span class="math inline">\(H_0\)</span>: <span class="math inline">\(p = p_0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p \neq p_0\)</span>, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|Z_{\operatorname{test}}| &gt; z_{\alpha/2}\)</span>.</li>
+</ol>
+</div>
+<p>Note that for the above tests to be reliable in the sense of having truly the advertised size (recall that the size is the maximum probability that the test will lead to a Type I error) the sample size must be “large”. In the particular case of testing for a proportion, we find it is not sufficient to require merely <span class="math inline">\(n \geq 30\)</span>, since, as it turns out, the convergence in the behavior of <span class="math inline">\(Z_{\operatorname{test}}\)</span> in <a href="#eq-ztestprop" class="quarto-xref">Equation&nbsp;<span>34.1</span></a> to that of a standard normal random variable may be slower or faster depending on the value of the true proportion <span class="math inline">\(p\)</span>. If <span class="math inline">\(p\)</span> is quite close to zero or one, a larger sample size <span class="math inline">\(n\)</span> is needed for <span class="math inline">\(Z_{\operatorname{test}}\)</span> to behave approximately like a standard normal random variable. The rule of thumb <span class="math display">\[
+\min\{np_0,n(1-p_0)\} \geq 15
+\]</span> is generally proposed. This rule requires that the expected number of successes and the expected number of failures, based on the sample size <span class="math inline">\(n\)</span> and the null value <span class="math inline">\(p_0\)</span>, should both be at least <span class="math inline">\(15\)</span>.</p>
+<div id="exr-flies" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 34.1 (Parasite in flies)</strong></span> A scientist is interested in seeing whether the presence of a parasite tips the sex ratio of the hosts’ offspring in favor of females (which would be advantageous to the parasite, as it inhabits only females). A sample of size <span class="math inline">\(n=500\)</span> offspring from parasite-infected females is collected, among which <span class="math inline">\(287\)</span> females are identified.</p>
+<ol type="1">
+<li><p>What are the relevant hypotheses? <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
+<li><p>Carry out a test of the hypotheses at the <span class="math inline">\(\alpha = 0.05\)</span> significance level.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p></li>
+</ol>
+</div>
+<p>We conclude this page by remarking that there are other ways to test hypotheses about a proportion. One can use the fact that <span class="math inline">\(Y = X_1+\dots+X_n\)</span> follows the <span class="math inline">\(\text{Binomial}(n,p_0)\)</span> distribution if <span class="math inline">\(p = p_0\)</span>, and from here define a rejection rule in terms of <span class="math inline">\(Y\)</span> which will guarantee that the Type I error rate will not exceed a desired size <span class="math inline">\(\alpha\)</span>. One drawback of this approach is that, since <span class="math inline">\(Y\)</span> is a discrete random variable, it may not be possible, depending on the sample size and the desired maximum Type I error rate <span class="math inline">\(\alpha\)</span>, to define a test based on <span class="math inline">\(Y\)</span> which has size exactly equal to the desired <span class="math inline">\(\alpha\)</span>.</p>
 
 
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Assuming that the proportion of females in the offspring of the host species is <span class="math inline">\(1/2\)</span> in the absence of the parasite, the hypotheses of interest are <span class="math inline">\(H_0\)</span>: <span class="math inline">\(p \leq 1/2\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p &gt; 1/2\)</span>, where <span class="math inline">\(p\)</span> is the proportion of females in the offspring of parasite-infected hosts.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>We first compute the test statistic <span class="math display">\[
+    Z_{\operatorname{test}}= \frac{287/500 - 1/2}{\sqrt{1/2(1-1/2)/500}} = 3.309.
+    \]</span> The critical value is <span class="math inline">\(z_{0.05}=1.645\)</span>. Since <span class="math inline">\(3.309 &gt; 1.645\)</span>, the test statistic lies in the rejection region, so we reject <span class="math inline">\(H_0\)</span> and conclude that the parasite indeed tips the sex ratio of offspring in favor of females.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -915,8 +993,8 @@ window.Quarto = {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./randomized_experiments_v_observational_studies.html" class="pagination-link" aria-label="Randomized experiments versus observational studies">
-        <span class="nav-page-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Randomized experiments versus observational studies</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./p_values.html" class="pagination-link" aria-label="P values">
+        <span class="nav-page-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">P values</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
