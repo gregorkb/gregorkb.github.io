@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -507,8 +542,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#p-values-from-the-standard-normal-distribution" id="toc-p-values-from-the-standard-normal-distribution" class="nav-link active" data-scroll-target="#p-values-from-the-standard-normal-distribution"><span class="header-section-number">35.1</span> P values from the standard normal distribution</a></li>
+  <li><a href="#p-values-from-a-t-distribution" id="toc-p-values-from-a-t-distribution" class="nav-link" data-scroll-target="#p-values-from-a-t-distribution"><span class="header-section-number">35.2</span> P values from a <span class="math inline">\(t\)</span> distribution</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -542,8 +584,244 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
+<p>Until now we have tested hypotheses by fixing a <em>significance level</em> <span class="math inline">\(\alpha \in (0,1)\)</span> (which is intended to be an upper bound on the probability of committing a Type I error) and then comparing the value of a <em>test statistic</em> to a <em>critical value</em>, where the critical value is calibrated based on the choice of <span class="math inline">\(\alpha\)</span>. In our tests of hypotheses about a population mean or population proportion, we have seen that choosing a smaller <span class="math inline">\(\alpha\)</span> amounts to requiring stronger evidence against the null hypothesis in order to reject it. For the test statistics <span class="math display">\[
+Z_{\operatorname{test}}= \frac{\bar X_n - \mu_0}{\sigma /\sqrt{n}} \quad \text{ and } \quad Z_{\operatorname{test}}= \frac{\hat p_n - p_0}{\sqrt{p_0(1-p_0)/n}},
+\]</span> used for testing hypotheses about the mean and the proportion, respectively, provided conditions are met, the critical values for the right-, left-, and two-sided tests were <span class="math inline">\(z_\alpha\)</span>, <span class="math inline">\(-z_\alpha\)</span>, and <span class="math inline">\(z_{\alpha/2}\)</span>, where these quantities lie further from zero for smaller values of <span class="math inline">\(\alpha\)</span> (see <a href="first_hyp_test_mean.html#prp-ztestmean" class="quarto-xref">Proposition&nbsp;<span>31.1</span></a> and <a href="hyp_test_proportion.html#prp-ztestprop" class="quarto-xref">Proposition&nbsp;<span>34.1</span></a>). For the test statistic <span class="math display">\[
+T_{\operatorname{test}}= \frac{\bar X_n - \mu_0}{S_n /\sqrt{n}},
+\]</span> used for testing hypotheses about the mean when the variance is unknown, the critical values for the right-, left-, and two-sided tests were, in the case of a normal population, <span class="math inline">\(t_{n-1,\alpha}\)</span>, <span class="math inline">\(-t_{n-1,\alpha}\)</span>, and <span class="math inline">\(t_{n-1,\alpha/2}\)</span>, and, in the case of a non-normal population, <span class="math inline">\(z_\alpha\)</span>, <span class="math inline">\(-z_\alpha\)</span>, and <span class="math inline">\(z_{\alpha/2}\)</span>, provided the sample size is large (see <a href="t_hyp_test_mean.html#prp-ttestmean" class="quarto-xref">Proposition&nbsp;<span>32.1</span></a> and <a href="large_sample_hyp_test_mean.html#prp-ttestmeanlargen" class="quarto-xref">Proposition&nbsp;<span>33.1</span></a>). All of these critical values lie further from zero for smaller choices of the significance level <span class="math inline">\(\alpha\)</span>, so that smaller choices of <span class="math inline">\(\alpha\)</span> require <span class="math inline">\(\bar X_n\)</span> to lie further from the null value <span class="math inline">\(\mu_0\)</span> for the null hypothesis to be rejected.</p>
+<p>The significance level used by an investigator is thus important, because it sets a threshold for the strength of evidence required for rejecting the null hypotheses and claiming to have made a Discovery. Suppose two investigators will test the same set of hypotheses, <span class="math inline">\(H_0\)</span> versus <span class="math inline">\(H_1\)</span>, the first with significance level <span class="math inline">\(0.10\)</span> and the second with significance level <span class="math inline">\(0.01\)</span>; if both investigators reject the null hypothesis, which investigator will have made the more “significant” discovery? Or, of the two investigators, whose result admits of less doubt? Of whose result can we be more sure? The investigator using significance level <span class="math inline">\(0.10\)</span> allows Type I errors one in ten times, while the investigator using <span class="math inline">\(0.01\)</span> allows one Type I error in every one hundred studies. Therefore, since the significance level <span class="math inline">\(\alpha\)</span> puts a cap on the probability of a Type I error, rejecting a null hypothesis at a small value of <span class="math inline">\(\alpha\)</span> is a more convincing result than rejecting the null at a large value of <span class="math inline">\(\alpha\)</span>.</p>
+<p>We have stated that <span class="math inline">\(\alpha = 0.05\)</span> is a typical choice of the significance level. Suppose two investigators using <span class="math inline">\(\alpha = 0.05\)</span> obtain test statistics such that the first investigator’s test statistic lies just barely beyond the critical value (just barely inside the rejection region) and the second investigator’s test statistic lies far beyond the critical value. Both investigators will report that they reject the null hypothesis at <span class="math inline">\(\alpha = 0.05\)</span>, but which of the two has stronger evidence against the null? It must be the one with the test statistic further beyond the critical value. The reason for this is that, even <span class="math inline">\(\alpha\)</span> were made a little smaller, the critical value would move a little further away from zero, thus increasing the threshold of evidence needed to reject the null; the first investigator’s test statistic would then no longer lie in the rejection region, but that of the second investigator, since it lay far beyond the original critical value, will still lie beyond the new critical value. All this is to say that the investigator with the more extreme test statistic value could have rejected the null hypothesis with a significance level even smaller than the level <span class="math inline">\(\alpha = 0.05\)</span> chosen at the outset.</p>
+<p>In order to report with clarity the strength of evidence one has obtained against a null hypothesis, it is very sensible, in light of the above discussion, not only to report that one has rejected <span class="math inline">\(H_0\)</span> at a typical significance level, say <span class="math inline">\(\alpha = 0.05\)</span>, but to report in addition to this the smallest possible significance level one <em>could</em> choose, while <em>still</em> rejecting the null hypothesis. That is, one can find the value of <span class="math inline">\(\alpha\)</span> which makes the critical value of the test exactly equal to the value of the test statistic; then, choosing any significance level smaller than this would lead to a failure to reject the null, while at any significance level larger than this the same data would still lead to the rejection of the null. This brings us to the definition of the <span class="math inline">\(p\)</span> value:</p>
+<div id="def-pvalue" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 35.1 (P value)</strong></span> The <span class="math inline">\(p\)</span> value associated with the value of a test statistic for testing a null hypothesis <span class="math inline">\(H_0\)</span> is the smallest significance level at which the value of the test statistic will lead to the rejection of <span class="math inline">\(H_0\)</span>.</p>
+</div>
+<p>The <span class="math inline">\(p\)</span> value can be equivalently defined as the size (maximum Type I error probability) of the test which uses, in a future study, the observed value of the test statistic as the critical value. This way we can interpret the <span class="math inline">\(p\)</span> value as the probability of obtaining data carrying more evidence against <span class="math inline">\(H_0\)</span> than the data we observed. We note that <a href="#def-pvalue" class="quarto-xref">Definition&nbsp;<span>35.1</span></a> is somewhat cavalier in that it is careless of the fact that we require our test statistics to be <em>strictly</em> greater than our critical values in order to reject <span class="math inline">\(H_0\)</span>. Since we are concerned primarily with test statistics which have continuous probability distributions, however, we do not need to worry about strict versus non-strict inequalities, so we will let the definition stand.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Reporting the <span class="math inline">\(p\)</span> value associated with a test statistic is thus more informative than saying simply whether <span class="math inline">\(H_0\)</span> is rejected at one particular significance level <span class="math inline">\(\alpha\)</span>. For example, if we report a <span class="math inline">\(p\)</span> value of <span class="math inline">\(0.034\)</span>, it communicates that the data we observed would lead us to reject <span class="math inline">\(H_0\)</span> at every significance level <span class="math inline">\(\alpha\)</span> greater than <span class="math inline">\(0.034\)</span> and lead us not to reject <span class="math inline">\(H_0\)</span> at every significance level <span class="math inline">\(\alpha\)</span> less than or equal to <span class="math inline">\(0.034\)</span>. The value <span class="math inline">\(0.034\)</span> thus conveys exactly how strong the evidence is against <span class="math inline">\(H_0\)</span>. Some texts refer to the <span class="math inline">\(p\)</span> value as the <em>observed significance level</em>. This is because the <span class="math inline">\(p\)</span> value tells us at which significance level <span class="math inline">\(\alpha\)</span> our observed test statistic would lie exactly at the boundary between rejecting and failing to reject <span class="math inline">\(H_0\)</span>.</p>
+<p>In sum, we can interpret the <span class="math inline">\(p\)</span> value as an index of the plausibility of <span class="math inline">\(H_0\)</span>. A small <span class="math inline">\(p\)</span> value casts greater doubt on the null hypothesis.</p>
+<p>We next consider how to compute <span class="math inline">\(p\)</span> values associated with test statistic values for the tests of hypotheses we have considered so far.</p>
+<section id="p-values-from-the-standard-normal-distribution" class="level2" data-number="35.1">
+<h2 data-number="35.1" class="anchored" data-anchor-id="p-values-from-the-standard-normal-distribution"><span class="header-section-number">35.1</span> P values from the standard normal distribution</h2>
+<p>Consider the following rejection rules based on a test statistic <span class="math inline">\(Z_{\operatorname{test}}\)</span> assumed to have (or have approximately) the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution when the parameter of interest is equal to its null value<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
+<ol type="1">
+<li>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(Z_{\operatorname{test}}&gt; z_\alpha\)</span>.</li>
+<li>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(Z_{\operatorname{test}}&lt; -z_\alpha\)</span>.</li>
+<li>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|Z_{\operatorname{test}}| &gt; z_{\alpha/2}\)</span>.</li>
+</ol>
+<p>For each rejection rule, we can find the <span class="math inline">\(p\)</span> value associated with the observed value of the test statistic <span class="math inline">\(Z_{\operatorname{test}}\)</span> by finding the significance level which makes the critical value equal to the test statistic. Denoting this “observed” significance level by <span class="math inline">\(\alpha^*\)</span> and letting <span class="math inline">\(Z\)</span> denote a <span class="math inline">\(\mathcal{N}(0,1)\)</span> random variable, we have for the three rejection rules, respectively:</p>
+<ol type="1">
+<li>Setting <span class="math inline">\(Z_{\operatorname{test}}= z_{\alpha^*}\)</span> and solving for <span class="math inline">\(\alpha^*\)</span> gives <span class="math inline">\(\alpha^* = P(Z &gt; Z_{\operatorname{test}})\)</span>.</li>
+<li>Setting <span class="math inline">\(Z_{\operatorname{test}}= -z_{\alpha^*}\)</span> and solving for <span class="math inline">\(\alpha^*\)</span> gives <span class="math inline">\(\alpha^* = P(Z &lt; Z_{\operatorname{test}})\)</span>.</li>
+<li>Setting <span class="math inline">\(Z_{\operatorname{test}}= z_{\alpha^*/2}\)</span> and solving for <span class="math inline">\(\alpha^*\)</span> gives <span class="math inline">\(\alpha^* = 2P(Z &gt; |Z_{\operatorname{test}}|)\)</span>.</li>
+</ol>
+<p>In each of the above, the value of <span class="math inline">\(\alpha^*\)</span> obtained as described, is the <span class="math inline">\(p\)</span> value. Note that in case of the one-sided tests, the <span class="math inline">\(p\)</span> value is the area under the <span class="math inline">\(\mathcal{N}(0,1)\)</span> probability density function in the direction specified by the alternate hypothesis. That is, for the right-sided test, the <span class="math inline">\(p\)</span> value is the area under the <span class="math inline">\(\mathcal{N}(0,1)\)</span> PDF to the right of <span class="math inline">\(Z_{\operatorname{test}}\)</span>, as in <a href="#fig-z_rightside_pval" class="quarto-xref">Figure&nbsp;<span>35.1</span></a>, and for the left-sided test, the <span class="math inline">\(p\)</span> value is the area under the <span class="math inline">\(\mathcal{N}(0,1)\)</span> PDF to the left of <span class="math inline">\(Z_{\operatorname{test}}\)</span>, as in <a href="#fig-z_leftside_pval" class="quarto-xref">Figure&nbsp;<span>35.2</span></a>. For the two-sided test, the <span class="math inline">\(p\)</span> value is equal to twice the area under the <span class="math inline">\(\mathcal{N}(0,1)\)</span> PDF beyond the value of <span class="math inline">\(Z_{\operatorname{test}}\)</span> in whichever direction from zero this lies, as in <a href="#fig-z_twoside_pval" class="quarto-xref">Figure&nbsp;<span>35.3</span></a>.</p>
+<div id="fig-z_rightside_pval" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-z_rightside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="tikz/z_rightside_pval.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-z_rightside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;35.1: The <span class="math inline">\(p\)</span> value associated with <span class="math inline">\(Z_{\operatorname{test}}\)</span> for the right-sided test.
+</figcaption>
+</figure>
+</div>
+<div id="fig-z_leftside_pval" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-z_leftside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="tikz/z_leftside_pval.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-z_leftside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;35.2: The <span class="math inline">\(p\)</span> value associated with <span class="math inline">\(Z_{\operatorname{test}}\)</span> for the left-sided test.
+</figcaption>
+</figure>
+</div>
+<div id="fig-z_twoside_pval" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-z_twoside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="tikz/z_twoside_pval.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-z_twoside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;35.3: The <span class="math inline">\(p\)</span> value associated with <span class="math inline">\(Z_{\operatorname{test}}\)</span> for the two-sided test.
+</figcaption>
+</figure>
+</div>
+<p>This is how to find the <span class="math inline">\(p\)</span> values associated with any of the tests prescribed in <a href="first_hyp_test_mean.html#prp-ztestmean" class="quarto-xref">Proposition&nbsp;<span>31.1</span></a>, <a href="hyp_test_proportion.html#prp-ztestprop" class="quarto-xref">Proposition&nbsp;<span>34.1</span></a>, and <a href="large_sample_hyp_test_mean.html#prp-ttestmeanlargen" class="quarto-xref">Proposition&nbsp;<span>33.1</span></a>. These tests all use critical values <span class="math inline">\(z_\alpha\)</span>, <span class="math inline">\(-z_\alpha\)</span>, and <span class="math inline">\(z_{\alpha/2}\)</span>; even though <a href="large_sample_hyp_test_mean.html#prp-ttestmeanlargen" class="quarto-xref">Proposition&nbsp;<span>33.1</span></a> prescribes using the test statistic <span class="math inline">\(T_{\operatorname{test}}\)</span>, this is assumed to have a normal distribution when <span class="math inline">\(n\)</span> large, so <span class="math inline">\(T_{\operatorname{test}}\)</span> can in the large <span class="math inline">\(n\)</span> case be treated as <span class="math inline">\(Z_{\operatorname{test}}\)</span>.</p>
+<p>We find that computing the <span class="math inline">\(p\)</span> value gives us a way to decide whether or not to reject <span class="math inline">\(H_0\)</span> apart from comparing the test statistic to a critical value: After obtaining the <span class="math inline">\(p\)</span> value associated with an observed value of a test statistic with respect to a rejection rule, one may, if one has a particular significance level in mind, such as <span class="math inline">\(\alpha = 0.05\)</span>, simply reject <span class="math inline">\(H_0\)</span> if the <span class="math inline">\(p\)</span> value is less than <span class="math inline">\(\alpha\)</span>. This way, one does not even need to look up the critival values <span class="math inline">\(z_\alpha\)</span>, <span class="math inline">\(-z_{\alpha}\)</span>, and <span class="math inline">\(z_{\alpha/2}\)</span>. Instead, one can simple find the <span class="math inline">\(p\)</span> value and reject <span class="math inline">\(H_0\)</span> if it is smaller than <span class="math inline">\(\alpha\)</span>.</p>
+<div id="exm-goldenratio_hyptest_pval_sigmaknown" class="theorem example">
+<p><span class="theorem-title"><strong>Example 35.1 (Golden ratio data)</strong></span> Recall the golden ratio data in <a href="random_sample.html#exm-goldenratio" class="quarto-xref">Example&nbsp;<span>15.2</span></a>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>gr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.66</span>, <span class="fl">1.61</span>, <span class="fl">1.62</span>, <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.43</span>, <span class="fl">1.66</span>, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.20</span>, <span class="fl">1.52</span>, <span class="fl">1.60</span>, <span class="fl">1.55</span>, <span class="fl">1.67</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.77</span>, <span class="fl">1.50</span>, <span class="fl">1.64</span>, <span class="fl">1.54</span>, <span class="fl">1.40</span>, <span class="fl">1.36</span>, <span class="fl">1.50</span>, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.40</span>, <span class="fl">1.35</span>, <span class="fl">1.48</span>, <span class="fl">1.64</span>, <span class="fl">1.91</span>, <span class="fl">1.70</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(gr)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sn <span class="ot">&lt;-</span> <span class="fu">sd</span>(gr)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(gr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Let’s obtain the <span class="math inline">\(p\)</span> value observed for the tests</p>
+<ol type="1">
+<li>Reject <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \leq 1.618\)</span> in favor of <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &gt; 1.618\)</span> if <span class="math inline">\(Z_{\operatorname{test}}&gt; z_{\alpha}\)</span></li>
+<li>Reject <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \geq 1.618\)</span> in favor of <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &lt; 1.618\)</span> if <span class="math inline">\(Z_{\operatorname{test}}&lt; -z_{\alpha}\)</span></li>
+<li>Reject <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu = 1.618\)</span> in favor of <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu \neq 1.618\)</span> if <span class="math inline">\(|Z_{\operatorname{test}}| &gt;z_{\alpha/2}\)</span></li>
+</ol>
+<p>assuming <span class="math inline">\(\sigma = 0.15\)</span> is known. The sample mean is <span class="math inline">\(\bar X_n = 1.5648148\)</span> and the sample size is <span class="math inline">\(n = 27\)</span>. The first step is to compute the value of the test statistic <span class="math inline">\(Z_{\operatorname{test}}\)</span>. We obtain <span class="math display">\[
+Z_{\operatorname{test}}= \frac{1.5648148 - 1.618}{0.15/\sqrt{27}} = -1.84.
+\]</span> The <span class="math inline">\(p\)</span> value for the right-sided test is <span class="math inline">\(P(Z &gt; -1.84) = 0.9671\)</span>, which is the area under the standard normal PDF to the right of <span class="math inline">\(-1.84\)</span>. For the left-sided test the <span class="math inline">\(p\)</span> value is <span class="math inline">\(P(Z &lt; -1.84) = 0.0329\)</span>, which is the area under the same curve to the left of <span class="math inline">\(-1.84\)</span>. For the two-sided test it is <span class="math inline">\(2 P(Z &gt; 1.84) = 0.0658\)</span>, which is twice the area under the curve to the right of <span class="math inline">\(1.84\)</span>.</p>
+<p>From the <span class="math inline">\(p\)</span> values we see that if we were using significance level, say, <span class="math inline">\(\alpha = 0.05\)</span>, we would fail to reject <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \leq 1.618\)</span> in favor of <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &gt; 1.618\)</span> and we would fail to reject <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu = 1.618\)</span> in favor of <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu \neq 1.618\)</span>, but we <em>would</em> reject <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \geq 1.618\)</span> in favor of <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &lt; 1.618\)</span>, where for each set of hypotheses we simply compare the <span class="math inline">\(p\)</span> value to the significance level <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+</div>
+<div id="exr-invasivefish" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 35.1 (Counting fish)</strong></span> Suppose an invasive fish will begin to dominate a system of lakes if it makes up more than <span class="math inline">\(10\%\)</span> of the population of fish in those lakes. In a random sample of <span class="math inline">\(527\)</span> fish drawn from the system of lakes, <span class="math inline">\(70\)</span> of the fish were of the invasive species. Action will be taken if the invasive species is determined to comprise more than <span class="math inline">\(10\%\)</span> of the fish population in the system of lakes.</p>
+<ol type="1">
+<li>What are the appropriate null and alternate hypotheses?<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+<li>What <span class="math inline">\(p\)</span> value is obtained? <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
+</ol>
+</div>
+<div id="exr-bostonmenmean_pval" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 35.2 (2009 Boston Marathon mens finishing times)</strong></span> Refer to the data in <a href="hist.html#exm-bos09" class="quarto-xref">Example&nbsp;<span>17.1</span></a> and regard the mens finishing times as a population of values</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>bos09 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/bos09.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> bos09<span class="sc">$</span>hrs[bos09<span class="sc">$</span>gender<span class="sc">==</span><span class="st">"M"</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(m),<span class="dv">3</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">sqrt</span>(<span class="fu">mean</span>((m <span class="sc">-</span> mu)<span class="sc">**</span><span class="dv">2</span>)),<span class="dv">3</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(m,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">30</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">545</span>,.<span class="dv">25</span>),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="cn">NA</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">""</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Finishing time (hrs)"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">freq=</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="p_values_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="1400"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">sample</span>(m,n)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>Xbar <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(X),<span class="dv">3</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>Sn <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">sd</span>(X),<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The population has mean <span class="math inline">\(\mu = 3.693\)</span> and standard deviation <span class="math inline">\(\sigma = 0.628\)</span>, but suppose we don’t know these values, and we draw a random sample of size <span class="math inline">\(n = 50\)</span>, obtaining <span class="math inline">\(\bar X_n = 3.667\)</span> and <span class="math inline">\(S_n = 0.582\)</span>. Obtain the <span class="math inline">\(p\)</span> value for testing each of the below sets of hypotheses based on treating the test statistic <span class="math inline">\(T_{\operatorname{test}}\)</span> as a <span class="math inline">\(\mathcal{N}(0,1)\)</span> random variable when <span class="math inline">\(\mu\)</span> is equal to the null value <span class="math inline">\(1.618\)</span>:</p>
+<ol type="1">
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \leq 3.75\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &gt; 3.75\)</span>.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \geq 3.75\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &lt; 3.75\)</span>. <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu = 3.75\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu \neq 3.75\)</span>.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></li>
+</ol>
+</div>
+</section>
+<section id="p-values-from-a-t-distribution" class="level2" data-number="35.2">
+<h2 data-number="35.2" class="anchored" data-anchor-id="p-values-from-a-t-distribution"><span class="header-section-number">35.2</span> P values from a <span class="math inline">\(t\)</span> distribution</h2>
+<p>Now we consider rejection rules for hypotheses concerning the mean of a normal distribution based on the test statistic <span class="math inline">\(T_{\operatorname{test}}\)</span>. For the right-, left-, and two-sided sets of hypotheses, we have, respectively, these rejection rules:</p>
+<ol type="1">
+<li>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(T_{\operatorname{test}}&gt; t_{n-1,\alpha}\)</span>.</li>
+<li>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(T_{\operatorname{test}}&lt; -t_{n-1,\alpha}\)</span>.</li>
+<li>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|T_{\operatorname{test}}| &gt; t_{n-1,\alpha/2}\)</span>.</li>
+</ol>
+<p>Just as before, we define the <span class="math inline">\(p\)</span> value in each case as the significance level at which the critical value is exactly equal to the observed value of the test statistic. Calling this observed significance level <span class="math inline">\(\alpha^*\)</span> and letting <span class="math inline">\(T\)</span> denote a random variable having the <span class="math inline">\(t_{n-1}\)</span> distribution, we have:</p>
+<ol type="1">
+<li>Setting <span class="math inline">\(T_{\operatorname{test}}= t_{n-1,\alpha^*}\)</span> and solving for <span class="math inline">\(\alpha^*\)</span> gives <span class="math inline">\(\alpha^* = P(T &gt; T_{\operatorname{test}})\)</span>.</li>
+<li>Setting <span class="math inline">\(T_{\operatorname{test}}= -t_{n-1,\alpha^*}\)</span> and solving for <span class="math inline">\(\alpha^*\)</span> gives <span class="math inline">\(\alpha^* = P(T &lt; T_{\operatorname{test}})\)</span>.</li>
+<li>Setting <span class="math inline">\(T_{\operatorname{test}}= t_{n-1,\alpha^*/2}\)</span> and solving for <span class="math inline">\(\alpha^*\)</span> gives <span class="math inline">\(\alpha^* = 2P(T &gt; |T_{\operatorname{test}}|)\)</span>.</li>
+</ol>
+<p>The significance level <span class="math inline">\(\alpha^*\)</span> is the <span class="math inline">\(p\)</span> value in each case. The <span class="math inline">\(p\)</span> values are obtained as areas under the <span class="math inline">\(t_{n-1}\)</span> PDF as depicted in <a href="#fig-t_rightside_pval" class="quarto-xref">Figure&nbsp;<span>35.4</span></a>, <a href="#fig-t_leftside_pval" class="quarto-xref">Figure&nbsp;<span>35.5</span></a>, and <a href="#fig-t_twoside_pval" class="quarto-xref">Figure&nbsp;<span>35.6</span></a>.</p>
+<div id="fig-t_rightside_pval" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-t_rightside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="tikz/t_rightside_pval.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-t_rightside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;35.4: The <span class="math inline">\(p\)</span> value associated with <span class="math inline">\(T_{\operatorname{test}}\)</span> for the right-sided test.
+</figcaption>
+</figure>
+</div>
+<div id="fig-t_leftside_pval" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-t_leftside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="tikz/t_leftside_pval.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-t_leftside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;35.5: The <span class="math inline">\(p\)</span> value associated with <span class="math inline">\(T_{\operatorname{test}}\)</span> for the left-sided test.
+</figcaption>
+</figure>
+</div>
+<div id="fig-t_twoside_pval" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-t_twoside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="tikz/t_twoside_pval.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-t_twoside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;35.6: The <span class="math inline">\(p\)</span> value associated with <span class="math inline">\(T_{\operatorname{test}}\)</span> for the two-sided test.
+</figcaption>
+</figure>
+</div>
+<div id="exm-goldenratio_hyptest_pval_sigmaunknown" class="theorem example">
+<p><span class="theorem-title"><strong>Example 35.2 (Golden ratio data continued)</strong></span> &nbsp;</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.66</span>, <span class="fl">1.61</span>, <span class="fl">1.62</span>, <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.43</span>, <span class="fl">1.66</span>, </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.20</span>, <span class="fl">1.52</span>, <span class="fl">1.60</span>, <span class="fl">1.55</span>, <span class="fl">1.67</span>, </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.77</span>, <span class="fl">1.50</span>, <span class="fl">1.64</span>, <span class="fl">1.54</span>, <span class="fl">1.40</span>, <span class="fl">1.36</span>, <span class="fl">1.50</span>, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.40</span>, <span class="fl">1.35</span>, <span class="fl">1.48</span>, <span class="fl">1.64</span>, <span class="fl">1.91</span>, <span class="fl">1.70</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(gr)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>sn <span class="ot">&lt;-</span> <span class="fu">sd</span>(gr)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(gr)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>Ttest <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> <span class="fl">1.618</span>)<span class="sc">/</span>(sn<span class="sc">/</span><span class="fu">sqrt</span>(n))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>For the golden ratio data of <a href="random_sample.html#exm-goldenratio" class="quarto-xref">Example&nbsp;<span>15.2</span></a>, let’s obtain the <span class="math inline">\(p\)</span> value for the tests</p>
+<ol type="1">
+<li>Reject <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \leq 1.618\)</span> in favor of <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &gt; 1.618\)</span> if <span class="math inline">\(T_{\operatorname{test}}&gt; t_{n-1,\alpha}\)</span></li>
+<li>Reject <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \geq 1.618\)</span> in favor of <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &lt; 1.618\)</span> if <span class="math inline">\(T_{\operatorname{test}}&lt; -t_{n-1,\alpha}\)</span></li>
+<li>Reject <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu = 1.618\)</span> in favor of <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu \neq 1.618\)</span> if <span class="math inline">\(|T_{\operatorname{test}}| &gt;t_{n-1,\alpha/2}\)</span></li>
+</ol>
+<p>associated with observing <span class="math inline">\(\bar X_n = 1.5648148\)</span> and <span class="math inline">\(S_n = 0.1481\)</span>, where <span class="math inline">\(n = 27\)</span>. The value of the test statistic is <span class="math display">\[
+T_{\operatorname{test}}= \frac{1.5648148 - 1.618}{0.1481/\sqrt{27}} = -1.8660248.
+\]</span> Here is row <span class="math inline">\(n-1 = 26\)</span> of the <span class="math inline">\(t\)</span> table, giving certain upper quantiles of the <span class="math inline">\(t_{27-1}\)</span> distribution:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> n<span class="dv">-1</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.200</span>,<span class="fl">0.100</span>,<span class="fl">0.050</span>,<span class="fl">0.025</span>,<span class="fl">0.010</span>,<span class="fl">0.005</span>,<span class="fl">0.001</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">round</span>(<span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>a,df),<span class="dv">4</span>),<span class="dv">1</span>,<span class="fu">length</span>(a))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tab) <span class="ot">&lt;-</span> df</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tab) <span class="ot">&lt;-</span> a</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>      0.2   0.1   0.05  0.025   0.01  0.005 0.001
+26 0.8557 1.315 1.7056 2.0555 2.4786 2.7787 3.435</code></pre>
+</div>
+</div>
+<p>Based on the <span class="math inline">\(t\)</span>-table, we see that the <span class="math inline">\(p\)</span> value for the right-sided test lies somewhere between <span class="math inline">\(0.95\)</span> and <span class="math inline">\(0.975\)</span>, the <span class="math inline">\(p\)</span> value for the left-sided test is between <span class="math inline">\(0.025\)</span> and <span class="math inline">\(0.05\)</span>, and the <span class="math inline">\(p\)</span>-value for the two-sided test is somewhere between <span class="math inline">\(0.05\)</span> and <span class="math inline">\(0.10\)</span> (obtained by doubling the endpoints). These <span class="math inline">\(p\)</span> values can be obtained exactly using the <code>pt()</code> function: The right-sided <span class="math inline">\(p\)</span>-value is <span class="math inline">\(0.9633193\)</span>, obtained with <code>1- pt(Ttest,n-1)</code>, the left-sided is <span class="math inline">\(0.0366807\)</span>, obtained with <code>pt(-1.866,n-1)</code>, and the two-sided <span class="math inline">\(p\)</span> value is <span class="math inline">\(0.0733614\)</span>, obtained with <code>2*(1-pt(abs(-1.866),n-1))</code>.</p>
+</div>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>The <span class="math inline">\(p\)</span> value could be more correctly defined as the largest significance level at which the value of the test statistic will lead to the failure to reject of <span class="math inline">\(H_0\)</span>, but this seems more confusing.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Then is, when <span class="math inline">\(\mu = \mu_0\)</span> or <span class="math inline">\(p = p_0\)</span>, as the case may be.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Let <span class="math inline">\(p\)</span> denote the proportion of fish belonging to the invasive species and test <span class="math inline">\(H_0\)</span>: <span class="math inline">\(p \leq 0.10\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p &gt; 0.10\)</span>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>We compute the <span class="math inline">\(p\)</span>-value by first computing the test statistic <span class="math display">\[
+\frac{70/527 - 0.10}{\sqrt{0.10(0.90)/527}} = 2.51.
+\]</span> The <span class="math inline">\(p\)</span> value is the area under the standard Normal pdf to the right (the direction of the alternative) of this value, which is <span class="math inline">\(0.006\)</span>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>We begin by computing the test statistic <span class="math display">\[
+  T_{\operatorname{test}}= \frac{3.667 - 3.75}{0.582/\sqrt{50}} = -1.008.
+  \]</span> The sample mean <span class="math inline">\(\bar X_n &lt; 3.75\)</span> carries evidence in favor of <span class="math inline">\(H_0\)</span>, so we have no grounds to reject it. This is reflected in the negative value of the test statistic. However, we can still compute the <span class="math inline">\(p\)</span> value as the area under the <span class="math inline">\(\mathcal{N}(0,1)\)</span> PDF to the right of <span class="math inline">\(-1.008\)</span>. Using the <span class="math inline">\(z\)</span> table after rounding, this is <span class="math inline">\(0.8438\)</span>. <a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>The <span class="math inline">\(p\)</span> value is the area under the <span class="math inline">\(\mathcal{N}(0,1)\)</span> PDF to the left of <span class="math inline">\(-1.008\)</span>. This is (subtracting the right-sided <span class="math inline">\(p\)</span> value from one) equal to <span class="math inline">\(0.1562\)</span>.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>The <span class="math inline">\(p\)</span> value will be twice the area under the <span class="math inline">\(\mathcal{N}(0,1)\)</span> PDF to the left of <span class="math inline">\(-1.008\)</span>. This is two times the left-sided <span class="math inline">\(p\)</span> value. We obtain <span class="math inline">\(0.3124\)</span>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
