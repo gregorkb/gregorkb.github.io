@@ -620,7 +620,7 @@ T_{\operatorname{test}}= \frac{\bar X_n - \mu_0}{S_n /\sqrt{n}},
 <img src="tikz/z_rightside_pval.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-z_rightside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;35.1: The <span class="math inline">\(p\)</span> value associated with <span class="math inline">\(Z_{\operatorname{test}}\)</span> for the right-sided test.
+Figure&nbsp;35.1: The <span class="math inline">\(p\)</span> value <span class="math inline">\(\alpha^*\)</span> associated with <span class="math inline">\(Z_{\operatorname{test}}\)</span> for the right-sided test.
 </figcaption>
 </figure>
 </div>
@@ -630,7 +630,7 @@ Figure&nbsp;35.1: The <span class="math inline">\(p\)</span> value associated wi
 <img src="tikz/z_leftside_pval.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-z_leftside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;35.2: The <span class="math inline">\(p\)</span> value associated with <span class="math inline">\(Z_{\operatorname{test}}\)</span> for the left-sided test.
+Figure&nbsp;35.2: The <span class="math inline">\(p\)</span> value <span class="math inline">\(\alpha^*\)</span> associated with <span class="math inline">\(Z_{\operatorname{test}}\)</span> for the left-sided test.
 </figcaption>
 </figure>
 </div>
@@ -640,12 +640,12 @@ Figure&nbsp;35.2: The <span class="math inline">\(p\)</span> value associated wi
 <img src="tikz/z_twoside_pval.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-z_twoside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;35.3: The <span class="math inline">\(p\)</span> value associated with <span class="math inline">\(Z_{\operatorname{test}}\)</span> for the two-sided test.
+Figure&nbsp;35.3: The <span class="math inline">\(p\)</span> value <span class="math inline">\(\alpha^*\)</span> associated with <span class="math inline">\(Z_{\operatorname{test}}\)</span> for the two-sided test.
 </figcaption>
 </figure>
 </div>
 <p>This is how to find the <span class="math inline">\(p\)</span> values associated with any of the tests prescribed in <a href="first_hyp_test_mean.html#prp-ztestmean" class="quarto-xref">Proposition&nbsp;<span>31.1</span></a>, <a href="hyp_test_proportion.html#prp-ztestprop" class="quarto-xref">Proposition&nbsp;<span>34.1</span></a>, and <a href="large_sample_hyp_test_mean.html#prp-ttestmeanlargen" class="quarto-xref">Proposition&nbsp;<span>33.1</span></a>. These tests all use critical values <span class="math inline">\(z_\alpha\)</span>, <span class="math inline">\(-z_\alpha\)</span>, and <span class="math inline">\(z_{\alpha/2}\)</span>; even though <a href="large_sample_hyp_test_mean.html#prp-ttestmeanlargen" class="quarto-xref">Proposition&nbsp;<span>33.1</span></a> prescribes using the test statistic <span class="math inline">\(T_{\operatorname{test}}\)</span>, this is assumed to have a normal distribution when <span class="math inline">\(n\)</span> large, so <span class="math inline">\(T_{\operatorname{test}}\)</span> can in the large <span class="math inline">\(n\)</span> case be treated as <span class="math inline">\(Z_{\operatorname{test}}\)</span>.</p>
-<p>We find that computing the <span class="math inline">\(p\)</span> value gives us a way to decide whether or not to reject <span class="math inline">\(H_0\)</span> apart from comparing the test statistic to a critical value: After obtaining the <span class="math inline">\(p\)</span> value associated with an observed value of a test statistic with respect to a rejection rule, one may, if one has a particular significance level in mind, such as <span class="math inline">\(\alpha = 0.05\)</span>, simply reject <span class="math inline">\(H_0\)</span> if the <span class="math inline">\(p\)</span> value is less than <span class="math inline">\(\alpha\)</span>. This way, one does not even need to look up the critival values <span class="math inline">\(z_\alpha\)</span>, <span class="math inline">\(-z_{\alpha}\)</span>, and <span class="math inline">\(z_{\alpha/2}\)</span>. Instead, one can simple find the <span class="math inline">\(p\)</span> value and reject <span class="math inline">\(H_0\)</span> if it is smaller than <span class="math inline">\(\alpha\)</span>.</p>
+<p>We find that computing the <span class="math inline">\(p\)</span> value gives us a way to decide whether or not to reject <span class="math inline">\(H_0\)</span> without comparing the test statistic to a critical value: After obtaining the <span class="math inline">\(p\)</span> value associated with an observed value of a test statistic with respect to a rejection rule, one may, if one has a particular significance level in mind, such as <span class="math inline">\(\alpha = 0.05\)</span>, one can simply reject <span class="math inline">\(H_0\)</span> if the <span class="math inline">\(p\)</span> value is less than <span class="math inline">\(\alpha\)</span>. This way, one does not even need to look up the critical values <span class="math inline">\(z_\alpha\)</span>, <span class="math inline">\(-z_{\alpha}\)</span>, and <span class="math inline">\(z_{\alpha/2}\)</span>. Instead, one can simple find the <span class="math inline">\(p\)</span> value and reject <span class="math inline">\(H_0\)</span> if it is smaller than <span class="math inline">\(\alpha\)</span>.</p>
 <div id="exm-goldenratio_hyptest_pval_sigmaknown" class="theorem example">
 <p><span class="theorem-title"><strong>Example 35.1 (Golden ratio data)</strong></span> Recall the golden ratio data in <a href="random_sample.html#exm-goldenratio" class="quarto-xref">Example&nbsp;<span>15.2</span></a>:</p>
 <div class="cell">
@@ -738,7 +738,7 @@ Z_{\operatorname{test}}= \frac{1.5648148 - 1.618}{0.15/\sqrt{27}} = -1.84.
 <img src="tikz/t_rightside_pval.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-t_rightside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;35.4: The <span class="math inline">\(p\)</span> value associated with <span class="math inline">\(T_{\operatorname{test}}\)</span> for the right-sided test.
+Figure&nbsp;35.4: The <span class="math inline">\(p\)</span> value <span class="math inline">\(\alpha^*\)</span> associated with <span class="math inline">\(T_{\operatorname{test}}\)</span> for the right-sided test.
 </figcaption>
 </figure>
 </div>
@@ -748,7 +748,7 @@ Figure&nbsp;35.4: The <span class="math inline">\(p\)</span> value associated wi
 <img src="tikz/t_leftside_pval.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-t_leftside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;35.5: The <span class="math inline">\(p\)</span> value associated with <span class="math inline">\(T_{\operatorname{test}}\)</span> for the left-sided test.
+Figure&nbsp;35.5: The <span class="math inline">\(p\)</span> value <span class="math inline">\(\alpha^*\)</span> associated with <span class="math inline">\(T_{\operatorname{test}}\)</span> for the left-sided test.
 </figcaption>
 </figure>
 </div>
@@ -758,7 +758,7 @@ Figure&nbsp;35.5: The <span class="math inline">\(p\)</span> value associated wi
 <img src="tikz/t_twoside_pval.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-t_twoside_pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;35.6: The <span class="math inline">\(p\)</span> value associated with <span class="math inline">\(T_{\operatorname{test}}\)</span> for the two-sided test.
+Figure&nbsp;35.6: The <span class="math inline">\(p\)</span> value <span class="math inline">\(\alpha^*\)</span> associated with <span class="math inline">\(T_{\operatorname{test}}\)</span> for the two-sided test.
 </figcaption>
 </figure>
 </div>
@@ -801,7 +801,7 @@ T_{\operatorname{test}}= \frac{1.5648148 - 1.618}{0.1481/\sqrt{27}} = -1.8660248
 26 0.8557 1.315 1.7056 2.0555 2.4786 2.7787 3.435</code></pre>
 </div>
 </div>
-<p>Based on the <span class="math inline">\(t\)</span>-table, we see that the <span class="math inline">\(p\)</span> value for the right-sided test lies somewhere between <span class="math inline">\(0.95\)</span> and <span class="math inline">\(0.975\)</span>, the <span class="math inline">\(p\)</span> value for the left-sided test is between <span class="math inline">\(0.025\)</span> and <span class="math inline">\(0.05\)</span>, and the <span class="math inline">\(p\)</span>-value for the two-sided test is somewhere between <span class="math inline">\(0.05\)</span> and <span class="math inline">\(0.10\)</span> (obtained by doubling the endpoints). These <span class="math inline">\(p\)</span> values can be obtained exactly using the <code>pt()</code> function: The right-sided <span class="math inline">\(p\)</span>-value is <span class="math inline">\(0.9633193\)</span>, obtained with <code>1- pt(Ttest,n-1)</code>, the left-sided is <span class="math inline">\(0.0366807\)</span>, obtained with <code>pt(-1.866,n-1)</code>, and the two-sided <span class="math inline">\(p\)</span> value is <span class="math inline">\(0.0733614\)</span>, obtained with <code>2*(1-pt(abs(-1.866),n-1))</code>.</p>
+<p>Based on the <span class="math inline">\(t\)</span>-table, we see that the <span class="math inline">\(p\)</span> value for the right-sided test lies somewhere between <span class="math inline">\(0.95\)</span> and <span class="math inline">\(0.975\)</span>, the <span class="math inline">\(p\)</span> value for the left-sided test is between <span class="math inline">\(0.025\)</span> and <span class="math inline">\(0.05\)</span>, and the <span class="math inline">\(p\)</span>-value for the two-sided test is somewhere between <span class="math inline">\(0.05\)</span> and <span class="math inline">\(0.10\)</span> (obtained by doubling the endpoints). These <span class="math inline">\(p\)</span> values can be obtained exactly using the <code>pt()</code> function: The right-sided <span class="math inline">\(p\)</span>-value is <span class="math inline">\(0.9633193\)</span>, obtained with <code>1- pt(-1.866,n-1)</code>, the left-sided is <span class="math inline">\(0.0366807\)</span>, obtained with <code>pt(-1.866,n-1)</code>, and the two-sided <span class="math inline">\(p\)</span> value is <span class="math inline">\(0.0733614\)</span>, obtained with <code>2*(1-pt(abs(-1.866),n-1))</code>.</p>
 </div>
 
 
