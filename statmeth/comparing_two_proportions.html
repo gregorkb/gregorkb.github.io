@@ -584,6 +584,13 @@ X_{i1},\dots,X_{in_i} \overset{\text{ind}}{\sim}\text{Bernoulli}(p_i), \quad i =
 <p>Just as in the case of constructing a confidence interval for a single proportion (rather than for a difference in proportions), we will need a sample size requirement. In order to trust the above interval, we will require <span id="eq-propdiffCIrot"><span class="math display">\[
 \min\{n_1\hat p_1,n_1(1-\hat p_1),n_2\hat p_2,n_2(1-\hat p_2)\} \geq 15,
 \tag{38.1}\]</span></span> which is that each sample should have at least <span class="math inline">\(15\)</span> “successes” and <span class="math inline">\(15\)</span> “failures”. Compare this condition with that in <a href="confint_for_proportion.html#eq-waldrot" class="quarto-xref">Equation&nbsp;<span>28.3</span></a>.</p>
+<div id="exr-twobagsmarbles" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 38.1 (Two deep bags of marbles)</strong></span> Suppose you have two deep bags of marbles, from each of which you scoop a sample of marbles and count the number of red marbles in the sample. Suppose the bags are deep enough (contain enough marbles) so that draws from the bag can be regarded as independent Bernoulli trials with probability of “success” equal to the proportion of red marbles in the bag. From the first bag you scoop <span class="math inline">\(143\)</span> marbles and find <span class="math inline">\(30\)</span> which are red; from the second bag you scoop <span class="math inline">\(213\)</span> marbles and find <span class="math inline">\(49\)</span> which are red. Letting <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span> denote the proportions of red marbles in first and second bag, respectively, construct a confidence interval for <span class="math inline">\(p_1 - p_2\)</span> at confidence level:</p>
+<ol type="1">
+<li><span class="math inline">\(95\%\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li><span class="math inline">\(99\%\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+</ol>
+</div>
 </section>
 <section id="testing-hypotheses-for-a-difference-in-proportions" class="level2" data-number="38.2">
 <h2 data-number="38.2" class="anchored" data-anchor-id="testing-hypotheses-for-a-difference-in-proportions"><span class="header-section-number">38.2</span> Testing hypotheses for a difference in proportions</h2>
@@ -608,8 +615,27 @@ Z_{\operatorname{test}}= \frac{\hat p_1 - \hat p_2}{\sqrt{\hat p(1-\hat p)\Big(\
 </ol>
 </div>
 <p>One can obtain <span class="math inline">\(p\)</span>-values in the usual way: By finding the significance level <span class="math inline">\(\alpha^*\)</span> which sets the critical value equal to the observed value of the test statistic <span class="math inline">\(Z_{\operatorname{test}}\)</span>.</p>
+<div id="exr-twobagsmarbles_hyptest" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 38.2 (Two deep bags of marbles continued)</strong></span> Based on the same scoops of marbles as in <a href="#exr-twobagsmarbles" class="quarto-xref">Exercise&nbsp;<span>38.1</span></a>, (from the first bag you scoop <span class="math inline">\(143\)</span> marbles and find <span class="math inline">\(30\)</span> which are red and from the second bag you scoop <span class="math inline">\(213\)</span> marbles and find <span class="math inline">\(49\)</span> which are red) obtain <span class="math inline">\(p\)</span>-values for testing these sets of hypotheses:</p>
+<ol type="1">
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_1 - p_2 \leq 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p_1 - p_2 &gt; 0\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_1 - p_2 \geq 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p_1 - p_2 &lt; 0\)</span>.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_1 - p_2 = 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p_1 - p_2 \neq 0\)</span>.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
+</ol>
+<p>Interpret the <span class="math inline">\(p\)</span> values.</p>
+</div>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>We have <span class="math inline">\(\hat p_1 = 0.141\)</span> and <span class="math inline">\(\hat p_2 = 0.23\)</span> with <span class="math inline">\(n_1 = 143\)</span> and <span class="math inline">\(n_2 = 213\)</span> and <span class="math inline">\(\hat p_1 - \hat p_2 = -0.089\)</span>. With <span class="math inline">\(\alpha = 0.05\)</span> we have <span class="math inline">\(z_{0.05/2} = 1.96\)</span>, and we obtain the interval <span class="math inline">\([-0.169,-0.009]\)</span>. <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>With <span class="math inline">\(\alpha = 0.01\)</span> we have <span class="math inline">\(z_{0.01/2} = 2.576\)</span>, and we obtain the interval <span class="math inline">\([-0.195,0.016]\)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>We obtain <span class="math inline">\(\hat p = 0.194\)</span> and the test statistic value <span class="math inline">\(Z_{\operatorname{test}}= -2.086\)</span>. The <span class="math inline">\(p\)</span> values for testing the right-sided set of hypotheses is the area under the <span class="math inline">\(\mathcal{N}(0,1)\)</span> PDF to the right of <span class="math inline">\(Z_{\operatorname{test}}\)</span>, which is <span class="math inline">\(0.981\)</span>. There are no grounds for rejecting <span class="math inline">\(H_0\)</span>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>The <span class="math inline">\(p\)</span> values for testing the right-sided set of hypotheses is the area under the <span class="math inline">\(\mathcal{N}(0,1)\)</span> PDF to the left of <span class="math inline">\(Z_{\operatorname{test}}\)</span>, which is <span class="math inline">\(0.019\)</span>. We reject the null hypothesis that <span class="math inline">\(p_1 \geq p_2\)</span> and conclude <span class="math inline">\(p_1 &lt; p_2\)</span> at all significance levels greater than <span class="math inline">\(0.019\)</span>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>The <span class="math inline">\(p\)</span> values for testing the two-sided set of hypotheses is twice the area under the <span class="math inline">\(\mathcal{N}(0,1)\)</span> PDF beyond the value of <span class="math inline">\(Z_{\operatorname{test}}\)</span> in the direction it lies from zero, which is <span class="math inline">\(0.037\)</span>. We reject the null hypothesis of equal proportions and conclude <span class="math inline">\(p_1 &lt; p_2\)</span> at all significance levels greater than <span class="math inline">\(0.037\)</span>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
