@@ -853,23 +853,24 @@ x            0.0004749841  0.0007102168</code></pre>
 </section>
 <section id="testing-hypotheses-about-the-slope-parameter" class="level3" data-number="41.3.2">
 <h3 data-number="41.3.2" class="anchored" data-anchor-id="testing-hypotheses-about-the-slope-parameter"><span class="header-section-number">41.3.2</span> Testing hypotheses about the slope parameter</h3>
-<p>Beyond constructing a confidence interval for <span class="math inline">\(\beta_1\)</span>, we may also be interested in testing hypotheses about the slope parameter. We consider testing hypotheses of the form <span class="math display">\[
-\begin{array}{lclcl}
-H_0\text{: } \beta_1 \geq 0 &amp;\text{ or } &amp; H_0\text{: } \beta_1 = 0 &amp;\text{ or } &amp; H_0\text{: } \beta_1 \leq 0\\
-H_1\text{: } \beta_1 &lt; 0 &amp;&amp; H_1\text{: } \beta_1 \neq 0 &amp;&amp; H_1\text{: } \beta_1 &gt; 0.
-\end{array}
-\]</span> In light of the result in <a href="#prp-slrslopedist" class="quarto-xref">Proposition&nbsp;<span>41.4</span></a>, we can test the above sets of hypotheses at significance level <span class="math inline">\(\alpha\)</span> by computing the test statistic <span id="eq-Ttest"><span class="math display">\[
-T_{\operatorname{test}}= \frac{\hat \beta_1}{\hat \sigma /\sqrt{S_{xx}}}
-\tag{41.2}\]</span></span> and rejecting <span class="math inline">\(H_0\)</span> if <span class="math display">\[
-\begin{array}{lclcl}
-T_{\operatorname{test}}&lt; -t_{n-2,\alpha} &amp;\text{ or } &amp; |T_{\operatorname{test}}| &gt; t_{n-2,\alpha/2}&amp;\text{ or } &amp; T_{\operatorname{test}}&gt; t_{n-2,\alpha}.
-\end{array}.
-\]</span> The corresponding p-values are given by the probabilities <span class="math display">\[
-\begin{array}{lclcl}
-P(T &lt; T_{\operatorname{test}}) &amp;\text{ or } &amp; 2 \times P(T &gt; |T_{\operatorname{test}}|) &amp; \text{ or } &amp; P(T &gt; T_{\operatorname{test}}),
-\end{array}
-\]</span> where <span class="math inline">\(T\sim t_{n-2}\)</span> and <span class="math inline">\(T_{\operatorname{test}}\)</span> represents the observed value of the test statistic.</p>
-<p>Here we compute the value of the test statistic <span class="math inline">\(T_{\operatorname{test}}\)</span> on the beryllium data:</p>
+<p>Beyond constructing a confidence interval for <span class="math inline">\(\beta_1\)</span>, we may also be interested in testing hypotheses about the slope parameter. We consider testing hypotheses of the form:</p>
+<ol type="1">
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 \leq 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 &gt; 0\)</span>.</li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 \geq 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 &lt; 0\)</span>.</li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 = 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 \neq 0\)</span>.</li>
+</ol>
+<p>We could specify a null value different from <span class="math inline">\(0\)</span> in the above, but we seldom do so, as we are primarily interested in testing whether there is <em>any</em> relationship between the covariate and the response, or, if we want to be more specific, whether there is any <em>positive</em> or <em>negative</em> relationship. In light of the result in <a href="#prp-slrslopedist" class="quarto-xref">Proposition&nbsp;<span>41.4</span></a>, we can test the above sets of hypotheses as prescribed next:</p>
+<div id="prp-hyptestslr" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 41.5 (Tests of hypotheses about the slope parameter)</strong></span> Under the conditions of the simple linear regression model given in <a href="#def-slr_model" class="quarto-xref">Definition&nbsp;<span>41.2</span></a> and with <span id="eq-Ttest"><span class="math display">\[
+T_{\operatorname{test}}= \frac{\hat \beta_1}{\hat \sigma /\sqrt{S_{xx}}},
+\tag{41.2}\]</span></span> the following tests have size <span class="math inline">\(\alpha\)</span>:</p>
+<ol type="1">
+<li>Reject <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 \leq 0\)</span> in favor of <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 &gt; 0\)</span> if <span class="math inline">\(T_{\operatorname{test}}&gt; t_{n-2,\alpha}\)</span>.</li>
+<li>Reject <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 \geq 0\)</span> in favor of <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 &lt; 0\)</span> if <span class="math inline">\(T_{\operatorname{test}}&lt; -t_{n-2,\alpha}\)</span>.</li>
+<li>Reject <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 = 0\)</span> in favor of <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 \neq 0\)</span> if <span class="math inline">\(|T_{\operatorname{test}}| &gt; t_{n-2,\alpha/2}\)</span>.</li>
+</ol>
+</div>
+<p>One obtains <span class="math inline">\(p\)</span> values in the usual way—by finding the significance level <span class="math inline">\(\alpha^*\)</span> which sets the critical value equal to the value of the test statistic <span class="math inline">\(T_{\operatorname{test}}\)</span>. Here we compute the value of the test statistic <span class="math inline">\(T_{\operatorname{test}}\)</span> on the beryllium data:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Ttest <span class="ot">&lt;-</span> b1<span class="sc">/</span>(sigma_hat<span class="sc">/</span><span class="fu">sqrt</span>(Sxx))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -914,13 +915,13 @@ F-statistic: 104.4 on 1 and 36 DF,  p-value: 3.477e-12</code></pre>
 <h3 data-number="41.3.3" class="anchored" data-anchor-id="confidence-interval-for-the-height-of-the-line"><span class="header-section-number">41.3.3</span> Confidence interval for the height of the line</h3>
 <p>Beyond making inferences on the slope (via the construction of confidence intervals or testing hypotheses, as we have done), we are also interested in using the fitted (estimated) simple linear regression model to estimate the expected value of the response <span class="math inline">\(Y_i\)</span> given that the covariate <span class="math inline">\(x_i\)</span> is equal to some value. Let <span class="math inline">\(x_{\operatorname{new}}\)</span> represent a covariate value, possible never observed in the data at hand. Then we would like to know what response values we can expect, on average, when the covariate takes the value <span class="math inline">\(x_{\operatorname{new}}\)</span>. That is, we would like to estimate the height of the true regression line <span class="math inline">\(\beta_0 + \beta_1x_{\operatorname{new}}\)</span> at the covariate value <span class="math inline">\(x_{\operatorname{new}}\)</span>. We will use as our estimator of this quantity the height of the least-squares line <span class="math inline">\(\hat \beta_0 + \hat \beta_1 x_{\operatorname{new}}\)</span> at this value of the covariate. The following result will show us how to construct a confidence interval for the height of the true regression line based on the height of the least-squares line at covariate value <span class="math inline">\(x_{\operatorname{new}}\)</span>.</p>
 <div id="prp-heightlsline" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 41.5 (Sampling distribution of height of least-squares line)</strong></span> Under the assumptions of the simple linear regresion model we have <span class="math display">\[
+<p><span class="theorem-title"><strong>Proposition 41.6 (Sampling distribution of height of least-squares line)</strong></span> Under the assumptions of the simple linear regresion model we have <span class="math display">\[
 \hat \beta_0 + \hat \beta_1 x_{\operatorname{new}} \sim \text{Normal}\left(\beta_0 + \beta_1 x_{\operatorname{new}},\sigma^2\left[\frac{1}{n} + \frac{(x_{\operatorname{new}} - \bar x_n)^2}{S_{xx}}\right]\right),
 \]</span> where this is independent of <span class="math inline">\(\hat \sigma\)</span>, so that <span class="math display">\[
 \frac{\hat \beta_0 + \hat \beta_1 x_{\operatorname{new}} - (\beta_0 + \beta_1 x_{\operatorname{new}})}{\hat \sigma \sqrt{ \dfrac{1}{n} + \dfrac{(x_{\operatorname{new}} - \bar x_n)^2}{S_{xx}}}}  \sim t_{n-2}.
 \]</span></p>
 </div>
-<p>It follows from <a href="#prp-heightlsline" class="quarto-xref">Proposition&nbsp;<span>41.5</span></a> that a <span class="math inline">\((1-\alpha)100\%\)</span> confidence interval can be constructed for <span class="math inline">\(\beta_0 +\beta_1 x_{\operatorname{new}}\)</span> as <span id="eq-slrconfint"><span class="math display">\[
+<p>It follows from <a href="#prp-heightlsline" class="quarto-xref">Proposition&nbsp;<span>41.6</span></a> that a <span class="math inline">\((1-\alpha)100\%\)</span> confidence interval can be constructed for <span class="math inline">\(\beta_0 +\beta_1 x_{\operatorname{new}}\)</span> as <span id="eq-slrconfint"><span class="math display">\[
 \hat \beta_0 + \hat \beta_1 x_{\operatorname{new}} \pm t_{n-2,\alpha/2}\hat \sigma \sqrt{ \frac{1}{n} + \frac{(x_{\operatorname{new}} - \bar x_n)^2}{S_{xx}}}.
 \tag{41.3}\]</span></span></p>
 <p>In the beryllium data example, suppose we are interested in the expected beryllium level of stars with temperature <span class="math inline">\(x_{\operatorname{new}}= 5700\)</span>, we may compute this as follows:</p>
@@ -981,7 +982,7 @@ Figure&nbsp;41.4: Confidence intervals for the height of the true regression lin
 <h3 data-number="41.3.4" class="anchored" data-anchor-id="prediction-interval-for-a-new-response-value"><span class="header-section-number">41.3.4</span> Prediction interval for a new response value</h3>
 <p>Consider trying to guess the value of a response <span class="math inline">\(Y_{\operatorname{new}}\)</span> associated with a new observation <span class="math inline">\((x_{\operatorname{new}},Y_{\operatorname{new}})\)</span>. In the beryllium data example, you might try to guess the log-beryllium level in a star with temperature, say <span class="math inline">\(x_{\operatorname{new}}= 5700\)</span>. Using the fitted simple linear regression model, a natural guess is the fitted value <span class="math inline">\(\hat Y_{\operatorname{new}}= \hat \beta_0 + \hat \beta_1 x_{\operatorname{new}}\)</span>, which is the height of the least-squares line at the covariate value <span class="math inline">\(x_{\operatorname{new}}\)</span>. Since <span class="math inline">\(Y_{\operatorname{new}}\)</span> is a random variable, we know that we cannot really predict its value in advance, so we should not put much trust in our guess. Just as we construct confidence intervals for unknown parameter values based on estimators computed on sample data, we should include with our guess a margin of error; that is, we should guess with an interval rather than with a single number. Since we are trying to guess the value of a random variable rather than trying to estimate the value of a parameter, we will call our interval guess a <em>prediction interval</em> rather than a confidence interval. We will aim to construct a prediction interval within which the value of <span class="math inline">\(Y_{\operatorname{new}}\)</span>, whenever it is eventually observed, will fall with some probability, say <span class="math inline">\(1 - \alpha\)</span>. We will make use of the following result to construct such an interval:</p>
 <div id="prp-slr_predint" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 41.6</strong></span> In the simple linear regression model, given a new covariate value <span class="math inline">\(x_{\operatorname{new}}\)</span>, we have <span class="math display">\[
+<p><span class="theorem-title"><strong>Proposition 41.7</strong></span> In the simple linear regression model, given a new covariate value <span class="math inline">\(x_{\operatorname{new}}\)</span>, we have <span class="math display">\[
 Y_{\operatorname{new}}- \hat \beta_0 + \hat \beta_1 x_{\operatorname{new}}\sim \mathcal{N}\Big(0,\sigma^2\Big[1 + \frac{1}{n} + \frac{(x_{\operatorname{new}}- \bar x_n)^2}{S_{xx}}\Big]\Big)
 \]</span> independently of <span class="math inline">\((n-2)\hat \sigma^2/\sigma^2 \sim \chi_{n-2}^2\)</span>, so that <span class="math display">\[
 \frac{Y_{\operatorname{new}}- \hat \beta_0 + \hat \beta_1 x_{\operatorname{new}}}{\hat \sigma \sqrt{ 1 + \dfrac{1}{n} + \dfrac{(x_{\operatorname{new}}- \bar x_n)^2}{S_{xx}}}}  \sim t_{n-2}.
@@ -1055,16 +1056,20 @@ Figure&nbsp;41.5: Prediction intervals for a new observation and confidence inte
 <section id="sums-of-squares-and-anova" class="level2" data-number="41.4">
 <h2 data-number="41.4" class="anchored" data-anchor-id="sums-of-squares-and-anova"><span class="header-section-number">41.4</span> Sums of squares and ANOVA</h2>
 <p>It is important to be familiar with some other quantities which are typically included in simple linear regression output. In simple linear regression, as well as in other linear models, one is often interested in summarizing how much the model was able to “explain”. Specifically, one might wonder how much is gained by considering the covariate values <span class="math inline">\(x_1,\dots,x_n\)</span> as predictors of the values of the responses <span class="math inline">\(Y_1,\dots,Y_n\)</span>. To answer this question, we define the following quantities called <em>sums of squares</em>.</p>
-<ul>
-<li><p>The <em>total sum of squares</em>: <span class="math inline">\(\quad \displaystyle \operatorname{SS}_{\operatorname{Tot}}= \sum_{i=1}^n(Y_i - \bar Y_n)^2\)</span></p></li>
-<li><p>The <em>regression sum of squares</em>: <span class="math inline">\(\quad \displaystyle \operatorname{SS}_{\operatorname{Reg}}=  \sum_{i=1}^n(\hat Y_i - \bar Y_n)^2\)</span></p></li>
-<li><p>The <em>error sum of squares</em>: <span class="math inline">\(\quad \displaystyle \operatorname{SS}_{\operatorname{Error}}=  \sum_{i=1}^n(Y_i - \hat Y_i)^2\)</span></p></li>
-</ul>
+<div id="def-SSslr" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 41.3 (Sums of squares in simple linear regression)</strong></span> In the simple linear regression model from <a href="#def-slr_model" class="quarto-xref">Definition&nbsp;<span>41.2</span></a>, define the following sums of squares:</p>
+<ol type="1">
+<li><p><em>Total sum of squares</em>: <span class="math inline">\(\quad \displaystyle \operatorname{SS}_{\operatorname{Tot}}= \sum_{i=1}^n(Y_i - \bar Y_n)^2\)</span>.</p></li>
+<li><p><em>Regression sum of squares</em>: <span class="math inline">\(\quad \displaystyle \operatorname{SS}_{\operatorname{Reg}}=  \sum_{i=1}^n(\hat Y_i - \bar Y_n)^2\)</span></p></li>
+<li><p><em>Error sum of squares</em>: <span class="math inline">\(\quad \displaystyle \operatorname{SS}_{\operatorname{Error}}=  \sum_{i=1}^n(Y_i - \hat Y_i)^2\)</span></p></li>
+</ol>
+</div>
 <p>In addition, we define a quantity called the <em>coefficient of determination</em> as <span class="math display">\[
 R^2 = \frac{\operatorname{SS}_{\operatorname{Reg}}}{\operatorname{SS}_{\operatorname{Tot}}}.
 \]</span> The above definitions allow us to decompose the total sum of squares as <span class="math display">\[
 \operatorname{SS}_{\operatorname{Tot}}= \operatorname{SS}_{\operatorname{Reg}}+ \operatorname{SS}_{\operatorname{Error}}.
-\]</span> Note that this fact tells us we will always have <span class="math inline">\(R^2 \in [0,1]\)</span>. Moreover we can interpret <span class="math inline">\(R^2\)</span> as the proportion of variation in <span class="math inline">\(Y_1,\dots,Y_n\)</span> accounted for—or “explained”—by our simple linear regression model. We will define these quantities in exactly the same way in <span class="quarto-unresolved-ref">?sec-multiple_linear_regression</span> in the case of multiple linear regression.</p>
+\]</span> Note that this fact tells us we will always have <span class="math inline">\(R^2 \in [0,1]\)</span>. Moreover we can interpret <span class="math inline">\(R^2\)</span> as the proportion of variation in <span class="math inline">\(Y_1,\dots,Y_n\)</span> accounted for—or “explained”—by our simple linear regression model.</p>
+<!-- We will define these quantities in exactly the same way in @sec-multiple_linear_regression in the case of multiple linear regression. -->
 <p>Note that the value of <span class="math inline">\(R^2\)</span> is printed in the output of <code>summary(lm(Y~x))</code> as <code>Multiple R-squared</code>.</p>
 <p>We find that the sums of squares defined above, when appropriately scaled, have chi-squared distributions. In particular we have</p>
 <ul>
@@ -1091,8 +1096,8 @@ Table&nbsp;41.1: ANOVA table for simple linear regression
 <th style="text-align: left;">Df</th>
 <th style="text-align: left;">SS</th>
 <th style="text-align: left;">MS</th>
-<th style="text-align: left;">F-value</th>
-<th style="text-align: left;">p-value</th>
+<th style="text-align: left;"><span class="math inline">\(F\)</span> value</th>
+<th style="text-align: left;"><span class="math inline">\(p\)</span> value</th>
 </tr>
 </thead>
 <tbody>
@@ -1130,7 +1135,9 @@ Table&nbsp;41.1: ANOVA table for simple linear regression
 <li><span class="math inline">\(\displaystyle F_{\operatorname{test}}= \frac{\operatorname{MS}_{\operatorname{Reg}}}{\operatorname{MS}_{\operatorname{Error}}}\)</span></li>
 <li><span class="math inline">\(P(F &gt; F_{\operatorname{test}})\)</span>, where this is computed under <span class="math inline">\(F \sim F_{1,n-2}\)</span>.</li>
 </ul>
-<p>These quantities are the test statistic and p-value for a test called the <em>overall F-test</em>. We will give more attention to the overall F-test when we come to multiple linear regression in <span class="quarto-unresolved-ref">?sec-multiple_linear_regression</span>. In simple linear regression, the overall F-test simply tests <span class="math display">\[
+<p>These quantities are the test statistic and p-value for a test called the <em>overall <span class="math inline">\(F\)</span> test</em>. In simple linear regression, the overall <span class="math inline">\(F\)</span> test simply tests</p>
+<!-- We will give more attention to the overall F-test when we come to multiple linear regression in @sec-multiple_linear_regression. In simple linear regression, the overall F-test simply tests -->
+<p><span class="math display">\[
 \text{$H_0$: $\beta_1 = 0$ versus $H_1$: $\beta_1 \neq 0$}.
 \]</span> In addition, in simple linear regression we have <span class="math inline">\(F_{\operatorname{test}}= T_{\operatorname{test}}^2\)</span>, where <span class="math inline">\(T_{\operatorname{test}}\)</span> is the test statistic defined in <a href="#eq-Ttest" class="quarto-xref">Equation&nbsp;<span>41.2</span></a>; for what it’s worth we also have <span class="math display">\[
 F_{\operatorname{test}}= \frac{(n-2)r_{xY}^2}{1-r_{xY}^2}.
@@ -1682,7 +1689,7 @@ Figure&nbsp;41.20
 </div>
 <p>We introduce two quantites used in simple linear regression for identifying outliers. The first is the <em>leverage</em> of a point, which has strictly to do with how far away the <span class="math inline">\(x\)</span>-coordinate of a point lies from the center of the observed covariate values.</p>
 <div id="def-leverage_slr" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 41.3 (Leverage in simple linear regression)</strong></span> The <em>leverages</em> of the observed data points <span class="math inline">\((x_1,Y_n),\dots,(x_n,Y_n)\)</span> are defined as <span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 41.4 (Leverage in simple linear regression)</strong></span> The <em>leverages</em> of the observed data points <span class="math inline">\((x_1,Y_n),\dots,(x_n,Y_n)\)</span> are defined as <span class="math display">\[
 \text{lev}_i = \frac{1}{n} + \frac{(x_i - \bar x_n)^2}{S_{xx}}
 \]</span> for <span class="math inline">\(i =1,\dots,n\)</span>.</p>
 </div>
@@ -1691,7 +1698,7 @@ Figure&nbsp;41.20
 <p>Note that an observation may have a high leverage value but not be considered an outlier, as the pair <span class="math inline">\((x_i,Y_i)\)</span> may still lie close to the least-squares line.</p>
 <p>The second quantity useful for identifying outliers is called <em>Cook’s distance</em>. To define the Cook’s distances, we must first introduce some new notation: For each <span class="math inline">\(j=1,\dots,n\)</span>, let <span class="math inline">\(\hat Y_{j(i)}\)</span> denote the predicted value for <span class="math inline">\(Y_j\)</span> when obtained by fitting the model to the data after removing observation <span class="math inline">\(i\)</span>. Cook’s distance compares the value <span class="math inline">\(\hat Y_{j(i)}\)</span> with the predicted value <span class="math inline">\(\hat Y_j\)</span>, where the latter is the prediction based on the complete data set.</p>
 <div id="def-cooksDslr" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 41.4 (Cook’s distance)</strong></span> The <em>Cook’s distances</em> of the observations <span class="math inline">\((x_1,Y_1),\dots,(x_n,Y_n)\)</span> are defined as <span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 41.5 (Cook’s distance)</strong></span> The <em>Cook’s distances</em> of the observations <span class="math inline">\((x_1,Y_1),\dots,(x_n,Y_n)\)</span> are defined as <span class="math display">\[
 D_i = \frac{1}{2 \hat \sigma^2}\sum_{j = 1 }^n(\hat Y_j - \hat Y_{j(i)})^2 = \frac{\hat e_i^2}{2\hat \sigma^2}\frac{\text{lev}_i}{(1 - \text{lev}_i)^2}
 \]</span> for <span class="math inline">\(i =1,\dots,n\)</span>.</p>
 </div>
