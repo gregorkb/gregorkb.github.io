@@ -608,7 +608,7 @@ f(x;\mu,\sigma) = \frac{1}{\sqrt{2\pi} \sigma} \exp\Big[-\frac{1}{2}\Big(\frac{x
 </div>
 <p>Since the PDF <span class="math inline">\(f\)</span> is function of <span class="math inline">\(x\)</span> which depends upon the values of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>, the above uses the convention of putting <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> after a semicolon: <span class="math inline">\(f(x;\mu,\sigma)\)</span>.</p>
 <p>We will write <span class="math inline">\(X \sim \mathcal{N}(\mu,\sigma^2)\)</span> to say that <span class="math inline">\(X\)</span> has the normal distribution with location parameter <span class="math inline">\(\mu\)</span> and scale parameter <span class="math inline">\(\sigma\)</span>. <a href="#fig-normal_musigma" class="quarto-xref">Figure&nbsp;<span>13.1</span></a> shows the bell-shaped curve of the normal distribution PDF. From the plot we see that the PDF is centered at <span class="math inline">\(\mu\)</span> and that as we move away from <span class="math inline">\(\mu\)</span> by multiples of <span class="math inline">\(\sigma\)</span> we capture more and more of the probability under the curve.</p>
-<div id="cell-fig-normal_musigma" class="cell" data-execution_count="1">
+<div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -637,20 +637,25 @@ f(x;\mu,\sigma) = \frac{1}{\sqrt{2\pi} \sigma} \exp\Big[-\frac{1}{2}\Big(\frac{x
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>         <span class="vs">r'</span><span class="dv">$\m</span><span class="vs">u </span><span class="op">+</span><span class="vs"> 3 </span><span class="dv">\s</span><span class="vs">igma</span><span class="dv">$</span><span class="vs">'</span>]</span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>ax.set_xticks([i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="op">-</span><span class="dv">3</span>,<span class="dv">4</span>)])</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(ticks)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>ax.set_yticks([])</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'left'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">f</span><span class="kw">(</span><span class="vs">x;</span><span class="dv">\m</span><span class="vs">u,</span><span class="dv">\s</span><span class="vs">igma</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">x</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>ax.set_yticks([])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-stdout">
+<pre><code>[]</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'left'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">f</span><span class="kw">(</span><span class="vs">x;</span><span class="dv">\m</span><span class="vs">u,</span><span class="dv">\s</span><span class="vs">igma</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">x</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
 <div id="fig-normal_musigma" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-normal_musigma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="normal_distribution_files/figure-html/fig-normal_musigma-output-1.png" width="547" height="376" class="figure-img">
+<img src="normal_distribution_files/figure-html/fig-normal_musigma-1.png" class="img-fluid figure-img" width="480">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal_musigma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13.1: Probability density function of the <span class="math inline">\(\mathcal{N}(\mu,\sigma^2)\)</span> distribution.
@@ -668,38 +673,44 @@ Figure&nbsp;13.1: Probability density function of the <span class="math inline">
 <p><span class="theorem-title"><strong>Proposition 13.1 (Mean and variance of the normal distribution)</strong></span> If <span class="math inline">\(X \sim \mathcal{N}(\mu,\sigma^2)\)</span> then <span class="math inline">\(\mathbb{E}X = \mu\)</span> and <span class="math inline">\(\operatorname{Var}X = \sigma^2\)</span>.</p>
 </div>
 <p>From now on, when we have <span class="math inline">\(X \sim \mathcal{N}(\mu,\sigma^2)\)</span>, we will refer to <span class="math inline">\(\mu\)</span> as the mean and to <span class="math inline">\(\sigma\)</span> as the standard deviation. <a href="#fig-normal_severalpdfs" class="quarto-xref">Figure&nbsp;<span>13.2</span></a> shows the PDFs of normal distributions for several combinations of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>. We see that <span class="math inline">\(\mu\)</span> positions the center of the PDF along the horizontal axis and <span class="math inline">\(\sigma\)</span> governs the spread of the PDF.</p>
-<div id="cell-fig-normal_severalpdfs" class="cell" data-execution_count="2">
+<div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">5.5</span>,<span class="fl">5.5</span>,<span class="dv">501</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>fx <span class="op">=</span> stats.norm.pdf(x,<span class="dv">0</span>,<span class="dv">1</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>fx2 <span class="op">=</span> stats.norm.pdf(x,<span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>fx3 <span class="op">=</span> stats.norm.pdf(x,<span class="op">-</span><span class="dv">2</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>fx4 <span class="op">=</span> stats.norm.pdf(x,<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>fx5 <span class="op">=</span> stats.norm.pdf(x,<span class="dv">3</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx,label<span class="op">=</span><span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athcal{N}</span><span class="kw">(</span><span class="vs">0,1</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx2,label<span class="op">=</span><span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athcal{N}</span><span class="kw">(</span><span class="vs">1,1</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>,linestyle<span class="op">=</span><span class="st">'dotted'</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx3,label<span class="op">=</span><span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athcal{N}</span><span class="kw">(</span><span class="vs">-2,1/2</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>,linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx4,label<span class="op">=</span><span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athcal{N}</span><span class="kw">(</span><span class="vs">-1,2</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>,linestyle<span class="op">=</span>(<span class="dv">0</span>, (<span class="dv">5</span>, <span class="dv">10</span>)))</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx5,label<span class="op">=</span><span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athcal{N}</span><span class="kw">(</span><span class="vs">3,1/4</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>,linestyle<span class="op">=</span><span class="st">'-.'</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>ax.set_yticks([])</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'left'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">f</span><span class="kw">(</span><span class="vs">x;</span><span class="dv">\m</span><span class="vs">u,</span><span class="dv">\s</span><span class="vs">igma</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">x</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="st">'upper left'</span>,frameon<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">5.5</span>,<span class="fl">5.5</span>,<span class="dv">501</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>fx <span class="op">=</span> stats.norm.pdf(x,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>fx2 <span class="op">=</span> stats.norm.pdf(x,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>fx3 <span class="op">=</span> stats.norm.pdf(x,<span class="op">-</span><span class="dv">2</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>fx4 <span class="op">=</span> stats.norm.pdf(x,<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>fx5 <span class="op">=</span> stats.norm.pdf(x,<span class="dv">3</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx,label<span class="op">=</span><span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athcal{N}</span><span class="kw">(</span><span class="vs">0,1</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx2,label<span class="op">=</span><span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athcal{N}</span><span class="kw">(</span><span class="vs">1,1</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>,linestyle<span class="op">=</span><span class="st">'dotted'</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx3,label<span class="op">=</span><span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athcal{N}</span><span class="kw">(</span><span class="vs">-2,1/2</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>,linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx4,label<span class="op">=</span><span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athcal{N}</span><span class="kw">(</span><span class="vs">-1,2</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>,linestyle<span class="op">=</span>(<span class="dv">0</span>, (<span class="dv">5</span>, <span class="dv">10</span>)))</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>ax.plot(x,fx5,label<span class="op">=</span><span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athcal{N}</span><span class="kw">(</span><span class="vs">3,1/4</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>,linestyle<span class="op">=</span><span class="st">'-.'</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>ax.set_yticks([])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-stdout">
+<pre><code>[]</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'left'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">f</span><span class="kw">(</span><span class="vs">x;</span><span class="dv">\m</span><span class="vs">u,</span><span class="dv">\s</span><span class="vs">igma</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">x</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="st">'upper left'</span>,frameon<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
 <div id="fig-normal_severalpdfs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-normal_severalpdfs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="normal_distribution_files/figure-html/fig-normal_severalpdfs-output-1.png" width="650" height="473" class="figure-img">
+<img src="normal_distribution_files/figure-html/fig-normal_severalpdfs-3.png" class="img-fluid figure-img" width="576">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal_severalpdfs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13.2: Probability density functions of several normal distributions.
@@ -856,15 +867,16 @@ p &amp;=P(Z \leq q_Z) \\
 <ol type="1">
 <li><p>Find an interval within which <span class="math inline">\(50\%\)</span> of the heights lie.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p></li>
 <li><p>Find an interval centered at the mean within which <span class="math inline">\(50\%\)</span> of the heights lie.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p></li>
-<li><p>Let <span class="math inline">\(X\)</span> be the height of a randomly selected American female over the age of <span class="math inline">\(20\)</span>. Find <span class="math inline">\(P(X &lt; 60 \text{ or } X &gt; 66)\)</span>.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p></li>
+<li><p>Give the <span class="math inline">\(15\)</span>th percentile of the heights of American females over the age of <span class="math inline">\(20\)</span>.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p></li>
+<li><p>Let <span class="math inline">\(X\)</span> be the height of a randomly selected American female over the age of <span class="math inline">\(20\)</span>. Find <span class="math inline">\(P(X &lt; 60 \text{ or } X &gt; 66)\)</span>.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p></li>
 </ol>
 </div>
 <div id="exr-babyfood" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 13.5 (Baby food jars)</strong></span> You sell jars of baby food labeled as weighing <span class="math inline">\(113\text{g}\)</span>. Suppose your process results in jar weights with the <span class="math inline">\(\mathcal{N}(120,4^2)\)</span> distribution and that you will be fined if more than <span class="math inline">\(2\%\)</span> of your jars weigh less than <span class="math inline">\(113\text{g}\)</span>.</p>
 <ol type="1">
-<li><p>What proportion of your jars weigh less than <span class="math inline">\(113\text{g}\)</span>? <a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p></li>
-<li><p>To what must you increase <span class="math inline">\(\mu\)</span> to avoid being fined? <a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p></li>
-<li><p>Keeping <span class="math inline">\(\mu = 120\text{g}\)</span>, to what must you reduce <span class="math inline">\(\sigma\)</span> to avoid being fined? <a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p></li>
+<li><p>What proportion of your jars weigh less than <span class="math inline">\(113\text{g}\)</span>? <a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p></li>
+<li><p>To what must you increase <span class="math inline">\(\mu\)</span> to avoid being fined? <a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p></li>
+<li><p>Keeping <span class="math inline">\(\mu = 120\text{g}\)</span>, to what must you reduce <span class="math inline">\(\sigma\)</span> to avoid being fined? <a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></p></li>
 </ol>
 </div>
 
@@ -882,7 +894,8 @@ p &amp;=P(Z \leq q_Z) \\
 <li id="fn7"><p> The corresponding interval for the standard Normal distribution can be found by looking at the <span class="math inline">\(Z\)</span> table. We find that <span class="math inline">\(50\%\)</span> of the area under the standard normal PDF lies over the interval <span class="math inline">\([-.674,0.674]\)</span>. Transforming this interval back according to <a href="#eq-xworld" class="quarto-xref">Equation&nbsp;<span>13.2</span></a> gives <span class="math display">\[
 a = 64 + 2.6(-0.674) = 62.2476 \quad \text{ and } \quad b = 64 + 2.6(0.674) = 65.7524.
 \]</span> So the interval is <span class="math inline">\((62.2476,65.7524)\)</span>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>To obtain the probability we transform into the <span class="math inline">\(Z\)</span> world by <span class="math display">\[
+<li id="fn8"><p>We first obtain the <span class="math inline">\(0.15\)</span> quantile of the standard normal distribution, which is <span class="math inline">\(q_Z = -1.036\)</span>, obtained with <code>qnorm(0.15)</code>. Transforming this back into the <span class="math inline">\(X\)</span> world via <a href="#eq-xworld" class="quarto-xref">Equation&nbsp;<span>13.2</span></a> gives <span class="math inline">\(q = 64 + (-1.036)2.6 = 61.305\)</span>.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>To obtain the probability we transform into the <span class="math inline">\(Z\)</span> world by <span class="math display">\[
 -1.54 = (60 - 64)/2.6 \quad \text{ and } \quad 0.77 = (66-64)/2.6.
 \]</span> Then the probability is given by <span class="math display">\[
 \begin{align*}
@@ -890,24 +903,24 @@ P(Z &lt; -1.54 \text{ or } Z &gt; 0.77) &amp;= P(Z &lt; -1.54) + P(Z &gt; 0.77) 
 &amp;= 0.0618 + 0.2206 \\
 &amp;= 0.2824.
 \end{align*}
-\]</span><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>Letting <span class="math inline">\(X \sim \mathcal{N}(120,4^2)\)</span>, we want to find <span class="math inline">\(P(X &lt; 113)\)</span>. We have <span class="math display">\[
+\]</span><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Letting <span class="math inline">\(X \sim \mathcal{N}(120,4^2)\)</span>, we want to find <span class="math inline">\(P(X &lt; 113)\)</span>. We have <span class="math display">\[
     P(X &lt; 113) = P((X - 120)/4 &lt;(113-120)/4) = P(Z &lt; -1.75) = 0.0401,
-    \]</span> so the <span class="math inline">\(0.0401\)</span> is the proportion of jars that weigh less than <span class="math inline">\(113\)</span> grams. If a jar is selected at random, its weight will be less than <span class="math inline">\(113\)</span> with probability <span class="math inline">\(0.0401\)</span>.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>Now let <span class="math inline">\(X \sim \mathcal{N}(\mu, 4^2)\)</span>, where we do not yet specify a value for <span class="math inline">\(\mu\)</span>. We want to have <span class="math inline">\(P(X &lt; 113) \leq 0.02\)</span>. So we write <span class="math display">\[
+    \]</span> so the <span class="math inline">\(0.0401\)</span> is the proportion of jars that weigh less than <span class="math inline">\(113\)</span> grams. If a jar is selected at random, its weight will be less than <span class="math inline">\(113\)</span> with probability <span class="math inline">\(0.0401\)</span>.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Now let <span class="math inline">\(X \sim \mathcal{N}(\mu, 4^2)\)</span>, where we do not yet specify a value for <span class="math inline">\(\mu\)</span>. We want to have <span class="math inline">\(P(X &lt; 113) \leq 0.02\)</span>. So we write <span class="math display">\[
    P(X &lt; 113) = P((X - \mu) / 4 &lt; (113 - \mu)/4) = P(Z &lt; (113- \mu)/4) \leq 0.02.
     \]</span> Denote by <span class="math inline">\(q_Z\)</span> the <span class="math inline">\(0.02\)</span> quantile of <span class="math inline">\(Z\sim \mathcal{N}(0,1)\)</span>. Then by drawing a picture, we can see that the above implies <span class="math display">\[
     (113 - \mu) /4 \leq q_Z \iff \mu \geq 113 - 4 q_Z.
     \]</span> Plugging in <span class="math inline">\(q_Z = -2.053749\)</span>, we obtain <span class="math display">\[
     \mu \geq 113 - 4 (-2.053749) = 121.215.
-    \]</span> So, in order that the proportion of jars with weights less than <span class="math inline">\(113\text{g}\)</span> does not exceed <span class="math inline">\(0.02\)</span>, we need to increase <span class="math inline">\(\mu\)</span> to at least <span class="math inline">\(121.215\)</span>.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p>Now we let <span class="math inline">\(X \sim \mathcal{N}(120, \sigma^2)\)</span>, where we do not yet specify a value for <span class="math inline">\(\sigma\)</span>. We want to have <span class="math inline">\(P(X &lt; 113) \leq 0.02\)</span>. So we write <span class="math display">\[
+    \]</span> So, in order that the proportion of jars with weights less than <span class="math inline">\(113\text{g}\)</span> does not exceed <span class="math inline">\(0.02\)</span>, we need to increase <span class="math inline">\(\mu\)</span> to at least <span class="math inline">\(121.215\)</span>.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Now we let <span class="math inline">\(X \sim \mathcal{N}(120, \sigma^2)\)</span>, where we do not yet specify a value for <span class="math inline">\(\sigma\)</span>. We want to have <span class="math inline">\(P(X &lt; 113) \leq 0.02\)</span>. So we write <span class="math display">\[
     P(X &lt; 113) = P((X - 120) / \sigma &lt; (113 - 120)/\sigma) = P(Z &lt; -7/\sigma) \leq 0.02.
     \]</span> Again, letting <span class="math inline">\(q_Z\)</span> denote the <span class="math inline">\(0.02\)</span> quantile of <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>, drawing a picture shows <span class="math display">\[
     -7/\sigma \leq q_Z \iff \sigma \leq -7/q_Z.
     \]</span> Note that the inequality changes direction when we divide both sides by <span class="math inline">\(q_Z\)</span>, as this is a negative number. Plugging in <span class="math inline">\(q_Z = -2.053749\)</span>, we obtain <span class="math display">\[
     \sigma \leq -7/(-2.053749) = 3.408401.
-    \]</span> So, in order that the proportion of jar weights less than <span class="math inline">\(113\)</span> grams be no greater than <span class="math inline">\(0.02\)</span>, we can allow a value of <span class="math inline">\(\sigma\)</span> of at most <span class="math inline">\(3.408401\)</span>.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+    \]</span> So, in order that the proportion of jar weights less than <span class="math inline">\(113\)</span> grams be no greater than <span class="math inline">\(0.02\)</span>, we can allow a value of <span class="math inline">\(\sigma\)</span> of at most <span class="math inline">\(3.408401\)</span>.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
