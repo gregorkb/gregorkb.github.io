@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>20&nbsp; The central limit theorem – Statistical Methods</title>
+<title>21&nbsp; The central limit theorem – Statistical Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./sample_proportion.html" rel="next">
-<link href="./normal_qq_plot.html" rel="prev">
+<link href="./boxplots.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -160,7 +160,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./random_sample.html">III: Random samples</a></li><li class="breadcrumb-item"><a href="./central_limit_theorem.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The central limit theorem</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./random_sample.html">III: Random samples</a></li><li class="breadcrumb-item"><a href="./central_limit_theorem.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">The central limit theorem</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -333,25 +333,31 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./normal_qq_plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Normal QQ plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./boxplots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Boxplots</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./central_limit_theorem.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sample_proportion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Sample proportion</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Sample proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./normal_approx_binomial.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Normal approximation to the binomial</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Normal approximation to the binomial</span></span></a>
   </div>
 </li>
       </ul>
@@ -368,43 +374,43 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statistical_inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Statistical inference</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Statistical inference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">First confidence interval for a normal mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">First confidence interval for a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./confint_for_normal_variance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Confidence interval for a normal variance</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Confidence interval for a normal variance</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./t_confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Revised confidence interval for a normal mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Revised confidence interval for a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./large_sample_confint_for_mean.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Large-sample confidence interval for a mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Large-sample confidence interval for a mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./confint_for_proportion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Confidence interval for a proportion</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Confidence interval for a proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sample_size_determination.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Sample size determination</span></span></a>
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Sample size determination</span></span></a>
   </div>
 </li>
       </ul>
@@ -421,43 +427,43 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./hyp_test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./first_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">First tests about about a normal mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">First tests about about a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./t_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Revised tests about about a normal mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Revised tests about about a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./large_sample_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Large-sample tests about about a mean</span></span></a>
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Large-sample tests about about a mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./hyp_test_proportion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Tests for a proportion</span></span></a>
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Tests for a proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./p_values.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">P values</span></span></a>
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">P values</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./power_ztest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -474,25 +480,31 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./comparing_two_means.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Comparing two means</span></span></a>
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Comparing two means</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./comparing_two_proportions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Comparing two proportions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Comparing two proportions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./randomized_experiments_v_observational_studies.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Randomized experiments versus observational studies</span></span></a>
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Randomized experiments versus observational studies</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./cell_means.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span></a>
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contingency_table_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Contingency table analysis</span></span></a>
   </div>
 </li>
       </ul>
@@ -509,7 +521,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simple_linear_regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -526,19 +538,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./z_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chi_squared_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Chi-squared table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./t_table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
+ <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
   </div>
 </li>
       </ul>
@@ -560,9 +572,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./random_sample.html">III: Random samples</a></li><li class="breadcrumb-item"><a href="./central_limit_theorem.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The central limit theorem</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./random_sample.html">III: Random samples</a></li><li class="breadcrumb-item"><a href="./central_limit_theorem.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">The central limit theorem</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-central_limit_theorem" class="quarto-section-identifier"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></h1>
+<h1 class="title"><span id="sec-central_limit_theorem" class="quarto-section-identifier"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></h1>
 </div>
 
 
@@ -595,7 +607,7 @@ window.Quarto = {
 Z_n = \frac{\bar X_n - \mu}{\sigma / \sqrt{n}},
 \]</span> then this <span class="math inline">\(Z_n\)</span> will have <em>approximately</em> the same distribution as <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span> as long as <span class="math inline">\(n\)</span> is large. We state the result somewhat informally here:</p>
 <div id="prp-clt" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 20.1 (Central limit theorem)</strong></span> Let <span class="math inline">\(X_1,\dots,X_n\)</span> be a random sample from a non-normal population with mean <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2 &lt; \infty\)</span>. Then <span class="math display">\[
+<p><span class="theorem-title"><strong>Proposition 21.1 (Central limit theorem)</strong></span> Let <span class="math inline">\(X_1,\dots,X_n\)</span> be a random sample from a non-normal population with mean <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2 &lt; \infty\)</span>. Then <span class="math display">\[
 Z_n = \frac{\bar X_n - \mu}{\sigma / \sqrt{n}} \text{ behaves more and more like } Z \sim \mathcal{N}(0,1)
 \]</span> for larger and larger <span class="math inline">\(n\)</span>.</p>
 </div>
@@ -603,11 +615,11 @@ Z_n = \frac{\bar X_n - \mu}{\sigma / \sqrt{n}} \text{ behaves more and more like
 <p>Saying that a random variable “behaves more and more like” another for “larger and larger <span class="math inline">\(n\)</span>” describes a concept in probability called <em>convergence in distribution</em>, the precise details of which lie beyond the scope of this text. It will suffice for us to understand the proposition as saying that if <span class="math inline">\(n\)</span> is large enough, we can pretend that <span class="math inline">\(Z_n\)</span> has the <span class="math inline">\(\mathcal{N}(0,1)\)</span> distribution with only a negligible loss of accuracy in any probabilities we compute based on pretending this.</p>
 <p>It follows from the proposition that for large enough <span class="math inline">\(n\)</span>, the sample mean <span class="math inline">\(\bar X_n\)</span> has approximately the <span class="math inline">\(\mathcal{N}(\mu,\sigma^2/n)\)</span> distribution. To express this we may write <span id="eq-xbarapproxdist"><span class="math display">\[
 \bar X_n \overset{\operatorname{approx}}{\sim} \mathcal{N}\Big(\mu,\frac{\sigma^2}{n}\Big)
-\tag{20.1}\]</span></span> for large <span class="math inline">\(n\)</span>.</p>
+\tag{21.1}\]</span></span> for large <span class="math inline">\(n\)</span>.</p>
 <p>How large must <span class="math inline">\(n\)</span> be, one may wonder, before one can pretend that <span class="math inline">\(\bar X_n\)</span> has the <span class="math inline">\(\mathcal{N}(\mu,\sigma^2/n)\)</span> distribution? It really depends on properties of the population distribution: If the population distribution is very skewed or very heavy tailed, one may need quite a large sample size <span class="math inline">\(n\)</span> in order for <span class="math inline">\(\bar X_n\)</span> to behave like a normally distributed random variable. However, if the population distribution is symmetric and not heavy-tailed, <span class="math inline">\(\bar X_n\)</span> will behave like a normally distributed random variable even when the sample size is quite small. It may also make a difference whether the random variables in random sample are discrete or continuous. For whatever reason, the rule of thumb that <span class="math inline">\(n\)</span> should be at least <span class="math inline">\(30\)</span> seems to have emerged as standard.</p>
 <p>If we can assume <span class="math inline">\(\bar X_n \overset{\operatorname{approx}}{\sim} \mathcal{N}(\mu,\sigma^2/n)\)</span>, then we can proceed with computing probabilities concerning <span class="math inline">\(\bar X_n\)</span> just as we did in <a href="mean_of_rs.html" class="quarto-xref"><span>Chapter 16</span></a> in the case in which the sample was drawn from the <span class="math inline">\(\mathcal{N}(\mu,\sigma^2)\)</span> distribution.</p>
 <div id="exr-meanofdierolls" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 20.1 (Mean of die rolls)</strong></span> Let <span class="math inline">\(X_1,\dots,X_n\)</span> denote <span class="math inline">\(n\)</span> rolls of a six-sided die.</p>
+<p><span class="theorem-title"><strong>Exercise 21.1 (Mean of die rolls)</strong></span> Let <span class="math inline">\(X_1,\dots,X_n\)</span> denote <span class="math inline">\(n\)</span> rolls of a six-sided die.</p>
 <ol type="1">
 <li><p>Give the expected value and variance of <span class="math inline">\(X_1\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
 <li><p>Give the expected value and variance of <span class="math inline">\(\bar X_n = n^{-1}(X_1+\dots + X_n)\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p></li>
@@ -642,7 +654,7 @@ Z_n = \frac{\bar X_n - \mu}{\sigma / \sqrt{n}} \text{ behaves more and more like
 <img src="central_limit_theorem_files/figure-html/fig-meanofdierollshist-1.png" class="img-fluid figure-img" width="1400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-meanofdierollshist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20.1: Histogram of <span class="math inline">\(10^5\)</span> realizations of the mean of <span class="math inline">\(50\)</span> rolls of a six-sided die with PDF of the <span class="math inline">\(\mathcal{N}(7/2,(35/12)/50)\)</span> distribution overlaid.
+Figure&nbsp;21.1: Histogram of <span class="math inline">\(10^5\)</span> realizations of the mean of <span class="math inline">\(50\)</span> rolls of a six-sided die with PDF of the <span class="math inline">\(\mathcal{N}(7/2,(35/12)/50)\)</span> distribution overlaid.
 </figcaption>
 </figure>
 </div>
@@ -1086,13 +1098,13 @@ Figure&nbsp;20.1: Histogram of <span class="math inline">\(10^5\)</span> realiza
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./normal_qq_plot.html" class="pagination-link" aria-label="Normal quantile-quantile plot">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Normal quantile-quantile plot</span></span>
+      <a href="./boxplots.html" class="pagination-link" aria-label="Boxplots">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Boxplots</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./sample_proportion.html" class="pagination-link" aria-label="Sample proportion">
-        <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Sample proportion</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Sample proportion</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
