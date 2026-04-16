@@ -56,7 +56,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -566,8 +586,14 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#comparing-several-populations" id="toc-comparing-several-populations" class="nav-link active" data-scroll-target="#comparing-several-populations"><span class="header-section-number">42.1</span> Comparing several populations</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -601,128 +627,156 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>Here we will consider comparing several sets of proportions or, similarly, checking whether there is an association between what are sometimes called “categorical random variables”. To introduce these ideas, we will consider a set up which can serve as a template for many experiments in real life.</p>
-<p>Suppose <span class="math inline">\(R\)</span> bags are filled with very large (practically infinite) numbers of marbles, where each marble is of one of <span class="math inline">\(C\)</span> different colors. We will be interested in whether the composition of marbles is the same in all <span class="math inline">\(R\)</span> bags, or, put another way, whether there is an association between the bag drawn from and the color of the marble drawn. To investigate this, we will consider following one or the other of two procedures, both of which require fixing a large number <span class="math inline">\(N\)</span> of marbles to draw from the bags:</p>
-<dl>
-<dt>Procedure 1</dt>
-<dd>
-Draw samples of sizes <span class="math inline">\(n_1,\dots,n_R\)</span>, where <span class="math inline">\(n_1 + \dots + n_R = N\)</span>, from bags <span class="math inline">\(1,\dots,R\)</span>, respectively, and count how many marbles of each color you drew from each bag.
-</dd>
-<dt>Procedure 2</dt>
-<dd>
-Select a bag at random and draw one marble from it, recording the color of the marble you drew and the bag you drew it from. Repeat this <span class="math inline">\(N\)</span> times.
-</dd>
-</dl>
-<p>After either procedure, one can let <span class="math inline">\(O_{ij}\)</span> represent the number of marbles of color <span class="math inline">\(j\)</span> drawn from bag <span class="math inline">\(i\)</span> for each <span class="math inline">\(i=1,\dots,R\)</span> and <span class="math inline">\(j = 1,\dots,C\)</span>. Here, the letter “O” stands for “observed”. Then one can make a table of these observed counts, including the margins the row and column totals, and at the bottom right the grand total, which will be equal to <span class="math inline">\(N\)</span>, as: <span id="eq-observedcounts"><span class="math display">\[
-\begin{array}{c|ccc|c}
-      &amp; \text{Color }1 &amp; \dots &amp; \text{Color }C &amp; \text{Total} \\ \hline
-\text{Bag }1 &amp; O_{11} &amp;  \dots &amp; O_{1C} &amp; O_{1.} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
-\text{Bag  }R &amp; O_{R1} &amp; \dots &amp; O_{RC} &amp; O_{R.} \\ \hline
-\text{Total} &amp; O_{.1} &amp; \dots &amp; O_{.C} &amp; N
+<p>Here we will consider testing for an “association” between sets of events. For example, if we consider drawing at random someone from the human population, we might ask, is there an association between the eye color and the hair color of the person. Asking if there is an “association” means asking whether knowing the eye color of a randomly selected person would help you guess the person’s hair color or vice versa.</p>
+<p>We will work within the context of the following statistical experiment.</p>
+<div id="def-contingencytableexperiment" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 42.1 (Contingency table experiment)</strong></span> Define a <em>contingency table experiment</em> as an experiment of which sample space consists of pairs of outcomes <span class="math inline">\((a_i,b_j)\)</span> for <span class="math inline">\(i = 1,\dots,R\)</span> and <span class="math inline">\(j = 1,\dots,C\)</span>, so that the sample space can be written as <span class="math display">\[
+S = \left\{\begin{array}{ccc}
+(a_1,b_1)&amp; \dots &amp;(a_1,b_C)\\
+\vdots&amp;\ddots&amp;\vdots\\
+(a_R,b_1)&amp; \dots &amp; (a_R,b_C)
 \end{array}
-\tag{42.1}\]</span></span> The row sums are defined as <span class="math inline">\(O_{i.} = \sum_{j=1}^C O_{ij}\)</span> for each <span class="math inline">\(i=1,\dots,R\)</span> and the column sums as <span class="math inline">\(O_{.j} = \sum_{i=1}^R O_{ij}\)</span> for each <span class="math inline">\(j=1,\dots,C\)</span>, so that a “.” is placed over the index over which the sum was taken.</p>
-<p>Note that under <strong>Procedure 1</strong> the row totals are fixed in advance at <span class="math inline">\(O_{1.} = n_1,\dots, O_{R.} = n_R\)</span>, whereas under <strong>Procedure 2</strong> the row totals are random counts.</p>
-<p>Let’s consider again what we are investigating: Whether the composition of marbles is the same in each bag, or, more vaguely, whether there is an association between the bag drawn from and the color of the marble drawn. We will write down specific null and alternate hypotheses for the different procedures separately.</p>
-<dl>
-<dt>Procedure 1</dt>
-<dd>
-Let <span class="math inline">\(p_{ij}\)</span> be the proportion of marbles in bag <span class="math inline">\(i\)</span> of color <span class="math inline">\(j\)</span>, <span class="math inline">\(i=1,\dots,R\)</span>, <span class="math inline">\(j=1,\dots,C\)</span>. Then we wish to test <span class="math display">\[
-\text{$H_0$: $p_{1j} = \dots = p_{Rj}$ for all $j=1,\dots,C$.}
-\]</span> In words: The proportions of the colors are the same in all bags.
-</dd>
-<dt>Procedure 2</dt>
-<dd>
-Let <span class="math inline">\(p_{ij}\)</span> be the probability of drawing a marble of color <span class="math inline">\(j\)</span> from bag <span class="math inline">\(j\)</span>; moreover, let <span class="math inline">\(p_{i.}\)</span> be the probability of drawing from bag <span class="math inline">\(i\)</span> and <span class="math inline">\(p_{.j}\)</span> be the probability of drawing a marble of color <span class="math inline">\(j\)</span> for <span class="math inline">\(i=1,\dots,R\)</span> and <span class="math inline">\(j=1,\dots,C\)</span>. Then we wish to test <span class="math display">\[
-\text{$H_0$: $p_{ij} = p_{i.}p_{.j}$ for $i=1,\dots,R$ and $j=1,\dots,C$.}
-\]</span> In words: The bag drawn from and the color of the marble drawn are independent.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
-</dd>
-</dl>
-<p>So <strong>Procedure 1</strong> is interested in checking whether the composition of marbles is the same in all bags, whereas <strong>Procedure 2</strong> is interested in checking for independence between bag and marble color.</p>
-<p>Under both procedures, we will compute the same test statistic and define a test with the same rejection rule. The test under both procedures will make comparisons between the observed counts <span class="math inline">\(O_{ij}\)</span> and the counts one would expect to see in the data if the null hypothesis were true. Under either procedure, we define these expected counts as <span class="math display">\[
-E_{ij} = \frac{O_{i.}O_{.j}}{N}
-\]</span> for <span class="math inline">\(i=1 ,\dots,R\)</span> and <span class="math inline">\(j =1,\dots,C\)</span>. We can arrange these in a table like this: <span id="eq-expectedcounts"><span class="math display">\[
-\begin{array}{c|ccc|c}
-      &amp; \text{Color }1 &amp; \dots &amp; \text{Color }C &amp; \text{Total} \\ \hline
-\text{Bag }1 &amp; E_{11} &amp;  \dots &amp; E_{1C} &amp; O_{1.} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
-\text{Bag  }R &amp; E_{R1} &amp; \dots &amp; E_{RC} &amp; O_{R.} \\ \hline
-\text{Total} &amp; O_{.1} &amp; \dots &amp; O_{.C} &amp; N
-\end{array}
-\tag{42.2}\]</span></span> Note that the row and column totals are unchanged.</p>
-<p>Our test statistic will be based on a comparison between the table of observed counts in <a href="#eq-observedcounts" class="quarto-xref">Equation&nbsp;<span>42.1</span></a> and the table of expected counts in <a href="#eq-expectedcounts" class="quarto-xref">Equation&nbsp;<span>42.2</span></a>.</p>
-<div id="prp-LRTcontingency" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 42.1</strong></span> Under <strong>Procedure 1</strong> or <strong>Procedure 2</strong>, let <span id="eq-LRTcontingency"><span class="math display">\[
-W_{\operatorname{test}}= 2 \sum_{i=1}^R\sum_{j=1}^C O_{ij}\log\Big(\frac{O_{ij}}{E_{ij}}\Big).
-\tag{42.3}\]</span></span></p>
-<p>Then the test which rejects <span class="math inline">\(H_0\)</span> when <span class="math inline">\(W_{\operatorname{test}}&gt; \chi^2_{(R-1)(C-1),\alpha}\)</span> has size closer and closer to <span class="math inline">\(\alpha\)</span> for larger and larger <span class="math inline">\(N\)</span>.</p>
+\right\},
+\]</span> where <span class="math inline">\(R\)</span> is the number of rows and <span class="math inline">\(C\)</span> the number of columns.</p>
 </div>
-<p>A rule of thumb for knowing when <span class="math inline">\(N\)</span> is large enough for the test in <a href="#prp-LRTcontingency" class="quarto-xref">Proposition&nbsp;<span>42.1</span></a> to be trusted (for it to make Type I errors at a rate close to the advertised rate of <span class="math inline">\(\alpha\)</span>) is to require <span class="math display">\[
+<p>Drawing a person from the human population and recording his or her eye and hair color is a contingency table experiment in which <span class="math inline">\(a_1,\dots,a_R\)</span> would symbolize, say, <span class="math inline">\(R\)</span> different eye colors, and <span class="math inline">\(b_1,\dots,b_C\)</span> would symbolize <span class="math inline">\(C\)</span> different colors of hair. Each pair <span class="math inline">\((a_i,b_j)\)</span> would thus symbolize an eye-color-hair-color combination.</p>
+<p>On the sample space of a contingency table experiment, we can define the events <span class="math inline">\(A_1,\dots,A_R\)</span> such that <span class="math inline">\(A_i\)</span> is the event that the person drawn has eye color <span class="math inline">\(i\)</span>. Likewise, we can define the events <span class="math inline">\(B_1,\dots,B_C\)</span> such that <span class="math inline">\(B_j\)</span> is the event that the person drawn has hair color <span class="math inline">\(j\)</span>. Then the events <span class="math inline">\(A_i\)</span>, <span class="math inline">\(B_j\)</span>, and the intersection event <span class="math inline">\(A_i \cap B_j\)</span> are identified with sets of sample outcomes as <span class="math display">\[
+\begin{align}
+A_i &amp;= \{(a_i,b_1),\dots,(a_i,b_C)\}\\
+B_j &amp;= \{(a_1,b_j),\dots,(a_R,b_j)\}\\
+A_i \cap B_j &amp; = \{(a_i,b_j)\}
+\end{align}
+\]</span> for <span class="math inline">\(i=1,\dots,R\)</span> and <span class="math inline">\(j = 1,\dots, C\)</span>.</p>
+<p>Having defined the above events, we can state more precisely what we mean by testing for an “association” between the events <span class="math inline">\(A_1,\dots,A_R\)</span> (say, eye color) and the events <span class="math inline">\(B_1,\dots,B_C\)</span> (say, hair color). By asking whether there is an association between these collections of events, we are really asking whether pairs of events <span class="math inline">\(A_i\)</span> and <span class="math inline">\(B_j\)</span> are independent for every <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>. Formally, recalling <a href="independence.html#def-independence" class="quarto-xref">Definition&nbsp;<span>5.1</span></a> of independence between two events, we will collect data and measure evidence against the null hypothesis <span class="math display">\[
+\text{$H_0$: $P(A_i\cap B_j) = P(A_i)P(B_j)$ for all $i=1,\dots,R$ and $j = 1,\dots,C$}
+\]</span> in favor of its alternative, which says that there is at least one pair of events <span class="math inline">\(A_i\)</span> and <span class="math inline">\(B_j\)</span> which are <em>not</em> independent. We will call the foregoing null hypothesis the <em>hypothesis of no association</em>.</p>
+<p>We collect data by running the contingency table experiment a large number of times, say <span class="math inline">\(N\)</span> times, recording the number of times each outcome <span class="math inline">\((a_i,b_j)\)</span> occurs. These counts we record in what we will call a <em>contingency table</em>: Letting <span class="math inline">\(O_{ij}\)</span> be the number of times we observe outcome <span class="math inline">\((a_i,b_j)\)</span>, the contingency table takes the form <span id="eq-observedcounts"><span class="math display">\[
+\begin{array}{c|ccc|c}
+      &amp; B_1 &amp; \dots &amp; B_C &amp; \text{Total} \\ \hline
+A_1 &amp; O_{11} &amp;  \dots &amp; O_{1C} &amp; O_{1.} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+A_R &amp; O_{R1} &amp; \dots &amp; O_{RC} &amp; O_{R.} \\ \hline
+\text{Total} &amp; O_{.1} &amp; \dots &amp; O_{.C} &amp; N
+\end{array}
+\tag{42.1}\]</span></span> where <span class="math inline">\(O_{i.} = \sum_{j=1}^C O_{ij}\)</span> is the total number of times the event <span class="math inline">\(A_i\)</span> was observed and <span class="math inline">\(O_{.j} = \sum_{i=1}^R O_{ij}\)</span> is the total number of times the event <span class="math inline">\(B_j\)</span> was observed, for <span class="math inline">\(i,\dots,R\)</span> and <span class="math inline">\(j=1,\dots,C\)</span>. Here we use the convention of placing “.” at the position of the index over which the sum was taken. Summing these marginal counts gives <span class="math inline">\(N\)</span>, the total number of times the experiment was run.</p>
+<p>Our test statistic for testing the hypothesis of no association is constructed by comparing the table of observed counts in <a href="#eq-observedcounts" class="quarto-xref">Equation&nbsp;<span>42.1</span></a> to a table containing estimates of the counts one would expect if the null hypothesis of no association were true. These estimated expected counts are given by <span class="math display">\[
+E_{ij} = \frac{O_{i.}O_{.j}}{N}
+\]</span> for <span class="math inline">\(i=1 ,\dots,R\)</span> and <span class="math inline">\(j =1,\dots,C\)</span>. We arrive at this expression for the expected counts by considering the following: The expected value of the count <span class="math inline">\(O_{ij}\)</span> is <span class="math inline">\(N P(A_j\cap B_j)\)</span>, since <span class="math inline">\(O_{ij} \sim \text{Binomial}(N,P(A_i \cap B_j))\)</span>. If <span class="math inline">\(A_i\)</span> and <span class="math inline">\(B_j\)</span> are independent events, then we have <span class="math inline">\(P(A_j \cap B_j) = P(A_i)P(B_j)\)</span>, as stated in the hypothesis of no association. Under no association, the expected value of <span class="math inline">\(O_{ij}\)</span> is given by <span class="math inline">\(N P(A_i)P(B_j)\)</span>. Now, if we plug in for <span class="math inline">\(P(A_i)\)</span> the estimate <span class="math inline">\(O_{i.}/N\)</span> and for <span class="math inline">\(P(B_j)\)</span> the estimate <span class="math inline">\(O_{.j}/N\)</span>, we obtain our estimate <span class="math inline">\(E_{ij}\)</span> of the expected count under no association. These expected counts <span class="math inline">\(E_{ij}\)</span> can be arranged in a table as <span id="eq-expectedcounts"><span class="math display">\[
+\begin{array}{c|ccc|c}
+      &amp; B_1 &amp; \dots &amp; B_C &amp; \text{Total} \\ \hline
+A_1 &amp; E_{11} &amp;  \dots &amp; E_{1C} &amp; O_{1.} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+A_R &amp; E_{R1} &amp; \dots &amp; E_{RC} &amp; O_{R.} \\ \hline
+\text{Total} &amp; O_{.1} &amp; \dots &amp; O_{.C} &amp; N
+\end{array}
+\tag{42.2}\]</span></span> where we note that the row and column totals remain the same (you can verify that <span class="math inline">\(\sum_{j=1}^C E_{ij} = O_{i.}\)</span> and <span class="math inline">\(\sum_{i=1}^C E_{ij} = O_{.j}\)</span>).</p>
+<p>Now we construct a test statistic for the null hypothesis of no association which is based on summing up the differences between the observed counts <span class="math inline">\(O_{ij}\)</span> and the expected counts <span class="math inline">\(E_{ij}\)</span>.</p>
+<div id="prp-ALRTcontingency" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 42.1 (Asymptotic likelihood ratio test for no association)</strong></span> Based on running the contingency table experiment <span class="math inline">\(N\)</span> times, define the test statistic <span id="eq-LRTcontingency"><span class="math display">\[
+L_{\operatorname{test}}= 2 \sum_{i=1}^R\sum_{j=1}^C O_{ij}\log\Big(\frac{O_{ij}}{E_{ij}}\Big).
+\tag{42.3}\]</span></span> Then the test which rejects <span class="math inline">\(H_0\)</span> when <span class="math inline">\(L_{\operatorname{test}}&gt; \chi^2_{(R-1)(C-1),\alpha}\)</span> has size closer and closer to <span class="math inline">\(\alpha\)</span> for larger and larger <span class="math inline">\(N\)</span>.</p>
+</div>
+<p>A rule of thumb for knowing when <span class="math inline">\(N\)</span> is large enough for the test in <a href="#prp-ALRTcontingency" class="quarto-xref">Proposition&nbsp;<span>42.1</span></a> to be trusted (for it to make Type I errors at a rate close to the advertised rate of <span class="math inline">\(\alpha\)</span>) is to require <span class="math display">\[
 E_{ij} \geq 5
 \]</span> for all <span class="math inline">\(i=1,\dots,R\)</span> and <span class="math inline">\(j = 1,\dots,C\)</span>. That is, all the expected counts should be at least <span class="math inline">\(5\)</span>.</p>
-<p>The first example we present corresponds to <strong>Procedure 1</strong>.</p>
-<div id="exm-icecreamsex" class="theorem example">
-<p><span class="theorem-title"><strong>Example 42.1 (Ice cream and sex)</strong></span> Suppose that in a study of gender and ice cream preferences 1000 women and 1200 men are asked what their favorite way to eat ice cream was, resulting in the below table of expected counts: <span class="math display">\[
-\begin{array}{c|ccccc|c}
-         &amp; \text{cup} &amp; \text{cone} &amp; \text{sundae} &amp; \text{sandwich} &amp; \text{other} &amp;  \\ \hline
-    \text{men} &amp; 592 &amp; 300 &amp; 204 &amp; 24 &amp; 80 &amp; 1200\\
-    \text{women} &amp; 410 &amp; 335 &amp; 180 &amp; 20 &amp; 55 &amp; 1000\\\hline
-        &amp; 1002 &amp; 635 &amp; 384 &amp; 44 &amp; 135 &amp; 2200
-\end{array}
-\]</span> We can compute the test statistic with following R code:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>O <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">592</span>,<span class="dv">300</span>,<span class="dv">204</span>,<span class="dv">24</span>,<span class="dv">80</span>,<span class="dv">410</span>,<span class="dv">335</span>,<span class="dv">180</span>,<span class="dv">20</span>,<span class="dv">55</span>),</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">nrow=</span><span class="dv">2</span>,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>E <span class="ot">&lt;-</span> <span class="fu">apply</span>(O,<span class="dv">1</span>,sum) <span class="sc">%*%</span> <span class="fu">t</span>(<span class="fu">apply</span>(O,<span class="dv">2</span>,sum))<span class="sc">/</span><span class="fu">sum</span>(O)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Wtest <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sum</span>(O<span class="sc">*</span><span class="fu">log</span>(O<span class="sc">/</span>E))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>We obtain the value <span class="math inline">\(23.487\)</span>. Since <span class="math inline">\(R=2\)</span> and <span class="math inline">\(C = 5\)</span>, we have <span class="math inline">\((R-1)(C-1) = 4\)</span>, so the critical value at significance level <span class="math inline">\(0.05\)</span> is <span class="math inline">\(\chi^2_{4,0.05} = 9.488\)</span>, obtained with <code>chisq(0.95,4)</code>. We therefore reject the null hypothesis and conclude that there <em>is</em> a difference between the proportions of men and women preferring ice cream in these various forms.</p>
-</div>
-<p>The next example follows <strong>Procedure 2</strong>.</p>
+<p>Here is an example:</p>
 <div id="exm-haircoloreyecolor" class="theorem example">
-<p><span class="theorem-title"><strong>Example 42.2 (Hair and eye color)</strong></span> In a survey of <span class="math inline">\(6800\)</span> people, the following counts hair and eye colors combinations were observed: <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 42.1 (Hair and eye color)</strong></span> <span class="citation" data-cites="snee1974graphical">Snee (<a href="references.html#ref-snee1974graphical" role="doc-biblioref">1974</a>)</span> observed the below counts of eye and hair color combinations in a survey of <span class="math inline">\(592\)</span> students. It is of interest to test for an association between eye color and hair color. <span class="math display">\[
 \begin{array}{c|cccc|c}
-   &amp; \text{Brown} &amp; \text{Black} &amp; \text{Fair} &amp; \text{Red} &amp; \text{Total}\\ \hline
-   \text{Brown} &amp;  438 &amp; 288 &amp; 115 &amp; 16 &amp; 857\\
-   \text{Grey or Green} &amp;  1387 &amp; 746 &amp; 946 &amp; 53  &amp; 3132\\
-   \text{Blue}  &amp; 807 &amp; 189 &amp; 1768 &amp; 47 &amp; 2811\\\hline
-   \text{Total} &amp;2632&amp;1223 &amp;2829&amp;  116 &amp; 6800
+   &amp; \text{Black} &amp; \text{Brown} &amp; \text{Red} &amp; \text{Blond} &amp; \text{Total}\\ \hline
+   \text{Brown} &amp;  68 &amp; 119 &amp; 26 &amp; 7 &amp; 220\\
+   \text{Blue} &amp;  20 &amp; 84 &amp; 17 &amp; 94  &amp; 215\\
+   \text{Hazel}  &amp; 15 &amp; 54 &amp; 14 &amp; 10 &amp; 93\\
+   \text{Green}  &amp; 5 &amp; 29 &amp; 14 &amp; 16 &amp; 64\\\hline
+   \text{Total} &amp;108&amp;286&amp;71&amp;  127 &amp; 592
 \end{array}
-\]</span> Note that here the row and column totals are random. We can compute the test statistic with following R code:</p>
+\]</span></p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>O <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">438</span>,<span class="dv">288</span>,<span class="dv">115</span>,<span class="dv">16</span>,<span class="dv">1387</span>,<span class="dv">746</span>,<span class="dv">946</span>,<span class="dv">53</span>,<span class="dv">807</span>,<span class="dv">189</span>,<span class="dv">1768</span>,<span class="dv">47</span>),</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">nrow =</span> <span class="dv">3</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>E <span class="ot">&lt;-</span> <span class="fu">apply</span>(O,<span class="dv">1</span>,sum) <span class="sc">%*%</span> <span class="fu">t</span>(<span class="fu">apply</span>(O,<span class="dv">2</span>,sum))<span class="sc">/</span><span class="fu">sum</span>(O)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>Wtest <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sum</span>(O<span class="sc">*</span><span class="fu">log</span>(O<span class="sc">/</span>E))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>O <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">68</span>,<span class="dv">119</span>,<span class="dv">26</span>,<span class="dv">7</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>              <span class="dv">20</span>,<span class="dv">84</span>,<span class="dv">17</span>,<span class="dv">94</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>              <span class="dv">15</span>,<span class="dv">54</span>,<span class="dv">14</span>,<span class="dv">10</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>              <span class="dv">5</span>,<span class="dv">29</span>,<span class="dv">14</span>,<span class="dv">16</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">nrow =</span> R,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>E <span class="ot">&lt;-</span> <span class="fu">apply</span>(O,<span class="dv">1</span>,sum) <span class="sc">%*%</span> <span class="fu">t</span>(<span class="fu">apply</span>(O,<span class="dv">2</span>,sum))<span class="sc">/</span><span class="fu">sum</span>(O)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Ltest <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sum</span>(O<span class="sc">*</span><span class="fu">log</span>(O<span class="sc">/</span>E))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> (R <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span>(C<span class="dv">-1</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>crit <span class="ot">&lt;-</span> <span class="fu">qchisq</span>(<span class="dv">1</span> <span class="sc">-</span> alpha,df)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>rej <span class="ot">&lt;-</span> Ltest <span class="sc">&gt;</span> crit</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>pval <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(Ltest,df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p>We obtain the value <span class="math inline">\(1137.606\)</span>. Since <span class="math inline">\(R=3\)</span> and <span class="math inline">\(C = 4\)</span>, we have <span class="math inline">\((R-1)(C-1) = 6\)</span>, so the critical value at significance level <span class="math inline">\(0.05\)</span> is <span class="math inline">\(\chi^2_{6,0.05} = 12.592\)</span>, obtained with <code>chisq(0.95,6)</code>. We therefore reject the null hypothesis and conclude that there <em>is</em> an association between hair color and eye color.</p>
+<p>We obtain the value <span class="math inline">\(L_{\operatorname{test}}= 146.444\)</span>. Moreover, the smallest value of <span class="math inline">\(E_{ij}\)</span> in the table of expected counts is <span class="math inline">\(7.676\)</span> so the rule of thumb is satisfied for using the asymptotic likelihood ratio test of no association. Since <span class="math inline">\(R=4\)</span> and <span class="math inline">\(C = 4\)</span>, we have <span class="math inline">\((R-1)(C-1) = 9\)</span>, so the critical value at significance level <span class="math inline">\(0.05\)</span> is <span class="math inline">\(\chi^2_{9,0.05} = 16.919\)</span>, which can be obtained from the chi-squared table in <a href="chi_squared_table.html" class="quarto-xref"><span>Chapter 45</span></a>. Moreover, the p value, obtained as the area under the <span class="math inline">\(\chi^2_{9}\)</span> PDF beyond the value of <span class="math inline">\(L_{\operatorname{test}}\)</span>, is approximately zero. We therefore reject the null hypothesis and conclude that there <em>is</em> an association between hair color and eye color.</p>
 </div>
-<p>In <strong>Procedure 1</strong> we are interested in checking whether several populations have the same composition; in <strong>Procedure 2</strong>, we are interested in whether there is “an association”.</p>
-<p>One often sees, instead of the test statistic <span class="math inline">\(W_{\operatorname{test}}\)</span> defined in <a href="#eq-LRTcontingency" class="quarto-xref">Equation&nbsp;<span>42.3</span></a> the definition <span class="math display">\[
-W_{\operatorname{test}}= \sum_{i=1}^R\sum_{j=1}^C \frac{(O_{ij} - E_{ij})^2}{E_{ij}}.
-\]</span> This is called <em>Pearson’s chi-squared statistic</em>. This version of <span class="math inline">\(W_{\operatorname{test}}\)</span> will be nearly equal to the version in <a href="#eq-LRTcontingency" class="quarto-xref">Equation&nbsp;<span>42.3</span></a> due to a Taylor expansion of the natural logarithm. This is the version used by the <code>chisq.test()</code> function in R. The value of this version of the test statistic in the hair and eye color example is <span class="math inline">\(1073.508\)</span>. We can obtain this from:</p>
+<p>One often sees, instead of the test statistic <span class="math inline">\(L_{\operatorname{test}}\)</span> defined in <a href="#eq-LRTcontingency" class="quarto-xref">Equation&nbsp;<span>42.3</span></a> the test statistic <span class="math display">\[
+W_{\operatorname{test}}= \sum_{i=1}^R\sum_{j=1}^C \frac{(O_{ij} - E_{ij})^2}{E_{ij}},
+\]</span> which is called <em>Pearson’s chi-squared statistic</em>. The value of <span class="math inline">\(W_{\operatorname{test}}\)</span> will be nearly equal to <span class="math inline">\(L_{\operatorname{test}}\)</span> due to a Taylor expansion of the natural logarithm, so we may use <span class="math inline">\(W_{\operatorname{test}}\)</span> and <span class="math inline">\(L_{\operatorname{test}}\)</span> interchangeably (for the eye and hair color data we obtain <span class="math inline">\(W_{\operatorname{test}}= 138.29\)</span>). The <code>chisq.test()</code> function in R performs the test of no association based on <span class="math inline">\(W_{\operatorname{test}}\)</span>.</p>
+<section id="comparing-several-populations" class="level2" data-number="42.1">
+<h2 data-number="42.1" class="anchored" data-anchor-id="comparing-several-populations"><span class="header-section-number">42.1</span> Comparing several populations</h2>
+<p>One may be interested not in finding an association between sets of events <span class="math inline">\(A_1,\dots,A_R\)</span> and <span class="math inline">\(B_1,\dots,B_C\)</span> as above, but rather in testing for differences in sets of proportions across multiple populations. That is, if we draw samples of size <span class="math inline">\(n_1,\dots,n_R\)</span> from <span class="math inline">\(R\)</span> populations, where each population consists of <span class="math inline">\(C\)</span> different outcomes, then we can summarize the collected data in a table as below, where <span class="math inline">\(O_{ij}\)</span> is the number of times outcome <span class="math inline">\(j\)</span> is observed in the sample from population <span class="math inline">\(i\)</span>:</p>
+<p><span id="eq-observedcounts_fixedrowsums"><span class="math display">\[
+\begin{array}{c|ccc|c}
+      &amp; \text{Outcome } 1 &amp; \dots &amp; \text{Outcome } C  &amp; \text{Total} \\ \hline
+\text{Population } 1 &amp; O_{11} &amp;  \dots &amp; O_{1C} &amp; n_1 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+\text{Population } R &amp; O_{R1} &amp; \dots &amp; O_{RC} &amp; n_R \\ \hline
+\text{Total} &amp; O_{.1} &amp; \dots &amp; O_{.C} &amp; N
+\end{array}
+\tag{42.4}\]</span></span></p>
+<p>In this setting, it is possible that one has fixed in advance the sample sizes <span class="math inline">\(n_1,\dots,n_R\)</span>. Because of this, it no longer makes sense to test for independence between a drawing from population <span class="math inline">\(i\)</span> and observing outcome <span class="math inline">\(j\)</span>. We instead test whether the probabilities of outcomes <span class="math inline">\(1,\dots,C\)</span> are the same in all <span class="math inline">\(R\)</span> populations.</p>
+<p>Let <span class="math inline">\(p_{ij}\)</span> denote the probability of outcome <span class="math inline">\(j\)</span> in population <span class="math inline">\(i\)</span> for <span class="math inline">\(j=1,\dots,C\)</span> and <span class="math inline">\(i=1,\dots,R\)</span>. Then we wish to test <span class="math display">\[
+\text{$H_0$: $p_{1j} = \dots = p_{Rj}$ for $j=1,\dots,C$},
+\]</span> (which says that for each outcome <span class="math inline">\(j\)</span>, the probability of that outcome is the same in all <span class="math inline">\(R\)</span> populations) against its alternative.</p>
+<p>It turns out that we can use exactly the same test in this setup as in the previous section; the expected counts are constructed (just as before) as <span class="math display">\[
+E_{ij} = n_i \frac{O_{.j}}{N}
+\]</span> for <span class="math inline">\(i=1,\dots,R\)</span> and <span class="math inline">\(j = 1,\dots,C\)</span> (note that these are the same as in the previous section, but with <span class="math inline">\(n_i\)</span> replacing <span class="math inline">\(O_{i.}\)</span>). We can justify this expression for <span class="math inline">\(E_{ij}\)</span> as follows: Under the null hypothesis, the probability of outcome <span class="math inline">\(j\)</span> is the same in all populations, so to estimate this common probability, one may pool all the population counts together, obtaining the estimate <span class="math inline">\(O{.j}/N\)</span>. Then, multiplying this by <span class="math inline">\(n_i\)</span>, the number of observations drawn from population <span class="math inline">\(i\)</span>, gives an estimate of the expected number of times one would observe outcome <span class="math inline">\(j\)</span> among the <span class="math inline">\(n_i\)</span> draws from population <span class="math inline">\(i\)</span>.</p>
+<p>Here is an example:</p>
+<div id="exm-icecreamsex" class="theorem example">
+<p><span class="theorem-title"><strong>Example 42.2 (Ice cream preferences)</strong></span> In a <a href="https://www.sfu.ca/personal/archives/richards/Zen/Pages/Chap16.htm">survey</a> of sex and ice cream preferences, 84 females and 85 males (presumably human) were asked to choose a favorite from among four flavors, resulting in the below table of counts: <span class="math display">\[
+\begin{array}{c|cccc|c}
+         &amp; \text{Chocolate} &amp; \text{Vanilla} &amp; \text{Strawberry} &amp; \text{Coffee} &amp; \text{Total} \\ \hline
+    \text{Male} &amp; 25 &amp; 15 &amp;   15 &amp; 29 &amp; 84 \\
+    \text{Female} &amp; 35 &amp; 20 &amp; 10 &amp; 20 &amp; 85\\\hline
+        &amp; 60 &amp; 35 &amp; 25 &amp; 49 &amp; 169
+\end{array}
+\]</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(O)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Pearson's Chi-squared test
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>O <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">15</span>,<span class="dv">15</span>,<span class="dv">29</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>              <span class="dv">35</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">20</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">nrow=</span><span class="dv">2</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>E <span class="ot">&lt;-</span> <span class="fu">apply</span>(O,<span class="dv">1</span>,sum) <span class="sc">%*%</span> <span class="fu">t</span>(<span class="fu">apply</span>(O,<span class="dv">2</span>,sum))<span class="sc">/</span><span class="fu">sum</span>(O)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>Ltest <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sum</span>(O<span class="sc">*</span><span class="fu">log</span>(O<span class="sc">/</span>E))</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>Wtest <span class="ot">&lt;-</span> <span class="fu">sum</span>((O <span class="sc">-</span> E)<span class="sc">**</span><span class="dv">2</span><span class="sc">/</span>E)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> (R <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span>(C<span class="dv">-1</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>crit <span class="ot">&lt;-</span> <span class="fu">qchisq</span>(<span class="dv">1</span> <span class="sc">-</span> alpha,df)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>rej <span class="ot">&lt;-</span> Ltest <span class="sc">&gt;</span> crit</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>pval <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(Ltest,df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>For these data obtain <span class="math inline">\(L_{\operatorname{test}}= 5.055\)</span> and <span class="math inline">\(W_{\operatorname{test}}= 5.028\)</span> with the smallest expected count equal to <span class="math inline">\(12.426\)</span>. Since <span class="math inline">\(R= 2\)</span> and <span class="math inline">\(C = 4\)</span>, we have <span class="math inline">\((R-1)(C-1) = 3\)</span>, so the critical value at significance level <span class="math inline">\(0.05\)</span> is <span class="math inline">\(\chi^2_{3,0.05} = 7.815\)</span>. We therefore reject the null hypothesis and conclude that there <em>is</em> a difference between the male and female population with respect to ice cream flavor preferences.</p>
+</div>
 
-data:  O
-X-squared = 1074, df = 6, p-value &lt;2e-16</code></pre>
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-snee1974graphical" class="csl-entry" role="listitem">
+Snee, Ronald D. 1974. <span>“Graphical Display of Two-Way Contingency Tables.”</span> <em>The American Statistician</em> 28 (1): 9–12.
 </div>
 </div>
-
-
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>Perhaps it is more correct to say: For any bag and any color of marble, the events of drawing from that bag and drawing a marble of that color are independent. <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->
