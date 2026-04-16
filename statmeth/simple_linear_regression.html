@@ -98,7 +98,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5cb8d2b6463994e535adb8da771c5996.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9a4bcb067c512b2a7a8e9938cb5c3a8a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -648,7 +648,8 @@ window.Quarto = {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> beryllium<span class="sc">$</span>Teff</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> beryllium<span class="sc">$</span>logN_Be</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Y <span class="sc">~</span> x , <span class="at">xlab=</span><span class="st">"Teff"</span>,<span class="at">ylab =</span> <span class="st">"logBe"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg=</span><span class="st">"NA"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Y <span class="sc">~</span> x , <span class="at">xlab=</span><span class="st">"Teff"</span>,<span class="at">ylab =</span> <span class="st">"logBe"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-beryllium" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -734,7 +735,7 @@ Figure&nbsp;43.2: Pearson’s correlation coefficient computed on synthetic data
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rxY <span class="ot">&lt;-</span> <span class="fu">cor</span>(x,Y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>The value is <span class="math inline">\(r_{xY} = 0.8623328\)</span>, which suggest a quite strong positive linear relationship.</p>
+<p>The value is <span class="math inline">\(r_{xY} = 0.862\)</span>, which suggest a quite strong positive linear relationship.</p>
 </section>
 <section id="the-simple-linear-regression-model" class="level2" data-number="43.2">
 <h2 data-number="43.2" class="anchored" data-anchor-id="the-simple-linear-regression-model"><span class="header-section-number">43.2</span> The simple linear regression model</h2>
@@ -767,14 +768,16 @@ Q(b_0,b) = \sum_{i=1}^n(Y_i - (b_0 + b_1 x_i))^2
 </div>
 <p>The condition <span class="math inline">\(S_{xx} &gt; 0\)</span> is necessary, because we in the computation of <span class="math inline">\(\hat \beta_1\)</span> we must divide by this sum of squares. Note, however, that <span class="math inline">\(S_{xx} = 0\)</span> if and only if all the <span class="math inline">\(x_i\)</span> are equal to the same value. In this case it would be absurd to try to predict the <span class="math inline">\(Y_i\)</span> using the values of the <span class="math inline">\(x_i\)</span>, so we do not need to fret about this condition.</p>
 <p>Note that we can obtain the sample variance of the observed response and covariate values as <span class="math inline">\(s^2_Y = (n-1)^{-1}S_{YY}\)</span> and <span class="math inline">\(s^2_X = (n-1)^{-1}S_{xx}\)</span>, respectively. Then, to compute the least-squares estimators of the regression coefficients <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>, one may obtain the slope as <span class="math inline">\(\hat \beta_1 = r_{xY}(s_Y/s_x)\)</span> and then the intercept as <span class="math inline">\(\hat \beta_0 = \bar Y_n - \hat \beta_1 \bar x_n\)</span>.</p>
-<p>The code below computes the least squares estimators of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> on the beryllium data and makes a scatterplot with the least-squares line overlaid.</p>
+<div id="exm-berylliumLScoef" class="theorem example">
+<p><span class="theorem-title"><strong>Example 43.2 (Beryllium data continued)</strong></span> The code below computes the least squares estimators of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> on the beryllium data and makes a scatterplot with the least-squares line overlaid.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> rxY <span class="sc">*</span> <span class="fu">sd</span>(Y) <span class="sc">/</span> <span class="fu">sd</span>(x)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(Y) <span class="sc">-</span> b1<span class="sc">*</span>xbar</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Y <span class="sc">~</span> x, <span class="at">xlab =</span> <span class="st">"Teff"</span>, <span class="at">ylab =</span> <span class="st">"logBe"</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(b0,b1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg=</span><span class="st">"NA"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Y <span class="sc">~</span> x, <span class="at">xlab =</span> <span class="st">"Teff"</span>, <span class="at">ylab =</span> <span class="st">"logBe"</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(b0,b1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-beryllium_ls" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -788,7 +791,7 @@ Figure&nbsp;43.3: Log of beryllium abundance against the temperature of stars wi
 </div>
 </div>
 </div>
-<p>One obtains <span class="math inline">\(\hat \beta_0 = -2.3333252\)</span> and <span class="math inline">\(\hat \beta_1 = 5.9260046\times 10^{-4}\)</span>. One can compute these as in the preceding code, or more simply using:</p>
+<p>One obtains <span class="math inline">\(\hat \beta_0 = -2.333\)</span> and <span class="math inline">\(\hat \beta_1 = 5.926\times 10^{-4}\)</span>. One can compute these as in the preceding code, or more simply using:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y<span class="sc">~</span>x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -798,10 +801,11 @@ lm(formula = Y ~ x)
 
 Coefficients:
 (Intercept)            x  
- -2.3333252    0.0005926  </code></pre>
+  -2.333325     0.000593  </code></pre>
 </div>
 </div>
-<p>An interpretation of the estimate of the slope parameter <span class="math inline">\(\beta_1\)</span> is that an increase in the temperature measurement by one unit corresponds to an estimated increase in the expected log-beryllium level equal to <span class="math inline">\(5.9260046\times 10^{-4}\)</span>.</p>
+<p>An interpretation of the estimate of the slope parameter <span class="math inline">\(\beta_1\)</span> is that an increase in the temperature measurement by one unit corresponds to an estimated increase in the expected log-beryllium level equal to <span class="math inline">\(5.926\times 10^{-4}\)</span>.</p>
+</div>
 <p>Now that we have introduced estimators for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>, we will consider estimating the other unknown parameter, which is the error term variance <span class="math inline">\(\sigma^2\)</span>. In order to define an estimator for this quantity, it will be convenient to define what we call <em>fitted values</em> and <em>residuals</em>. After obtaining <span class="math inline">\(\hat \beta_0\)</span> and <span class="math inline">\(\hat \beta_1\)</span>, we define the <em>fitted values</em> as <span class="math display">\[
 \hat Y_i = \hat \beta_0 + \hat \beta_1 x_i
 \]</span> and the <em>residuals</em> as <span class="math display">\[
@@ -810,14 +814,16 @@ Coefficients:
 <p>Having defined the residuals, we now define an estimator of <span class="math inline">\(\sigma^2\)</span> as <span class="math display">\[
 \hat \sigma^2 = \frac{1}{n-2}\sum_{i=1}^n\hat \varepsilon_i^2.
 \]</span></p>
-<p>Here we compute the estimator of the error term variance on the beryllium data:</p>
+<div id="exm-berylliumdata_sigmahat" class="theorem example">
+<p><span class="theorem-title"><strong>Example 43.3 (Beryllium data continued)</strong></span> Here we compute the estimator of the error term variance on the beryllium data:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Yhat <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> x</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ehat <span class="ot">&lt;-</span> Y <span class="sc">-</span> Yhat</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(Y)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>sigma_hat <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(ehat<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(n<span class="dv">-2</span>)) <span class="co"># standard deviation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>sigma_hat <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(ehat<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(n<span class="dv">-2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>We obtain <span class="math inline">\(\hat \sigma^2 = 0.0077834\)</span>.</p>
+<p>We obtain <span class="math inline">\(\hat \sigma^2 = 0.008\)</span>.</p>
+</div>
 <p>Here is a nice result about the estimator <span class="math inline">\(\hat \sigma^2\)</span>:</p>
 <div id="prp-sighatunbiased_slr" class="theorem proposition">
 <p><span class="theorem-title"><strong>Proposition 43.3 (Unbiasedness of variance estimator in simple linear regression)</strong></span> Under the conditions of the simple linear regression model, we have <span class="math inline">\(\mathbb{E}\hat \sigma^2 = \sigma^2\)</span>.</p>
@@ -843,7 +849,8 @@ Coefficients:
 <p>The result in <a href="#eq-slrslopepivot" class="quarto-xref">Equation&nbsp;<span>43.1</span></a> implies that under the assumptions of the simple linear regression model a <span class="math inline">\((1-\alpha)\times 100\%\)</span> confidence interval for <span class="math inline">\(\beta_1\)</span> may be constructed as <span class="math display">\[
 \hat \beta_1 \pm t_{n-2,\alpha/2} \hat \sigma / \sqrt{S_{xx}}.
 \]</span></p>
-<p>We can compute this interval on the beryllium data with the R code:</p>
+<div id="exm-berylliumdataCI" class="theorem example">
+<p><span class="theorem-title"><strong>Example 43.4 (Beryllium data continued)</strong></span> We can compute this interval on the beryllium data with the R code:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Sxx <span class="ot">&lt;-</span> <span class="fu">sum</span>((x <span class="sc">-</span> xbar)<span class="sc">**</span><span class="dv">2</span>)</span>
@@ -856,12 +863,13 @@ Coefficients:
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(<span class="fu">lm</span>(Y<span class="sc">~</span>x)) <span class="co"># run ?confint to read documentation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                    2.5 %        97.5 %
-(Intercept) -2.9983088165 -1.6683415095
-x            0.0004749841  0.0007102168</code></pre>
+<pre><code>                2.5 %   97.5 %
+(Intercept) -2.998309 -1.66834
+x            0.000475  0.00071</code></pre>
 </div>
 </div>
 <p>This gives confidence intervals for both the intercept <span class="math inline">\(\beta_0\)</span> and the slope parameter <span class="math inline">\(\beta_1\)</span>.</p>
+</div>
 </section>
 <section id="testing-hypotheses-about-the-slope-parameter" class="level3" data-number="43.3.2">
 <h3 data-number="43.3.2" class="anchored" data-anchor-id="testing-hypotheses-about-the-slope-parameter"><span class="header-section-number">43.3.2</span> Testing hypotheses about the slope parameter</h3>
@@ -882,20 +890,22 @@ T_{\operatorname{test}}= \frac{\hat \beta_1}{\hat \sigma /\sqrt{S_{xx}}},
 <li>Reject <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 = 0\)</span> in favor of <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 \neq 0\)</span> if <span class="math inline">\(|T_{\operatorname{test}}| &gt; t_{n-2,\alpha/2}\)</span>.</li>
 </ol>
 </div>
-<p>One obtains <span class="math inline">\(p\)</span> values in the usual way—by finding the significance level <span class="math inline">\(\alpha^*\)</span> which sets the critical value equal to the value of the test statistic <span class="math inline">\(T_{\operatorname{test}}\)</span>. Here we compute the value of the test statistic <span class="math inline">\(T_{\operatorname{test}}\)</span> on the beryllium data:</p>
+<p>One obtains <span class="math inline">\(p\)</span> values in the usual way—by finding the significance level <span class="math inline">\(\alpha^*\)</span> which sets the critical value equal to the value of the test statistic <span class="math inline">\(T_{\operatorname{test}}\)</span>.</p>
+<div id="exm-berylliumdataTtest" class="theorem example">
+<p><span class="theorem-title"><strong>Example 43.5 (Beryllium data continued)</strong></span> Here we compute the value of the test statistic <span class="math inline">\(T_{\operatorname{test}}\)</span> on the beryllium data:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Ttest <span class="ot">&lt;-</span> b1<span class="sc">/</span>(sigma_hat<span class="sc">/</span><span class="fu">sqrt</span>(Sxx))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>We obtain <span class="math inline">\(T_{\operatorname{test}} = 10.2183856\)</span>. To test <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 = 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 \neq 0\)</span> at significance level <span class="math inline">\(\alpha = 0.05\)</span>, we compare this value to <span class="math inline">\(t_{n-1,\alpha/2} = t_{38-2,0.025} = 2.028094\)</span>. We see that we reject <span class="math inline">\(H_0\)</span>. Now we compute the p-value for the two-sided test:</p>
+<p>We obtain <span class="math inline">\(T_{\operatorname{test}} = 10.218\)</span>. To test <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 = 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 \neq 0\)</span> at significance level <span class="math inline">\(\alpha = 0.05\)</span>, we compare this value to <span class="math inline">\(t_{n-1,\alpha/2} = t_{38-2,0.025} = 2.028\)</span>. We see that we reject <span class="math inline">\(H_0\)</span>. Now we compute the p-value for the two-sided test:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pval <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(Ttest), <span class="at">df =</span> n <span class="sc">-</span> <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>We obtain a p-value of <span class="math inline">\(3.4772185\times 10^{-12}\)</span>.</p>
-<p>To test <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 \leq 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 &gt; 0\)</span> at significance level <span class="math inline">\(\alpha = 0.05\)</span>, we compare this value to <span class="math inline">\(t_{n-1,\alpha} = t_{38-2,0.05} = 1.6882977\)</span>. Again we see that we reject <span class="math inline">\(H_0\)</span>. Now we compute the p-value for the one-sided test:</p>
+<p>We obtain a p-value of <span class="math inline">\(3.477\times 10^{-12}\)</span>.</p>
+<p>To test <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 \leq 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 &gt; 0\)</span> at significance level <span class="math inline">\(\alpha = 0.05\)</span>, we compare this value to <span class="math inline">\(t_{n-1,\alpha} = t_{38-2,0.05} = 1.688\)</span>. Again we see that we reject <span class="math inline">\(H_0\)</span>. Now we compute the p-value for the one-sided test:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pval <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(Ttest), <span class="at">df =</span> n <span class="sc">-</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>The p-value is <span class="math inline">\(1.7386093\times 10^{-12}\)</span>.</p>
+<p>The p-value is <span class="math inline">\(1.739\times 10^{-12}\)</span>.</p>
 <p>We can easily obtain a p-value for the two-sided test (which is most often the test of interest) as follows:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(Y<span class="sc">~</span>x))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -905,23 +915,24 @@ Call:
 lm(formula = Y ~ x)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--0.17146 -0.05198 -0.02409  0.06506  0.30047 
+    Min      1Q  Median      3Q     Max 
+-0.1715 -0.0520 -0.0241  0.0651  0.3005 
 
 Coefficients:
-              Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -2.333e+00  3.279e-01  -7.116 2.31e-08 ***
-x            5.926e-04  5.799e-05  10.218 3.48e-12 ***
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -2.333325   0.327886   -7.12  2.3e-08 ***
+x            0.000593   0.000058   10.22  3.5e-12 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.08822 on 36 degrees of freedom
-Multiple R-squared:  0.7436,    Adjusted R-squared:  0.7365 
-F-statistic: 104.4 on 1 and 36 DF,  p-value: 3.477e-12</code></pre>
+Residual standard error: 0.0882 on 36 degrees of freedom
+Multiple R-squared:  0.744, Adjusted R-squared:  0.736 
+F-statistic:  104 on 1 and 36 DF,  p-value: 3.48e-12</code></pre>
 </div>
 </div>
 <p>The p-value is given in the final column of the “Coefficients” table under <code>Pr(&gt;|t|)</code> in the output above. Note that the table reports the p-value for testing <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_0 = 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_0 \neq 0\)</span> as well as that for testing <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 = 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 \neq 0\)</span>. It is typically only the latter which is of interest to us.</p>
 <p>Note also that the above output shows the value of <span class="math inline">\(\hat \sigma\)</span>, which is given as the “residual standard error”.</p>
+</div>
 </section>
 <section id="confidence-interval-for-the-height-of-the-line" class="level3" data-number="43.3.3">
 <h3 data-number="43.3.3" class="anchored" data-anchor-id="confidence-interval-for-the-height-of-the-line"><span class="header-section-number">43.3.3</span> Confidence interval for the height of the line</h3>
@@ -936,7 +947,8 @@ F-statistic: 104.4 on 1 and 36 DF,  p-value: 3.477e-12</code></pre>
 <p>It follows from <a href="#prp-heightlsline" class="quarto-xref">Proposition&nbsp;<span>43.6</span></a> that a <span class="math inline">\((1-\alpha)100\%\)</span> confidence interval can be constructed for <span class="math inline">\(\beta_0 +\beta_1 x_{\operatorname{new}}\)</span> as <span id="eq-slrconfint"><span class="math display">\[
 \hat \beta_0 + \hat \beta_1 x_{\operatorname{new}} \pm t_{n-2,\alpha/2}\hat \sigma \sqrt{ \frac{1}{n} + \frac{(x_{\operatorname{new}} - \bar x_n)^2}{S_{xx}}}.
 \tag{43.3}\]</span></span></p>
-<p>In the beryllium data example, suppose we are interested in the expected beryllium level of stars with temperature <span class="math inline">\(x_{\operatorname{new}}= 5700\)</span>, we may compute this as follows:</p>
+<div id="exm-berylliumdataCIheight" class="theorem example">
+<p><span class="theorem-title"><strong>Example 43.6 (Beryllium data continued)</strong></span> In the beryllium data example, suppose we are interested in the expected beryllium level of stars with temperature <span class="math inline">\(x_{\operatorname{new}}= 5700\)</span>, we may compute this as follows:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>xnew <span class="ot">&lt;-</span> <span class="dv">5700</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
@@ -947,7 +959,7 @@ F-statistic: 104.4 on 1 and 36 DF,  p-value: 3.477e-12</code></pre>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>lo <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xnew <span class="sc">-</span> ta2 <span class="sc">*</span> se</span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>up <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xnew <span class="sc">+</span> ta2 <span class="sc">*</span> se</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>The estimated average log-beryllium level for stars with temperature <span class="math inline">\(5700\)</span> is estimated to be <span class="math inline">\(1.0444975\)</span> with 95% confidence interval <span class="math inline">\((1.0148454,1.0741496)\)</span>. It is also possible to obtain this using the code:</p>
+<p>The estimated average log-beryllium level for stars with temperature <span class="math inline">\(5700\)</span> is estimated to be <span class="math inline">\(1.044\)</span> with 95% confidence interval <span class="math inline">\((1.015,1.074)\)</span>. It is also possible to obtain this using the code:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>lm_out <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y<span class="sc">~</span>x) <span class="co"># store output of lm() function in object lm_out</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(lm_out,</span>
@@ -955,26 +967,27 @@ F-statistic: 104.4 on 1 and 36 DF,  p-value: 3.477e-12</code></pre>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">interval =</span> <span class="st">"confidence"</span>,</span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>       fit      lwr     upr
-1 1.044497 1.014845 1.07415</code></pre>
+<pre><code>   fit  lwr  upr
+1 1.04 1.01 1.07</code></pre>
 </div>
 </div>
 <p><a href="#fig-slrconfint" class="quarto-xref">Figure&nbsp;<span>43.4</span></a> depicts for the beryllium data the confidence interval in <a href="#eq-slrconfint" class="quarto-xref">Equation&nbsp;<span>43.3</span></a> computed at each value <span class="math inline">\(x_{\operatorname{new}}\)</span> over the entire range of observed covariate values. The vertical line is positioned at <span class="math inline">\(x_{\operatorname{new}}= 5700\)</span>. Note that the confidence intervals for the height of the true regression function get wider the further <span class="math inline">\(x_{\operatorname{new}}\)</span> lies from the mean of the covariate values <span class="math inline">\(\bar x_n\)</span>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Y <span class="sc">~</span> x , <span class="at">xlab=</span><span class="st">"Teff"</span>,<span class="at">ylab =</span> <span class="st">"logBe"</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">5700</span>, <span class="at">col =</span> <span class="st">"gray"</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(b0,b1)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>ta2 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,n<span class="dv">-2</span>)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>xseq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x),<span class="fu">max</span>(x),<span class="at">length=</span><span class="dv">99</span>)</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>se_conf <span class="ot">&lt;-</span> sigma_hat <span class="sc">*</span> <span class="fu">sqrt</span>( <span class="dv">1</span><span class="sc">/</span>n <span class="sc">+</span> (xseq <span class="sc">-</span> xbar)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>Sxx)</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>lo_conf <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">-</span> ta2 <span class="sc">*</span> se_conf</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>up_conf <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">+</span> ta2 <span class="sc">*</span> se_conf</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(lo_conf<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(up_conf<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg=</span><span class="st">"NA"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Y <span class="sc">~</span> x , <span class="at">xlab=</span><span class="st">"Teff"</span>,<span class="at">ylab =</span> <span class="st">"logBe"</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">5700</span>, <span class="at">col =</span> <span class="st">"gray"</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(b0,b1)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>ta2 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,n<span class="dv">-2</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>xseq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x),<span class="fu">max</span>(x),<span class="at">length=</span><span class="dv">99</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>se_conf <span class="ot">&lt;-</span> sigma_hat <span class="sc">*</span> <span class="fu">sqrt</span>( <span class="dv">1</span><span class="sc">/</span>n <span class="sc">+</span> (xseq <span class="sc">-</span> xbar)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>Sxx)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>lo_conf <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">-</span> ta2 <span class="sc">*</span> se_conf</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>up_conf <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">+</span> ta2 <span class="sc">*</span> se_conf</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(lo_conf<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(up_conf<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-slrconfint" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A scatterplot with a line going through it and two curves as well as a vertical line.">
@@ -986,6 +999,7 @@ F-statistic: 104.4 on 1 and 36 DF,  p-value: 3.477e-12</code></pre>
 Figure&nbsp;43.4: Confidence intervals for the height of the true regression line over the entire range of observed covariate values.
 </figcaption>
 </figure>
+</div>
 </div>
 </div>
 </div>
@@ -1003,52 +1017,55 @@ Y_{\operatorname{new}}- \hat \beta_0 + \hat \beta_1 x_{\operatorname{new}}\sim \
 <p>The above result gives us an idea of how far away <span class="math inline">\(Y_{\operatorname{new}}\)</span> is likely to be from the height <span class="math inline">\(\hat Y_{\operatorname{new}}\)</span> of the fitted line at covariate value <span class="math inline">\(x_{\operatorname{new}}\)</span>. We can use the result to define our <span class="math inline">\((1-\alpha)100\%\)</span> prediction interval as <span id="eq-slrpredint"><span class="math display">\[
 \hat \beta_0 + \hat \beta_1 x_{\operatorname{new}}\pm t_{n-2,\alpha/2}\hat \sigma \sqrt{1 +  \frac{1}{n} + \frac{( x_{\operatorname{new}}- \bar x_n)^2}{S_{xx}}}.
 \tag{43.4}\]</span></span></p>
-<p>Comparing this interval with the confidence interval in <a href="#eq-slrconfint" class="quarto-xref">Equation&nbsp;<span>43.3</span></a> for the height of the regression line, we see that the prediction interval is wider. Here we compute the prediction interval for <span class="math inline">\(Y_{\operatorname{new}}\)</span> corresponding to the covariate value <span class="math inline">\(x_{\operatorname{new}}= 5700\)</span> on the beryllium data.</p>
+<p>Comparing this interval with the confidence interval in <a href="#eq-slrconfint" class="quarto-xref">Equation&nbsp;<span>43.3</span></a> for the height of the regression line, we see that the prediction interval is wider.</p>
+<div id="exm-berylliumdataPIinterval" class="theorem example">
+<p><span class="theorem-title"><strong>Example 43.7 (Beryllium data continued)</strong></span> Here we compute the prediction interval for <span class="math inline">\(Y_{\operatorname{new}}\)</span> corresponding to the covariate value <span class="math inline">\(x_{\operatorname{new}}= 5700\)</span> on the beryllium data.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>xnew <span class="ot">&lt;-</span> <span class="dv">5700</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>ta2 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,n<span class="dv">-2</span>)</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> sigma_hat<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>n <span class="sc">+</span> (xnew <span class="sc">-</span> xbar)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>Sxx) <span class="co"># this part changed</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> sigma_hat<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>n <span class="sc">+</span> (xnew <span class="sc">-</span> xbar)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>Sxx)</span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>lo <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xnew <span class="sc">-</span> ta2 <span class="sc">*</span> se</span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>up <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xnew <span class="sc">+</span> ta2 <span class="sc">*</span> se</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>We predict that the log-beryllium level for a star with temperature <span class="math inline">\(5700\)</span> would lie in the interval <span class="math inline">\((0.8631315,1.2258635)\)</span> with <span class="math inline">\(95\%\)</span> probability. Note that this is a wider interval than the one we computed for the true height of the regression line at <span class="math inline">\(x_{\operatorname{new}}= 5700\)</span>. One can understand why the interval is wider by considering that, even if we knew the height of the true regression function, that is if we knew the value of <span class="math inline">\(\beta_0 + \beta_1 x_{\operatorname{new}}\)</span>, we still could not predict with certainty the value of <span class="math inline">\(Y_{\operatorname{new}}\)</span>, as the height of the regression line is equal only to the <em>expected value</em> of the response when the covariate value is equal to <span class="math inline">\(x_{\operatorname{new}}\)</span>. If we want to make a guess of a single value of <span class="math inline">\(Y_{\operatorname{new}}\)</span>, we must widen the interval, as in <a href="#eq-slrpredint" class="quarto-xref">Equation&nbsp;<span>43.4</span></a>.</p>
+<p>We predict that the log-beryllium level for a star with temperature <span class="math inline">\(5700\)</span> would lie in the interval <span class="math inline">\((0.863,1.226)\)</span> with <span class="math inline">\(95\%\)</span> probability. Note that this is a wider interval than the one we computed for the true height of the regression line at <span class="math inline">\(x_{\operatorname{new}}= 5700\)</span>. One can understand why the interval is wider by considering that, even if we knew the height of the true regression function, that is if we knew the value of <span class="math inline">\(\beta_0 + \beta_1 x_{\operatorname{new}}\)</span>, we still could not predict with certainty the value of <span class="math inline">\(Y_{\operatorname{new}}\)</span>, as the height of the regression line is equal only to the <em>expected value</em> of the response when the covariate value is equal to <span class="math inline">\(x_{\operatorname{new}}\)</span>. If we want to make a guess of a single value of <span class="math inline">\(Y_{\operatorname{new}}\)</span>, we must widen the interval, as in <a href="#eq-slrpredint" class="quarto-xref">Equation&nbsp;<span>43.4</span></a>.</p>
 <p>The same prediction interval can be alternatively computed with this code:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lm_out <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y<span class="sc">~</span>x) <span class="co"># store output of lm() function in object lm_out</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lm_out <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y<span class="sc">~</span>x) <span class="co"># store output of lm() function</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(lm_out,</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">5700</span>),</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">interval =</span> <span class="st">"prediction"</span>,</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>       fit       lwr      upr
-1 1.044497 0.8631315 1.225863</code></pre>
+<pre><code>   fit   lwr  upr
+1 1.04 0.863 1.23</code></pre>
 </div>
 </div>
 <p><a href="#fig-slrpredint" class="quarto-xref">Figure&nbsp;<span>43.5</span></a> plots the prediction interval in <a href="#eq-slrpredint" class="quarto-xref">Equation&nbsp;<span>43.4</span></a> as well as the confidence interval in eq-slrconfint for values of <span class="math inline">\(x_{\operatorname{new}}\)</span> across the entire range of observed covariate values in the beryllium data. Here we see that the prediction interval are much wider than the confidence intervals—again, because these are attempting to capture individual observations, whereas the confidence intervals are only trying to capture the height of the true regression line.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Y <span class="sc">~</span> x , <span class="at">xlab=</span><span class="st">"Teff"</span>,<span class="at">ylab =</span> <span class="st">"logBe"</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">5700</span>, <span class="at">col =</span> <span class="st">"gray"</span>)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(b0,b1)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>ta2 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,n<span class="dv">-2</span>)</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>xseq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x),<span class="fu">max</span>(x),<span class="at">length=</span><span class="dv">99</span>)</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>se_conf <span class="ot">&lt;-</span> sigma_hat <span class="sc">*</span> <span class="fu">sqrt</span>( <span class="dv">1</span><span class="sc">/</span>n <span class="sc">+</span> (xseq <span class="sc">-</span> xbar)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>Sxx)</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>lo_conf <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">-</span> ta2 <span class="sc">*</span> se_conf</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>up_conf <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">+</span> ta2 <span class="sc">*</span> se_conf</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(lo_conf<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(up_conf<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>se_pred <span class="ot">&lt;-</span> sigma_hat <span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>n <span class="sc">+</span> (xseq <span class="sc">-</span> xbar)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>Sxx)</span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>lo_pred <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">-</span> ta2 <span class="sc">*</span> se_pred</span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>up_pred <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">+</span> ta2 <span class="sc">*</span> se_pred</span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(lo_pred<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">3</span>)</span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(up_pred<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg=</span><span class="st">"NA"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Y <span class="sc">~</span> x , <span class="at">xlab=</span><span class="st">"Teff"</span>,<span class="at">ylab =</span> <span class="st">"logBe"</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">5700</span>, <span class="at">col =</span> <span class="st">"gray"</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(b0,b1)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>ta2 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,n<span class="dv">-2</span>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>xseq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x),<span class="fu">max</span>(x),<span class="at">length=</span><span class="dv">99</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>se_conf <span class="ot">&lt;-</span> sigma_hat <span class="sc">*</span> <span class="fu">sqrt</span>( <span class="dv">1</span><span class="sc">/</span>n <span class="sc">+</span> (xseq <span class="sc">-</span> xbar)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>Sxx)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>lo_conf <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">-</span> ta2 <span class="sc">*</span> se_conf</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>up_conf <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">+</span> ta2 <span class="sc">*</span> se_conf</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(lo_conf<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(up_conf<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>se_pred <span class="ot">&lt;-</span> sigma_hat <span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>n <span class="sc">+</span> (xseq <span class="sc">-</span> xbar)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>Sxx)</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>lo_pred <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">-</span> ta2 <span class="sc">*</span> se_pred</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>up_pred <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>xseq <span class="sc">+</span> ta2 <span class="sc">*</span> se_pred</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(lo_pred<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">3</span>)</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(up_pred<span class="sc">~</span>xseq,<span class="at">lty=</span><span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-slrpredint" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A scatterplot with a line going through it and two sets of curves as well as a vertical line.">
@@ -1060,6 +1077,7 @@ Y_{\operatorname{new}}- \hat \beta_0 + \hat \beta_1 x_{\operatorname{new}}\sim \
 Figure&nbsp;43.5: Prediction intervals for a new observation and confidence intervals for the height of the true regression line over the entire range of observed covariate values.
 </figcaption>
 </figure>
+</div>
 </div>
 </div>
 </div>
@@ -1213,7 +1231,7 @@ Table&nbsp;43.2: ANOVA table for simple linear regression with beryllium data
 </div>
 </figure>
 </div>
-<p>Note that <span class="math inline">\(F_{\operatorname{test}}= 104.4154041\)</span>, which is equal to the square of the <span class="math inline">\(T_{\operatorname{test}}\)</span> statistic computed earlier: <span class="math inline">\(T_{\operatorname{test}}^2= (10.2183856)^2\)</span>.</p>
+<p>Note that <span class="math inline">\(F_{\operatorname{test}}= 104.415\)</span>, which is equal to the square of the <span class="math inline">\(T_{\operatorname{test}}\)</span> statistic computed earlier: <span class="math inline">\(T_{\operatorname{test}}^2= (10.218)^2\)</span>.</p>
 <p>We can also obtain the ANOVA table with this code:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(<span class="fu">lm</span>(Y<span class="sc">~</span>x))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1221,9 +1239,9 @@ Table&nbsp;43.2: ANOVA table for simple linear regression with beryllium data
 <pre><code>Analysis of Variance Table
 
 Response: Y
-          Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
-x          1 0.81271 0.81271  104.42 3.477e-12 ***
-Residuals 36 0.28020 0.00778                      
+          Df Sum Sq Mean Sq F value  Pr(&gt;F)    
+x          1  0.813   0.813     104 3.5e-12 ***
+Residuals 36  0.280   0.008                    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
@@ -1447,7 +1465,7 @@ Figure&nbsp;43.13: A case in which the true relationship in non-linear
 <h2 data-number="43.6" class="anchored" data-anchor-id="transforming-to-linearity"><span class="header-section-number">43.6</span> Transforming to linearity</h2>
 <p>When the relationship between the response and the covariate is found to be non-linear, it may still be possible to use the simple linear regression model after transforming the response or the covariate or both such that the relationship between the variables is “linearized”. If one chooses to do this, it is important that one give proper interpretation to the coefficients in the model fitted based on the transformed data. Here we go through an example:</p>
 <div id="exm-abalone_data" class="theorem example">
-<p><span class="theorem-title"><strong>Example 43.2 (Abalone data)</strong></span> The abalone is some kind of edible sea creature; see <a href="#fig-abalone_sushi" class="quarto-xref">Figure&nbsp;<span>43.14</span></a>. A data set provided by <span class="citation" data-cites="abalone">Nash and Ford (<a href="references.html#ref-abalone" role="doc-biblioref">1994</a>)</span>, downloadable <a href="https://archive.ics.uci.edu/dataset/1/abalone">here</a>, contains measurements of several thousand abalones. After downloading the data, we read it into R and prepare to fit a simple linear regression model with the shucked weight variable as the response and the length variable as the covariate.</p>
+<p><span class="theorem-title"><strong>Example 43.8 (Abalone data)</strong></span> The abalone is some kind of edible sea creature; see <a href="#fig-abalone_sushi" class="quarto-xref">Figure&nbsp;<span>43.14</span></a>. A data set provided by <span class="citation" data-cites="abalone">Nash and Ford (<a href="references.html#ref-abalone" role="doc-biblioref">1994</a>)</span>, downloadable <a href="https://archive.ics.uci.edu/dataset/1/abalone">here</a>, contains measurements of several thousand abalones. After downloading the data, we read it into R and prepare to fit a simple linear regression model with the shucked weight variable as the response and the length variable as the covariate.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>abalone <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/abalone.data"</span>,</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Sex"</span>,</span>
@@ -1462,12 +1480,12 @@ Figure&nbsp;43.13: A case in which the true relationship in non-linear
 <span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(abalone)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sex Length Diameter Height Whole_Wt Shucked_Wt Viscera_Wt Shell_Wt Rings
-1   M  0.350    0.265  0.090   0.2255     0.0995     0.0485    0.070     7
-2   F  0.530    0.420  0.135   0.6770     0.2565     0.1415    0.210     9
-3   M  0.440    0.365  0.125   0.5160     0.2155     0.1140    0.155    10
-4   I  0.330    0.255  0.080   0.2050     0.0895     0.0395    0.055     7
-5   I  0.425    0.300  0.095   0.3515     0.1410     0.0775    0.120     8
-6   F  0.530    0.415  0.150   0.7775     0.2370     0.1415    0.330    20</code></pre>
+1   M  0.350    0.265  0.090    0.226     0.0995     0.0485    0.070     7
+2   F  0.530    0.420  0.135    0.677     0.2565     0.1415    0.210     9
+3   M  0.440    0.365  0.125    0.516     0.2155     0.1140    0.155    10
+4   I  0.330    0.255  0.080    0.205     0.0895     0.0395    0.055     7
+5   I  0.425    0.300  0.095    0.351     0.1410     0.0775    0.120     8
+6   F  0.530    0.415  0.150    0.777     0.2370     0.1415    0.330    20</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> abalone<span class="sc">$</span>Shucked_Wt</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> abalone<span class="sc">$</span>Length</span>
@@ -1606,11 +1624,11 @@ Figure&nbsp;43.18: Normal Q-Q plot of residuals from simple linear regression on
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>Ynew_pred <span class="ot">&lt;-</span> <span class="fu">exp</span>(logYnew_pred)</span>
 <span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>Ynew_pred</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>        fit      lwr      upr
-1 0.9193347 0.622883 1.356878</code></pre>
+<pre><code>    fit   lwr  upr
+1 0.919 0.623 1.36</code></pre>
 </div>
 </div>
-<p>We obtain the interval <span class="math inline">\((0.622883,1.356878)\)</span>. Constructing this prediction interval over the entire range of observed abalone lengths results in the intervals shown in <a href="#fig-abalone_pred_shucked" class="quarto-xref">Figure&nbsp;<span>43.19</span></a>.</p>
+<p>We obtain the interval <span class="math inline">\((0.623,1.357)\)</span>. Constructing this prediction interval over the entire range of observed abalone lengths results in the intervals shown in <a href="#fig-abalone_pred_shucked" class="quarto-xref">Figure&nbsp;<span>43.19</span></a>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Y<span class="sc">~</span>x,</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"gray"</span>,</span>
