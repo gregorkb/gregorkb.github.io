@@ -881,7 +881,7 @@ x            0.000475  0.00071</code></pre>
 </ol>
 <p>We could specify a null value different from <span class="math inline">\(0\)</span> in the above, but we seldom do so, as we are primarily interested in testing whether there is <em>any</em> relationship between the covariate and the response, or, if we want to be more specific, whether there is any <em>positive</em> or <em>negative</em> relationship. In light of the result in <a href="#prp-slrslopedist" class="quarto-xref">Proposition&nbsp;<span>43.4</span></a>, we can test the above sets of hypotheses as prescribed next:</p>
 <div id="prp-hyptestslr" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 43.5 (Tests of hypotheses about the slope parameter)</strong></span> Under the conditions of the simple linear regression model given in <a href="#def-slr_model" class="quarto-xref">Definition&nbsp;<span>43.2</span></a> and with <span id="eq-Ttest"><span class="math display">\[
+<p><span class="theorem-title"><strong>Proposition 43.5 (Tests of hypotheses about the slope parameter)</strong></span> Under the conditions of the simple linear regression model given in <a href="#def-slr_model" class="quarto-xref">Definition&nbsp;<span>43.2</span></a> and with <span id="eq-Ttest_slr"><span class="math display">\[
 T_{\operatorname{test}}= \frac{\hat \beta_1}{\hat \sigma /\sqrt{S_{xx}}},
 \tag{43.2}\]</span></span> the following tests have size <span class="math inline">\(\alpha\)</span>:</p>
 <ol type="1">
@@ -1101,18 +1101,33 @@ R^2 = \frac{\operatorname{SS}_{\operatorname{Reg}}}{\operatorname{SS}_{\operator
 \]</span> Note that this fact tells us we will always have <span class="math inline">\(R^2 \in [0,1]\)</span>. Moreover we can interpret <span class="math inline">\(R^2\)</span> as the proportion of variation in <span class="math inline">\(Y_1,\dots,Y_n\)</span> accounted for—or “explained”—by our simple linear regression model.</p>
 <!-- We will define these quantities in exactly the same way in @sec-multiple_linear_regression in the case of multiple linear regression. -->
 <p>Note that the value of <span class="math inline">\(R^2\)</span> is printed in the output of <code>summary(lm(Y~x))</code> as <code>Multiple R-squared</code>.</p>
-<p>We find that the sums of squares defined above, when appropriately scaled, have chi-squared distributions. In particular we have</p>
-<ul>
-<li><span class="math inline">\(\displaystyle \frac{\operatorname{SS}_{\operatorname{Tot}}}{\sigma^2} \sim \chi^2_{n-1}(\phi_{\operatorname{Total}})\)</span></li>
-<li><span class="math inline">\(\displaystyle \frac{\operatorname{SS}_{\operatorname{Reg}}}{\sigma^2} \sim \chi^2_1(\phi_{\operatorname{Reg}})\)</span></li>
-<li><span class="math inline">\(\displaystyle \frac{\operatorname{SS}_{\operatorname{Error}}}{\sigma^2} \sim \chi^2_{n-2}\)</span></li>
-</ul>
-<p>In the above, <span class="math inline">\(\phi_{\operatorname{Tot}}\)</span> and <span class="math inline">\(\phi_{\operatorname{Reg}}\)</span> denote what are called “non-centrality parameters”. So far we have only studied chi-squared distributions which do not have non-centrality parameters; so we might call the chi-squared distributions we have so far studied “central” chi-squared distributions. We will describe non-central chi-squared distributions in detail elsewhere. For now, dividing <span class="math inline">\(\operatorname{SS}_{\operatorname{Tot}}\)</span> and <span class="math inline">\(\operatorname{SS}_{\operatorname{Reg}}\)</span> by the degrees of freedom parameters of their chi-squared distributions gives:</p>
-<ul>
-<li><p>The <em>regression mean square</em>: <span class="math inline">\(\quad \displaystyle \operatorname{MS}_{\operatorname{Reg}}= \frac{\operatorname{SS}_{\operatorname{Reg}}}{1}\)</span></p></li>
-<li><p>The <em>error mean square</em>: <span class="math inline">\(\quad \displaystyle \operatorname{MS}_{\operatorname{Error}}= \frac{\operatorname{SS}_{\operatorname{Error}}}{n-2}\)</span></p></li>
-</ul>
-<p>Included in typical output for simple linear regression is an analysis of variance (ANOVA) table as in <a href="#tbl-anova_slr" class="quarto-xref">Table&nbsp;<span>43.1</span></a>.</p>
+<p>These sums of squares can be used to construct another version of the test statistic in <a href="#eq-Ttest_slr" class="quarto-xref">Equation&nbsp;<span>43.2</span></a> for testing <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 = 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 \neq 0\)</span>. On the way to introducing this alternative test statistic, we state a result on the sampling distributions of these sums of squares:</p>
+<div id="prp-SSslrchisq" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 43.8 (Distributions of scaled sums of squares)</strong></span> Under the simple linear regression model in <a href="#def-slr_model" class="quarto-xref">Definition&nbsp;<span>43.2</span></a>, if the null hypothesis <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 = 0\)</span> is true, then</p>
+<ol type="1">
+<li><span class="math inline">\(\displaystyle \frac{\operatorname{SS}_{\operatorname{Tot}}}{\sigma^2} \sim \chi^2_{n-1}\)</span>,</li>
+<li><span class="math inline">\(\displaystyle \frac{\operatorname{SS}_{\operatorname{Reg}}}{\sigma^2} \sim \chi^2_1\)</span>, and</li>
+<li><span class="math inline">\(\displaystyle \frac{\operatorname{SS}_{\operatorname{Error}}}{\sigma^2} \sim \chi^2_{n-2}\)</span>,</li>
+</ol>
+<p>where <span class="math inline">\(\operatorname{SS}_{\operatorname{Reg}}\)</span> and <span class="math inline">\(\operatorname{SS}_{\operatorname{Error}}\)</span> are independent.</p>
+</div>
+<p>Dividing <span class="math inline">\(\operatorname{SS}_{\operatorname{Tot}}\)</span> and <span class="math inline">\(\operatorname{SS}_{\operatorname{Reg}}\)</span> by the degrees of freedom parameters of their chi-squared distributions gives the <em>regression mean square</em> and the <em>error mean square</em>, respectively, defined next:</p>
+<div id="def-MSslr" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 43.4 (Mean squares in simple linear regression)</strong></span> In the simple linear regression model from <a href="#def-slr_model" class="quarto-xref">Definition&nbsp;<span>43.2</span></a>, define the following mean squares:</p>
+<ol type="1">
+<li><p><em>Regression mean square</em>: <span class="math inline">\(\displaystyle \operatorname{MS}_{\operatorname{Reg}}= \frac{\operatorname{SS}_{\operatorname{Reg}}}{1}\)</span></p></li>
+<li><p><em>Error mean square</em>: <span class="math inline">\(\displaystyle \operatorname{MS}_{\operatorname{Error}}= \frac{\operatorname{SS}_{\operatorname{Error}}}{n-2}\)</span></p></li>
+</ol>
+</div>
+<p>In light of <a href="#prp-SSslrchisq" class="quarto-xref">Proposition&nbsp;<span>43.8</span></a> and the recipe for an F-distributed random variable given in <a href="cell_means.html#prp-Fdist" class="quarto-xref">Proposition&nbsp;<span>41.2</span></a>, one finds that the regression mean square divided by the error mean square has an F distribution. Specifically, if <span class="math inline">\(\beta_1 = 0\)</span>, one has <span class="math display">\[
+\frac{\operatorname{MS}_{\operatorname{Reg}}}{\operatorname{MS}_{\operatorname{Error}}} \sim F_{1,n-2}.
+\]</span> Based on this result, we can define a rule for rejecting <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 = 0\)</span> as follows:</p>
+<div id="prp-Ftest_slr" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 43.9 (F test in simple linear regression)</strong></span> In the simple linear regression model in <a href="#def-slr_model" class="quarto-xref">Definition&nbsp;<span>43.2</span></a> define the test statistic <span id="eq-Ftest_slr"><span class="math display">\[
+F_{\operatorname{test}}= \frac{\operatorname{MS}_{\operatorname{Reg}}}{\operatorname{MS}_{\operatorname{Error}}}.
+\tag{43.5}\]</span></span> Then the test which rejects <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 = 0\)</span> in favor of <span class="math inline">\(H_1\)</span>: $_1 $ when <span class="math inline">\(F_{\operatorname{test}}&gt; F_{1,n-2,\alpha}\)</span> has size <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+<p>Included in typical output for simple linear regression is an analysis of variance (ANOVA) table as in <a href="#tbl-anova_slr" class="quarto-xref">Table&nbsp;<span>43.1</span></a>. This table contains all the ingredients necessary for constructing the test statistic <span class="math inline">\(F_{\operatorname{test}}\)</span>, including the value of <span class="math inline">\(F_{\operatorname{test}}\)</span> itself and the p value associated with it (the value <span class="math inline">\(\alpha^*\)</span> such that the critical value <span class="math inline">\(F_{1,n-2,\alpha^*}\)</span> is equal to the observed value of <span class="math inline">\(F_{\operatorname{test}}\)</span>, which is simply the area to the right of <span class="math inline">\(F_{\operatorname{test}}\)</span> under the <span class="math inline">\(F_{1,n-2}\)</span> PDF).</p>
 <div id="tbl-anova_slr" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-anova_slr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1160,19 +1175,12 @@ Table&nbsp;43.1: ANOVA table for simple linear regression
 </div>
 </figure>
 </div>
-<p>In addition to the sums of squares, the mean squares, and the degrees of freedom, we see that the ANOVA table also include an F-value and a p-value. These are defined as follows:</p>
-<ul>
-<li><span class="math inline">\(\displaystyle F_{\operatorname{test}}= \frac{\operatorname{MS}_{\operatorname{Reg}}}{\operatorname{MS}_{\operatorname{Error}}}\)</span></li>
-<li><span class="math inline">\(P(F &gt; F_{\operatorname{test}})\)</span>, where this is computed under <span class="math inline">\(F \sim F_{1,n-2}\)</span>.</li>
-</ul>
-<p>These quantities are the test statistic and p-value for a test called the <em>overall <span class="math inline">\(F\)</span> test</em>. In simple linear regression, the overall <span class="math inline">\(F\)</span> test simply tests</p>
-<!-- We will give more attention to the overall F-test when we come to multiple linear regression in @sec-multiple_linear_regression. In simple linear regression, the overall F-test simply tests -->
-<p><span class="math display">\[
-\text{$H_0$: $\beta_1 = 0$ versus $H_1$: $\beta_1 \neq 0$}.
-\]</span> In addition, in simple linear regression we have <span class="math inline">\(F_{\operatorname{test}}= T_{\operatorname{test}}^2\)</span>, where <span class="math inline">\(T_{\operatorname{test}}\)</span> is the test statistic defined in <a href="#eq-Ttest" class="quarto-xref">Equation&nbsp;<span>43.2</span></a>; for what it’s worth we also have <span class="math display">\[
-F_{\operatorname{test}}= \frac{(n-2)r_{xY}^2}{1-r_{xY}^2}.
-\]</span></p>
-<p>We next compute all the entries in the simple linear regression ANOVA table on the beryllium data:</p>
+<p>We have said that the test statistic <span class="math inline">\(F_{\operatorname{test}}\)</span> is an alternative version of <span class="math inline">\(T_{\operatorname{test}}\)</span> from <a href="#eq-Ttest_slr" class="quarto-xref">Equation&nbsp;<span>43.2</span></a> for testing <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 = 0\)</span>. Indeed, it can be shown that <span class="math inline">\(F_{\operatorname{test}}= T_{\operatorname{test}}^2\)</span>, and moreover, that the square of a random variable having the <span class="math inline">\(t_{n-2}\)</span> distribution will have the <span class="math inline">\(F_{1,n-2}\)</span> distribution. In consequence of the relation between these two test statistics, the p value associated with the value of <span class="math inline">\(T_{\operatorname{test}}\)</span> will be equal to that associated with <span class="math inline">\(F_{\operatorname{test}}\)</span>, so one will always come to the same conclusion regarding <span class="math inline">\(H_0\)</span> with both tests.</p>
+<p>For what it’s worth, in simple linear regression we also have <span class="math display">\[
+F_{\operatorname{test}}= \frac{(n-2)r_{xY}^2}{1-r_{xY}^2},
+\]</span> where <span class="math inline">\(r_{xY}\)</span> is Pearson’s correlation coefficient.</p>
+<div id="exm-beryllium_ANOVA" class="theorem example">
+<p><span class="theorem-title"><strong>Example 43.8 (Beryllium data continued)</strong></span> We next compute all the entries in the simple linear regression ANOVA table on the beryllium data:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>Ybar <span class="ot">&lt;-</span> <span class="fu">mean</span>(Y)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>SST <span class="ot">&lt;-</span> <span class="fu">sum</span>((Y <span class="sc">-</span> Ybar)<span class="sc">^</span><span class="dv">2</span>)</span>
@@ -1246,6 +1254,7 @@ Residuals 36  0.280   0.008
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
+</div>
 </section>
 <section id="checking-model-assumptions" class="level2" data-number="43.5">
 <h2 data-number="43.5" class="anchored" data-anchor-id="checking-model-assumptions"><span class="header-section-number">43.5</span> Checking model assumptions</h2>
@@ -1268,10 +1277,14 @@ The covariate and the response are linearly related.
 The responses are independent from each other.
 </dd>
 </dl>
-<p>To check <strong>Assumption 1</strong> we typically look at a Normal quantile-quantile plot of the residuals <span class="math inline">\(\hat \varepsilon_1,\dots,\hat\varepsilon_n\)</span>. Recall that the residuals are “standing in” for the error terms <span class="math inline">\(\varepsilon_1,\dots,\varepsilon_n\)</span> (the deviations of the responses from the true regression function), which are assumed to be normally distributed. <a href="#fig-beryllium_qq_manual" class="quarto-xref">Figure&nbsp;<span>43.6</span></a> shows a Q-Q plot of the residuals on the beryllium data:</p>
+<p>To check <strong>Assumption 1</strong> we typically look at a Normal quantile-quantile plot of the residuals <span class="math inline">\(\hat \varepsilon_1,\dots,\hat\varepsilon_n\)</span>. Recall that the residuals are “standing in” for the error terms <span class="math inline">\(\varepsilon_1,\dots,\varepsilon_n\)</span> (the deviations of the responses from the true regression function), which are assumed to be normally distributed.</p>
+<p>One checks whether the points in the normal Q-Q plot lie along a straight line. It is important to note that it is really only important to check the normality assumption when the sample size is small (say less than 30). In the end, our inference procedures (confidence intervals and hypothesis tests) require that the distribution of <span class="math inline">\(\hat \beta_1\)</span> be approximately normal and that we obtain a good estimate of the error term variance <span class="math inline">\(\sigma^2\)</span>. The response values do not have to be normally distributed around the true regression function in order to ensure this (provided the sample is large).</p>
+<div id="exm-beryllium_qqresid" class="theorem example">
+<p><span class="theorem-title"><strong>Example 43.9 (Beryllium data continued)</strong></span> <a href="#fig-beryllium_qq_manual" class="quarto-xref">Figure&nbsp;<span>43.6</span></a> shows a Q-Q plot of the residuals on the beryllium data:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">scale</span>(ehat))</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg=</span><span class="cn">NA</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">scale</span>(ehat))</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-beryllium_qq_manual" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1287,7 +1300,8 @@ Figure&nbsp;43.6: Normal Q-Q plot of the residuals in the beryllium data example
 </div>
 <p><a href="#fig-beryllium_qq_auto" class="quarto-xref">Figure&nbsp;<span>43.7</span></a> shows another version of the plot generated by the following code:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(Y<span class="sc">~</span>x), <span class="at">which=</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg=</span><span class="cn">NA</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(Y<span class="sc">~</span>x), <span class="at">which=</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-beryllium_qq_auto" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1301,10 +1315,15 @@ Figure&nbsp;43.7: Normal Q-Q plot of the residuals in the beryllium data example
 </div>
 </div>
 </div>
-<p>One checks whether the points in the normal Q-Q plot lie along a straight line. It is important to note that it is really only important to check the normality assumption when the sample size is small (say less than 30). In the end, our inference procedures (confidence intervals and hypothesis tests) require that the distribution of <span class="math inline">\(\hat \beta_1\)</span> be approximately normal and that we obtain a good estimate of the error term variance <span class="math inline">\(\sigma^2\)</span>. The response values do not have to be normally distributed around the true regression function in order to ensure this (provided the sample is large). For the beryllium data, the Q-Q plot does not raise any serious concerns about whether our confidence intervals and p-values and so on can be trusted.</p>
-<p><strong>Assumption 2</strong> is more critical than the normality assumption, particularly if we wish to use our fitted model to make prediction intervals for <span class="math inline">\(Y_{\operatorname{new}}\)</span> corresponding to new covariate values <span class="math inline">\(x_{\operatorname{new}}\)</span>. We can check the assumption of equal response variance across the range of covariate values by looking at a <em>residuals versus fitted values plot</em>. That is, we can plot the values <span class="math inline">\(\hat \varepsilon_1,\dots,\hat \varepsilon_n\)</span> against the values <span class="math inline">\(\hat Y_1,\dots,\hat Y_n\)</span> and check to see if any patterns in the plot are visible. <a href="#fig-beryllium_resid_vs_fits_manual" class="quarto-xref">Figure&nbsp;<span>43.8</span></a> shows this plot for the beryllium data.</p>
+<p>For the beryllium data, the Q-Q plot does not raise any serious concerns about whether our confidence intervals and p-values and so on can be trusted.</p>
+</div>
+<p><strong>Assumption 2</strong> is more critical than the normality assumption, particularly if we wish to use our fitted model to make prediction intervals for <span class="math inline">\(Y_{\operatorname{new}}\)</span> corresponding to new covariate values <span class="math inline">\(x_{\operatorname{new}}\)</span>. We can check the assumption of equal response variance across the range of covariate values by looking at a <em>residuals versus fitted values plot</em>. That is, we can plot the values <span class="math inline">\(\hat \varepsilon_1,\dots,\hat \varepsilon_n\)</span> against the values <span class="math inline">\(\hat Y_1,\dots,\hat Y_n\)</span> and check to see if any patterns in the plot are visible.</p>
+<p>Ideally, we would like to see a constant vertical spread of the points across the entire plot. A non-constant spread can indicate that the responses do not have the same variance across all values of the covariate.</p>
+<div id="exm-beryllium_resid_vs_fit" class="theorem example">
+<p><span class="theorem-title"><strong>Example 43.10 (Beryllium data continued)</strong></span> <a href="#fig-beryllium_resid_vs_fits_manual" class="quarto-xref">Figure&nbsp;<span>43.8</span></a> shows this plot for the beryllium data.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ehat <span class="sc">~</span> Yhat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg=</span><span class="cn">NA</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ehat <span class="sc">~</span> Yhat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-beryllium_resid_vs_fits_manual" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1320,7 +1339,8 @@ Figure&nbsp;43.8: Residuals versus fitted values plot for beryllium data
 </div>
 <p><a href="#fig-beryllium_resid_vs_fits_auto" class="quarto-xref">Figure&nbsp;<span>43.9</span></a> gives the same plot obtained from the output of the <code>lm()</code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(Y<span class="sc">~</span>x),<span class="at">which=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg=</span><span class="cn">NA</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(Y<span class="sc">~</span>x),<span class="at">which=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-beryllium_resid_vs_fits_auto" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1334,7 +1354,7 @@ Figure&nbsp;43.9: Residuals versus fitted values plot for beryllium data using t
 </div>
 </div>
 </div>
-<p>Ideally, we would like to see a constant vertical spread of the points across the entire plot. A non-constant spread can indicate that the responses do not have the same variance across all values of the covariate.</p>
+</div>
 <p><a href="#fig-fanning" class="quarto-xref">Figure&nbsp;<span>43.10</span></a> shows an example of a residuals versus fitted values plot that indicates non-constant variance in the responses. We see from the “fanning” shape in the residuals versus fitted values plot that the variance of the responses increases with the value of the covariate.</p>
 <div class="cell">
 <details class="code-fold">
@@ -1344,7 +1364,7 @@ Figure&nbsp;43.9: Residuals versus fitted values plot for beryllium data using t
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(n,<span class="dv">0</span>,<span class="dv">1</span> <span class="sc">+</span> x)</span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>lm_out <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y<span class="sc">~</span>x)</span>
 <span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">bg =</span><span class="cn">NA</span>)</span>
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Y<span class="sc">~</span>x)</span>
 <span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm_out)</span>
@@ -1465,7 +1485,7 @@ Figure&nbsp;43.13: A case in which the true relationship in non-linear
 <h2 data-number="43.6" class="anchored" data-anchor-id="transforming-to-linearity"><span class="header-section-number">43.6</span> Transforming to linearity</h2>
 <p>When the relationship between the response and the covariate is found to be non-linear, it may still be possible to use the simple linear regression model after transforming the response or the covariate or both such that the relationship between the variables is “linearized”. If one chooses to do this, it is important that one give proper interpretation to the coefficients in the model fitted based on the transformed data. Here we go through an example:</p>
 <div id="exm-abalone_data" class="theorem example">
-<p><span class="theorem-title"><strong>Example 43.8 (Abalone data)</strong></span> The abalone is some kind of edible sea creature; see <a href="#fig-abalone_sushi" class="quarto-xref">Figure&nbsp;<span>43.14</span></a>. A data set provided by <span class="citation" data-cites="abalone">Nash and Ford (<a href="references.html#ref-abalone" role="doc-biblioref">1994</a>)</span>, downloadable <a href="https://archive.ics.uci.edu/dataset/1/abalone">here</a>, contains measurements of several thousand abalones. After downloading the data, we read it into R and prepare to fit a simple linear regression model with the shucked weight variable as the response and the length variable as the covariate.</p>
+<p><span class="theorem-title"><strong>Example 43.11 (Abalone data)</strong></span> The abalone is some kind of edible sea creature; see <a href="#fig-abalone_sushi" class="quarto-xref">Figure&nbsp;<span>43.14</span></a>. A data set provided by <span class="citation" data-cites="abalone">Nash and Ford (<a href="references.html#ref-abalone" role="doc-biblioref">1994</a>)</span>, downloadable <a href="https://archive.ics.uci.edu/dataset/1/abalone">here</a>, contains measurements of several thousand abalones. After downloading the data, we read it into R and prepare to fit a simple linear regression model with the shucked weight variable as the response and the length variable as the covariate.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>abalone <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/abalone.data"</span>,</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Sex"</span>,</span>
@@ -1719,7 +1739,7 @@ Figure&nbsp;43.20
 </div>
 <p>We introduce two quantites used in simple linear regression for identifying outliers. The first is the <em>leverage</em> of a point, which has strictly to do with how far away the <span class="math inline">\(x\)</span>-coordinate of a point lies from the center of the observed covariate values.</p>
 <div id="def-leverage_slr" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 43.4 (Leverage in simple linear regression)</strong></span> The <em>leverages</em> of the observed data points <span class="math inline">\((x_1,Y_n),\dots,(x_n,Y_n)\)</span> are defined as <span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 43.5 (Leverage in simple linear regression)</strong></span> The <em>leverages</em> of the observed data points <span class="math inline">\((x_1,Y_n),\dots,(x_n,Y_n)\)</span> are defined as <span class="math display">\[
 \text{lev}_i = \frac{1}{n} + \frac{(x_i - \bar x_n)^2}{S_{xx}}
 \]</span> for <span class="math inline">\(i =1,\dots,n\)</span>.</p>
 </div>
@@ -1728,25 +1748,28 @@ Figure&nbsp;43.20
 <p>Note that an observation may have a high leverage value but not be considered an outlier, as the pair <span class="math inline">\((x_i,Y_i)\)</span> may still lie close to the least-squares line.</p>
 <p>The second quantity useful for identifying outliers is called <em>Cook’s distance</em>. To define the Cook’s distances, we must first introduce some new notation: For each <span class="math inline">\(j=1,\dots,n\)</span>, let <span class="math inline">\(\hat Y_{j(i)}\)</span> denote the predicted value for <span class="math inline">\(Y_j\)</span> when obtained by fitting the model to the data after removing observation <span class="math inline">\(i\)</span>. Cook’s distance compares the value <span class="math inline">\(\hat Y_{j(i)}\)</span> with the predicted value <span class="math inline">\(\hat Y_j\)</span>, where the latter is the prediction based on the complete data set.</p>
 <div id="def-cooksDslr" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 43.5 (Cook’s distance)</strong></span> The <em>Cook’s distances</em> of the observations <span class="math inline">\((x_1,Y_1),\dots,(x_n,Y_n)\)</span> are defined as <span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 43.6 (Cook’s distance)</strong></span> The <em>Cook’s distances</em> of the observations <span class="math inline">\((x_1,Y_1),\dots,(x_n,Y_n)\)</span> are defined as <span class="math display">\[
 D_i = \frac{1}{2 \hat \sigma^2}\sum_{j = 1 }^n(\hat Y_j - \hat Y_{j(i)})^2 = \frac{\hat e_i^2}{2\hat \sigma^2}\frac{\text{lev}_i}{(1 - \text{lev}_i)^2}
 \]</span> for <span class="math inline">\(i =1,\dots,n\)</span>.</p>
 </div>
-<p>We can obtain a plot of the Cook’s distances on the beryllium data with this code:</p>
+<div id="exm-beryllium_cooksD" class="theorem example">
+<p><span class="theorem-title"><strong>Example 43.12 (Beryllium data continued)</strong></span> We can obtain a plot of the Cook’s distances on the beryllium data with this code:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/beryllium.Rdata"</span>)</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> beryllium<span class="sc">$</span>Teff</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> beryllium<span class="sc">$</span>logN_Be</span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(Y<span class="sc">~</span>x),<span class="at">which =</span> <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg =</span> <span class="st">"NA"</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/beryllium.Rdata"</span>)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> beryllium<span class="sc">$</span>Teff</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> beryllium<span class="sc">$</span>logN_Be</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(Y<span class="sc">~</span>x),<span class="at">which =</span> <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="simple_linear_regression_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
+</div>
 </div>
 </div>
 </div>
