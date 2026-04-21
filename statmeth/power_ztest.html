@@ -602,19 +602,22 @@ window.Quarto = {
 <p>$$</p>
 </div>
 <p>We may think of statistical power as our ability to make a discovery based on our data. By discovery we mean the rejection of a null hypothesis. Recall that a statistician makes discoveries by measuring evidence against a claim called the null hypothesis. If the evidence is compelling enough, the null hypothesis is rejected and the alternate hypothesis is accepted.</p>
-<p>In our present discussion of power, we will consider the case of tests about the mean of a Normal population. That is, suppose we observe a random sample from the <span class="math inline">\(\mathcal{N}(\mu,\sigma^2)\)</span> distribution and we wish to test one of the sets of hypotheses <span class="math display">\[
-\begin{array}{lclcl}
-H_0\text{: } \mu \geq \mu_0 &amp;\text{ or } &amp; H_0\text{: } \mu = \mu_0 &amp;\text{ or } &amp; H_0\text{: } \mu \leq \mu_0\\
-H_1\text{: } \mu &lt; \mu_0 &amp;&amp; H_1\text{: } \mu \neq \mu_0 &amp;&amp; H_1\text{: } \mu &gt; \mu_0
-\end{array}
-\]</span> as we have learned to do previously. In the above, the value <span class="math inline">\(\mu_0\)</span> is called the <em>null value</em> of the parameter <span class="math inline">\(\mu\)</span>. This is the value against which the statistician is going to measure the evidence in the data.</p>
+<p>In our present discussion of power, we will consider the case of tests about the mean of a Normal population. That is, suppose we observe a random sample from the <span class="math inline">\(\mathcal{N}(\mu,\sigma^2)\)</span> distribution and we wish to test one of the sets of hypotheses</p>
+<ol type="1">
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \leq \mu_0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &gt; \mu_0\)</span></li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu \geq \mu_0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &lt; \mu_0\)</span></li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu = \mu_0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu \neq \mu_0\)</span></li>
+</ol>
+<p>as we have learned to do previously. In the above, the value <span class="math inline">\(\mu_0\)</span> is called the <em>null value</em> of the parameter <span class="math inline">\(\mu\)</span>. This is the value against which the statistician is going to measure the evidence in the data.</p>
 <p>To make matters simple to begin with, let’s assume that the variance <span class="math inline">\(\sigma^2\)</span> is known, so that the relevant test statistic for testing any of the above sets of hypotheses is <span class="math display">\[
 Z_\text{test} = \frac{\bar X_n - \mu_0}{\sigma / \sqrt{n}},
-\]</span> which is the distance of <span class="math inline">\(\bar X_n\)</span> from the hypothesized, or null value <span class="math inline">\(\mu_0\)</span> of the mean, in terms of a number of standard deviations (remember that the <span class="math inline">\(Z\)</span> world is the number-of-standard-deviations world, and the standard deviation of <span class="math inline">\(\bar X_n\)</span> is <span class="math inline">\(\sigma/\sqrt{n}\)</span>). One would then test the above sets of hypotheses using the rejection rules <span class="math display">\[
-\begin{array}{lclcl}
-Z_{\operatorname{stat}} &lt; -z_\alpha &amp;\text{ or } &amp; |Z_{\operatorname{stat}}| &gt; z_{\alpha/2}&amp;\text{ or } &amp; Z_{\operatorname{stat}} &gt; z_\alpha,
-\end{array}
-\]</span> respectively.</p>
+\]</span> which is the distance of <span class="math inline">\(\bar X_n\)</span> from the hypothesized, or null value <span class="math inline">\(\mu_0\)</span> of the mean, in terms of a number of standard deviations (remember that the <span class="math inline">\(Z\)</span> world is the number-of-standard-deviations world, and the standard deviation of <span class="math inline">\(\bar X_n\)</span> is <span class="math inline">\(\sigma/\sqrt{n}\)</span>). One would then test the above sets of hypotheses using the rejection rules</p>
+<ol type="1">
+<li><span class="math inline">\(Z_{\operatorname{test}}&gt; z_\alpha\)</span></li>
+<li><span class="math inline">\(Z_{\operatorname{test}}&lt; - z_\alpha\)</span></li>
+<li><span class="math inline">\(|Z_{\operatorname{test}}| &gt; z_{\alpha/2}\)</span></li>
+</ol>
+<p>respectively.</p>
 <p>In order to keep us from getting lost in the math, let’s look at an example of when we might want to test one of the sets of hypotheses above. Consider the golden ratio data from <a href="random_sample.html#exm-goldenratio" class="quarto-xref">Example&nbsp;<span>15.2</span></a>, where it was of interest to see of our fingers grow according to the golden ratio. We might suppose that if the mean of the ratio <span class="math inline">\(B/A\)</span> were dramatically different from <span class="math inline">\(1.618\)</span>, we should be able to detect the difference quite easily; however, if the mean were only slightly different from <span class="math inline">\(1.618\)</span>, the difference may not show up clearly in the data. Power refers to how likely we are to observe data which will lead us to reject our null hypothesis. Here is a definition:</p>
 <div id="def-power" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 37.1 (Statistical power of a test)</strong></span> The power of a test is the probability it will reject the null hypothesis.</p>
@@ -936,11 +939,12 @@ n = \bigg\lceil \sigma^2 \Big(\frac{z_{\alpha/2} + z_{\beta^*} }{\mu^* - \mu_0}\
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># rp2 &lt;- 1 - pnorm(za2 - d)</span></span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># lp2 &lt;- pnorm(-za2 - d)</span></span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># tsp &lt;- lp2 + rp2</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(rp <span class="sc">~</span> mu, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">ylab =</span> <span class="st">"power"</span>, <span class="at">xlab =</span> <span class="st">"mu"</span>)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> mu0, <span class="at">lty =</span> <span class="dv">3</span>)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> alpha, <span class="at">lty =</span> <span class="dv">3</span>)</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">0.80</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">col=</span><span class="st">"gray"</span>)</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">1.65</span>, <span class="at">lty =</span> <span class="dv">3</span>,<span class="at">col=</span><span class="st">"gray"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg =</span> <span class="cn">NA</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(rp <span class="sc">~</span> mu, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">ylab =</span> <span class="st">"power"</span>, <span class="at">xlab =</span> <span class="st">"mu"</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> mu0, <span class="at">lty =</span> <span class="dv">3</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> alpha, <span class="at">lty =</span> <span class="dv">3</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">0.80</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">col=</span><span class="st">"gray"</span>)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">1.65</span>, <span class="at">lty =</span> <span class="dv">3</span>,<span class="at">col=</span><span class="st">"gray"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>

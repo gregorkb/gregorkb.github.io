@@ -618,7 +618,8 @@ X_{i1},\dots,X_{in_i} \overset{\text{ind}}{\sim}\mathcal{N}(\mu_i,\sigma_i^2)
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>hr_m <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">54</span>,<span class="dv">62</span>,<span class="dv">64</span>,<span class="dv">69</span>,<span class="dv">81</span>,<span class="dv">73</span>,<span class="dv">83</span>,<span class="dv">68</span>,<span class="dv">72</span>,</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>          <span class="dv">98</span>,<span class="dv">65</span>,<span class="dv">78</span>,<span class="dv">74</span>,<span class="dv">73</span>)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(hr_w,hr_m,<span class="at">names =</span> <span class="fu">c</span>(<span class="st">"women"</span>,<span class="st">"men"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg =</span> <span class="cn">NA</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(hr_w,hr_m,<span class="at">names =</span> <span class="fu">c</span>(<span class="st">"women"</span>,<span class="st">"men"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -626,7 +627,7 @@ X_{i1},\dots,X_{in_i} \overset{\text{ind}}{\sim}\mathcal{N}(\mu_i,\sigma_i^2)
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">bg =</span> <span class="cn">NA</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">scale</span>(hr_w),</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">"women"</span>,</span>
