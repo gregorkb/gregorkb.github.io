@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>15&nbsp; The random sample – Tabletop Statistics</title>
+<title>15&nbsp; The random sample – Your Stat Prof's Introduction to Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -175,7 +175,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Tabletop Statistics</a> 
+      <a href="./">Your Stat Prof’s Introduction to Statistics</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -609,14 +609,13 @@ P( X \in A \cap Y \in B) = P(X \in A) P(Y \in B)
 <figcaption>Pinewood derby car exemplar (by my daughter at age 10).</figcaption>
 </figure>
 </div>
+<p>The R code below stores the observed values in a vector.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ft <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.5692</span>,<span class="fl">2.5936</span>,<span class="fl">2.6190</span>,<span class="fl">2.6320</span>,<span class="fl">2.6345</span>,</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.6602</span>,<span class="fl">2.6708</span>,<span class="fl">2.6804</span>,<span class="fl">2.6850</span>,<span class="fl">2.7049</span>,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.7111</span>,<span class="fl">2.8034</span>,<span class="fl">2.8300</span>,<span class="fl">3.0639</span>,<span class="fl">3.1489</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">3.2411</span>,<span class="fl">3.5701</span>,<span class="fl">3.9686</span>,<span class="fl">4.1220</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ft_avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(ft)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">3.2411</span>,<span class="fl">3.5701</span>,<span class="fl">3.9686</span>,<span class="fl">4.1220</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>The average of the finishing times was 2.9425632.</p>
 </div>
 <p><br> In the pinewood derby car example, an experiment is run: tell some young girls to assemble and decorate pinewood derby cars and race them, recording the finishing times. Now, do these measurements constitute a random sample? Perhaps they do, and perhaps they do not. Let’s consider whether the finishing times are independent. I know for a fact (being the father of two participants) that there was at least one pair of sisters in the competition, who more than likely (in fact) worked simultaneously and in close proximity to each other while assembling and decorating their cars. There may have been discussion between them, or a tip they both recieved from mom or dad, which could have lead them to use similar strategies of assembly and weighting, which may in the end have caused the finishing times of their cars to be similar. Yet it may be that the dependence induced in their finishing times by all of this may be slight enough to be negligible. As for whether the finishing times represent realizations of identically distributed random variables, it seems reasonable by the following: Even though each girl may have a unique decoration style and assembly strategy, if a girl is selected at random and the finishing time of her pinewood derby car is recorded, we can regard this finishing time as a draw from <em>some</em> distribution; and the collection of finishing times is a collection of draws from this same distribution. So, in spite of some possibility of non-independence, we will hereafter treat the pinewood derby car finishing times as a random sample.</p>
 <p>Here is another example of a random sample which we will use.</p>
@@ -624,18 +623,18 @@ P( X \in A \cap Y \in B) = P(X \in A) P(Y \in B)
 <p><span class="theorem-title"><strong>Example 15.2 (Golden ratio data)</strong></span> Each in a class of twenty-seven students was asked to measure the distances <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> depicted below on his or her left hand and then to compute the ratio <span class="math inline">\(B/A\)</span> of the distances.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/gr_diagram.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="300"></p>
+<p><img src="images/gr_diagram.png" class="img-fluid figure-img" width="300"></p>
+<figcaption>Does the average value of <span class="math inline">\(B/A\)</span> among adult humans equal the golden ratio?</figcaption>
 </figure>
 </div>
-<p>Below are the values which were obtained.</p>
+<p>The R code below stores the observed values in a vector.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>gr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.66</span>, <span class="fl">1.61</span>, <span class="fl">1.62</span>, <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.43</span>, <span class="fl">1.66</span>, </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.20</span>, <span class="fl">1.52</span>, <span class="fl">1.60</span>, <span class="fl">1.55</span>, <span class="fl">1.67</span>, </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.77</span>, <span class="fl">1.50</span>, <span class="fl">1.64</span>, <span class="fl">1.54</span>, <span class="fl">1.40</span>, <span class="fl">1.36</span>, <span class="fl">1.50</span>, </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.40</span>, <span class="fl">1.35</span>, <span class="fl">1.48</span>, <span class="fl">1.64</span>, <span class="fl">1.91</span>, <span class="fl">1.70</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>gr_avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(gr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.40</span>, <span class="fl">1.35</span>, <span class="fl">1.48</span>, <span class="fl">1.64</span>, <span class="fl">1.91</span>, <span class="fl">1.70</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>The instructor of the twenty-seven students was keenly interested in testing whether the average value of the ratio <span class="math inline">\(B/A\)</span> was equal to the fabled golden ratio <span class="math inline">\((1 + \sqrt{5})/2\)</span>, which is <span class="math inline">\(1.618\)</span> after rounding. The average of the observed values was <span class="math inline">\(1.56\)</span>.</p>
+<p>The instructor of the twenty-seven students was keenly interested in testing whether the average value of the ratio <span class="math inline">\(B/A\)</span> was equal to the fabled golden ratio <span class="math inline">\((1 + \sqrt{5})/2\)</span>, which is <span class="math inline">\(1.618\)</span> after rounding.</p>
 </div>
 <p><br></p>
 <div id="exm-acorns" class="theorem example">
@@ -646,21 +645,48 @@ P( X \in A \cap Y \in B) = P(X \in A) P(Y \in B)
 <figcaption>Live oak acorns collected in Columbia, SC</figcaption>
 </figure>
 </div>
+<p>The code below reads the observed lengths and diameters into R.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.375</span>,<span class="fl">0.428</span>,<span class="fl">0.39</span>,<span class="fl">0.388</span>,<span class="fl">0.42</span>,<span class="fl">0.43</span>,</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.42</span>,<span class="fl">0.35</span>,<span class="fl">0.44</span>,<span class="fl">0.45</span>,<span class="fl">0.43</span>,<span class="fl">0.50</span>,<span class="fl">0.48</span>,<span class="fl">0.46</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.429</span>,<span class="fl">0.427</span>,<span class="fl">0.424</span>,<span class="fl">0.512</span>,<span class="fl">0.428</span>,<span class="fl">0.426</span>,<span class="fl">0.43</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.4</span>,<span class="fl">0.46</span>,<span class="fl">0.44</span>,<span class="fl">0.40</span>,<span class="fl">0.45</span>,<span class="fl">0.41</span>,<span class="fl">0.398</span>,<span class="fl">0.42</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.453</span>,<span class="fl">0.449</span>,<span class="fl">0.428</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>ln <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.710</span>,<span class="fl">0.75</span>,<span class="fl">0.665</span>,<span class="fl">0.658</span>,<span class="fl">0.651</span>,<span class="fl">0.791</span>,<span class="fl">0.740</span>,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.750</span>,<span class="fl">0.790</span>,<span class="fl">0.810</span>,<span class="fl">0.72</span>,<span class="fl">0.71</span>,<span class="fl">0.79</span>,<span class="fl">0.72</span>,<span class="fl">0.748</span>,</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.734</span>,<span class="fl">0.746</span>,<span class="fl">0.735</span>,<span class="fl">0.851</span>,<span class="fl">0.746</span>,<span class="fl">0.73</span>,<span class="fl">0.75</span>,<span class="fl">0.81</span>,</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.76</span>,<span class="fl">0.725</span>,<span class="fl">0.735</span>,<span class="fl">0.71</span>,<span class="fl">0.712</span>,<span class="fl">0.755</span>,<span class="fl">0.787</span>,</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.776</span>,<span class="fl">0.748</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># diameters</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.375</span>,<span class="fl">0.428</span>,<span class="fl">0.39</span>,<span class="fl">0.388</span>,<span class="fl">0.42</span>,<span class="fl">0.43</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.42</span>,<span class="fl">0.35</span>,<span class="fl">0.44</span>,<span class="fl">0.45</span>,<span class="fl">0.43</span>,<span class="fl">0.50</span>,<span class="fl">0.48</span>,<span class="fl">0.46</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.429</span>,<span class="fl">0.427</span>,<span class="fl">0.424</span>,<span class="fl">0.512</span>,<span class="fl">0.428</span>,<span class="fl">0.426</span>,<span class="fl">0.43</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.4</span>,<span class="fl">0.46</span>,<span class="fl">0.44</span>,<span class="fl">0.40</span>,<span class="fl">0.45</span>,<span class="fl">0.41</span>,<span class="fl">0.398</span>,<span class="fl">0.42</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.453</span>,<span class="fl">0.449</span>,<span class="fl">0.428</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># lengths</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>ln <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.710</span>,<span class="fl">0.75</span>,<span class="fl">0.665</span>,<span class="fl">0.658</span>,<span class="fl">0.651</span>,<span class="fl">0.791</span>,<span class="fl">0.740</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.750</span>,<span class="fl">0.790</span>,<span class="fl">0.810</span>,<span class="fl">0.72</span>,<span class="fl">0.71</span>,<span class="fl">0.79</span>,<span class="fl">0.72</span>,<span class="fl">0.748</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.734</span>,<span class="fl">0.746</span>,<span class="fl">0.735</span>,<span class="fl">0.851</span>,<span class="fl">0.746</span>,<span class="fl">0.73</span>,<span class="fl">0.75</span>,<span class="fl">0.81</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.76</span>,<span class="fl">0.725</span>,<span class="fl">0.735</span>,<span class="fl">0.71</span>,<span class="fl">0.712</span>,<span class="fl">0.755</span>,<span class="fl">0.787</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.776</span>,<span class="fl">0.748</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<p><br> We may hereafter write <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}F\)</span> to express that <span class="math inline">\(X_1,\dots,X_n\)</span> are a random sample from a population with distribution <span class="math inline">\(F\)</span>. Often there are features of <span class="math inline">\(F\)</span> that are unknown to us, and the goal of drawing the random sample <span class="math inline">\(X_1,\dots,X_n\)</span> is to learn about these unknown features of <span class="math inline">\(F\)</span>. In particular, we will next consider how we can learn about the expected value of a random variable with distribution <span class="math inline">\(F\)</span>, which we may refer to as the <em>population mean</em>.</p>
+<div id="exm-palletweights" class="theorem example">
+<p><span class="theorem-title"><strong>Example 15.4 (Pallet weights)</strong></span> At Gregory’s Asparagus Farm each pallet on which lugs of asparagus are transported from the field into the barn is weighed in order that the net weight of the harvested asparagus (total weight minus the weight of the lugs–each weighing 3 lbs—minus the weight of the pallet) on each pallet can be recorded.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pallets.jpg" class="img-fluid figure-img" width="300"></p>
+<figcaption>Each pallet is marked with its weight.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/asparagus_lugs.jpg" class="img-fluid figure-img" width="300"></p>
+<figcaption>The “lugs” are these red crates.</figcaption>
+</figure>
+</div>
+<p>The weights of thirty-nine pallets used at Gregory’s Asparagus Far are read into R below:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>wt <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">41</span>,<span class="dv">34</span>,<span class="dv">40</span>,<span class="dv">44</span>,<span class="dv">33</span>,<span class="dv">42</span>,<span class="dv">52</span>,<span class="dv">38</span>,<span class="dv">32</span>,<span class="dv">31</span>,<span class="dv">31</span>,<span class="dv">35</span>,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        <span class="dv">39</span>,<span class="dv">44</span>,<span class="dv">42</span>,<span class="dv">42</span>,<span class="dv">35</span>,<span class="dv">33</span>,<span class="dv">40</span>,<span class="dv">48</span>,<span class="dv">51</span>,<span class="dv">32</span>,<span class="dv">41</span>,<span class="dv">35</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="dv">38</span>,<span class="dv">48</span>,<span class="dv">37</span>,<span class="dv">35</span>,<span class="dv">42</span>,<span class="dv">41</span>,<span class="dv">40</span>,<span class="dv">47</span>,<span class="dv">40</span>,<span class="dv">46</span>,<span class="dv">33</span>,<span class="dv">38</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="dv">51</span>,<span class="dv">39</span>,<span class="dv">40</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The distributor to whom Gregory’s Asparagus Farm sells its asparagus treats every pallet as though it weighed <span class="math inline">\(45\)</span> pounds. One may wonder if this is a good approximation to the weight of a pallet.</p>
+</div>
+<p><br></p>
+<p>We may hereafter write <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}F\)</span> to express that <span class="math inline">\(X_1,\dots,X_n\)</span> are a random sample from a population with distribution <span class="math inline">\(F\)</span>. Often there are features of <span class="math inline">\(F\)</span> that are unknown to us, and the goal of drawing the random sample <span class="math inline">\(X_1,\dots,X_n\)</span> is to learn about these unknown features of <span class="math inline">\(F\)</span>. In particular, we will next consider how we can learn about the expected value of a random variable with distribution <span class="math inline">\(F\)</span>, which we may refer to as the <em>population mean</em>.</p>
 
 
 

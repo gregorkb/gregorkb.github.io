@@ -8,7 +8,7 @@
 
 <meta name="author" content="Karl Gregory">
 
-<title>18&nbsp; The sample variance – Tabletop Statistics</title>
+<title>18&nbsp; The sample variance – Your Stat Prof's Introduction to Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -175,7 +175,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Tabletop Statistics</a> 
+      <a href="./">Your Stat Prof’s Introduction to Statistics</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -607,7 +607,7 @@ S^2_n = \frac{1}{n-1}\sum_{i=1}^n(X_i - \bar X_n)^2.
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sn2 <span class="ot">&lt;-</span> <span class="fu">var</span>(ft)   <span class="co"># sample variance</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>sn <span class="ot">&lt;-</span> <span class="fu">sd</span>(ft)     <span class="co"># sample standard deviation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>We obtain <span class="math inline">\(\bar X_n = 2.9425632\)</span>, <span class="math inline">\(S_n^2 = 0.2206676\)</span>, and <span class="math inline">\(S_n = 0.4697527\)</span>. To report these numbers properly, one really should attach units to them. The values <span class="math inline">\(X_1,\dots,X_n\)</span> in the random sample are measured in seconds. The sample mean <span class="math inline">\(\bar X_n\)</span> is therefore also in seconds; however the sample variance, since it is an average of squared deviations from the mean, should be reported as “seconds squared”. The sample standard deviation, since it is the square root of the sample variance, can be reported in the original units. So the sample standard deviation for the pinewood derby car finishing times is <span class="math inline">\(0.4697527\)</span> seconds.</p>
+<p>We obtain <span class="math inline">\(\bar X_n = 2.943\)</span>, <span class="math inline">\(S_n^2 = 0.221\)</span>, and <span class="math inline">\(S_n = 0.47\)</span>. To report these numbers properly, one really should attach units to them. The values <span class="math inline">\(X_1,\dots,X_n\)</span> in the random sample are measured in seconds. The sample mean <span class="math inline">\(\bar X_n\)</span> is therefore also in seconds; however the sample variance, since it is an average of squared deviations from the mean, should be reported as “seconds squared”. The sample standard deviation, since it is the square root of the sample variance, can be reported in the original units. So the sample standard deviation for the pinewood derby car finishing times is <span class="math inline">\(0.47\)</span> seconds.</p>
 <p>Now, the sample variance and sample standard deviation are themselves random variables, as they are computed on the set of random variables <span class="math inline">\(X_1,\dots,X_n\)</span> comprising the random sample. They therefore have probability distributions of their own. We first consider the expected value the sample variance <span class="math inline">\(S_n^2\)</span>.</p>
 <div id="prp-meansamplevariance" class="theorem proposition">
 <p><span class="theorem-title"><strong>Proposition 18.1 (Expected value of the sample variance)</strong></span> If <span class="math inline">\(X_1,\dots,X_n\)</span> is a random sample from a distribution with variance <span class="math inline">\(\sigma^2\)</span>, then <span class="math inline">\(\mathbb{E}S_n^2 = \sigma^2\)</span>.</p>
@@ -620,7 +620,7 @@ S^2_n = \frac{1}{n-1}\sum_{i=1}^n(X_i - \bar X_n)^2.
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">mean</span>((ft <span class="sc">&gt;=</span> xbar <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>sn) <span class="sc">&amp;</span> (ft <span class="sc">&lt;=</span> xbar <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>sn))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">mean</span>((ft <span class="sc">&gt;=</span> xbar <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>sn) <span class="sc">&amp;</span> (ft <span class="sc">&lt;=</span> xbar <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>sn))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>We find <span class="math inline">\(84.2105263\%\)</span> of the finishing times lie within one sample standard deviations of <span class="math inline">\(\bar X_n\)</span>, <span class="math inline">\(89.4736842\%\)</span> lie withing two sample standard deviations of <span class="math inline">\(\bar X_n\)</span>, and <span class="math inline">\(100\%\)</span> lie within three sample standard deviations of <span class="math inline">\(\bar X_n\)</span>. <a href="#fig-pinewoodhistsd" class="quarto-xref">Figure&nbsp;<span>18.1</span></a> shows a histogram of the pinewood derby finishing times with regions delineating one, two, and three sample standard devations <span class="math inline">\(S_n\)</span> from the sample mean <span class="math inline">\(\bar X_n\)</span>. We see from this plot that the distribution of finishing times is far from symmetric.</p>
+<p>We find <span class="math inline">\(84.211\%\)</span> of the finishing times lie within one sample standard deviations of <span class="math inline">\(\bar X_n\)</span>, <span class="math inline">\(89.474\%\)</span> lie withing two sample standard deviations of <span class="math inline">\(\bar X_n\)</span>, and <span class="math inline">\(100\%\)</span> lie within three sample standard deviations of <span class="math inline">\(\bar X_n\)</span>. <a href="#fig-pinewoodhistsd" class="quarto-xref">Figure&nbsp;<span>18.1</span></a> shows a histogram of the pinewood derby finishing times with regions delineating one, two, and three sample standard devations <span class="math inline">\(S_n\)</span> from the sample mean <span class="math inline">\(\bar X_n\)</span>. We see from this plot that the distribution of finishing times is far from symmetric.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
