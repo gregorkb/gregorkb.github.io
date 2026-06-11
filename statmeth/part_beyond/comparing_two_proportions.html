@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Karl Gregory">
 
-<title>References – Your Stat Prof’s Introduction to Statistics</title>
+<title>40&nbsp; Comparing proportions – Your Stat Prof's Introduction to Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,47 +21,29 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./tables/t_table.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9a4bcb067c512b2a7a8e9938cb5c3a8a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../part_beyond/randomized_experiments_v_observational_studies.html" rel="next">
+<link href="../part_beyond/comparing_two_means.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-9a4bcb067c512b2a7a8e9938cb5c3a8a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -142,7 +125,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part_beyond/comparing_two_means.html">VI: Beyond one sample</a></li><li class="breadcrumb-item"><a href="../part_beyond/comparing_two_proportions.html"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Comparing proportions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -157,19 +140,19 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Your Stat Prof’s Introduction to Statistics</a> 
+      <a href="../">Your Stat Prof’s Introduction to Statistics</a> 
         <div class="sidebar-tools-main">
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Your-Stat-Prof-s-Introduction-to-Statistics.pdf">
+            <a class="dropdown-item sidebar-tools-main-item" href="../Your-Stat-Prof-s-Introduction-to-Statistics.pdf">
               <i class="bi bi-file-pdf pe-1"></i>
             Download PDF
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Your-Stat-Prof-s-Introduction-to-Statistics.epub">
+            <a class="dropdown-item sidebar-tools-main-item" href="../Your-Stat-Prof-s-Introduction-to-Statistics.epub">
               <i class="bi bi-journal pe-1"></i>
             Download ePub
             </a>
@@ -188,7 +171,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -203,43 +186,43 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/set_basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/set_basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics of sets</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/prob_basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/prob_basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics of probability</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/counting_rules.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/counting_rules.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Counting rules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/conditional_prob.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/conditional_prob.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/independence.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/independence.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/bayes_rule.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/bayes_rule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayes’ rule</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./homework/sets_and_prob_exercises.html" class="sidebar-item-text sidebar-link">
+  <a href="../homework/sets_and_prob_exercises.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practice problems</span></span></a>
   </div>
 </li>
@@ -256,49 +239,49 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/random_variables.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/random_variables.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Random variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/discrete_rvs.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/discrete_rvs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Discrete random variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/bernoulli_binomial.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/bernoulli_binomial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Bernoulli and binomial distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/hypergeometric_distribution.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/hypergeometric_distribution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hypergeometric distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/drawing_with_without_replacement.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/drawing_with_without_replacement.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Drawing with versus without replacement</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/continuous_rvs.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/continuous_rvs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Continuous random variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/normal_distribution.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/normal_distribution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The Normal distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/poisson_exp_dist.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/poisson_exp_dist.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Poisson and exponential distributions</span></span></a>
   </div>
 </li>
@@ -315,55 +298,55 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/random_sample.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/random_sample.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The random sample</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/mean_of_rs.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/mean_of_rs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Mean of a random sample</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/hist.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/hist.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Histogram</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/variance_of_rs.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/variance_of_rs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The sample variance</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/normal_qq_plot.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/normal_qq_plot.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Normal QQ plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/boxplots.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/boxplots.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Boxplots</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/central_limit_theorem.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/central_limit_theorem.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/sample_proportion.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/sample_proportion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Sample proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/normal_approx_binomial.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/normal_approx_binomial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Normal approximation to the binomial</span></span></a>
   </div>
 </li>
@@ -380,43 +363,43 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/statistical_inference.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/statistical_inference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Statistical inference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">First confidence interval for a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/confint_for_normal_variance.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/confint_for_normal_variance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence interval for a normal variance</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/t_confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/t_confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Revised confidence interval for a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/large_sample_confint_for_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/large_sample_confint_for_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Large-sample confidence interval for a mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/confint_for_proportion.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/confint_for_proportion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Confidence interval for a proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/sample_size_determination.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/sample_size_determination.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Sample size determination</span></span></a>
   </div>
 </li>
@@ -433,43 +416,43 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/hyp_test.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/hyp_test.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/first_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/first_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">First tests about about a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/t_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/t_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Revised tests about about a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/large_sample_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/large_sample_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Large-sample tests about about a mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/hyp_test_proportion.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/hyp_test_proportion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Tests for a proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/p_values.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/p_values.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">P values</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/power_ztest.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/power_ztest.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
@@ -477,46 +460,46 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">VI: Beyond one sample</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/comparing_two_means.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/comparing_two_means.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Comparing means</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/comparing_two_proportions.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/comparing_two_proportions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Comparing proportions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/randomized_experiments_v_observational_studies.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/randomized_experiments_v_observational_studies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Randomized experiments</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/cell_means.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/cell_means.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/contingency_table_analysis.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/contingency_table_analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Contingency tables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/simple_linear_regression.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/simple_linear_regression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
@@ -533,19 +516,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tables/z_table.html" class="sidebar-item-text sidebar-link">
+  <a href="../tables/z_table.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tables/chi_squared_table.html" class="sidebar-item-text sidebar-link">
+  <a href="../tables/chi_squared_table.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title"><span class="math inline">\(\chi^2\)</span> table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tables/t_table.html" class="sidebar-item-text sidebar-link">
+  <a href="../tables/t_table.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
   </div>
 </li>
@@ -553,7 +536,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -562,21 +545,34 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#confidence-intervals-for-a-difference-in-proportions" id="toc-confidence-intervals-for-a-difference-in-proportions" class="nav-link active" data-scroll-target="#confidence-intervals-for-a-difference-in-proportions"><span class="header-section-number">40.1</span> Confidence intervals for a difference in proportions</a></li>
+  <li><a href="#testing-hypotheses-for-a-difference-in-proportions" id="toc-testing-hypotheses-for-a-difference-in-proportions" class="nav-link" data-scroll-target="#testing-hypotheses-for-a-difference-in-proportions"><span class="header-section-number">40.2</span> Testing hypotheses for a difference in proportions</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part_beyond/comparing_two_means.html">VI: Beyond one sample</a></li><li class="breadcrumb-item"><a href="../part_beyond/comparing_two_proportions.html"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Comparing proportions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span id="sec-comparing_two_proportions" class="quarto-section-identifier"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Comparing proportions</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Karl Gregory </p>
+          </div>
+  </div>
     
   
     
@@ -587,34 +583,86 @@ window.Quarto = {
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-casella2024statistical" class="csl-entry" role="listitem">
-Casella, George, and Roger Berger. 2024. <em>Statistical Inference</em>.
-Chapman; Hall/CRC.
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
 </div>
-<div id="ref-kuehl2000design" class="csl-entry" role="listitem">
-Kuehl, R. O. 2000. <em>Design of <span>Experiments</span>:
-<span>Statistical</span> <span>Principles</span> of
-<span>Research</span> <span>Design</span> and
-<span>Analysis</span></em>. Duxbury/Thomson Learning.
+<p>Now we consider comparing the proportions of “successes” in two populations. Letting <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span> denote the probability of drawing a success from populations <span class="math inline">\(1\)</span> and <span class="math inline">\(2\)</span>, respectively, suppose we draw independent random samples <span class="math display">\[
+X_{i1},\dots,X_{in_i} \overset{\text{ind}}{\sim}\text{Bernoulli}(p_i), \quad i = 1,2
+\]</span> from the two populations and define the sample proportions as <span class="math display">\[
+\hat p_i = \frac{1}{n_i}(X_{i1} + \dots + X_{in_i}), \quad i=1,2.
+\]</span> We consider making inferences—constructing confidence intervals for and testing hypotheses about—the difference in proportions <span class="math inline">\(p_1 - p_2\)</span> based on the difference of sample proportions <span class="math inline">\(\hat p_1 - \hat p_2\)</span>.</p>
+<p>We first consider how to construct confidence intervals for <span class="math inline">\(p_1 - p_2\)</span>.</p>
+<section id="confidence-intervals-for-a-difference-in-proportions" class="level2" data-number="40.1">
+<h2 data-number="40.1" class="anchored" data-anchor-id="confidence-intervals-for-a-difference-in-proportions"><span class="header-section-number">40.1</span> Confidence intervals for a difference in proportions</h2>
+<p>Since the sample proportions <span class="math inline">\(\hat p_1\)</span> and <span class="math inline">\(\hat p_2\)</span> are really just sample means, and due to the relation in <a href="../part_confidence_intervals/confint_for_proportion.html#eq-bernoullisamplevariance" class="quarto-xref">Equation&nbsp;<span>30.2</span></a>, we find that <a href="comparing_two_means.html#prp-cltmeandiff" class="quarto-xref">Proposition&nbsp;<span>39.6</span></a> gives the following central limit result for the Studentized difference in sample proportions:</p>
+<div id="prp-cltdiffprop" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 40.1 (Large-sample distribution of Studentized difference in sample proportions)</strong></span> Let <span class="math inline">\(X_{i1},\dots,X_{in_i} \overset{\text{ind}}{\sim}\text{Bernoulli}(p_i)\)</span> for <span class="math inline">\(i=1,2\)</span>. Then <span class="math display">\[
+\frac{\hat p_1 - \hat p_2 - (p_1 - p_2)}{\sqrt{\dfrac{\hat p_1(1-\hat p_1)}{n_1} + \dfrac{\hat p_2(1-\hat p_2)}{n_2} }} \text{ behaves more and more like } Z \sim \mathcal{N}(0,1)
+\]</span> for larger and larger <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>.</p>
 </div>
-<div id="ref-abalone" class="csl-entry" role="listitem">
-Nash, Sellers, Warwick, and Wes Ford. 1994.
-<span>“<span>Abalone</span>.”</span> UCI Machine Learning Repository.
+<p>The above result suggests how to construct an approximate <span class="math inline">\((1-\alpha)100\%\)</span> confidence interval for the difference <span class="math inline">\(p_1 - p_2\)</span> when <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are large.</p>
+<div id="prp-confintpropdiff" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 40.2 (Large-sample confidence interval for a difference in proportions)</strong></span> Let <span class="math inline">\(X_{i1},\dots,X_{in_i} \overset{\text{ind}}{\sim}\text{Bernoulli}(p_i)\)</span> for <span class="math inline">\(i=1,2\)</span>. Then the interval with endpoints <span class="math display">\[
+\hat p_1 - \hat p_2 \pm z_{\alpha/2} \sqrt{\dfrac{\hat p_1(1-\hat p_1)}{n_1} + \dfrac{\hat p_2(1-\hat p_2)}{n_2} }
+\]</span> contains <span class="math inline">\(p_1 - p_2\)</span> with probability closer and closer to <span class="math inline">\(1-\alpha\)</span> for larger and larger <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>.</p>
 </div>
-<div id="ref-santos2004beryllium" class="csl-entry" role="listitem">
-Santos, Nuno C, G Israelian, RJ Garcı́a López, M Mayor, R Rebolo, S
-Randich, A Ecuvillon, and C Domı́nguez Cerdeña. 2004. <span>“Are
-Beryllium Abundances Anomalous in Stars with Giant Planets?”</span>
-<em>Astronomy &amp; Astrophysics</em> 427 (3): 1085–96.
+<p>Just as in the case of constructing a confidence interval for a single proportion (rather than for a difference in proportions), we will need a sample size requirement. In order to trust the above interval, we will require <span id="eq-propdiffCIrot"><span class="math display">\[
+\min\{n_1\hat p_1,n_1(1-\hat p_1),n_2\hat p_2,n_2(1-\hat p_2)\} \geq 15,
+\tag{40.1}\]</span></span> which is that each sample should have at least <span class="math inline">\(15\)</span> “successes” and <span class="math inline">\(15\)</span> “failures”. Compare this condition with that in <a href="../part_confidence_intervals/confint_for_proportion.html#eq-waldrot" class="quarto-xref">Equation&nbsp;<span>30.3</span></a>.</p>
+<div id="exr-twobagsmarbles" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 40.1 (Two deep bags of marbles)</strong></span> Suppose you have two deep bags of marbles, from each of which you scoop a sample of marbles and count the number of red marbles in the sample. Suppose the bags are deep enough (contain enough marbles) so that draws from the bag can be regarded as independent Bernoulli trials with probability of “success” equal to the proportion of red marbles in the bag. From the first bag you scoop <span class="math inline">\(143\)</span> marbles and find <span class="math inline">\(30\)</span> which are red; from the second bag you scoop <span class="math inline">\(213\)</span> marbles and find <span class="math inline">\(49\)</span> which are red. Letting <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span> denote the proportions of red marbles in first and second bag, respectively, construct a confidence interval for <span class="math inline">\(p_1 - p_2\)</span> at confidence level:</p>
+<ol type="1">
+<li><span class="math inline">\(95\%\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li><span class="math inline">\(99\%\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+</ol>
 </div>
-<div id="ref-snee1974graphical" class="csl-entry" role="listitem">
-Snee, Ronald D. 1974. <span>“Graphical Display of Two-Way Contingency
-Tables.”</span> <em>The American Statistician</em> 28 (1): 9–12.
+</section>
+<section id="testing-hypotheses-for-a-difference-in-proportions" class="level2" data-number="40.2">
+<h2 data-number="40.2" class="anchored" data-anchor-id="testing-hypotheses-for-a-difference-in-proportions"><span class="header-section-number">40.2</span> Testing hypotheses for a difference in proportions</h2>
+<p>Here we will consider testing hypotheses about <span class="math inline">\(p_1 - p_2\)</span> of the following forms:</p>
+<ol type="1">
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_1 - p_2 \leq 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p_1 - p_2 &gt; 0\)</span>.</li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_1 - p_2 \geq 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p_1 - p_2 &lt; 0\)</span>.</li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_1 - p_2 = 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p_1 - p_2 \neq 0\)</span>.</li>
+</ol>
+<p>Note that we do not here, as we did in the case of testing hypotheses about a difference in means <span class="math inline">\(\mu_1 - \mu_2\)</span>, consider a null value <span class="math inline">\(\delta_0\)</span> which could be, if desired, different from zero. It is certainly possible to test such hypotheses as <span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_1 - p_2 \leq \delta_0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p_1 - p_2 &gt; \delta_0\)</span> for <span class="math inline">\(\delta_0 \neq 0\)</span>, for example, but we do not consider such hypotheses here. One reason for this is that <span class="math inline">\(\delta_0=0\)</span> is by far the most typical choice of null value for the difference <span class="math inline">\(p_1 - p_2\)</span>; another reason is that setting <span class="math inline">\(\delta_0=0\)</span> allows us to use a kind of “pooled variance” in our test statistic, as we will show.</p>
+<p>Consider the fact that if <span class="math inline">\(p_1 - p_2 = 0\)</span>, then <span class="math inline">\(p_1 = p_2 = p\)</span> for some common proportion <span class="math inline">\(p\)</span>. If the two populations have a common success probability <span class="math inline">\(p\)</span>, it would make sense to estimate this common success probability by pooling all the data together to obtain <span id="eq-pooledprop"><span class="math display">\[
+\hat p = \frac{n_1 \hat p_1 + n_2 \hat p_2}{n_1 + n_2},
+\tag{40.2}\]</span></span> where the above is simply the total number of successes in both samples divided by the total sample size. Moreover, since the <span class="math inline">\(\text{Bernoulli}(p)\)</span> distribution has variance <span class="math inline">\(p(1-p)\)</span>, <span class="math inline">\(p_1 = p_2 = p\)</span> implies that the two populations have the same variance; this variance could be estimated with <span class="math inline">\(\hat p (1-\hat p)\)</span>. Our test statistic, presented in the next result describing tests of the above sets of hypotheses, makes use of this pooled estimate of the variance.</p>
+<div id="prp-twosampletestprop" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 40.3 (Tests of hypotheses for a difference in proportions)</strong></span> Let <span class="math inline">\(X_{i1},\dots,X_{in_i} \overset{\text{ind}}{\sim}\text{Bernoulli}(p_i)\)</span> for <span class="math inline">\(i=1,2\)</span> be independent random samples. Then, with <span class="math display">\[
+Z_{\operatorname{test}}= \frac{\hat p_1 - \hat p_2}{\sqrt{\hat p(1-\hat p)\Big(\dfrac{1}{n_1} + \dfrac{1}{n_2}\Big)}},
+\]</span> and <span class="math inline">\(\hat p\)</span> as in <a href="#eq-pooledprop" class="quarto-xref">Equation&nbsp;<span>40.2</span></a>, the following tests have size closer and closer to <span class="math inline">\(\alpha\)</span> for larger and larger <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>:</p>
+<ol type="1">
+<li>For <span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_1 - p_2 \leq 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p_1 - p_2 &gt; 0\)</span>, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(Z_{\operatorname{test}}&gt; z_\alpha\)</span>.</li>
+<li>For <span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_1 - p_2 \geq 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p_1 - p_2 &lt; 0\)</span>, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(Z_{\operatorname{test}}&lt; -z_\alpha\)</span>.</li>
+<li>For <span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_1 - p_2 = 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p_1 - p_2 \neq 0\)</span>, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|Z_{\operatorname{test}}| &gt; z_{\alpha/2}\)</span>.</li>
+</ol>
 </div>
+<p>One can obtain <span class="math inline">\(p\)</span>-values in the usual way: By finding the significance level <span class="math inline">\(\alpha^*\)</span> which sets the critical value equal to the observed value of the test statistic <span class="math inline">\(Z_{\operatorname{test}}\)</span>.</p>
+<div id="exr-twobagsmarbles_hyptest" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 40.2 (Two deep bags of marbles continued)</strong></span> Based on the same scoops of marbles as in <a href="#exr-twobagsmarbles" class="quarto-xref">Exercise&nbsp;<span>40.1</span></a>, (from the first bag you scoop <span class="math inline">\(143\)</span> marbles and find <span class="math inline">\(30\)</span> which are red and from the second bag you scoop <span class="math inline">\(213\)</span> marbles and find <span class="math inline">\(49\)</span> which are red) obtain <span class="math inline">\(p\)</span>-values for testing these sets of hypotheses:</p>
+<ol type="1">
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_1 - p_2 \leq 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p_1 - p_2 &gt; 0\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_1 - p_2 \geq 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p_1 - p_2 &lt; 0\)</span>.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_1 - p_2 = 0\)</span> versus <span class="math inline">\(H_1\)</span>: <span class="math inline">\(p_1 - p_2 \neq 0\)</span>.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
+</ol>
+<p>Interpret the <span class="math inline">\(p\)</span> values.</p>
 </div>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>We have <span class="math inline">\(\hat p_1 = 0.141\)</span> and <span class="math inline">\(\hat p_2 = 0.23\)</span> with <span class="math inline">\(n_1 = 143\)</span> and <span class="math inline">\(n_2 = 213\)</span> and <span class="math inline">\(\hat p_1 - \hat p_2 = -0.089\)</span>. With <span class="math inline">\(\alpha = 0.05\)</span> we have <span class="math inline">\(z_{0.05/2} = 1.96\)</span>, and we obtain the interval <span class="math inline">\([-0.169,-0.009]\)</span>. <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>With <span class="math inline">\(\alpha = 0.01\)</span> we have <span class="math inline">\(z_{0.01/2} = 2.576\)</span>, and we obtain the interval <span class="math inline">\([-0.195,0.016]\)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>We obtain <span class="math inline">\(\hat p = 0.194\)</span> and the test statistic value <span class="math inline">\(Z_{\operatorname{test}}= -2.086\)</span>. The <span class="math inline">\(p\)</span> values for testing the right-sided set of hypotheses is the area under the <span class="math inline">\(\mathcal{N}(0,1)\)</span> PDF to the right of <span class="math inline">\(Z_{\operatorname{test}}\)</span>, which is <span class="math inline">\(0.981\)</span>. There are no grounds for rejecting <span class="math inline">\(H_0\)</span>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>The <span class="math inline">\(p\)</span> values for testing the right-sided set of hypotheses is the area under the <span class="math inline">\(\mathcal{N}(0,1)\)</span> PDF to the left of <span class="math inline">\(Z_{\operatorname{test}}\)</span>, which is <span class="math inline">\(0.019\)</span>. We reject the null hypothesis that <span class="math inline">\(p_1 \geq p_2\)</span> and conclude <span class="math inline">\(p_1 &lt; p_2\)</span> at all significance levels greater than <span class="math inline">\(0.019\)</span>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>The <span class="math inline">\(p\)</span> values for testing the two-sided set of hypotheses is twice the area under the <span class="math inline">\(\mathcal{N}(0,1)\)</span> PDF beyond the value of <span class="math inline">\(Z_{\operatorname{test}}\)</span> in the direction it lies from zero, which is <span class="math inline">\(0.037\)</span>. We reject the null hypothesis of equal proportions and conclude <span class="math inline">\(p_1 &lt; p_2\)</span> at all significance levels greater than <span class="math inline">\(0.037\)</span>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1019,11 +1067,14 @@ Tables.”</span> <em>The American Statistician</em> 28 (1): 9–12.
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./tables/t_table.html" class="pagination-link" aria-label="$t$ table">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span>
+      <a href="../part_beyond/comparing_two_means.html" class="pagination-link" aria-label="Comparing means">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Comparing means</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../part_beyond/randomized_experiments_v_observational_studies.html" class="pagination-link" aria-label="Randomized experiments">
+        <span class="nav-page-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Randomized experiments</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

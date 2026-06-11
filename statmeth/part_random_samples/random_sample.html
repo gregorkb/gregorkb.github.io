@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Karl Gregory">
 
-<title>References – Your Stat Prof’s Introduction to Statistics</title>
+<title>16&nbsp; The random sample – Your Stat Prof's Introduction to Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,47 +21,64 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./tables/t_table.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9a4bcb067c512b2a7a8e9938cb5c3a8a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../part_random_samples/mean_of_rs.html" rel="next">
+<link href="../part_random_variables/poisson_exp_dist.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-9a4bcb067c512b2a7a8e9938cb5c3a8a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -142,7 +160,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part_random_samples/random_sample.html">III: Random samples</a></li><li class="breadcrumb-item"><a href="../part_random_samples/random_sample.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The random sample</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -157,19 +175,19 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Your Stat Prof’s Introduction to Statistics</a> 
+      <a href="../">Your Stat Prof’s Introduction to Statistics</a> 
         <div class="sidebar-tools-main">
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Your-Stat-Prof-s-Introduction-to-Statistics.pdf">
+            <a class="dropdown-item sidebar-tools-main-item" href="../Your-Stat-Prof-s-Introduction-to-Statistics.pdf">
               <i class="bi bi-file-pdf pe-1"></i>
             Download PDF
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Your-Stat-Prof-s-Introduction-to-Statistics.epub">
+            <a class="dropdown-item sidebar-tools-main-item" href="../Your-Stat-Prof-s-Introduction-to-Statistics.epub">
               <i class="bi bi-journal pe-1"></i>
             Download ePub
             </a>
@@ -188,7 +206,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -203,43 +221,43 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/set_basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/set_basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics of sets</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/prob_basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/prob_basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics of probability</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/counting_rules.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/counting_rules.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Counting rules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/conditional_prob.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/conditional_prob.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/independence.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/independence.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/bayes_rule.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/bayes_rule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayes’ rule</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./homework/sets_and_prob_exercises.html" class="sidebar-item-text sidebar-link">
+  <a href="../homework/sets_and_prob_exercises.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practice problems</span></span></a>
   </div>
 </li>
@@ -256,49 +274,49 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/random_variables.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/random_variables.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Random variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/discrete_rvs.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/discrete_rvs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Discrete random variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/bernoulli_binomial.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/bernoulli_binomial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Bernoulli and binomial distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/hypergeometric_distribution.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/hypergeometric_distribution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hypergeometric distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/drawing_with_without_replacement.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/drawing_with_without_replacement.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Drawing with versus without replacement</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/continuous_rvs.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/continuous_rvs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Continuous random variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/normal_distribution.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/normal_distribution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The Normal distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/poisson_exp_dist.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/poisson_exp_dist.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Poisson and exponential distributions</span></span></a>
   </div>
 </li>
@@ -306,64 +324,64 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">III: Random samples</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/random_sample.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/random_sample.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The random sample</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/mean_of_rs.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/mean_of_rs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Mean of a random sample</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/hist.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/hist.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Histogram</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/variance_of_rs.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/variance_of_rs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The sample variance</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/normal_qq_plot.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/normal_qq_plot.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Normal QQ plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/boxplots.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/boxplots.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Boxplots</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/central_limit_theorem.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/central_limit_theorem.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/sample_proportion.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/sample_proportion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Sample proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/normal_approx_binomial.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/normal_approx_binomial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Normal approximation to the binomial</span></span></a>
   </div>
 </li>
@@ -380,43 +398,43 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/statistical_inference.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/statistical_inference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Statistical inference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">First confidence interval for a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/confint_for_normal_variance.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/confint_for_normal_variance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence interval for a normal variance</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/t_confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/t_confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Revised confidence interval for a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/large_sample_confint_for_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/large_sample_confint_for_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Large-sample confidence interval for a mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/confint_for_proportion.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/confint_for_proportion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Confidence interval for a proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/sample_size_determination.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/sample_size_determination.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Sample size determination</span></span></a>
   </div>
 </li>
@@ -433,43 +451,43 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/hyp_test.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/hyp_test.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/first_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/first_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">First tests about about a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/t_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/t_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Revised tests about about a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/large_sample_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/large_sample_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Large-sample tests about about a mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/hyp_test_proportion.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/hyp_test_proportion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Tests for a proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/p_values.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/p_values.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">P values</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/power_ztest.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/power_ztest.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
@@ -486,37 +504,37 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/comparing_two_means.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/comparing_two_means.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Comparing means</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/comparing_two_proportions.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/comparing_two_proportions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Comparing proportions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/randomized_experiments_v_observational_studies.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/randomized_experiments_v_observational_studies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Randomized experiments</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/cell_means.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/cell_means.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/contingency_table_analysis.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/contingency_table_analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Contingency tables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/simple_linear_regression.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/simple_linear_regression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
@@ -533,19 +551,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tables/z_table.html" class="sidebar-item-text sidebar-link">
+  <a href="../tables/z_table.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tables/chi_squared_table.html" class="sidebar-item-text sidebar-link">
+  <a href="../tables/chi_squared_table.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title"><span class="math inline">\(\chi^2\)</span> table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tables/t_table.html" class="sidebar-item-text sidebar-link">
+  <a href="../tables/t_table.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
   </div>
 </li>
@@ -553,7 +571,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -568,15 +586,21 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part_random_samples/random_sample.html">III: Random samples</a></li><li class="breadcrumb-item"><a href="../part_random_samples/random_sample.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The random sample</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span id="sec-random_sample" class="quarto-section-identifier"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The random sample</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Karl Gregory </p>
+          </div>
+  </div>
     
   
     
@@ -587,32 +611,113 @@ window.Quarto = {
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-casella2024statistical" class="csl-entry" role="listitem">
-Casella, George, and Roger Berger. 2024. <em>Statistical Inference</em>.
-Chapman; Hall/CRC.
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
 </div>
-<div id="ref-kuehl2000design" class="csl-entry" role="listitem">
-Kuehl, R. O. 2000. <em>Design of <span>Experiments</span>:
-<span>Statistical</span> <span>Principles</span> of
-<span>Research</span> <span>Design</span> and
-<span>Analysis</span></em>. Duxbury/Thomson Learning.
+<p>What we have been building up to so far is how to learn from data about the process which generated the data or about the population from which the data were drawn. However, we have not really encountered “data” yet. Our first (carefully controlled) encounter with data will be a study of what statisticians call a <em>random sample</em>. Imagine reaching into a population and selecting some of its members at random and measuring something about them or subjecting them to some experimental conditions and then measuring something about them. What results is a set of measurements such that each measurement i) can take more than one possible value, ii) must take a value belonging to a known set of values, and iii) takes a value which cannot be known in advance. In short, what results is a collection of random variables.</p>
+<p>A random sample can be thought of as a set of values resulting from selecting some members of a population and taking measurements on them, possibly after subjecting them to some experimental conditions. Throughout, we will let <span class="math inline">\(n\)</span> denote the number of values in the random sample, which we will refer to as the <em>sample size</em>. Formally, we define a random sample as follows:</p>
+<div id="def-randomsample" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 16.1 (Random sample)</strong></span> A set of independent identically distributed random variables <span class="math inline">\(X_1,\dots,X_n\)</span> is called a <em>random sample</em> of size <span class="math inline">\(n\)</span>.</p>
 </div>
-<div id="ref-abalone" class="csl-entry" role="listitem">
-Nash, Sellers, Warwick, and Wes Ford. 1994.
-<span>“<span>Abalone</span>.”</span> UCI Machine Learning Repository.
+<p>We must admit that in the above definition we have used some terms that have not been defined yet. The first is <em>independent</em>. Even though we <em>did</em> define independence for two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, where we said <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if <span class="math inline">\(P(A \cap B) = P(A)P(B)\)</span>, and beyond this, we defined what it means for a collection of events to be mutually independent, we have not stated what we mean when we say that two random variables, or a set of more than two random variables, are independent. So, what is meant by the word “independence” in the above definition? Essentially, we say that two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent if the value of one does not effect the value of the other. To connect this to our definition of independence between two events, we can say that if random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then we will have <span class="math display">\[
+P( X \in A \cap Y \in B) = P(X \in A) P(Y \in B)
+\]</span> for all pairs of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> which are subsets of the real numbers <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p>The other new term appearing in <a href="#def-randomsample" class="quarto-xref">Definition&nbsp;<span>16.1</span></a> is the phrase <em>identically distributed</em>. We say that two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are identically distributed if they have the same probability distribution. One way of expressing this is to say that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have the same cumulative distribution function (CDF).</p>
+<p>So, a random sample of size <span class="math inline">\(n\)</span> is a set of random variables <span class="math inline">\(X_1,\dots,X_n\)</span> such that i) the value of any one of them does not affect the value of any other one and ii) they all have the same probability distribution. This definition of a random sample is motivated by the oft-run experiment of drawing from a large population a certain number of members and measuring something on them; if the population is large enough, the draws can be considered independent (see the discussion on drawing with versus without replacement in <a href="../part_random_variables/drawing_with_without_replacement.html" class="quarto-xref"><span>Chapter 12</span></a>). Moreover, since all the draws come from the same population, we can assume that all the measurements are realizations from a common distribution. Hereafter we will sometimes refer to the distribution shared by all the random variables in a random sample as the <em>population distribution</em>.</p>
+<p>We may think of the random sample <span class="math inline">\(X_1,\dots,X_n\)</span> as the values in a very simple data set. Here is an example:</p>
+<div id="exm-pinewood" class="theorem example">
+<p><span class="theorem-title"><strong>Example 16.1 (Pinewood derby times)</strong></span> Several girls assembled and decorated pinewood derby cars and raced them, letting the cars roll down a ramp from a fixed starting point and timing (with a pretty sophisticated electronic timing system) how long it took them to cross a finish line. The finishing times are read into R in the code below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pinewood_derby.png" class="img-fluid figure-img" width="200"></p>
+<figcaption>Pinewood derby car exemplar (by my daughter at age 10).</figcaption>
+</figure>
 </div>
-<div id="ref-santos2004beryllium" class="csl-entry" role="listitem">
-Santos, Nuno C, G Israelian, RJ Garcı́a López, M Mayor, R Rebolo, S
-Randich, A Ecuvillon, and C Domı́nguez Cerdeña. 2004. <span>“Are
-Beryllium Abundances Anomalous in Stars with Giant Planets?”</span>
-<em>Astronomy &amp; Astrophysics</em> 427 (3): 1085–96.
-</div>
-<div id="ref-snee1974graphical" class="csl-entry" role="listitem">
-Snee, Ronald D. 1974. <span>“Graphical Display of Two-Way Contingency
-Tables.”</span> <em>The American Statistician</em> 28 (1): 9–12.
+<p>The R code below stores the observed values in a vector.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ft <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.5692</span>,<span class="fl">2.5936</span>,<span class="fl">2.6190</span>,<span class="fl">2.6320</span>,<span class="fl">2.6345</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.6602</span>,<span class="fl">2.6708</span>,<span class="fl">2.6804</span>,<span class="fl">2.6850</span>,<span class="fl">2.7049</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.7111</span>,<span class="fl">2.8034</span>,<span class="fl">2.8300</span>,<span class="fl">3.0639</span>,<span class="fl">3.1489</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">3.2411</span>,<span class="fl">3.5701</span>,<span class="fl">3.9686</span>,<span class="fl">4.1220</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<p><br> In the pinewood derby car example, an experiment is run: tell some young girls to assemble and decorate pinewood derby cars and race them, recording the finishing times. Now, do these measurements constitute a random sample? Perhaps they do, and perhaps they do not. Let’s consider whether the finishing times are independent. I know for a fact (being the father of two participants) that there was at least one pair of sisters in the competition, who more than likely (in fact) worked simultaneously and in close proximity to each other while assembling and decorating their cars. There may have been discussion between them, or a tip they both recieved from mom or dad, which could have lead them to use similar strategies of assembly and weighting, which may in the end have caused the finishing times of their cars to be similar. Yet it may be that the dependence induced in their finishing times by all of this may be slight enough to be negligible. As for whether the finishing times represent realizations of identically distributed random variables, it seems reasonable by the following: Even though each girl may have a unique decoration style and assembly strategy, if a girl is selected at random and the finishing time of her pinewood derby car is recorded, we can regard this finishing time as a draw from <em>some</em> distribution; and the collection of finishing times is a collection of draws from this same distribution. So, in spite of some possibility of non-independence, we will hereafter treat the pinewood derby car finishing times as a random sample.</p>
+<p>Here is another example of a random sample which we will use.</p>
+<div id="exm-goldenratio" class="theorem example">
+<p><span class="theorem-title"><strong>Example 16.2 (Golden ratio data)</strong></span> Each in a class of twenty-seven students was asked to measure the distances <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> depicted below on his or her left hand and then to compute the ratio <span class="math inline">\(B/A\)</span> of the distances.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/gr_diagram.png" class="img-fluid figure-img" width="300"></p>
+<figcaption>Does the average value of <span class="math inline">\(B/A\)</span> among adult humans equal the golden ratio?</figcaption>
+</figure>
+</div>
+<p>The R code below stores the observed values in a vector.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>gr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.66</span>, <span class="fl">1.61</span>, <span class="fl">1.62</span>, <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.43</span>, <span class="fl">1.66</span>, </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.20</span>, <span class="fl">1.52</span>, <span class="fl">1.60</span>, <span class="fl">1.55</span>, <span class="fl">1.67</span>, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.77</span>, <span class="fl">1.50</span>, <span class="fl">1.64</span>, <span class="fl">1.54</span>, <span class="fl">1.40</span>, <span class="fl">1.36</span>, <span class="fl">1.50</span>, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.40</span>, <span class="fl">1.35</span>, <span class="fl">1.48</span>, <span class="fl">1.64</span>, <span class="fl">1.91</span>, <span class="fl">1.70</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The instructor of the twenty-seven students was keenly interested in testing whether the average value of the ratio <span class="math inline">\(B/A\)</span> was equal to the fabled golden ratio <span class="math inline">\((1 + \sqrt{5})/2\)</span>, which is <span class="math inline">\(1.618\)</span> after rounding.</p>
+</div>
+<p><br></p>
+<div id="exm-acorns" class="theorem example">
+<p><span class="theorem-title"><strong>Example 16.3 (Live oak acorns)</strong></span> The lengths and diameters of thirty-two live oak acorns were measured using a pair of calipers.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/acorns.jpg" class="img-fluid figure-img" width="300"></p>
+<figcaption>Live oak acorns collected in Columbia, SC</figcaption>
+</figure>
+</div>
+<p>The code below reads the observed lengths and diameters into R.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># diameters</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.375</span>,<span class="fl">0.428</span>,<span class="fl">0.39</span>,<span class="fl">0.388</span>,<span class="fl">0.42</span>,<span class="fl">0.43</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.42</span>,<span class="fl">0.35</span>,<span class="fl">0.44</span>,<span class="fl">0.45</span>,<span class="fl">0.43</span>,<span class="fl">0.50</span>,<span class="fl">0.48</span>,<span class="fl">0.46</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.429</span>,<span class="fl">0.427</span>,<span class="fl">0.424</span>,<span class="fl">0.512</span>,<span class="fl">0.428</span>,<span class="fl">0.426</span>,<span class="fl">0.43</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.4</span>,<span class="fl">0.46</span>,<span class="fl">0.44</span>,<span class="fl">0.40</span>,<span class="fl">0.45</span>,<span class="fl">0.41</span>,<span class="fl">0.398</span>,<span class="fl">0.42</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.453</span>,<span class="fl">0.449</span>,<span class="fl">0.428</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># lengths</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>ln <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.710</span>,<span class="fl">0.75</span>,<span class="fl">0.665</span>,<span class="fl">0.658</span>,<span class="fl">0.651</span>,<span class="fl">0.791</span>,<span class="fl">0.740</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.750</span>,<span class="fl">0.790</span>,<span class="fl">0.810</span>,<span class="fl">0.72</span>,<span class="fl">0.71</span>,<span class="fl">0.79</span>,<span class="fl">0.72</span>,<span class="fl">0.748</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.734</span>,<span class="fl">0.746</span>,<span class="fl">0.735</span>,<span class="fl">0.851</span>,<span class="fl">0.746</span>,<span class="fl">0.73</span>,<span class="fl">0.75</span>,<span class="fl">0.81</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.76</span>,<span class="fl">0.725</span>,<span class="fl">0.735</span>,<span class="fl">0.71</span>,<span class="fl">0.712</span>,<span class="fl">0.755</span>,<span class="fl">0.787</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.776</span>,<span class="fl">0.748</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div id="exm-palletweights" class="theorem example">
+<p><span class="theorem-title"><strong>Example 16.4 (Pallet weights)</strong></span> At Gregory’s Asparagus Farm each pallet on which lugs of asparagus are transported from the field into the barn is weighed in order that the net weight of the harvested asparagus (total weight minus the weight of the lugs–each weighing 3 lbs—minus the weight of the pallet) on each pallet can be recorded.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pallets.jpg" class="img-fluid figure-img" width="300"></p>
+<figcaption>Each pallet is marked with its weight.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/asparagus_lugs.jpg" class="img-fluid figure-img" width="300"></p>
+<figcaption>The “lugs” are these red crates.</figcaption>
+</figure>
+</div>
+<p>The weights of thirty-nine pallets used at Gregory’s Asparagus Far are read into R below:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>wt <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">41</span>,<span class="dv">34</span>,<span class="dv">40</span>,<span class="dv">44</span>,<span class="dv">33</span>,<span class="dv">42</span>,<span class="dv">52</span>,<span class="dv">38</span>,<span class="dv">32</span>,<span class="dv">31</span>,<span class="dv">31</span>,<span class="dv">35</span>,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        <span class="dv">39</span>,<span class="dv">44</span>,<span class="dv">42</span>,<span class="dv">42</span>,<span class="dv">35</span>,<span class="dv">33</span>,<span class="dv">40</span>,<span class="dv">48</span>,<span class="dv">51</span>,<span class="dv">32</span>,<span class="dv">41</span>,<span class="dv">35</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="dv">38</span>,<span class="dv">48</span>,<span class="dv">37</span>,<span class="dv">35</span>,<span class="dv">42</span>,<span class="dv">41</span>,<span class="dv">40</span>,<span class="dv">47</span>,<span class="dv">40</span>,<span class="dv">46</span>,<span class="dv">33</span>,<span class="dv">38</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="dv">51</span>,<span class="dv">39</span>,<span class="dv">40</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The distributor to whom Gregory’s Asparagus Farm sells its asparagus treats every pallet as though it weighed <span class="math inline">\(45\)</span> pounds (a tag is attached to each out-going pallet which shows the net asparagus weight obtained under this assumption), as shown below. One may wonder if this is a good approximation to the weight of a pallet.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/asparagus_wt.jpg" class="img-fluid figure-img" width="300"></p>
+<figcaption>A tag is printed showing a net weight which subtracts from the gross weight <span class="math inline">\(45\)</span> pounds for the weight of the pallet and <span class="math inline">\(3\)</span> pounds for each lug. Can you reconcile the gross and net weights that appear in this picture (there are thirty lugs)??</figcaption>
+</figure>
+</div>
+</div>
+<p><br></p>
+<p>We may hereafter write <span class="math inline">\(X_1,\dots,X_n \overset{\text{ind}}{\sim}F\)</span> to express that <span class="math inline">\(X_1,\dots,X_n\)</span> are a random sample from a population with distribution <span class="math inline">\(F\)</span>. Often there are features of <span class="math inline">\(F\)</span> that are unknown to us, and the goal of drawing the random sample <span class="math inline">\(X_1,\dots,X_n\)</span> is to learn about these unknown features of <span class="math inline">\(F\)</span>. In particular, we will next consider how we can learn about the expected value of a random variable with distribution <span class="math inline">\(F\)</span>, which we may refer to as the <em>population mean</em>.</p>
 
 
 
@@ -1019,11 +1124,14 @@ Tables.”</span> <em>The American Statistician</em> 28 (1): 9–12.
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./tables/t_table.html" class="pagination-link" aria-label="$t$ table">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span>
+      <a href="../part_random_variables/poisson_exp_dist.html" class="pagination-link" aria-label="Poisson and exponential distributions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Poisson and exponential distributions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../part_random_samples/mean_of_rs.html" class="pagination-link" aria-label="Mean of a random sample">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Mean of a random sample</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

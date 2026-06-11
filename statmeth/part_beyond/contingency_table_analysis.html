@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Karl Gregory">
 
-<title>References – Your Stat Prof’s Introduction to Statistics</title>
+<title>43&nbsp; Contingency tables – Your Stat Prof's Introduction to Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,10 +21,46 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -42,25 +79,26 @@ div.csl-indent {
 }</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./tables/t_table.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9a4bcb067c512b2a7a8e9938cb5c3a8a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../part_beyond/simple_linear_regression.html" rel="next">
+<link href="../part_beyond/cell_means.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-9a4bcb067c512b2a7a8e9938cb5c3a8a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -142,7 +180,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part_beyond/comparing_two_means.html">VI: Beyond one sample</a></li><li class="breadcrumb-item"><a href="../part_beyond/contingency_table_analysis.html"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Contingency tables</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -157,19 +195,19 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Your Stat Prof’s Introduction to Statistics</a> 
+      <a href="../">Your Stat Prof’s Introduction to Statistics</a> 
         <div class="sidebar-tools-main">
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Your-Stat-Prof-s-Introduction-to-Statistics.pdf">
+            <a class="dropdown-item sidebar-tools-main-item" href="../Your-Stat-Prof-s-Introduction-to-Statistics.pdf">
               <i class="bi bi-file-pdf pe-1"></i>
             Download PDF
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Your-Stat-Prof-s-Introduction-to-Statistics.epub">
+            <a class="dropdown-item sidebar-tools-main-item" href="../Your-Stat-Prof-s-Introduction-to-Statistics.epub">
               <i class="bi bi-journal pe-1"></i>
             Download ePub
             </a>
@@ -188,7 +226,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -203,43 +241,43 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/set_basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/set_basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics of sets</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/prob_basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/prob_basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics of probability</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/counting_rules.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/counting_rules.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Counting rules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/conditional_prob.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/conditional_prob.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conditional probability</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/independence.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/independence.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Independence</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_sets_and_probability/bayes_rule.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_sets_and_probability/bayes_rule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bayes’ rule</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./homework/sets_and_prob_exercises.html" class="sidebar-item-text sidebar-link">
+  <a href="../homework/sets_and_prob_exercises.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practice problems</span></span></a>
   </div>
 </li>
@@ -256,49 +294,49 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/random_variables.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/random_variables.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Random variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/discrete_rvs.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/discrete_rvs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Discrete random variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/bernoulli_binomial.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/bernoulli_binomial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Bernoulli and binomial distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/hypergeometric_distribution.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/hypergeometric_distribution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hypergeometric distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/drawing_with_without_replacement.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/drawing_with_without_replacement.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Drawing with versus without replacement</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/continuous_rvs.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/continuous_rvs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Continuous random variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/normal_distribution.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/normal_distribution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The Normal distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_variables/poisson_exp_dist.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_variables/poisson_exp_dist.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Poisson and exponential distributions</span></span></a>
   </div>
 </li>
@@ -315,55 +353,55 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/random_sample.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/random_sample.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The random sample</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/mean_of_rs.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/mean_of_rs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Mean of a random sample</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/hist.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/hist.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Histogram</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/variance_of_rs.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/variance_of_rs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The sample variance</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/normal_qq_plot.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/normal_qq_plot.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Normal QQ plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/boxplots.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/boxplots.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Boxplots</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/central_limit_theorem.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/central_limit_theorem.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The central limit theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/sample_proportion.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/sample_proportion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Sample proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_random_samples/normal_approx_binomial.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_random_samples/normal_approx_binomial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Normal approximation to the binomial</span></span></a>
   </div>
 </li>
@@ -380,43 +418,43 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/statistical_inference.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/statistical_inference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Statistical inference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">First confidence interval for a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/confint_for_normal_variance.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/confint_for_normal_variance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence interval for a normal variance</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/t_confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/t_confint_for_normal_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Revised confidence interval for a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/large_sample_confint_for_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/large_sample_confint_for_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Large-sample confidence interval for a mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/confint_for_proportion.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/confint_for_proportion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Confidence interval for a proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_confidence_intervals/sample_size_determination.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_confidence_intervals/sample_size_determination.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Sample size determination</span></span></a>
   </div>
 </li>
@@ -433,43 +471,43 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/hyp_test.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/hyp_test.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/first_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/first_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">First tests about about a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/t_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/t_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Revised tests about about a normal mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/large_sample_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/large_sample_hyp_test_mean.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Large-sample tests about about a mean</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/hyp_test_proportion.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/hyp_test_proportion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Tests for a proportion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/p_values.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/p_values.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">P values</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_hyp_test/power_ztest.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_hyp_test/power_ztest.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Statistical power of one-sample tests</span></span></a>
   </div>
 </li>
@@ -477,46 +515,46 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">VI: Beyond one sample</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/comparing_two_means.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/comparing_two_means.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Comparing means</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/comparing_two_proportions.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/comparing_two_proportions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Comparing proportions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/randomized_experiments_v_observational_studies.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/randomized_experiments_v_observational_studies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Randomized experiments</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/cell_means.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/cell_means.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/contingency_table_analysis.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/contingency_table_analysis.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Contingency tables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part_beyond/simple_linear_regression.html" class="sidebar-item-text sidebar-link">
+  <a href="../part_beyond/simple_linear_regression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span></a>
   </div>
 </li>
@@ -533,19 +571,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tables/z_table.html" class="sidebar-item-text sidebar-link">
+  <a href="../tables/z_table.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title"><span class="math inline">\(z\)</span> table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tables/chi_squared_table.html" class="sidebar-item-text sidebar-link">
+  <a href="../tables/chi_squared_table.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title"><span class="math inline">\(\chi^2\)</span> table</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tables/t_table.html" class="sidebar-item-text sidebar-link">
+  <a href="../tables/t_table.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span></a>
   </div>
 </li>
@@ -553,7 +591,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -562,21 +600,33 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#comparing-several-populations" id="toc-comparing-several-populations" class="nav-link active" data-scroll-target="#comparing-several-populations"><span class="header-section-number">43.1</span> Comparing several populations</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part_beyond/comparing_two_means.html">VI: Beyond one sample</a></li><li class="breadcrumb-item"><a href="../part_beyond/contingency_table_analysis.html"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Contingency tables</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span id="sec-contingency_table_analysis" class="quarto-section-identifier"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Contingency tables</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Karl Gregory </p>
+          </div>
+  </div>
     
   
     
@@ -587,34 +637,161 @@ window.Quarto = {
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-casella2024statistical" class="csl-entry" role="listitem">
-Casella, George, and Roger Berger. 2024. <em>Statistical Inference</em>.
-Chapman; Hall/CRC.
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
 </div>
-<div id="ref-kuehl2000design" class="csl-entry" role="listitem">
-Kuehl, R. O. 2000. <em>Design of <span>Experiments</span>:
-<span>Statistical</span> <span>Principles</span> of
-<span>Research</span> <span>Design</span> and
-<span>Analysis</span></em>. Duxbury/Thomson Learning.
+<p>Here we will consider testing for an “association” between sets of events. For example, if we consider drawing at random someone from the human population, we might ask, is there an association between the eye color and the hair color of the person. Asking if there is an “association” means asking whether knowing the eye color of a randomly selected person would help you guess the person’s hair color or vice versa.</p>
+<p>We will work within the context of the following statistical experiment.</p>
+<div id="def-contingencytableexperiment" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 43.1 (Contingency table experiment)</strong></span> Define a <em>contingency table experiment</em> as an experiment with a sample space <span class="math inline">\(S\)</span> consisting of pairs of outcomes <span class="math inline">\((a_i,b_j)\)</span> for <span class="math inline">\(i = 1,\dots,R\)</span> and <span class="math inline">\(j = 1,\dots,C\)</span> so that <span class="math inline">\(S\)</span> may be written as <span class="math display">\[
+S = \left\{\begin{array}{ccc}
+(a_1,b_1)&amp; \dots &amp;(a_1,b_C)\\
+\vdots&amp;\ddots&amp;\vdots\\
+(a_R,b_1)&amp; \dots &amp; (a_R,b_C)
+\end{array}
+\right\},
+\]</span> where <span class="math inline">\(R\)</span> is the number of rows and <span class="math inline">\(C\)</span> the number of columns.</p>
 </div>
-<div id="ref-abalone" class="csl-entry" role="listitem">
-Nash, Sellers, Warwick, and Wes Ford. 1994.
-<span>“<span>Abalone</span>.”</span> UCI Machine Learning Repository.
+<p>Drawing a person from the human population and recording his or her eye and hair color is a contingency table experiment in which <span class="math inline">\(a_1,\dots,a_R\)</span> would symbolize, say, <span class="math inline">\(R\)</span> different eye colors, and <span class="math inline">\(b_1,\dots,b_C\)</span> would symbolize <span class="math inline">\(C\)</span> different colors of hair. Each pair <span class="math inline">\((a_i,b_j)\)</span> would thus symbolize an eye-color-hair-color combination.</p>
+<p>On the sample space of a contingency table experiment, we can define events <span class="math inline">\(A_1,\dots,A_R\)</span> such that <span class="math inline">\(A_i\)</span> is the event that the person drawn has eye color <span class="math inline">\(i\)</span>. Likewise, we can define events <span class="math inline">\(B_1,\dots,B_C\)</span> such that <span class="math inline">\(B_j\)</span> is the event that the person drawn has hair color <span class="math inline">\(j\)</span>. Then the events <span class="math inline">\(A_i\)</span>, <span class="math inline">\(B_j\)</span>, and the intersection event <span class="math inline">\(A_i \cap B_j\)</span> are identified with sets of sample outcomes as <span class="math display">\[
+\begin{align}
+A_i &amp;= \{(a_i,b_1),\dots,(a_i,b_C)\}\\
+B_j &amp;= \{(a_1,b_j),\dots,(a_R,b_j)\}\\
+A_i \cap B_j &amp; = \{(a_i,b_j)\}
+\end{align}
+\]</span> for <span class="math inline">\(i=1,\dots,R\)</span> and <span class="math inline">\(j = 1,\dots, C\)</span>.</p>
+<p>Having defined the above events, we can state more precisely what we mean by testing for an “association” between the events <span class="math inline">\(A_1,\dots,A_R\)</span> (say, eye color) and the events <span class="math inline">\(B_1,\dots,B_C\)</span> (say, hair color). By asking whether there is an association between these collections of events, we are really asking whether pairs of events <span class="math inline">\(A_i\)</span> and <span class="math inline">\(B_j\)</span> are independent for every <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>. Formally, recalling <a href="../part_sets_and_probability/independence.html#def-independence" class="quarto-xref">Definition&nbsp;<span>5.1</span></a> of independence between two events, we will collect data and measure evidence against the null hypothesis <span class="math display">\[
+\text{$H_0$: $P(A_i\cap B_j) = P(A_i)P(B_j)$ for all $i=1,\dots,R$ and $j = 1,\dots,C$}
+\]</span> in favor of its alternative, which says that there is at least one pair of events <span class="math inline">\(A_i\)</span> and <span class="math inline">\(B_j\)</span> which are <em>not</em> independent. We will call the foregoing null hypothesis the <em>hypothesis of no association</em>.</p>
+<p>We collect data by running the contingency table experiment a large number of times, say <span class="math inline">\(N\)</span> times, recording the number of times each outcome <span class="math inline">\((a_i,b_j)\)</span> occurs. These counts we record in what we will call a <em>contingency table</em>: Letting <span class="math inline">\(O_{ij}\)</span> be the number of times we observe outcome <span class="math inline">\((a_i,b_j)\)</span>, the contingency table takes the form <span id="eq-observedcounts"><span class="math display">\[
+\begin{array}{c|ccc|c}
+      &amp; B_1 &amp; \dots &amp; B_C &amp; \text{Total} \\ \hline
+A_1 &amp; O_{11} &amp;  \dots &amp; O_{1C} &amp; O_{1.} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+A_R &amp; O_{R1} &amp; \dots &amp; O_{RC} &amp; O_{R.} \\ \hline
+\text{Total} &amp; O_{.1} &amp; \dots &amp; O_{.C} &amp; N
+\end{array}
+\tag{43.1}\]</span></span> where <span class="math inline">\(O_{i.} = \sum_{j=1}^C O_{ij}\)</span> is the total number of times the event <span class="math inline">\(A_i\)</span> was observed and <span class="math inline">\(O_{.j} = \sum_{i=1}^R O_{ij}\)</span> is the total number of times the event <span class="math inline">\(B_j\)</span> was observed, for <span class="math inline">\(i,\dots,R\)</span> and <span class="math inline">\(j=1,\dots,C\)</span>. Here we use the convention of placing “.” at the position of the index over which the sum was taken. Summing these marginal counts gives <span class="math inline">\(N\)</span>, the total number of times the experiment was run.</p>
+<p>Our test statistic for testing the hypothesis of no association is constructed by comparing the table of observed counts in <a href="#eq-observedcounts" class="quarto-xref">Equation&nbsp;<span>43.1</span></a> to a table containing estimates of the counts one would expect if the null hypothesis of no association were true. These estimated expected counts are obtained as <span class="math display">\[
+E_{ij} = \frac{O_{i.}O_{.j}}{N}
+\]</span> for <span class="math inline">\(i=1 ,\dots,R\)</span> and <span class="math inline">\(j =1,\dots,C\)</span>. We arrive at this expression for the expected counts by considering the following: The expected value of the count <span class="math inline">\(O_{ij}\)</span> is <span class="math inline">\(N P(A_j\cap B_j)\)</span>, since <span class="math inline">\(O_{ij} \sim \text{Binomial}(N,P(A_i \cap B_j))\)</span>. If <span class="math inline">\(A_i\)</span> and <span class="math inline">\(B_j\)</span> are independent events, then we have <span class="math inline">\(P(A_j \cap B_j) = P(A_i)P(B_j)\)</span>, as stated in the hypothesis of no association. Under no association, the expected value of <span class="math inline">\(O_{ij}\)</span> is given by <span class="math inline">\(N P(A_i)P(B_j)\)</span>. Now, if we plug in for <span class="math inline">\(P(A_i)\)</span> the estimate <span class="math inline">\(O_{i.}/N\)</span> and for <span class="math inline">\(P(B_j)\)</span> the estimate <span class="math inline">\(O_{.j}/N\)</span>, we obtain our estimate <span class="math inline">\(E_{ij}\)</span> of the expected count under no association. These expected counts <span class="math inline">\(E_{ij}\)</span> can be arranged in a table as <span id="eq-expectedcounts"><span class="math display">\[
+\begin{array}{c|ccc|c}
+      &amp; B_1 &amp; \dots &amp; B_C &amp; \text{Total} \\ \hline
+A_1 &amp; E_{11} &amp;  \dots &amp; E_{1C} &amp; O_{1.} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+A_R &amp; E_{R1} &amp; \dots &amp; E_{RC} &amp; O_{R.} \\ \hline
+\text{Total} &amp; O_{.1} &amp; \dots &amp; O_{.C} &amp; N
+\end{array}
+\tag{43.2}\]</span></span> where we note that the row and column totals remain the same (you can verify that <span class="math inline">\(\sum_{j=1}^C E_{ij} = O_{i.}\)</span> and <span class="math inline">\(\sum_{i=1}^C E_{ij} = O_{.j}\)</span>).</p>
+<p>Now we construct a test statistic for the null hypothesis of no association which is based on summing up the differences between the observed counts <span class="math inline">\(O_{ij}\)</span> and the expected counts <span class="math inline">\(E_{ij}\)</span>.</p>
+<div id="prp-ALRTcontingency" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 43.1 (Asymptotic likelihood ratio test for no association)</strong></span> Based on running the contingency table experiment <span class="math inline">\(N\)</span> times, define the test statistic <span id="eq-LRTcontingency"><span class="math display">\[
+L_{\operatorname{test}}= 2 \sum_{i=1}^R\sum_{j=1}^C O_{ij}\log\Big(\frac{O_{ij}}{E_{ij}}\Big).
+\tag{43.3}\]</span></span> Then the test which rejects <span class="math inline">\(H_0\)</span> when <span class="math inline">\(L_{\operatorname{test}}&gt; \chi^2_{(R-1)(C-1),\alpha}\)</span> has size closer and closer to <span class="math inline">\(\alpha\)</span> for larger and larger <span class="math inline">\(N\)</span>.</p>
 </div>
-<div id="ref-santos2004beryllium" class="csl-entry" role="listitem">
-Santos, Nuno C, G Israelian, RJ Garcı́a López, M Mayor, R Rebolo, S
-Randich, A Ecuvillon, and C Domı́nguez Cerdeña. 2004. <span>“Are
-Beryllium Abundances Anomalous in Stars with Giant Planets?”</span>
-<em>Astronomy &amp; Astrophysics</em> 427 (3): 1085–96.
+<p>A rule of thumb for knowing when <span class="math inline">\(N\)</span> is large enough for the test in <a href="#prp-ALRTcontingency" class="quarto-xref">Proposition&nbsp;<span>43.1</span></a> to be trusted (for it to make Type I errors at a rate close to the advertised rate of <span class="math inline">\(\alpha\)</span>) is to require <span class="math display">\[
+E_{ij} \geq 5
+\]</span> for all <span class="math inline">\(i=1,\dots,R\)</span> and <span class="math inline">\(j = 1,\dots,C\)</span>. That is, all the expected counts should be at least <span class="math inline">\(5\)</span>.</p>
+<p>Here is an example:</p>
+<div id="exm-haircoloreyecolor" class="theorem example">
+<p><span class="theorem-title"><strong>Example 43.1 (Hair and eye color)</strong></span> <span class="citation" data-cites="snee1974graphical">Snee (<a href="../references.html#ref-snee1974graphical" role="doc-biblioref">1974</a>)</span> observed the below counts of eye and hair color combinations in a survey of <span class="math inline">\(592\)</span> students. It is of interest to test for an association between eye color and hair color. <span class="math display">\[
+\begin{array}{c|cccc|c}
+   &amp; \text{Black} &amp; \text{Brown} &amp; \text{Red} &amp; \text{Blond} &amp; \text{Total}\\ \hline
+   \text{Brown} &amp;  68 &amp; 119 &amp; 26 &amp; 7 &amp; 220\\
+   \text{Blue} &amp;  20 &amp; 84 &amp; 17 &amp; 94  &amp; 215\\
+   \text{Hazel}  &amp; 15 &amp; 54 &amp; 14 &amp; 10 &amp; 93\\
+   \text{Green}  &amp; 5 &amp; 29 &amp; 14 &amp; 16 &amp; 64\\\hline
+   \text{Total} &amp;108&amp;286&amp;71&amp;  127 &amp; 592
+\end{array}
+\]</span></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>O <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">68</span>,<span class="dv">119</span>,<span class="dv">26</span>,<span class="dv">7</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>              <span class="dv">20</span>,<span class="dv">84</span>,<span class="dv">17</span>,<span class="dv">94</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>              <span class="dv">15</span>,<span class="dv">54</span>,<span class="dv">14</span>,<span class="dv">10</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>              <span class="dv">5</span>,<span class="dv">29</span>,<span class="dv">14</span>,<span class="dv">16</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">nrow =</span> R,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>E <span class="ot">&lt;-</span> <span class="fu">apply</span>(O,<span class="dv">1</span>,sum) <span class="sc">%*%</span> <span class="fu">t</span>(<span class="fu">apply</span>(O,<span class="dv">2</span>,sum))<span class="sc">/</span><span class="fu">sum</span>(O)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Ltest <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sum</span>(O<span class="sc">*</span><span class="fu">log</span>(O<span class="sc">/</span>E))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> (R <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span>(C<span class="dv">-1</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>crit <span class="ot">&lt;-</span> <span class="fu">qchisq</span>(<span class="dv">1</span> <span class="sc">-</span> alpha,df)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>rej <span class="ot">&lt;-</span> Ltest <span class="sc">&gt;</span> crit</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>pval <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(Ltest,df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
+<p>We obtain the value <span class="math inline">\(L_{\operatorname{test}}= 146.444\)</span>. Moreover, the smallest value of <span class="math inline">\(E_{ij}\)</span> in the table of expected counts is <span class="math inline">\(7.676\)</span> so the rule of thumb is satisfied for using the asymptotic likelihood ratio test of no association. Since <span class="math inline">\(R=4\)</span> and <span class="math inline">\(C = 4\)</span>, we have <span class="math inline">\((R-1)(C-1) = 9\)</span>, so the critical value at significance level <span class="math inline">\(0.05\)</span> is <span class="math inline">\(\chi^2_{9,0.05} = 16.919\)</span>, which can be obtained from the chi-squared table in <a href="../tables/chi_squared_table.html" class="quarto-xref"><span>Chapter 46</span></a>. Moreover, the p value, obtained as the area under the <span class="math inline">\(\chi^2_{9}\)</span> PDF beyond the value of <span class="math inline">\(L_{\operatorname{test}}\)</span>, is approximately zero. We therefore reject the null hypothesis and conclude that there <em>is</em> an association between hair color and eye color.</p>
+</div>
+<p>One often sees, instead of the test statistic <span class="math inline">\(L_{\operatorname{test}}\)</span> defined in <a href="#eq-LRTcontingency" class="quarto-xref">Equation&nbsp;<span>43.3</span></a> the test statistic <span class="math display">\[
+W_{\operatorname{test}}= \sum_{i=1}^R\sum_{j=1}^C \frac{(O_{ij} - E_{ij})^2}{E_{ij}},
+\]</span> which is called <em>Pearson’s chi-squared statistic</em>. The value of <span class="math inline">\(W_{\operatorname{test}}\)</span> will be nearly equal to <span class="math inline">\(L_{\operatorname{test}}\)</span> due to a Taylor expansion of the natural logarithm, so we may use <span class="math inline">\(W_{\operatorname{test}}\)</span> and <span class="math inline">\(L_{\operatorname{test}}\)</span> interchangeably (for the eye and hair color data we obtain <span class="math inline">\(W_{\operatorname{test}}= 138.29\)</span>). The <code>chisq.test()</code> function in R performs the test of no association based on <span class="math inline">\(W_{\operatorname{test}}\)</span>.</p>
+<section id="comparing-several-populations" class="level2" data-number="43.1">
+<h2 data-number="43.1" class="anchored" data-anchor-id="comparing-several-populations"><span class="header-section-number">43.1</span> Comparing several populations</h2>
+<p>One may be interested not in finding an association between sets of events <span class="math inline">\(A_1,\dots,A_R\)</span> and <span class="math inline">\(B_1,\dots,B_C\)</span> as above, but rather in testing for differences in sets of proportions across multiple populations. That is, if we draw samples of size <span class="math inline">\(n_1,\dots,n_R\)</span> from <span class="math inline">\(R\)</span> populations, where each population consists of <span class="math inline">\(C\)</span> different outcomes, then we can summarize the collected data in a table as below, where <span class="math inline">\(O_{ij}\)</span> is the number of times outcome <span class="math inline">\(j\)</span> is observed in the sample from population <span class="math inline">\(i\)</span>:</p>
+<p><span id="eq-observedcounts_fixedrowsums"><span class="math display">\[
+\begin{array}{c|ccc|c}
+      &amp; \text{Outcome } 1 &amp; \dots &amp; \text{Outcome } C  &amp; \text{Total} \\ \hline
+\text{Population } 1 &amp; O_{11} &amp;  \dots &amp; O_{1C} &amp; n_1 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+\text{Population } R &amp; O_{R1} &amp; \dots &amp; O_{RC} &amp; n_R \\ \hline
+\text{Total} &amp; O_{.1} &amp; \dots &amp; O_{.C} &amp; N
+\end{array}
+\tag{43.4}\]</span></span></p>
+<p>In this setting, it is possible that one has fixed in advance the sample sizes <span class="math inline">\(n_1,\dots,n_R\)</span>. Because of this, it no longer makes sense to test for independence between drawing from population <span class="math inline">\(i\)</span> and observing outcome <span class="math inline">\(j\)</span>. We instead test whether the probabilities of outcomes <span class="math inline">\(1,\dots,C\)</span> are the same in all <span class="math inline">\(R\)</span> populations.</p>
+<p>Let <span class="math inline">\(p_{ij}\)</span> denote the probability of outcome <span class="math inline">\(j\)</span> in population <span class="math inline">\(i\)</span> for <span class="math inline">\(j=1,\dots,C\)</span> and <span class="math inline">\(i=1,\dots,R\)</span>. Then we wish to test <span class="math display">\[
+\text{$H_0$: $p_{1j} = \dots = p_{Rj}$ for $j=1,\dots,C$},
+\]</span> which states that for each outcome <span class="math inline">\(j\)</span>, the probability of that outcome is the same in all <span class="math inline">\(R\)</span> populations, against its alternative.</p>
+<p>It turns out that we can use exactly the same test in this setup as in the previous section with the expected counts constructed as <span class="math display">\[
+E_{ij} = n_i \frac{O_{.j}}{N}
+\]</span> for <span class="math inline">\(i=1,\dots,R\)</span> and <span class="math inline">\(j = 1,\dots,C\)</span> (note that these are the same as in the previous section, but with <span class="math inline">\(n_i\)</span> replacing <span class="math inline">\(O_{i.}\)</span>). We can justify this expression for <span class="math inline">\(E_{ij}\)</span> as follows: Under the null hypothesis, the probability of outcome <span class="math inline">\(j\)</span> is the same in all populations, so to estimate this common probability, one may pool all the population counts together, obtaining the estimate <span class="math inline">\(O_{.j}/N\)</span>. Then, multiplying this by <span class="math inline">\(n_i\)</span>, the number of observations drawn from population <span class="math inline">\(i\)</span>, results in an estimate of the expected number of times one would, if the null hypothesis were true, observe outcome <span class="math inline">\(j\)</span> among the <span class="math inline">\(n_i\)</span> draws from population <span class="math inline">\(i\)</span>.</p>
+<p>Here is an example:</p>
+<div id="exm-icecreamsex" class="theorem example">
+<p><span class="theorem-title"><strong>Example 43.2 (Ice cream preferences)</strong></span> In a <a href="https://www.sfu.ca/personal/archives/richards/Zen/Pages/Chap16.htm">survey</a> of sex and ice cream preferences, 84 males and 85 females (presumably human!) were asked to choose a favorite from among four flavors of ice cream, resulting in the below table of counts: <span class="math display">\[
+\begin{array}{c|cccc|c}
+         &amp; \text{Chocolate} &amp; \text{Vanilla} &amp; \text{Strawberry} &amp; \text{Coffee} &amp; \text{Total} \\ \hline
+    \text{Male} &amp; 25 &amp; 15 &amp;   15 &amp; 29 &amp; 84 \\
+    \text{Female} &amp; 35 &amp; 20 &amp; 10 &amp; 20 &amp; 85\\\hline
+        &amp; 60 &amp; 35 &amp; 25 &amp; 49 &amp; 169
+\end{array}
+\]</span></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>O <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">15</span>,<span class="dv">15</span>,<span class="dv">29</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>              <span class="dv">35</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">20</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">nrow=</span><span class="dv">2</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>E <span class="ot">&lt;-</span> <span class="fu">apply</span>(O,<span class="dv">1</span>,sum) <span class="sc">%*%</span> <span class="fu">t</span>(<span class="fu">apply</span>(O,<span class="dv">2</span>,sum))<span class="sc">/</span><span class="fu">sum</span>(O)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>Ltest <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sum</span>(O<span class="sc">*</span><span class="fu">log</span>(O<span class="sc">/</span>E))</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>Wtest <span class="ot">&lt;-</span> <span class="fu">sum</span>((O <span class="sc">-</span> E)<span class="sc">**</span><span class="dv">2</span><span class="sc">/</span>E)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> (R <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span>(C<span class="dv">-1</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>crit <span class="ot">&lt;-</span> <span class="fu">qchisq</span>(<span class="dv">1</span> <span class="sc">-</span> alpha,df)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>rej <span class="ot">&lt;-</span> Ltest <span class="sc">&gt;</span> crit</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>pval <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(Ltest,df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>For these data we obtain <span class="math inline">\(L_{\operatorname{test}}= 5.055\)</span> or <span class="math inline">\(W_{\operatorname{test}}= 5.028\)</span> and a minimum of expected counts <span class="math inline">\(E_{ij}\)</span> equal to <span class="math inline">\(12.426\)</span>. Since <span class="math inline">\(R= 2\)</span> and <span class="math inline">\(C = 4\)</span>, we have <span class="math inline">\((R-1)(C-1) = 3\)</span>, so the critical value at significance level <span class="math inline">\(\alpha = 0.05\)</span> is <span class="math inline">\(\chi^2_{3,0.05} = 7.815\)</span>. The p value, obtained as the area under the <span class="math inline">\(\chi^2_{3}\)</span> PDF to the right of <span class="math inline">\(L_{\operatorname{test}}\)</span> is <span class="math inline">\(0.168\)</span>. We therefore fail to reject the null hypothesis; these data do not carry strong evidence of an association between sex and ice cream preferences.</p>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-snee1974graphical" class="csl-entry" role="listitem">
-Snee, Ronald D. 1974. <span>“Graphical Display of Two-Way Contingency
-Tables.”</span> <em>The American Statistician</em> 28 (1): 9–12.
+Snee, Ronald D. 1974. <span>“Graphical Display of Two-Way Contingency Tables.”</span> <em>The American Statistician</em> 28 (1): 9–12.
 </div>
 </div>
-
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1019,11 +1196,14 @@ Tables.”</span> <em>The American Statistician</em> 28 (1): 9–12.
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./tables/t_table.html" class="pagination-link" aria-label="$t$ table">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title"><span class="math inline">\(t\)</span> table</span></span>
+      <a href="../part_beyond/cell_means.html" class="pagination-link" aria-label="One-way ANOVA">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">One-way ANOVA</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../part_beyond/simple_linear_regression.html" class="pagination-link" aria-label="Simple linear regression">
+        <span class="nav-page-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Simple linear regression</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
