@@ -617,6 +617,8 @@ window.Quarto = {
 <p>One can also plot the points <span class="math display">\[
 \Big(\frac{X_{(i)} - \bar X_n}{S_n},z_{(i)}\Big), \quad i = 1,\dots,n
 \]</span> and look to see if they fall close to the <span class="math inline">\(y=x\)</span> line. This plot appears in the lower left panel of <a href="#fig-qqpinewood" class="quarto-xref">Figure&nbsp;<span>21.1</span></a>.</p>
+<div id="exm-qqpinewood" class="theorem example">
+<p><span class="theorem-title"><strong>Example 21.1 (Normal QQ plots of pinewood derby times)</strong></span> <a href="#fig-qqpinewood" class="quarto-xref">Figure&nbsp;<span>21.1</span></a> shows the three variants of the Normal QQ plot for the pinewood derby times from <a href="random_sample.html#exm-pinewood" class="quarto-xref">Example&nbsp;<span>17.1</span></a>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -627,7 +629,7 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(ft) </span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sn <span class="ot">&lt;-</span> <span class="fu">sd</span>(ft)     </span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(ft)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>),<span class="at">bg =</span> <span class="cn">NA</span>)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># first way to make the normal QQ plot</span></span>
@@ -642,7 +644,10 @@ window.Quarto = {
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># standardize data values first</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">scale</span>(ft))</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ft)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-qqpinewood" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -657,35 +662,21 @@ Figure&nbsp;21.1: Normal QQ plots for the pinewood derby finishing times with di
 </div>
 </div>
 </div>
-<p>From the normal QQ plots, it is apparent that the quantiles of the pinewood derby finishing times are not close to what they would be if the sample had been drawn from a normal distribution, as the points do not lie along a straight line. The lower quantiles of the data distribution are lie above the line, indicating that they are greater than they would be if the sample had been drawn from a normal distribution, and the upper quantiles of the data are again greater. This is indicative of right-skewness. We see this right-skewness appear also in the histogram of the pinewood derby finishing times in <a href="#fig-histpinewood" class="quarto-xref">Figure&nbsp;<span>21.2</span></a> .</p>
+<p>From the normal QQ plots, it is apparent that the quantiles of the pinewood derby finishing times are not close to what they would be if the sample had been drawn from a normal distribution, as the points do not lie along a straight line. The lower quantiles of the data distribution are lie above the line, indicating that they are greater than they would be if the sample had been drawn from a normal distribution, and the upper quantiles of the data are again greater. This is indicative of right-skewness. We see this right-skewness appear also in the histogram in the lower right panel</p>
+</div>
+<div id="exm-normalQQgoldenratio" class="theorem example">
+<p><span class="theorem-title"><strong>Example 21.2 (Normal QQ plot for golden ratio data)</strong></span> The normal QQ plot as well as a histogram of the values in the golden ratio data set from <a href="random_sample.html#exm-goldenratio" class="quarto-xref">Example&nbsp;<span>17.2</span></a> is shown in <a href="#fig-goldenrationormalqq" class="quarto-xref">Figure&nbsp;<span>21.2</span></a>. Since the points in the QQ plot fall fairly close to a straight line, it is reasonable to assume that the sample was drawn from a normal distribution.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ft)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div id="fig-histpinewood" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-histpinewood-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="normal_qq_plot_files/figure-html/fig-histpinewood-1.png" class="img-fluid figure-img" width="1400">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-histpinewood-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;21.2: Histogram of pinewood derby finishing times.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>The normal QQ plot for the golden ratio data from <a href="random_sample.html#exm-goldenratio" class="quarto-xref">Example&nbsp;<span>17.2</span></a> is shown in <a href="#fig-goldenrationormalqq" class="quarto-xref">Figure&nbsp;<span>21.3</span></a>. Since the points in the plot fall fairly close to a straight line, it is reasonable to assume that the sample was drawn from a normal distribution.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.66</span>, <span class="fl">1.61</span>, <span class="fl">1.62</span>, <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.43</span>, <span class="fl">1.66</span>, </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.20</span>, <span class="fl">1.52</span>, <span class="fl">1.60</span>, <span class="fl">1.55</span>, <span class="fl">1.67</span>, </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.77</span>, <span class="fl">1.50</span>, <span class="fl">1.64</span>, <span class="fl">1.54</span>, <span class="fl">1.40</span>, <span class="fl">1.36</span>, <span class="fl">1.50</span>, </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.40</span>, <span class="fl">1.35</span>, <span class="fl">1.48</span>, <span class="fl">1.64</span>, <span class="fl">1.91</span>, <span class="fl">1.70</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">scale</span>(gr))</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>gr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.66</span>, <span class="fl">1.61</span>, <span class="fl">1.62</span>, <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.43</span>, <span class="fl">1.66</span>, </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.20</span>, <span class="fl">1.52</span>, <span class="fl">1.60</span>, <span class="fl">1.55</span>, <span class="fl">1.67</span>, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.77</span>, <span class="fl">1.50</span>, <span class="fl">1.64</span>, <span class="fl">1.54</span>, <span class="fl">1.40</span>, <span class="fl">1.36</span>, <span class="fl">1.50</span>, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.40</span>, <span class="fl">1.35</span>, <span class="fl">1.48</span>, <span class="fl">1.64</span>, <span class="fl">1.91</span>, <span class="fl">1.70</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">bg=</span><span class="cn">NA</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(gr)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">scale</span>(gr))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-goldenrationormalqq" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -694,24 +685,27 @@ Figure&nbsp;21.2: Histogram of pinewood derby finishing times.
 <img src="normal_qq_plot_files/figure-html/fig-goldenrationormalqq-1.png" class="img-fluid figure-img" width="1400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-goldenrationormalqq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;21.3: Normal QQ plot of the values <span class="math inline">\(B/A\)</span> in the golden ratio sample.
+Figure&nbsp;21.2: Histogram and Normal QQ plot of the values <span class="math inline">\(B/A\)</span> in the golden ratio sample.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The normal QQ plot for the pallet weights data from <a href="random_sample.html#exm-palletweights" class="quarto-xref">Example&nbsp;<span>17.4</span></a> is shown in <a href="#fig-palletweightsnormalqq" class="quarto-xref">Figure&nbsp;<span>21.4</span></a>.</p>
+</div>
+<p><br></p>
+<div id="exm-normalQQpalletweights" class="theorem example">
+<p><span class="theorem-title"><strong>Example 21.3 (Normal QQ plot of pallet weights)</strong></span> The normal QQ plot and a histogram of the pallet weights from <a href="random_sample.html#exm-palletweights" class="quarto-xref">Example&nbsp;<span>17.4</span></a> is shown in <a href="#fig-palletweightsnormalqq" class="quarto-xref">Figure&nbsp;<span>21.3</span></a>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>wt <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">41</span>,<span class="dv">34</span>,<span class="dv">40</span>,<span class="dv">44</span>,<span class="dv">33</span>,<span class="dv">42</span>,<span class="dv">52</span>,<span class="dv">38</span>,<span class="dv">32</span>,<span class="dv">31</span>,<span class="dv">31</span>,<span class="dv">35</span>,</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        <span class="dv">39</span>,<span class="dv">44</span>,<span class="dv">42</span>,<span class="dv">42</span>,<span class="dv">35</span>,<span class="dv">33</span>,<span class="dv">40</span>,<span class="dv">48</span>,<span class="dv">51</span>,<span class="dv">32</span>,<span class="dv">41</span>,<span class="dv">35</span>,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="dv">38</span>,<span class="dv">48</span>,<span class="dv">37</span>,<span class="dv">35</span>,<span class="dv">42</span>,<span class="dv">41</span>,<span class="dv">40</span>,<span class="dv">47</span>,<span class="dv">40</span>,<span class="dv">46</span>,<span class="dv">33</span>,<span class="dv">38</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="dv">51</span>,<span class="dv">39</span>,<span class="dv">40</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(wt)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">scale</span>(wt))</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>wt <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">41</span>,<span class="dv">34</span>,<span class="dv">40</span>,<span class="dv">44</span>,<span class="dv">33</span>,<span class="dv">42</span>,<span class="dv">52</span>,<span class="dv">38</span>,<span class="dv">32</span>,<span class="dv">31</span>,<span class="dv">31</span>,<span class="dv">35</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="dv">39</span>,<span class="dv">44</span>,<span class="dv">42</span>,<span class="dv">42</span>,<span class="dv">35</span>,<span class="dv">33</span>,<span class="dv">40</span>,<span class="dv">48</span>,<span class="dv">51</span>,<span class="dv">32</span>,<span class="dv">41</span>,<span class="dv">35</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="dv">38</span>,<span class="dv">48</span>,<span class="dv">37</span>,<span class="dv">35</span>,<span class="dv">42</span>,<span class="dv">41</span>,<span class="dv">40</span>,<span class="dv">47</span>,<span class="dv">40</span>,<span class="dv">46</span>,<span class="dv">33</span>,<span class="dv">38</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="dv">51</span>,<span class="dv">39</span>,<span class="dv">40</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">bg=</span><span class="cn">NA</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(wt)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">scale</span>(wt))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-palletweightsnormalqq" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -720,74 +714,75 @@ Figure&nbsp;21.3: Normal QQ plot of the values <span class="math inline">\(B/A\)
 <img src="normal_qq_plot_files/figure-html/fig-palletweightsnormalqq-1.png" class="img-fluid figure-img" width="1400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-palletweightsnormalqq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;21.4: Normal QQ plot of the values <span class="math inline">\(B/A\)</span> in the golden ratio sample.
+Figure&nbsp;21.3: Histogram and Normal QQ plot of the values <span class="math inline">\(B/A\)</span> in the golden ratio sample.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Based on the histogram and the Normal QQ plot, is appears that the pallet weights are not normally distributed, but rather have a right-skewed distribution.</p>
-<p><a href="#fig-qqnormplots" class="quarto-xref">Figure&nbsp;<span>21.5</span></a> shows normal QQ plots for simulated random samples with <span class="math inline">\(n=500\)</span> from right-skewed, left-skewed, heavy-tailed, light-tailed, and normal distributions. Over each histogram the PDF of the <span class="math inline">\(\mathcal{N}(\bar X_n, S_n^2)\)</span> distribution is overlaid. We see that only for the normal distribution do the points in the normal QQ plot fall on a straight line.</p>
+</div>
+<p><a href="#fig-qqnormplots" class="quarto-xref">Figure&nbsp;<span>21.4</span></a> shows normal QQ plots for simulated random samples with <span class="math inline">\(n=500\)</span> from right-skewed, left-skewed, heavy-tailed, light-tailed, and normal distributions. Over each histogram the PDF of the <span class="math inline">\(\mathcal{N}(\bar X_n, S_n^2)\)</span> distribution is overlaid. We see that only for the normal distribution do the points in the normal QQ plot fall on a straight line.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">500</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>settings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Right-skewed"</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Left-skewed"</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Heavy-tailed"</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Light-tailed"</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Normal"</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>XX <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>,n,<span class="fu">length</span>(settings))</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># right skewed</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>XX[,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(n,<span class="at">shape =</span> a, <span class="at">scale =</span> b) <span class="sc">-</span> a<span class="sc">*</span>b</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># left skewed</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>XX[,<span class="dv">2</span>] <span class="ot">&lt;-</span> a<span class="sc">*</span>b <span class="sc">-</span> <span class="fu">rgamma</span>(n,<span class="at">shape =</span> a, <span class="at">scale =</span> b)</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co"># heavy-tailed</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>XX[,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">rt</span>(n,<span class="fl">2.5</span>)</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co"># light-tailed</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>XX[,<span class="dv">4</span>] <span class="ot">&lt;-</span> (<span class="fu">rbeta</span>(n,<span class="fl">1.25</span>,<span class="fl">1.25</span>)<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span><span class="dv">3</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co"># normal</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>XX[,<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="fu">length</span>(settings),<span class="dv">2</span>))</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(settings)){</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  X <span class="ot">&lt;-</span> XX[,i]</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(X)</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>  sn <span class="ot">&lt;-</span> <span class="fu">sd</span>(X)</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  lo <span class="ot">&lt;-</span> <span class="fu">min</span>(X,<span class="fu">qnorm</span>(<span class="fl">0.005</span>,xbar,sn))</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  up <span class="ot">&lt;-</span> <span class="fu">max</span>(X,<span class="fu">qnorm</span>(<span class="fl">0.995</span>,xbar,sn))</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">seq</span>(lo,up,<span class="at">length=</span><span class="dv">500</span>)</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>  fx <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x,xbar,sn)</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  h <span class="ot">&lt;-</span> <span class="fu">hist</span>(X,<span class="at">plot=</span><span class="cn">FALSE</span>,<span class="at">breaks=</span><span class="dv">20</span>)</span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(h, </span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>       <span class="at">main=</span>settings[i],</span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>       <span class="at">freq=</span><span class="cn">FALSE</span>,</span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">max</span>(h<span class="sc">$</span>density,fx)),</span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlim =</span> <span class="fu">c</span>(lo,up))</span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(fx<span class="sc">~</span>x)</span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">qqnorm</span>(<span class="fu">scale</span>(X))</span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>settings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Right-skewed"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Left-skewed"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Heavy-tailed"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Light-tailed"</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Normal"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>XX <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>,n,<span class="fu">length</span>(settings))</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># right skewed</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>XX[,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(n,<span class="at">shape =</span> a, <span class="at">scale =</span> b) <span class="sc">-</span> a<span class="sc">*</span>b</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># left skewed</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>XX[,<span class="dv">2</span>] <span class="ot">&lt;-</span> a<span class="sc">*</span>b <span class="sc">-</span> <span class="fu">rgamma</span>(n,<span class="at">shape =</span> a, <span class="at">scale =</span> b)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co"># heavy-tailed</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>XX[,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">rt</span>(n,<span class="fl">2.5</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co"># light-tailed</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>XX[,<span class="dv">4</span>] <span class="ot">&lt;-</span> (<span class="fu">rbeta</span>(n,<span class="fl">1.25</span>,<span class="fl">1.25</span>)<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span><span class="dv">3</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co"># normal</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>XX[,<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="fu">length</span>(settings),<span class="dv">2</span>))</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(settings)){</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  X <span class="ot">&lt;-</span> XX[,i]</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(X)</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  sn <span class="ot">&lt;-</span> <span class="fu">sd</span>(X)</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>  lo <span class="ot">&lt;-</span> <span class="fu">min</span>(X,<span class="fu">qnorm</span>(<span class="fl">0.005</span>,xbar,sn))</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  up <span class="ot">&lt;-</span> <span class="fu">max</span>(X,<span class="fu">qnorm</span>(<span class="fl">0.995</span>,xbar,sn))</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">seq</span>(lo,up,<span class="at">length=</span><span class="dv">500</span>)</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>  fx <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x,xbar,sn)</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  h <span class="ot">&lt;-</span> <span class="fu">hist</span>(X,<span class="at">plot=</span><span class="cn">FALSE</span>,<span class="at">breaks=</span><span class="dv">20</span>)</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(h, </span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>       <span class="at">main=</span>settings[i],</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>       <span class="at">freq=</span><span class="cn">FALSE</span>,</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">max</span>(h<span class="sc">$</span>density,fx)),</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlim =</span> <span class="fu">c</span>(lo,up))</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(fx<span class="sc">~</span>x)</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">qqnorm</span>(<span class="fu">scale</span>(X))</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-qqnormplots" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -796,7 +791,7 @@ Figure&nbsp;21.4: Normal QQ plot of the values <span class="math inline">\(B/A\)
 <img src="normal_qq_plot_files/figure-html/fig-qqnormplots-1.png" class="img-fluid figure-img" width="1200">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qqnormplots-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;21.5: Example normal QQ plots for distributions of several shapes.
+Figure&nbsp;21.4: Example normal QQ plots for distributions of several shapes.
 </figcaption>
 </figure>
 </div>

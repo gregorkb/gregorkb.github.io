@@ -609,7 +609,9 @@ window.Quarto = {
 \bar X_n = \frac{1}{n}(X_1 + \dots + X_n)
 \]</span></p>
 </div>
-<p>One interpretation of the sample mean is that it is the balancing point of the random sample. That is, if weights were placed on a number line at the positions of the values in the random sample, the sample mean <span class="math inline">\(\bar X_n\)</span> gives the position at which a fulcrum would need to be placed in order to balance the number line. One can also imagine a probability mass function (PMF) which places probability <span class="math inline">\(1/n\)</span> on each of the <span class="math inline">\(n\)</span> data points, like the one depicted in <a href="#fig-samplemean" class="quarto-xref">Figure&nbsp;<span>18.1</span></a> for the pinewood derby finishing times from <a href="random_sample.html#exm-pinewood" class="quarto-xref">Example&nbsp;<span>17.1</span></a>. Then the sample mean is the expected value according to this PMF. Again, it can be viewed as the balancing point of the values.</p>
+<p>One interpretation of the sample mean is that it is the balancing point of the random sample. That is, if weights were placed on a number line at the positions of the values in the random sample, the sample mean <span class="math inline">\(\bar X_n\)</span> gives the position at which a fulcrum would need to be placed in order to balance the number line. One can also imagine a probability mass function (PMF) which places probability <span class="math inline">\(1/n\)</span> on each of the <span class="math inline">\(n\)</span> data points; then the sample mean is the expected value according to this PMF. This is depicted in <a href="#fig-samplemean" class="quarto-xref">Figure&nbsp;<span>18.1</span></a>.</p>
+<div id="exm-samplemeanpinewood" class="theorem example">
+<p><span class="theorem-title"><strong>Example 18.1 (Sample mean of pinewood derby finishing times)</strong></span> &nbsp;</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -620,7 +622,7 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ft_avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(ft)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(ft)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">4.1</span>,<span class="fl">4.1</span>,.<span class="dv">1</span>,<span class="fl">2.1</span>))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">4.1</span>,<span class="fl">4.1</span>,.<span class="dv">1</span>,<span class="fl">2.1</span>),<span class="at">bg =</span> <span class="cn">NA</span>)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ft,<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span>n,n),<span class="at">type=</span><span class="st">'h'</span>,<span class="at">yaxt=</span><span class="st">'n'</span>,<span class="at">ylab=</span><span class="st">'p(x)'</span>,<span class="at">xlab=</span><span class="st">'x'</span>,<span class="at">xaxt=</span><span class="st">'n'</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="fl">2.5</span>,<span class="fl">4.5</span>),<span class="at">bty=</span><span class="st">"l"</span>)</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(ft,<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span>n,n),<span class="at">pch=</span><span class="dv">19</span>)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>,<span class="at">at=</span><span class="dv">1</span><span class="sc">/</span>n,<span class="at">labels=</span><span class="st">"1/n"</span>)</span>
@@ -635,11 +637,44 @@ window.Quarto = {
 <img src="mean_of_rs_files/figure-html/fig-samplemean-1.png" class="img-fluid figure-img" width="1400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-samplemean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;18.1: PMF giving probability mass <span class="math inline">\(1/n\)</span> to each value in the sample of pinewood derby finishing times. The position of the sample mean <span class="math inline">\(\bar X_n\)</span> is indicated by the vertical dotted line.
+Figure&nbsp;18.1: PMF giving probability mass <span class="math inline">\(1/n\)</span> to each value in the sample of pinewood derby finishing times with vertical dotted line marking the location of the sample mean.
 </figcaption>
 </figure>
 </div>
 </div>
+</div>
+<p>The mean of the sample of <span class="math inline">\(n = 19\)</span> pinewood derby finishing times from <a href="random_sample.html#exm-pinewood" class="quarto-xref">Example&nbsp;<span>17.1</span></a> is <span class="math inline">\(\bar X_n = 2.943\)</span>. If the number line were sitting on a see-saw and we placed equal mass at the position of each data point, the sample mean gives the location of the fulcrum which causes the see-saw to remain horizontal. That is, the sample mean is the “balancing point” of the sample data.</p>
+</div>
+<p>The sample mean will also be positioned approximately at the balancing point of a histogram (not necessarily exactly at the balancing point because of the binning), as in <a href="#fig-histpalletmean" class="quarto-xref">Figure&nbsp;<span>18.2</span></a>.</p>
+<div id="exm-samplemeanpalletweights" class="theorem example">
+<p><span class="theorem-title"><strong>Example 18.2 (Mean of pallet weights)</strong></span> &nbsp;</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>wt <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">41</span>,<span class="dv">34</span>,<span class="dv">40</span>,<span class="dv">44</span>,<span class="dv">33</span>,<span class="dv">42</span>,<span class="dv">52</span>,<span class="dv">38</span>,<span class="dv">32</span>,<span class="dv">31</span>,<span class="dv">31</span>,<span class="dv">35</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="dv">39</span>,<span class="dv">44</span>,<span class="dv">42</span>,<span class="dv">42</span>,<span class="dv">35</span>,<span class="dv">33</span>,<span class="dv">40</span>,<span class="dv">48</span>,<span class="dv">51</span>,<span class="dv">32</span>,<span class="dv">41</span>,<span class="dv">35</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="dv">38</span>,<span class="dv">48</span>,<span class="dv">37</span>,<span class="dv">35</span>,<span class="dv">42</span>,<span class="dv">41</span>,<span class="dv">40</span>,<span class="dv">47</span>,<span class="dv">40</span>,<span class="dv">46</span>,<span class="dv">33</span>,<span class="dv">38</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="dv">51</span>,<span class="dv">39</span>,<span class="dv">40</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(wt)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(wt)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg =</span> <span class="cn">NA</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(wt)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> xbar,<span class="at">lty =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-histpalletmean" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-histpalletmean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="mean_of_rs_files/figure-html/fig-histpalletmean-1.png" class="img-fluid figure-img" width="1400">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-histpalletmean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18.2: Histogram of pallet weights with the location of the sample mean marked by a vertical dotted line.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The mean of the <span class="math inline">\(n = 39\)</span> pallet weights from <a href="random_sample.html#exm-palletweights" class="quarto-xref">Example&nbsp;<span>17.4</span></a> is <span class="math inline">\(\bar X_n = 39.744\)</span>. We see that this is roughly the location of the “balancing point” of the histogram.</p>
 </div>
 <p>The sample mean <span class="math inline">\(\bar X_n\)</span> will function as our best guess of the <em>population mean</em>, by which we refer to the mean of the <em>population distribution</em>, the distribution from which the random sample was drawn. We will denote the population mean by <span class="math inline">\(\mu\)</span>, noting that, since all of the random variables <span class="math inline">\(X_1,\dots,X_n\)</span> have the same distribution, we have <span class="math inline">\(\mathbb{E}X_i = \mu\)</span> for all <span class="math inline">\(i=1,\dots,n\)</span>.</p>
 <p>So, we will use the value of <span class="math inline">\(\bar X_n\)</span> to <em>learn</em> about the value of <span class="math inline">\(\mu\)</span>, which is unknown to us. In order to learn anything from the value of <span class="math inline">\(\bar X_n\)</span>, we must acknowledge that <span class="math inline">\(\bar X_n\)</span> is itself a random variable; that is, it can take more than one possible value, and, while the range of possible values it can take is known, we cannot know in advance which value it will take. So if we were, for example, to attend another pinewood derby rally featuring cars decorated by similarly-aged girls and record the finishing times, we would observe a value of <span class="math inline">\(\bar X_n\)</span> distinct from the value computed on the data at hand. Indeed, if we were to attend a thousand such pinewood derby car rallies, we likely never observe the same average finishing time twice; we would instead have 1000 distinct values of <span class="math inline">\(\bar X_n\)</span>. How then, one may wonder, can we possibly learn about the population mean <span class="math inline">\(\mu\)</span> when the value of <span class="math inline">\(\bar X_n\)</span> is different for every random sample we observe?</p>

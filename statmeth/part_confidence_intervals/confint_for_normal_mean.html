@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -584,7 +619,7 @@ P\Big(-1.96 \leq \frac{\bar X_n - \mu}{ \sigma/\sqrt{n}} \leq 1.96\Big) = 0.95.
 <div id="fig-z_alpha2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-z_alpha2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="tikz/z_upper_quantiles.png" class="img-fluid figure-img">
+<img src="../tikz/z_upper_quantiles.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-z_alpha2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;27.1: Depiction of upper quantile <span class="math inline">\(z_{\alpha/2}\)</span>.
@@ -600,7 +635,64 @@ Figure&nbsp;27.1: Depiction of upper quantile <span class="math inline">\(z_{\al
 </div>
 <p>We are very often interested in building confidence intervals at the <span class="math inline">\(0.90\)</span>, <span class="math inline">\(0.95\)</span>, or <span class="math inline">\(0.99\)</span> confidence levels, for which <a href="../part_random_variables/normal_distribution.html#fig-standard_normal_pdf_diagram_80909599" class="quarto-xref">Figure&nbsp;<span>14.5</span></a> depicts the necessary quantiles, <span class="math inline">\(z_{0.05} = 1.645\)</span>, <span class="math inline">\(z_{0.025} = 1.96\)</span>, and <span class="math inline">\(z_{0.005} = 2.576\)</span>, respectively, of the standard Normal distribution. Note that these quantities govern the width of the confidence interval, such that higher confidence corresponds to greater width.</p>
 <p>Note that the confidence interval with endpoints given in <a href="#prp-confintmean" class="quarto-xref">Proposition&nbsp;<span>27.1</span></a> is constructed by adding and subtracting the same amount <span class="math inline">\(z_{\alpha/2}\sigma/\sqrt{n}\)</span> to and from the sample mean <span class="math inline">\(\bar X_n\)</span>. When a confidence interval is constructed in this way, we will refer to the amount added and subtracted as the <em>margin of error</em>. Thus the width of such a confidence interval is two times the margin of error. Later on, in <a href="sample_size_determination.html" class="quarto-xref"><span>Chapter 32</span></a>, we will consider the problem of selecting a sample size <span class="math inline">\(n\)</span> in order to ensure that a confidence interval has a margin of error no larger than some desired bound.</p>
-<p>Consider building a confidence interval for <span class="math inline">\(\mu\)</span> in the golden ratio example, <a href="../part_random_samples/random_sample.html#exm-goldenratio" class="quarto-xref">Example&nbsp;<span>17.2</span></a>. From <a href="../part_random_samples/normal_qq_plot.html#fig-goldenrationormalqq" class="quarto-xref">Figure&nbsp;<span>21.3</span></a>, it seems reasonable to assume that the sample was drawn from a normal distribution. The variance <span class="math inline">\(\sigma^2\)</span> of the population distribution is unknown, but the following exercise assumes <span class="math inline">\(\sigma = 0.15\)</span>.</p>
+<p>Since the recipes for the construction of these intervals guarantees that they will contain the true value of <span class="math inline">\(\mu\)</span> with probability <span class="math inline">\(1-\alpha\)</span>, we typically interpret our confidence intervals by saying, “we are <span class="math inline">\((1-\alpha)100\%\)</span> confident that the true mean lies in this interval”.</p>
+<div id="exm-acorndiamCIz" class="theorem example">
+<p><span class="theorem-title"><strong>Example 27.1 (Confidence interval for mean acorn diameter)</strong></span> Suppose we wish to construct a 95% confidence interval for the mean diameter of live oak acorns using the data from <a href="../part_random_samples/random_sample.html#exm-acorns" class="quarto-xref">Example&nbsp;<span>17.3</span></a>. Based on the histogram and normal QQ plot shown below, it appears safe to assume that the diameters follow a normal distribution. Now, we do not know the value of <span class="math inline">\(\sigma\)</span>, but let’s use <span class="math inline">\(\sigma = 0.035\)</span> (which is close to the value of the sample standard deviation <span class="math inline">\(S_n\)</span> for these data) for constructing the interval.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.375</span>,<span class="fl">0.428</span>,<span class="fl">0.39</span>,<span class="fl">0.388</span>,<span class="fl">0.42</span>,<span class="fl">0.43</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.42</span>,<span class="fl">0.35</span>,<span class="fl">0.44</span>,<span class="fl">0.45</span>,<span class="fl">0.43</span>,<span class="fl">0.50</span>,<span class="fl">0.48</span>,<span class="fl">0.46</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.429</span>,<span class="fl">0.427</span>,<span class="fl">0.424</span>,<span class="fl">0.512</span>,<span class="fl">0.428</span>,<span class="fl">0.426</span>,<span class="fl">0.43</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.4</span>,<span class="fl">0.46</span>,<span class="fl">0.44</span>,<span class="fl">0.40</span>,<span class="fl">0.45</span>,<span class="fl">0.41</span>,<span class="fl">0.398</span>,<span class="fl">0.42</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.453</span>,<span class="fl">0.449</span>,<span class="fl">0.428</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">bg=</span><span class="cn">NA</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dm)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">scale</span>(dm))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># build CI</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(dm)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">0.035</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>zval <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(dm)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>lo <span class="ot">&lt;-</span> xbar <span class="sc">-</span> zval <span class="sc">*</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>up <span class="ot">&lt;-</span> xbar <span class="sc">+</span> zval <span class="sc">*</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-normalqqdm" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normalqqdm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="confint_for_normal_mean_files/figure-html/fig-normalqqdm-1.png" class="img-fluid figure-img" width="1400">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normalqqdm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;27.2: Histogram and Normal QQ plot of live oak acorn diameters
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The sample mean is <span class="math inline">\(\bar X_n = 0.43\)</span> based on a sample of size <span class="math inline">\(n = 32\)</span>. With <span class="math inline">\(\alpha = 0.05\)</span> we have <span class="math inline">\(z_{\alpha/2} = 1.96\)</span>. We thus obtain the 95% confidence interval <span class="math display">\[
+0.43 \pm 1.96 \frac{0.035}{\sqrt{32}} = [0.417, 0.442].
+\]</span> We would interpret this interval by saying, “We are 95% confident the mean diameter of live oak acorns is between <span class="math inline">\(0.417\)</span> and <span class="math inline">\(0.442\)</span>.”</p>
+<p>In order to build a <span class="math inline">\(99\%\)</span> confidence interval for the mean diameter of live oak acorns, we set <span class="math inline">\(\alpha = 0.01\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># build 99% CI</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.01</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>zval <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>lo <span class="ot">&lt;-</span> xbar <span class="sc">-</span> zval <span class="sc">*</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>up <span class="ot">&lt;-</span> xbar <span class="sc">+</span> zval <span class="sc">*</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Then we obtain <span class="math inline">\(z_{\alpha/2} = 2.576\)</span> and the 99% confidence interval becomes <span class="math display">\[
+0.43 \pm 2.576 \frac{0.035}{\sqrt{32}} = [0.414, 0.445].
+\]</span> We would interpret this interval by saying, “We are 99% confident the mean diameter of live oak acorns is between <span class="math inline">\(0.414\)</span> and <span class="math inline">\(0.445\)</span>.”</p>
+<p>Note that the <span class="math inline">\(99\%\)</span> confidence interval is wider than the <span class="math inline">\(95\%\)</span> confidence interval.</p>
+</div>
 <div id="exr-goldenratio" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 27.1 (Confidence interval for the mean in golden ratio example)</strong></span> Regarding the values in the golden ratio data set as a random sample from a normal distribution with unknown mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma = 0.15\)</span>, construct a confidence interval for <span class="math inline">\(\mu\)</span> at these confidence levels:</p>
 <ol type="1">
@@ -610,7 +702,7 @@ Figure&nbsp;27.1: Depiction of upper quantile <span class="math inline">\(z_{\al
 <li><span class="math inline">\(98\%\)</span><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
 </ol>
 </div>
-<p>Note that <a href="confint_for_normal_variance.html#exr-goldenratio" class="quarto-xref">Exercise&nbsp;<span>28.1</span></a> depended on knowledge of the population standard deviation <span class="math inline">\(\sigma\)</span>. Later on we will learn how to construct a confidence interval for <span class="math inline">\(\mu\)</span> when <span class="math inline">\(\sigma\)</span> is replaced by its sample counterpart <span class="math inline">\(S_n\)</span>.</p>
+<p>Note that <a href="#exm-acorndiamCIz" class="quarto-xref">Example&nbsp;<span>27.1</span></a> and <a href="confint_for_normal_variance.html#exr-goldenratio" class="quarto-xref">Exercise&nbsp;<span>28.1</span></a> depended on knowledge of the population standard deviation <span class="math inline">\(\sigma\)</span>. Later on we will learn how to construct a confidence interval for <span class="math inline">\(\mu\)</span> when <span class="math inline">\(\sigma\)</span> is replaced by its sample counterpart <span class="math inline">\(S_n\)</span>.</p>
 
 
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">

@@ -665,17 +665,59 @@ Figure&nbsp;29.2: Definition of upper <span class="math inline">\(\alpha/2\)</sp
 \]</span> will contain the value of <span class="math inline">\(\mu\)</span> with probability <span class="math inline">\(1-\alpha\)</span>.</p>
 </div>
 <p>Due to the heavy-tailedness of the <span class="math inline">\(t\)</span> distributions, as depicted in <a href="#fig-t_versus_standardnormal" class="quarto-xref">Figure&nbsp;<span>29.1</span></a>, we find that for <em>all</em> sample sizes <span class="math inline">\(n\)</span>, we have <span class="math inline">\(t_{n-1,\alpha/2} &gt; z_{\alpha/2}\)</span>, so that the margin of error <span class="math inline">\(t_{n-1,\alpha/2}S_n/\sqrt{n}\)</span> will always be greater than <span class="math inline">\(z_{\alpha/2}S_n / \sqrt{n}\)</span>. The extra width this gives to the confidence interval is the appropriate penalty for our having to estimate <span class="math inline">\(\sigma\)</span> when we do not know its true value.</p>
-<div id="exr-grconfint" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 29.1 (Confidence interval for the mean in golden ratio study)</strong></span> Refer to the golden ratio data in <a href="../part_random_samples/random_sample.html#exm-goldenratio" class="quarto-xref">Example&nbsp;<span>17.2</span></a>. From <a href="../part_random_samples/normal_qq_plot.html#fig-goldenrationormalqq" class="quarto-xref">Figure&nbsp;<span>21.3</span></a>, we have determined that is likely safe to assume that the sample was drawn from a normal population.</p>
+<div id="exm-acornlnCI" class="theorem example">
+<p><span class="theorem-title"><strong>Example 29.1 (Confidence interval for mean length of live oak acorns)</strong></span> Consider constructing a confidence interval for the mean length of live oak acorns based on the data in <a href="../part_random_samples/random_sample.html#exm-acorns" class="quarto-xref">Example&nbsp;<span>17.3</span></a>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>gr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.66</span>, <span class="fl">1.61</span>, <span class="fl">1.62</span>, <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.43</span>, <span class="fl">1.66</span>, </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.20</span>, <span class="fl">1.52</span>, <span class="fl">1.60</span>, <span class="fl">1.55</span>, <span class="fl">1.67</span>, </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.77</span>, <span class="fl">1.50</span>, <span class="fl">1.64</span>, <span class="fl">1.54</span>, <span class="fl">1.40</span>, <span class="fl">1.36</span>, <span class="fl">1.50</span>, </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.40</span>, <span class="fl">1.35</span>, <span class="fl">1.48</span>, <span class="fl">1.64</span>, <span class="fl">1.91</span>, <span class="fl">1.70</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(gr)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>Sn <span class="ot">&lt;-</span> <span class="fu">sd</span>(gr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in lengths</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ln <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.710</span>,<span class="fl">0.75</span>,<span class="fl">0.665</span>,<span class="fl">0.658</span>,<span class="fl">0.651</span>,<span class="fl">0.791</span>,<span class="fl">0.740</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.750</span>,<span class="fl">0.790</span>,<span class="fl">0.810</span>,<span class="fl">0.72</span>,<span class="fl">0.71</span>,<span class="fl">0.79</span>,<span class="fl">0.72</span>,<span class="fl">0.748</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.734</span>,<span class="fl">0.746</span>,<span class="fl">0.735</span>,<span class="fl">0.851</span>,<span class="fl">0.746</span>,<span class="fl">0.73</span>,<span class="fl">0.75</span>,<span class="fl">0.81</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.76</span>,<span class="fl">0.725</span>,<span class="fl">0.735</span>,<span class="fl">0.71</span>,<span class="fl">0.712</span>,<span class="fl">0.755</span>,<span class="fl">0.787</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.776</span>,<span class="fl">0.748</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># make plots</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">bg =</span> <span class="cn">NA</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ln)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">scale</span>(ln))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="t_confint_for_normal_mean_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="1400"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># construct CI</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(ln)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(ln)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>sn <span class="ot">&lt;-</span> <span class="fu">sd</span>(ln)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>tval <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>,<span class="at">df =</span> n<span class="dv">-1</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>me <span class="ot">&lt;-</span> tval <span class="sc">*</span> sn <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>lo <span class="ot">&lt;-</span> xbar <span class="sc">-</span> me</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>up <span class="ot">&lt;-</span> xbar <span class="sc">+</span> me</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The histogram and normal QQ plot do not show any very alarming deviation from normality, so we will proceed under the assumption that the live oak acorn lengths were drawn from a normal distribution. We obtain sample mean <span class="math inline">\(\bar X_n = 0.744\)</span> and sample standard deviation <span class="math inline">\(S_n = 0.044\)</span> with <span class="math inline">\(n = 32\)</span>. To construct a <span class="math inline">\(90\%\)</span> confidence interval we set <span class="math inline">\(\alpha = 0.1\)</span> and obtain <span class="math inline">\(t_{31,0.05} = 1.696\)</span>. From here we construct the <span class="math inline">\(90\%\)</span> confidence interval as <span class="math display">\[
+0.744 \pm 1.696 \frac{0.044}{\sqrt{32}} = [0.731,0.757].
+\]</span> We interpret the interval by saying that we are <span class="math inline">\(90\%\)</span> confidence that the mean diameter of live oak acorns is between <span class="math inline">\(0.731\)</span> and <span class="math inline">\(0.757\)</span>.</p>
+</div>
+<div id="exr-grconfint" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 29.1 (Confidence interval for the mean in golden ratio study)</strong></span> Refer to the golden ratio data in <a href="../part_random_samples/random_sample.html#exm-goldenratio" class="quarto-xref">Example&nbsp;<span>17.2</span></a>. From <a href="../part_random_samples/normal_qq_plot.html#fig-goldenrationormalqq" class="quarto-xref">Figure&nbsp;<span>21.2</span></a>, we have determined that it is likely safe to assume that the sample was drawn from a normal population.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.66</span>, <span class="fl">1.61</span>, <span class="fl">1.62</span>, <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.43</span>, <span class="fl">1.66</span>, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.69</span>, <span class="fl">1.58</span>, <span class="fl">1.20</span>, <span class="fl">1.52</span>, <span class="fl">1.60</span>, <span class="fl">1.55</span>, <span class="fl">1.67</span>, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.77</span>, <span class="fl">1.50</span>, <span class="fl">1.64</span>, <span class="fl">1.54</span>, <span class="fl">1.40</span>, <span class="fl">1.36</span>, <span class="fl">1.50</span>, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.40</span>, <span class="fl">1.35</span>, <span class="fl">1.48</span>, <span class="fl">1.64</span>, <span class="fl">1.91</span>, <span class="fl">1.70</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>Xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(gr)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>Sn <span class="ot">&lt;-</span> <span class="fu">sd</span>(gr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Using <span class="math inline">\(\bar X_n = 1.565\)</span> and <span class="math inline">\(S_n = 0.148\)</span> construct confidence intervals for <span class="math inline">\(\mu\)</span> at these confidence levels:</p>
