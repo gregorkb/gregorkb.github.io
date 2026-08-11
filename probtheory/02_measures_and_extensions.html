@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Measures and extensions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./01_sets_collections_of_sets.html"> 
+<span class="menu-text">Sets and collections of sets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./02_measures_and_extensions.html" aria-current="page"> 
+<span class="menu-text">Measures and extensions</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./03_random_variables_measurable_transformations.html"> 
+<span class="menu-text">Measurable transformations and random variables</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./04_integration_and_differentiation.html"> 
+<span class="menu-text">Integration, differentiation, and product measures</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./05_probability_spaces.html"> 
+<span class="menu-text">Probability spaces and independence</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./06_convergence_concepts.html"> 
+<span class="menu-text">Convergence concepts</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#measures" id="toc-measures" class="nav-link active" data-scroll-target="#measures">Measures</a></li>
+  <li><a href="#extensions-of-measures" id="toc-extensions-of-measures" class="nav-link" data-scroll-target="#extensions-of-measures">Extensions of measures</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Measures and extensions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
+</div>
+<section id="measures" class="level2">
+<h2 class="anchored" data-anchor-id="measures">Measures</h2>
+<ul>
+<li><p><strong>Measure on an algebra</strong>: Let <span class="math inline">\(\mathcal{F}\)</span> be an algebra (field) on <span class="math inline">\(\Omega\)</span>. A set function <span class="math inline">\(\mu:\mathcal{F}\to [0,\infty]\)</span> is called a <em>measure on <span class="math inline">\(\mathcal{F}\)</span></em> if</p>
+<ol type="i">
+<li><span class="math inline">\(\mu(\emptyset) = 0\)</span> (<em>Nullity of empty set measure</em>).</li>
+<li><span class="math inline">\(A_1,A_2,\dots \in \mathcal{F}\)</span> with <span class="math inline">\(A_i \cap A_j = \emptyset\)</span> for all <span class="math inline">\(i \neq j\)</span> and <span class="math inline">\(\bigcup_{i=1}^\infty A_i \in \mathcal{F}\)</span> implies <span class="math inline">\(\mu(\bigcup_{i = 1}^\infty A_i) = \sum_{i = 1}^\infty \mu(A_i)\)</span> (<em>Countable additivity</em> or <em><span class="math inline">\(\sigma\)</span>-additivity</em>).</li>
+</ol>
+<p><b style="color: blue;">Show</b> (see Proposition 1.2.1 of A&amp;L) that we obtain an equivalent definition if we replace ii. above with</p>
+<ol start="2" type="i">
+<li><span class="math inline">\(A_1,A_2\in \mathcal{F}\)</span> with <span class="math inline">\(A_1\cap A_2 = \emptyset\)</span> implies <span class="math inline">\(\mu(A_1 \cup A_2) = \mu(A_1) + \mu(A_2)\)</span> (<em>Finite additivity</em>).</li>
+<li><span class="math inline">\(\{A_n\}_{n\geq 1}\subset \mathcal{F}\)</span> with <span class="math inline">\(A_n \subset A_{n+1}\)</span> for all <span class="math inline">\(n\geq 1\)</span> and <span class="math inline">\(\bigcup_{n \geq 1}A_n \in \mathcal{F}\)</span> implies <span class="math inline">\(\mu(\bigcup_{ n \geq 1}A_n) = \lim_{n\to \infty}\mu(A_n)\)</span> (<em>Monotone continuity from below</em>).</li>
+</ol></li>
+<li><p>Since every <span class="math inline">\(\sigma\)</span>-algebra is an algebra, the above suffices to define measures on <span class="math inline">\(\sigma\)</span>-algebras.</p></li>
+<li><p><strong>Finite, infinite, probability, and <span class="math inline">\(\sigma\)</span>-finite measures:</strong> Given a sample space <span class="math inline">\(\Omega\)</span>, a <span class="math inline">\(\sigma\)</span>-algebra <span class="math inline">\(\mathcal{F}\)</span> on <span class="math inline">\(\Omega\)</span>, and a measure <span class="math inline">\(\mu\)</span> on <span class="math inline">\(\mathcal{F}\)</span>:</p>
+<ul>
+<li>If <span class="math inline">\(\mu(\Omega) &lt; \infty\)</span> then <span class="math inline">\(\mu\)</span> is <em>finite</em>.</li>
+<li>If <span class="math inline">\(\mu(\Omega) = \infty\)</span> then <span class="math inline">\(\mu\)</span> is <em>infinite</em>.</li>
+<li>If there exists a collection of sets <span class="math inline">\(A_1,A_2,\dots \in \mathcal{F}\)</span> such that <span class="math inline">\(\bigcup_{i=1}^\infty A_i = \Omega\)</span> and <span class="math inline">\(\mu(A_i) &lt; \infty\)</span> for all <span class="math inline">\(i=1,2,\dots\)</span> then <span class="math inline">\(\mu\)</span> is <em><span class="math inline">\(\sigma\)</span>-finite</em>.</li>
+<li>If <span class="math inline">\(\mathcal{A}\)</span> is a subclass of <span class="math inline">\(\mathcal{F}\)</span> then <span class="math inline">\(\mu\)</span> is <em><span class="math inline">\(\sigma\)</span>-finite on <span class="math inline">\(\mathcal{A}\)</span></em> if there exists a collection of sets <span class="math inline">\(A_1,A_2,\dots\in \mathcal{A}\)</span> such that <span class="math inline">\(\bigcup_{i=1}^\infty A_i = \Omega\)</span> and <span class="math inline">\(\mu(A_i) &lt; \infty\)</span> for all <span class="math inline">\(i=1,2,\dots\)</span></li>
+</ul></li>
+<li><p>Two examples of measures:</p>
+<ul>
+<li><p><strong>Counting measure:</strong> Define on <span class="math inline">\(\mathcal{F}= \mathcal{P}(\Omega)\)</span> the set function <span class="math inline">\(\mu(A) = |A|\)</span> for all <span class="math inline">\(A \in \mathcal{F}\)</span>, where <span class="math inline">\(|A|\)</span> gives the number of elements in <span class="math inline">\(A\)</span>. This is the <em>counting measure</em>. <b style="color: blue;">Show</b> that <span class="math inline">\(\mu\)</span> is a measure on <span class="math inline">\(\mathcal{F}\)</span>. Give sample spaces <span class="math inline">\(\Omega\)</span> such that <span class="math inline">\(\mu\)</span> is a finite measure, an infinite measure, and an infinite but a <span class="math inline">\(\sigma\)</span>-finite measure.</p></li>
+<li><p><strong>Discrete probability measure:</strong> Let <span class="math inline">\(\Omega = \{\omega_1,\omega_2,\dots\}\)</span> and, given a set of numbers <span class="math inline">\(p_1,p_2,\dots \in [0,1]\)</span> such that <span class="math inline">\(\sum_{i = 1}^n p_i = 1\)</span>, define on <span class="math inline">\(\mathcal{F}= \mathcal{P}(\Omega)\)</span> the set function <span class="math inline">\(\mu(A) = \sum_{i=1}^\infty p_i 1_{A}(\omega_i)\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(\mu\)</span> is a measure on <span class="math inline">\(\mathcal{F}\)</span>.</p></li>
+</ul></li>
+<li><p><strong>Monotonicity, finite sub-additivity, and the inclusion-exclusion formula:</strong> Let <span class="math inline">\(\mathcal{F}\)</span> be an algebra on <span class="math inline">\(\Omega\)</span> and let <span class="math inline">\(\mu\)</span> be a measure on <span class="math inline">\(\mathcal{F}\)</span>. Further, let <span class="math inline">\(A,B, A_1,\dots,A_n \in \mathcal{F}\)</span>, <span class="math inline">\(1 \leq n &lt; \infty\)</span>.</p>
+<ol type="a">
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(A \subset B\)</span> implies <span class="math inline">\(\mu(A) \leq \mu(B)\)</span> (<em>Monotonicity</em>).</li>
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(\mu(\bigcup_{i=1}^n A_i) \leq \sum_{i=1}^n \mu(A_i)\)</span> (<em>Finite subadditivity</em>).</li>
+<li><b style="color: blue;">Show</b> by induction that <span class="math display">\[
+\begin{align}
+\mu(\bigcup_{i=1}^nA_i) = \sum_{i=1}^n\mu(A_i) &amp;- \sum_{1\leq i &lt; j \leq n}\mu(A_i \cap A_j) + \sum_{1 \leq i &lt; j &lt; k \leq n}\mu(A_i \cap A_j \cap A_k) \\ &amp;- \dots +(-1)^{n-1}\mu(A_1 \cap \dots \cap A_n)
+\end{align}
+\]</span> (<em>inclusion-exclusion formula</em>).</li>
+</ol>
+<p>See Proposition 1.2.2 of A&amp;L.</p></li>
+<li><p><strong>Monotone continuity from above (MCFA) and countable sub-additivity:</strong> Let <span class="math inline">\(\mathcal{F}\)</span> be an algebra on <span class="math inline">\(\Omega\)</span> and <span class="math inline">\(\mu\)</span> be a measure on <span class="math inline">\(\mathcal{F}\)</span>.</p>
+<ol type="a">
+<li><b style="color: blue;">Show</b> that if <span class="math inline">\(\{A_n\}_{n \geq 1} \subset \mathcal{F}\)</span> with <span class="math inline">\(A_{n+1}\subset A_n\)</span> for all <span class="math inline">\(n \geq 1\)</span> and <span class="math inline">\(\bigcap_{n \geq 1} A_n \in \mathcal{F}\)</span> then <span class="math inline">\(\mu(\bigcap_{n \geq 1}A_n)=\lim_{n\to \infty}\mu(A_n)\)</span> (<em>monotone continuity from above</em>).</li>
+<li><b style="color: blue;">Show</b> that for any collection of sets <span class="math inline">\(A_1,A_2,\dots \in \mathcal{F}\)</span> such that <span class="math inline">\(\bigcup_{i= 1}^\infty A_i \in \mathcal{F}\)</span> we have <span class="math inline">\(\mu(\bigcup_{i = 1}^\infty A_i) \leq \sum_{i =1}^\infty \mu(A_i)\)</span> (<em>countable subadditivity</em>).</li>
+</ol>
+<p>See Proposition 1.2.3 on page 18 of A&amp;L.</p></li>
+<li><p><strong>Measurable space:</strong> A pair <span class="math inline">\((\Omega,\mathcal{F})\)</span>, where <span class="math inline">\(\Omega\)</span> is a non-empty set and <span class="math inline">\(\mathcal{F}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra on <span class="math inline">\(\Omega\)</span> is called a <em>measurable space</em>.</p></li>
+<li><p><strong>Measure space:</strong> A triple <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>, where <span class="math inline">\(\Omega\)</span> is a non-empty set, <span class="math inline">\(\mathcal{F}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra on <span class="math inline">\(\Omega\)</span>, and <span class="math inline">\(\mu\)</span> is a measure on <span class="math inline">\(\mathcal{F}\)</span> is called a <em>measure space</em>.</p></li>
+</ul>
+<p><!-- - **Completeness of a measure space:** A measure space $(\Omega,\calF, \mu)$ is called a *complete measure space* if for any $A \in \calF$, $\mu(A) = 0$ implies $\calP(A) \subset \calF$. --></p>
+<p><!--   In a complete measure space, the $\sigma$-algebra contains all subsets of every set of null measure. --></p>
+<ul>
+<li><p><strong>Uniqueness of measures:</strong> Let <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span> be measures on <span class="math inline">\(\sigma \langle \mathcal{C}\rangle\)</span>, where <span class="math inline">\(\mathcal{C}\)</span> is a <span class="math inline">\(\pi\)</span>-system on <span class="math inline">\(\Omega\)</span>, and suppose they are <span class="math inline">\(\sigma\)</span>-finite on <span class="math inline">\(\mathcal{C}\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(\mu_1(A) = \mu_2(A)\)</span> for all <span class="math inline">\(A \in \mathcal{C}\)</span> implies <span class="math inline">\(\mu_1(A) = \mu_2(A)\)</span> for all <span class="math inline">\(A \in \sigma \langle \mathcal{C}\rangle\)</span>.</p>
+<p>If two measures agree on a <span class="math inline">\(\pi\)</span>-system, they will agree on the <span class="math inline">\(\sigma\)</span>-algebra generated by the <span class="math inline">\(\pi\)</span>-system. See Theorem 1.2.4 on page 19 of A&amp;L or Theorem 10.3 on page 163 of Billingsley. The former, however, assumes finiteness rather than <span class="math inline">\(\sigma\)</span>-finiteness of the measures.</p></li>
+<li><p><strong>Measure on a semi-algebra</strong>: Let <span class="math inline">\(\mathcal{C}\)</span> be a semi-algebra on <span class="math inline">\(\Omega\)</span>. A set function <span class="math inline">\(\mu:\mathcal{C}\to [0,\infty]\)</span> is called a <em>measure on <span class="math inline">\(\mathcal{C}\)</span></em> if</p>
+<ol type="i">
+<li><span class="math inline">\(\mu(\emptyset) = 0\)</span> (<em>Nullity of empty set measure</em>).</li>
+<li><span class="math inline">\(A_1,A_2,\dots \in \mathcal{C}\)</span> with <span class="math inline">\(A_i \cap A_j = \emptyset\)</span> for all <span class="math inline">\(i \neq j\)</span> implies <span class="math inline">\(\mu(\bigcup_{i = 1}^\infty A_i) = \sum_{i = 1}^\infty \mu(A_i)\)</span> (<em>Countable additivity</em>).</li>
+</ol>
+<p>This is exactly how we define a measure on an algebra, but a new definition is needed here, since not every semi-algebra is an algebra.</p></li>
+<li><p><strong>Outer measure on the power set:</strong> Given a sample space <span class="math inline">\(\Omega\)</span>, a set function <span class="math inline">\(\mu^*: \mathcal{P}(\Omega) \to [0,\infty]\)</span> is called an <em>outer measure on <span class="math inline">\(\Omega\)</span></em> if it has the properties:</p>
+<ol type="i">
+<li><span class="math inline">\(\mu^*(\emptyset) = 0\)</span> (<em>Nullity of empty set probability</em>).</li>
+<li><span class="math inline">\(A \subset B\)</span> implies <span class="math inline">\(\mu^*(A) \leq \mu^*(B)\)</span> (<em>Monotonicity</em>).</li>
+<li><span class="math inline">\(\mu^*(\bigcup_{i=1}^\infty A_i) \leq \sum_{i=1}^\infty \mu^*(A_i)\)</span> for any collection of sets <span class="math inline">\(A_1,A_2,\dots \subset \Omega\)</span> (<em>Countable sub-additivity</em>).</li>
+</ol></li>
+</ul>
+</section>
+<section id="extensions-of-measures" class="level2">
+<h2 class="anchored" data-anchor-id="extensions-of-measures">Extensions of measures</h2>
+<ul>
+<li><p><strong>Extension of a measure on a semi-algebra to a measure on the algebra generated by the semi-algebra:</strong> Let <span class="math inline">\(\mathcal{C}\)</span> be a semi-algebra of subsets of <span class="math inline">\(\Omega\)</span> and let <span class="math inline">\(\mu\)</span> be a measure on <span class="math inline">\(\mathcal{C}\)</span>. Moreover, let <span class="math inline">\(\mathcal{A}\equiv \mathcal{A}\langle \mathcal{C}\rangle\)</span> be the smallest algebra containing <span class="math inline">\(\mathcal{C}\)</span> and, for each <span class="math inline">\(A \in \mathcal{A}\)</span>, set <span class="math display">\[
+  \bar \mu(A) \equiv \sum_{i=1}^k \mu(B_i)
+  \]</span> if <span class="math inline">\(A\)</span> has the representation <span class="math inline">\(A = \bigcup_{i=1}^k B_i\)</span>, where <span class="math inline">\(B_1,\dots,B_k\)</span> is a finite collection of disjoint sets in <span class="math inline">\(\mathcal{C}\)</span>.</p>
+<ol type="a">
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(\bar \mu\)</span> does not depend on the collection of sets <span class="math inline">\(B_1,\dots,B_k\)</span> used in the representation <span class="math inline">\(A = \bigcup_{i=1}^kB_i\)</span>.</li>
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(\bar \mu\)</span> is a measure on <span class="math inline">\(\mathcal{A}\)</span>.</li>
+</ol>
+<p>See Proposition 1.3.1 on page 20 of A&amp;L or Theorem 2.4.1 of page 46 of Resnick.</p></li>
+<li><p><strong>Outer measure induced by a measure on a semi-algebra:</strong> Let <span class="math inline">\(\mathcal{C}\)</span> be a semi-algebra on <span class="math inline">\(\Omega\)</span> and let <span class="math inline">\(\mu\)</span> be a measure on <span class="math inline">\(\mathcal{C}\)</span>. Then, for each <span class="math inline">\(A \subset \Omega\)</span>, set <span class="math display">\[
+\mu^*(A) \equiv \inf\Big\{\sum_{i=1}^\infty \mu(B_i) : B_1,B_2,\dots \in \mathcal{C}\text{ and } A \subset \bigcup_{i=1}^\infty B_i \Big\}.
+\]</span> <b style="color: blue;">Show</b> that <span class="math inline">\(\mu^*\)</span> is an outer measure on <span class="math inline">\(\Omega\)</span>.</p>
+<p>The set function <span class="math inline">\(\mu^*\)</span> is called the <em>outer measure on <span class="math inline">\(\Omega\)</span> induced by <span class="math inline">\(\mu\)</span></em>.</p>
+<p>The outer measure assigns to <span class="math inline">\(A \subset \Omega\)</span> the smallest sum of measures of sets in a collection of sets in the semi-algebra covering <span class="math inline">\(A\)</span> (a collection of sets <em>covers</em> a set <span class="math inline">\(A\)</span> if their union contains <span class="math inline">\(A\)</span>).</p></li>
+<li><p><b style="color: blue;">Show</b> that <span class="math inline">\(\mu^*(A) = \bar \mu(A)\)</span> for all <span class="math inline">\(A \in \mathcal{A}\langle \mathcal{C}\rangle\)</span>.</p></li>
+<li><p><strong>Measurability of a set with respect to the outer measure:</strong> A set <span class="math inline">\(A\subset \Omega\)</span> is said to be <em><span class="math inline">\(\mu^*\)</span>-measurable</em> if <span class="math display">\[
+\mu^*(E) = \mu^*(E \cap A) + \mu^*(E \cap A^c) \quad \text{ for all } E \subset \Omega.
+\]</span></p></li>
+<li><p><strong>Caratheodory Extension Theorem Part 1:</strong> Let <span class="math inline">\(\mu^*\)</span> be an outer measure on a sample space <span class="math inline">\(\Omega\)</span> and set <span class="math inline">\(\mathcal{M}_{\mu^*} \equiv \{A: \text{$A$ is $\mu^*$-measurable}\}\)</span>.</p>
+<ol type="a">
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(\mathcal{M}_{\mu^*}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra.</li>
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(\mu^*\)</span> with domain restricted to <span class="math inline">\(\mathcal{M}_{\mu^*}\)</span> is a measure on <span class="math inline">\(\mathcal{M}_{\mu^*}\)</span>. <!-- (c) <b style="color: blue;">Show</b> that $\mu^*(A) = 0$ implies $\calP(A) \subset \calM$ (*Completeness*). --></li>
+</ol>
+<!-- Showing the above establishes that $(\Omega,\calM,\mu^*)$ is a complete measure space. See Theorem 1.3.2 on page 22 of A&L. -->
+<p>Showing the above establishes that <span class="math inline">\((\Omega,\mathcal{M}_{\mu^*},\mu^*)\)</span> is a measure space. See Theorem 1.3.2 on page 22 of A&amp;L. For now we do not discuss <em>completeness</em> of measure spaces.</p></li>
+<li><p><strong>Caratheodory Extension Theorem Part 2:</strong> Let <span class="math inline">\(\mathcal{C}\)</span> be a semi-algebra on <span class="math inline">\(\Omega\)</span>, <span class="math inline">\(\mu\)</span> a <span class="math inline">\(\sigma\)</span>-finite measure on <span class="math inline">\(\mathcal{C}\)</span>, and <span class="math inline">\(\mu^*\)</span> the outer measure on <span class="math inline">\(\Omega\)</span> induced by <span class="math inline">\(\mu\)</span>.</p>
+<ol type="a">
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(\mathcal{C}\subset \mathcal{M}_{\mu^*}\)</span>.</li>
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(\mu^*(A) = \mu(A)\)</span> for all <span class="math inline">\(A \in \mathcal{C}\)</span>.</li>
+<li><b style="color: blue;">Show</b> that if another measure <span class="math inline">\(\mu^{**}\)</span> on <span class="math inline">\(\sigma\langle \mathcal{C}\rangle\)</span> satisfies <span class="math inline">\(\mu^{**}(A) = \mu(A)\)</span> for all <span class="math inline">\(A \in \mathcal{C}\)</span>, then <span class="math inline">\(\mu^{**}(A) = \mu^*(A)\)</span> for all <span class="math inline">\(A \in \sigma\langle \mathcal{C}\rangle\)</span>.</li>
+</ol>
+<p>In consequence <span class="math inline">\((\Omega, \sigma \langle \mathcal{C}\rangle, \mu^*)\)</span>, with <span class="math inline">\(\mu^*\)</span> restricted to <span class="math inline">\(\sigma \langle \mathcal{C}\rangle\)</span>, is a measure space, where <span class="math inline">\(\mu^*\)</span> is the unique <em>extension</em> of <span class="math inline">\(\mu\)</span> to <span class="math inline">\(\sigma \langle \mathcal{C}\rangle\)</span>. Compare to Theorems 1.3.3 and 1.3.6 on pages 24 and 29 of A&amp;L or Theorem 2.4.3 on page 48 of Resnick.</p></li>
+</ul>
+<!-- - **Caratheodory Extension Theorem Part 3:** Let $\calC$ be a semi-algebra on $\Omega$, $\mu$ a $\sigma$-finite measure on $\calC$, and $\mu^*$ the outer measure on $\Omega$ induced by $\mu$. <b style="color: blue;">Show</b> that if another measure $\mu^{**}$ on $\sigma\langle \calC \rangle$ satisfies $\mu^{**}(A) = \mu(A)$ for all $A \in \calC$, then $\mu^{**}(A) = \mu^*(A)$ for all $A \in \sigma\langle \calC \rangle$.  -->
+<!--     This shows that $\mu^*$ is the unique *extension* of $\mu$ to $\sigma \langle \calC \rangle$. We may call $\mu$ a *pre-measure*.  Compare to Theorem 1.3.3 on page 24 of A&L or Theorem 2.4.3 on page 48 of Resnick. -->
+<!-- - Caratheodory Theorem 2 (Caratheodory extension theorem).  Follow Theorem 1.3.3 of A&L. Outer measure induced by a measure on a semi-algebra is an outer measure; the $\sigma$-algebra formed by the collection of sets measurable by the outer measure contains the semialgebra; the original measure and the induced outer measure agree on all sets in the semi-algebra.  The outer measure is the extension of the measure on the semi-algebra to the larger $\sigma$-algebra (which is not the same as the $\sigma$-algebra generated by the semi-algebra). -->
+<ul>
+<li><p>Some authors begin with a semi-ring instead of a semi-algebra. See Theorem 11.3 on page 166 of Billingsley or the nice videos of <a href="https://sites.ualberta.ca/~kashlak/">Adam B. Kashlak</a> at <a href="https://www.youtube.com/playlist?list=PL0vEWJI_pj7RZ51zecINlzWxpFv83r8RE">www.youtube.com/<span class="citation" data-cites="cachelackmathstatslectures7001">@cachelackmathstatslectures7001</span></a>.</p></li>
+<li><p><strong>Lebesgue-Stieljes measure on a semi-algebra of intervals:</strong> Given a non-decreasing function <span class="math inline">\(F: \mathbb{R}\to \mathbb{R}\)</span>, set <span class="math inline">\(F(x+) \equiv \lim_{y\downarrow x}F(y)\)</span> and <span class="math inline">\(F(x-) \equiv \lim_{y\uparrow x}F(y)\)</span> for each <span class="math inline">\(x \in \mathbb{R}\)</span> as well as <span class="math inline">\(F(\infty) \equiv \lim_{x \uparrow \infty}(x)\)</span> and <span class="math inline">\(F(-\infty)\equiv \lim_{x \downarrow \infty}F(x)\)</span>. Then, for sets in the collection <span class="math display">\[
+\mathcal{C}= \{(a,b]:-\infty \leq a \leq b &lt; \infty\} \cup \{(a,\infty): - \infty \leq a &lt; \infty\}
+\]</span> define the set function <span class="math inline">\(\mu_F((a,b]) = F(b+) - F(a+)\)</span> and <span class="math inline">\(\mu_F((a,\infty)) = F(\infty) - F(a+)\)</span> (We showed previously that <span class="math inline">\(\mathcal{C}\)</span> is a semi-algebra on <span class="math inline">\(\mathbb{R}\)</span>).</p>
+<p><b style="color: blue;">Show</b> that <span class="math inline">\(\mu_F\)</span> is a measure on <span class="math inline">\(\mathcal{C}\)</span> (Follow Problems 1.22 and 1.23 of A&amp;L).</p></li>
+<li><p><strong>Lebesgue-Stieltjes measure space:</strong> For a non-decreasing function <span class="math inline">\(F:\mathbb{R}\to \mathbb{R}\)</span>, the measure space <span class="math inline">\((\mathbb{R}, \mathcal{M}_{\mu^*_F},\mu_F^*)\)</span> is called the <em>Lebesgue-Stieltjes measure space</em> and <span class="math inline">\(\mu_F^*\)</span> is called the <em>Lebesgue-Stieltjes measure generated by the function <span class="math inline">\(F\)</span></em>.</p>
+<p>Since <span class="math inline">\(\sigma\langle\mathcal{C}\rangle = \mathcal{B}(\mathbb{R})\)</span>, the triple <span class="math inline">\((\mathbb{R}, \mathcal{B}(\mathbb{R}),\mu_F^*)\)</span>, with <span class="math inline">\(\mu_F^*\)</span> restricted to Borel sets in <span class="math inline">\(\mathbb{R}\)</span>, is also a measure space.</p></li>
+<li><p><b style="color: blue;">Show</b> that <span class="math inline">\(\mu_F^*(\{x\}) = F(x+) - F(x-)\)</span> for any <span class="math inline">\(x \in \mathbb{R}\)</span>.</p></li>
+<li><p><strong>Lebesgue measure:</strong> The <em>Lebesgue measure</em> is a special case of the Lebesgue-Stieltjes measure when <span class="math inline">\(F(x) = x\)</span>, <span class="math inline">\(x \in \mathbb{R}\)</span>. Denote the Lebesgue measure by <span class="math inline">\(\mu_L\)</span>.</p>
+<ul>
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(\mu_L(\{x\}) = 0\)</span> for any <span class="math inline">\(x \in \mathbb{R}\)</span>.</li>
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(\mu_L(A) = 0\)</span> for any countable set <span class="math inline">\(A \subset \mathbb{R}\)</span>.</li>
+<li><b style="color: blue;">Show</b> that for any <span class="math inline">\(A \subset \mathbb{R}\)</span> we have <span class="math display">\[
+\mu_L(A) = \mu_L(A + c) \quad \text{ and } \quad \mu_L(-A) = \mu_L(A)
+\]</span> for all <span class="math inline">\(c \in \mathbb{R}\)</span>, where <span class="math inline">\(A + c  \equiv \{x : x - c \in A\}\)</span> and <span class="math inline">\(-A = \{x: -x \in A\}\)</span>.</li>
+</ul></li>
+<li><p>One can define Lebesgue-Stieltjes measures and Lebesgue measures in higher-dimensional Euclidean space.</p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

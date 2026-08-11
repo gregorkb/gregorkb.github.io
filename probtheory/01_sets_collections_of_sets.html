@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Sets and collections of sets</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./01_sets_collections_of_sets.html" aria-current="page"> 
+<span class="menu-text">Sets and collections of sets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./02_measures_and_extensions.html"> 
+<span class="menu-text">Measures and extensions</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./03_random_variables_measurable_transformations.html"> 
+<span class="menu-text">Measurable transformations and random variables</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./04_integration_and_differentiation.html"> 
+<span class="menu-text">Integration, differentiation, and product measures</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./05_probability_spaces.html"> 
+<span class="menu-text">Probability spaces and independence</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./06_convergence_concepts.html"> 
+<span class="menu-text">Convergence concepts</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#basic" id="toc-basic" class="nav-link active" data-scroll-target="#basic">Basic</a></li>
+  <li><a href="#fields-and-sigma-fields" id="toc-fields-and-sigma-fields" class="nav-link" data-scroll-target="#fields-and-sigma-fields">Fields and <span class="math inline">\(\sigma\)</span>-fields</a></li>
+  <li><a href="#borel-sigma-field" id="toc-borel-sigma-field" class="nav-link" data-scroll-target="#borel-sigma-field">Borel <span class="math inline">\(\sigma\)</span>-field</a></li>
+  <li><a href="#pi--and-lambda-classes" id="toc-pi--and-lambda-classes" class="nav-link" data-scroll-target="#pi--and-lambda-classes"><span class="math inline">\(\pi\)</span>- and <span class="math inline">\(\lambda\)</span>-classes</a></li>
+  <li><a href="#semi-algebras" id="toc-semi-algebras" class="nav-link" data-scroll-target="#semi-algebras">Semi-algebras</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Sets and collections of sets</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
+</div>
+<section id="basic" class="level2">
+<h2 class="anchored" data-anchor-id="basic">Basic</h2>
+<ul>
+<li><p><strong>Notation:</strong></p>
+<ul>
+<li><p>Sample space <span class="math inline">\(\Omega\)</span>.</p></li>
+<li><p>Capital letters <span class="math inline">\(A,B,\dots\)</span> denote subsets of <span class="math inline">\(\Omega\)</span></p></li>
+<li><p>Use <span class="math inline">\(\omega\)</span> for a sample point <span class="math inline">\(\omega \in \Omega\)</span>.</p></li>
+<li><p>Script letters <span class="math inline">\(\mathcal{A}, \mathcal{B},\dots\)</span> denote collections of subsets of <span class="math inline">\(\Omega\)</span>.</p></li>
+<li><p>Denote empty set by <span class="math inline">\(\emptyset\)</span>.</p></li>
+</ul></li>
+<li><p><strong>Elementary set operations:</strong></p>
+<ul>
+<li><p><strong>Union:</strong></p>
+<ul>
+<li>For two subsets <span class="math inline">\(A,B\subset \Omega\)</span>, <span class="math inline">\(A\cup B \equiv \{\omega \in \Omega: \omega \in A \text{ or } \omega \in
+  B\}\)</span>.</li>
+<li>For a finite collection of subsets <span class="math inline">\(A_1,\dots,A_n \subset \Omega\)</span>, <span class="math inline">\(\bigcup_{i=1}^n A_i \equiv \{\omega \in \Omega : \omega \in A \text{ for some } i = 1,\dots,n \}\)</span>.</li>
+<li>For a countable collection of subsets <span class="math inline">\(\{A_n\}_{n \geq 1}\)</span>, <span class="math inline">\(\bigcup_{n \geq 1} A_n \equiv \{\omega \in \Omega : \omega \in A \text{ for some } n \geq 1\}\)</span>.</li>
+<li>For an arbitrary collection of subsets <span class="math inline">\(\{A_\alpha, \alpha \in I\}\)</span>, <span class="math inline">\(I\)</span> finite, countable, or uncountable, <span class="math inline">\(\bigcup_{\alpha \in I} A_i \equiv \{\omega \in \Omega : \omega \in A \text{ for some } \alpha \in I \}\)</span>.</li>
+</ul></li>
+<li><p><strong>Intersection:</strong></p>
+<ul>
+<li>For two subsets <span class="math inline">\(A,B\subset \Omega\)</span>, <span class="math inline">\(A\cap B \equiv \{\omega \in \Omega: \omega \in A \text{ and } \omega \in
+  B\}\)</span>.</li>
+<li>For a finite collection of subsets <span class="math inline">\(A_1,\dots,A_n \subset \Omega\)</span>, <span class="math inline">\(\bigcap_{i=1}^n A_i \equiv \{\omega \in \Omega : \omega \in A \text{ for all } i = 1,\dots,n \}\)</span>.</li>
+<li>For a countable collection of subsets <span class="math inline">\(\{A_n\}_{n \geq 1}\)</span>, <span class="math inline">\(\bigcap_{n \geq 1} A_n \equiv \{\omega \in \Omega : \omega \in A \text{ for all } n \geq 1\}\)</span>.</li>
+<li>For an arbitrary collection of subsets <span class="math inline">\(\{A_\alpha, \alpha \in I\}\)</span>, <span class="math inline">\(I\)</span> finite, countable, or uncountable, <span class="math inline">\(\bigcap_{\alpha \in I} A_i \equiv \{\omega \in \Omega : \omega \in A \text{ for all } \alpha \in I \}\)</span>.</li>
+</ul></li>
+<li><p><strong>Complement:</strong> For a subset <span class="math inline">\(A \subset \Omega\)</span>, <span class="math inline">\(A^c \equiv \{\omega \in \Omega: \omega \notin A\}\)</span>.</p></li>
+<li><p><strong>Set difference:</strong> For subsets <span class="math inline">\(A,B \subset \Omega\)</span>, <span class="math inline">\(A \setminus B \equiv A \cap B^c\)</span></p></li>
+</ul></li>
+<li><p><strong>Set containment:</strong> Write <span class="math inline">\(A \subset B\)</span> if <span class="math inline">\(\omega \in A\)</span> implies <span class="math inline">\(\omega \in B\)</span>.</p></li>
+<li><p><strong>Equality of sets:</strong> Write <span class="math inline">\(A = B\)</span> if <span class="math inline">\(A \subset B\)</span> and <span class="math inline">\(B \subset A\)</span>.</p></li>
+<li><p><strong>De Morgan’s Laws:</strong></p>
+<ul>
+<li>For <span class="math inline">\(A,B \subset \Omega\)</span>, <span class="math inline">\((A \cup B)^c = A^c \cap B^c\)</span> and <span class="math inline">\((A \cap B)^c = A^c \cup B^c\)</span>.</li>
+<li>For an arbitrary collection of subsets <span class="math inline">\(\{A_\alpha, \alpha \in I\}\)</span>, <span class="math inline">\((\bigcup_{\alpha \in I} A_\alpha)^c = \bigcap_{\alpha \in I} A_\alpha^c\)</span> and <span class="math inline">\((\bigcap_{\alpha \in I} A_\alpha)^c = \bigcup_{\alpha \in I} A_\alpha^c\)</span>.</li>
+</ul></li>
+<li><p><strong>Indicator function:</strong> <span class="math inline">\(1_A : \Omega \to \mathbb{R}\)</span> given by <span class="math inline">\(\displaystyle 1_A(\omega) \equiv \left\{\begin{array}{ll}
+1,&amp; \omega \in A\\
+0,&amp; \omega \notin A.
+\end{array}\right.\)</span></p></li>
+<li><p><strong>Infimum and supremum of a sequence of subsets:</strong> For a sequence of subsets <span class="math inline">\(\{A_n \}_{n \geq 1}\)</span> of <span class="math inline">\(\Omega\)</span>:</p>
+<ul>
+<li><p><span class="math inline">\(\inf_{n\geq 1}A_n \equiv \bigcap_{n \geq 1}A_n\)</span>. Note that <span class="math inline">\(\inf_{n \geq 1}1_{A_n}(\omega) = 1_{\cap_{n\geq 1}A_n}(\omega)\)</span>.</p></li>
+<li><p><span class="math inline">\(\sup_{n \geq 1} A_n \equiv \bigcup_{n \geq 1} A_n\)</span>. Note that <span class="math inline">\(\sup_{n \geq 1}1_{A_n}(\omega) = 1_{\cup_{n\geq 1}A_n}(\omega)\)</span>.</p></li>
+</ul></li>
+<li><p><strong>Monotone sequences:</strong> Sequence of subsets <span class="math inline">\(\{A_n\}_{n\geq 1}\)</span> is <em>non-decreasing</em> if <span class="math inline">\(A_n \subset A_{n+1}\)</span> for all <span class="math inline">\(n\geq 1\)</span> and <em>non-increasing</em> if <span class="math inline">\(A_{n+1} \subset A_n\)</span> for all <span class="math inline">\(n \geq 1\)</span>. Such sequences are called <em>monotone sequences</em>.</p></li>
+<li><p><strong>Limits of monotone sequences:</strong> For a sequence <span class="math inline">\(\{A_n\}_{n\geq 1}\)</span> of subsets:</p>
+<ul>
+<li><p>If <span class="math inline">\(A_n \subset A_{n+1}\)</span> for all <span class="math inline">\(n \geq 1\)</span>, then <span class="math inline">\(\lim_{n\to \infty} A_n = \bigcup_{n \geq 1} A_n\)</span>.</p></li>
+<li><p>If <span class="math inline">\(A_{n+1} \subset A_n\)</span> for all <span class="math inline">\(n \geq 1\)</span>, then <span class="math inline">\(\lim_{n\to \infty} A_n = \bigcap_{n \geq 1} A_n\)</span>.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="fields-and-sigma-fields" class="level2">
+<h2 class="anchored" data-anchor-id="fields-and-sigma-fields">Fields and <span class="math inline">\(\sigma\)</span>-fields</h2>
+<ul>
+<li><p><strong>Field or algebra:</strong> A collection <span class="math inline">\(\mathcal{F}\)</span> of subsets of <span class="math inline">\(\Omega\)</span> is called a <em>field</em> or an <em>algebra</em> if:</p>
+<ol type="i">
+<li><span class="math inline">\(\Omega \in \mathcal{F}\)</span>.</li>
+<li><span class="math inline">\(A \in \mathcal{F}\)</span> implies <span class="math inline">\(A^c \in \mathcal{F}\)</span> (<em>closure under complementation</em>).</li>
+<li><span class="math inline">\(A, B \in \mathcal{F}\)</span> implies <span class="math inline">\(A \cup B \in \mathcal{F}\)</span> (<em>closure under finite unions</em>).</li>
+</ol>
+<p><b style="color: blue;">Show</b> (by Morgan’s laws) that we can make an equivalent definition by replacing iii. above with:</p>
+<ol start="3" type="i">
+<li><span class="math inline">\(A, B \in \mathcal{F}\)</span> implies <span class="math inline">\(A \cap B \in  \mathcal{F}\)</span>.</li>
+</ol></li>
+<li><p><strong><span class="math inline">\(\sigma\)</span>-field or <span class="math inline">\(\sigma\)</span>-algebra:</strong> A collection <span class="math inline">\(\mathcal{F}\)</span> of subsets of <span class="math inline">\(\Omega\)</span> is called a <em><span class="math inline">\(\sigma\)</span>-field</em> or <em><span class="math inline">\(\sigma\)</span>-algebra</em> if:</p>
+<ol type="i">
+<li><span class="math inline">\(\Omega \in \mathcal{F}\)</span>.</li>
+<li><span class="math inline">\(A \in \mathcal{F}\)</span> implies <span class="math inline">\(A^c \in \mathcal{F}\)</span>.</li>
+<li><span class="math inline">\(A_1,A_2,\dots \in \mathcal{F}\)</span> implies <span class="math inline">\(\bigcup_{n\geq 1} A_n \in \mathcal{F}\)</span> (<em>closure under countable unions</em>).</li>
+</ol>
+<p><b style="color: blue;">Show</b> that we can make an equivalent definition by replacing iii. above with the pair of conditions:</p>
+<ol start="3" type="i">
+<li><span class="math inline">\(A, B \in \mathcal{F}\)</span> implies <span class="math inline">\(A \cup B \in \mathcal{F}\)</span>.</li>
+<li><span class="math inline">\(A_1,A_2,\dots \in \mathcal{F}\)</span> and <span class="math inline">\(A_n \subset A_{n+1}\)</span> for <span class="math inline">\(n \geq 1\)</span> implies <span class="math inline">\(\bigcup_{n \geq 1} A_n \in \mathcal{F}\)</span> (<em>closure under non-decreasing unions</em>).</li>
+</ol>
+<p><b style="color: blue;">Show</b> that we can make another equivalent definition by replacing iii. and iv. above with:</p>
+<ol start="3" type="i">
+<li><span class="math inline">\(A, B \in \mathcal{F}\)</span> implies <span class="math inline">\(A \cap B \in \mathcal{F}\)</span>.</li>
+<li><span class="math inline">\(A_1,A_2,\dots \in \mathcal{F}\)</span> and <span class="math inline">\(A_{n+1} \subset A_n\)</span> for <span class="math inline">\(n \geq 1\)</span> implies <span class="math inline">\(\bigcap_{n \geq 1} A_n \in \mathcal{F}\)</span> (<em>closure under non-increasing intersections</em>).</li>
+</ol></li>
+<li><p>Note that every <span class="math inline">\(\sigma\)</span>-algebra is an algebra.</p></li>
+<li><p><b style="color: blue;">Check</b> whether the following are fields or <span class="math inline">\(\sigma\)</span>-fields:</p>
+<ul>
+<li>With <span class="math inline">\(\Omega = \{a,b,c\}\)</span>:
+<ul>
+<li><span class="math inline">\(\mathcal{A}= \{\emptyset, \{a\},\{b,c\},\{a,b,c\}\}\)</span></li>
+<li><span class="math inline">\(\mathcal{B}= \{\emptyset,\{a\},\{b\},\{a,b\}\}\)</span>.</li>
+</ul></li>
+<li>The <em>power set</em> <span class="math inline">\(\mathcal{P}(\Omega) = \{A : A \subset \Omega\}\)</span>, which is the collection of all subsets of <span class="math inline">\(\Omega\)</span>.</li>
+<li>The trivial <span class="math inline">\(\sigma\)</span>-field <span class="math inline">\(\{\emptyset, \Omega\}\)</span>.</li>
+<li><span class="math inline">\(\mathcal{F}= \{A \subset \Omega : |A|&lt; \infty \text{ or } |A^c| &lt; \infty \}\)</span>.</li>
+</ul></li>
+<li><p>We may refer to a <span class="math inline">\(\sigma\)</span>-field of subsets of <span class="math inline">\(\Omega\)</span> simply as a <span class="math inline">\(\sigma\)</span>-field <em>on</em> <span class="math inline">\(\Omega\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(\mathcal{F}_1\)</span> and <span class="math inline">\(\mathcal{F}_2\)</span> be <span class="math inline">\(\sigma\)</span>-fields on <span class="math inline">\(\Omega\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(\mathcal{F}_1 \cap \mathcal{F}_2\)</span> is a <span class="math inline">\(\sigma\)</span>-field on <span class="math inline">\(\Omega\)</span>.</p></li>
+<li><p><strong>Generated <span class="math inline">\(\sigma\)</span>-field:</strong> For any collection <span class="math inline">\(\mathcal{C}\)</span> of subsets of <span class="math inline">\(\Omega\)</span>, let <span class="math inline">\(\Sigma(\mathcal{C}) \equiv \{\mathcal{F}: \mathcal{F}\text{ is a $\sigma$-field on $\Omega$ and $\mathcal{C}\subset \mathcal{F}$}\}\)</span> denote the set of all <span class="math inline">\(\sigma\)</span>-fields on <span class="math inline">\(\Omega\)</span> containing <span class="math inline">\(\mathcal{C}\)</span>. Then <span class="math display">\[
+\sigma \langle \mathcal{C}\rangle \equiv \bigcap_{\mathcal{F}\in \Sigma(\mathcal{C})}\mathcal{F}
+\]</span> is called the <em><span class="math inline">\(\sigma\)</span>-field on <span class="math inline">\(\Omega\)</span> generated by <span class="math inline">\(\mathcal{C}\)</span></em>. We may think of <span class="math inline">\(\sigma \langle \mathcal{C}\rangle\)</span> as the smallest <span class="math inline">\(\sigma\)</span>-field on <span class="math inline">\(\Omega\)</span> containing <span class="math inline">\(\mathcal{C}\)</span>. Note that <span class="math inline">\(\sigma \langle \mathcal{C}\rangle \subset \mathcal{F}\)</span> for any <span class="math inline">\(\mathcal{F}\in \Sigma(\mathcal{C})\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(\Omega = \{a,b,c,d\}\)</span> and <b style="color: blue;">find</b> <span class="math inline">\(\sigma \langle \mathcal{C}_i \rangle\)</span>, <span class="math inline">\(i=1,2,3,4\)</span>, where <span class="math display">\[
+\begin{align}
+\mathcal{C}_1 &amp;\equiv\{\{a\},\{b\}\} \\
+\mathcal{C}_2 &amp;\equiv \{\{a,b\}\}\\
+\mathcal{C}_3 &amp;\equiv \{\{a,b\},\{c\}\}\\
+\mathcal{C}_4 &amp;\equiv \{\{a,b\},\{b,c\}\}.
+\end{align}
+\]</span></p></li>
+<li><p>Let <span class="math inline">\(\mathcal{C}\)</span> and <span class="math inline">\(\mathcal{D}\)</span> be collections of subsets of <span class="math inline">\(\Omega\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(\mathcal{C}\subset \mathcal{D}\)</span> implies <span class="math inline">\(\sigma \langle \mathcal{C}\rangle \subset \sigma \langle \mathcal{D}\rangle\)</span>.</p></li>
+</ul>
+</section>
+<section id="borel-sigma-field" class="level2">
+<h2 class="anchored" data-anchor-id="borel-sigma-field">Borel <span class="math inline">\(\sigma\)</span>-field</h2>
+<!-- - A *topological space* is a pair $(\bbS,\calT)$, where $\bbS$ is a nonempty set and $\calT$ is a collection of subsets of $\bbS$ such that -->
+<!--   (i) $\emptyset \in \calT$. -->
+<!--   (ii) $\bbS \subset \calT$. -->
+<!--   (iii) $O_1,O_2 \in \calT$ implies $O_1\cap O_2 \in \calT$ (closure under finite intersections). -->
+<!--   (iv) $\{O_\alpha\}_{\alpha \in I} \subset \calT$ implies $\bigcup_{\alpha \in I}O_\alpha \in \calT$ (closure under arbitrary unions). -->
+<!--   The sets in $\calT$ are called *open sets* -->
+<ul>
+<li><p><strong>Metric space:</strong> A <em>metric space</em> is a pair <span class="math inline">\((\mathbb{S},d)\)</span>, where <span class="math inline">\(\mathbb{S}\)</span> is a nonempty set and <span class="math inline">\(d:\mathbb{S}^2 \to \mathbb{R}^+ \equiv [0,\infty]\)</span> is a function satisfying</p>
+<ol type="i">
+<li><span class="math inline">\(d(x,y) = d(y,x)\)</span> for all <span class="math inline">\(x,y \in \mathbb{S}\)</span>.</li>
+<li><span class="math inline">\(d(x,y) = 0\)</span> if and only if <span class="math inline">\(x = y\)</span>.</li>
+<li><span class="math inline">\(d(x,y) \leq d(x,z) + d(z,y)\)</span> for all <span class="math inline">\(x,y,z \in \mathbb{S}\)</span> (triangle inequality). <a href="https://mathworld.wolfram.com/MetricSpace.html">See also</a>.</li>
+</ol>
+<p>The function <span class="math inline">\(d\)</span> is called a <em>metric</em> or a <em>distance</em>.</p></li>
+<li><p><strong>Euclidean metric space:</strong> A Euclidean space <span class="math inline">\(\mathbb{R}^k\)</span> is a metric space when equipped with the metric <span class="math display">\[
+d_p(x,y) = \left\{ \begin{array}{ll}\sum_{i=1}^k(x_i - y_i)^p,&amp; 0 &lt; p &lt; 1 \\
+(\sum_{i=1}^k(x_i - y_i)^p)^{1/p},&amp; 1 \leq p &lt; \infty\\
+\max_{1\leq i \leq k}|x_i - y_i|,&amp; p = \infty.\end{array}\right.
+\]</span> for any <span class="math inline">\(p &gt; 0\)</span>.</p></li>
+<li><p><strong>Open set in a metric space:</strong> A set <span class="math inline">\(O\)</span> in a metric space <span class="math inline">\((\mathbb{S},d)\)</span> is <em>open</em> if for every <span class="math inline">\(x \in O\)</span> there exists <span class="math inline">\(\epsilon &gt; 0\)</span> such that <span class="math inline">\(\{y: d(x,y) &lt; \epsilon\} \subset O\)</span>.</p></li>
+<li><p><strong>Borel <span class="math inline">\(\sigma\)</span>-field:</strong> The <em>Borel <span class="math inline">\(\sigma\)</span>-field</em> on <span class="math inline">\(\mathbb{R}^k\)</span>, <span class="math inline">\(1 \leq k &lt; \infty\)</span>, denoted <span class="math inline">\(\mathcal{B}(\mathbb{R}^k)\)</span>, is the <span class="math inline">\(\sigma\)</span>-field generated by the collection of all open sets in <span class="math inline">\(\mathbb{R}^k\)</span>. That is <span class="math display">\[
+\mathcal{B}(\mathbb{R}^k) \equiv \sigma \langle \{A \subset \mathbb{R}^k: \text{$A$ is open}\} \rangle
+\]</span></p></li>
+<li><p><strong>Generating the Borel sets in <span class="math inline">\(\mathbb{R}\)</span>:</strong> Define the collection <span class="math display">\[
+\mathcal{O} \equiv \{(a,b): -\infty \leq a &lt; b \leq \infty\}
+\]</span> of <em>open intervals in <span class="math inline">\(\mathbb{R}\)</span></em> and <b style="color: blue;">show</b> that <span class="math inline">\(\mathcal{B}(\mathbb{R}) = \sigma\langle\mathcal{O}\rangle\)</span>.</p>
+<p>Use the fact that any open set in <span class="math inline">\(\mathbb{R}\)</span> can be constructed as a countable union of open intervals (See Theorem 3-5 on page 61 of Kirkwood).</p></li>
+<li><p><strong>Another way to generate the Borel sets in <span class="math inline">\(\mathbb{R}\)</span>:</strong> Define the collection <span class="math display">\[
+\mathcal{C} \equiv \{(a,b]: -\infty \leq a &lt; b &lt; \infty\}
+\]</span> of <em>half-open intervals in <span class="math inline">\(\mathbb{R}\)</span></em> and <b style="color: blue;">show</b> that <span class="math inline">\(\sigma \langle \mathcal{C}\rangle = \sigma\langle\mathcal{O}\rangle\)</span> (See arguments on page 17 of Resnick).</p></li>
+<li><p><strong>Generating the Borel sets in <span class="math inline">\(\mathbb{R}^k\)</span>:</strong> Define the collection <span class="math display">\[
+\mathcal{O}_k \equiv \{(a_1,b_1)\times \dots \times (a_k,b_k) : - \infty \leq a_i &lt; b_i \leq \infty , 1 \leq i \leq k\}
+\]</span> of open rectangles in <span class="math inline">\(\mathbb{R}^k\)</span>. Then one can show <span class="math inline">\(\mathcal{B}(\mathbb{R}^k) = \sigma \langle \mathcal{O}\rangle\)</span> (See Example 1.1.6 on page 12 of A&amp;L).</p></li>
+<li><p><strong>Restricting a <span class="math inline">\(\sigma\)</span>-field to a subset of the sample space:</strong> Let <span class="math inline">\(\mathcal{F}\)</span> be a <span class="math inline">\(\sigma\)</span>-field on <span class="math inline">\(\Omega\)</span> and let <span class="math inline">\(\Omega_0 \subset \Omega\)</span> and set <span class="math inline">\(\mathcal{F}_0\equiv \{A \cap \Omega_0 : A \in \mathcal{F}\}\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(\mathcal{F}_0\)</span> is a <span class="math inline">\(\sigma\)</span>-field on <span class="math inline">\(\Omega_0\)</span> (See Theorem 1.8.1(1) on page 18 of Resnick).</p></li>
+<li><p><strong>Generating a <span class="math inline">\(\sigma\)</span>-field from a restricted collection of subsets:</strong> Let <span class="math inline">\(\mathcal{C}\)</span> be a collection of subsets of <span class="math inline">\(\Omega\)</span> and let <span class="math inline">\(\Omega_0 \subset \Omega\)</span> and set <span class="math inline">\(\mathcal{C}_0 \equiv \mathcal{C}\cap \Omega_0 \equiv \{A \cap \Omega_0: A \in \mathcal{C}\}\)</span>. <b style="color: blue;">Show</b> that <span class="math display">\[
+\sigma \langle \mathcal{C}_0 \rangle = \sigma \langle \mathcal{C}\rangle \cap \Omega_0 \equiv \{A \cap \Omega_0 : A \in \sigma \langle \mathcal{C}\rangle \}.
+\]</span> See Theorem 1.8.1(2) on page 18 of Resnick.</p></li>
+<li><p><strong>Borel <span class="math inline">\(\sigma\)</span>-algebra truncated to <span class="math inline">\((0,1]\)</span>:</strong> According to the above, we can generate <span class="math inline">\(\mathcal{B}((0,1]) \equiv \{A \cap (0,1]:A \in \mathcal{B}(\mathbb{R})\}\)</span> as <span class="math inline">\(\sigma \langle \mathcal{O}_{(0,1]}\rangle\)</span>, where <span class="math inline">\(\mathcal{O}_{(0,1]} = \{A \cap (0,1] : A \in \mathcal{O}\}\)</span>.</p></li>
+</ul>
+</section>
+<section id="pi--and-lambda-classes" class="level2">
+<h2 class="anchored" data-anchor-id="pi--and-lambda-classes"><span class="math inline">\(\pi\)</span>- and <span class="math inline">\(\lambda\)</span>-classes</h2>
+<ul>
+<li><p><strong><span class="math inline">\(\pi\)</span>-system:</strong> A class (or collection) of subsets <span class="math inline">\(\mathcal{C}\)</span> of <span class="math inline">\(\Omega\)</span> is called a <em><span class="math inline">\(\pi\)</span>-system</em> (<span class="math inline">\(\pi\)</span>-class) if</p>
+<ol type="i">
+<li><span class="math inline">\(A,B \in \mathcal{C}\)</span> implies <span class="math inline">\(A \cap B \in \mathcal{C}\)</span> (<em>closure under finite intersections</em>).</li>
+</ol></li>
+<li><p><strong><span class="math inline">\(\lambda\)</span>-system:</strong> A class of subsets <span class="math inline">\(\mathcal{L}\)</span> of <span class="math inline">\(\Omega\)</span> is called a <em><span class="math inline">\(\lambda\)</span>-system</em> (<span class="math inline">\(\lambda\)</span>-class, monotone class, Dynkin system) if</p>
+<ol type="i">
+<li><span class="math inline">\(\Omega \in \mathcal{L}\)</span>.</li>
+<li><span class="math inline">\(A,B \in \mathcal{L}\)</span> and <span class="math inline">\(A \subset B\)</span> imply <span class="math inline">\(B\setminus A \in \mathcal{L}\)</span> (<em>closure under proper differences</em>).</li>
+<li><span class="math inline">\(A_1,A_2,\dots\in\mathcal{L}\)</span> and <span class="math inline">\(A_n \subset A_{n+1}\)</span> for all <span class="math inline">\(n \geq 1\)</span> imply <span class="math inline">\(\bigcup_{n\geq 1}A_n \in \mathcal{L}\)</span> (<em>closure under non-decreasing unions</em>).</li>
+</ol>
+<p><b style="color: blue;">Show</b> that ii. and iii. above can be replaced with:</p>
+<ol start="2" type="i">
+<li><span class="math inline">\(A \in \mathcal{L}\)</span> implies <span class="math inline">\(A^c \in \mathcal{L}\)</span> (<em>closure under complementation</em>)</li>
+<li><span class="math inline">\(A_1,A_2,\dots \in \mathcal{L}\)</span>, <span class="math inline">\(A_i \cap A_j = \emptyset\)</span> for all <span class="math inline">\(i \neq j\)</span> implies <span class="math inline">\(\bigcup_{n\geq 1} A_n \in \mathcal{L}\)</span> (<em>closure under countable disjoint unions</em>).</li>
+</ol></li>
+<li><p><b style="color: blue;">Show</b> that every <span class="math inline">\(\sigma\)</span>-algebra is a <span class="math inline">\(\lambda\)</span>-system.</p></li>
+<li><p>Let <span class="math inline">\(\mathcal{L}_1\)</span> and <span class="math inline">\(\mathcal{L}_2\)</span> be <span class="math inline">\(\lambda\)</span>-systems on <span class="math inline">\(\Omega\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(\mathcal{L}_1\cap \mathcal{L}_2\)</span> is a <span class="math inline">\(\lambda\)</span>-system on <span class="math inline">\(\Omega\)</span>.</p></li>
+<li><p><b style="color: blue;">Show</b> that a <span class="math inline">\(\lambda\)</span>-system which is also a <span class="math inline">\(\pi\)</span>-system is a <span class="math inline">\(\sigma\)</span>-algebra.</p></li>
+<li><p><strong>Generated <span class="math inline">\(\lambda\)</span>-system:</strong> For any collection <span class="math inline">\(\mathcal{C}\)</span> of subsets of <span class="math inline">\(\Omega\)</span>, let <span class="math inline">\(\Lambda(\mathcal{C}) \equiv \{\mathcal{L}: \mathcal{L}\text{ is a $\lambda$-system on $\Omega$ and $\mathcal{C}\subset \mathcal{L}$}\}\)</span> denote the set of all <span class="math inline">\(\lambda\)</span>-systems on <span class="math inline">\(\Omega\)</span> containing <span class="math inline">\(\mathcal{C}\)</span>. Then <span class="math display">\[
+\lambda \langle \mathcal{C}\rangle \equiv \bigcap_{\mathcal{L}\in \Lambda(\mathcal{C})}\mathcal{L}
+\]</span> is called the <em><span class="math inline">\(\lambda\)</span>-system on <span class="math inline">\(\Omega\)</span> generated by <span class="math inline">\(\mathcal{C}\)</span></em>. Just as with a generated <span class="math inline">\(\sigma\)</span>-algebra, we can think of <span class="math inline">\(\lambda \langle \mathcal{C}\rangle\)</span> as the smallest <span class="math inline">\(\lambda\)</span>-system on <span class="math inline">\(\Omega\)</span> containing the collection <span class="math inline">\(\mathcal{C}\)</span>.</p></li>
+<li><p><strong>Dynkin’s <span class="math inline">\(\pi\)</span>-<span class="math inline">\(\lambda\)</span> theorem:</strong> Let <span class="math inline">\(\mathcal{C}\subset \mathcal{P}(\Omega)\)</span> be a <span class="math inline">\(\pi\)</span>-system and <span class="math inline">\(\mathcal{L}\subset \mathcal{P}(\Omega)\)</span> be a <span class="math inline">\(\lambda\)</span>-system such that <span class="math inline">\(\mathcal{C}\subset \mathcal{L}\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(\sigma \langle \mathcal{C}\rangle \subset \mathcal{L}\)</span>.</p>
+<p>Nice video by Adam B. Kashlak <a href="https://youtu.be/uSSnwNr0Iec?si=yQHxHF4iDl70aDRY">www.youtube.com/<span class="citation" data-cites="cachelackmathstatslectures7001">@cachelackmathstatslectures7001</span></a>. See Theorem 2.2.2 on page 37 of Resnick.</p></li>
+<li><p><strong>Corollary to the <span class="math inline">\(\pi\)</span>-<span class="math inline">\(\lambda\)</span> theorem:</strong> Let <span class="math inline">\(\mathcal{C}\)</span> be a <span class="math inline">\(\pi\)</span>-system of subsets of <span class="math inline">\(\Omega\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(\lambda \langle \mathcal{C}\rangle = \sigma \langle \mathcal{C}\rangle\)</span>.</p>
+<p>That is, if you start with a <span class="math inline">\(\pi\)</span>-system, show that the <span class="math inline">\(\lambda\)</span>-system generated by the <span class="math inline">\(\pi\)</span>-system is the same as the <span class="math inline">\(\sigma\)</span>-field generated by the <span class="math inline">\(\pi\)</span>-system (See Theorem 1.1.2 on page 13 of A&amp;L or Theorem 2.3 on page 8 of Gut).</p></li>
+</ul>
+<!-- ![](images/Dynkin_thm.png) -->
+</section>
+<section id="semi-algebras" class="level2">
+<h2 class="anchored" data-anchor-id="semi-algebras">Semi-algebras</h2>
+<ul>
+<li><p><strong>Semi-algebra:</strong> A collection <span class="math inline">\(\mathcal{C}\)</span> of subsets of <span class="math inline">\(\Omega\)</span> is called a <em>semi-algebra</em> if</p>
+<ol type="i">
+<li><span class="math inline">\(\emptyset,\Omega \in \mathcal{C}\)</span>.</li>
+<li><span class="math inline">\(A,B \in \mathcal{C}\)</span> implies <span class="math inline">\(A \cap B \in \mathcal{C}\)</span>.</li>
+<li><span class="math inline">\(A \in \mathcal{C}\)</span> implies that there exist <span class="math inline">\(A_1,\dots,A_n \in \mathcal{C}\)</span>, <span class="math inline">\(n &lt; \infty\)</span>, with <span class="math inline">\(A_i \cap A_j = \emptyset\)</span> for all <span class="math inline">\(i \neq j\)</span> such that <span class="math inline">\(A^c = \bigcup_{i=1}^n A_n\)</span>.</li>
+</ol>
+<p>So a semi-algebra is a <span class="math inline">\(\pi\)</span>-class which contains the sample space and which has the property that if <span class="math inline">\(A\)</span> is a member, <span class="math inline">\(A^c\)</span> can be constructed as a finite union of disjoint members (though <span class="math inline">\(A^c\)</span> need not be a member). See Exercise 2.2.3 on page 9 of Rosenthal or Definition 2.4.1 on page 44 of Resnick.</p></li>
+<li><p><b style="color: blue;">Show</b> that the collection <span class="math display">\[
+\mathcal{C}= \{(a,b]:-\infty \leq a \leq b &lt; \infty\} \cup \{(a,\infty): - \infty \leq a &lt; \infty\}
+\]</span> of subsets of <span class="math inline">\(\mathbb{R}\)</span> is a semi-algebra.</p></li>
+<li><p><b style="color: blue;">Show</b> that <span class="math inline">\(\sigma \langle \mathcal{C}\rangle = \mathcal{B}(\mathbb{R})\)</span>, where <span class="math inline">\(\mathcal{C}\)</span> is the semi-algebra defined above.</p></li>
+<li><p><strong>Algebra generated by a semi-algebra:</strong> Let <span class="math inline">\(\mathcal{C}\)</span> be a semi-algebra of subsets of <span class="math inline">\(\Omega\)</span>. <b style="color: blue;">Show</b> that the intersection of all algebras containing <span class="math inline">\(\mathcal{C}\)</span> is given by <span class="math display">\[
+\mathcal{A}\langle \mathcal{C}\rangle \equiv \{\bigcup_{i=1}^n A_i : A_1,\dots,A_n \in \mathcal{C}, A_i \cap A_j = \emptyset \text{ for } i \neq j, n &lt; \infty\}.
+\]</span></p>
+<p>The claim is that <span class="math inline">\(\mathcal{A}\langle \mathcal{C}\rangle\)</span> is the smallest algebra containing <span class="math inline">\(\mathcal{C}\)</span> or the <em>algebra generated by <span class="math inline">\(\mathcal{C}\)</span></em>. See Lemma 2.4.1 on page 45 of Resnick.</p></li>
+</ul>
+<!-- A&L seems to have a faulty definition of the smallest algebra containing a semi-algebra (seems they omitted disjointness). BUMP THIS BACK TO THE FIRST PAGE OF NOTES. -->
+<ul>
+<li><p>Given the sample space <span class="math inline">\(\Omega = \{a,b,c,d\}\)</span> define the collection of sets <span class="math display">\[
+\mathcal{C}= \{\emptyset, \{a,b,c,d\},\{a\},\{b\},\{c,d\},\{b,c,d\}\}.
+\]</span> <b style="color: blue;">Show</b> that <span class="math inline">\(\mathcal{C}\)</span> is a semi-algebra but not an algebra.</p></li>
+<li><p><b style="color: blue;">Show</b> that if <span class="math inline">\(\mathcal{C}\subset \mathcal{P}(\Omega)\)</span> is a semi-algebra then <span class="math inline">\(\sigma \langle \mathcal{C}\rangle = \sigma \langle \mathcal{A}\langle \mathcal{C}\rangle \rangle\)</span>.</p></li>
+</ul>
+<!-- ## Übungen -->
+<!-- - <b style="color: blue;">Show</b> that the set function defined in (3.1) of A&L satisfies the properties of an outer measure.  Maybe. -->
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
