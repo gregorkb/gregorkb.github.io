@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Convergence concepts</title>
+<title>Integration, convergence, and product measures</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -102,8 +131,8 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Measurable transformations and random variables</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./04_integration_and_differentiation.html"> 
-<span class="menu-text">Integration, differentiation, and product measures</span></a>
+    <a class="nav-link active" href="./04_integration_convergence_product_measures.html" aria-current="page"> 
+<span class="menu-text">Integration, convergence, and product measures</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./05_probability_spaces.html"> 
@@ -120,15 +149,25 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#integration" id="toc-integration" class="nav-link active" data-scroll-target="#integration">Integration</a></li>
+  <li><a href="#convergence" id="toc-convergence" class="nav-link" data-scroll-target="#convergence">Convergence</a></li>
+  <li><a href="#differentiation" id="toc-differentiation" class="nav-link" data-scroll-target="#differentiation">Differentiation</a></li>
+  <li><a href="#product-spaces-and-measures" id="toc-product-spaces-and-measures" class="nav-link" data-scroll-target="#product-spaces-and-measures">Product spaces and measures</a></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Convergence concepts</h1>
+<h1 class="title">Integration, convergence, and product measures</h1>
 </div>
 
 
@@ -145,8 +184,78 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="integration" class="level2">
+<h2 class="anchored" data-anchor-id="integration">Integration</h2>
+<ul>
+<li><p>Simple function.</p></li>
+<li><p>Definition of integral of a simple function on a measure space. Definition 2.3.2 of A&amp;L.</p></li>
+<li><p>Integral of a nonnegative function on a measure space as the limit of integrals of simple functions converging to the integrand from below.</p></li>
+<li><p>Invariance of the foregoing integral to the choice of sequence of simple functions.</p></li>
+<li><p>Recipe for such a non-decreasing sequence of simple functions as is needed in the definition of the integral.</p></li>
+<li><p>Properties of integrals on simple nonnegative functions: (i) linearity, (ii) monotonicity, (iii) identification of zero-function</p></li>
+<li><p>Same properties for nonnegative functions on a measure space (not necessarity simple).</p></li>
+<li><p>Monotone convergence theorem. Sequence of integrals of nonnegative functions approaching a function from below is equal to the integral of the latter.</p></li>
+<li><p>Integral of an infinite sum of nonnegative functions is equal to the infinite sum of integrals. Prove by MCT. Corollary 2.3.5.</p></li>
+<li><p>Make a new measure by integrating a nonnegative function. Notion of absolute continuity of one measure with respect to another. Corollary 2.3.6 of A&amp;L and Definition 4.1.1 of A&amp;L.</p></li>
+<li><p>Fatou’s Lemma. Theorem 2.3.7 of A&amp;L.</p></li>
+<li><p>Definition of the integral of a measurable function (not necessarily a nonnegative function).</p></li>
+<li><p>Definition of an integrable function.</p></li>
+<li><p>Definition of integral over a set.</p></li>
+<li><p>Definition of <span class="math inline">\(L^p\)</span> space.</p></li>
+<li><p>Integrable functions have these same properties as simple functions: (i) linearity, (ii) monotonicity, (iii) identification of zero-function.</p></li>
+<li><p>Prove (iii) of above. Proposition 2.3.9 of A&amp;L.</p></li>
+<li><p>An integrable function is a.e. finite. Proposition 2.3.10 of A&amp;L.</p></li>
+<li><p>Dominated convergence theorem (just do Lebesgue’s). When does a sequence of integrals converge? Follow proof of A&amp;L or that on starting after page 209 of Billingsley.</p></li>
+<li><p>Corollary: Bounded convergence theorem. Homework? Quiz?</p></li>
+</ul>
+</section>
+<section id="convergence" class="level2">
+<h2 class="anchored" data-anchor-id="convergence">Convergence</h2>
+<ul>
+<li><p>Pointwise convergence</p></li>
+<li><p>Convergence almost everywhere</p></li>
+<li><p>Convergence in measure</p></li>
+<li><p>Convergence in <span class="math inline">\(L^p\)</span>.</p></li>
+<li><p>Convergence uniformly over the sample space.</p></li>
+<li><p>Convergence nearly uniformly (with respect to a measure) over the sample space.</p></li>
+<li><p>Convergence almost everywhere implies convergence in measure. Go through proof. Page 31 of handwritten notes.</p></li>
+<li><p>Convergence in measure implies convergence almost everywhere of a subsequence. Follow proof in A&amp;L, Theorem 2.5.2. Page 32 of my handwritten notes.</p></li>
+<li><p>Convergence in <span class="math inline">\(L^p\)</span> implies convergence in measure.</p></li>
+<li><p>Scheffé’s theorem. Theorem 2.5.4 of A&amp;L.</p></li>
+<li><p>Uniform integrability? As on Page 675 of A&amp;L? I don’t remember what this is used for later on. So I can’t determine right at the moment if it is going to be important… Let me come back to this.</p></li>
+</ul>
+</section>
+<section id="differentiation" class="level2">
+<h2 class="anchored" data-anchor-id="differentiation">Differentiation</h2>
+<ul>
+<li><p>Definition of absolute continuity of a measure with respect to another measure. This is a repeat.</p></li>
+<li><p>Singularity of two measures with respect to each other.</p></li>
+<li><p>Lebesgue decomposition and Radon-Nikodym theorem. Follow Theorem 4.1.1 of A&amp;L.</p></li>
+<li><p>Definition of Radon-Nikodym derivative (This will get used later on when we talk about conditional expectation?)</p></li>
+</ul>
+</section>
+<section id="product-spaces-and-measures" class="level2">
+<h2 class="anchored" data-anchor-id="product-spaces-and-measures">Product spaces and measures</h2>
+<ul>
+<li><p>Define Cartesian product of two sample spaces, measurable rectangles, product <span class="math inline">\(\sigma\)</span>-algebra, product measure space.</p></li>
+<li><p>Define the cross section of a set and of a function.</p></li>
+<li><p>Proposition 5.1.1 of A&amp;L. Cross sections of sets are in the expected <span class="math inline">\(\sigma\)</span>-algebras and cross-section functions are measurable.</p></li>
+<li><p>Measures of cross sections are measurable functions. Product measure as it arises from integrating the measure of a cross section. Follow Theorem 5.1.2 of A&amp;L.</p></li>
+<li><p>Definition of product measure and product measure space.</p></li>
+<li><p>Tonelli’s Theorem</p></li>
+<li><p>Fubini’s Theorem</p></li>
+<li><p>Integration by parts formula. Follow Theorem 5.2.3 of A&amp;L.</p></li>
+<li><p>Add some examples to the foregoing.</p></li>
+</ul>
+</section>
+<section id="practice" class="level2">
+<h2 class="anchored" data-anchor-id="practice">Practice</h2>
+<ul>
+<li>Prove Corollary 2.5.6 on page 64 of A&amp;L.</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
