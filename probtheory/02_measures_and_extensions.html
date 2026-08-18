@@ -156,6 +156,7 @@ window.Quarto = {
   <ul>
   <li><a href="#measures" id="toc-measures" class="nav-link active" data-scroll-target="#measures">Measures</a></li>
   <li><a href="#extensions-of-measures" id="toc-extensions-of-measures" class="nav-link" data-scroll-target="#extensions-of-measures">Extensions of measures</a></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a></li>
   </ul>
 </nav>
     </div>
@@ -185,6 +186,7 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
+<p>Find these notes at <a href="https://gregorkb.github.io/probtheory/">gregorkb.github.io/probtheory/</a></p>
 <section id="measures" class="level2">
 <h2 class="anchored" data-anchor-id="measures">Measures</h2>
 <ul>
@@ -233,6 +235,7 @@ window.Quarto = {
 <p>See Proposition 1.2.3 on page 18 of A&amp;L.</p></li>
 <li><p><strong>Measurable space:</strong> A pair <span class="math inline">\((\Omega,\mathcal{F})\)</span>, where <span class="math inline">\(\Omega\)</span> is a non-empty set and <span class="math inline">\(\mathcal{F}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra on <span class="math inline">\(\Omega\)</span> is called a <em>measurable space</em>.</p></li>
 <li><p><strong>Measure space:</strong> A triple <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>, where <span class="math inline">\(\Omega\)</span> is a non-empty set, <span class="math inline">\(\mathcal{F}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra on <span class="math inline">\(\Omega\)</span>, and <span class="math inline">\(\mu\)</span> is a measure on <span class="math inline">\(\mathcal{F}\)</span> is called a <em>measure space</em>.</p></li>
+<li><p><strong>Probability space:</strong> A triple <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>, where <span class="math inline">\(\Omega\)</span> is a non-empty set, <span class="math inline">\(\mathcal{F}\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra on <span class="math inline">\(\Omega\)</span>, and <span class="math inline">\(P\)</span> is a probability measure on <span class="math inline">\(\mathcal{F}\)</span> is called a <em>probability space</em>.</p></li>
 </ul>
 <p><!-- - **Completeness of a measure space:** A measure space $(\Omega,\calF, \mu)$ is called a *complete measure space* if for any $A \in \calF$, $\mu(A) = 0$ implies $\calP(A) \subset \calF$. --></p>
 <p><!--   In a complete measure space, the $\sigma$-algebra contains all subsets of every set of null measure. --></p>
@@ -243,7 +246,7 @@ window.Quarto = {
 <ol type="i">
 <li><span class="math inline">\(\mu(A) \in [0,\infty]\)</span> for all <span class="math inline">\(A \in \mathcal{C}\)</span>.</li>
 <li><span class="math inline">\(\mu(\emptyset) = 0\)</span> (<em>Nullity of empty set measure</em>).</li>
-<li><span class="math inline">\(A_1,A_2,\dots \in \mathcal{C}\)</span> with <span class="math inline">\(A_i \cap A_j = \emptyset\)</span> for all <span class="math inline">\(i \neq j\)</span> implies <span class="math inline">\(\mu(\bigcup_{i = 1}^\infty A_i) = \sum_{i = 1}^\infty \mu(A_i)\)</span> (<em>Countable additivity</em>).</li>
+<li><span class="math inline">\(A_1,A_2,\dots \in \mathcal{C}\)</span> with <span class="math inline">\(A_i \cap A_j = \emptyset\)</span> for all <span class="math inline">\(i \neq j\)</span> and <span class="math inline">\(\bigcup_{i=1}^\infty A_i \in \mathcal{F}\)</span> implies <span class="math inline">\(\mu(\bigcup_{i = 1}^\infty A_i) = \sum_{i = 1}^\infty \mu(A_i)\)</span> (<em>Countable additivity</em>).</li>
 </ol>
 <p>This is exactly how we define a measure on an algebra, but a new definition is needed here, since not every semi-algebra is an algebra.</p></li>
 <li><p><strong>Outer measure on the power set:</strong> Given a sample space <span class="math inline">\(\Omega\)</span>, a set function <span class="math inline">\(\mu^*\)</span> on <span class="math inline">\(\mathcal{P}(\Omega)\)</span> is called an <em>outer measure</em> if it has the properties:</p>
@@ -271,9 +274,9 @@ window.Quarto = {
 \mu^*(A) \equiv \inf\Big\{\sum_{i=1}^\infty \mu(B_i) : B_1,B_2,\dots \in \mathcal{C}\text{ and } A \subset \bigcup_{i=1}^\infty B_i \Big\}.
 \]</span> <b style="color: blue;">Show</b> that <span class="math inline">\(\mu^*\)</span> is an outer measure on <span class="math inline">\(\Omega\)</span>.</p>
 <p>The set function <span class="math inline">\(\mu^*\)</span> is called the <em>outer measure on <span class="math inline">\(\Omega\)</span> induced by <span class="math inline">\(\mu\)</span></em>.</p>
-<p>The outer measure assigns to <span class="math inline">\(A \subset \Omega\)</span> the smallest sum of measures of sets in a collection of sets in the semi-algebra covering <span class="math inline">\(A\)</span> (a collection of sets <em>covers</em> a set <span class="math inline">\(A\)</span> if their union contains <span class="math inline">\(A\)</span>).</p></li>
+<p>The outer measure assigns to <span class="math inline">\(A \subset \Omega\)</span> the smallest sum of measures of sets in a collection of sets in the semi-algebra covering <span class="math inline">\(A\)</span> (a collection of sets <em>covers</em> a set <span class="math inline">\(A\)</span> if their union contains <span class="math inline">\(A\)</span>). See page 38 of Billingsley.</p></li>
 <li><p><b style="color: blue;">Show</b> that <span class="math inline">\(\mu^*(A) = \bar \mu(A)\)</span> for all <span class="math inline">\(A \in \mathcal{A}\langle \mathcal{C}\rangle\)</span>.</p></li>
-<li><p><strong>Measurability of a set with respect to the outer measure:</strong> A set <span class="math inline">\(A\subset \Omega\)</span> is said to be <em><span class="math inline">\(\mu^*\)</span>-measurable</em> if <span class="math display">\[
+<li><p><strong>Measurability of a set with respect to an outer measure:</strong> A set <span class="math inline">\(A\subset \Omega\)</span> is said to be <em><span class="math inline">\(\mu^*\)</span>-measurable</em> if <span class="math display">\[
 \mu^*(E) = \mu^*(E \cap A) + \mu^*(E \cap A^c) \quad \text{ for all } E \subset \Omega.
 \]</span></p></li>
 <li><p><strong>Caratheodory Extension Theorem Part 1:</strong> Let <span class="math inline">\(\mu^*\)</span> be an outer measure on a sample space <span class="math inline">\(\Omega\)</span> and set <span class="math inline">\(\mathcal{M}_{\mu^*} \equiv \{A: \text{$A$ is $\mu^*$-measurable}\}\)</span>.</p>
@@ -283,11 +286,11 @@ window.Quarto = {
 </ol>
 <!-- Showing the above establishes that $(\Omega,\calM,\mu^*)$ is a complete measure space. See Theorem 1.3.2 on page 22 of A&L. -->
 <p>Showing the above establishes that <span class="math inline">\((\Omega,\mathcal{M}_{\mu^*},\mu^*)\)</span> is a measure space. See Theorem 1.3.2 on page 22 of A&amp;L. For now we do not discuss <em>completeness</em> of measure spaces.</p></li>
-<li><p><strong>Caratheodory Extension Theorem Part 2:</strong> Let <span class="math inline">\(\mathcal{C}\)</span> be a semi-algebra on <span class="math inline">\(\Omega\)</span>, <span class="math inline">\(\mu\)</span> a <span class="math inline">\(\sigma\)</span>-finite measure on <span class="math inline">\(\mathcal{C}\)</span>, and <span class="math inline">\(\mu^*\)</span> the outer measure on <span class="math inline">\(\Omega\)</span> induced by <span class="math inline">\(\mu\)</span>.</p>
+<li><p><strong>Caratheodory Extension Theorem Part 2:</strong> Let <span class="math inline">\(\mathcal{C}\)</span> be a semi-algebra on <span class="math inline">\(\Omega\)</span>, <span class="math inline">\(\mu\)</span> a measure on <span class="math inline">\(\mathcal{C}\)</span>, and <span class="math inline">\(\mu^*\)</span> the outer measure on <span class="math inline">\(\Omega\)</span> induced by <span class="math inline">\(\mu\)</span>.</p>
 <ol type="a">
 <li><b style="color: blue;">Show</b> that <span class="math inline">\(\mathcal{C}\subset \mathcal{M}_{\mu^*}\)</span>.</li>
 <li><b style="color: blue;">Show</b> that <span class="math inline">\(\mu^*(A) = \mu(A)\)</span> for all <span class="math inline">\(A \in \mathcal{C}\)</span>.</li>
-<li><b style="color: blue;">Show</b> that if another measure <span class="math inline">\(\mu^{**}\)</span> on <span class="math inline">\(\sigma\langle \mathcal{C}\rangle\)</span> satisfies <span class="math inline">\(\mu^{**}(A) = \mu(A)\)</span> for all <span class="math inline">\(A \in \mathcal{C}\)</span>, then <span class="math inline">\(\mu^{**}(A) = \mu^*(A)\)</span> for all <span class="math inline">\(A \in \sigma\langle \mathcal{C}\rangle\)</span>.</li>
+<li>If another measure <span class="math inline">\(\mu^{**}\)</span> on <span class="math inline">\(\sigma\langle \mathcal{C}\rangle\)</span> satisfies <span class="math inline">\(\mu^{**}(A) = \mu(A)\)</span> for all <span class="math inline">\(A \in \mathcal{C}\)</span>, then <span class="math inline">\(\mu^{**}(A) = \mu^*(A)\)</span> for all <span class="math inline">\(A \in \sigma\langle \mathcal{C}\rangle\)</span>, provided <span class="math inline">\(\mu\)</span> is <span class="math inline">\(\sigma\)</span>-finite on <span class="math inline">\(\mathcal{C}\)</span>.</li>
 </ol>
 <p>In consequence <span class="math inline">\((\Omega, \sigma \langle \mathcal{C}\rangle, \mu^*)\)</span>, with <span class="math inline">\(\mu^*\)</span> restricted to <span class="math inline">\(\sigma \langle \mathcal{C}\rangle\)</span>, is a measure space, where <span class="math inline">\(\mu^*\)</span> is the unique <em>extension</em> of <span class="math inline">\(\mu\)</span> to <span class="math inline">\(\sigma \langle \mathcal{C}\rangle\)</span>. Compare to Theorems 1.3.3 and 1.3.6 on pages 24 and 29 of A&amp;L or Theorem 2.4.3 on page 48 of Resnick.</p></li>
 </ul>
@@ -296,23 +299,26 @@ window.Quarto = {
 <!-- - Caratheodory Theorem 2 (Caratheodory extension theorem).  Follow Theorem 1.3.3 of A&L. Outer measure induced by a measure on a semi-algebra is an outer measure; the $\sigma$-algebra formed by the collection of sets measurable by the outer measure contains the semialgebra; the original measure and the induced outer measure agree on all sets in the semi-algebra.  The outer measure is the extension of the measure on the semi-algebra to the larger $\sigma$-algebra (which is not the same as the $\sigma$-algebra generated by the semi-algebra). -->
 <ul>
 <li><p>Some authors begin with a semi-ring instead of a semi-algebra. See Theorem 11.3 on page 166 of Billingsley or the nice videos of <a href="https://sites.ualberta.ca/~kashlak/">Adam B. Kashlak</a> at <a href="https://www.youtube.com/playlist?list=PL0vEWJI_pj7RZ51zecINlzWxpFv83r8RE">www.youtube.com/<span class="citation" data-cites="cachelackmathstatslectures7001">@cachelackmathstatslectures7001</span></a>.</p></li>
-<li><p><strong>Lebesgue-Stieljes measure on a semi-algebra of intervals:</strong> Given a non-decreasing function <span class="math inline">\(F: \mathbb{R}\to \mathbb{R}\)</span>, set <span class="math inline">\(F(x+) \equiv \lim_{y\downarrow x}F(y)\)</span> and <span class="math inline">\(F(x-) \equiv \lim_{y\uparrow x}F(y)\)</span> for each <span class="math inline">\(x \in \mathbb{R}\)</span> as well as <span class="math inline">\(F(\infty) \equiv \lim_{x \uparrow \infty}(x)\)</span> and <span class="math inline">\(F(-\infty)\equiv \lim_{x \downarrow \infty}F(x)\)</span>. Then, for sets in the collection <span class="math display">\[
+<li><p><strong>Lebesgue-Stieltjes measure on a semi-algebra of intervals:</strong> Given a non-decreasing function <span class="math inline">\(F: \mathbb{R}\to \mathbb{R}\)</span>, set <span class="math inline">\(F(x+) \equiv \lim_{y \downarrow x}F(y)\)</span> and <span class="math inline">\(F(x-)\equiv \lim_{y \uparrow x}F(y)\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span> as well as <span class="math inline">\(F(\infty) \equiv \lim_{x \uparrow \infty}(x)\)</span> and <span class="math inline">\(F(-\infty)\equiv \lim_{x \downarrow \infty}F(x)\)</span>. Then, for sets in the collection <span class="math display">\[
 \mathcal{C}= \{(a,b]:-\infty \leq a \leq b &lt; \infty\} \cup \{(a,\infty): - \infty \leq a &lt; \infty\}
-\]</span> define the set function <span class="math inline">\(\mu_F((a,b]) = F(b+) - F(a+)\)</span> and <span class="math inline">\(\mu_F((a,\infty)) = F(\infty) - F(a+)\)</span> (We showed previously that <span class="math inline">\(\mathcal{C}\)</span> is a semi-algebra on <span class="math inline">\(\mathbb{R}\)</span>).</p>
-<p><b style="color: blue;">Show</b> that <span class="math inline">\(\mu_F\)</span> is a measure on <span class="math inline">\(\mathcal{C}\)</span> (Follow Problems 1.22 and 1.23 of A&amp;L).</p></li>
+\]</span> define the set function <span class="math inline">\(\mu_F((a,b]) = F(b+) - F(a+)\)</span> and <span class="math inline">\(\mu_F((a,\infty)) = F(\infty) - F(a+)\)</span>.</p>
+<p><b style="color: blue;">Show</b> that <span class="math inline">\(\mu_F\)</span> is a measure on <span class="math inline">\(\mathcal{C}\)</span>.</p></li>
 <li><p><strong>Lebesgue-Stieltjes measure space:</strong> For a non-decreasing function <span class="math inline">\(F:\mathbb{R}\to \mathbb{R}\)</span>, the measure space <span class="math inline">\((\mathbb{R}, \mathcal{M}_{\mu^*_F},\mu_F^*)\)</span> is called the <em>Lebesgue-Stieltjes measure space</em> and <span class="math inline">\(\mu_F^*\)</span> is called the <em>Lebesgue-Stieltjes measure generated by the function <span class="math inline">\(F\)</span></em>.</p>
 <p>Since <span class="math inline">\(\sigma\langle\mathcal{C}\rangle = \mathcal{B}(\mathbb{R})\)</span>, the triple <span class="math inline">\((\mathbb{R}, \mathcal{B}(\mathbb{R}),\mu_F^*)\)</span>, with <span class="math inline">\(\mu_F^*\)</span> restricted to Borel sets in <span class="math inline">\(\mathbb{R}\)</span>, is also a measure space.</p></li>
 <li><p><b style="color: blue;">Show</b> that <span class="math inline">\(\mu_F^*(\{x\}) = F(x+) - F(x-)\)</span> for any <span class="math inline">\(x \in \mathbb{R}\)</span>.</p></li>
-<li><p><strong>Lebesgue measure:</strong> The <em>Lebesgue measure</em> is a special case of the Lebesgue-Stieltjes measure when <span class="math inline">\(F(x) = x\)</span>, <span class="math inline">\(x \in \mathbb{R}\)</span>. Denote the Lebesgue measure by <span class="math inline">\(\mu_L\)</span>.</p>
+<li><p><strong>Lebesgue measure:</strong> The <em>Lebesgue measure</em> is a special case of the Lebesgue-Stieltjes measure when <span class="math inline">\(F(x) = x\)</span>, <span class="math inline">\(x \in \mathbb{R}\)</span>. Denote the Lebesgue measure by <span class="math inline">\(\mu_L\)</span>. Then:</p>
 <ul>
-<li><b style="color: blue;">Show</b> that <span class="math inline">\(\mu_L(\{x\}) = 0\)</span> for any <span class="math inline">\(x \in \mathbb{R}\)</span>.</li>
-<li><b style="color: blue;">Show</b> that <span class="math inline">\(\mu_L(A) = 0\)</span> for any countable set <span class="math inline">\(A \subset \mathbb{R}\)</span>.</li>
-<li><b style="color: blue;">Show</b> that for any <span class="math inline">\(A \subset \mathbb{R}\)</span> we have <span class="math display">\[
+<li><span class="math inline">\(\mu_L(\{x\}) = 0\)</span> for any <span class="math inline">\(x \in \mathbb{R}\)</span>.</li>
+<li><span class="math inline">\(\mu_L(A) = 0\)</span> for any countable set <span class="math inline">\(A \subset \mathbb{R}\)</span>.</li>
+<li>For any <span class="math inline">\(A \subset \mathbb{R}\)</span> we have <span class="math display">\[
 \mu_L(A) = \mu_L(A + c) \quad \text{ and } \quad \mu_L(-A) = \mu_L(A)
 \]</span> for all <span class="math inline">\(c \in \mathbb{R}\)</span>, where <span class="math inline">\(A + c  \equiv \{x : x - c \in A\}\)</span> and <span class="math inline">\(-A = \{x: -x \in A\}\)</span>.</li>
 </ul></li>
 <li><p>One can define Lebesgue-Stieltjes measures and Lebesgue measures in higher-dimensional Euclidean space.</p></li>
 </ul>
+</section>
+<section id="practice" class="level2">
+<h2 class="anchored" data-anchor-id="practice">Practice</h2>
 
 
 </section>
