@@ -189,7 +189,8 @@ window.Quarto = {
 <section id="measurable-transformations" class="level2">
 <h2 class="anchored" data-anchor-id="measurable-transformations">Measurable transformations</h2>
 <ul>
-<li><p><strong>Measurable mapping:</strong> Let <span class="math inline">\((\Omega_1,\mathcal{F}_1)\)</span> and <span class="math inline">\((\Omega_2,\mathcal{F}_2)\)</span> be measurable spaces. A mapping <span class="math inline">\(T:\Omega_1 \to \Omega_2\)</span> is called <em><span class="math inline">\(\langle \mathcal{F}_1,\mathcal{F}_2 \rangle\)</span>-measurable</em> if <span class="math inline">\(T^{-1}(A) \equiv \{\omega : T(\omega) \in A\} \in \mathcal{F}_1\)</span> for all <span class="math inline">\(A \in \mathcal{F}_2\)</span>.</p></li>
+<li><p><strong>Measurable mapping:</strong> Let <span class="math inline">\((\Omega_1,\mathcal{F}_1)\)</span> and <span class="math inline">\((\Omega_2,\mathcal{F}_2)\)</span> be measurable spaces. A mapping <span class="math inline">\(T:\Omega_1 \to \Omega_2\)</span> is called <em><span class="math inline">\(\langle \mathcal{F}_1,\mathcal{F}_2 \rangle\)</span>-measurable</em> if <span class="math inline">\(T^{-1}(A) \equiv \{\omega : T(\omega) \in A\} \in \mathcal{F}_1\)</span> for all <span class="math inline">\(A \in \mathcal{F}_2\)</span>.</p>
+<p>We could say “function” instead of “mapping”, because these mean the same thing.</p></li>
 <li><p><strong>Examples:</strong> Let <span class="math inline">\(\Omega_1 = \Omega_2 = \Omega = \{a,b,c,d\}\)</span> and <span class="math inline">\(\mathcal{F}_1 = \{\Omega, \emptyset,\{a\},\{b,c,d\}\}\)</span> and <span class="math inline">\(\mathcal{F}_2 = \mathcal{P}(\Omega)\)</span>. <b style="color: blue;">Check</b> measurability of mappings <span class="math display">\[
 \begin{align}
 T_1(\omega) &amp;\equiv a \text{ for all }\omega \in \Omega \\
@@ -199,53 +200,49 @@ c&amp; \text{ if } \omega = c,d.\end{array}\right.
 \end{align}
 \]</span></p>
 <p>This is Example 2.1.1 on page 40 of A&amp;L.</p></li>
-<li><p><strong>Results to help check measurability:</strong> Let <span class="math inline">\((\Omega_i,\mathcal{F}_i)\)</span>, <span class="math inline">\(i=1,2,3\)</span> be measurable spaces</p>
-<ol type="a">
-<li><p>Let <span class="math inline">\(\mathcal{F}_2 = \sigma \langle \mathcal{C}\rangle\)</span> for some collection <span class="math inline">\(\mathcal{C}\subset \mathcal{P}(\Omega_2)\)</span>. <br> <b style="color: blue;">Show</b> that <span class="math inline">\(T:\Omega_1\to \Omega_2\)</span> is <span class="math inline">\(\langle \mathcal{F}_1,\mathcal{F}_2\rangle\)</span>-measurable if <span class="math inline">\(T^{-1}(A) \in \mathcal{F}_1\)</span> for all <span class="math inline">\(A \in \mathcal{C}\)</span>.</p></li>
-<li><p>Suppose the mappings <span class="math inline">\(T_1:\Omega_1 \to \Omega_2\)</span> and <span class="math inline">\(T_2: \Omega_2 \to \Omega_3\)</span> are <span class="math inline">\(\langle \mathcal{F}_1,\mathcal{F}_2 \rangle\)</span>- and <span class="math inline">\(\langle \mathcal{F}_2,\mathcal{F}_3 \rangle\)</span>-measurable, respectively. <br> <b style="color: blue;">Show</b> that the mapping <span class="math inline">\(T:\Omega_1 \to \Omega_3\)</span> given by the composition <span class="math inline">\((T_2 \circ T_1)(\omega) \equiv T_2(T_1(\omega))\)</span> for <span class="math inline">\(\omega \in \Omega_1\)</span> is <span class="math inline">\(\langle \mathcal{F}_1,\mathcal{F}_3\rangle\)</span>-measurable.</p></li>
-</ol>
-<p>See Proposition 2.1.1 on page 41 of A&amp;L. We could say “function” instead of “mapping”, because these mean the same thing.</p></li>
+<li><p><strong>Result to ease checking measurability:</strong> Let <span class="math inline">\((\Omega_1,\mathcal{F}_1)\)</span> and <span class="math inline">\((\Omega_2,\mathcal{F}_2)\)</span> be measurable spaces such that <span class="math inline">\(\mathcal{F}_2 = \sigma \langle \mathcal{C}\rangle\)</span> for some collection <span class="math inline">\(\mathcal{C}\subset \mathcal{P}(\Omega_2)\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(T:\Omega_1\to \Omega_2\)</span> is <span class="math inline">\(\langle \mathcal{F}_1,\mathcal{F}_2\rangle\)</span>-measurable if <span class="math inline">\(T^{-1}(A) \in \mathcal{F}_1\)</span> for all <span class="math inline">\(A \in \mathcal{C}\)</span>.</p></li>
+<li><p><strong>Composition of measurable maps:</strong> Let <span class="math inline">\((\Omega_i,\mathcal{F}_i)\)</span>, <span class="math inline">\(i=1,2,3\)</span> be measurable spaces and let <span class="math inline">\(T_1:\Omega_1 \to \Omega_2\)</span> and <span class="math inline">\(T_2: \Omega_2 \to \Omega_3\)</span> be mappings which are <span class="math inline">\(\langle \mathcal{F}_1,\mathcal{F}_2 \rangle\)</span>- and <span class="math inline">\(\langle \mathcal{F}_2,\mathcal{F}_3 \rangle\)</span>-measurable, respectively. <b style="color: blue;">Show</b> that the mapping <span class="math inline">\(T:\Omega_1 \to \Omega_3\)</span> given by the composition <span class="math inline">\((T_2 \circ T_1)(\omega) \equiv T_2(T_1(\omega))\)</span> for <span class="math inline">\(\omega \in \Omega_1\)</span> is <span class="math inline">\(\langle \mathcal{F}_1,\mathcal{F}_3\rangle\)</span>-measurable.</p>
+<p>See Proposition 2.1.1 on page 41 of A&amp;L.</p></li>
 <li><p><strong>Application:</strong> Let <span class="math inline">\((\Omega,\mathcal{F})\)</span> be a measurable space and let <span class="math inline">\(T:\Omega \to \mathbb{R}\)</span> be a mapping such that <span class="math inline">\(T^{-1}((a,b]) \in \mathcal{F}\)</span> for all <span class="math inline">\((a,b] \subset \mathbb{R}\)</span>. <br> <b style="color: blue;">Argue</b> that <span class="math inline">\(T\)</span> is <span class="math inline">\(\langle \mathcal{F},\mathcal{B}(\mathbb{R})\rangle\)</span>-measurable.</p></li>
 <li><p><strong>Special case of measurability:</strong> Given a measurable space <span class="math inline">\((\Omega,\mathcal{F})\)</span>, a mapping <span class="math inline">\(f:\Omega \to \mathbb{R}\)</span> is simply called <em>measurable</em> if it is <span class="math inline">\(\langle \mathcal{F},\mathcal{B}(\mathbb{R})\rangle\)</span>-measurable.</p></li>
-<li><p><strong>Measurable function:</strong> Given a measurable space <span class="math inline">\((\Omega,\mathcal{F})\)</span>, a function <span class="math inline">\(f :\Omega \to \mathbb{R}\)</span> is <em>measurable</em> if <span class="math inline">\(f^{-1}((-\infty,x]) \equiv \{\omega : f(\omega) \leq x\} \in \mathcal{F}\)</span> for each <span class="math inline">\(x\in \mathbb{R}\)</span>.</p></li>
+<li><p><strong>Measurable function:</strong> Given a measurable space <span class="math inline">\((\Omega,\mathcal{F})\)</span>, a function <span class="math inline">\(f :\Omega \to \mathbb{R}\)</span> is <em>measurable</em> if <span class="math inline">\(f^{-1}((-\infty,x]) \equiv \{\omega : f(\omega) \leq x\} \in \mathcal{F}\)</span> for each <span class="math inline">\(x\in \mathbb{R}\)</span>.</p>
+<p>This definition works owing to <span class="math inline">\(\mathcal{B}(\mathbb{R}) = \sigma \langle \{(-\infty,x], x \in \mathbb{R}\} \rangle\)</span>.</p></li>
 <li><p><strong>Random variable:</strong> Let <span class="math inline">\((\Omega,\mathcal{F},P)\)</span> be a probability space. Then a function <span class="math inline">\(X: \Omega \to \mathbb{R}\)</span> is a <em>random variable</em> if it is measurable, i.e.&nbsp;if <span class="math inline">\(X^{-1}((-\infty,a]) \equiv \{\omega : X(\omega) \leq a\} \in \mathcal{F}\)</span> for each <span class="math inline">\(a \in \mathbb{R}\)</span>.</p></li>
-<li><p><strong>Measurability of a continuous function:</strong> In the measurable space <span class="math inline">\((\mathbb{R},\mathcal{B}(\mathbb{R}))\)</span>, let <span class="math inline">\(f:\mathbb{R}\to \mathbb{R}\)</span> be a continuous function. <br> <b style="color: blue;">Show</b> that <span class="math inline">\(f\)</span> is measurable.</p>
-<p>See Proposition 2.1.2 of A&amp;L. This can be extended to continuous functions <span class="math inline">\(f:\mathbb{R}^k \to \mathbb{R}^p\)</span>.</p></li>
+<li><p><strong>Measurability of a continuous function:</strong> In the measurable space <span class="math inline">\((\mathbb{R},\mathcal{B}(\mathbb{R}))\)</span>, let <span class="math inline">\(f:\mathbb{R}\to \mathbb{R}\)</span> be a continuous function. <b style="color: blue;">Show</b> that <span class="math inline">\(f\)</span> is measurable.</p>
+<p>See Proposition 2.1.2 of A&amp;L. Recall: A function <span class="math inline">\(f:\mathbb{R}\to \mathbb{R}\)</span> is continuous at <span class="math inline">\(x\)</span> if for every <span class="math inline">\(\epsilon &gt; 0\)</span> there exists a <span class="math inline">\(\delta(\epsilon) &gt; 0\)</span> such that <span class="math inline">\(f(y) \in (f(x) - \epsilon,f(x) + \epsilon)\)</span> for all <span class="math inline">\(y \in (x - \delta(\epsilon),x+\delta(\epsilon))\)</span>. A function <span class="math inline">\(f\)</span> is continuous on a set <span class="math inline">\(D \subset \mathbb{R}\)</span> if it is continuous at all <span class="math inline">\(x \in D\)</span>. See definitions on pages 77 and 93 of Kirkwood. The result can be extended to continuous functions <span class="math inline">\(f:\mathbb{R}^k \to \mathbb{R}^p\)</span>.</p></li>
 <li><p><b style="color: blue;">Check</b> whether the indicator function <span class="math display">\[
-1_{(-\infty,a]}(x) \equiv \left\{\begin{array}{ll}
-1&amp; x \leq a\\
-0&amp;x &gt; a\end{array}\right.
+1_{(-\infty,c]}(x) \equiv \left\{\begin{array}{ll}
+1,&amp; x \leq c\\
+0,&amp;x &gt; c\end{array}\right.
 \]</span> is measurable.</p></li>
-<li><p><strong>Compositions of measurable functions:</strong> Let <span class="math inline">\((\Omega,\mathcal{F})\)</span> be a measure space and let <span class="math inline">\(f_1,\dots,f_k : \Omega \to \mathbb{R}\)</span> be measurable functions.</p>
+<li><p><strong>Compositions of measurable functions:</strong> Let <span class="math inline">\((\Omega,\mathcal{F})\)</span> be a measurable space and let <span class="math inline">\(f_1,\dots,f_k : \Omega \to \mathbb{R}\)</span> be measurable functions.</p>
 <ol type="a">
 <li><b style="color: blue;">Show</b> that <span class="math inline">\(f = (f_1,\dots,f_k): \Omega \to \mathbb{R}^k\)</span> is <span class="math inline">\(\langle \mathcal{F}, \mathcal{B}(\mathbb{R}^k) \rangle\)</span>-measurable.</li>
 <li><b style="color: blue;">Show</b> that <span class="math inline">\(g = f_1 + \dots + f_k\)</span> is measurable.</li>
-<li>The product <span class="math inline">\(h = \prod_{i=1}^k f_i\)</span> is measurable.</li>
-<li>If <span class="math inline">\(\psi: \mathbb{R}^k \to \mathbb{R}^p\)</span> is continuous, then <span class="math inline">\(\psi \circ f\)</span> is <span class="math inline">\(\langle \mathcal{F}, \mathcal{B}(\mathbb{R}^p) \rangle\)</span>-measurable, where <span class="math inline">\(f = (f_1,\dots,f_k)\)</span>.</li>
+<li><b style="color: blue;">Show</b> that the product <span class="math inline">\(h = \prod_{i=1}^k f_i\)</span> is measurable.</li>
+<li><b style="color: blue;">Show</b> that if <span class="math inline">\(\psi: \mathbb{R}^k \to \mathbb{R}^p\)</span> is continuous, then <span class="math inline">\(\psi \circ f\)</span> is <span class="math inline">\(\langle \mathcal{F}, \mathcal{B}(\mathbb{R}^p) \rangle\)</span>-measurable, where <span class="math inline">\(f = (f_1,\dots,f_k)\)</span>.</li>
 </ol>
-<p>See Proposition 2.1.3 on page 42 of A&amp;L. As a corollary, we may say that the collection of <span class="math inline">\(\langle \mathcal{F},\mathcal{B}(\mathbb{R}) \rangle\)</span>-measurable functions from <span class="math inline">\(\Omega\)</span> to <span class="math inline">\(\mathbb{R}\)</span> is closed under pointwise addition and multiplication as well as under scalar multiplication. See Corollary 2.1.4 on page 42 of A&amp;L.</p></li>
+<p>See Proposition 2.1.3 on page 42 of A&amp;L. As a corollary, we may say that the collection of <span class="math inline">\(\langle \mathcal{F},\mathcal{B}(\mathbb{R}) \rangle\)</span>-measurable functions from <span class="math inline">\(\Omega\)</span> to <span class="math inline">\(\mathbb{R}\)</span> is closed under pointwise addition and multiplication as well as under scalar multiplication (Corollary 2.1.4 on page 42 of A&amp;L).</p></li>
 <li><p><b style="color: blue;">Check</b> whether the function <span class="math display">\[
 f(x) = (1-x)1_{(0,1)}(x) - (1+x) 1_{(-1,0)}(x)
 \]</span> is measurable.</p></li>
-<li><p><strong>Extended real line and Borel sets thereof:</strong> Define <span class="math inline">\(\bar{\mathbb{R}} \equiv \mathbb{R}\cup \{-\infty\}\cup\{\infty\}\)</span> and <span class="math inline">\(\mathcal{B}(\bar{\mathbb{R}}) = \sigma \langle \mathcal{B}(\mathbb{R}) \cup \{-\infty\}\cup\{\infty\}\rangle\)</span>.</p></li>
-<li><p><strong>Measurability and limits:</strong> Let <span class="math inline">\((\Omega,\mathcal{F})\)</span> be a measurable space and let <span class="math inline">\(\{f_n\}_{n\geq 1}:\Omega \to \bar{\mathbb{R}}\)</span> be a collection of <span class="math inline">\(\langle \mathcal{F}, \mathcal{B}(\bar{\mathbb{R}})\rangle\)</span>-measurable functions.</p>
-<ol type="a">
-<li><p><b style="color: blue;">Show</b> that the functions</p>
-<ul>
-<li><span class="math inline">\(\inf_{n \geq 1} f_n\)</span></li>
-<li><span class="math inline">\(\sup_{n \geq 1} f_n\)</span></li>
-<li><span class="math inline">\(\liminf_{n \to \infty} f_n\)</span></li>
-<li><span class="math inline">\(\limsup_{n \to \infty} f_n\)</span></li>
 </ul>
-<p>are all <span class="math inline">\(\langle \mathcal{F}, \mathcal{B}(\bar{\mathbb{R}})\rangle\)</span>-measurable.</p></li>
-<li><p><b style="color: blue;">Show</b> that <span class="math display">\[
-A \equiv \{\omega: \lim_{n \to \infty} f_n \text{ exists and is finite}\} \in \mathcal{F}
-\]</span> and that the function <span class="math inline">\(h \equiv (\lim_{n \to \infty} f_n) 1_A\)</span> is <span class="math inline">\(\langle \mathcal{F}, \mathcal{B}(\bar{\mathbb{R}})\rangle\)</span>-measurable.</p></li>
+<!-- - **Extended real line and Borel sets thereof:** Define $\bar{\bbR} \equiv \bbR \cup \{-\infty\}\cup\{\infty\}$ and  -->
+<!-- $\calB(\bar{\bbR}) = \sigma \langle \calB(\bbR) \cup \{-\infty\}\cup\{\infty\}\rangle$. 
+
+I'M GONNA FORGET ABOUT THE EXTENDED REAL LINE, BECAUSE I DON'T KNOW HOW TO GENERATE IT WITH THE SET OF RAYS.  ALSO BILLINGSLEY AND RESNICK DON'T MESS WITH THE EXTENDED REAL LINE.
+
+-->
+<ul>
+<li><p><strong>Measurability and limits:</strong> Let <span class="math inline">\((\Omega,\mathcal{F})\)</span> be a measurable space and let <span class="math inline">\(\{f_n\}_{n\geq 1}:\Omega \to \bar{\mathbb{R}}\)</span> be a collection of measurable functions.</p>
+<ol type="a">
+<li><p><b style="color: blue;">Show</b> that the functions <span class="math inline">\(\inf_{n \geq 1} f_n\)</span>, <span class="math inline">\(\sup_{n \geq 1} f_n\)</span>, <span class="math inline">\(\liminf_{n \to \infty} f_n\)</span>, and <span class="math inline">\(\limsup_{n \to \infty} f_n\)</span> are all measurable.</p></li>
+<li><p><b style="color: blue;">Show</b> that <span class="math inline">\(A \equiv \{\omega: \lim_{n \to \infty} f_n \text{ exists and is finite}\} \in \mathcal{F}\)</span> and that the function <span class="math inline">\(h \equiv (\lim_{n \to \infty} f_n) 1_A\)</span> is measurable.</p></li>
 </ol>
-<p>See Proposition 2.1.5 on page 43 of A&amp;L. Compare to Proposition 3.2.6 on page 81 of Resnick.</p></li>
+<p>See Proposition 2.1.5 on page 43 of A&amp;L, Proposition 3.2.6 on page 81 of Resnick, or Theorem 13.4 on page 184 of Billingsley.</p></li>
 <li><p><strong><span class="math inline">\(\sigma\)</span>-algebra generated by a map:</strong> Given a measurable space <span class="math inline">\((\Omega, \mathcal{F})\)</span> and a function <span class="math inline">\(f:\Omega \to \mathbb{R}\)</span>, define <span class="math inline">\(\sigma \langle f\rangle \equiv \sigma \langle \{f^{-1}(A): A \in \mathcal{B}(\mathbb{R})\}\rangle\)</span>. This is the <em><span class="math inline">\(\sigma\)</span>-algebra generated by <span class="math inline">\(f\)</span></em>. It is the smallest <span class="math inline">\(\sigma\)</span>-algebra <span class="math inline">\(\mathcal{F}\)</span> such that <span class="math inline">\(f\)</span> is <span class="math inline">\(\langle  \mathcal{F}, \mathcal{B}(\mathbb{R}) \rangle\)</span>-measurable.</p></li>
 <li><p><b style="color: blue;">Find</b> <span class="math inline">\(\sigma \langle f \rangle\)</span> when <span class="math inline">\(f= 1_A\)</span>, <span class="math inline">\(A \subset \Omega\)</span>.</p></li>
-<li><p><strong>Measure induced by a map:</strong> Let <span class="math inline">\((\Omega_1,\mathcal{F}_1)\)</span> and <span class="math inline">\((\Omega_2,\mathcal{F}_2)\)</span> be measurable spaces and let <span class="math inline">\(T:\Omega_1\to\Omega_2\)</span> be an <span class="math inline">\(\langle \mathcal{F}_1,\mathcal{F}_2 \rangle\)</span>-measurable map. Moreover, let <span class="math inline">\(\mu\)</span> be a measure on <span class="math inline">\(\mathcal{F}_1\)</span>. <b style="color: blue;">Show</b> that the set function <span class="math inline">\(\mu_T(A) \equiv \mu(T^{-1}(A))\)</span> for all <span class="math inline">\(A \in \mathcal{F}_2\)</span> is a measure on <span class="math inline">\(\mathcal{F}_2\)</span>.</p>
+<li><p><strong>Measure induced by a map:</strong> Let <span class="math inline">\((\Omega_1,\mathcal{F}_1)\)</span> and <span class="math inline">\((\Omega_2,\mathcal{F}_2)\)</span> be measurable spaces and let <span class="math inline">\(T:\Omega_1\to\Omega_2\)</span> be an <span class="math inline">\(\langle \mathcal{F}_1,\mathcal{F}_2 \rangle\)</span>-measurable map. Moreover, let <span class="math inline">\(\mu\)</span> be a measure on <span class="math inline">\(\mathcal{F}_1\)</span>. <b style="color: blue;">Show</b> that the set function defined as <span class="math inline">\(\mu_T(A) \equiv \mu(T^{-1}(A))\)</span> for all <span class="math inline">\(A \in \mathcal{F}_2\)</span> is a measure on <span class="math inline">\(\mathcal{F}_2\)</span>.</p>
 <p>Here, <span class="math inline">\(\mu_T\)</span> is called the <em>measure on <span class="math inline">\(\mathcal{F}_2\)</span> induced by the map <span class="math inline">\(T\)</span></em>.</p>
 <p>See Proposition 2.2.1 on page 45 of A&amp;L, page 83 of Resnick.</p></li>
 </ul>
@@ -253,20 +250,31 @@ A \equiv \{\omega: \lim_{n \to \infty} f_n \text{ exists and is finite}\} \in \m
 <section id="probability-distributions" class="level2">
 <h2 class="anchored" data-anchor-id="probability-distributions">Probability distributions</h2>
 <ul>
-<li><p><strong>Probability distribution of a random variable:</strong> Let <span class="math inline">\(X\)</span> be a random variable on a probability space <span class="math inline">\((\Omega, \mathcal{F}, P)\)</span>. Then the measure <span class="math inline">\(P_X\)</span> on <span class="math inline">\(\mathcal{B}(\mathbb{R})\)</span> induced by <span class="math inline">\(X\)</span> is called the <em>probability distribution of <span class="math inline">\(X\)</span></em>. <b style="color: blue;">Show</b> that <span class="math inline">\(P_X\)</span> is a probability measure on <span class="math inline">\(\mathcal{B}(\mathbb{R})\)</span>.</p></li>
+<li><p><strong>Probability distribution of a random variable:</strong> Let <span class="math inline">\(X\)</span> be a random variable on a probability space <span class="math inline">\((\Omega, \mathcal{F}, P)\)</span>. Then the measure <span class="math inline">\(P_X\)</span> on <span class="math inline">\(\mathcal{B}(\mathbb{R})\)</span> induced by <span class="math inline">\(X\)</span> is called the <em>probability distribution of <span class="math inline">\(X\)</span></em>. <b style="color: blue;">Show</b> that <span class="math inline">\(P_X\)</span> is a probability measure on <span class="math inline">\(\mathcal{B}(\mathbb{R})\)</span>, and thus that <span class="math inline">\((\mathbb{R}, \mathcal{B}(\mathbb{R}), P_X)\)</span> is a probability space.</p>
+<p>One can refer to a probability distribution as a <em>probability law</em> or more simply as a <em>law</em>.</p></li>
 <li><p><strong>Cumulative distribution function (CDF) of a random variable:</strong> Let <span class="math inline">\(X\)</span> be a random variable with probability distribution <span class="math inline">\(P_X\)</span>. Then the function given by <span class="math inline">\(F_X(x) \equiv P_X((-\infty,x])\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span> is called the <em>cumulative distribution function (CDF)</em> of <span class="math inline">\(X\)</span>.</p></li>
-<li><p><strong>Properties of a CDF:</strong> Let <span class="math inline">\(F_X\)</span> be the CDF of a random variable <span class="math inline">\(X\)</span>.</p>
+<li><p><strong>Properties of a CDF:</strong> Let <span class="math inline">\(X\)</span> be a random variable on a probability space <span class="math inline">\((\Omega, \mathcal{F}, P)\)</span>. Moreover, suppose <span class="math inline">\(X\)</span> has probability distribution <span class="math inline">\(P_X\)</span> and let <span class="math inline">\(F_X\)</span> be the CDF of <span class="math inline">\(X\)</span>.</p>
 <ol type="a">
 <li><b style="color: blue;">Show</b> that <span class="math inline">\(F_X(x_1) \leq F_X(x_2)\)</span> for all <span class="math inline">\(x_1 &lt; x_2\)</span> (<em>non-decreasing</em>).</li>
-<li><b style="color: blue;">Show</b> that <span class="math inline">\(\lim_{y \downarrow x} F_X(y) = F_X(x)\)</span> for all <span class="math inline">\(x\)</span> (<em>right-continuous</em>).</li>
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(F_X(x+) = F_X(x)\)</span> for all <span class="math inline">\(x\)</span> (<em>right-continuous</em>).</li>
 <li><b style="color: blue;">Show</b> that <span class="math inline">\(\lim_{x \downarrow -\infty} F_X(x)= 0\)</span> and <span class="math inline">\(\lim_{x \uparrow +\infty} F_X(x) = 1\)</span>.</li>
 </ol>
-<p>See Proposition 2.2.2 on page 45 of A&amp;L.</p>
-<ul>
+<p>See Proposition 2.2.2 on page 45 of A&amp;L. Recall <span class="math inline">\(F(x+) \equiv \lim_{y \downarrow x} F_X(y)\)</span>.</p></li>
 <li><p><strong>Discrete and continuous random variables:</strong> A random variable <span class="math inline">\(X\)</span> is <em>discrete</em> if there exists a countable subset <span class="math inline">\(A \subset \mathbb{R}\)</span> such that <span class="math inline">\(P_X(X \in A) = 1\)</span> and <em>continuous</em> if <span class="math inline">\(P_X(X = x)= 0\)</span> for all <span class="math inline">\(x \in \mathbb{R}\)</span>.</p></li>
-<li><p>Writing a CDF as the weighted sum of discrete and continuous components. See page 47 of A&amp;L.</p></li>
-<li><p>Higher dimensional law, cdf.</p></li>
-</ul></li>
+<li><p><b style="color: blue;">Show</b> that for a CDF <span class="math inline">\(F\)</span> the set <span class="math inline">\(D = \{x : F(x+) - F(x-) &gt;0\}\)</span> of discontinuity points is finite or countable. Recall <span class="math inline">\(F(x-) \equiv \lim_{y \uparrow x}F(y)\)</span>. See Problem 2.11 on page 74 of A&amp;L.</p></li>
+<li><p><strong>Discrete and continuous components of a CDF:</strong> For a CDF <span class="math inline">\(F\)</span> let <span class="math inline">\(D = \{x : F(x) - F(x-) &gt;0\}\)</span> and define the functions <span class="math display">\[
+\begin{align}
+\tilde F_d(x) &amp;\equiv \sum_{\{t \in D: t\leq x\}}[F(t) - F(t-)] \\
+\tilde F_c(x) &amp;\equiv F(x) - \tilde F_d(x)
+\end{align}
+\]</span> Then let <span class="math inline">\(\alpha \equiv \sum_{x \in D}[F(x) - F(x-)]\)</span> and set <span class="math inline">\(F_d(x) \equiv \alpha^{-1}\tilde F_d(x)\)</span> and <span class="math inline">\(F_c(x) \equiv (1-\alpha)^{-1}\tilde F_c(x)\)</span>. Then we may write <span class="math display">\[
+F(x) = \alpha F_d(x) + (1-\alpha) F_c(x)
+\]</span> where <span class="math inline">\(F_d\)</span> and <span class="math inline">\(F_c\)</span> are, respectively, CDFs for a discrete and a continuous random variable. See page 47 of A&amp;L.</p></li>
+<li><p><strong>Probability distributions and CDFs in higher dimensions:</strong> Let <span class="math inline">\(X_1,\dots,X_k\)</span> be random variables on the probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>. Then <span class="math inline">\(X = (X_1,\dots,X_k)\)</span> is called a <em>random vector</em>. The probability distribution <span class="math inline">\(P_X\)</span> of <span class="math inline">\(X\)</span> is given by <span class="math display">\[
+P_X(A) \equiv P(X^{-1}(A)) = P(\{\omega: X(\omega) \in A\}), \quad  A \in \mathcal{B}(\mathbb{R}).
+\]</span> The CDF of <span class="math inline">\(X\)</span> is defined as <span class="math display">\[
+F_X(x) \equiv P_X((-\infty,x_1]\times \dots \times (-\infty,x_k)) = P(\{\omega: X_1(\omega) \leq x_1,\dots, X_k(\omega) \leq x_k\})
+\]</span> for all <span class="math inline">\(x = (x_1,\dots,x_k) \in \mathbb{R}^k\)</span>.</p></li>
 </ul>
 
 
