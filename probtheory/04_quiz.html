@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Integration, convergence, and product measures</title>
+<title>Quiz: Integration, convergence, and product measures</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,35 +69,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -131,7 +102,7 @@ window.Quarto = {
 <span class="menu-text">Measurable transformations and random variables</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./04_integration_convergence_product_measures.html" aria-current="page"> 
+    <a class="nav-link" href="./04_integration_convergence_product_measures.html"> 
 <span class="menu-text">Integration, convergence, and product measures</span></a>
   </li>  
   <li class="nav-item">
@@ -154,11 +125,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#integration" id="toc-integration" class="nav-link active" data-scroll-target="#integration">Integration</a></li>
-  <li><a href="#convergence" id="toc-convergence" class="nav-link" data-scroll-target="#convergence">Convergence</a></li>
-  <li><a href="#differentiation" id="toc-differentiation" class="nav-link" data-scroll-target="#differentiation">Differentiation</a></li>
-  <li><a href="#product-spaces-and-measures" id="toc-product-spaces-and-measures" class="nav-link" data-scroll-target="#product-spaces-and-measures">Product spaces and measures</a></li>
-  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">1.</a></li>
   </ul>
 </nav>
     </div>
@@ -167,7 +134,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Integration, convergence, and product measures</h1>
+<h1 class="title">Quiz: Integration, convergence, and product measures</h1>
 </div>
 
 
@@ -188,137 +155,9 @@ window.Quarto = {
 <p>$$</p>
 <p>$$</p>
 </div>
-<p>Find these notes at <a href="https://gregorkb.github.io/probtheory/">gregorkb.github.io/probtheory/</a></p>
-<section id="integration" class="level2">
-<h2 class="anchored" data-anchor-id="integration">Integration</h2>
-<ul>
-<li><p><strong>Simple function:</strong> Given a measurable space <span class="math inline">\((\Omega,\mathcal{F})\)</span>, a function <span class="math inline">\(f:\Omega \to \bar{\mathbb{R}} \equiv [-\infty,\infty]\)</span> is called a <em>simple function</em> if it has the form <span class="math inline">\(f = \sum_{i=1}^k c_i 1_{A_i}\)</span>, where <span class="math inline">\(c_1,\dots,c_k \in [0,\infty]\)</span> are distinct values and <span class="math inline">\(A_1,\dots,A_k \in \mathcal{F}\)</span> are distinct subsets of <span class="math inline">\(\Omega\)</span>, and <span class="math inline">\(k\)</span> is finite.</p></li>
-<li><p><b style="color: blue;">Check:</b> Are simple functions measurable?</p></li>
-<li><p><strong>Integral of a simple function:</strong> Given a measure space <span class="math inline">\((\Omega, \mathcal{F}, \mu)\)</span>, <em>the integral with respect to <span class="math inline">\(\mu\)</span> of a simple nonnegative function</em> <span class="math inline">\(f:\Omega \to [0,\infty]\)</span> with representation <span class="math inline">\(f = \sum_{i=1}^k c_i 1_{A_i}\)</span> is defined as <span class="math display">\[
-\int f d\mu \equiv \sum_{i=1}^k c_i \mu (A_i),
-\]</span> where we use the convention <span class="math inline">\(0 \cdot \infty = 0\)</span>. See Definition 2.3.2 on page 49 of A&amp;L. Compare to Section 5.2.1 starting on page 119 of Resnick.</p></li>
-<li><p><strong>Results on integrals of simple functions:</strong> Let <span class="math inline">\(f,g: \Omega \to \mathbb{R}\)</span> be nonnegative simple functions on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>.</p>
-<ol type="a">
-<li><b style="color: blue;">Show</b> <span class="math inline">\(\int (a f + b g) d \mu = a \int f d \mu + b \int g d \mu\)</span> for any <span class="math inline">\(a,b \in \mathbb{R}\)</span> (<em>Linearity</em>).</li>
-<li><b style="color: blue;">Show</b> that <span class="math inline">\(f \geq g\)</span> almost everywhere implies <span class="math inline">\(\int f d\mu \geq \int g d \mu\)</span> (<em>Monotonicity</em>).</li>
-<li><b style="color: blue;">Show</b> that <span class="math inline">\(f = g\)</span> almost everywhere implies <span class="math inline">\(\int f d \mu = \int g d \mu\)</span>.</li>
-</ol>
-<p>Note: If a condition holds <em>almost everywhere (a.e.)</em> it means that the subset of <span class="math inline">\(\omega \in \Omega\)</span> for which it does <em>not</em> hold has measure zero. For example, <span class="math inline">\(f \geq g\)</span> almost everywhere means <span class="math inline">\(\mu(\{\omega : f(\omega) &lt; g(\omega)\}) = 0\)</span>.</p></li>
-<li><p><strong>Integral of a nonnegative function:</strong> Let <span class="math inline">\(f:\Omega \to [0,\infty]\)</span> be a nonnegative measurable functions on the measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> and let <span class="math inline">\(\{f_n\}_{n\geq 1}:\Omega \to [0,\infty]\)</span> be a sequence of simple nonnegative functions on the same measure space such that <span class="math inline">\(f_n(\omega) \uparrow f(\omega)\)</span> as <span class="math inline">\(n \to \infty\)</span> for all <span class="math inline">\(\Omega\)</span>. Then the integral of <span class="math inline">\(f\)</span> with respect to <span class="math inline">\(\mu\)</span> is defined as <span class="math display">\[
-\int f d \mu \equiv \lim_{n \to \infty} \int f_n d\mu.
-\]</span></p></li>
-<li><p><strong>Invariance of integral to the sequence of simple functions:</strong> In the setup of the previous definition, let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span> and <span class="math inline">\(\{g_n\}_{n \geq 1}\)</span> be sequences of simple nonnegative functions such that <span class="math inline">\(f_n(\omega) \uparrow f(\omega)\)</span> and <span class="math inline">\(g_n(\omega) \uparrow f(\omega)\)</span> as <span class="math inline">\(n \to \infty\)</span> for all <span class="math inline">\(\omega \in \Omega\)</span>. <b style="color: blue;">Show</b> that <span class="math display">\[
-\lim_{n \to \infty} \int f_n d\mu = \lim_{n \to \infty} \int g_n d\mu.
-\]</span></p></li>
-<li><p>Note that we really only need <span class="math inline">\(f_n \uparrow f\)</span> and <span class="math inline">\(g_n \uparrow f\)</span> as <span class="math inline">\(n \to \infty\)</span> almost everywhere.</p></li>
-<li><p><strong>Example of a sequence of simple nonnegative functions:</strong> On the measure space <span class="math inline">\((\mathbb{R}, \mathcal{B}(\mathbb{R}),\mu_L)\)</span>, say, where <span class="math inline">\(\mu_L\)</span> is the Lebesgue measure, one can construct a sequence of simple functions <span class="math inline">\(f_n \uparrow f\)</span> as <span class="math display">\[
-f_n(x) = \left\{\begin{array}{ll}
-j(1/2)^n,&amp; j(1/2)^n \leq f(x) &lt; (j+1)(1/2)^n, \quad j = 0,1,\dots,n2^n - 1\\
-n,&amp; f(x) \geq n
-\end{array} \right.
-\]</span> <b style="color: blue;">Draw</b> a picture of this sequence of functions for <span class="math inline">\(n =1,2\)</span> for some nonnegative function <span class="math inline">\(f:\mathbb{R}\to [0,\infty]\)</span>. Note that subdividing the domain as in Riemann integration is not guaranteed to result in a sequence of functions approaching <span class="math inline">\(f\)</span> from below. See page 51 of A&amp;L.</p></li>
-<li><p><strong>Results on integrals of nonnegative measurable functions:</strong> Let <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> be nonnegative measurable functions on the measurable space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>.</p>
-<ol type="a">
-<li><b style="color: blue;">Show</b> <span class="math inline">\(\int (a f + b g) d \mu = a \int f d \mu + b \int g d \mu\)</span> for any <span class="math inline">\(a,b \in \mathbb{R}\)</span> (<em>Linearity</em>).</li>
-<li><b style="color: blue;">Show</b> that <span class="math inline">\(f \geq g\)</span> almost everywhere implies <span class="math inline">\(\int f d\mu \geq \int g d \mu\)</span> (<em>Monotonicity</em>).</li>
-<li><b style="color: blue;">Show</b> that <span class="math inline">\(f = g\)</span> almost everywhere implies <span class="math inline">\(\int f d \mu = \int g d \mu\)</span>.</li>
-</ol></li>
-<li><p><strong>Monotone convergence theorem (MCT):</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span> and <span class="math inline">\(f\)</span> be nonnegative measurable functions on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> such that <span class="math inline">\(f_n \uparrow f\)</span> as <span class="math inline">\(n \to \infty\)</span> almost everywhere. <b style="color: blue;">Show</b> that <span class="math display">\[
-\lim_{n \to \infty} \int f_n d \mu = \int \lim_{n \to \infty} f_n d\mu.
-\]</span> See Corollary 2.3.5 on page 53 of A&amp;L.</p></li>
-<li><p><strong>Integral of infinite sum of nonnegative functions:</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span> be nonnegative measurable functions on a measure space <span class="math inline">\((\Omega, \mathcal{F},\mu)\)</span>. <b style="color: blue;">Show</b> (use the MCT) that <span class="math display">\[
-\int \sum_{n \geq 1} f_n d \mu = \sum_{n\geq 1} \int f_n d \mu.
-\]</span> See Corollary 2.3.5 on page 53 of A&amp;L.</p></li>
-<li><p><strong>Fatou’s Lemma:</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span> be nonnegative measurable functions on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>. <b style="color: blue;">Show</b> that <span class="math display">\[
-\liminf_{n \to \infty} \int f_n  d \mu \geq \int \liminf_{n \to \infty}f_n d \mu.
-\]</span></p>
-<p>See Theorem 2.3.7 on page 54 of A&amp;L. Compare to Theorem 5.3.2 on page 132 of Resnick.</p></li>
-<li><p>Definition of the integral of a measurable function (not necessarily a nonnegative function).</p></li>
-<li><p><strong>Integral of any measurable function:</strong> Let <span class="math inline">\(f\)</span> be a measurable function (not necessarily nonnegative) on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>. Define <span class="math inline">\(A \equiv \{\omega : f(\omega) \geq 0\}\)</span> as well as the nonnegative functions <span class="math inline">\(f^+ \equiv f 1_A\)</span> and <span class="math inline">\(f^- \equiv -f 1_{A^c}\)</span>. Then the integral of <span class="math inline">\(f\)</span> with respect to <span class="math inline">\(\mu\)</span> is defined as <span class="math display">\[
-\int f d \mu \equiv \int f^+ d \mu - \int f^- d \mu.
-\]</span></p></li>
-<li><p><strong>Integral over a subset of the sample space:</strong> For a function <span class="math inline">\(f\)</span> on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> and a set <span class="math inline">\(A \in \mathcal{F}\)</span>, the <em>integral of <span class="math inline">\(f\)</span> over <span class="math inline">\(A\)</span> with respect to <span class="math inline">\(\mu\)</span></em> is defined as <span class="math display">\[
-\int_A f d \mu \equiv \int f 1_A d \mu.
-\]</span></p></li>
-<li><p><strong>Integrability of a function:</strong> A function <span class="math inline">\(f\)</span> on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> is <em>integrable with respect to <span class="math inline">\(\mu\)</span></em> if <span class="math inline">\(\int |f|d \mu\)</span> is finite.</p></li>
-<li><p><strong>Notation for integration</strong>: The integral of <span class="math inline">\(f\)</span> with respect to <span class="math inline">\(\mu\)</span> can be written as <span class="math display">\[
-\int f d \mu \quad \text{ or } \quad \int f(\omega) d \mu(\omega) \quad \text{ or } \quad \int f(\omega) \mu(d \omega).
-\]</span></p></li>
-<li><p><strong><span class="math inline">\(L_p\)</span> spaces:</strong> Given a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>, define the collections of functions <span class="math display">\[
-\begin{align}
-L^p(\Omega,\mathcal{F},\mu) &amp;\equiv \{f: \int |f|^p d \mu &lt; \infty\}, \quad p \in (0,\infty)\\
-L^\infty(\Omega,\mathcal{F},\mu) &amp;\equiv \{f: \mu(\{\omega : f(\omega) &gt; C \}) = 0 \text{ for some } C \in (0,\infty)\}.
-\end{align}
-\]</span></p></li>
-<li><p><strong>Results on integrals of integrable functions:</strong> Let <span class="math inline">\(f,g \in L^1(\Omega,\mathcal{F},\mu)\)</span>.</p>
-<ol type="a">
-<li><b style="color: blue;">Show</b> <span class="math inline">\(\int (a f + b g) d \mu = a \int f d \mu + b \int g d \mu\)</span> for any <span class="math inline">\(a,b \in \mathbb{R}\)</span> (<em>Linearity</em>).</li>
-<li><b style="color: blue;">Show</b> that <span class="math inline">\(f \geq g\)</span> almost everywhere implies <span class="math inline">\(\int f d\mu \geq \int g d \mu\)</span> (<em>Monotonicity</em>).</li>
-<li><b style="color: blue;">Show</b> that <span class="math inline">\(f = g\)</span> almost everywhere implies <span class="math inline">\(\int f d \mu = \int g d \mu\)</span>.</li>
-</ol></li>
-<li><p><strong>Identification of zero function:</strong> Let <span class="math inline">\(f\)</span> be a measurable function on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> which is nonnegative almost everywhere. <b style="color: blue;">Show</b> that <span class="math inline">\(f = 0\)</span> almost everywhere if and only if <span class="math inline">\(\int f d \mu = 0\)</span>. See Proposition 2.3.9 on page 56 of A&amp;L.</p></li>
-<li><p><strong>Finiteness almost everywhere of an integrable function:</strong> Let <span class="math inline">\(f\in L^1(\Omega,\mathcal{F},\mu)\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(f\)</span> is finite almost everywhere. See Proposition 2.3.10 on page 57 of A&amp;L.</p></li>
-<li><p><strong>Pointwise and almost everywhere convergence of a sequence of functions:</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span> be measurable functions on the measurable space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>. Then</p>
-<ul>
-<li><p><em><span class="math inline">\(f_n\)</span> converges to <span class="math inline">\(f\)</span> pointwise</em> if <span class="math inline">\(\lim_{n \to \infty} f_n(\omega) = f(\omega)\)</span> for all <span class="math inline">\(\omega \in \Omega\)</span>.</p></li>
-<li><p><em><span class="math inline">\(f_n\)</span> converges to <span class="math inline">\(f\)</span> almost everywhere</em> if there is a set <span class="math inline">\(B \in \mathcal{F}\)</span> such that <span class="math inline">\(\lim_{n \to \infty} f_n(\omega) = f(\omega)\)</span> for all <span class="math inline">\(\omega \in B\)</span> and <span class="math inline">\(\mu(B^c)=0\)</span>.</p></li>
-</ul></li>
-<li><p><strong>Dominated convergence theorem (DCT):</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span>, <span class="math inline">\(f\)</span>, and <span class="math inline">\(g\)</span> be measurable functions on a measurable space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> such that <span class="math inline">\(|f_n| &lt; g\)</span> almost everywhere for all <span class="math inline">\(n \geq 1\)</span>, <span class="math inline">\(\int g d \mu &lt; \infty\)</span>, and <span class="math inline">\(f_n \to f\)</span> almost everywhere.</p>
-<ol type="a">
-<li><b style="color: blue;">Show</b> that <span class="math inline">\(\lim_{n\to \infty} \int f_nd \mu  = \int f d \mu\)</span>.</li>
-<li><b style="color: blue;">Show</b> that <span class="math inline">\(\lim_{n \to \infty}\int |f_n - f| d\mu = 0\)</span></li>
-</ol>
-<p>See Corollary 2.3.12 on page 57 of A&amp;L.</p>
-<p>RESUME HERE. Dominated convergence theorem (just do Lebesgue’s). When does a sequence of integrals converge? Follow proof of A&amp;L or that on starting after page 209 of Billingsley.</p></li>
-<li><p>Corollary: Bounded convergence theorem. Homework? Quiz?</p></li>
-</ul>
-</section>
-<section id="convergence" class="level2">
-<h2 class="anchored" data-anchor-id="convergence">Convergence</h2>
-<ul>
-<li><p>Convergence in measure</p></li>
-<li><p>Convergence in <span class="math inline">\(L^p\)</span>.</p></li>
-<li><p>Convergence uniformly over the sample space.</p></li>
-<li><p>Convergence nearly uniformly (with respect to a measure) over the sample space.</p></li>
-<li><p>Convergence almost everywhere implies convergence in measure. Go through proof. Page 31 of handwritten notes.</p></li>
-<li><p>Convergence in measure implies convergence almost everywhere of a subsequence. Follow proof in A&amp;L, Theorem 2.5.2. Page 32 of my handwritten notes.</p></li>
-<li><p>Convergence in <span class="math inline">\(L^p\)</span> implies convergence in measure.</p></li>
-<li><p>Scheffé’s theorem. Theorem 2.5.4 of A&amp;L.</p></li>
-<li><p>Uniform integrability? As on Page 675 of A&amp;L? I don’t remember what this is used for later on. So I can’t determine right at the moment if it is going to be important… Let me come back to this.</p></li>
-</ul>
-</section>
-<section id="differentiation" class="level2">
-<h2 class="anchored" data-anchor-id="differentiation">Differentiation</h2>
-<p>TRY PUTTING THIS DOWN HERE, SINCE IT CONNECTS TO ABSOLUTE CONTINUITY:</p>
-<ul>
-<li><p><strong>Make a new measure by integrating a nonnegetive function:</strong> Let <span class="math inline">\(f\)</span> be a nonnegative measurable function on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>. <b style="color: blue;">Show</b> that the set function defined as <span class="math display">\[
-\nu(A) \equiv \int f 1_A d\mu
-\]</span> for all <span class="math inline">\(A\in \mathcal{F}\)</span> is a measure on <span class="math inline">\(\mathcal{F}\)</span>. See Corollary 2.3.6 on page 53 of A&amp;L.</p></li>
-<li><p>Definition of absolute continuity of a measure with respect to another measure. See Definition 4.1.1 of A&amp;L.</p></li>
-<li><p>Singularity of two measures with respect to each other.</p></li>
-<li><p>Lebesgue decomposition and Radon-Nikodym theorem. Follow Theorem 4.1.1 of A&amp;L.</p></li>
-<li><p>Definition of Radon-Nikodym derivative (This will get used later on when we talk about conditional expectation?)</p></li>
-</ul>
-</section>
-<section id="product-spaces-and-measures" class="level2">
-<h2 class="anchored" data-anchor-id="product-spaces-and-measures">Product spaces and measures</h2>
-<ul>
-<li><p>Define Cartesian product of two sample spaces, measurable rectangles, product <span class="math inline">\(\sigma\)</span>-algebra, product measure space.</p></li>
-<li><p>Define the cross section of a set and of a function.</p></li>
-<li><p>Proposition 5.1.1 of A&amp;L. Cross sections of sets are in the expected <span class="math inline">\(\sigma\)</span>-algebras and cross-section functions are measurable.</p></li>
-<li><p>Measures of cross sections are measurable functions. Product measure as it arises from integrating the measure of a cross section. Follow Theorem 5.1.2 of A&amp;L.</p></li>
-<li><p>Definition of product measure and product measure space.</p></li>
-<li><p>Tonelli’s Theorem</p></li>
-<li><p>Fubini’s Theorem</p></li>
-<li><p>Integration by parts formula. Follow Theorem 5.2.3 of A&amp;L.</p></li>
-<li><p>Add some examples to the foregoing.</p></li>
-</ul>
-</section>
-<section id="practice" class="level2">
-<h2 class="anchored" data-anchor-id="practice">Practice</h2>
-<ul>
-<li>Prove Corollary 2.5.6 on page 64 of A&amp;L.</li>
-</ul>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">1.</h2>
+<p>Ask them to prove the bounded convergence theorem.</p>
 
 
 </section>
