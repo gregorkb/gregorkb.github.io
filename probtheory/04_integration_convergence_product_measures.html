@@ -204,7 +204,7 @@ window.Quarto = {
 <li><b style="color: blue;">Show</b> that <span class="math inline">\(f = g\)</span> almost everywhere implies <span class="math inline">\(\int f d \mu = \int g d \mu\)</span>.</li>
 </ol>
 <p>Note: If a condition holds <em>almost everywhere (a.e.)</em> it means that the subset of <span class="math inline">\(\omega \in \Omega\)</span> for which it does <em>not</em> hold has measure zero. For example, <span class="math inline">\(f \geq g\)</span> almost everywhere means <span class="math inline">\(\mu(\{\omega : f(\omega) &lt; g(\omega)\}) = 0\)</span>.</p></li>
-<li><p><strong>Integral of a nonnegative function:</strong> Let <span class="math inline">\(f:\Omega \to [0,\infty]\)</span> be a nonnegative measurable functions on the measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> and let <span class="math inline">\(\{f_n\}_{n\geq 1}:\Omega \to [0,\infty]\)</span> be a sequence of simple nonnegative functions on the same measure space such that <span class="math inline">\(f_n(\omega) \uparrow f(\omega)\)</span> as <span class="math inline">\(n \to \infty\)</span> for all <span class="math inline">\(\Omega\)</span>. Then the integral of <span class="math inline">\(f\)</span> with respect to <span class="math inline">\(\mu\)</span> is defined as <span class="math display">\[
+<li><p><strong>Integral of a nonnegative function:</strong> Let <span class="math inline">\(f:\Omega \to [0,\infty]\)</span> be a nonnegative measurable functions on the measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> and let <span class="math inline">\(\{f_n\}_{n\geq 1}:\Omega \to [0,\infty]\)</span> be a sequence of simple nonnegative functions on the same measure space such that <span class="math inline">\(f_n(\omega) \uparrow f(\omega)\)</span> as <span class="math inline">\(n \to \infty\)</span> for all <span class="math inline">\(\omega \in \Omega\)</span>. Then the integral of <span class="math inline">\(f\)</span> with respect to <span class="math inline">\(\mu\)</span> is defined as <span class="math display">\[
 \int f d \mu \equiv \lim_{n \to \infty} \int f_n d\mu.
 \]</span></p></li>
 <li><p><strong>Invariance of integral to the sequence of simple functions:</strong> In the setup of the previous definition, let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span> and <span class="math inline">\(\{g_n\}_{n \geq 1}\)</span> be sequences of simple nonnegative functions such that <span class="math inline">\(f_n(\omega) \uparrow f(\omega)\)</span> and <span class="math inline">\(g_n(\omega) \uparrow f(\omega)\)</span> as <span class="math inline">\(n \to \infty\)</span> for all <span class="math inline">\(\omega \in \Omega\)</span>. <b style="color: blue;">Show</b> that <span class="math display">\[
@@ -250,6 +250,13 @@ L^p(\Omega,\mathcal{F},\mu) &amp;\equiv \{f: \int |f|^p d \mu &lt; \infty\}, \qu
 L^\infty(\Omega,\mathcal{F},\mu) &amp;\equiv \{f: \mu(\{\omega : f(\omega) &gt; C \}) = 0 \text{ for some } C \in (0,\infty)\}.
 \end{align}
 \]</span></p></li>
+<li><p><strong><span class="math inline">\(L_p\)</span> norms:</strong> Given a function <span class="math inline">\(g\)</span> on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>, define <span class="math display">\[
+\|g\|_p = \left\{\begin{array}{ll}
+\int |g|^p d \mu&amp; 0 &lt; p &lt; 1\\
+(\int |g|^p d \mu)^{1/p},&amp; 1 \leq p&lt;\infty \\
+\inf\{c \in (0,\infty) : \mu(\{\omega : g(\omega) &gt; c\}) = 0\},&amp; p = \infty
+\end{array}\right.
+\]</span></p></li>
 <li><p><strong>Results on integrals of integrable functions:</strong> Let <span class="math inline">\(f,g \in L^1(\Omega,\mathcal{F},\mu)\)</span>.</p>
 <ol type="a">
 <li><b style="color: blue;">Show</b> <span class="math inline">\(\int (a f + b g) d \mu = a \int f d \mu + b \int g d \mu\)</span> for any <span class="math inline">\(a,b \in \mathbb{R}\)</span> (<em>Linearity</em>).</li>
@@ -258,34 +265,43 @@ L^\infty(\Omega,\mathcal{F},\mu) &amp;\equiv \{f: \mu(\{\omega : f(\omega) &gt; 
 </ol></li>
 <li><p><strong>Identification of zero function:</strong> Let <span class="math inline">\(f\)</span> be a measurable function on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> which is nonnegative almost everywhere. <b style="color: blue;">Show</b> that <span class="math inline">\(f = 0\)</span> almost everywhere if and only if <span class="math inline">\(\int f d \mu = 0\)</span>. See Proposition 2.3.9 on page 56 of A&amp;L.</p></li>
 <li><p><strong>Finiteness almost everywhere of an integrable function:</strong> Let <span class="math inline">\(f\in L^1(\Omega,\mathcal{F},\mu)\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(f\)</span> is finite almost everywhere. See Proposition 2.3.10 on page 57 of A&amp;L.</p></li>
-<li><p><strong>Pointwise and almost everywhere convergence of a sequence of functions:</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span> be measurable functions on the measurable space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>. Then</p>
+<li><p><strong>Two modes of convergence:</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span> and <span class="math inline">\(f\)</span> be measurable functions on the measurable space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>. We say <em><span class="math inline">\(f_n\)</span> converges to <span class="math inline">\(f\)</span></em></p>
 <ul>
-<li><p><em><span class="math inline">\(f_n\)</span> converges to <span class="math inline">\(f\)</span> pointwise</em> if <span class="math inline">\(\lim_{n \to \infty} f_n(\omega) = f(\omega)\)</span> for all <span class="math inline">\(\omega \in \Omega\)</span>.</p></li>
-<li><p><em><span class="math inline">\(f_n\)</span> converges to <span class="math inline">\(f\)</span> almost everywhere</em> if there is a set <span class="math inline">\(B \in \mathcal{F}\)</span> such that <span class="math inline">\(\lim_{n \to \infty} f_n(\omega) = f(\omega)\)</span> for all <span class="math inline">\(\omega \in B\)</span> and <span class="math inline">\(\mu(B^c)=0\)</span>.</p></li>
+<li><p><em>pointwise</em> if <span class="math inline">\(\lim_{n \to \infty} f_n(\omega) = f(\omega)\)</span> for all <span class="math inline">\(\omega \in \Omega\)</span>. We write <span class="math inline">\(f_n \to f\)</span>.</p></li>
+<li><p><em>almost everywhere</em> if there is a set <span class="math inline">\(B \in \mathcal{F}\)</span> such that <span class="math inline">\(\lim_{n \to \infty} f_n(\omega) = f(\omega)\)</span> for all <span class="math inline">\(\omega \in B\)</span> and <span class="math inline">\(\mu(B^c)=0\)</span>. We write <span class="math inline">\(f_n \stackrel{\operatorname{a.e.}}{\longrightarrow}f\)</span>.</p></li>
 </ul></li>
-<li><p><strong>Dominated convergence theorem (DCT):</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span>, <span class="math inline">\(f\)</span>, and <span class="math inline">\(g\)</span> be measurable functions on a measurable space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> such that <span class="math inline">\(|f_n| &lt; g\)</span> almost everywhere for all <span class="math inline">\(n \geq 1\)</span>, <span class="math inline">\(\int g d \mu &lt; \infty\)</span>, and <span class="math inline">\(f_n \to f\)</span> almost everywhere.</p>
+<li><p><strong>Dominated convergence theorem (DCT):</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span>, <span class="math inline">\(f\)</span>, and <span class="math inline">\(g\)</span> be measurable functions on a measurable space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> such that <span class="math inline">\(|f_n| &lt; g\)</span> almost everywhere for all <span class="math inline">\(n \geq 1\)</span>, <span class="math inline">\(g\)</span> is integrable, and <span class="math inline">\(f_n \to f\)</span> almost everywhere.</p>
 <ol type="a">
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(f\)</span> is integrable.</li>
 <li><b style="color: blue;">Show</b> that <span class="math inline">\(\lim_{n\to \infty} \int f_nd \mu  = \int f d \mu\)</span>.</li>
 <li><b style="color: blue;">Show</b> that <span class="math inline">\(\lim_{n \to \infty}\int |f_n - f| d\mu = 0\)</span></li>
 </ol>
-<p>See Corollary 2.3.12 on page 57 of A&amp;L.</p>
-<p>RESUME HERE. Dominated convergence theorem (just do Lebesgue’s). When does a sequence of integrals converge? Follow proof of A&amp;L or that on starting after page 209 of Billingsley.</p></li>
-<li><p>Corollary: Bounded convergence theorem. Homework? Quiz?</p></li>
+<p>See Corollary 2.3.12 on page 57 of A&amp;L or Theorem 16.4 on page 209 of Billingsley. Compare to Theorem 5.3.3 on page 133 of Resnick.</p></li>
 </ul>
 </section>
 <section id="convergence" class="level2">
 <h2 class="anchored" data-anchor-id="convergence">Convergence</h2>
 <ul>
-<li><p>Convergence in measure</p></li>
-<li><p>Convergence in <span class="math inline">\(L^p\)</span>.</p></li>
-<li><p>Convergence uniformly over the sample space.</p></li>
-<li><p>Convergence nearly uniformly (with respect to a measure) over the sample space.</p></li>
-<li><p>Convergence almost everywhere implies convergence in measure. Go through proof. Page 31 of handwritten notes.</p></li>
-<li><p>Convergence in measure implies convergence almost everywhere of a subsequence. Follow proof in A&amp;L, Theorem 2.5.2. Page 32 of my handwritten notes.</p></li>
-<li><p>Convergence in <span class="math inline">\(L^p\)</span> implies convergence in measure.</p></li>
-<li><p>Scheffé’s theorem. Theorem 2.5.4 of A&amp;L.</p></li>
-<li><p>Uniform integrability? As on Page 675 of A&amp;L? I don’t remember what this is used for later on. So I can’t determine right at the moment if it is going to be important… Let me come back to this.</p></li>
+<li><p><strong>More modes of convergence:</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span> and <span class="math inline">\(f\)</span> be measurable functions on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>. We say <em><span class="math inline">\(f_n\)</span> converges to <span class="math inline">\(f\)</span></em></p>
+<ul>
+<li><p><em>in measure</em> if <span class="math inline">\(\lim_{n \to \infty} \mu(\{\omega: |f_n(\omega) - f(\omega)| &gt; \epsilon\}) = 0\)</span> for each <span class="math inline">\(\epsilon &gt; 0\)</span>. We write <span class="math inline">\(f_n \stackrel{\mu}{\longrightarrow}f\)</span>.</p></li>
+<li><p><em>in <span class="math inline">\(L^p\)</span></em> if <span class="math inline">\(\lim_{n\to \infty} \|f_n - f\|_p = 0\)</span>. We write <span class="math inline">\(f_n \stackrel{L_p}{\longrightarrow}f\)</span>.</p></li>
+<li><p><em>uniformly over <span class="math inline">\(~\Omega\)</span></em> if <span class="math inline">\(\lim_{n \to \infty} \sup_{\omega \in \Omega} |f_n(\omega) - f(\omega)| = 0\)</span>.</p></li>
+</ul></li>
 </ul>
+<!-- - Convergence nearly uniformly (with respect to a measure) over the sample space. -->
+<ul>
+<li><p><strong>Some relationships between modes of convergence:</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span> and <span class="math inline">\(f\)</span> be measurable functions on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>.</p>
+<ol type="a">
+<li><p><b style="color: blue;">Show</b> that <span class="math inline">\(f_n \stackrel{\operatorname{a.e.}}{\longrightarrow}f\)</span> implies <span class="math inline">\(f_n \stackrel{\mu}{\longrightarrow}f\)</span>.</p></li>
+<li><p><b style="color: blue;">Show</b> that <span class="math inline">\(f_n \stackrel{\mu}{\longrightarrow}f\)</span> implies that there exists a subsequence <span class="math inline">\(\{n_k\}_{k \geq 1}\)</span> such that <span class="math inline">\(f_{n_k} \stackrel{\operatorname{a.e.}}{\longrightarrow}f\)</span>.</p></li>
+<li><p><b style="color: blue;">Show</b> that <span class="math inline">\(f_n \stackrel{L_p}{\longrightarrow}f\)</span> for <span class="math inline">\(0&lt;p&lt;\infty\)</span> implies <span class="math inline">\(f_n \stackrel{\mu}{\longrightarrow}f\)</span>.</p></li>
+</ol>
+<p>See Theorems 2.5.1, 2.5.2, and 2.5.3 on page 63 of A&amp;L. Compare to Theorems 6.2.1 and 6.3.1 on pages 170 and 171 of Resnick. Note to myself: See Page 31-32 of handwritten notes.</p></li>
+<li><p><strong>Scheffé’s theorem:</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span> and <span class="math inline">\(f\)</span> be measurable functions on a measurable space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> such that <span class="math inline">\(f_n \stackrel{\operatorname{a.e.}}{\longrightarrow}f\)</span>, <span class="math inline">\(\int f_n d \mu \to \int f d \mu\)</span>, and <span class="math inline">\(\int f d \mu &lt; \infty\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(f_n\stackrel{L_1}{\rightarrow} f\)</span>.</p>
+<p>See Theorem 2.5.4 on page 64 of A&amp;L.</p></li>
+</ul>
+<!-- - Uniform integrability?  As on Page 675 of A&L?  I don't remember what this is used for later on.  So I can't determine right at the moment if it is going to be important... Let me come back to this. -->
 </section>
 <section id="differentiation" class="level2">
 <h2 class="anchored" data-anchor-id="differentiation">Differentiation</h2>
