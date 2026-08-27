@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-111dd80f37c50824f4d574072f76c1c6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -163,6 +163,7 @@ window.Quarto = {
   <li><a href="#borel-sigma-field" id="toc-borel-sigma-field" class="nav-link" data-scroll-target="#borel-sigma-field">Borel <span class="math inline">\(\sigma\)</span>-field</a></li>
   <li><a href="#pi--and-lambda-classes" id="toc-pi--and-lambda-classes" class="nav-link" data-scroll-target="#pi--and-lambda-classes"><span class="math inline">\(\pi\)</span>- and <span class="math inline">\(\lambda\)</span>-classes</a></li>
   <li><a href="#semi-algebras" id="toc-semi-algebras" class="nav-link" data-scroll-target="#semi-algebras">Semi-algebras</a></li>
+  <li><a href="#semi-rings" id="toc-semi-rings" class="nav-link" data-scroll-target="#semi-rings">Semi-rings</a></li>
   </ul>
 </nav>
     </div>
@@ -337,8 +338,8 @@ d_p(x,y) = \left\{ \begin{array}{ll}\sum_{i=1}^k(x_i - y_i)^p,&amp; 0 &lt; p &lt
 \]</span> of <em>open intervals in <span class="math inline">\(\mathbb{R}\)</span></em> and <b style="color: blue;">show</b> that <span class="math inline">\(\mathcal{B}(\mathbb{R}) = \sigma\langle\mathcal{O}\rangle\)</span>.</p>
 <p>Use the fact that any open set in <span class="math inline">\(\mathbb{R}\)</span> can be constructed as a countable union of open intervals (See Theorem 3-5 on page 63 of Kirkwood).</p></li>
 <li><p><strong>Another way to generate the Borel sets in <span class="math inline">\(\mathbb{R}\)</span>:</strong> Define the collection <span class="math display">\[
-\mathcal{C} \equiv \{(a,b]: -\infty \leq a &lt; b &lt; \infty\}
-\]</span> of <em>half-open intervals in <span class="math inline">\(\mathbb{R}\)</span></em> and <b style="color: blue;">show</b> that <span class="math inline">\(\sigma \langle \mathcal{C}\rangle = \sigma\langle\mathcal{O}\rangle\)</span> (See arguments on page 17 of Resnick).</p></li>
+\mathcal{H}\equiv \{(a,b]: -\infty \leq a &lt; b &lt; \infty\}
+\]</span> of <em>half-open intervals in <span class="math inline">\(\mathbb{R}\)</span></em> and <b style="color: blue;">show</b> that <span class="math inline">\(\sigma \langle \mathcal{H}\rangle = \sigma\langle\mathcal{O}\rangle\)</span> (See arguments on page 17 of Resnick).</p></li>
 <li><p><strong>Generating the Borel <span class="math inline">\(\sigma\)</span>-algebra on <span class="math inline">\(\mathbb{R}^k\)</span>:</strong> Define the collection <span class="math display">\[
 \mathcal{O}_k \equiv \{(a_1,b_1)\times \dots \times (a_k,b_k) : - \infty \leq a_i &lt; b_i \leq \infty , 1 \leq i \leq k\}
 \]</span> of open rectangles in <span class="math inline">\(\mathbb{R}^k\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(\mathcal{B}(\mathbb{R}^k) = \sigma \langle \mathcal{O}_k \rangle\)</span> (See Example 1.1.6 on page 12 of A&amp;L).</p></li>
@@ -387,7 +388,7 @@ d_p(x,y) = \left\{ \begin{array}{ll}\sum_{i=1}^k(x_i - y_i)^p,&amp; 0 &lt; p &lt
 <ol type="i">
 <li><span class="math inline">\(\emptyset,\Omega \in \mathcal{C}\)</span>.</li>
 <li><span class="math inline">\(A,B \in \mathcal{C}\)</span> implies <span class="math inline">\(A \cap B \in \mathcal{C}\)</span>.</li>
-<li><span class="math inline">\(A \in \mathcal{C}\)</span> implies that there exist <span class="math inline">\(A_1,\dots,A_n \in \mathcal{C}\)</span>, <span class="math inline">\(n &lt; \infty\)</span>, with <span class="math inline">\(A_i \cap A_j = \emptyset\)</span> for all <span class="math inline">\(i \neq j\)</span> such that <span class="math inline">\(A^c = \bigcup_{i=1}^n A_n\)</span>.</li>
+<li><span class="math inline">\(A \in \mathcal{C}\)</span> implies that there exist <span class="math inline">\(B_1,\dots,B_k \in \mathcal{C}\)</span>, <span class="math inline">\(n &lt; \infty\)</span>, with <span class="math inline">\(B_i \cap B_j = \emptyset\)</span> for all <span class="math inline">\(i \neq j\)</span> such that <span class="math inline">\(A^c = \bigcup_{i=1}^k B_i\)</span>.</li>
 </ol>
 <p>So a semi-algebra is a <span class="math inline">\(\pi\)</span>-class which contains the sample space and which has the property that if <span class="math inline">\(A\)</span> is a member, <span class="math inline">\(A^c\)</span> can be constructed as a finite union of disjoint members (though <span class="math inline">\(A^c\)</span> need not be a member). See Exercise 2.2.3 on page 9 of Rosenthal or Definition 2.4.1 on page 44 of Resnick.</p></li>
 <li><p><b style="color: blue;">Show</b> that the collection <span class="math display">\[
@@ -395,7 +396,7 @@ d_p(x,y) = \left\{ \begin{array}{ll}\sum_{i=1}^k(x_i - y_i)^p,&amp; 0 &lt; p &lt
 \]</span> of subsets of <span class="math inline">\(\mathbb{R}\)</span> is a semi-algebra.</p></li>
 <li><p><b style="color: blue;">Show</b> that <span class="math inline">\(\sigma \langle \mathcal{C}\rangle = \mathcal{B}(\mathbb{R})\)</span>, where <span class="math inline">\(\mathcal{C}\)</span> is the semi-algebra defined above.</p></li>
 <li><p><strong>Algebra generated by a semi-algebra:</strong> Let <span class="math inline">\(\mathcal{C}\)</span> be a semi-algebra of subsets of <span class="math inline">\(\Omega\)</span>. <b style="color: blue;">Show</b> that the intersection of all algebras containing <span class="math inline">\(\mathcal{C}\)</span> is given by <span class="math display">\[
-\mathcal{A}\langle \mathcal{C}\rangle \equiv \{\bigcup_{i=1}^n B_i : B_1,\dots,B_n \in \mathcal{C}, B_i \cap B_j = \emptyset \text{ for } i \neq j, n &lt; \infty\}.
+\mathcal{A}\langle \mathcal{C}\rangle \equiv \{\bigcup_{i=1}^k B_i : B_1,\dots,B_k \in \mathcal{C}, B_i \cap B_j = \emptyset \text{ for } i \neq j, k &lt; \infty\}.
 \]</span></p>
 <p>The claim is that <span class="math inline">\(\mathcal{A}\langle \mathcal{C}\rangle\)</span> is the smallest algebra containing <span class="math inline">\(\mathcal{C}\)</span> or the <em>algebra generated by <span class="math inline">\(\mathcal{C}\)</span></em>. See Lemma 2.4.1 on page 45 of Resnick.</p></li>
 </ul>
@@ -413,6 +414,12 @@ d_p(x,y) = \left\{ \begin{array}{ll}\sum_{i=1}^k(x_i - y_i)^p,&amp; 0 &lt; p &lt
 <!-- $$ -->
 <!-- is a semi-algebra. -->
 <!-- - <b style="color: blue;">Show</b> that the set function defined in (3.1) of A&L satisfies the properties of an outer measure.  Maybe. -->
+</section>
+<section id="semi-rings" class="level2">
+<h2 class="anchored" data-anchor-id="semi-rings">Semi-rings</h2>
+<ul>
+<li>See page 166 of Billingsley for definition. Check whether <span class="math inline">\(\mathcal{H}= \{(a,b]: -\infty \leq a \leq b &lt; \infty\}\)</span> is a semi-ring.</li>
+</ul>
 
 
 </section>

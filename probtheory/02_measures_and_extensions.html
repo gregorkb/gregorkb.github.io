@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-111dd80f37c50824f4d574072f76c1c6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -160,7 +160,6 @@ window.Quarto = {
   <ul>
   <li><a href="#measures" id="toc-measures" class="nav-link active" data-scroll-target="#measures">Measures</a></li>
   <li><a href="#extensions-of-measures" id="toc-extensions-of-measures" class="nav-link" data-scroll-target="#extensions-of-measures">Extensions of measures</a></li>
-  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a></li>
   </ul>
 </nav>
     </div>
@@ -200,11 +199,12 @@ window.Quarto = {
 <li><span class="math inline">\(\mu(\emptyset) = 0\)</span> (<em>Nullity of empty set measure</em>).</li>
 <li><span class="math inline">\(A_1,A_2,\dots \in \mathcal{F}\)</span> with <span class="math inline">\(A_i \cap A_j = \emptyset\)</span> for all <span class="math inline">\(i \neq j\)</span> and <span class="math inline">\(\bigcup_{i=1}^\infty A_i \in \mathcal{F}\)</span> implies <span class="math inline">\(\mu(\bigcup_{i = 1}^\infty A_i) = \sum_{i = 1}^\infty \mu(A_i)\)</span> (<em>Countable additivity</em> or <em><span class="math inline">\(\sigma\)</span>-additivity</em>).</li>
 </ol>
-<p><b style="color: blue;">Show</b> (see Proposition 1.2.1 of A&amp;L) that we obtain an equivalent definition if we replace iii. above with</p>
+<p><b style="color: blue;">Show</b> that we obtain an equivalent definition if we replace iii. above with</p>
 <ol start="3" type="i">
 <li><span class="math inline">\(A_1,A_2\in \mathcal{F}\)</span> with <span class="math inline">\(A_1\cap A_2 = \emptyset\)</span> implies <span class="math inline">\(\mu(A_1 \cup A_2) = \mu(A_1) + \mu(A_2)\)</span> (<em>Finite additivity</em>).</li>
 <li><span class="math inline">\(\{A_n\}_{n\geq 1}\subset \mathcal{F}\)</span> with <span class="math inline">\(A_n \subset A_{n+1}\)</span> for all <span class="math inline">\(n\geq 1\)</span> and <span class="math inline">\(A \equiv \bigcup_{n \geq 1}A_n \in \mathcal{F}\)</span> implies <span class="math inline">\(\lim_{n\to \infty}\mu(A_n) = \mu(A)\)</span> (<em>Monotone continuity from below</em>).</li>
-</ol></li>
+</ol>
+<p>See Proposition 1.2.1 on page 14 of A&amp;L.</p></li>
 <li><p>Since every <span class="math inline">\(\sigma\)</span>-algebra is an algebra, the above suffices to define measures on <span class="math inline">\(\sigma\)</span>-algebras.</p></li>
 <li><p><strong>Finite, infinite, <span class="math inline">\(\sigma\)</span>-finite, and probability measures:</strong> Given a sample space <span class="math inline">\(\Omega\)</span>, a <span class="math inline">\(\sigma\)</span>-algebra <span class="math inline">\(\mathcal{F}\)</span> on <span class="math inline">\(\Omega\)</span>, and a measure <span class="math inline">\(\mu\)</span> on <span class="math inline">\(\mathcal{F}\)</span>:</p>
 <ul>
@@ -224,13 +224,13 @@ window.Quarto = {
 <ol type="a">
 <li><b style="color: blue;">Show</b> that <span class="math inline">\(A \subset B\)</span> implies <span class="math inline">\(\mu(A) \leq \mu(B)\)</span> (<em>Monotonicity</em>).</li>
 <li><b style="color: blue;">Show</b> that <span class="math inline">\(\mu(\bigcup_{i=1}^n A_i) \leq \sum_{i=1}^n \mu(A_i)\)</span> (<em>Finite subadditivity</em>).</li>
-<li><b style="color: blue;">Show</b> by induction that <span class="math display">\[
+<li><b style="color: blue;">Show</b> that <span class="math display">\[
 \begin{align}
 \mu(\bigcup_{i=1}^nA_i) = \sum_{i=1}^n\mu(A_i) &amp;- \sum_{1\leq i &lt; j \leq n}\mu(A_i \cap A_j) + \sum_{1 \leq i &lt; j &lt; k \leq n}\mu(A_i \cap A_j \cap A_k) \\ &amp;- \dots +(-1)^{n-1}\mu(A_1 \cap \dots \cap A_n)
 \end{align}
 \]</span> (<em>inclusion-exclusion formula</em>).</li>
 </ol>
-<p>See Proposition 1.2.2 of A&amp;L.</p></li>
+<p>See Proposition 1.2.2 on page 17 of A&amp;L.</p></li>
 <li><p><strong>Monotone continuity from above (MCFA) and countable sub-additivity:</strong> Let <span class="math inline">\(\mathcal{F}\)</span> be an algebra on <span class="math inline">\(\Omega\)</span> and <span class="math inline">\(\mu\)</span> be a measure on <span class="math inline">\(\mathcal{F}\)</span>.</p>
 <ol type="a">
 <li><b style="color: blue;">Show</b> that if <span class="math inline">\(\{A_n\}_{n \geq 1} \subset \mathcal{F}\)</span> with <span class="math inline">\(A_{n+1}\subset A_n\)</span> for all <span class="math inline">\(n \geq 1\)</span> and <span class="math inline">\(A \equiv \bigcap_{n \geq 1} A_n \in \mathcal{F}\)</span> then <span class="math inline">\(\lim_{n\to \infty}\mu(A_n) = \mu(A)\)</span>, provided <span class="math inline">\(\mu(A_{n_0}) &lt; \infty\)</span> for some <span class="math inline">\(n_0 &lt; \infty\)</span> (<em>monotone continuity from above</em>).</li>
@@ -320,9 +320,7 @@ window.Quarto = {
 </ul></li>
 <li><p>One can define Lebesgue-Stieltjes measures and Lebesgue measures in higher-dimensional Euclidean space.</p></li>
 </ul>
-</section>
-<section id="practice" class="level2">
-<h2 class="anchored" data-anchor-id="practice">Practice</h2>
+<!-- ## Practice -->
 
 
 </section>
