@@ -218,6 +218,13 @@ j(1/2)^n,&amp; j(1/2)^n \leq f(x) &lt; (j+1)(1/2)^n, \quad j = 0,1,\dots,n2^n - 
 n,&amp; f(x) \geq n
 \end{array} \right.
 \]</span> <b style="color: blue;">Draw</b> a picture of this sequence of functions for <span class="math inline">\(n =1,2\)</span> for some nonnegative function <span class="math inline">\(f:\mathbb{R}\to [0,\infty]\)</span>. Note that subdividing the domain as in Riemann integration is not guaranteed to result in a sequence of functions approaching <span class="math inline">\(f\)</span> from below. See page 51 of A&amp;L.</p></li>
+<li><p><strong>Results on integrals of nonnegative measurable functions:</strong> Let <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> be nonnegative measurable functions on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>. Then one can show</p>
+<ol type="a">
+<li><span class="math inline">\(\int (a f + b g) d \mu = a \int f d \mu + b \int g d \mu\)</span> for any <span class="math inline">\(a,b \in \mathbb{R}\)</span> (<em>Linearity</em>).</li>
+<li><span class="math inline">\(f \geq g\)</span> almost everywhere implies <span class="math inline">\(\int f d\mu \geq \int g d \mu\)</span> (<em>Monotonicity</em>).</li>
+<li><span class="math inline">\(f = g\)</span> almost everywhere implies <span class="math inline">\(\int f d \mu = \int g d \mu\)</span>.</li>
+</ol>
+<p>These are the same as above for simple nonnegative functions.</p></li>
 <li><p><strong>Monotone convergence theorem (MCT):</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span> and <span class="math inline">\(f\)</span> be nonnegative measurable functions on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> such that <span class="math inline">\(f_n \uparrow f\)</span> as <span class="math inline">\(n \to \infty\)</span> almost everywhere. <b style="color: blue;">Show</b> that <span class="math display">\[
 \lim_{n \to \infty} \int f_n d \mu = \int \lim_{n \to \infty} f_n d\mu.
 \]</span> See Corollary 2.3.5 on page 53 of A&amp;L.</p></li>
@@ -239,7 +246,7 @@ n,&amp; f(x) \geq n
 \nu(A) \equiv \int f 1_A d\mu
 \]</span> for all <span class="math inline">\(A\in \mathcal{F}\)</span> is a measure on <span class="math inline">\(\mathcal{F}\)</span>. See Corollary 2.3.6 on page 53 of A&amp;L.</p></li>
 <li><p><strong>Integrability of a function:</strong> A function <span class="math inline">\(f\)</span> on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> is <em>integrable with respect to <span class="math inline">\(\mu\)</span></em> if <span class="math inline">\(\int |f|d \mu\)</span> is finite.</p></li>
-<li><p><strong>Notation for integration</strong>: The integral of <span class="math inline">\(f\)</span> with respect to <span class="math inline">\(\mu\)</span> can be written as <span class="math display">\[
+<li><p><strong>Notation for integration:</strong> The integral of <span class="math inline">\(f\)</span> with respect to <span class="math inline">\(\mu\)</span> can be written as <span class="math display">\[
 \int f d \mu \quad \text{ or } \quad \int f(\omega) d \mu(\omega) \quad \text{ or } \quad \int f(\omega) \mu(d \omega).
 \]</span></p></li>
 <li><p><strong><span class="math inline">\(L_p\)</span> spaces:</strong> Given a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>, define the collections of functions <span class="math display">\[
@@ -255,12 +262,13 @@ L^\infty(\Omega,\mathcal{F},\mu) &amp;\equiv \{f: \mu(\{\omega : f(\omega) &gt; 
 \inf\{c \in (0,\infty) : \mu(\{\omega : g(\omega) &gt; c\}) = 0\},&amp; p = \infty
 \end{array}\right.
 \]</span></p></li>
-<li><p><strong>Results on integrals of integrable functions:</strong> Let <span class="math inline">\(f,g \in L^1(\Omega,\mathcal{F},\mu)\)</span>.</p>
+<li><p><strong>Results on integrals of integrable functions:</strong> Let <span class="math inline">\(f,g \in L^1(\Omega,\mathcal{F},\mu)\)</span>. Then one can show</p>
 <ol type="a">
-<li><b style="color: blue;">Show</b> <span class="math inline">\(\int (a f + b g) d \mu = a \int f d \mu + b \int g d \mu\)</span> for any <span class="math inline">\(a,b \in \mathbb{R}\)</span> (<em>Linearity</em>).</li>
-<li><b style="color: blue;">Show</b> that <span class="math inline">\(f \geq g\)</span> almost everywhere implies <span class="math inline">\(\int f d\mu \geq \int g d \mu\)</span> (<em>Monotonicity</em>).</li>
-<li><b style="color: blue;">Show</b> that <span class="math inline">\(f = g\)</span> almost everywhere implies <span class="math inline">\(\int f d \mu = \int g d \mu\)</span>.</li>
-</ol></li>
+<li><span class="math inline">\(\int (a f + b g) d \mu = a \int f d \mu + b \int g d \mu\)</span> for any <span class="math inline">\(a,b \in \mathbb{R}\)</span> (<em>Linearity</em>).</li>
+<li><span class="math inline">\(f \geq g\)</span> almost everywhere implies <span class="math inline">\(\int f d\mu \geq \int g d \mu\)</span> (<em>Monotonicity</em>).</li>
+<li><span class="math inline">\(f = g\)</span> almost everywhere implies <span class="math inline">\(\int f d \mu = \int g d \mu\)</span>.</li>
+</ol>
+<p>These are the same as above for simple nonnegative functions.</p></li>
 <li><p><strong>Identification of zero function:</strong> Let <span class="math inline">\(f\)</span> be a measurable function on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> which is nonnegative almost everywhere. <b style="color: blue;">Show</b> that <span class="math inline">\(f = 0\)</span> almost everywhere if and only if <span class="math inline">\(\int f d \mu = 0\)</span>. See Proposition 2.3.9 on page 56 of A&amp;L.</p></li>
 <li><p><strong>Finiteness almost everywhere of an integrable function:</strong> Let <span class="math inline">\(f\in L^1(\Omega,\mathcal{F},\mu)\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(f\)</span> is finite almost everywhere. See Proposition 2.3.10 on page 57 of A&amp;L.</p></li>
 <li><p><strong>Two modes of convergence:</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span> and <span class="math inline">\(f\)</span> be measurable functions on the measurable space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>. We say <em><span class="math inline">\(f_n\)</span> converges to <span class="math inline">\(f\)</span></em></p>
@@ -271,10 +279,10 @@ L^\infty(\Omega,\mathcal{F},\mu) &amp;\equiv \{f: \mu(\{\omega : f(\omega) &gt; 
 <li><p><strong>Dominated convergence theorem (DCT):</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span>, <span class="math inline">\(f\)</span>, and <span class="math inline">\(g\)</span> be measurable functions on a measurable space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> such that <span class="math inline">\(|f_n| &lt; g\)</span> almost everywhere for all <span class="math inline">\(n \geq 1\)</span>, <span class="math inline">\(g\)</span> is integrable, and <span class="math inline">\(f_n \to f\)</span> almost everywhere.</p>
 <ol type="a">
 <li><b style="color: blue;">Show</b> that <span class="math inline">\(f\)</span> is integrable.</li>
-<li><b style="color: blue;">Show</b> that <span class="math inline">\(\lim_{n\to \infty} \int f_nd \mu  = \int f d \mu\)</span>.</li>
-<li><b style="color: blue;">Show</b> that <span class="math inline">\(\lim_{n \to \infty}\int |f_n - f| d\mu = 0\)</span></li>
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(\lim_{n\to \infty} \int f_nd \mu  = \int f d \mu\)</span>. <!-- (c) <b style="color: blue;">Show</b> that $\lim_{n \to \infty}\int |f_n - f| d\mu = 0$ --></li>
 </ol>
-<p>See Corollary 2.3.12 on page 57 of A&amp;L or Theorem 16.4 on page 209 of Billingsley. Compare to Theorem 5.3.3 on page 133 of Resnick.</p></li>
+<p>See Corollary 2.3.12 on page 57 of A&amp;L or Theorem 16.4 on page 209 of Billingsley. Compare to Theorem 5.3.3 on page 133 of Resnick.</p>
+<p>SHOULD GIVE AN EXAMPLE HERE OF USING THE DCT.</p></li>
 </ul>
 </section>
 <section id="convergence" class="level2">
