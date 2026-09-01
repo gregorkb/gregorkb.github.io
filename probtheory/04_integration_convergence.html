@@ -281,8 +281,7 @@ L^\infty(\Omega,\mathcal{F},\mu) &amp;\equiv \{f: \mu(\{\omega : f(\omega) &gt; 
 <li><b style="color: blue;">Show</b> that <span class="math inline">\(f\)</span> is integrable.</li>
 <li><b style="color: blue;">Show</b> that <span class="math inline">\(\lim_{n\to \infty} \int f_nd \mu  = \int f d \mu\)</span>. <!-- (c) <b style="color: blue;">Show</b> that $\lim_{n \to \infty}\int |f_n - f| d\mu = 0$ --></li>
 </ol>
-<p>See Corollary 2.3.12 on page 57 of A&amp;L or Theorem 16.4 on page 209 of Billingsley. Compare to Theorem 5.3.3 on page 133 of Resnick.</p>
-<p>SHOULD GIVE AN EXAMPLE HERE OF USING THE DCT.</p></li>
+<p>See Corollary 2.3.12 on page 57 of A&amp;L or Theorem 16.4 on page 209 of Billingsley. Compare to Theorem 5.3.3 on page 133 of Resnick.</p></li>
 </ul>
 </section>
 <section id="convergence" class="level2">
@@ -297,6 +296,25 @@ L^\infty(\Omega,\mathcal{F},\mu) &amp;\equiv \{f: \mu(\{\omega : f(\omega) &gt; 
 </ul>
 <!-- - Convergence nearly uniformly (with respect to a measure) over the sample space. -->
 <ul>
+<li><p><strong>Limit infima and suprema of sequences of sets:</strong> For a sequence of sets <span class="math inline">\(\{A_n\}_{n \geq 1}\)</span> define <span class="math display">\[
+\begin{align}
+\liminf_{n \to \infty} A_n &amp;\equiv \bigcup_{k \geq 1} \bigcap_{n \geq k} A_n \\
+&amp;= \{\omega:\ \text{ for some $k \geq 1$, $\omega \in A_n$ for all $n \geq k$}\}\\
+&amp;= \{\omega: \omega \in A_n \text{ all but finitely many times}\}
+\end{align}
+\]</span> as well as <span class="math display">\[
+\begin{align}
+\limsup_{n \to \infty} A_n &amp;\equiv \bigcap_{k \geq 1} \bigcup_{n \geq k} A_n \\
+&amp;= \{\omega:\ \text{ for all $k \geq 1$, $\omega \in A_n$ for some $n \geq k$}\}\\
+&amp;= \{\omega: \omega \in A_n \text{ infinitely often}\}
+\end{align}
+\]</span></p></li>
+<li><p><strong>Limits of sequences of sets:</strong> If <span class="math inline">\(\liminf_{n\to \infty} A_n = \limsup_{n \to \infty} A_n = A\)</span>, then we define <span class="math inline">\(\lim_{n \to \infty} A_n \equiv A\)</span>.</p></li>
+<li><p><strong>Limits of monotone sequences of sets:</strong> Let <span class="math inline">\(\{A_n\}_{n \geq 1}\)</span> be a collection of sets.</p>
+<ol type="a">
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(A_n \subset A_{n+1}\)</span> for all <span class="math inline">\(n\geq 1\)</span> implies <span class="math inline">\(\lim_{n \to \infty } A_n = \bigcup_{n \geq 1} A_n\)</span>.</li>
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(A_{n+1} \subset A_n\)</span> for all <span class="math inline">\(n\geq 1\)</span> implies <span class="math inline">\(\lim_{n \to \infty } A_n = \bigcap_{n \geq 1} A_n\)</span>.</li>
+</ol></li>
 <li><p><strong>Some relationships between modes of convergence:</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span> and <span class="math inline">\(f\)</span> be measurable functions on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>.</p>
 <ol type="a">
 <li><p><b style="color: blue;">Show</b> that <span class="math inline">\(f_n \stackrel{\operatorname{a.e.}}{\longrightarrow}f\)</span> implies <span class="math inline">\(f_n \stackrel{\mu}{\longrightarrow}f\)</span>.</p></li>
@@ -305,7 +323,7 @@ L^\infty(\Omega,\mathcal{F},\mu) &amp;\equiv \{f: \mu(\{\omega : f(\omega) &gt; 
 </ol>
 <p>See Theorems 2.5.1, 2.5.2, and 2.5.3 on page 63 of A&amp;L. Compare to Theorems 6.2.1 and 6.3.1 on pages 170 and 171 of Resnick. Note to myself: See Page 31-32 of handwritten notes.</p></li>
 <li><p><strong>Scheffé’s theorem:</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span> and <span class="math inline">\(f\)</span> be measurable functions on a measurable space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> such that <span class="math inline">\(f_n \stackrel{\operatorname{a.e.}}{\longrightarrow}f\)</span>, <span class="math inline">\(\int f_n d \mu \to \int f d \mu\)</span>, and <span class="math inline">\(\int f d \mu &lt; \infty\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(f_n\stackrel{L_1}{\rightarrow} f\)</span>.</p>
-<p>See Theorem 2.5.4 on page 64 of A&amp;L.</p></li>
+<p>See Theorem 2.5.4 on page 64 of A&amp;L or Theorem 16.12 on page 215 of Billingsley.</p></li>
 </ul>
 <!-- - Uniform integrability?  As on Page 675 of A&L?  I don't remember what this is used for later on.  So I can't determine right at the moment if it is going to be important... Let me come back to this. -->
 <!-- ## Differentiation  -->
