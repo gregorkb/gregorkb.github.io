@@ -253,14 +253,6 @@ window.Quarto = {
 <li><span class="math inline">\(A_1,A_2,\dots \in \mathcal{C}\)</span> with <span class="math inline">\(A_i \cap A_j = \emptyset\)</span> for all <span class="math inline">\(i \neq j\)</span> and <span class="math inline">\(\bigcup_{i=1}^\infty A_i \in \mathcal{F}\)</span> implies <span class="math inline">\(\mu(\bigcup_{i = 1}^\infty A_i) = \sum_{i = 1}^\infty \mu(A_i)\)</span> (<em>Countable additivity</em>).</li>
 </ol>
 <p>This is exactly how we define a measure on an algebra, but a new definition is needed here, since not every semi-algebra is an algebra.</p></li>
-<li><p><strong>Outer measure on the power set:</strong> Given a sample space <span class="math inline">\(\Omega\)</span>, a set function <span class="math inline">\(\mu^*\)</span> on <span class="math inline">\(\mathcal{P}(\Omega)\)</span> is called an <em>outer measure</em> if it has the properties:</p>
-<ol type="i">
-<li><span class="math inline">\(\mu^*(A) \in [0,\infty]\)</span> for all <span class="math inline">\(A \subset \Omega\)</span>.</li>
-<li><span class="math inline">\(\mu^*(\emptyset) = 0\)</span> (<em>Nullity of empty set probability</em>).</li>
-<li><span class="math inline">\(A \subset B\)</span> implies <span class="math inline">\(\mu^*(A) \leq \mu^*(B)\)</span> (<em>Monotonicity</em>).</li>
-<li><span class="math inline">\(\mu^*(\bigcup_{i=1}^\infty A_i) \leq \sum_{i=1}^\infty \mu^*(A_i)\)</span> for any collection of sets <span class="math inline">\(A_1,A_2,\dots \subset \Omega\)</span> (<em>Countable sub-additivity</em>).</li>
-</ol>
-<p>See page 165 of Billingsley.</p></li>
 </ul>
 </section>
 <section id="extensions-of-measures" class="level2">
@@ -274,6 +266,14 @@ window.Quarto = {
 <li><b style="color: blue;">Show</b> that <span class="math inline">\(\bar \mu\)</span> is a measure on <span class="math inline">\(\mathcal{A}\)</span>.</li>
 </ol>
 <p>See Proposition 1.3.1 on page 20 of A&amp;L or Theorem 2.4.1 of page 46 of Resnick.</p></li>
+<li><p><strong>Outer measure on the power set:</strong> Given a sample space <span class="math inline">\(\Omega\)</span>, a set function <span class="math inline">\(\mu^*\)</span> on <span class="math inline">\(\mathcal{P}(\Omega)\)</span> is called an <em>outer measure</em> if it has the properties:</p>
+<ol type="i">
+<li><span class="math inline">\(\mu^*(A) \in [0,\infty]\)</span> for all <span class="math inline">\(A \subset \Omega\)</span>.</li>
+<li><span class="math inline">\(\mu^*(\emptyset) = 0\)</span> (<em>Nullity of empty set probability</em>).</li>
+<li><span class="math inline">\(A \subset B\)</span> implies <span class="math inline">\(\mu^*(A) \leq \mu^*(B)\)</span> (<em>Monotonicity</em>).</li>
+<li><span class="math inline">\(\mu^*(\bigcup_{i=1}^\infty A_i) \leq \sum_{i=1}^\infty \mu^*(A_i)\)</span> for any collection of sets <span class="math inline">\(A_1,A_2,\dots \subset \Omega\)</span> (<em>Countable sub-additivity</em>).</li>
+</ol>
+<p>See page 165 of Billingsley.</p></li>
 <li><p><strong>Outer measure induced by a measure on a semi-algebra:</strong> Let <span class="math inline">\(\mathcal{C}\)</span> be a semi-algebra on <span class="math inline">\(\Omega\)</span> and let <span class="math inline">\(\mu\)</span> be a measure on <span class="math inline">\(\mathcal{C}\)</span>. Then, for each <span class="math inline">\(A \subset \Omega\)</span>, set <span class="math display">\[
 \mu^*(A) \equiv \inf\Big\{\sum_{i=1}^\infty \mu(B_i) : B_1,B_2,\dots \in \mathcal{C}\text{ and } A \subset \bigcup_{i=1}^\infty B_i \Big\}.
 \]</span> <b style="color: blue;">Show</b> that <span class="math inline">\(\mu^*\)</span> is an outer measure on <span class="math inline">\(\Omega\)</span>.</p>
