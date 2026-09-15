@@ -158,7 +158,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#probability-spaces-and-random-variables" id="toc-probability-spaces-and-random-variables" class="nav-link active" data-scroll-target="#probability-spaces-and-random-variables">Probability spaces and random variables</a></li>
+  <li><a href="#probability-spaces-random-variables-vectors" id="toc-probability-spaces-random-variables-vectors" class="nav-link active" data-scroll-target="#probability-spaces-random-variables-vectors">Probability spaces, random variables, vectors</a></li>
   <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence">Independence</a></li>
   <li><a href="#borel-cantelli-kolmogorov-zero-one-laws" id="toc-borel-cantelli-kolmogorov-zero-one-laws" class="nav-link" data-scroll-target="#borel-cantelli-kolmogorov-zero-one-laws">Borel-Cantelli, Kolmogorov zero-one laws</a></li>
   </ul>
@@ -186,21 +186,57 @@ window.Quarto = {
 </header>
 
 
-<section id="probability-spaces-and-random-variables" class="level2">
-<h2 class="anchored" data-anchor-id="probability-spaces-and-random-variables">Probability spaces and random variables</h2>
+<div class="hidden">
+<p>$$</p>
+<p>$$</p>
+</div>
+<p>Find these notes at <a href="https://gregorkb.github.io/probtheory/">gregorkb.github.io/probtheory/</a></p>
+<section id="probability-spaces-random-variables-vectors" class="level2">
+<h2 class="anchored" data-anchor-id="probability-spaces-random-variables-vectors">Probability spaces, random variables, vectors</h2>
 <ul>
-<li><p>Kolmogorov’s probability model. See pages 189-190 of A&amp;L.</p></li>
-<li><p>Random variable</p></li>
-<li><p>CDF</p></li>
-<li><p>Probability distribution definition.</p></li>
-<li><p>Random vector of finite dimension.</p></li>
-<li><p>Joint probability distribution.</p></li>
-<li><p>Marginal probability distribution.</p></li>
-<li><p>Expected value.</p></li>
-<li><p>Change of variable formula.</p></li>
-<li><p>Moments.</p></li>
-<li><p>Moment generating function.</p></li>
-<li><p>MGF finite in neighborhood of zero implies: i) all moments finite, ii) power series expansion, iii) infinitely differentiable, <span class="math inline">\(r\)</span>th derivative formula. Follow Proposition 6.2.3 of A&amp;L.</p></li>
+<li><p>Recall the definitions of a <em>probability space</em>, <em>random variable</em>, and <em>probability distribution</em>.</p></li>
+<li><p><strong>Random vector of finite dimension:</strong> Given a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span> a function <span class="math inline">\(X:\Omega \to \mathbb{R}^k\)</span>, <span class="math inline">\(k&lt;\infty\)</span> that is <span class="math inline">\(\langle \mathcal{F},\mathcal{B}(\mathbb{R}^k)\rangle\)</span>-measurable is called a <em>random vector of dimension <span class="math inline">\(k\)</span></em>. We may write <span class="math inline">\(X = (X_1,\dots,X_k)\)</span>.</p></li>
+<li><p><strong>Joint and marginal probability distributions:</strong> Let <span class="math inline">\(X = (X_1,\dots,X_k)\)</span> be a random vector of dimension <span class="math inline">\(k\)</span> on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>. Then:</p>
+<ul>
+<li>The probability measure <span class="math display">\[
+  P_X(A) = P(\{\omega : X(\omega) \in A\}), \quad A \in \mathcal{B}(\mathbb{R}^k)
+  \]</span> is called the <em>joint probability distribution of <span class="math inline">\(X = (X_1,\dots,X_k)\)</span></em>.</li>
+<li>For each <span class="math inline">\(j = 1,\dots,k\)</span>, the probability measure <span class="math display">\[
+  P_{X_j}(A) = P(\{\omega : X_j(\omega) \in A\}), \quad A \in \mathcal{B}(\mathbb{R}^k)\]</span> is called the <em>marginal distribution of <span class="math inline">\(X_j\)</span></em>.</li>
+</ul></li>
+<li><p><strong>Joint and marginal cumulative distribution functions:</strong> Let <span class="math inline">\(X = (X_1,\dots,X_k)\)</span> be a random vector of dimension <span class="math inline">\(k\)</span> on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>. Then:</p>
+<ul>
+<li>The function <span class="math display">\[
+\begin{align}
+F_X(x_1,\dots,x_k) &amp;= P_X((-\infty,x_1] \times \dots \times (-\infty,x_k]) \\
+&amp;= P(\{\omega : X_1(\omega) \leq x_1, \dots, X_k(\omega) \leq x_k\})
+\end{align}
+\]</span> is called the <em>joint cumulative distribution function</em> of <span class="math inline">\(X\)</span>.</li>
+<li>For each <span class="math inline">\(j= 1,\dots,k\)</span> the function <span class="math display">\[
+F_{X_j}(x_j) = P_{X_j}((-\infty,x_j]) = P(\{\omega : X_j(\omega) \leq x_j\})
+\]</span> is called the <em>marginal cumulative distribution function</em> of <span class="math inline">\(X_j\)</span>.</li>
+</ul></li>
+<li><p>Note that <span class="math inline">\(F_{X_1}(x_1) = F_X(x_1,\infty,\dots,\infty)\)</span> and so on.</p></li>
+<li><p><strong>Expected value:</strong> Let <span class="math inline">\(X\)</span> be a random variable on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>. Then the <em>expected value of <span class="math inline">\(X\)</span></em> is defined as <span class="math display">\[
+\mathbb{E}X \equiv \int X dP,
+\]</span> provided at least one of the integrals <span class="math inline">\(\int X^+dP\)</span> and <span class="math inline">\(\int X^{-}dP\)</span> is finite.</p></li>
+<li><p><strong>Change of variable formula:</strong> Let <span class="math inline">\(X\)</span> be a random variable on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span> and let <span class="math inline">\(Y = h(X)\)</span>, for some Borel measurable function <span class="math inline">\(h: \mathbb{R}\to \mathbb{R}\)</span>. If <span class="math inline">\(\int |Y|dP &lt; \infty\)</span> then <span class="math display">\[
+\int Y dP = \int h(x) dP_X(x) = \int y dP_Y(y).
+\]</span></p></li>
+<li><p><strong>Moments of a random variable:</strong> Given a random variable <span class="math inline">\(X\)</span>, the quantity <span class="math inline">\(\mu_k = \mathbb{E}X^k\)</span> is called the <em><span class="math inline">\(k\)</span>th moment of <span class="math inline">\(X\)</span></em> for <span class="math inline">\(k=1,2,\dots\)</span></p></li>
+<li><p><strong>Mean and variance of a random variable:</strong> Let <span class="math inline">\(X\)</span> be a random variable with first and second moments <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span>. Then <span class="math inline">\(X\)</span> has <em>mean</em> <span class="math inline">\(\mu_X \equiv \mu_1\)</span> and <em>variance</em> <span class="math inline">\(\sigma_X^2 \equiv \mu_2 - \mu_1^2\)</span>.</p></li>
+<li><p><strong>Moment generating function of a random variable:</strong> The <em>moment generating function</em> of a random variable <span class="math inline">\(X\)</span> is defined as <span class="math display">\[
+M_X(t) = \mathbb{E}e^{tX}, \quad t \in \mathbb{R}.
+\]</span> Note that the expectation may not be finite.</p></li>
+<li><p><strong>Relation between the moment generating function and moments:</strong> Let <span class="math inline">\(X\)</span> be a random variable with moment generating function <span class="math inline">\(M_X(t)\)</span> such that <span class="math inline">\(M_X(t) &lt; \infty\)</span> for all <span class="math inline">\(|t| &lt; \varepsilon\)</span> for some <span class="math inline">\(\varepsilon &gt; 0\)</span>.</p>
+<ol type="a">
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(E|X|^k &lt; \infty\)</span> for all <span class="math inline">\(k=1,2,\dots\)</span></li>
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(M_X(t) = \sum_{k=0}^\infty t^k \frac{\mu_k}{k!}\)</span> for all <span class="math inline">\(|t| &lt; \varepsilon\)</span>.</li>
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(M_X(t)\)</span> is infinitely differentiable on <span class="math inline">\((-\varepsilon,\varepsilon)\)</span> with <span class="math display">\[
+M_X^{(r)}(t) = \sum_{k=0}^\infty \frac{t^k}{k!}\mu_{k + r} = \mathbb{E}X^k e^{tX}
+\]</span> for <span class="math inline">\(|t| &lt; \varepsilon\)</span>, whereby <span class="math inline">\(M^{(r)}_X(0) = \mu_r\)</span>.</li>
+</ol>
+<p>See Proposition 6.2.3 on page 195 of A&amp;L.</p></li>
 <li><p>Inequalities:</p>
 <ul>
 <li>Markov’s</li>
