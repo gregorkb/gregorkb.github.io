@@ -250,7 +250,7 @@ window.Quarto = {
 <ol type="i">
 <li><span class="math inline">\(\mu(A) \in [0,\infty]\)</span> for all <span class="math inline">\(A \in \mathcal{C}\)</span>.</li>
 <li><span class="math inline">\(\mu(\emptyset) = 0\)</span> (<em>Nullity of empty set measure</em>).</li>
-<li><span class="math inline">\(A_1,A_2,\dots \in \mathcal{C}\)</span> with <span class="math inline">\(A_i \cap A_j = \emptyset\)</span> for all <span class="math inline">\(i \neq j\)</span> and <span class="math inline">\(\bigcup_{i=1}^\infty A_i \in \mathcal{F}\)</span> implies <span class="math inline">\(\mu(\bigcup_{i = 1}^\infty A_i) = \sum_{i = 1}^\infty \mu(A_i)\)</span> (<em>Countable additivity</em>).</li>
+<li><span class="math inline">\(A_1,A_2,\dots \in \mathcal{C}\)</span> with <span class="math inline">\(A_i \cap A_j = \emptyset\)</span> for all <span class="math inline">\(i \neq j\)</span> and <span class="math inline">\(\bigcup_{i=1}^\infty A_i \in \mathcal{C}\)</span> implies <span class="math inline">\(\mu(\bigcup_{i = 1}^\infty A_i) = \sum_{i = 1}^\infty \mu(A_i)\)</span> (<em>Countable additivity</em>).</li>
 </ol>
 <p>This is exactly how we define a measure on an algebra, but a new definition is needed here, since not every semi-algebra is an algebra.</p></li>
 </ul>
@@ -321,6 +321,23 @@ window.Quarto = {
 <li><p>One can define Lebesgue-Stieltjes measures and Lebesgue measures in higher-dimensional Euclidean space.</p></li>
 </ul>
 <!-- ## Practice -->
+<!-- Interesting to think about the set function which measures a rectangle by the length of the longest side.  This is not a measure.-->
+<!-- - **Example:** Consider the sample space $\Omega = \{[\frac{i-1}{n},\frac{i}{n}) \times [\frac{j-1}{n},\frac{j}{n}), i=1,\dots,n, j = 1,\dots,n\}$ of "pixels". -->
+<!--  - **Example:** Consider the sample space $\Omega = \{[\frac{i-1}{n},\frac{i}{n}) \times [\frac{j-1}{n},\frac{j}{n}), i=1,\dots,n, j = 1,\dots,n\}$ and the outer measure on $\calP(\Omega)$ given by  -->
+<!--  $$ -->
+<!--  \mu^*(A) = (i_2 +1 - i_1)(j_2 + 1- j_1), -->
+<!--  $$ -->
+<!-- where -->
+<!-- $$ -->
+<!-- \begin{align} -->
+<!--   i_1 & = \min\{ i : [0,i/n) \times [0,1) \cap A \neq \emptyset\}\\ -->
+<!--   j_1 & = \max\{ j : [0,1) \times [0,j/n) \cap A \neq \emptyset\}\\ -->
+<!--   i_2 & = \min\{ i : [(i-1)/n,1) \times [0,1) \cap A \neq \emptyset\}\\ -->
+<!--   j_2 & = \max\{ j : [0,1) \times [(j-1)/n,1) \cap A \neq \emptyset\} -->
+<!-- \end{align} -->
+<!-- $$ -->
+<!-- Show that $\mu^*$ is an outer measure on $\Omega$. -->
+<!-- Show that the set $[0,2/n)\times [0,2/n) \setminus [1/n,2/n) \times[1/n,2/n)$ is not $\mu^*$ measurable. -->
 
 
 </section>

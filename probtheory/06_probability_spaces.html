@@ -219,12 +219,13 @@ F_{X_j}(x_j) = P_{X_j}((-\infty,x_j]) = P(\{\omega : X_j(\omega) \leq x_j\})
 <li><p>Note that <span class="math inline">\(F_{X_1}(x_1) = F_X(x_1,\infty,\dots,\infty)\)</span> and so on.</p></li>
 <li><p><strong>Expected value:</strong> Let <span class="math inline">\(X\)</span> be a random variable on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>. Then the <em>expected value of <span class="math inline">\(X\)</span></em> is defined as <span class="math display">\[
 \mathbb{E}X \equiv \int X dP,
-\]</span> provided at least one of the integrals <span class="math inline">\(\int X^+dP\)</span> and <span class="math inline">\(\int X^{-}dP\)</span> is finite.</p></li>
+\]</span> provided at least one of the integrals <span class="math inline">\(\int X^+dP\)</span> and <span class="math inline">\(\int X^{-}dP\)</span> is finite. We often call <span class="math inline">\(\mathbb{E}X\)</span> the <em>mean</em> of <span class="math inline">\(X\)</span> and denote it as <span class="math inline">\(\mu_X = \mathbb{E}X\)</span>.</p></li>
 <li><p><strong>Change of variable formula:</strong> Let <span class="math inline">\(X\)</span> be a random variable on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span> and let <span class="math inline">\(Y = h(X)\)</span>, for some Borel measurable function <span class="math inline">\(h: \mathbb{R}\to \mathbb{R}\)</span>. If <span class="math inline">\(\int |Y|dP &lt; \infty\)</span> then <span class="math display">\[
 \int Y dP = \int h(x) dP_X(x) = \int y dP_Y(y).
 \]</span></p></li>
 <li><p><strong>Moments of a random variable:</strong> Given a random variable <span class="math inline">\(X\)</span>, the quantity <span class="math inline">\(\mu_k = \mathbb{E}X^k\)</span> is called the <em><span class="math inline">\(k\)</span>th moment of <span class="math inline">\(X\)</span></em> for <span class="math inline">\(k=1,2,\dots\)</span></p></li>
-<li><p><strong>Mean and variance of a random variable:</strong> Let <span class="math inline">\(X\)</span> be a random variable with first and second moments <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span>. Then <span class="math inline">\(X\)</span> has <em>mean</em> <span class="math inline">\(\mu_X \equiv \mu_1\)</span> and <em>variance</em> <span class="math inline">\(\sigma_X^2 \equiv \mu_2 - \mu_1^2\)</span>.</p></li>
+<li><p><strong>Variance of a random variable:</strong> The <em>variance</em> of a random variable <span class="math inline">\(X\)</span> is defined as <span class="math inline">\(\operatorname{Var}X = \mathbb{E}X^2 - (\mathbb{E}X)^2 = \mu_2 - \mu_1^2\)</span>.</p></li>
+<li><p><strong>Covariance between two random variables:</strong> Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be random variables on <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>. Then the <em>covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></em> is defined as <span class="math inline">\(\operatorname{Cov}(X,Y) = \mathbb{E}XY - \mathbb{E}X \mathbb{E}Y\)</span>.</p></li>
 <li><p><strong>Moment generating function of a random variable:</strong> The <em>moment generating function</em> of a random variable <span class="math inline">\(X\)</span> is defined as <span class="math display">\[
 M_X(t) = \mathbb{E}e^{tX}, \quad t \in \mathbb{R}.
 \]</span> Note that the expectation may not be finite.</p></li>
@@ -237,28 +238,64 @@ M_X^{(r)}(t) = \sum_{k=0}^\infty \frac{t^k}{k!}\mu_{k + r} = \mathbb{E}X^k e^{tX
 \]</span> for <span class="math inline">\(|t| &lt; \varepsilon\)</span>, whereby <span class="math inline">\(M^{(r)}_X(0) = \mu_r\)</span>.</li>
 </ol>
 <p>See Proposition 6.2.3 on page 195 of A&amp;L.</p></li>
-<li><p>Inequalities:</p>
+<li><p><strong>Inequalities:</strong> Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be random variables on <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>.</p>
 <ul>
-<li>Markov’s</li>
-<li>Chebychev’s</li>
-<li>Hölder’s</li>
-<li>Cauchy-Schwarz</li>
-<li>Minkowski’s</li>
+<li><p><strong>Markov’s:</strong> <b style="color: blue;">Show</b> that <span class="math display">\[
+P_X(|X| &gt; \epsilon) \leq \frac{\mathbb{E}|X|}{\epsilon}
+\]</span> for each <span class="math inline">\(\epsilon &gt; 0\)</span>.</p></li>
+<li><p><strong>Chebychev’s:</strong> <b style="color: blue;">Show</b> that <span class="math display">\[
+P_X(|X - \mu_X| &gt; k \sigma_X) \leq \frac{1}{k^2}
+\]</span> for each <span class="math inline">\(k &gt;0\)</span>, provided <span class="math inline">\(\sigma_X\)</span> is finite.</p></li>
+<li><p><strong>Hölder’s:</strong> <b style="color: blue;">Show</b> that <span class="math display">\[
+\mathbb{E}|XY| \leq (\mathbb{E}|X|^p)^{1/p} (\mathbb{E}|Y|^{q})^{1/q}
+\]</span> for <span class="math inline">\(p,q \in (1,\infty)\)</span> with <span class="math inline">\(1/p + 1/q = 1\)</span>, provided the expectations on the right hand side are finite.</p></li>
+<li><p><strong>Cauchy-Schwarz:</strong> <b style="color: blue;">Show</b> that <span class="math display">\[
+\operatorname{Cov}(X,Y) \leq \sqrt{\operatorname{Var}X} \sqrt{\operatorname{Var}Y},
+\]</span> provided the variances on the right hand side are finite.</p></li>
+<li><p><strong>Minkowski’s:</strong> <b style="color: blue;">Show</b> that <span class="math display">\[
+(\mathbb{E}|X+Y|^p)^{1/p} \leq (\mathbb{E}|X|^p)^{1/p} + (\mathbb{E}|Y|^p)^{1/p}
+\]</span> provided the expectations on the right hand side are finite.</p></li>
 </ul></li>
-<li><p>Mention joint MGF.</p></li>
-<li><p>Kolmogorov’s consistency theorem? Should I mention this or save for later? Definition of a stochastic process?</p></li>
+<li><p>For a definition of joint moments and the joint moment generating function for the components of a random vector, see Definition 6.2.12 on page 198 of A&amp;L.</p></li>
 </ul>
+<!-- - Kolmogorov's consistency theorem?  Should I mention this or save for later?  Definition of a stochastic process? NO. NOT NOW. -->
 </section>
 <section id="independence" class="level2">
 <h2 class="anchored" data-anchor-id="independence">Independence</h2>
 <ul>
-<li><p>Independence of a finite number of events.</p></li>
-<li><p>Independence of a collection of events, arbitrarily indexed.</p></li>
-<li><p>Independence of collections of arbitrarily indexed collections of events.</p></li>
-<li><p>Independence of a collection of random variables, arbitrarily indexed.</p></li>
-<li><p>Independence of <span class="math inline">\(\pi\)</span>-classes implies independence of <span class="math inline">\(\sigma\)</span>-algebras generated by the <span class="math inline">\(\pi\)</span>-classes. Show proof for just two <span class="math inline">\(\pi\)</span>-classes. Page 64 of my handwritten notes. Present Proposition 7.1.1.</p></li>
-<li><p>A collection of random variables is independent iff the joint CDFs of finite subcollections are factorizable. Follow Corollary 7.1.2 of A&amp;L. Prove by showing <span class="math inline">\(\{X^{-1}((-\infty,x]), x\in \mathbb{R}\}\)</span> is a <span class="math inline">\(\pi\)</span>-class and invoking the previous result.</p></li>
-<li><p>Set of random variables independent if expected value of product of functions is equal to the product of expectations—for all Borel measurable functions. Expectation of a product is the product of expectations. Follow Prop 7.1.3 of A&amp;L.</p></li>
+<li><p>Note that in a probability space <span class="math inline">\((\Omega, \mathcal{F}, P)\)</span> we tend to call subsets of <span class="math inline">\(\mathcal{F}\)</span> <em>events</em> and interpret <span class="math inline">\(P(A)\)</span> for <span class="math inline">\(A \in \mathcal{F}\)</span> as the probability of the event <span class="math inline">\(A\)</span>.</p></li>
+<li><p><strong>Independence among finitely many events:</strong> Let <span class="math inline">\((\Omega,\mathcal{F},P)\)</span> be a probability space and let <span class="math inline">\(A_1,\dots,A_k \in \mathcal{F}\)</span>, <span class="math inline">\(1 \leq k &lt; \infty\)</span>. Then</p>
+<ul>
+<li><span class="math inline">\(A_1,\dots,A_k\)</span> are <em>independent with respect to <span class="math inline">\(P\)</span></em> if <span class="math display">\[
+P(\bigcap_{j=1}^l A_{i_j}) = \prod_{j=1}^l P(A_{i_j})
+\]</span> for each subset of indices <span class="math inline">\(\{i_1,\dots,i_l\} \subset \{1,\dots,n\}\)</span>, <span class="math inline">\(2 \leq l \leq k\)</span>.</li>
+<li><span class="math inline">\(A_1,\dots,A_k\)</span> are <em>pairwise independent with respect to <span class="math inline">\(P\)</span></em> if <span class="math display">\[
+P(A_i \cap A_j) = P(A_i) P(A_j)
+\]</span> for all <span class="math inline">\(1 \leq i &lt; j \leq k\)</span>.</li>
+</ul></li>
+<li><p><strong>Independence of arbitrarily indexed events:</strong> For a nonempty set <span class="math inline">\(I\)</span>, a collection of events <span class="math inline">\(\{A_\alpha\}_{\alpha \in I}\)</span> in a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span> is <em>independent with respect to <span class="math inline">\(P\)</span></em> if for every finite set of indices <span class="math inline">\(\{\alpha_1,\dots,\alpha_k\} \subset I\)</span> the events <span class="math inline">\(A_{\alpha_1},\dots,A_{\alpha_k}\)</span> are independent with respect to <span class="math inline">\(P\)</span>.</p></li>
+<li><p><strong>Independence of finitely many collections of events:</strong> A set of collections <span class="math inline">\(\mathcal{A}_1,\dots,\mathcal{A}_k\)</span> of events on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span> is independent with respect to <span class="math inline">\(P\)</span> if every collection of events <span class="math inline">\(A_1,\dots,A_k\)</span> with <span class="math inline">\(A_j \in \mathcal{A}_j\)</span> for <span class="math inline">\(j = 1,\dots,k\)</span> is independent with respect to <span class="math inline">\(P\)</span>.</p></li>
+<li><p><strong>Independence of arbitrarily indexed collections of events:</strong> For nonempty set <span class="math inline">\(I\)</span>, an arbitrarily indexed family <span class="math inline">\(\{\mathcal{A}_\alpha\}_{\alpha \in I}\)</span> of collections of events on a probablity space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span> is <em>independent with respect to <span class="math inline">\(P\)</span></em> if every collection of events <span class="math inline">\(\{A_\alpha\}_{\alpha \in I}\)</span> with <span class="math inline">\(A_\alpha \in \mathcal{A}_\alpha\)</span> for <span class="math inline">\(\alpha \in I\)</span> is independent with respect to <span class="math inline">\(P\)</span>.</p></li>
+<li><p>Note that we need language for a set of sets and for a set of sets of sets. In these notes we have most of the time called a set of sets a <em>collection of sets</em> or a <em>class of sets</em>. For a set of sets of sets, we have used, in the above, a <em>family of collections of sets</em>. This language is arbitrary. Billingsley (on page 55, for example), introduces a “collection of classes of sets”.</p></li>
+<li><p><strong>Independence of finitely many random variables:</strong> A finite collection <span class="math inline">\(X_1,\dots,X_k\)</span> of random variables on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span> is <em>independent with respect to <span class="math inline">\(P\)</span></em> if the collections of events <span class="math inline">\(\sigma \langle X_1\rangle,\dots,\sigma \langle X_k \rangle\)</span> are independent with respect to <span class="math inline">\(P\)</span>.</p></li>
+<li><p><strong>Independence of an arbitrarily indexed family of random variables:</strong> For a nonempty set <span class="math inline">\(I\)</span>, a family <span class="math inline">\(\{X_\alpha\}_{\alpha \in I}\)</span> of random variables on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span> is <em>independent with respect to <span class="math inline">\(P\)</span></em> if the family of <span class="math inline">\(\sigma\)</span>-algebras <span class="math inline">\(\{\sigma \langle X_\alpha\rangle\}_{\alpha \in I}\)</span> is independent with respect to <span class="math inline">\(P\)</span>.</p></li>
+<li><p><strong>Independence of <span class="math inline">\(\sigma\)</span>-algebras generated by independent <span class="math inline">\(\pi\)</span>-systems:</strong> Let <span class="math inline">\((\Omega,\mathcal{F},P)\)</span> be a probability space and let <span class="math inline">\(\mathcal{A}_1,\dots,\mathcal{A}_k \subset \mathcal{F}\)</span> be <span class="math inline">\(\pi\)</span>-systems which are independent with respect to <span class="math inline">\(P\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(\sigma \langle \mathcal{A}_1\rangle,\dots, \sigma \langle \mathcal{A}_k \rangle\)</span> are independent with respect to <span class="math inline">\(P\)</span>.</p>
+<p>See Proposition 7.1.1 on page 220 of A&amp;L or Theorem 4.2 on page 55 of Billingsley. This can be extended to the case of an arbitrarily indexed family of <span class="math inline">\(\pi\)</span>-systems: See Corollary 1 on page 56 of Billingsley.</p>
+<p>NOTE TO SELF: Page 64 of my handwritten notes.</p></li>
+<li><p><strong>Factorization rule:</strong> <b style="color: blue;">Show</b> that for a nonempty set <span class="math inline">\(I\)</span> the family <span class="math inline">\(\{X_\alpha\}_{\alpha \in I}\)</span> of random variables is independent if and only if for every finite subset of indices <span class="math inline">\(\{\alpha_1,\dots,\alpha_k\} \subset I\)</span> the joint CDF <span class="math inline">\(F_{\alpha_1,\dots,\alpha_k}\)</span> of <span class="math inline">\((X_{\alpha_1},\dots,X_{\alpha_k})\)</span> is equal to the product of the marginal CDFs, that is <span class="math display">\[
+F_{\alpha_1,\dots,\alpha_k}(x_1,\dots,x_k) = \prod_{j=1}^kF_{\alpha_j}(x_j)
+\]</span> for all <span class="math inline">\(x_1,\dots,x_k \in \mathbb{R}\)</span>.</p>
+<p>Follow Corollary 7.1.2 of A&amp;L. Prove by showing <span class="math inline">\(\{X^{-1}((-\infty,x]), x\in \mathbb{R}\}\)</span> is a <span class="math inline">\(\pi\)</span>-class and invoking the previous result.</p></li>
+<li><p><strong>Expectation of a product:</strong> Let <span class="math inline">\(X_1,\dots,X_k\)</span>, <span class="math inline">\(2 \leq k &lt; \infty\)</span>, be random variables on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>.</p>
+<ol type="a">
+<li><p><b style="color: blue;">Show</b> that <span class="math inline">\(X_1,\dots,X_k\)</span> are independent if and only if <span class="math display">\[
+\mathbb{E}\prod_{j=1}^k h_j(X_j) = \prod_{j=1}^k \mathbb{E}h_j(X_j)
+\]</span> for all bounded Borel measurable functions <span class="math inline">\(h_j:\mathbb{R}\to \mathbb{R}\)</span>, <span class="math inline">\(j=1,\dots,k\)</span>.</p></li>
+<li><p><b style="color: blue;">Show</b> that if <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent and <span class="math inline">\(\mathbb{E}|X_1| &lt;\infty\)</span> and <span class="math inline">\(\mathbb{E}|X_2| &lt; \infty\)</span> then <span class="math inline">\(\mathbb{E}|X_1 X_2| &lt; \infty\)</span> and <span class="math display">\[
+\mathbb{E}X_1 X_2 = \mathbb{E}X_1 \mathbb{E}X_2.
+\]</span></p></li>
+</ol>
+<p>Set of random variables independent if expected value of product of functions is equal to the product of expectations—for all Borel measurable functions. Expectation of a product is the product of expectations. Follow Prop 7.1.3 on page 221 of A&amp;L.</p></li>
 </ul>
 </section>
 <section id="borel-cantelli-kolmogorov-zero-one-laws" class="level2">
