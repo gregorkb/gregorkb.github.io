@@ -303,8 +303,18 @@ F_{\alpha_1,\dots,\alpha_k}(x_1,\dots,x_k) = \prod_{j=1}^kF_{\alpha_j}(x_j)
 <section id="borel-cantelli-kolmogorov-zero-one-laws" class="level2">
 <h2 class="anchored" data-anchor-id="borel-cantelli-kolmogorov-zero-one-laws">Borel-Cantelli, Kolmogorov zero-one laws</h2>
 <ul>
-<li><p>Define <span class="math inline">\(\liminf_{n \to \infty}A_n\)</span> as a union of intersections and <span class="math inline">\(\limsup_{n \to \infty}A_n\)</span> as an intersection of unions.</p></li>
-<li><p>Give interpretations that <span class="math inline">\(\omega\)</span> occurs “in all but finitely many” (<span class="math inline">\(\liminf\)</span>) or “infinitely often” (<span class="math inline">\(\limsup\)</span>).</p></li>
+<li><p>For a sequence of subsets <span class="math inline">\(\{A_n\}_{n\geq 1} \subset \Omega\)</span> define</p>
+<ul>
+<li><p><span class="math inline">\(\displaystyle \liminf_{n \to \infty}A_n \equiv \bigcup_{k\geq 1} \bigcap_{n \geq k} A_n\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \limsup_{n \to \infty}A_n \equiv \bigcap_{k \geq 1} \bigcup_{n \geq k}A_n\)</span>.</p></li>
+</ul></li>
+<li><p><b style="color: blue;">Show</b> that</p>
+<p><span class="math display">\[
+  \displaystyle \liminf_{n \to \infty}A_n = \{\omega \in \Omega : \text{$\omega \in A_n$ for all but finitely many $n$}\}.
+  \]</span> That is, <span class="math inline">\(\liminf_{n \to \infty}A_n\)</span> is the set of <span class="math inline">\(\omega\)</span> occurring in all but finitely many of the events <span class="math inline">\(\{A_n\}_{n \geq 1}\)</span>.</p></li>
+<li><p><b style="color: blue;">Show</b> that <span class="math display">\[
+\limsup_{n \to \infty}A_n = \{\omega \in \Omega : \text{$\omega \in A_n$ for infinitely many $n$}\}.
+\]</span> That is, <span class="math inline">\(\limsup_{n \to \infty}A_n\)</span> is the set of <span class="math inline">\(\omega\)</span> occurring “infinitely often” (i.o.) in the sequence <span class="math inline">\(\{A_n\}_{n \geq 1}\)</span>.</p></li>
 <li><p>First and second Borel-Cantelli Lemmas. Follow Theorem 7.2.2 in A&amp;L.</p></li>
 <li><p>Condition for a sequence of random variables to converge to zero with probability one. A converse. Follow Proposition 7.2.3 of A&amp;L.</p></li>
 <li><p>Definition of tail <span class="math inline">\(\sigma\)</span>-algebra.</p></li>
