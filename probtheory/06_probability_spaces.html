@@ -302,20 +302,26 @@ F_{\alpha_1,\dots,\alpha_k}(x_1,\dots,x_k) = \prod_{j=1}^kF_{\alpha_j}(x_j)
 </section>
 <section id="borel-cantelli-kolmogorov-zero-one-laws" class="level2">
 <h2 class="anchored" data-anchor-id="borel-cantelli-kolmogorov-zero-one-laws">Borel-Cantelli, Kolmogorov zero-one laws</h2>
+<!-- - For a sequence of subsets $\{A_n\}_{n\geq 1} \subset \Omega$ define -->
+<!--     - $\displaystyle \liminf_{n \to \infty}A_n \equiv \bigcup_{k\geq 1} \bigcap_{n \geq k} A_n$. -->
+<!--     - $\displaystyle \limsup_{n \to \infty}A_n \equiv \bigcap_{k \geq 1} \bigcup_{n \geq k}A_n$. -->
+<!-- - <b style="color: blue;">Show</b> that  -->
+<!--     $$ -->
+<!--     \displaystyle \liminf_{n \to \infty}A_n = \{\omega \in \Omega : \text{$\omega \in A_n$ for all but finitely many $n$}\}. -->
+<!--     $$ -->
+<!--     That is, $\liminf_{n \to \infty}A_n$ is the set of $\omega$ occurring in all but finitely many of the events $\{A_n\}_{n \geq 1}$. -->
+<!-- - <b style="color: blue;">Show</b> that  -->
+<!--   $$ -->
+<!--   \limsup_{n \to \infty}A_n = \{\omega \in \Omega : \text{$\omega \in A_n$ for infinitely many $n$}\}. -->
+<!--   $$ -->
+<!--   That is, $\limsup_{n \to \infty}A_n$ is the set of $\omega$ occurring "infinitely often" (i.o.) in the sequence $\{A_n\}_{n \geq 1}$. -->
 <ul>
-<li><p>For a sequence of subsets <span class="math inline">\(\{A_n\}_{n\geq 1} \subset \Omega\)</span> define</p>
-<ul>
-<li><p><span class="math inline">\(\displaystyle \liminf_{n \to \infty}A_n \equiv \bigcup_{k\geq 1} \bigcap_{n \geq k} A_n\)</span>.</p></li>
-<li><p><span class="math inline">\(\displaystyle \limsup_{n \to \infty}A_n \equiv \bigcap_{k \geq 1} \bigcup_{n \geq k}A_n\)</span>.</p></li>
-</ul></li>
-<li><p><b style="color: blue;">Show</b> that</p>
-<p><span class="math display">\[
-  \displaystyle \liminf_{n \to \infty}A_n = \{\omega \in \Omega : \text{$\omega \in A_n$ for all but finitely many $n$}\}.
-  \]</span> That is, <span class="math inline">\(\liminf_{n \to \infty}A_n\)</span> is the set of <span class="math inline">\(\omega\)</span> occurring in all but finitely many of the events <span class="math inline">\(\{A_n\}_{n \geq 1}\)</span>.</p></li>
-<li><p><b style="color: blue;">Show</b> that <span class="math display">\[
-\limsup_{n \to \infty}A_n = \{\omega \in \Omega : \text{$\omega \in A_n$ for infinitely many $n$}\}.
-\]</span> That is, <span class="math inline">\(\limsup_{n \to \infty}A_n\)</span> is the set of <span class="math inline">\(\omega\)</span> occurring “infinitely often” (i.o.) in the sequence <span class="math inline">\(\{A_n\}_{n \geq 1}\)</span>.</p></li>
-<li><p>First and second Borel-Cantelli Lemmas. Follow Theorem 7.2.2 in A&amp;L.</p></li>
+<li><p><strong>Borel-Cantelli Lemmas:</strong> Let <span class="math inline">\((\Omega,\mathcal{F},P)\)</span> be a probability space and let <span class="math inline">\(\{A_n\}_{n\geq 1} \subset \mathcal{F}\)</span> be sequence of events.</p>
+<ol type="a">
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(\sum_{n\geq 1} P(A_n) &lt; \infty\)</span> implies <span class="math inline">\(P(\limsup_{n\to \infty} A_n) = 0\)</span>.</li>
+<li><b style="color: blue;">Show</b> that if <span class="math inline">\(\{A_n\}_{n\geq 1}\)</span> are pairwise independent, then <span class="math inline">\(\sum_{n\geq 1} P(A_n) = \infty\)</span> implies <span class="math inline">\(P(\limsup_{n\to \infty} A_n) = 1\)</span>.</li>
+</ol>
+<p>See Theorem 7.2.2 on page 225 of A&amp;L. This is known as a “zero-one” law, because under pairwise independence of <span class="math inline">\(\{A_n\}_{n\geq 1}\)</span> it states that <span class="math inline">\(P(\limsup_{n\to \infty} A_n)\)</span> is equal to zero or one according to whether <span class="math inline">\(\sum_{n\geq 1} P(A_n)\)</span> is finite or infinite.</p></li>
 <li><p>Condition for a sequence of random variables to converge to zero with probability one. A converse. Follow Proposition 7.2.3 of A&amp;L.</p></li>
 <li><p>Definition of tail <span class="math inline">\(\sigma\)</span>-algebra.</p></li>
 <li><p>Kolmogorov’s 0-1 law.</p></li>
