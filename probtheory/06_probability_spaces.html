@@ -202,7 +202,7 @@ window.Quarto = {
   P_X(A) = P(\{\omega : X(\omega) \in A\}), \quad A \in \mathcal{B}(\mathbb{R}^k)
   \]</span> is called the <em>joint probability distribution of <span class="math inline">\(X = (X_1,\dots,X_k)\)</span></em>.</li>
 <li>For each <span class="math inline">\(j = 1,\dots,k\)</span>, the probability measure <span class="math display">\[
-  P_{X_j}(A) = P(\{\omega : X_j(\omega) \in A\}), \quad A \in \mathcal{B}(\mathbb{R}^k)\]</span> is called the <em>marginal distribution of <span class="math inline">\(X_j\)</span></em>.</li>
+  P_{X_j}(A) = P(\{\omega : X_j(\omega) \in A\}), \quad A \in \mathcal{B}(\mathbb{R})\]</span> is called the <em>marginal distribution of <span class="math inline">\(X_j\)</span></em>.</li>
 </ul></li>
 <li><p><strong>Joint and marginal cumulative distribution functions:</strong> Let <span class="math inline">\(X = (X_1,\dots,X_k)\)</span> be a random vector of dimension <span class="math inline">\(k\)</span> on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>. Then:</p>
 <ul>
@@ -328,14 +328,12 @@ F_{\alpha_1,\dots,\alpha_k}(x_1,\dots,x_k) = \prod_{j=1}^kF_{\alpha_j}(x_j)
 <li><p>Suppose <span class="math inline">\(\{X_n\}_{n\geq 1}\)</span> are pairwise independent. <b style="color: blue;">Show</b> that <span class="math inline">\(P(\lim_{n\to \infty} X_n = 0) = 1\)</span> implies <span class="math inline">\(\sum_{n\geq 1}P(|X_n| &gt; \epsilon) &lt; \infty\)</span> for every <span class="math inline">\(\epsilon &gt; 0\)</span>.</p></li>
 </ol>
 <p>See Proposition 7.2.3 on page 224 of A&amp;L.</p></li>
-<li><p><strong>Tail <span class="math inline">\(\sigma\)</span>-algebra of a sequence of events:</strong></p></li>
-<li><p><strong>Tail <span class="math inline">\(\sigma\)</span>-algebra of a sequence of random variables:</strong> Let <span class="math inline">\(\{X_n\}_{n \geq 1}\)</span> be a sequence of random variables on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>. The <em>tail <span class="math inline">\(\sigma\)</span>-algebra</em> of <span class="math inline">\(\{X_n\}_{n \geq 1}\)</span> is defined as <span class="math display">\[
-\mathcal{T}\equiv \bigcap_{n\geq 1} \sigma \langle \{X_j : j \geq n\} \rangle,
-\]</span> where <span class="math inline">\(\sigma \langle \{X_j: j \geq n\}\rangle = \sigma \langle \{X_j^{-1}(A): A \in \mathcal{B}(\mathbb{R}), j \geq n\}\rangle\)</span> for each <span class="math inline">\(n\geq 1\)</span>.</p></li>
-</ul>
-<p>Definition of tail <span class="math inline">\(\sigma\)</span>-algebra.</p>
-<ul>
-<li><p>Kolmogorov’s 0-1 law.</p></li>
+<li><p><strong>Kolmogorov 0-1 law for sequences of independent events:</strong> Let <span class="math inline">\(\{A_n\}_{n \geq 1}\)</span> be a sequence of independent events in the probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>. <b style="color: blue;">Show</b> that <span class="math display">\[
+A \in \mathcal{T}\equiv \bigcap_{n\geq 1} \sigma \langle \{A_n,A_{n+1},\dots\} \rangle
+\]</span> implies <span class="math inline">\(P(A)\in \{0,1\}\)</span>. Here <span class="math inline">\(\mathcal{T}\)</span> is called the <em>tail <span class="math inline">\(\sigma\)</span>-algebra of <span class="math inline">\(\{A_n\}_{n\geq 1}\)</span></em>.</p></li>
+<li><p><strong>Kolmogorov 0-1 law for sequences of independent random variables:</strong> Let <span class="math inline">\(\{X_n\}_{n \geq 1}\)</span> be a sequence of independent random variables on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>. <b style="color: blue;">Show</b> that <span class="math display">\[
+A \in \mathcal{T}\equiv \bigcap_{n\geq 1} \sigma \langle \{X_j : j \geq n\} \rangle
+\]</span> implies <span class="math inline">\(P(A)\in \{0,1\}\)</span>. Here <span class="math inline">\(\mathcal{T}\)</span> is called the <em>tail <span class="math inline">\(\sigma\)</span>-algebra of <span class="math inline">\(\{X_n\}_{n \geq 1}\)</span></em>. In the above <span class="math inline">\(\sigma \langle \{X_j: j \geq n\}\rangle = \sigma \langle \{X_j^{-1}(A): A \in \mathcal{B}(\mathbb{R}), j \geq n\}\rangle\)</span> for each <span class="math inline">\(n\geq 1\)</span>.</p></li>
 <li><p>Definition of extended real-valued random variable.</p></li>
 <li><p>Random variable measurable with respect to a tail <span class="math inline">\(\sigma\)</span>-algebra converges almost surely to a (possibly infinite) constant. Corollary 7.2.5 of A&amp;L.</p></li>
 <li><p>Example 7.2.2 of A&amp;L perhaps.</p></li>
