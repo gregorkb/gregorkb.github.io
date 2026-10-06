@@ -321,9 +321,20 @@ F_{\alpha_1,\dots,\alpha_k}(x_1,\dots,x_k) = \prod_{j=1}^kF_{\alpha_j}(x_j)
 <li><b style="color: blue;">Show</b> that <span class="math inline">\(\sum_{n\geq 1} P(A_n) &lt; \infty\)</span> implies <span class="math inline">\(P(\limsup_{n\to \infty} A_n) = 0\)</span>.</li>
 <li><b style="color: blue;">Show</b> that if <span class="math inline">\(\{A_n\}_{n\geq 1}\)</span> are pairwise independent, then <span class="math inline">\(\sum_{n\geq 1} P(A_n) = \infty\)</span> implies <span class="math inline">\(P(\limsup_{n\to \infty} A_n) = 1\)</span>.</li>
 </ol>
-<p>See Theorem 7.2.2 on page 225 of A&amp;L. This is known as a “zero-one” law, because under pairwise independence of <span class="math inline">\(\{A_n\}_{n\geq 1}\)</span> it states that <span class="math inline">\(P(\limsup_{n\to \infty} A_n)\)</span> is equal to zero or one according to whether <span class="math inline">\(\sum_{n\geq 1} P(A_n)\)</span> is finite or infinite.</p></li>
-<li><p>Condition for a sequence of random variables to converge to zero with probability one. A converse. Follow Proposition 7.2.3 of A&amp;L.</p></li>
-<li><p>Definition of tail <span class="math inline">\(\sigma\)</span>-algebra.</p></li>
+<p>See Theorem 7.2.2 on page 223 of A&amp;L. This is known as a “zero-one” law, because under pairwise independence of <span class="math inline">\(\{A_n\}_{n\geq 1}\)</span> it states that <span class="math inline">\(P(\limsup_{n\to \infty} A_n)\)</span> is equal to zero or one according to whether <span class="math inline">\(\sum_{n\geq 1} P(A_n)\)</span> is finite or infinite. Compare to Theorems 4.3 and 4.4 on pages 59 and 60 of Billingsley (the latter makes the stronger assumption of independence instead of assuming only pairwise independence).</p></li>
+<li><p><strong>A corollary to Borel-Cantelli:</strong> Let <span class="math inline">\(\{X_n\}_{n \geq 1}\)</span> be a sequence of random variables on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>.</p>
+<ol type="a">
+<li><p><b style="color: blue;">Show</b> that <span class="math inline">\(\sum_{n\geq 1}P(|X_n| &gt; \epsilon) &lt; \infty\)</span> for every <span class="math inline">\(\epsilon &gt; 0\)</span> implies <span class="math inline">\(P(\lim_{n\to \infty} X_n = 0) = 1\)</span>.</p></li>
+<li><p>Suppose <span class="math inline">\(\{X_n\}_{n\geq 1}\)</span> are pairwise independent. <b style="color: blue;">Show</b> that <span class="math inline">\(P(\lim_{n\to \infty} X_n = 0) = 1\)</span> implies <span class="math inline">\(\sum_{n\geq 1}P(|X_n| &gt; \epsilon) &lt; \infty\)</span> for every <span class="math inline">\(\epsilon &gt; 0\)</span>.</p></li>
+</ol>
+<p>See Proposition 7.2.3 on page 224 of A&amp;L.</p></li>
+<li><p><strong>Tail <span class="math inline">\(\sigma\)</span>-algebra of a sequence of events:</strong></p></li>
+<li><p><strong>Tail <span class="math inline">\(\sigma\)</span>-algebra of a sequence of random variables:</strong> Let <span class="math inline">\(\{X_n\}_{n \geq 1}\)</span> be a sequence of random variables on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>. The <em>tail <span class="math inline">\(\sigma\)</span>-algebra</em> of <span class="math inline">\(\{X_n\}_{n \geq 1}\)</span> is defined as <span class="math display">\[
+\mathcal{T}\equiv \bigcap_{n\geq 1} \sigma \langle \{X_j : j \geq n\} \rangle,
+\]</span> where <span class="math inline">\(\sigma \langle \{X_j: j \geq n\}\rangle = \sigma \langle \{X_j^{-1}(A): A \in \mathcal{B}(\mathbb{R}), j \geq n\}\rangle\)</span> for each <span class="math inline">\(n\geq 1\)</span>.</p></li>
+</ul>
+<p>Definition of tail <span class="math inline">\(\sigma\)</span>-algebra.</p>
+<ul>
 <li><p>Kolmogorov’s 0-1 law.</p></li>
 <li><p>Definition of extended real-valued random variable.</p></li>
 <li><p>Random variable measurable with respect to a tail <span class="math inline">\(\sigma\)</span>-algebra converges almost surely to a (possibly infinite) constant. Corollary 7.2.5 of A&amp;L.</p></li>
