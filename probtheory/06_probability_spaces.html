@@ -296,8 +296,15 @@ F_{\alpha_1,\dots,\alpha_k}(x_1,\dots,x_k) = \prod_{j=1}^kF_{\alpha_j}(x_j)
 <li><p><b style="color: blue;">Show</b> that if <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent and <span class="math inline">\(\mathbb{E}|X_1| &lt;\infty\)</span> and <span class="math inline">\(\mathbb{E}|X_2| &lt; \infty\)</span> then <span class="math inline">\(\mathbb{E}|X_1 X_2| &lt; \infty\)</span> and <span class="math display">\[
 \mathbb{E}X_1 X_2 = \mathbb{E}X_1 \mathbb{E}X_2.
 \]</span></p></li>
+<li><p><b style="color: blue;">Show</b> that if <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent and <span class="math inline">\(A \in \sigma \langle X_1\rangle\)</span> then <span class="math display">\[
+\int_A X_1 X_2 dP = \int_A X_1 dP  \cdot \mathbb{E}X_2.
+\]</span></p></li>
 </ol>
-<p>Set of random variables independent if expected value of product of functions is equal to the product of expectations—for all Borel measurable functions. Expectation of a product is the product of expectations. Follow Prop 7.1.3 on page 221 of A&amp;L.</p></li>
+<p>See Prop 7.1.3 on page 221 of A&amp;L as well as (21.19) on page 277 of Billingsley.</p></li>
+<li><p><strong>Kolmogorov’s inequality for partial sums:</strong> Let <span class="math inline">\(X_1,\dots,X_n\)</span> be random variables on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span> have zero mean and finite variance and define the partial sums <span class="math inline">\(S_k = \sum_{i=1}^k X_i\)</span> for <span class="math inline">\(k=1,\dots,n\)</span>. <b style="color: blue;">Show</b> that for each <span class="math inline">\(\varepsilon &gt; 0\)</span> we have <span class="math display">\[
+P(\max_{1 \leq k \leq n} |S_k| \geq \varepsilon) \leq \frac{1}{\varepsilon^2}\operatorname{Var}S_n.
+\]</span></p>
+<p>See Theorem 22.4 on page 287 of Billingsley.</p></li>
 </ul>
 </section>
 <section id="borel-cantelli-kolmogorov-zero-one-laws" class="level2">
@@ -328,15 +335,19 @@ F_{\alpha_1,\dots,\alpha_k}(x_1,\dots,x_k) = \prod_{j=1}^kF_{\alpha_j}(x_j)
 <li><p>Suppose <span class="math inline">\(\{X_n\}_{n\geq 1}\)</span> are pairwise independent. <b style="color: blue;">Show</b> that <span class="math inline">\(P(\lim_{n\to \infty} X_n = 0) = 1\)</span> implies <span class="math inline">\(\sum_{n\geq 1}P(|X_n| &gt; \epsilon) &lt; \infty\)</span> for every <span class="math inline">\(\epsilon &gt; 0\)</span>.</p></li>
 </ol>
 <p>See Proposition 7.2.3 on page 224 of A&amp;L.</p></li>
+<li><p><strong>Tail <span class="math inline">\(\sigma\)</span>-algebra of a collection of events:</strong> Given a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span> the <em>tail <span class="math inline">\(\sigma\)</span>-algebra</em> of a collection of events <span class="math inline">\(\{A_n\}_{n \geq 1} \subset \mathcal{F}\)</span> is defined as <span class="math display">\[
+\mathcal{T}\equiv \bigcap_{n \geq 1} \sigma \langle \{A_k: k \geq n\}\rangle.
+\]</span> Events <span class="math inline">\(A \in \mathcal{T}\)</span> are called <em>tail events</em>.</p></li>
+<li><p><strong>Limit supremum and limit infimum as tail events:</strong> <b style="color: blue;">Show</b> that <span class="math inline">\(\limsup_{n \to \infty} A_n\)</span> and <span class="math inline">\(\liminf_{n \to \infty}A_n\)</span> belong to <span class="math inline">\(\mathcal{T}\)</span>.</p></li>
 <li><p><strong>Kolmogorov 0-1 law for sequences of independent events:</strong> Let <span class="math inline">\(\{A_n\}_{n \geq 1}\)</span> be a sequence of independent events in the probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>. <b style="color: blue;">Show</b> that <span class="math display">\[
-A \in \mathcal{T}\equiv \bigcap_{n\geq 1} \sigma \langle \{A_n,A_{n+1},\dots\} \rangle
-\]</span> implies <span class="math inline">\(P(A)\in \{0,1\}\)</span>. Here <span class="math inline">\(\mathcal{T}\)</span> is called the <em>tail <span class="math inline">\(\sigma\)</span>-algebra of <span class="math inline">\(\{A_n\}_{n\geq 1}\)</span></em>.</p></li>
+A \in \mathcal{T}\equiv \bigcap_{n\geq 1} \sigma \langle \{A_k: k \geq n\} \rangle
+\]</span> implies <span class="math inline">\(P(A)\in \{0,1\}\)</span>.</p></li>
 <li><p><strong>Kolmogorov 0-1 law for sequences of independent random variables:</strong> Let <span class="math inline">\(\{X_n\}_{n \geq 1}\)</span> be a sequence of independent random variables on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>. <b style="color: blue;">Show</b> that <span class="math display">\[
 A \in \mathcal{T}\equiv \bigcap_{n\geq 1} \sigma \langle \{X_j : j \geq n\} \rangle
 \]</span> implies <span class="math inline">\(P(A)\in \{0,1\}\)</span>. Here <span class="math inline">\(\mathcal{T}\)</span> is called the <em>tail <span class="math inline">\(\sigma\)</span>-algebra of <span class="math inline">\(\{X_n\}_{n \geq 1}\)</span></em>. In the above <span class="math inline">\(\sigma \langle \{X_j: j \geq n\}\rangle = \sigma \langle \{X_j^{-1}(A): A \in \mathcal{B}(\mathbb{R}), j \geq n\}\rangle\)</span> for each <span class="math inline">\(n\geq 1\)</span>.</p></li>
-<li><p>Definition of extended real-valued random variable.</p></li>
-<li><p>Random variable measurable with respect to a tail <span class="math inline">\(\sigma\)</span>-algebra converges almost surely to a (possibly infinite) constant. Corollary 7.2.5 of A&amp;L.</p></li>
-<li><p>Example 7.2.2 of A&amp;L perhaps.</p></li>
+<li><p><strong>Extended real-valued random variable:</strong> Given a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>, a function <span class="math inline">\(X:\Omega \to \bar{\mathbb{R}}\)</span> which is <span class="math inline">\(\langle \mathcal{F},\mathcal{B}(\bar{\mathbb{R}})\rangle\)</span>-measurable is called an <em>extended real-valued random variable</em>. Here, <span class="math inline">\(\bar{\mathbb{R}} \equiv [-\infty,\infty]\)</span> and <span class="math inline">\(\mathcal{B}(\bar{\mathbb{R}}) \equiv \sigma\langle\mathcal{B}(\mathbb{R}) \cup\{-\infty\} \cup \{\infty\}\rangle\)</span>. See Definition 7.2.3 on page 226 of A&amp;L.</p></li>
+<li><p><strong>Degeneracy of tail random variables:</strong> Let <span class="math inline">\(\{X_n\}_{n \geq 1}\)</span> be a sequence of independent random variables having tail <span class="math inline">\(\sigma\)</span>-algebra <span class="math inline">\(\mathcal{T}\)</span> and let <span class="math inline">\(X\)</span> be a <span class="math inline">\(\langle \mathcal{T},\mathcal{B}(\bar{\mathbb{R}}) \rangle\)</span>-measurable random variable. <b style="color: blue;">Show</b> that there exists <span class="math inline">\(c \in \bar{\mathbb{R}}\)</span> such that <span class="math inline">\(P(X = c) = 1\)</span>.</p>
+<p>A random variable equal to a single value with probability one is called <em>degenerate</em>. Note that since <span class="math inline">\(\liminf_{n\to \infty} X_n\)</span> and <span class="math inline">\(\limsup_{n \to \infty} X_n\)</span> are tail random variables they are degenerate. See Corollary 7.2.5 of A&amp;L. Cf. Problem 22.1 on page 294 of Billingsley.</p></li>
 </ul>
 
 
