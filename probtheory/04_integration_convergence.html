@@ -160,6 +160,10 @@ window.Quarto = {
   <ul>
   <li><a href="#integration" id="toc-integration" class="nav-link active" data-scroll-target="#integration">Integration</a></li>
   <li><a href="#convergence" id="toc-convergence" class="nav-link" data-scroll-target="#convergence">Convergence</a></li>
+  <li><a href="#uniform-integrability" id="toc-uniform-integrability" class="nav-link" data-scroll-target="#uniform-integrability">Uniform integrability</a>
+  <ul class="collapse">
+  <li><a href="#differentiation" id="toc-differentiation" class="nav-link" data-scroll-target="#differentiation">Differentiation</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -242,9 +246,6 @@ n,&amp; f(\omega) \geq n
 <li><p><strong>Integral over a subset of the sample space:</strong> For a function <span class="math inline">\(f\)</span> on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> and a set <span class="math inline">\(A \in \mathcal{F}\)</span>, the <em>integral of <span class="math inline">\(f\)</span> over <span class="math inline">\(A\)</span> with respect to <span class="math inline">\(\mu\)</span></em> is defined as <span class="math display">\[
 \int_A f d \mu \equiv \int f 1_A d \mu.
 \]</span></p></li>
-<li><p><strong>Make a new measure by integrating a nonnegative function:</strong> Let <span class="math inline">\(f\)</span> be a nonnegative measurable function on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>. <b style="color: blue;">Show</b> that the set function defined as <span class="math display">\[
-\nu(A) \equiv \int f 1_A d\mu
-\]</span> for all <span class="math inline">\(A\in \mathcal{F}\)</span> is a measure on <span class="math inline">\(\mathcal{F}\)</span>. See Corollary 2.3.6 on page 53 of A&amp;L.</p></li>
 <li><p><strong>Relation between Riemann and Lebesgue integrals:</strong> Let <span class="math inline">\(f\)</span> be a bounded measurable function on <span class="math inline">\(([a,b],\mathcal{B}([a,b]),\mu_L)\)</span>, where <span class="math inline">\(\mu_L\)</span> is the Lebesgue measure. Then <span class="math inline">\(f\)</span> is Riemann integrable on <span class="math inline">\([a,b]\)</span> if and only if it is continuous almost everywhere (with respect to <span class="math inline">\(\mu_L\)</span>). In this case the integral <span class="math inline">\(\int f d\mu_L\)</span> is equal to the Riemann integral <span class="math inline">\(\int_a^b f(x)dx\)</span>.</p>
 <p>See Theorem 2.4.1 on page 61 of A&amp;L. Compare to Theorem 5.6.1 on page 139 of Resnick and Section 17 of Billingsley beginning on page 221.</p></li>
 <li><p><strong>Integrability of a function:</strong> A function <span class="math inline">\(f\)</span> on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> is <em>integrable with respect to <span class="math inline">\(\mu\)</span></em> if <span class="math inline">\(\int |f|d \mu\)</span> is finite.</p></li>
@@ -333,17 +334,42 @@ L^\infty(\Omega,\mathcal{F},\mu) &amp;\equiv \{f: \mu(\{\omega : f(\omega) &gt; 
 <li><p><strong>Scheffé’s theorem:</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span> and <span class="math inline">\(f\)</span> be measurable functions on a measurable space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> such that <span class="math inline">\(f_n \stackrel{\operatorname{a.e.}}{\longrightarrow}f\)</span>, <span class="math inline">\(\int f_n d \mu \to \int f d \mu\)</span>, and <span class="math inline">\(\int f d \mu &lt; \infty\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(f_n\stackrel{L_1}{\rightarrow} f\)</span>.</p>
 <p>See Theorem 2.5.4 on page 64 of A&amp;L or Theorem 16.12 on page 215 of Billingsley.</p></li>
 </ul>
-<!-- - Uniform integrability?  As on Page 675 of A&L?  I don't remember what this is used for later on.  So I can't determine right at the moment if it is going to be important... Let me come back to this. -->
-<!-- ## Differentiation  -->
-<!-- ALL OF THIS STUFF WILL COME LATER ON WHEN WE TALK ABOUT CONDITIONAL EXPECTATION...SO I AM NOT GOINT TO INTRODUCE IT YET. RESNICK DOES NOT TALK ABOUT RADON-NIKODYM UNTIL CHAPTER 10, WHEN HE GETS INTO MARTINGALES. -->
-<!-- - Definition of absolute continuity of a measure with respect to another measure. See Definition 4.1.1 of A&L. -->
-<!-- - Singularity of two measures with respect to each other. -->
-<!-- - Lebesgue decomposition and Radon-Nikodym theorem. Follow Theorem 4.1.1 of A&L. -->
-<!-- - Definition of Radon-Nikodym derivative (This will get used later on when we talk about conditional expectation?) -->
-<!-- ## Practice -->
+</section>
+<section id="uniform-integrability" class="level1">
+<h1>Uniform integrability</h1>
+<ul>
+<li><p>Some results similar to those above can be obtained under a weaker condition called <em>uniform integrability</em>.</p></li>
+<li><p><strong>Tails of integrable functions:</strong> <b style="color: blue;">Show</b> that <span class="math inline">\(f\in L^1(\Omega,\mathcal{F},\mu)\)</span> implies <span class="math inline">\(\lim_{t\to \infty} \int_{\{|f| &gt; t\}}|f|d\mu = 0\)</span>.</p>
+<p>This result leads to the definition of uniform integrability.</p></li>
+<li><p><strong>Uniform integrability of a family of functions:</strong> Let <span class="math inline">\(\{f_\alpha, \alpha \in I\}\)</span> be an arbitrarily indexed family of measurable functions on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>. The family <span class="math inline">\(\{f_\alpha, \alpha \in I\}\)</span> is <em>uniformly integrable</em> if <span class="math display">\[
+\lim_{t \to \infty} \sup_{\alpha \in I} \int_{\{|f_\alpha| &gt; t\}}|f_\alpha| d\mu = 0.
+\]</span></p>
+<p>See Definition 2.5.8 on page 65 of A&amp;L, the section “uniform integrability” beginning on page 216 of Billingsley, or Section 6.5.1 of Resnick beginning on page 182. The definition is represented next for a sequence of random variables.</p></li>
+<li><p><strong>Uniform integrability of a sequence of random variables:</strong> Let <span class="math inline">\(\{X_n\}_{n\geq 1}\)</span> be a sequence of random variables on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>. Then the sequence <span class="math inline">\(\{X_n\}_{n \geq 1}\)</span> is <em>uniformly integrable</em> if for every <span class="math inline">\(\epsilon &gt; 0\)</span> there exists <span class="math inline">\(M_\epsilon &gt; 0\)</span> such that <span class="math display">\[
+\sup_{n \geq 1} \mathbb{E}[|X_n| 1(|X_n| &gt; M_\epsilon)] &lt; \epsilon.
+\]</span></p></li>
+</ul>
+<section id="differentiation" class="level2">
+<h2 class="anchored" data-anchor-id="differentiation">Differentiation</h2>
+<!-- - **Density of one measure with respect to another:** In the previous point the function nonnegative function $f$ is called the *density* of $\nu$ with respect to $\mu$. Note that $\mu(A) = 0$ implies $\nu(A) = 0$ for all $A \in \calF$.  We will discuss this in greater detail when we come to what is called the *Radon-Nikodym* derivative of $\nu$ with respect to $\mu$. -->
+<ul>
+<li><p><strong>Absolute continuity and mutual singularity:</strong> Let <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> be measures on a measurable space <span class="math inline">\((\Omega,\mathcal{F})\)</span>.</p>
+<ul>
+<li>If <span class="math inline">\(\mu(A) = 0\)</span> implies <span class="math inline">\(\nu(A) = 0\)</span> for all <span class="math inline">\(A \in \mathcal{F}\)</span> then <span class="math inline">\(\nu\)</span> is <em>absolutely continuous (a.c.) with respect to <span class="math inline">\(\mu\)</span></em> or <em>dominated by <span class="math inline">\(\mu\)</span></em>. We write <span class="math inline">\(\mu \ll \nu\)</span>.</li>
+<li>If there exists a set <span class="math inline">\(B \in \mathcal{F}\)</span> such that <span class="math inline">\(\mu(B) = 0\)</span> and <span class="math inline">\(\nu(B^c) = 0\)</span> then <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> are <em>mutually singular</em>. We write <span class="math inline">\(\mu \perp \nu\)</span>. Here the relation is symmetric, i.e.&nbsp;<span class="math inline">\(\mu \perp \nu \iff \nu \perp \mu\)</span>. See Example 4.1.4 on page 114 of A&amp;L.</li>
+</ul>
+<p>See Definitions 4.1.1 and 4.1.2 on pages 113 and 114 of A&amp;L.</p></li>
+<li><p><strong>Make a new measure by integrating a nonnegative function:</strong> Let <span class="math inline">\(f\)</span> be a nonnegative measurable function on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>. <b style="color: blue;">Show</b> that the set function defined as <span class="math display">\[
+\nu(A) \equiv \int f 1_A d\mu
+\]</span> for all <span class="math inline">\(A\in \mathcal{F}\)</span> is a measure on <span class="math inline">\(\mathcal{F}\)</span>.</p>
+<p>See Corollary 2.3.6 on page 53 of A&amp;L. Note that <span class="math inline">\(\nu \ll \mu\)</span>, i.e.&nbsp;<span class="math inline">\(\nu\)</span> is <em>absolutely continuous</em> with respect to <span class="math inline">\(\mu\)</span>.</p></li>
+<li><p><strong>Radon-Nikodym Theorem:</strong> Let <span class="math inline">\((\Omega,\mathcal{F})\)</span> be a measure space and let <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> be <span class="math inline">\(\sigma\)</span>-finite measures on <span class="math inline">\(\mathcal{F}\)</span> such that <span class="math inline">\(\nu \ll \mu\)</span>. Then there exists a nonnegative measurable function <span class="math inline">\(f\)</span> such that <span class="math inline">\(\nu(A) = \int_A f d\mu\)</span> for all <span class="math inline">\(A \in \mathcal{F}\)</span>. Moreover, for two such functions <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> it holds that <span class="math inline">\(f = g\)</span> almost everywhere.</p>
+<p>See Theorem 32.2 of Billingsley. The function <span class="math inline">\(f\)</span> is called the <em>Radon-Nikodym derivative of <span class="math inline">\(\nu\)</span> with respect to <span class="math inline">\(\mu\)</span></em>. We may also call <span class="math inline">\(f\)</span> the <em>density of <span class="math inline">\(\nu\)</span> with respect to <span class="math inline">\(\mu\)</span></em>. Often let <span class="math inline">\(\mu\)</span> be the Lebesgue measure and set <span class="math inline">\(f\)</span> to be a probability density function. Or set <span class="math inline">\(\mu\)</span> to be the counting measure and <span class="math inline">\(f\)</span> to be a probability mass function.</p></li>
+</ul>
 <!-- - Prove Corollary 2.5.6 on page 64 of A&L. -->
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
