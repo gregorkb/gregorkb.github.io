@@ -1448,8 +1448,9 @@ pets        -0.0186 0.0303 -0.614 0.5402</code></pre>
 </div>
 </section>
 
-<section id="the-lm-summary-and-confint-functions-in-r" class="title-slide slide level1 center">
-<h1>The <code>lm()</code>, <code>summary()</code>, and <code>confint()</code> functions in R</h1>
+<section id="sc-apartment" class="title-slide slide level1 center">
+<h1>SC apartment</h1>
+<p>Demonstrate the <code>lm()</code>, <code>summary()</code>, and <code>confint()</code> functions in R:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href></a>lm_out <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(price) <span class="sc">~</span> city <span class="sc">+</span> nbath <span class="sc">+</span> nbed <span class="sc">+</span> <span class="fu">log</span>(sqft) <span class="sc">+</span> pets, <span class="at">data =</span> scapts)</span>
 <span id="cb15-2"><a href></a><span class="fu">summary</span>(lm_out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1499,6 +1500,7 @@ log(sqft)       0.31884  0.6268
 petsyes        -0.07826  0.0411</code></pre>
 </div>
 </div>
+<p><br></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href></a><span class="fu">confint</span>(lm_out, <span class="at">level =</span> .<span class="dv">99</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
