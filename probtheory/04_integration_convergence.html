@@ -160,10 +160,8 @@ window.Quarto = {
   <ul>
   <li><a href="#integration" id="toc-integration" class="nav-link active" data-scroll-target="#integration">Integration</a></li>
   <li><a href="#convergence" id="toc-convergence" class="nav-link" data-scroll-target="#convergence">Convergence</a></li>
-  <li><a href="#uniform-integrability" id="toc-uniform-integrability" class="nav-link" data-scroll-target="#uniform-integrability">Uniform integrability</a>
-  <ul class="collapse">
+  <li><a href="#uniform-integrability" id="toc-uniform-integrability" class="nav-link" data-scroll-target="#uniform-integrability">Uniform integrability</a></li>
   <li><a href="#differentiation" id="toc-differentiation" class="nav-link" data-scroll-target="#differentiation">Differentiation</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -263,6 +261,7 @@ L^\infty(\Omega,\mathcal{F},\mu) &amp;\equiv \{f: \mu(\{\omega : f(\omega) &gt; 
 \inf\{c \in (0,\infty) : \mu(\{\omega : g(\omega) &gt; c\}) = 0\},&amp; p = \infty
 \end{array}\right.
 \]</span></p></li>
+<li><p><strong>Hierarchy of <span class="math inline">\(L_p\)</span> norms:</strong> <b style="color: blue;">Show</b> that for a measurable function <span class="math inline">\(f\)</span> on a finite measure space we have <span class="math inline">\(\|f\|_p \leq \|f\|_q\)</span> for all <span class="math inline">\(1 \leq p &lt; q\)</span>.</p></li>
 <li><p><strong>Results on integrals of integrable functions:</strong> Let <span class="math inline">\(f,g \in L^1(\Omega,\mathcal{F},\mu)\)</span>. Then one can show</p>
 <ol type="a">
 <li><span class="math inline">\(\int (a f + b g) d \mu = a \int f d \mu + b \int g d \mu\)</span> for any <span class="math inline">\(a,b \in \mathbb{R}\)</span> (<em>Linearity</em>).</li>
@@ -280,7 +279,8 @@ L^\infty(\Omega,\mathcal{F},\mu) &amp;\equiv \{f: \mu(\{\omega : f(\omega) &gt; 
 <li><p><strong>Dominated convergence theorem (DCT):</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span>, <span class="math inline">\(f\)</span>, and <span class="math inline">\(g\)</span> be measurable functions on a measurable space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> such that <span class="math inline">\(|f_n| &lt; g\)</span> almost everywhere for all <span class="math inline">\(n \geq 1\)</span>, <span class="math inline">\(g\)</span> is integrable, and <span class="math inline">\(f_n \to f\)</span> almost everywhere.</p>
 <ol type="a">
 <li><b style="color: blue;">Show</b> that <span class="math inline">\(f\)</span> is integrable.</li>
-<li><b style="color: blue;">Show</b> that <span class="math inline">\(\lim_{n\to \infty} \int f_nd \mu  = \int f d \mu\)</span>. <!-- (c) <b style="color: blue;">Show</b> that $\lim_{n \to \infty}\int |f_n - f| d\mu = 0$ --></li>
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(\lim_{n\to \infty} \int f_nd \mu  = \int f d \mu\)</span>.</li>
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(\lim_{n \to \infty}\int |f_n - f| d\mu = 0\)</span>.</li>
 </ol>
 <p>See Corollary 2.3.12 on page 57 of A&amp;L or Theorem 16.4 on page 209 of Billingsley. Compare to Theorem 5.3.3 on page 133 of Resnick.</p></li>
 </ul>
@@ -332,13 +332,18 @@ L^\infty(\Omega,\mathcal{F},\mu) &amp;\equiv \{f: \mu(\{\omega : f(\omega) &gt; 
 <li><p><span class="math inline">\(X_n \stackrel{L_2}{\longrightarrow}X\)</span> is usually read as “<span class="math inline">\(X_n\)</span> converges to <span class="math inline">\(X\)</span> in mean square”.</p></li>
 </ol></li>
 <li><p><strong>Scheffé’s theorem:</strong> Let <span class="math inline">\(\{f_n\}_{n \geq 1}\)</span> and <span class="math inline">\(f\)</span> be nonnegative measurable functions on a measurable space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> such that <span class="math inline">\(f_n \stackrel{\operatorname{a.e.}}{\longrightarrow}f\)</span>, <span class="math inline">\(\int f_n d \mu \to \int f d \mu\)</span>, and <span class="math inline">\(\int f d \mu &lt; \infty\)</span>. <b style="color: blue;">Show</b> that <span class="math inline">\(f_n\stackrel{L_1}{\rightarrow} f\)</span>.</p>
-<p>See Theorem 2.5.4 on page 64 of A&amp;L or Theorem 16.12 on page 215 of Billingsley.</p></li>
+<p>This gives a setting in which almost sure convergence implies convergence in <span class="math inline">\(L_1\)</span>, which is not always guaranteed. See Theorem 2.5.4 on page 64 of A&amp;L or Theorem 16.12 on page 215 of Billingsley. The following is an example of when convergence almost everywhere does <em>not</em> imply convergence in <span class="math inline">\(L_1\)</span>.</p></li>
+<li><p><strong>Example:</strong> Define <span class="math inline">\(f_n \equiv n 1_{[0,1/n]}\)</span> for each <span class="math inline">\(n \geq 1\)</span> on the measure space <span class="math inline">\(([0,1],\mathcal{B}([0,1]),\mu_L)\)</span>, where <span class="math inline">\(\mu_L\)</span> is the Lebesgue measure and define <span class="math inline">\(f \equiv 0\)</span></p>
+<ul>
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(f_n \stackrel{\operatorname{a.e.}}{\longrightarrow}f\)</span>.</li>
+<li><b style="color: blue;">Show</b> that <span class="math inline">\(f_n\)</span> does <em>not</em> converge in <span class="math inline">\(L_1\)</span> to <span class="math inline">\(f\)</span>.</li>
+</ul></li>
 </ul>
 </section>
-<section id="uniform-integrability" class="level1">
-<h1>Uniform integrability</h1>
+<section id="uniform-integrability" class="level2">
+<h2 class="anchored" data-anchor-id="uniform-integrability">Uniform integrability</h2>
 <ul>
-<li><p>Some results similar to those above can be obtained under a weaker condition called <em>uniform integrability</em>.</p></li>
+<li><p>Some results similar to those above can be obtained under a weaker condition called <em>uniform integrability</em>. E.g. see Theorem 2.5.10 on page 68 of A&amp;L.</p></li>
 <li><p><strong>Tails of integrable functions:</strong> <b style="color: blue;">Show</b> that <span class="math inline">\(f\in L^1(\Omega,\mathcal{F},\mu)\)</span> implies <span class="math inline">\(\lim_{t\to \infty} \int_{\{|f| &gt; t\}}|f|d\mu = 0\)</span>.</p>
 <p>This result leads to the definition of uniform integrability.</p></li>
 <li><p><strong>Uniform integrability of a family of functions:</strong> Let <span class="math inline">\(\{f_\alpha, \alpha \in I\}\)</span> be an arbitrarily indexed family of measurable functions on a measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>. The family <span class="math inline">\(\{f_\alpha, \alpha \in I\}\)</span> is <em>uniformly integrable</em> if <span class="math display">\[
@@ -348,7 +353,14 @@ L^\infty(\Omega,\mathcal{F},\mu) &amp;\equiv \{f: \mu(\{\omega : f(\omega) &gt; 
 <li><p><strong>Uniform integrability of a sequence of random variables:</strong> Let <span class="math inline">\(\{X_n\}_{n\geq 1}\)</span> be a sequence of random variables on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>. Then the sequence <span class="math inline">\(\{X_n\}_{n \geq 1}\)</span> is <em>uniformly integrable</em> if for every <span class="math inline">\(\epsilon &gt; 0\)</span> there exists <span class="math inline">\(M_\epsilon &gt; 0\)</span> such that <span class="math display">\[
 \sup_{n \geq 1} \mathbb{E}[|X_n| 1(|X_n| &gt; M_\epsilon)] &lt; \epsilon.
 \]</span></p></li>
+<li><p><strong>Convergence result for uniformly integrable sequences of functions:</strong> Let <span class="math inline">\(\{f_n\}_{n\geq 1}\)</span> be a sequence of integrable functions on a finite measure space <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span> such that <span class="math inline">\(f_n \stackrel{\operatorname{a.e.}}{\longrightarrow}f\)</span>, where <span class="math inline">\(f\)</span> is measurable. If the <span class="math inline">\(\{f_n\}_{n\geq 1}\)</span> is uniformly integrable then</p>
+<ol type="a">
+<li><span class="math inline">\(f\)</span> is integrable.</li>
+<li><span class="math inline">\(\lim_{n \to \infty} \int |f_n - f|d\mu = 0\)</span>.</li>
+</ol>
+<p>See Theorem 2.5.10 on page 68 of A&amp;L.</p></li>
 </ul>
+</section>
 <section id="differentiation" class="level2">
 <h2 class="anchored" data-anchor-id="differentiation">Differentiation</h2>
 <!-- - **Density of one measure with respect to another:** In the previous point the function nonnegative function $f$ is called the *density* of $\nu$ with respect to $\mu$. Note that $\mu(A) = 0$ implies $\nu(A) = 0$ for all $A \in \calF$.  We will discuss this in greater detail when we come to what is called the *Radon-Nikodym* derivative of $\nu$ with respect to $\mu$. -->
@@ -383,7 +395,6 @@ L^\infty(\Omega,\mathcal{F},\mu) &amp;\equiv \{f: \mu(\{\omega : f(\omega) &gt; 
 <!-- - Prove Corollary 2.5.6 on page 64 of A&L. -->
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
