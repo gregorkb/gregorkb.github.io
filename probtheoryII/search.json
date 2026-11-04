@@ -4,7 +4,7 @@
     "href": "01_LLNs.html",
     "title": "I. Laws of large numbers",
     "section": "",
-    "text": "$$\n$$\n\nFind these notes at gregorkb.github.io/probtheoryII/"
+    "text": "$$\n$$\nFind these notes at gregorkb.github.io/probtheoryII/"
   },
   {
     "objectID": "about.html",
@@ -12,5 +12,26 @@
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "01_LLNs.html#weak-law-of-large-numbers",
+    "href": "01_LLNs.html#weak-law-of-large-numbers",
+    "title": "I. Laws of large numbers",
+    "section": "Weak law of large numbers",
+    "text": "Weak law of large numbers\n\nWeak law of large numbers:\nExample:"
+  },
+  {
+    "objectID": "01_LLNs.html#strong-laws-of-large-numbers",
+    "href": "01_LLNs.html#strong-laws-of-large-numbers",
+    "title": "I. Laws of large numbers",
+    "section": "Strong laws of large numbers",
+    "text": "Strong laws of large numbers\n\nBorel’s strong law of large numbers:\nEtemadi’s strong law of large numbers: State, but do not prove (the proof will take too much time in class, as it has a few tedious steps)\nGlivenko-Cantelli:\nPolyā’s theorem:\nTwo Kolmogorov Inequalities:. I have gone through the proof of one of them. I should go through the proof of the other in Chung.\nSee Theorem 8.3.1 on page 249 of A&L or Theorems 5.3.1 and 5.3.2 on pages 116-117 of Chung.\nMedian of a random variable: Given a random variable \\(X\\), a value \\(c\\) which satisfies \\[\nP(X &lt; c) \\leq 1/2 \\leq P(X \\leq c)\n\\] is called a median of \\(X\\). We may denote such a value as \\(\\operatorname{median}X\\).\nLevy’s Inequality: Let \\(\\{X_i\\}_{1 \\leq i \\leq n}\\) be independent random variables and define \\(S_j \\equiv \\sum_{i=1}^j X_i\\) for \\(j=1,\\dots,n\\). Then \\[\nP\\Big( \\max_{1 \\leq j \\leq n} |S_j - \\operatorname{median}(S_j - S_n)| \\geq \\lambda\\Big) \\leq 2 P(|S_n| \\geq \\lambda),\n\\] where \\(\\operatorname{median}(S_j - S_n)\\) denotes any median of \\(S_j - S_n\\) for \\(j=1,\\dots,n\\).\nIf \\(\\{X_i\\}_{1 \\leq i \\leq n}\\) are symmetric around \\(0\\), that is, if \\(X_i^+\\) and \\(X_i^-\\) have the same probability distribution for \\(i=1,\\dots,n\\), then the inequality is reduced to \\[\nP\\Big( \\max_{1 \\leq j \\leq n} |S_j| \\geq \\lambda\\Big) \\leq 2 P(|S_n| \\geq \\lambda).\n\\] See Theorem 8.3.2 on page 250 of A&L (though there is a small error in the statement of the result).\nLévy’s Theorem: Wow, this proof is pretty intricate, but I made it through.\nSo sums of independent random variables are special! See Theorem 8.3.3 on page 251 on A&L, Theorem 7.3.2 on page 211 of Resnick, or Theorem 5.3.4 on page 120 of Chung."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Probability Theory II",
+    "section": "",
+    "text": "These pages contain some handouts I will follow during the lectures.\nFind the handouts for Probability Theory I at gregorkb.github.io/probtheory/.\nThese are some books I have relied on while assembling the course material:\n\n\n\nTextbooks\n\n\nI refer to these books in the handouts as A&L, Resnick, Gut, Billingsley, Rosenthal, and Kirkwood, respectively, from left to right, top to bottom."
   }
 ]
