@@ -1442,8 +1442,8 @@ wt  50.9   1020</code></pre>
 <li><p>After partitioning <span class="math inline">\([0,1]\)</span> into <span class="math inline">\(K\)</span> intervals (bins) <span class="math inline">\(I_1,\dots,I_K\)</span> we compute <span class="math display">\[
 \operatorname{HL}_{\operatorname{test}}= \sum_{l=0}^1\sum_{k=1}^K \frac{(O_{lk} - E_{lk})^2}{E_{lk}},
 \]</span> where <span class="math display">\[\begin{align}
-O_{0k} &amp;= \sum_{i=1}^n Y_i 1(\hat \pi_i \in I_k), \quad O_{1k} = \sum_{i=1}^n (1-Y_i) 1(\hat \pi_i \in I_k)\\
-E_{0k} &amp;= \sum_{i=1}^n \hat \pi_i 1(\hat \pi_i \in I_k), \quad  E_{1k} = \sum_{i=1}^n (1 - \hat \pi_i) 1(\hat \pi_i \in I_k).
+O_{1k} &amp;= \sum_{i=1}^n Y_i 1(\hat \pi_i \in I_k), \quad O_{0k} = \sum_{i=1}^n (1-Y_i) 1(\hat \pi_i \in I_k)\\
+E_{1k} &amp;= \sum_{i=1}^n \hat \pi_i 1(\hat \pi_i \in I_k), \quad  E_{0k} = \sum_{i=1}^n (1 - \hat \pi_i) 1(\hat \pi_i \in I_k).
 \end{align}\]</span></p></li>
 <li><p>Reject <span class="math inline">\(H_0\)</span>: <em>the model is appropriate</em> at signif. level <span class="math inline">\(\alpha\)</span> if <span class="math inline">\(\operatorname{HL}_{\operatorname{test}}&gt; \chi^2_{K-2,\alpha}\)</span>.</p></li>
 </ul>
